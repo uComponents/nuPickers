@@ -1,5 +1,6 @@
 ﻿namespace nuComponents.DataTypes
 {
+    using System.IO;
     using System.Linq;
     using System.Reflection;
     using System.Web.Mvc;
@@ -19,30 +20,28 @@
             // if resource can be found
             if (assembly.GetManifestResourceNames().Any(x => x == resource))
             {
-                return new FileStreamResult(assembly.GetManifestResourceStream(resource), this.GetMIMEType(resource));
+                return new FileStreamResult(assembly.GetManifestResourceStream(resource), this.GetMimeType(resource));
             }
 
             return null;
         }
 
-        private string GetMIMEType(string resource)
+        private string GetMimeType(string resource)
         {
-            if (resource.EndsWith(".js"))
+            switch (Path.GetExtension(resource))
             {
-                return "text/javascript";
-            }
+                case ".js":
+                    return "text/javascript";
 
-            if (resource.EndsWith(".html"))
-            {
-                return "text/html";
-            }
+                case ".html":
+                    return "text/html";
 
-            if (resource.EndsWith(".css"))
-            {
-                return "text/stylesheet";
-            }
+                case ".css":
+                    return "text/stylesheet";
 
-            return "text";
+                default:
+                    return "text";
+            }
         }
     }
 }
