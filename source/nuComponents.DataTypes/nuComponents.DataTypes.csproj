@@ -193,11 +193,11 @@
     <Compile Include="EmbeddedResourceController.cs" />
     <Compile Include="EmbeddedResourceStartup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="XPathDropDown\XPathDropDownPropertyEditor.cs" />
+    <Compile Include="XPathDropDownList\XPathDropDownListPropertyEditor.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="XPathDropDown\XPathDropDownController.js" />
-    <EmbeddedResource Include="XPathDropDown\XPathDropDownEditor.html" />
+    <EmbeddedResource Include="XPathDropDownList\XPathDropDownListController.js" />
+    <EmbeddedResource Include="XPathDropDownList\XPathDropDownListEditor.html" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
