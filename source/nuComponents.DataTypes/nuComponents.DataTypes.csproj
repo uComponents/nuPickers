@@ -193,16 +193,30 @@
     <Compile Include="EmbeddedResourceController.cs" />
     <Compile Include="EmbeddedResourceStartup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XPathDropDownList\XPathDropDownListApiController.cs" />
     <Compile Include="XPathDropDownList\XPathDropDownListPropertyEditor.cs" />
+    <Compile Include="XPathTemplatableList\XPathTemplatableList.cs" />
+    <Compile Include="XPathTemplatableList\XPathTemplatableListApiController.cs" />
+    <Compile Include="XPathTemplatableList\XPathTemplatablePropertyEditor.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="XPathDropDownList\XPathDropDownListController.js" />
     <EmbeddedResource Include="XPathDropDownList\XPathDropDownListEditor.html" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="XPathCheckBoxList\" />
+    <Folder Include="XPathRadioButtonList\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="XPathTemplatableList\PreValueFieldCssFile.html" />
+    <EmbeddedResource Include="XPathTemplatableList\PreValueFieldScriptFile.html" />
+    <EmbeddedResource Include="XPathTemplatableList\XPathTemplatableListEditor.html" />
+    <EmbeddedResource Include="XPathTemplatableList\XPathTemplatableListController.js" />
+    <EmbeddedResource Include="XPathTemplatableList\PreValueFieldMacro.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

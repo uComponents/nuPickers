@@ -6,7 +6,7 @@
     using System.Web.Mvc;
 
     /// <summary>
-    /// Handles returning the embedded resource files
+    /// Handles returning the embedded resource files for url : /Umbraco/Plug_Ins
     /// </summary>
     public class EmbeddedResourceController : Controller
     {
@@ -20,7 +20,9 @@
             // if resource can be found
             if (assembly.GetManifestResourceNames().Any(x => x == resource))
             {
-                return new FileStreamResult(assembly.GetManifestResourceStream(resource), this.GetMimeType(resource));
+                return new FileStreamResult(
+                                assembly.GetManifestResourceStream(resource), 
+                                this.GetMimeType(resource));
             }
 
             return null;
@@ -30,17 +32,10 @@
         {
             switch (Path.GetExtension(resource))
             {
-                case ".js":
-                    return "text/javascript";
-
-                case ".html":
-                    return "text/html";
-
-                case ".css":
-                    return "text/stylesheet";
-
-                default:
-                    return "text";
+                case ".js":     return "text/javascript";
+                case ".html":   return "text/html";
+                case ".css":    return "text/stylesheet";
+                default:        return "text";
             }
         }
     }

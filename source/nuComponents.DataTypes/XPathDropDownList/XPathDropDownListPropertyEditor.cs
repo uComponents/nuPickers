@@ -5,8 +5,8 @@ namespace nuComponents.DataTypes.XPathDropDownList
     using Umbraco.Web.PropertyEditors;
     using ClientDependency.Core;
 
-    [PropertyEditor("XPathDropDownList", "XPath DropDownList", "App_Plugins/nuComponents/DataTypes/XPathDropDown/XPathDropDownListEditor.html", ValueType = "TEXT")]
-    [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/XPathDropDown/XPathDropDownListController.js")]
+    [PropertyEditor("XPathDropDownList", "XPath DropDownList", "App_Plugins/nuComponents/DataTypes/XPathDropDownList/XPathDropDownListEditor.html", ValueType = "TEXT")]
+    [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/XPathDropDownList/XPathDropDownListController.js")]
     public class XPathDropDownListPropertyEditor : PropertyEditor
     {
         protected override PreValueEditor CreatePreValueEditor()
