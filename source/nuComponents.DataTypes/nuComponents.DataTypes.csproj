@@ -193,20 +193,11 @@
     <Compile Include="EmbeddedResourceController.cs" />
     <Compile Include="EmbeddedResourceStartup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="XPathDropDownList\XPathDropDownListApiController.cs" />
-    <Compile Include="XPathDropDownList\XPathDropDownListPropertyEditor.cs" />
     <Compile Include="XPathTemplatableList\XPathTemplatableList.cs" />
     <Compile Include="XPathTemplatableList\XPathTemplatableListApiController.cs" />
     <Compile Include="XPathTemplatableList\XPathTemplatablePropertyEditor.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="XPathDropDownList\XPathDropDownListController.js" />
-    <EmbeddedResource Include="XPathDropDownList\XPathDropDownListEditor.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="XPathCheckBoxList\" />
-    <Folder Include="XPathRadioButtonList\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
