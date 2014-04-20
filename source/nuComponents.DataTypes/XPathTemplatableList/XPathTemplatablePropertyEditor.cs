@@ -5,7 +5,8 @@
     using Umbraco.Web.PropertyEditors;
 
     [PropertyEditor("XPathTemplatableList", "XPath TemplatableList", "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/XPathTemplatableListEditor.html", ValueType = "TEXT")]
-    [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/XPathTemplatableListController.js")]
+    [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/XPathTemplatableListEditorController.js")]
+    [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/XPathTemplatableListPreValueController.js")]
     public class XPathTemplatableListPropertyEditor : PropertyEditor
     {
         protected override PreValueEditor CreatePreValueEditor()

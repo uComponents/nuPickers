@@ -215,8 +215,11 @@
     <EmbeddedResource Include="XPathTemplatableList\PreValueFieldCssFile.html" />
     <EmbeddedResource Include="XPathTemplatableList\PreValueFieldScriptFile.html" />
     <EmbeddedResource Include="XPathTemplatableList\XPathTemplatableListEditor.html" />
-    <EmbeddedResource Include="XPathTemplatableList\XPathTemplatableListController.js" />
+    <EmbeddedResource Include="XPathTemplatableList\XPathTemplatableListEditorController.js" />
     <EmbeddedResource Include="XPathTemplatableList\PreValueFieldMacro.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="XPathTemplatableList\XPathTemplatableListPreValueController.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
