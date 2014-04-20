@@ -3,7 +3,7 @@
     using ClientDependency.Core;
     using Umbraco.Core.PropertyEditors;
     using Umbraco.Web.PropertyEditors;
-    
+
     [PropertyEditor("XPathTemplatableList", "XPath TemplatableList", "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/XPathTemplatableListEditor.html", ValueType = "TEXT")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/XPathTemplatableListController.js")]
     public class XPathTemplatableListPropertyEditor : PropertyEditor
@@ -12,84 +12,41 @@
         {
             return new XPathTemplatableListPreValueEditor();
         }
-
+        
         internal class XPathTemplatableListPreValueEditor : PreValueEditor
         {
-            public XPathTemplatableListPreValueEditor()
-            {
-                this.Fields.Add(new PreValueField()
-                {
-                    Key = "type",
-                    Description = "xml schema to query",
-                    View = "nodeType",
-                    Name = "Type"
-                });
+            [PreValueField("Xml Schema", "nodeType", Description = "xml schema to query")]
+            public string XmlSchema { get; set; }
 
-                this.Fields.Add(new PreValueField()
-                {
-                    Key = "xPath",
-                    Description = "all matched nodes are used as drop down options",
-                    View = "requiredfield",
-                    Name = "XPath Expression"
-                });
+            [PreValueField("Options XPath", "requiredfield", Description = "all matched elements are used as options")]
+            public string OptionsXPath { get; set; }
 
-                this.Fields.Add(new PreValueField()
-                {
-                    Key = "listHeight",
-                    Description = "fixed height in px - 0 means not set",
-                    View = "number",
-                    Name = "List Height"
-                });
+            // TODO: How best to set a default value ?
+            [PreValueField("Key Attribute", "requiredfield", Description = "attribute value on each option to use as the key")]
+            public string KeyAttribute { get; set; }
 
-                
-                this.Fields.Add(new PreValueField()
-                {
-                    Key = "macro",
-                    Description = "macro expects an int parameter named 'id'",
-                    View = "/Umbraco/App_Plugins/nuComponents/DataTypes/XPathTemplatableList/PreValueFieldMacro.html",
-                    Name = "Macro"
-                });
+            //public string LabelAttribute { get; set; } // setting a macro would make this field redundant - perhaps this datatype has a default macro instead ?
 
-                this.Fields.Add(new PreValueField()
-                {
-                    Key = "cssFile",
-                    Description = "can use classes: .xpath-templatable-list.datattype-id-??.Property-alias=??",
-                    View = "/Umbraco/App_Plugins/nuComponents/DataTypes/XPathTemplatableList/PreValueFieldCssFile.html",
-                    Name = "Css File"
-                });
+            [PreValueField("Macro", "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/PreValueFieldMacro.html", Description = "macro expects an int parameter named 'id'")]
+            public string Macro { get; set; }
 
-                this.Fields.Add(new PreValueField()
-                {
-                    Key = "scriptFile",
-                    Description = "executed after datatype has initialized",
-                    View = "/Umbraco/App_Plugins/nuComponents/DataTypes/XPathTemplatableList/PreValueFieldScriptFile.html",
-                    Name = "Script File"
-                });
+            [PreValueField("Css File", "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/PreValueFieldCssFile.html", Description = "can use classes: .xpath-templatable-list.datattype-id-??.Property-alias=??")]
+            public string CssFile { get; set; }
 
-                this.Fields.Add(new PreValueField()
-                {
-                    Key = "minItems",
-                    Description = "number of items that must be selected",
-                    View = "number",
-                    Name = "Min Items"
-                });
+            [PreValueField("Script File", "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/PreValueFieldScriptFile.html", Description = "executed after datatype has initialized")]
+            public string ScriptFile { get; set; }
 
-                this.Fields.Add(new PreValueField()
-                {
-                    Key = "maxItems",
-                    Description = "number of items that can be selected - 0 means no limit",
-                    View = "number",
-                    Name = "Max Items"
-                });
+            [PreValueField("List Height", "number", Description = "fix height in px (and use scrollbar) - 0 means fluid")]
+            public int ListHeight { get; set; }
+            
+            [PreValueField("Min Items", "number", Description = "number of items that must be selected")]
+            public int MinItems { get; set; }
 
-                this.Fields.Add(new PreValueField()
-                {
-                    Key = "allowDuplicates",
-                    Description = "when true, duplicate items can be selected",
-                    View = "boolean",
-                    Name = "Allow Duplicates"
-                });
-            }
+            [PreValueField("Max Items", "number", Description = "number of items that can be selected - 0 means no limit")]
+            public int MaxItems { get; set; }
+
+            [PreValueField("Allow Duplicates", "boolean", Description = "when true, duplicate items can be selected")]
+            public bool AllowDuplicates { get; set; }
         }
     }
 }
