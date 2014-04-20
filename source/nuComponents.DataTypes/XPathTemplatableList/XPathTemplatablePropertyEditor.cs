@@ -23,8 +23,8 @@
             public string OptionsXPath { get; set; }
 
             // TODO: How best to set a default value ?
-            [PreValueField("Key Attribute", "requiredfield", Description = "attribute value on each option to use as the key")]
-            public string KeyAttribute { get; set; }
+            [PreValueField("Id Attribute", "requiredfield", Description = "attribute value on each option to use as the id")]
+            public string IdAttribute { get; set; }
 
             //public string LabelAttribute { get; set; } // setting a macro would make this field redundant - perhaps this datatype has a default macro instead ?
 

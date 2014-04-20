@@ -1,9 +1,8 @@
-﻿
-<h1>Macro Picker View</h1>
-<div ng-controller="nuComponents.DataTypes.XPathTemplatableListPreValueController">
+﻿<div ng-controller="nuComponents.DataTypes.XPathTemplatableList.PreValueController">
 
-    <span>evn = {{ env }}</span>
+    <select ng-model="macro" 
+            ng-options="macro.name for macro in macros">
+        <option value=""></option>
+    </select>
 
 </div>
-
-

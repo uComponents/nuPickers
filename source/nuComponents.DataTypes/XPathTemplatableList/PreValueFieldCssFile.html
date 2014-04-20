@@ -1,7 +1,9 @@
-﻿<h1>Css Picker View</h1>
-<div ng-controller="nuComponents.DataTypes.XPathTemplatableListPreValueController">
+﻿<div ng-controller="nuComponents.DataTypes.XPathTemplatableList.PreValueController">
 
-    <span>evn = {{ env }}</span>
+    <select ng-model="cssFile"
+            ng-options="cssFile.path for cssFile in cssFiles">
+        <option value=""></option>
+    </select>
 
 </div>
 

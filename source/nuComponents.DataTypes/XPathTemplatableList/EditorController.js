@@ -2,10 +2,9 @@
 
 angular
     .module("umbraco")
-    .controller("nuComponents.DataTypes.XPathTemplatableListEditorController",
-    function ($scope, $q, $http) {
+    .controller("nuComponents.DataTypes.XPathTemplatableList.EditorController",
+    function ($scope) {
 
-        $scope.env = "Editor Controller";
         
 
 
