@@ -1,10 +1,10 @@
-﻿// controller used by datatype when in use
+﻿// controller used by datatype editor
 
 angular
     .module("umbraco")
     .controller("nuComponents.DataTypes.XPathTemplatableList.EditorController",
-        ['$scope', 'nuComponents.DataTypes.XPathTemplatableList.Resources',
-        function ($scope, resources) {
+        ['$scope', 'nuComponents.DataTypes.XPathTemplatableList.EditorData',
+        function ($scope, data) {
 
         /*
             $scope.model = 

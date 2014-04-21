@@ -215,7 +215,8 @@
     <EmbeddedResource Include="XPathTemplatableList\PreValueController.js" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="XPathTemplatableList\Resources.js" />
+    <EmbeddedResource Include="XPathTemplatableList\EditorData.js" />
+    <EmbeddedResource Include="XPathTemplatableList\PreValueData.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
