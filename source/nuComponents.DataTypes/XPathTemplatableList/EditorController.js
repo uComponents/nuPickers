@@ -4,7 +4,7 @@ angular
     .module("umbraco")
     .controller("nuComponents.DataTypes.XPathTemplatableList.EditorController",
         ['$scope', 'nuComponents.DataTypes.XPathTemplatableList.EditorData',
-        function ($scope, data) {
+        function ($scope, editorData) {
 
         /*
             $scope.model = 
