@@ -197,7 +197,9 @@
     <Compile Include="XPathTemplatableList\XPathTemplatableListApiController.cs" />
     <Compile Include="XPathTemplatableList\XPathTemplatablePropertyEditor.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="XPathTemplatableList\PreValueFieldLabelAttribute.html" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
@@ -211,6 +213,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="XPathTemplatableList\PreValueController.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="XPathTemplatableList\Resources.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

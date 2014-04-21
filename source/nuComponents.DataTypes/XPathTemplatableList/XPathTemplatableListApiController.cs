@@ -16,10 +16,16 @@
             return Macro.GetAll().Select(x => new { 
                                                 name = x.Name, 
                                                 alias = x.Alias,
-                                                valid = x.Properties.Any(y => y.Alias == "id")
+                                                valid = x.Properties.Any(y => y.Alias == "id") // TODO: check type ?
             });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>
+        ///     [{ path: '' }, { path: '' }]
+        /// </returns>
         public IEnumerable<object> GetScriptFiles()
         {
             return this.Services

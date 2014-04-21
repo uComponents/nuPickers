@@ -7,6 +7,7 @@
     [PropertyEditor("XPathTemplatableList", "XPath TemplatableList", "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/Editor.html", ValueType = "TEXT")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/EditorController.js")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/PreValueController.js")]
+    [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/Resources.js")]
     public class XPathTemplatableListPropertyEditor : PropertyEditor
     {
         protected override PreValueEditor CreatePreValueEditor()
@@ -23,10 +24,11 @@
             public string OptionsXPath { get; set; }
 
             // TODO: How best to set a default value ?
-            [PreValueField("Id Attribute", "requiredfield", Description = "attribute value on each option to use as the id")]
-            public string IdAttribute { get; set; }
+            [PreValueField("Key Attribute", "requiredfield", Description = "attribute on each matched xml element to use as the key (this must be unique)")]
+            public string KeyAttribute { get; set; }
 
-            //public string LabelAttribute { get; set; } // setting a macro would make this field redundant - perhaps this datatype has a default macro instead ?
+            [PreValueField("Label Attribute", "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/PreValueFieldLabelAttribute.html", Description = "attribute on each matched xml element to use as the label (not used if macro selected)")]
+            public string LabelAttribute { get; set; } // perhaps this datatype has a default macro instead ?
 
             [PreValueField("Macro", "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/PreValueFieldMacro.html", Description = "macro expects an int parameter named 'id'")]
             public string Macro { get; set; }
