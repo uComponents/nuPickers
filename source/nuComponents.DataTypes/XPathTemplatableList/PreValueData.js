@@ -18,7 +18,7 @@ angular.module('umbraco.resources')
                     return $http.get('backoffice/nuComponents/XPathTemplatableListApi/GetScriptFiles');
                 },
 
-                selectedMacro: null
+                macroSelected: null
 
             };
         }

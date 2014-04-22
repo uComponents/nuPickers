@@ -1,7 +1,7 @@
 ﻿<div ng-controller="nuComponents.DataTypes.XPathTemplatableList.PreValueController">
 
-    <select ng-model="scriptFile"
-            ng-options="scriptFile.path for scriptFile in scriptFiles">
+    <select ng-model="model.value"
+            ng-options="scriptFile.path as scriptFile.path for scriptFile in scriptFiles">
         <option value=""></option>
     </select>
 

@@ -1,10 +1,10 @@
 ﻿<div ng-controller="nuComponents.DataTypes.XPathTemplatableList.PreValueController">
 
-    <select ng-model="selectedMacro" 
-            ng-options="macro.name for macro in macros">
+    <select ng-init="selectMacro()"
+            ng-model="model.value"
+            ng-options="macro.alias as macro.name for macro in macros"
+            ng-change="selectMacro()">
         <option value=""></option>
     </select>
-
-    <p>selectedMacro = {{ selectedMacro }}</p>
 
 </div>
