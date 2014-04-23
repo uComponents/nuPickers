@@ -198,25 +198,30 @@
     <Compile Include="XPathTemplatableList\XPathTemplatableListPropertyEditor.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="XPathTemplatableList\PreValueFieldLabelAttribute.html" />
+    <EmbeddedResource Include="XPathTemplatableList\PreValueLabelAttribute.html" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="XPathTemplatableList\PreValueFieldCssFile.html" />
-    <EmbeddedResource Include="XPathTemplatableList\PreValueFieldScriptFile.html" />
+    <EmbeddedResource Include="XPathTemplatableList\PreValueCssFile.html" />
+    <EmbeddedResource Include="XPathTemplatableList\PreValueScriptFile.html" />
     <EmbeddedResource Include="XPathTemplatableList\Editor.html" />
     <EmbeddedResource Include="XPathTemplatableList\EditorController.js" />
-    <EmbeddedResource Include="XPathTemplatableList\PreValueFieldMacro.html" />
+    <EmbeddedResource Include="XPathTemplatableList\PreValueMacro.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="XPathTemplatableList\PreValueController.js" />
+    <EmbeddedResource Include="XPathTemplatableList\PreValueStateResource.js" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="XPathTemplatableList\EditorData.js" />
-    <EmbeddedResource Include="XPathTemplatableList\PreValueData.js" />
+    <EmbeddedResource Include="XPathTemplatableList\ApiResource.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="XPathTemplatableList\PreValueCssFileController.js" />
+    <EmbeddedResource Include="XPathTemplatableList\PreValueLabelAttributeController.js" />
+    <EmbeddedResource Include="XPathTemplatableList\PreValueMacroController.js" />
+    <EmbeddedResource Include="XPathTemplatableList\PreValueScriptFileController.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

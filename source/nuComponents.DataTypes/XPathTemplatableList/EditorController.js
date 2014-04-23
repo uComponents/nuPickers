@@ -3,8 +3,8 @@
 angular
     .module("umbraco")
     .controller("nuComponents.DataTypes.XPathTemplatableList.EditorController",
-        ['$scope', 'nuComponents.DataTypes.XPathTemplatableList.EditorData',
-        function ($scope, editorData) {
+        ['$scope', 'nuComponents.DataTypes.XPathTemplatableList.ApiResource',
+        function ($scope, apiResource) {
 
         /*
             $scope.model = 

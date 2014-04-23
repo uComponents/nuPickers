@@ -1,9 +1,9 @@
-﻿// api calls to get data, and to also persist data between multiple controllers (eg. between pre value fields)
+﻿// api calls to get data
 
 angular.module('umbraco.resources')
-    .factory('nuComponents.DataTypes.XPathTemplatableList.PreValueData',
+    .factory('nuComponents.DataTypes.XPathTemplatableList.ApiResource',
         function ($http, stylesheetResource) {
-            
+
             return {
 
                 getMacros: function () {
@@ -16,10 +16,7 @@ angular.module('umbraco.resources')
 
                 getScriptFiles: function () {
                     return $http.get('backoffice/nuComponents/XPathTemplatableListApi/GetScriptFiles');
-                },
-
-                macroSelected: null
-
+                }
             };
         }
 );

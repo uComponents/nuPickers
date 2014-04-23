@@ -5,10 +5,13 @@
     using Umbraco.Web.PropertyEditors;
 
     [PropertyEditor("XPathTemplatableList", "XPath TemplatableList", "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/Editor.html", ValueType = "TEXT")]
+    [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/ApiResource.js")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/EditorController.js")]
-    [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/EditorData.js")]
-    [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/PreValueController.js")]
-    [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/PreValueData.js")]
+    [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/PreValueCssFileController.js")]
+    [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/PreValueLabelAttributeController.js")]
+    [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/PreValueMacroController.js")]
+    [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/PreValueScriptFileController.js")]
+    [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/PreValueStateResource.js")]
     public class XPathTemplatableListPropertyEditor : PropertyEditor
     {
         protected override PreValueEditor CreatePreValueEditor()
@@ -31,19 +34,19 @@
                 Description = "attribute on each matched xml element to use as the key (this must be unique)")]
             public string KeyAttribute { get; set; }
 
-            [PreValueField("Label Attribute", "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/PreValueFieldLabelAttribute.html", 
+            [PreValueField("Label Attribute", "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/PreValueLabelAttribute.html", 
                 Description = "attribute on each matched xml element to use as the label (not used if macro selected)")]
             public string LabelAttribute { get; set; } // perhaps this datatype has a default macro instead ?
 
-            [PreValueField("Macro", "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/PreValueFieldMacro.html", 
+            [PreValueField("Macro", "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/PreValueMacro.html", 
                 Description = "macro expects an int parameter named 'id'")]
             public string Macro { get; set; }
 
-            [PreValueField("Css File", "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/PreValueFieldCssFile.html", 
+            [PreValueField("Css File", "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/PreValueCssFile.html", 
                 Description = "can use classes: .xpath-templatable-list.datattype-id-??.Property-alias=??")]
             public string CssFile { get; set; }
 
-            [PreValueField("Script File", "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/PreValueFieldScriptFile.html", 
+            [PreValueField("Script File", "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/PreValueScriptFile.html", 
                 Description = "executed after datatype has initialized")]
             public string ScriptFile { get; set; }
 
