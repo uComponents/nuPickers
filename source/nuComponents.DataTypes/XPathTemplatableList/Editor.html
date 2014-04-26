@@ -1,13 +1,25 @@
 ﻿<div ng-controller="nuComponents.DataTypes.XPathTemplatableList.EditorController">
  
+    <link rel="stylesheet" type="text/css" ng-if="model.config.CssFile" ng-href="{{ model.config.CssFile }}" />
+
     {{ model }}
 
+    <hr/>
+
+    {{ editorOptions }}
+
+    <hr/>
+
     <!-- available items -->
-    <ul></ul>
+    <ul>
+        <li ng-repeat="editorOption in editorOptions">
+             -- {{ editorOption.key }} -- {{ editorOption.markup }}
+        </li>
+
+
+    </ul>
 
     <!-- selected items -->
     <ul></ul>
 
 </div>
-
-

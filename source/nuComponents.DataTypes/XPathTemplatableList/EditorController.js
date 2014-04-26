@@ -6,29 +6,33 @@ angular
         ['$scope', 'nuComponents.DataTypes.XPathTemplatableList.ApiResource',
         function ($scope, apiResource) {
 
-        /*
-            $scope.model = 
+            /*
+                $scope.model = {
+                    "label":"XPathTemplatableList",
+                    "description":"",
+                    "view":"App_Plugins/nuComponents/DataTypes/XPathTemplatableList/Editor.html",
+                    "config":{
+                        "xmlSchema":"content",
+                        "optionsXPath":"//*[@isDoc]",
+                        "keyAttribute":"id",
+                        "labelAttribute":"nodeName",
+                        "macro":null,
+                        "cssFile":null,
+                        "scriptFile":null,
+                        "listHeight":"0",
+                        "minItems":"0",
+                        "maxItems":"0",
+                        "allowDuplicates":"1"
+                    },
+                    "hideLabel":false,
+                    "id":160,
+                    "value":"",
+                    "alias":"xPathTemplatableList"
+                };                
+            */
 
-            {
-                "label":"XPathTemplatableList",
-                "description":"",
-                "view":"App_Plugins/nuComponents/DataTypes/XPathTemplatableList/Editor.html",
-                "config": {
-                                "XmlSchema":"content",
-                                "OptionsXPath":"//*",
-                                "KeyAttribute":"id",
-                                "Macro":"na",
-                                "CssFile":"na",
-                                "ScriptFile":"na",
-                                "ListHeight":"0",
-                                "MinItems":"0",
-                                "MaxItems":"0",
-                                "AllowDuplicates":"1"
-                            },
-                "hideLabel":false,
-                "id":160,
-                "value":"",
-                "alias":"xPathTemplatableList"}
-        */
-
+            apiResource.getEditorOptions($scope.model.config).then(function (response) {
+                $scope.editorOptions = response.data;
+            });
+            
     }]);

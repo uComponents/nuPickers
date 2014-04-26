@@ -16,7 +16,17 @@ angular.module('umbraco.resources')
 
                 getScriptFiles: function () {
                     return $http.get('backoffice/nuComponents/XPathTemplatableListApi/GetScriptFiles');
+                },
+
+                getEditorOptions: function (config) {
+                    return $http({
+                        method: 'POST',
+                        url: 'backoffice/nuComponents/XPathTemplatableListApi/GetEditorOptions',                        
+                        data: config // posts the full config obj which can be reinflated as XPathTemplatableListPreValueEditor
+                    });                        
                 }
+
+
             };
         }
 );

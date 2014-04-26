@@ -2,10 +2,13 @@
 {
     using System.Collections.Generic;
     using System.Linq;
+    using System.Web.Http;
+    using System.Xml;
+    using System.Xml.XPath;
+    using umbraco;
     using umbraco.cms.businesslogic.macro;
     using Umbraco.Web.Editors;
     using Umbraco.Web.Mvc;
-    using Umbraco.Core.Models;
 
     [PluginController("nuComponents")]
     public class XPathTemplatableListApiController : UmbracoAuthorizedJsonController
@@ -24,7 +27,7 @@
         /// 
         /// </summary>
         /// <returns>
-        ///     [{ path: '' }, { path: '' }]
+        ///     [{"path":""}, {"path":""}...]
         /// </returns>
         public IEnumerable<object> GetScriptFiles()
         {
@@ -35,6 +38,90 @@
                         .Select(x => new {
                             path = x.Path
                         });
+        }
+
+        //[HttpPost]
+        //public IEnumerable<string> GetEditorOptions(dynamic config)
+        //{
+        //    string xmlSchema = config.xmlSchema;
+        //    string jibberish = config.jibberish;          // no error, jibberish = null
+        //}
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="config">
+        ///   expects the value from $scope.model.config (Umbraco automatically serializes the PreValueEditor fields into this)
+        /// </param>
+        /// <returns>
+        ///  [{"key":"","markup":""},{"key":"","markup":""}...]
+        /// </returns>
+        [HttpPost]
+        public IEnumerable<object> GetEditorOptions([FromBody] XPathTemplatableListPreValueEditor config)
+        {
+            XmlDocument xmlDocument;
+            List<object> editorOptions = new List<object>();
+            
+            switch (config.XmlSchema)
+            {
+                //TODO: handle caching (elsewhere) of source xml
+                case "content":
+                    xmlDocument = uQuery.GetPublishedXml(uQuery.UmbracoObjectType.Document); 
+                    break;
+
+                case "media":
+                    xmlDocument = uQuery.GetPublishedXml(uQuery.UmbracoObjectType.Media);
+                    break;
+
+                case "members":
+                    xmlDocument = uQuery.GetPublishedXml(uQuery.UmbracoObjectType.Member);
+                    break;
+
+                default:
+                    // fallback to expecting path to an xml file ?
+                    xmlDocument = null;
+                    break;
+            }
+
+            if (xmlDocument != null)
+            {
+                XPathNavigator xPathNavigator = xmlDocument.CreateNavigator();
+                XPathNodeIterator xPathNodeIterator = xPathNavigator.Select(uQuery.ResolveXPath(config.OptionsXPath));
+                List<string> keys = new List<string>(); // used to keep track of keys, so that duplicates aren't added
+                
+                Macro macro = Macro.GetByAlias(config.Macro);
+                string key;
+                string markup;
+
+                while (xPathNodeIterator.MoveNext())
+                {
+                    // check for existance of a key attribute
+                    key = xPathNodeIterator.Current.GetAttribute(config.KeyAttribute, string.Empty);
+
+                    // only add item if it has a unique key - failsafe
+                    if (!string.IsNullOrWhiteSpace(key) && !keys.Any(x => x == key))
+                    {
+                        keys.Add(key); // add key so that it's not reused
+
+                        // set default markup to use the configured label attribute
+                        markup = xPathNodeIterator.Current.GetAttribute(config.LabelAttribute, string.Empty);
+
+                        // if macro configured, replace the markup with it's output
+                        if (macro != null)
+                        {
+                            // TODO: check macro has 'key' property
+                            markup = markup + " <p>TODO: macro output</p>";
+                        }
+
+                        editorOptions.Add(new {
+                            key = key,
+                            markup = markup
+                        });
+                    }
+                }
+            }
+
+            return editorOptions;
         }
     }
 }
