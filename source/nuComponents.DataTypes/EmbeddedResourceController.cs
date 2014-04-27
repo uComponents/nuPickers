@@ -34,7 +34,7 @@
             {
                 case ".js":     return "text/javascript";
                 case ".html":   return "text/html";
-                case ".css":    return "text/stylesheet";
+                case ".css":    return "text/css";
                 default:        return "text";
             }
         }

@@ -6,10 +6,6 @@ angular
         ['$scope', 'nuComponents.DataTypes.XPathTemplatableList.ApiResource',
         function ($scope, apiResource) {
 
-            // tried the following as an alternative to the ClientDependency Attribute on PropertyEditor class - same issue
-            // ISSUE: css loaded at bottom of <body> but not rendering !?
-            //assetsService.loadCss('App_Plugins/nuComponents/DataTypes/XPathTemplatableList/Editor.css');
-
             /*
                 $scope.model = {
                     "label":"XPathTemplatableList",
@@ -87,6 +83,4 @@ angular
                     $scope.selectedKeys.push(key);
                 }                
             };
-
-
     }]);

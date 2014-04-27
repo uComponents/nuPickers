@@ -1,11 +1,52 @@
-﻿.xpath-templatable-list {
-    border:solid 1px red;
+﻿.xpath-templatable-list {        
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
- .selectable {
-    border:solid 1px red;
+.xpath-templatable-list ul {
+    border: solid 1px red;
+    list-style-type: none;
+    width: 43%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
+
+/* SELECTABLE list */
+
+.xpath-templatable-list .selectable {
+    float: left;
+    /*overflow-y: scroll;*/
+}
+
+/* the a tag fills the whole li */
+.xpath-templatable-list ul.selectable a {
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* SELECTED list */
 
 .xpath-templatable-list .selected {
-    border:solid 1px red;
+    float:right;
+    clear:none;
+}
+
+.xpath-templatable-list li {
+    border: dotted 1px #DCD;
+    /*height:21px; TODO: move to a datatype config setting */
+    /*line-height: 21px;
+    padding-left: 5px;*/
+    overflow: hidden;
+    background-color: White;
+    margin-bottom: 3px;
+    font-family: Arial,Lucida Grande;
+    position: relative;
 }
