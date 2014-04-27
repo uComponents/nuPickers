@@ -3,29 +3,26 @@
     <!--<link rel="stylesheet" type="text/css" ng-if="model.config.CssFile" ng-href="{{ model.config.CssFile }}" /> TODO: move this to controller and use assetsService -->
 
     <!-- available items -->
-    <ul class="selectable" ng-model="editorOptions">
-        <li ng-repeat="editorOption in editorOptions"
-            ng-show="isVisibileOption(editorOption.key)"
-            ng-class="{active:isActiveOption(editorOption.key)}">
-
-            <a href="" ng-click="selectOption(editorOption.key)">
-                -- {{ editorOption.key }} -- {{ editorOption.markup }}
+    <ul class="selectable" ng-model="selectableOptions">
+        <li ng-repeat="option in selectableOptions"
+            ng-class="{active:isActive(option)}">
+            <a href="" ng-click="selectOption(option)">
+                {{ option.key }} -- {{ option.markup }}
             </a>
-
         </li>
     </ul>
 
     <!-- selected items -->
     <ul class="selected" ui-sortable="" ng-model="selectedOptions">
-        <li ng-repeat="editorOption in selectedOptions">
-
-            -- {{ editorOption.key }} -- {{ editorOption.markup }}
-
+        <li ng-repeat="option in selectedOptions">
+            {{ option.key }} -- {{ option.markup }}
         </li>
     </ul>
     
     <hr style="clear:left;" /> 
-    <div>selectedKeys = {{ selectedKeys }}</div>
-    <div>model = {{ model }}</div>
+    <div>selectableOptions = {{ selectableOptions }}</div>
+    <hr /> 
+    <div>selectedOptions = {{ selectedOptions }}</div>
+    <!--<div>model = {{ model }}</div>-->
 
 </div>
