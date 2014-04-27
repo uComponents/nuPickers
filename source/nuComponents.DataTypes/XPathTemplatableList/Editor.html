@@ -14,7 +14,7 @@
 
     <!-- selected items -->
     <ul class="selected" ui-sortable="" ng-model="selectedOptions">
-        <li ng-repeat="option in selectedOptions">
+        <li ng-repeat="option in selectedOptions track by $index">
             {{ option.key }} -- {{ option.markup }}
         </li>
     </ul>
