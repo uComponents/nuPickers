@@ -6,6 +6,10 @@ angular
         ['$scope', 'nuComponents.DataTypes.XPathTemplatableList.ApiResource',
         function ($scope, apiResource) {
 
+            // tried the following as an alternative to the ClientDependency Attribute on PropertyEditor class - same issue
+            // ISSUE: css loaded at bottom of <body> but not rendering !?
+            //assetsService.loadCss('App_Plugins/nuComponents/DataTypes/XPathTemplatableList/Editor.css');
+
             /*
                 $scope.model = {
                     "label":"XPathTemplatableList",
@@ -26,13 +30,63 @@ angular
                     },
                     "hideLabel":false,
                     "id":160,
-                    "value":"",
+                    "value":"1067,1068,1069",
                     "alias":"xPathTemplatableList"
                 };                
             */
 
+            // local data
+            $scope.selectedKeys = [];
+
             apiResource.getEditorOptions($scope.model.config).then(function (response) {
-                $scope.editorOptions = response.data;
+
+                // get data to build ui
+                $scope.editorOptions = response.data; // [{"key":"","markup":""},{"key":"","markup":""}...]
+
+                // rebuild selectedKeys from csv
+                if ($scope.model.value) {
+                    var savedKeys = $scope.model.value.split(',');
+                    for (var i = 0; i < savedKeys.length; i++) {
+                        // TODO: check to see if this key is in the available editor options
+
+                        $scope.selectedKeys.push(savedKeys[i]);
+
+                    }
+                }
+
+                // setup watch on local data
+                $scope.$watch(function () { return $scope.selectedKeys.length; }, function () {
+                    // set the model.value (for Umbraco to persist)
+                    $scope.model.value = $scope.selectedKeys.join();
+                });
+
             });
-            
+
+            $scope.isVisibileOption = function (key) {
+                // TODO: add 'Hide Invalid Options'
+                return $scope.isActiveOption(key);
+            };
+
+            $scope.isActiveOption = function (key) {
+                if ($scope.model.config.allowDuplicates == '1' || $scope.selectedKeys.indexOf(key) == -1) {
+                    return true;
+                }
+                return false;
+            };
+
+            // picking an item from 'selectable' for 'selected'
+            $scope.selectOption = function (key) {
+
+                //TODO: check not exceeding the max
+
+                // add item if allowing duplicates, else check it's not already in the list
+                if ($scope.model.config.allowDuplicates == '1') {
+                    $scope.selectedKeys.push(key);
+                }
+                else if ($scope.selectedKeys.indexOf(key) == -1) {
+                    $scope.selectedKeys.push(key);
+                }                
+            };
+
+
     }]);

@@ -40,13 +40,6 @@
                         });
         }
 
-        //[HttpPost]
-        //public IEnumerable<string> GetEditorOptions(dynamic config)
-        //{
-        //    string xmlSchema = config.xmlSchema;
-        //    string jibberish = config.jibberish;          // no error, jibberish = null
-        //}
-
         /// <summary>
         /// 
         /// </summary>
@@ -101,6 +94,7 @@
                     // only add item if it has a unique key - failsafe
                     if (!string.IsNullOrWhiteSpace(key) && !keys.Any(x => x == key))
                     {
+                        // TODO: ensure key doens't contain any commas (keys are converted saved as csv)
                         keys.Add(key); // add key so that it's not reused
 
                         // set default markup to use the configured label attribute

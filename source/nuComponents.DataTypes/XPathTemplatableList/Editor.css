@@ -1,0 +1,11 @@
+﻿.xpath-templatable-list {
+    border:solid 1px red;
+}
+
+ .selectable {
+    border:solid 1px red;
+}
+
+.xpath-templatable-list .selected {
+    border:solid 1px red;
+}
