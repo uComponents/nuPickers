@@ -103,4 +103,18 @@ angular
                     }
                 }
             };
+
+            $scope.deselectOption = function ($index, option) {
+
+                // remove item from collection
+                $scope.selectedOptions.splice($index, 1);
+
+                //// remove this option from the selected collection
+                //for (var i = 0; i < $scope.selectedOptions.length; i++) {
+                //    if ($scope.selectedOptions[i] == option) {
+                //        $scope.selectedOptions.splice(i, 1);
+                //        break;
+                //    }
+                //}
+            };
     }]);

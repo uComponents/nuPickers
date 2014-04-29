@@ -16,6 +16,9 @@
     <ul class="selected" ui-sortable="" ng-model="selectedOptions">
         <li ng-repeat="option in selectedOptions track by $index">
             {{ option.key }} -- {{ option.markup }}
+
+
+            <a href="" class="deselect" title="remove" ng-click="deselectOption($index, option)"></a>
         </li>
     </ul>
     
