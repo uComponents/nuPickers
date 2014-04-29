@@ -22,7 +22,8 @@ angular
                         "listHeight":"0",
                         "minItems":"0",
                         "maxItems":"0",
-                        "allowDuplicates":"1"
+                        "allowDuplicates":"1",
+                        "showUnselectable":"1"
                     },
                     "hideLabel":false,
                     "id":160,
@@ -31,7 +32,7 @@ angular
                 };                
             */
 
-            // array of option objects, for the selectable list
+            // array of option objects, for the selectable list 
             $scope.selectableOptions = []; // [{"key":"","markup":""},{"key":"","markup":""}...]
 
             // array of option objects, for the selected list
@@ -59,52 +60,30 @@ angular
                 });
 
                 // build selectable options
-                for (var i = 0; i < editorOptions.length; i++) {
-                    // always add if duplicates can be selected
-                    if ($scope.model.config.allowDuplicates == '1') { 
-                        $scope.selectableOptions.push(editorOptions[i]);
-                    }
-                    // add if this option isn't already in the selected options array
-                    else if ($scope.selectedOptions.indexOf(editorOptions[i]) == -1) {
-                        $scope.selectableOptions.push(editorOptions[i]);
-                    }
-                }
+                $scope.selectableOptions = editorOptions;
             });
 
-            // return ture, if the option can be selected (this is only relevant when hideInactive = false)
-            $scope.isActive = function (option) {
-                if ($scope.model.config.allowDuplicates == '1' ||
-                    $scope.selectedOptions.indexOf(option) == -1) {
-                    return true;
-                }
-                return false;
+            // return ture, if the option can be selected
+            $scope.isSelectable = function (option) {
+
+                return ($scope.model.config.allowDuplicates == '1' ||
+                        $scope.selectedOptions.indexOf(option) == -1); // not in the selected list
             };
 
             // picking an item from 'selectable' for 'selected'
             $scope.selectOption = function (option) {
 
-                //TODO: check not exceeding the max
+                // TODO: check not exceeding the max
 
-                // add item if allowing duplicates, else check it's not already in the list
-                if ($scope.model.config.allowDuplicates == '1') {
-                    $scope.selectedOptions.push(option);                    
-                }
-                // TODO: does this key already exist in the selectedOptions ?
-                else if ($scope.selectedOptions.indexOf(option) == -1) {
+                // if item can be selected, then add it to the selected list
+                if ($scope.isSelectable(option)) {
                     $scope.selectedOptions.push(option);
-
-                    // TODO: config value for hideInactive
-                    // currently assuming hideInactive = true
-                    for (var i = 0; i < $scope.selectableOptions.length; i++) {
-                        if ($scope.selectableOptions[i] == option) {
-                            $scope.selectableOptions.splice(i, 1);
-                            break;
-                        }
-                    }
                 }
             };
 
             $scope.deselectOption = function ($index, option) {
+
+                // TODO: check not less than min
 
                 // remove item from collection
                 $scope.selectedOptions.splice($index, 1);

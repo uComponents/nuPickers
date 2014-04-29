@@ -5,7 +5,8 @@
     <!-- available items -->
     <ul class="selectable" ng-model="selectableOptions">
         <li ng-repeat="option in selectableOptions"
-            ng-class="{active:isActive(option)}">
+            ng-show="isSelectable(option) || model.config.showUnselectable"
+            ng-class="{active:isSelectable(option)}">
             <a href="" ng-click="selectOption(option)">
                 {{ option.key }} -- {{ option.markup }}
             </a>
@@ -23,9 +24,8 @@
     </ul>
     
     <hr style="clear:left;" /> 
-    <div>selectableOptions = {{ selectableOptions }}</div>
-    <hr /> 
+    <!--<div>model.config = {{ model.config }}</div>
+    <div>selectableOptions = {{ selectableOptions }}</div>-->
     <div>selectedOptions = {{ selectedOptions }}</div>
-    <!--<div>model = {{ model }}</div>-->
-
+    <div>csv = {{ model.value }}</div>
 </div>

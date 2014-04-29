@@ -21,7 +21,7 @@
     /*line-height: 21px;
     padding-left: 5px;*/
     overflow: hidden;
-    background-color: White;
+    background-color: white;
     margin-bottom: 3px;
     font-family: Arial,Lucida Grande;
     position: relative;
@@ -33,7 +33,16 @@
     /*overflow-y: scroll;*/
 }
 
-.xpath-templatable-list .selectable a { /* make the a tag fill the whole option */
+.xpath-templatable-list .selectable li {
+    background-color: lightgray; /* default to the unselectable */
+}
+
+.xpath-templatable-list .selectable .active {
+    background-color: white; /* remove the unselectable background */
+    cursor: pointer;    
+}
+
+.xpath-templatable-list .selectable a { /* make the a tag fill the whole li option */
     text-decoration: none;
     display: block;
     width: 100%;
@@ -42,26 +51,25 @@
 
 .xpath-templatable-list .selectable .active a:hover
 {
-    background-color:#F6F6FA;
-    cursor:pointer;
+    background-color: #F6F6FA;
 }
 
 
 /* SELECTED list */
 .xpath-templatable-list .selected {
-    float:right;
-    clear:none;
+    float: right;
+    clear: none;
 }
 
-.xpath-templatable-list li {
-    cursor:move;
+.xpath-templatable-list .selected li {
+    cursor: move;
 }
 
 .xpath-templatable-list .selected a
 {
     background: transparent url('/umbraco/images/delete.gif') no-repeat 0px 3px;
-    width:15px;
-    height:15px;
+    width: 15px;
+    height: 15px;
     position: absolute;
     right: 2px;
     top: 2px;
