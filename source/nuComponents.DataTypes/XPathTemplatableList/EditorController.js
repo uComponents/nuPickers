@@ -73,27 +73,20 @@ angular
             // picking an item from 'selectable' for 'selected'
             $scope.selectOption = function (option) {
 
-                // TODO: check not exceeding the max
-
-                // if item can be selected, then add it to the selected list
-                if ($scope.isSelectable(option)) {
+                // if item can be selected and not exceeding the max
+                if ($scope.isSelectable(option)
+                    && ($scope.selectedOptions.length < $scope.model.config.maxItems || $scope.model.config.maxItems <= 0)) {
+                    // add option to the selected list
                     $scope.selectedOptions.push(option);
                 }
             };
 
-            $scope.deselectOption = function ($index, option) {
+            $scope.deselectOption = function ($index) {
 
-                // TODO: check not less than min
-
-                // remove item from collection
-                $scope.selectedOptions.splice($index, 1);
-
-                //// remove this option from the selected collection
-                //for (var i = 0; i < $scope.selectedOptions.length; i++) {
-                //    if ($scope.selectedOptions[i] == option) {
-                //        $scope.selectedOptions.splice(i, 1);
-                //        break;
-                //    }
-                //}
+                // check not less than min
+                if ($scope.selectedOptions.length > $scope.model.config.minItems) {
+                    // remove option from the selected list
+                    $scope.selectedOptions.splice($index, 1);
+                }
             };
     }]);
