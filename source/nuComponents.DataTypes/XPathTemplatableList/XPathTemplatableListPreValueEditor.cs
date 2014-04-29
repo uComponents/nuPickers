@@ -16,9 +16,10 @@
         public string KeyAttribute { get; set; }
 
         [PreValueField("labelAttribute", "Label Attribute", "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/PreValueLabelAttribute.html", Description = "attribute on each matched xml element to use as the label (not used if macro selected)")]
-        public string LabelAttribute { get; set; } // perhaps this datatype has a default macro instead ?
+        public string LabelAttribute { get; set; }
 
-        [PreValueField("macro", "Macro", "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/PreValueMacro.html", Description = "macro expects an int parameter named 'id'")]
+        // TODO: rename
+        [PreValueField("macro", "Label Macro", "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/PreValueMacro.html", Description = "macro expects an int parameter named 'id'")]
         public string Macro { get; set; }
 
         [PreValueField("cssFile", "Css File", "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/PreValueCssFile.html", Description = "can use classes: .xpath-templatable-list.datattype-id-??.Property-alias=??")]
@@ -38,5 +39,8 @@
 
         [PreValueField("allowDuplicates", "Allow Duplicates", "boolean", Description = "when true, duplicate items can be selected")]            
         public bool AllowDuplicates { get; set; }
+
+        [PreValueField("hideUnselectable", "Hide Unselectable", "boolean", Description = "when true, unselectable items are hidden, rather than disabled")]
+        public bool HideUnselectable { get; set; }
     }
 }
