@@ -81,10 +81,14 @@ angular
                 }
             };
 
+            // returns true if there are items that can be deselected
+            $scope.canDeselect = function () {
+                return $scope.selectedOptions.length > $scope.model.config.minItems;
+            }
+
             $scope.deselectOption = function ($index) {
 
-                // check not less than min
-                if ($scope.selectedOptions.length > $scope.model.config.minItems) {
+                if ($scope.canDeselect()) {
                     // remove option from the selected list
                     $scope.selectedOptions.splice($index, 1);
                 }
