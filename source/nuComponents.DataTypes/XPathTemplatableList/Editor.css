@@ -64,6 +64,10 @@
 .xpath-templatable-list .selected li {
     cursor: move;
 }
+.xpath-templatable-list .selected li:hover
+{
+    background-color: #F6F6FA;
+}
 
 .xpath-templatable-list .selected a
 {

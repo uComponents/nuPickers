@@ -55,7 +55,7 @@ angular
                 }
 
                 // setup watch on selected options to recreate the csv in model.value for Umbraco
-                $scope.$watch(function () { return $scope.selectedOptions.length; }, function () {
+                $scope.$watchCollection('selectedOptions', function () {
                     $scope.model.value = $scope.selectedOptions.map(function (option) { return option.key; }).join();
                 });
 
