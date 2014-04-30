@@ -5,6 +5,9 @@
     //was internal - made public for the API controller
     public class XPathTemplatableListPreValueEditor : PreValueEditor
     {
+        //[PreValueField("configuration", "", "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/Configuration.html", HideLabel = true)]
+        //public XPathTemplatableListConfiguration XPathTemplatableListConfiguration { get; set; }
+
         [PreValueField("xmlSchema", "Xml Schema", "nodeType", Description = "xml schema to query")]
         public string XmlSchema { get; set; }
 
@@ -18,9 +21,8 @@
         [PreValueField("labelAttribute", "Label Attribute", "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/PreValueLabelAttribute.html", Description = "attribute on each matched xml element to use as the label (not used if macro selected)")]
         public string LabelAttribute { get; set; }
 
-        // TODO: rename
-        [PreValueField("macro", "Label Macro", "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/PreValueMacro.html", Description = "macro expects an int parameter named 'id'")]
-        public string Macro { get; set; }
+        [PreValueField("labelMacro", "Label Macro", "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/PreValueMacro.html", Description = "macro expects a string parameter named 'key'")]
+        public string LabelMacro { get; set; }
 
         [PreValueField("cssFile", "Css File", "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/PreValueCssFile.html", Description = "can use classes: .xpath-templatable-list.datattype-id-??.Property-alias=??")]
         public string CssFile { get; set; }
@@ -37,7 +39,7 @@
         [PreValueField("maxItems", "Max Items", "number", Description = "number of items that can be selected - 0 means no limit")]
         public int MaxItems { get; set; }
 
-        [PreValueField("allowDuplicates", "Allow Duplicates", "boolean", Description = "when true, duplicate items can be selected")]            
+        [PreValueField("allowDuplicates", "Allow Duplicates", "boolean", Description = "when true, duplicate items can be selected")]
         public bool AllowDuplicates { get; set; }
 
         [PreValueField("showUnselectable", "Show Unselectable", "boolean", Description = "when true, unselectable items are disabled, rather than hidden")]

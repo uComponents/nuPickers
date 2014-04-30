@@ -13,6 +13,7 @@
     [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/PreValueMacroController.js")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/PreValueScriptFileController.js")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/PreValueStateResource.js")]
+    //[PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/XPathTemplatableList/ConfigurationController.js")]
     public class XPathTemplatableListPropertyEditor : PropertyEditor
     {
         protected override PreValueEditor CreatePreValueEditor()

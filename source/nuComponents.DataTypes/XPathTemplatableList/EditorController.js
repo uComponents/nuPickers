@@ -39,6 +39,7 @@ angular
             $scope.selectedOptions = []; // [{"key":"","markup":""},{"key":"","markup":""}...]
 
             // call api, supplying all configuration details, and expect a collection of options (key / markup) to be populated
+            //apiResource.getEditorOptions($scope.model.config.configuration).then(function (response) {
             apiResource.getEditorOptions($scope.model.config).then(function (response) {
 
                 var editorOptions = response.data; // [{"key":"","markup":""},{"key":"","markup":""}...]

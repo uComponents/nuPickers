@@ -6,7 +6,8 @@
     using System.Xml;
     using System.Xml.XPath;
     using umbraco;
-    using umbraco.cms.businesslogic.macro;
+    //using umbraco.cms.businesslogic.macro;
+    using umbraco.presentation.templateControls;
     using Umbraco.Web.Editors;
     using Umbraco.Web.Mvc;
 
@@ -16,11 +17,12 @@
         public IEnumerable<object> GetMacros()
         {
             //using legacy api as no method on Umbraco.Core.Services.MacroSerivce to get all macros
-            return Macro.GetAll().Select(x => new { 
-                                                name = x.Name, 
-                                                alias = x.Alias,
-                                                valid = x.Properties.Any(y => y.Alias == "id") // TODO: check type ?
-            });
+            return umbraco.cms.businesslogic.macro.Macro.GetAll().Select(x => new
+                                                                            { 
+                                                                                name = x.Name, 
+                                                                                alias = x.Alias,
+                                                                                valid = x.Properties.Any(y => y.Alias == "id") // TODO: check type ?
+                                                                            });
         }
 
         /// <summary>
@@ -54,12 +56,12 @@
         {
             XmlDocument xmlDocument;
             List<object> editorOptions = new List<object>();
-            
+
             switch (config.XmlSchema)
             {
                 //TODO: handle caching (elsewhere) of source xml
                 case "content":
-                    xmlDocument = uQuery.GetPublishedXml(uQuery.UmbracoObjectType.Document); 
+                    xmlDocument = uQuery.GetPublishedXml(uQuery.UmbracoObjectType.Document);
                     break;
 
                 case "media":
@@ -81,8 +83,7 @@
                 XPathNavigator xPathNavigator = xmlDocument.CreateNavigator();
                 XPathNodeIterator xPathNodeIterator = xPathNavigator.Select(uQuery.ResolveXPath(config.OptionsXPath));
                 List<string> keys = new List<string>(); // used to keep track of keys, so that duplicates aren't added
-                
-                Macro macro = Macro.GetByAlias(config.Macro);
+
                 string key;
                 string markup;
 
@@ -100,14 +101,16 @@
                         // set default markup to use the configured label attribute
                         markup = xPathNodeIterator.Current.GetAttribute(config.LabelAttribute, string.Empty);
 
-                        // if macro configured, replace the markup with it's output
-                        if (macro != null)
-                        {
-                            // TODO: check macro has 'key' property
-                            markup = markup + " <p>TODO: macro output</p>";
-                        }
+                        //// if macro configured, replace the markup with it's output
+                        //if (umbraco.cms.businesslogic.macro.Macro.GetByAlias(config.LabelMacro) != null)
+                        //{
+                        //    Macro macro = new Macro() { Alias = config.LabelMacro };
+                        //    macro.MacroAttributes["key"] = key;
+                        //    markup = macro.RenderToString();
+                        //}
 
-                        editorOptions.Add(new {
+                        editorOptions.Add(new
+                        {
                             key = key,
                             markup = markup
                         });
@@ -117,5 +120,13 @@
 
             return editorOptions;
         }
+
+        ///// <param name="configuration">
+        /////   expects the value from $scope.model.config.configruation
+        ///// </param>
+        //[HttpPost]
+        //public IEnumerable<object> GetEditorOptions([FromBody] XPathTemplatableListConfiguration configuration)
+        //{
+        //}
     }
 }
