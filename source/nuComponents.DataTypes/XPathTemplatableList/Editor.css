@@ -37,16 +37,16 @@
     background-color: lightgray; /* default to the unselectable */
 }
 
-.xpath-templatable-list .selectable .active {
-    background-color: white; /* remove the unselectable background */
-    cursor: pointer;    
-}
-
 .xpath-templatable-list .selectable a { /* make the a tag fill the whole li option */
     text-decoration: none;
     display: block;
     width: 100%;
     height: 100%;
+}
+
+.xpath-templatable-list .selectable .active a {
+    background-color: white; /* remove the unselectable background */
+    cursor: pointer;    
 }
 
 .xpath-templatable-list .selectable .active a:hover
