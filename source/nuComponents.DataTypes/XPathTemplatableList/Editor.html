@@ -7,29 +7,42 @@
         <li ng-repeat="option in selectableOptions"
             ng-show="isSelectable(option) || model.config.showUnselectable"
             ng-class="{active:isSelectable(option)}">
-            <a href="" ng-click="selectOption(option)">
 
-                <div ng-bind-html-unsafe="option.markup"></div>
+            <div class="markup" ng-bind-html-unsafe="option.markup">
+            </div>
 
+            <a href=""
+               class="button"
+               title="add"
+               ng-show="canSelect(option)"
+               ng-click="selectOption(option)">
+                <!--<span class="overlay" />-->
             </a>
+
         </li>
     </ul>
 
     <!-- selected items -->
     <ul class="selected" ui-sortable="{axis: 'y'}" ng-model="selectedOptions">
         <li ng-repeat="option in selectedOptions track by $index">     
-                   
-            <div ng-bind-html-unsafe="option.markup"></div>
+            
+                <a href=""
+                   class="button"
+                   title="remove"
+                   ng-show="canDeselect()"
+                   ng-click="deselectOption($index)">
+                    <!--<span class="overlay/>"-->
+                </a>
 
-            <a href=""
-               class="deselect"
-               title="remove"
-               ng-show="canDeselect()"
-               ng-click="deselectOption($index)"></a>
+                <div class="markup sort"
+                     title="sort"                     
+                     ng-bind-html-unsafe="option.markup">
+                </div>
+
         </li>
     </ul>
     
     <hr style="clear:both;"/>
-    <div>model.config {{ model.config }}</div>
+    <!--<div>model.config {{ model.config }}</div>-->
 
 </div>

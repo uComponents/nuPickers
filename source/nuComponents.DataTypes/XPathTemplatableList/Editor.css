@@ -1,80 +1,139 @@
-﻿.xpath-templatable-list {        
-    -webkit-touch-callout: none;
+﻿/*
+    Umbraco colours: 
+    #9e9e9e
+    #f0f0f0
+    #ddd
+    #c5c5c5
+
+    #fdfdfd,#ddd
+*/
+
+.xpath-templatable-list {        
+    /*-webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none;
+    user-select: none;*/
 }
 
 .xpath-templatable-list ul {
     list-style-type: none;
-    width: 43%;
+    width: 48%;
+    margin:0;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
 
 .xpath-templatable-list li {
-    border: dotted 1px #DCD;
-    /*height:21px; TODO: move to a datatype config setting */
-    /*line-height: 21px;
-    padding-left: 5px;*/
     overflow: hidden;
     background-color: white;
     margin-bottom: 3px;
     font-family: Arial,Lucida Grande;
     position: relative;
+
+    border: 1px solid #ccc;
 }
 
-/* SELECTABLE list */
+.xpath-templatable-list .markup {
+    width:90%;
+    padding:5px;
+}
+
+.xpath-templatable-list .button {
+    width: 10%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    background-color:yellow;
+}
+
+
+
+.xpath-templatable-list .selectable .active a:hover,
+.xpath-templatable-list .selected .button:hover,
+.xpath-templatable-list .selected .sort:hover
+{
+    background-color: #F6F6FA;
+}
+
+/* SELECTABLE list     
+    <ul class="selectable">
+        <li class="(active)">
+
+            <div class="markup">
+                {{ custom markup }}
+            </div>
+
+            <a class="button"></a>
+
+        </li>
+    </ul>    
+*/
+
 .xpath-templatable-list .selectable {
     float: left;
     /*overflow-y: scroll;*/
 }
 
-.xpath-templatable-list .selectable li {
-    background-color: lightgray; /* default to the unselectable */
+.xpath-templatable-list .selectable .markup {
+    border-right:1px solid #ccc;
 }
 
-.xpath-templatable-list .selectable a { /* make the a tag fill the whole li option */
-    text-decoration: none;
-    display: block;
-    width: 100%;
-    height: 100%;
+.xpath-templatable-list .selectable .button {
+    right:0;
+    border-left: 1px solid #ccc;
+
+    background: transparent url('/Umbraco/App_Plugins/nuComponents/DataTypes/XPathTemplatableList/ButtonAdd.png') no-repeat center;
+
+    /* default to the unselectable */
+    background-color: lightgray; 
 }
+
+.xpath-templatable-list .selectable .active .button {
+}
+
 
 .xpath-templatable-list .selectable .active a {
     background-color: white; /* remove the unselectable background */
     cursor: pointer;    
 }
 
-.xpath-templatable-list .selectable .active a:hover
-{
-    background-color: #F6F6FA;
-}
+/* SELECTED list 
+    <ul class="selected">
+        <li>
 
+            <a class="button"></a>
 
-/* SELECTED list */
+            <div class="markup sort">
+                {{ custom markup }}
+            </div>
+
+        </li>
+    </ul>        
+*/
 .xpath-templatable-list .selected {
     float: right;
     clear: none;
 }
 
-.xpath-templatable-list .selected li {
-    cursor: move;
-}
-.xpath-templatable-list .selected li:hover
-{
-    background-color: #F6F6FA;
+/*.xpath-templatable-list .selected li { sorting occurs on this, but we change the cursor elsewhere (as 1px edge case)
+}*/
+
+.xpath-templatable-list .selected .markup {
+    margin-left:10%;
+    border-left:1px solid #ccc;
+
 }
 
-.xpath-templatable-list .selected a
-{
-    background: transparent url('/umbraco/images/delete.gif') no-repeat 0px 3px;
-    width: 15px;
-    height: 15px;
-    position: absolute;
-    right: 2px;
-    top: 2px;
+.xpath-templatable-list .selected .sort {
+    cursor: move;
 }
+
+.xpath-templatable-list .selected .button {
+    /*background: transparent url('/umbraco/images/delete.gif') no-repeat center;*/
+    background: transparent url('/Umbraco/App_Plugins/nuComponents/DataTypes/XPathTemplatableList/ButtonRemove.png') no-repeat center;
+    left:0;
+}
+

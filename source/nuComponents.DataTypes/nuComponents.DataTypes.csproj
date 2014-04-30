@@ -228,6 +228,10 @@
   <ItemGroup>
     <EmbeddedResource Include="XPathTemplatableList\Editor.css" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="XPathTemplatableList\ButtonAdd.png" />
+    <EmbeddedResource Include="XPathTemplatableList\ButtonRemove.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>XCOPY "$(TargetPath)" "C:\Users\Hendy\Documents\Projects\Experiments\nuComponentsUmbracoTestSite\nuComponentsUmbracoTestSite.Web\bin" /y</PostBuildEvent>

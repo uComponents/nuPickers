@@ -64,20 +64,25 @@ angular
                 $scope.selectableOptions = editorOptions;
             });
 
-            // return ture, if the option can be selected
+            // return ture, if the option could be a valid selection
             $scope.isSelectable = function (option) {
 
                 return ($scope.model.config.allowDuplicates == '1' ||
                         $scope.selectedOptions.indexOf(option) == -1); // not in the selected list
             };
 
+            
+            $scope.canSelect = function (option) {
+
+                return $scope.isSelectable(option) && ($scope.selectedOptions.length < $scope.model.config.maxItems || $scope.model.config.maxItems <= 0);
+
+            };
+
             // picking an item from 'selectable' for 'selected'
             $scope.selectOption = function (option) {
 
                 // if item can be selected and not exceeding the max
-                if ($scope.isSelectable(option)
-                    && ($scope.selectedOptions.length < $scope.model.config.maxItems || $scope.model.config.maxItems <= 0)) {
-                    // add option to the selected list
+                if ($scope.canSelect(option)) {
                     $scope.selectedOptions.push(option);
                 }
             };
