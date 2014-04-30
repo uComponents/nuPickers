@@ -9,7 +9,7 @@
             ng-class="{active:isSelectable(option)}">
             <a href="" ng-click="selectOption(option)">
 
-                {{ option.markup }}
+                <div ng-bind-html-unsafe="option.markup"></div>
 
             </a>
         </li>
@@ -17,9 +17,9 @@
 
     <!-- selected items -->
     <ul class="selected" ui-sortable="{axis: 'y'}" ng-model="selectedOptions">
-        <li ng-repeat="option in selectedOptions track by $index">
-            
-            {{ option.markup }}
+        <li ng-repeat="option in selectedOptions track by $index">     
+                   
+            <div ng-bind-html-unsafe="option.markup"></div>
 
             <a href=""
                class="deselect"
@@ -29,4 +29,7 @@
         </li>
     </ul>
     
+    <hr style="clear:both;"/>
+    <div>model.config {{ model.config }}</div>
+
 </div>
