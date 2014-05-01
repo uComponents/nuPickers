@@ -9,12 +9,12 @@
 */
 
 .xpath-templatable-list {        
-    /*-webkit-touch-callout: none;
+    -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none;*/
+    user-select: none;
 }
 
 .xpath-templatable-list ul {
@@ -46,9 +46,13 @@
     height: 100%;
     position: absolute;
     top: 0;
-    background-color:yellow;
 }
 
+.xpath-templatable-list .button.disabled {
+    opacity: 0.4;
+    filter: alpha(opacity=40); /* msie */
+    cursor:default; /* disable the hand */
+}
 
 
 .xpath-templatable-list .selectable .active a:hover,
@@ -78,14 +82,14 @@
 }
 
 .xpath-templatable-list .selectable .markup {
-    border-right:1px solid #ccc;
+ 
 }
 
 .xpath-templatable-list .selectable .button {
     right:0;
+    background: transparent url('/Umbraco/App_Plugins/nuComponents/DataTypes/XPathTemplatableList/ButtonAdd.png') no-repeat center;
     border-left: 1px solid #ccc;
 
-    background: transparent url('/Umbraco/App_Plugins/nuComponents/DataTypes/XPathTemplatableList/ButtonAdd.png') no-repeat center;
 
     /* default to the unselectable */
     background-color: lightgray; 
@@ -97,7 +101,6 @@
 
 .xpath-templatable-list .selectable .active a {
     background-color: white; /* remove the unselectable background */
-    cursor: pointer;    
 }
 
 /* SELECTED list 
@@ -123,8 +126,6 @@
 
 .xpath-templatable-list .selected .markup {
     margin-left:10%;
-    border-left:1px solid #ccc;
-
 }
 
 .xpath-templatable-list .selected .sort {
@@ -132,8 +133,8 @@
 }
 
 .xpath-templatable-list .selected .button {
-    /*background: transparent url('/umbraco/images/delete.gif') no-repeat center;*/
-    background: transparent url('/Umbraco/App_Plugins/nuComponents/DataTypes/XPathTemplatableList/ButtonRemove.png') no-repeat center;
     left:0;
+    background: transparent url('/Umbraco/App_Plugins/nuComponents/DataTypes/XPathTemplatableList/ButtonRemove.png') no-repeat center;
+    border-right:1px solid #ccc;
 }
 

@@ -38,6 +38,8 @@ angular
             // array of option objects, for the selected list
             $scope.selectedOptions = []; // [{"key":"","markup":""},{"key":"","markup":""}...]
 
+            $scope.sortableConfiguration = {axis:'y'};
+
             // call api, supplying all configuration details, and expect a collection of options (key / markup) to be populated
             //apiResource.getEditorOptions($scope.model.config.configuration).then(function (response) {
             apiResource.getEditorOptions($scope.model.config).then(function (response) {
@@ -55,9 +57,14 @@ angular
                     }
                 }
 
-                // setup watch on selected options to recreate the csv in model.value for Umbraco
+                // setup watch on selected options
                 $scope.$watchCollection('selectedOptions', function () {
+
+                    //recreate the csv in model.value for Umbraco - TODO: json, xml, or csv
                     $scope.model.value = $scope.selectedOptions.map(function (option) { return option.key; }).join();
+
+                    // toggle sorting ui
+                    $scope.sortableConfiguration.disabled = !$scope.isSortable();
                 });
 
                 // build selectable options
@@ -85,6 +92,11 @@ angular
                 if ($scope.canSelect(option)) {
                     $scope.selectedOptions.push(option);
                 }
+            };
+
+            // return true if there is more than 1 item in the selected list
+            $scope.isSortable = function () {
+                return $scope.selectedOptions.length > 1;
             };
 
             // returns true if there are items that can be deselected

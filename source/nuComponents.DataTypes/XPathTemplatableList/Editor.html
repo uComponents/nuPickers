@@ -14,30 +14,28 @@
             <a href=""
                class="button"
                title="add"
-               ng-show="canSelect(option)"
+               ng-class="{disabled:!canSelect(option)}"
                ng-click="selectOption(option)">
-                <!--<span class="overlay" />-->
             </a>
 
         </li>
     </ul>
 
     <!-- selected items -->
-    <ul class="selected" ui-sortable="{axis: 'y'}" ng-model="selectedOptions">
-        <li ng-repeat="option in selectedOptions track by $index">     
-            
-                <a href=""
-                   class="button"
-                   title="remove"
-                   ng-show="canDeselect()"
-                   ng-click="deselectOption($index)">
-                    <!--<span class="overlay/>"-->
-                </a>
+    <ul class="selected" ui-sortable="sortableConfiguration" ng-model="selectedOptions">
+        <li ng-repeat="option in selectedOptions track by $index">
 
-                <div class="markup sort"
-                     title="sort"                     
-                     ng-bind-html-unsafe="option.markup">
-                </div>
+            <a href=""
+               class="button"
+               title="remove"
+               ng-class="{disabled:!canDeselect()}"
+               ng-click="deselectOption($index)">
+            </a>
+
+            <div ng-class="{markup:true, sort:isSortable()}" 
+                 title="sort"
+                 ng-bind-html-unsafe="option.markup">
+            </div>
 
         </li>
     </ul>
