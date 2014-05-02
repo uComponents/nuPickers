@@ -5,11 +5,18 @@ angular
     ['$scope', 'nuComponents.DataTypes.XPathTemplatableList.ApiResource', 'nuComponents.DataTypes.XPathTemplatableList.PreValueStateResource',
     function ($scope, apiResource, preValueStateResource) {
 
+        /*
+            [
+                { name: "", alias: "", hasKey: bool },
+                { name: "", alias: "", hasKey: bool }...
+            ]
+        */
         apiResource.getMacros().then(function (response) {
             $scope.macros = response.data;
         });
 
         $scope.selectMacro = function () {
+
             // alert other PreValues that a macro has been selected
             preValueStateResource.macroSelected = Boolean($scope.model.value); // an empty string returns false
         };

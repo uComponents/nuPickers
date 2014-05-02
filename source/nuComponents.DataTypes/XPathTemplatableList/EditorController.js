@@ -94,21 +94,33 @@ angular
                 }
             };
 
+            $scope.getPlaceholderCount = function () {
+
+                var count = $scope.model.config.minItems - $scope.selectedOptions.length;
+
+                if (count > 0) {
+                    return new Array(count);
+                }
+
+                return null;
+            }
+
+
             // return true if there is more than 1 item in the selected list
             $scope.isSortable = function () {
                 return $scope.selectedOptions.length > 1;
             };
 
-            // returns true if there are items that can be deselected
-            $scope.canDeselect = function () {
-                return $scope.selectedOptions.length > $scope.model.config.minItems;
-            }
+            //// returns true if there are items that can be deselected
+            //$scope.canDeselect = function () {
+            //    return $scope.selectedOptions.length > $scope.model.config.minItems;
+            //}
 
             $scope.deselectOption = function ($index) {
 
-                if ($scope.canDeselect()) {
+                //if ($scope.canDeselect()) {
                     // remove option from the selected list
                     $scope.selectedOptions.splice($index, 1);
-                }
+                //}
             };
     }]);

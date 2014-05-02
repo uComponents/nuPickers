@@ -36,11 +36,15 @@
                  title="sort"
                  ng-bind-html-unsafe="option.markup">
             </div>
-
         </li>
     </ul>
+
+    <ul class="placeholders">
+        <li ng-repeat="placeholder in getPlaceholderCount() track by $index">&nbsp;</li>
+    </ul>
+
     
     <hr style="clear:both;"/>
-    <!--<div>model.config {{ model.config }}</div>-->
+    <div>model.value {{ model.value }}</div>
 
 </div>

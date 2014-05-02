@@ -116,13 +116,11 @@
         </li>
     </ul>        
 */
-.xpath-templatable-list .selected {
+.xpath-templatable-list .selected,
+.xpath-templatable-list .placeholders {
     float: right;
     clear: none;
 }
-
-/*.xpath-templatable-list .selected li { sorting occurs on this, but we change the cursor elsewhere (as 1px edge case)
-}*/
 
 .xpath-templatable-list .selected .markup {
     margin-left:10%;
@@ -137,4 +135,3 @@
     background: transparent url('/Umbraco/App_Plugins/nuComponents/DataTypes/XPathTemplatableList/ButtonRemove.png') no-repeat center;
     border-right:1px solid #ccc;
 }
-
