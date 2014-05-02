@@ -42,7 +42,7 @@
         [PreValueField("allowDuplicates", "Allow Duplicates", "boolean", Description = "when true, duplicate items can be selected")]
         public bool AllowDuplicates { get; set; }
 
-        [PreValueField("showUnselectable", "Show Unselectable", "boolean", Description = "when true, unselectable items are disabled, rather than hidden")]
-        public bool ShowUnselectable { get; set; }
+        [PreValueField("hideUsed", "Hide Used", "boolean", Description = "when true, selected items are removed from the list of choices")]
+        public bool HideUsed { get; set; }
     }
 }

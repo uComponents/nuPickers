@@ -23,7 +23,7 @@ angular
                         "minItems":"0",
                         "maxItems":"0",
                         "allowDuplicates":"1",
-                        "showUnselectable":"1"
+                        "hideUsed":"1"
                     },
                     "hideLabel":false,
                     "id":160,
@@ -41,24 +41,24 @@ angular
             // http://api.jqueryui.com/sortable/
             $scope.sortableConfiguration = { axis: 'y' };
 
-
-            // return ture, if the option could be a valid selection
+            // returns true if option hans't yet been picked, or duplicates are allowed
             $scope.isSelectable = function (option) {
-
                 return ($scope.model.config.allowDuplicates == '1' ||
                         $scope.selectedOptions.indexOf(option) == -1); // not in the selected list
             };
 
-            
-            $scope.canSelect = function (option) {
+            // return true is option can be picked
+            $scope.isValidSelection = function (option) {
                 return $scope.isSelectable(option) && ($scope.selectedOptions.length < $scope.model.config.maxItems || $scope.model.config.maxItems <= 0);
             };
+
+
 
             // picking an item from 'selectable' for 'selected'
             $scope.selectOption = function (option) {
 
                 // if item can be selected and not exceeding the max
-                if ($scope.canSelect(option)) {
+                if ($scope.isValidSelection(option)) {
                     $scope.selectedOptions.push(option);
                 }
             };

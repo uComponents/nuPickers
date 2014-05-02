@@ -41,8 +41,12 @@
 }
 
 .xpath-templatable-list .disabled { /* li and a.button */
-    opacity: 0.4;
-    filter: alpha(opacity=40); /* msie */
+    opacity: 0.5;
+    filter: alpha(opacity=50); /* msie */
+}
+
+.xpath-templatable-list .used { /* li */
+    border:solid 1px red;
 }
 
 .xpath-templatable-list .markup {
@@ -74,9 +78,9 @@
     padding:4px;
 }
 
-/* SELECTABLE list     
+/* 
     <ul class="selectable">
-        <li class="(lit) (active)">
+        <li class="(lit) (disabled) (used)">
 
             <div class="markup">
                 {{ custom markup }}
@@ -99,28 +103,21 @@
 
 .xpath-templatable-list .selectable .button {
     right:0;
-    background: transparent url('/Umbraco/App_Plugins/nuComponents/DataTypes/XPathTemplatableList/ButtonAdd.png') no-repeat center;
     border-left: 1px solid #ccc;
-
-
-    /* default to the unselectable */
-    background-color: lightgray; 
+    background: transparent url('/Umbraco/App_Plugins/nuComponents/DataTypes/XPathTemplatableList/ButtonAdd.png') no-repeat center;    
 }
 
-.xpath-templatable-list .selectable .active .button {
-}
-
-.xpath-templatable-list .selectable .active a {
+.xpath-templatable-list .selectable .disabled a {
     background-color: white; /* remove the unselectable background */
 }
 
-/* SELECTED list 
+/*
     <ul class="selected">
         <li class="(lit)">
 
             <a class="button"></a>
 
-            <div class="markup sort">
+            <div class="markup (sort)">
                 {{ custom markup }}
             </div>
 
@@ -143,6 +140,6 @@
 
 .xpath-templatable-list .selected .button {
     left:0;
-    background: transparent url('/Umbraco/App_Plugins/nuComponents/DataTypes/XPathTemplatableList/ButtonRemove.png') no-repeat center;
     border-right:1px solid #ccc;
+    background: transparent url('/Umbraco/App_Plugins/nuComponents/DataTypes/XPathTemplatableList/ButtonRemove.png') no-repeat center;    
 }
