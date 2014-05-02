@@ -2,11 +2,11 @@
 
     <!--<link rel="stylesheet" type="text/css" ng-if="model.config.CssFile" ng-href="{{ model.config.CssFile }}" /> TODO: move this to controller and use assetsService -->
 
-    <!-- available items -->
+    <!-- selectable -->
     <ul class="selectable" ng-model="selectableOptions">
         <li ng-repeat="option in selectableOptions"
             ng-show="isSelectable(option) || model.config.showUnselectable"
-            ng-class="{active:isSelectable(option)}">
+            ng-class="{lit:option == litSelectableOption, active:isSelectable(option)}">
 
             <div class="markup" ng-bind-html-unsafe="option.markup">
             </div>
@@ -15,20 +15,21 @@
                class="button"
                title="add"
                ng-class="{disabled:!canSelect(option)}"
+               ng-mouseenter="litSelectableOption = option"
+               ng-mouseleave="litSelectableOption = null"
                ng-click="selectOption(option)">
             </a>
 
         </li>
     </ul>
 
-    <!-- selected items -->
+    <!-- selected -->
     <ul class="selected" ui-sortable="sortableConfiguration" ng-model="selectedOptions">
         <li ng-repeat="option in selectedOptions track by $index">
 
             <a href=""
                class="button"
                title="remove"
-               ng-class="{disabled:!canDeselect()}"
                ng-click="deselectOption($index)">
             </a>
 

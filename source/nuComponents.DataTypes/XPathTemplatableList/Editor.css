@@ -32,8 +32,12 @@
     margin-bottom: 3px;
     font-family: Arial,Lucida Grande;
     position: relative;
-
     border: 1px solid #ccc;
+    cursor:default;
+}
+
+.xpath-templatable-list .lit { /* li */
+    border:1px solid black;
 }
 
 .xpath-templatable-list .markup {
@@ -64,13 +68,13 @@
 
 /* SELECTABLE list     
     <ul class="selectable">
-        <li class="(active)">
+        <li class="(lit) (active)">
 
             <div class="markup">
                 {{ custom markup }}
             </div>
 
-            <a class="button"></a>
+            <a class="button (disabled)"></a>
 
         </li>
     </ul>    
@@ -98,14 +102,13 @@
 .xpath-templatable-list .selectable .active .button {
 }
 
-
 .xpath-templatable-list .selectable .active a {
     background-color: white; /* remove the unselectable background */
 }
 
 /* SELECTED list 
     <ul class="selected">
-        <li>
+        <li class="(lit)">
 
             <a class="button"></a>
 

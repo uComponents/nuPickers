@@ -38,7 +38,7 @@ angular
             // array of option objects, for the selected list
             $scope.selectedOptions = []; // [{"key":"","markup":""},{"key":"","markup":""}...]
 
-            $scope.sortableConfiguration = {axis:'y'};
+            $scope.sortableConfiguration = { axis: 'y' };
 
             // call api, supplying all configuration details, and expect a collection of options (key / markup) to be populated
             //apiResource.getEditorOptions($scope.model.config.configuration).then(function (response) {
@@ -63,6 +63,13 @@ angular
                     //recreate the csv in model.value for Umbraco - TODO: json, xml, or csv
                     $scope.model.value = $scope.selectedOptions.map(function (option) { return option.key; }).join();
 
+                    // TOOD: validation checks on user data
+                    $scope.hasError = true;
+                    if ($scope.selectableOptions.length >= $scope.model.config.minItems
+                        && ($scope.selectableOptions.length <= $scope.model.config.maxItems || $scope.model.config.maxItems < 1)) {
+                        $scope.hasError = false;
+                    }
+
                     // toggle sorting ui
                     $scope.sortableConfiguration.disabled = !$scope.isSortable();
                 });
@@ -70,6 +77,18 @@ angular
                 // build selectable options
                 $scope.selectableOptions = editorOptions;
             });
+
+            //$scope.isLit = function (option) {
+            //    return $scope.litOption == option;
+            //}
+
+            //$scope.setLit = function (option) {
+            //    $scope.litOption = option;
+            //}
+
+            //$scope.clearLit = function () {
+            //    $scope.litOption = null;
+            //}
 
             // return ture, if the option could be a valid selection
             $scope.isSelectable = function (option) {
@@ -80,9 +99,7 @@ angular
 
             
             $scope.canSelect = function (option) {
-
                 return $scope.isSelectable(option) && ($scope.selectedOptions.length < $scope.model.config.maxItems || $scope.model.config.maxItems <= 0);
-
             };
 
             // picking an item from 'selectable' for 'selected'

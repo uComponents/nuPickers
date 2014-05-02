@@ -2,34 +2,42 @@
 {
     using System.Collections.Generic;
     using System.Linq;
+    using System.Web;
     using System.Web.Http;
     using System.Xml;
     using System.Xml.XPath;
     using umbraco;
-    //using umbraco.cms.businesslogic.macro;
+    using umbraco.NodeFactory;
     using umbraco.presentation.templateControls;
     using Umbraco.Web.Editors;
     using Umbraco.Web.Mvc;
+    using LegacyMacroService = umbraco.cms.businesslogic.macro.Macro; // aliasing as Macro classes exist in two namespaces
 
     [PluginController("nuComponents")]
     public class XPathTemplatableListApiController : UmbracoAuthorizedJsonController
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>
+        ///     [{"name":"", "alias":"", "hasKey":bool}, ...]
+        /// </returns>
         public IEnumerable<object> GetMacros()
         {
             //using legacy api as no method on Umbraco.Core.Services.MacroSerivce to get all macros
-            return umbraco.cms.businesslogic.macro.Macro.GetAll().Select(x => new
-                                                                            { 
-                                                                                name = x.Name, 
-                                                                                alias = x.Alias,
-                                                                                valid = x.Properties.Any(y => y.Alias == "id") // TODO: check type ?
-                                                                            });
+            return LegacyMacroService.GetAll().Select(x => new
+                                                            { 
+                                                                name = x.Name, 
+                                                                alias = x.Alias,
+                                                                hasKey = x.Properties.Any(y => y.Alias == "key")
+                                                            });            
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns>
-        ///     [{"path":""}, {"path":""}...]
+        ///     [{"path":""}, ...]
         /// </returns>
         public IEnumerable<object> GetScriptFiles()
         {
@@ -49,7 +57,7 @@
         ///   expects the value from $scope.model.config (Umbraco automatically serializes the PreValueEditor fields into this)
         /// </param>
         /// <returns>
-        ///  [{"key":"","markup":""},{"key":"","markup":""}...]
+        ///  [{"key":"","markup":""}, ...]
         /// </returns>
         [HttpPost]
         public IEnumerable<object> GetEditorOptions([FromBody] XPathTemplatableListPreValueEditor config)
@@ -66,12 +74,10 @@
 
                 case "media":
                     xmlDocument = uQuery.GetPublishedXml(uQuery.UmbracoObjectType.Media);
-                    //xmlDocument.FirstChild.Attributes.Append(xmlDocument.CreateAttribute("exclude"));
                     break;
 
                 case "members":
                     xmlDocument = uQuery.GetPublishedXml(uQuery.UmbracoObjectType.Member);
-                    //xmlDocument.FirstChild.Attributes.Append(xmlDocument.CreateAttribute("exclude"));
                     break;
 
                 default:
@@ -88,6 +94,17 @@
 
                 string key;
                 string markup;
+                bool useMacro = false;
+
+                if (!string.IsNullOrWhiteSpace(config.LabelMacro))
+                {
+                    Node contextNode = uQuery.GetNodesByXPath(string.Concat("descendant::*[@parentID = ", uQuery.RootNodeId, "]")).FirstOrDefault();
+                    if (contextNode != null)
+                    {
+                        HttpContext.Current.Items["pageID"] = contextNode.Id; // required deeper in macro.renderMacro to get context
+                        useMacro = true;
+                    }
+                }
 
                 while (xPathNodeIterator.MoveNext())
                 {
@@ -110,13 +127,14 @@
                             // set default markup to use the configured label attribute
                             markup = xPathNodeIterator.Current.GetAttribute(config.LabelAttribute, string.Empty);
 
-                            //// if macro configured, replace the markup with it's output
-                            //if (umbraco.cms.businesslogic.macro.Macro.GetByAlias(config.LabelMacro) != null)
-                            //{
-                            //    Macro macro = new Macro() { Alias = config.LabelMacro };
-                            //    macro.MacroAttributes["key"] = key;
-                            //    markup = macro.RenderToString();
-                            //}
+                            if (useMacro)
+                            {
+                                // have to recreate the macro as updating the key alone doesn't work
+                                Macro macro = new Macro() { Alias = config.LabelMacro };
+                                macro.MacroAttributes.Add("key", key);
+
+                                markup = macro.RenderToString();
+                            }
 
                             editorOptions.Add(new
                             {
