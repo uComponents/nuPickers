@@ -37,16 +37,16 @@
 }
 
 .xpath-templatable-list .lit { /* li */
-    border:1px solid black;
+    border:1px solid #9e9e9e;
 }
 
 .xpath-templatable-list .disabled { /* li and a.button */
-    opacity: 0.5;
-    filter: alpha(opacity=50); /* msie */
+    opacity: 0.7;
+    filter: alpha(opacity=70); /* msie */
 }
 
 .xpath-templatable-list .used { /* li */
-    border:solid 1px red;
+    background-color:#f6f6fa;
 }
 
 .xpath-templatable-list .markup {
@@ -59,19 +59,25 @@
     height: 100%;
     position: absolute;
     top: 0;
+    background-position:center;
+    background-repeat:no-repeat;
 }
 
 .xpath-templatable-list .button.disabled {
     cursor:default; /* disable the hand */
 }
 
-
-.xpath-templatable-list .selectable .active a:hover,
-.xpath-templatable-list .selected .button:hover,
-.xpath-templatable-list .selected .sort:hover
+.xpath-templatable-list .button:hover,
+.xpath-templatable-list .sort:hover
 {
-    background-color: #F6F6FA;
+    background-color: #ddd;
 }
+
+.xpath-templatable-list .button.disabled:hover {
+    background-color:transparent;
+}
+
+
 
 .xpath-templatable-list .placeholders li {
     border:1px dashed #ccc;
@@ -102,13 +108,9 @@
 }
 
 .xpath-templatable-list .selectable .button {
-    right:0;
+    right: 0;
     border-left: 1px solid #ccc;
-    background: transparent url('/Umbraco/App_Plugins/nuComponents/DataTypes/XPathTemplatableList/ButtonAdd.png') no-repeat center;    
-}
-
-.xpath-templatable-list .selectable .disabled a {
-    background-color: white; /* remove the unselectable background */
+    background-image: url('/Umbraco/App_Plugins/nuComponents/DataTypes/XPathTemplatableList/ButtonAdd.png');   
 }
 
 /*
@@ -139,7 +141,7 @@
 }
 
 .xpath-templatable-list .selected .button {
-    left:0;
-    border-right:1px solid #ccc;
-    background: transparent url('/Umbraco/App_Plugins/nuComponents/DataTypes/XPathTemplatableList/ButtonRemove.png') no-repeat center;    
+    left: 0;
+    border-right: 1px solid #ccc;
+    background-image: url('/Umbraco/App_Plugins/nuComponents/DataTypes/XPathTemplatableList/ButtonRemove.png');
 }

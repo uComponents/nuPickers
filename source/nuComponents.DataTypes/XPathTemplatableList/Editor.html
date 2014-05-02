@@ -6,7 +6,7 @@
     <ul class="selectable" ng-model="selectableOptions">
         <li ng-repeat="option in selectableOptions"
             ng-hide="model.config.hideUsed == '1' && !isSelectable(option)"
-            ng-class="{lit:lit, disabled:!isValidSelection(option)}">
+            ng-class="{lit:lit, disabled:!isValidSelection(option), used:isUsed(option)}">
             <div class="markup" ng-bind-html-unsafe="option.markup">
             </div>
 
@@ -49,8 +49,4 @@
     </ul>
 
     
-    <hr style="clear:both;"/>
-    <div>model.config {{ model.config }}</div>
-    <div></div>
-
 </div>

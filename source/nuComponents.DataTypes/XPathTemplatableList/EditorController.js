@@ -43,16 +43,18 @@ angular
 
             // returns true if option hans't yet been picked, or duplicates are allowed
             $scope.isSelectable = function (option) {
-                return ($scope.model.config.allowDuplicates == '1' ||
-                        $scope.selectedOptions.indexOf(option) == -1); // not in the selected list
+                return ($scope.model.config.allowDuplicates == '1' || !$scope.isUsed(option));
+            };
+
+            // returns true is this option has been picked
+            $scope.isUsed = function (option) {
+                return $scope.selectedOptions.indexOf(option) >= 0;
             };
 
             // return true is option can be picked
             $scope.isValidSelection = function (option) {
                 return $scope.isSelectable(option) && ($scope.selectedOptions.length < $scope.model.config.maxItems || $scope.model.config.maxItems <= 0);
             };
-
-
 
             // picking an item from 'selectable' for 'selected'
             $scope.selectOption = function (option) {
