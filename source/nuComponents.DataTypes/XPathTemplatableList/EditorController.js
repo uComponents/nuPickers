@@ -33,12 +33,54 @@ angular
             */
 
             // array of option objects, for the selectable list 
-            $scope.selectableOptions = []; // [{"key":"","markup":""},{"key":"","markup":""}...]
+            $scope.selectableOptions = []; // [{"key":"","markup":""}...]
 
             // array of option objects, for the selected list
-            $scope.selectedOptions = []; // [{"key":"","markup":""},{"key":"","markup":""}...]
+            $scope.selectedOptions = []; // [{"key":"","markup":""}...]
 
+            // http://api.jqueryui.com/sortable/
             $scope.sortableConfiguration = { axis: 'y' };
+
+
+            // return ture, if the option could be a valid selection
+            $scope.isSelectable = function (option) {
+
+                return ($scope.model.config.allowDuplicates == '1' ||
+                        $scope.selectedOptions.indexOf(option) == -1); // not in the selected list
+            };
+
+            
+            $scope.canSelect = function (option) {
+                return $scope.isSelectable(option) && ($scope.selectedOptions.length < $scope.model.config.maxItems || $scope.model.config.maxItems <= 0);
+            };
+
+            // picking an item from 'selectable' for 'selected'
+            $scope.selectOption = function (option) {
+
+                // if item can be selected and not exceeding the max
+                if ($scope.canSelect(option)) {
+                    $scope.selectedOptions.push(option);
+                }
+            };
+
+            // count for dashed placeholders
+            $scope.getPlaceholderCount = function () {
+                var count = $scope.model.config.minItems - $scope.selectedOptions.length;
+                if (count > 0) { return new Array(count); }
+                return null;
+            }
+
+            // return true if there is more than 1 item in the selected list
+            $scope.isSortable = function () {
+                return $scope.selectedOptions.length > 1;
+            };
+
+            // remove option from 'selected'
+            $scope.deselectOption = function ($index) {
+                $scope.selectedOptions.splice($index, 1);
+            };
+
+
 
             // call api, supplying all configuration details, and expect a collection of options (key / markup) to be populated
             //apiResource.getEditorOptions($scope.model.config.configuration).then(function (response) {
@@ -64,11 +106,11 @@ angular
                     $scope.model.value = $scope.selectedOptions.map(function (option) { return option.key; }).join();
 
                     // TOOD: validation checks on user data
-                    $scope.hasError = true;
-                    if ($scope.selectableOptions.length >= $scope.model.config.minItems
-                        && ($scope.selectableOptions.length <= $scope.model.config.maxItems || $scope.model.config.maxItems < 1)) {
-                        $scope.hasError = false;
-                    }
+                    //$scope.hasError = true;
+                    //if ($scope.selectableOptions.length >= $scope.model.config.minItems
+                    //    && ($scope.selectableOptions.length <= $scope.model.config.maxItems || $scope.model.config.maxItems < 1)) {
+                    //    $scope.hasError = false;
+                    //}
 
                     // toggle sorting ui
                     $scope.sortableConfiguration.disabled = !$scope.isSortable();
@@ -78,66 +120,4 @@ angular
                 $scope.selectableOptions = editorOptions;
             });
 
-            //$scope.isLit = function (option) {
-            //    return $scope.litOption == option;
-            //}
-
-            //$scope.setLit = function (option) {
-            //    $scope.litOption = option;
-            //}
-
-            //$scope.clearLit = function () {
-            //    $scope.litOption = null;
-            //}
-
-            // return ture, if the option could be a valid selection
-            $scope.isSelectable = function (option) {
-
-                return ($scope.model.config.allowDuplicates == '1' ||
-                        $scope.selectedOptions.indexOf(option) == -1); // not in the selected list
-            };
-
-            
-            $scope.canSelect = function (option) {
-                return $scope.isSelectable(option) && ($scope.selectedOptions.length < $scope.model.config.maxItems || $scope.model.config.maxItems <= 0);
-            };
-
-            // picking an item from 'selectable' for 'selected'
-            $scope.selectOption = function (option) {
-
-                // if item can be selected and not exceeding the max
-                if ($scope.canSelect(option)) {
-                    $scope.selectedOptions.push(option);
-                }
-            };
-
-            $scope.getPlaceholderCount = function () {
-
-                var count = $scope.model.config.minItems - $scope.selectedOptions.length;
-
-                if (count > 0) {
-                    return new Array(count);
-                }
-
-                return null;
-            }
-
-
-            // return true if there is more than 1 item in the selected list
-            $scope.isSortable = function () {
-                return $scope.selectedOptions.length > 1;
-            };
-
-            //// returns true if there are items that can be deselected
-            //$scope.canDeselect = function () {
-            //    return $scope.selectedOptions.length > $scope.model.config.minItems;
-            //}
-
-            $scope.deselectOption = function ($index) {
-
-                //if ($scope.canDeselect()) {
-                    // remove option from the selected list
-                    $scope.selectedOptions.splice($index, 1);
-                //}
-            };
     }]);

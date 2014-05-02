@@ -6,7 +6,7 @@
     <ul class="selectable" ng-model="selectableOptions">
         <li ng-repeat="option in selectableOptions"
             ng-show="isSelectable(option) || model.config.showUnselectable"
-            ng-class="{lit:option == litSelectableOption, active:isSelectable(option)}">
+            ng-class="{lit:lit, active:isSelectable(option)}">
 
             <div class="markup" ng-bind-html-unsafe="option.markup">
             </div>
@@ -15,9 +15,9 @@
                class="button"
                title="add"
                ng-class="{disabled:!canSelect(option)}"
-               ng-mouseenter="litSelectableOption = option"
-               ng-mouseleave="litSelectableOption = null"
-               ng-click="selectOption(option)">
+               ng-mouseenter="lit = isSelectable(option)"
+               ng-mouseleave="lit = false"
+               ng-click="lit = false; selectOption(option)">
             </a>
 
         </li>
@@ -25,16 +25,21 @@
 
     <!-- selected -->
     <ul class="selected" ui-sortable="sortableConfiguration" ng-model="selectedOptions">
-        <li ng-repeat="option in selectedOptions track by $index">
+        <li ng-class="{lit:lit}"
+            ng-repeat="option in selectedOptions track by $index">
 
             <a href=""
                class="button"
                title="remove"
+               ng-mouseenter="lit = true"
+               ng-mouseleave="lit = false"
                ng-click="deselectOption($index)">
             </a>
 
-            <div ng-class="{markup:true, sort:isSortable()}" 
-                 title="sort"
+            <div title="sort"
+                 ng-mouseenter="lit = isSortable()"
+                 ng-mouseleave="lit = false"
+                 ng-class="{markup:true, sort:isSortable()}"
                  ng-bind-html-unsafe="option.markup">
             </div>
         </li>

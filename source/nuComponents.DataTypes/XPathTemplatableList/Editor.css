@@ -40,9 +40,14 @@
     border:1px solid black;
 }
 
+.xpath-templatable-list .disabled { /* li and a.button */
+    opacity: 0.4;
+    filter: alpha(opacity=40); /* msie */
+}
+
 .xpath-templatable-list .markup {
     width:90%;
-    padding:5px;
+    padding:4px;
 }
 
 .xpath-templatable-list .button {
@@ -53,8 +58,6 @@
 }
 
 .xpath-templatable-list .button.disabled {
-    opacity: 0.4;
-    filter: alpha(opacity=40); /* msie */
     cursor:default; /* disable the hand */
 }
 
@@ -64,6 +67,11 @@
 .xpath-templatable-list .selected .sort:hover
 {
     background-color: #F6F6FA;
+}
+
+.xpath-templatable-list .placeholders li {
+    border:1px dashed #ccc;
+    padding:4px;
 }
 
 /* SELECTABLE list     
