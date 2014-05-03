@@ -120,6 +120,20 @@ angular
 
                 // build selectable options
                 $scope.selectableOptions = editorOptions;
+
+                // setup filtering
+                if ($scope.model.config.enableFiltering) {
+                    $scope.allSelectableOptions = $scope.selectableOptions;
+
+                    $scope.$watch('model.filterQuery', function(newValue, oldValue) {
+                      if (newValue == null || newValue.length == 0)
+                        return $scope.selectableOptions = $scope.allSelectableOptions;
+
+                      $scope.selectableOptions = $scope.allSelectableOptions.filter(function(item) {
+                        return item.markup.toLowerCase().indexOf(newValue) != -1;
+                      });
+                    });
+                }
             });
 
     }]);

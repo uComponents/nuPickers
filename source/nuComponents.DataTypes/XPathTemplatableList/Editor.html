@@ -2,6 +2,13 @@
 
     <!--<link rel="stylesheet" type="text/css" ng-if="model.config.CssFile" ng-href="{{ model.config.CssFile }}" /> TODO: move this to controller and use assetsService -->
 
+   <!-- filter -->
+  <div class="selectableFilter" ng-show="model.config.enableFiltering">
+      <input type="text"
+             placeholder="Type to filter options"
+             ng-model="model.filterQuery"/>
+  </div>
+
     <!-- selectable -->
     <ul class="selectable" ng-model="selectableOptions">
         <li ng-repeat="option in selectableOptions"

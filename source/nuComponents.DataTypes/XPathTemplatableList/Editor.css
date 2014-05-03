@@ -98,6 +98,15 @@
     </ul>    
 */
 
+.xpath-templatable-list .selectableFilter {
+    width: 48%
+}
+
+.xpath-templatable-list .selectableFilter input {
+    width: 80%;
+    padding: 4px;
+}
+
 .xpath-templatable-list .selectable {
     float: left;
     /*overflow-y: scroll;*/
