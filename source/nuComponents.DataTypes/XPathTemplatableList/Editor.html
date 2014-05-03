@@ -3,7 +3,11 @@
     <!--<link rel="stylesheet" type="text/css" ng-if="model.config.CssFile" ng-href="{{ model.config.CssFile }}" /> TODO: move this to controller and use assetsService -->
 
     <!-- selectable -->
-    <ul class="selectable" ng-model="selectableOptions">
+    <ul class="selectable"
+        ng-model="selectableOptions"
+        ng-class="{'fixed-height':model.config.listHeight > 0 }"
+        ng-style="{'max-height': (model.config.listHeight > 0 ? model.config.listHeight + 'px' : '') }">
+
         <li ng-repeat="option in selectableOptions"
             ng-hide="model.config.hideUsed == '1' && !isSelectable(option)"
             ng-class="{lit:lit, disabled:!isValidSelection(option), used:isUsed(option)}">

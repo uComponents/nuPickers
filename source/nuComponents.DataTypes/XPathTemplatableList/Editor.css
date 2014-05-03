@@ -100,7 +100,10 @@
 
 .xpath-templatable-list .selectable {
     float: left;
-    /*overflow-y: scroll;*/
+}
+
+.xpath-templatable-list .selectable.fixed-height {
+    overflow-y: auto;
 }
 
 .xpath-templatable-list .selectable .markup {
