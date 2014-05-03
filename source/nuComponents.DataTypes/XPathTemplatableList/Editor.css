@@ -24,6 +24,8 @@
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    border: 1px solid transparent;
+    padding:1px; /* make space for the fixed height border */
 }
 
 .xpath-templatable-list li {
@@ -104,6 +106,7 @@
 
 .xpath-templatable-list .selectable.fixed-height {
     overflow-y: auto;
+    border-color:#f0f0f0; /* show the border when using scrolling */
 }
 
 .xpath-templatable-list .selectable .markup {

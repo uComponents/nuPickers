@@ -107,12 +107,9 @@ angular
                     //recreate the csv in model.value for Umbraco - TODO: json, xml, or csv
                     $scope.model.value = $scope.selectedOptions.map(function (option) { return option.key; }).join();
 
-                    // TOOD: validation checks on user data
-                    //$scope.hasError = true;
-                    //if ($scope.selectableOptions.length >= $scope.model.config.minItems
-                    //    && ($scope.selectableOptions.length <= $scope.model.config.maxItems || $scope.model.config.maxItems < 1)) {
-                    //    $scope.hasError = false;
-                    //}
+                    // TODO: how to return error to Umbraco ?
+                    //var isValid = ($scope.selectableOptions.length >= $scope.model.config.minItems
+                    //               && ($scope.selectableOptions.length <= $scope.model.config.maxItems || $scope.model.config.maxItems < 1));
 
                     // toggle sorting ui
                     $scope.sortableConfiguration.disabled = !$scope.isSortable();
