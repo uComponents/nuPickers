@@ -6,7 +6,7 @@
     <ul class="selectable"
         ng-model="selectableOptions"
         ng-class="{'fixed-height':model.config.listHeight > 0 }"
-        ng-style="{'max-height': (model.config.listHeight > 0 ? model.config.listHeight + 'px' : '') }">
+        ng-style="{'height': (model.config.listHeight > 0 ? model.config.listHeight + 'px' : '') }">
 
         <li ng-repeat="option in selectableOptions"
             ng-hide="model.config.hideUsed == '1' && !isSelectable(option)"
@@ -16,7 +16,6 @@
 
             <a href=""
                class="button"
-               title="add"
                ng-class="{disabled:!isValidSelection(option)}"
                ng-mouseenter="lit = isValidSelection(option)"
                ng-mouseleave="lit = false"
@@ -33,14 +32,12 @@
 
             <a href=""
                class="button"
-               title="remove"
                ng-mouseenter="lit = true"
                ng-mouseleave="lit = false"
                ng-click="deselectOption($index)">
             </a>
 
-            <div title="sort"
-                 ng-mouseenter="lit = isSortable()"
+            <div ng-mouseenter="lit = isSortable()"
                  ng-mouseleave="lit = false"
                  ng-class="{markup:true, sort:isSortable()}"
                  ng-bind-html-unsafe="option.markup">
