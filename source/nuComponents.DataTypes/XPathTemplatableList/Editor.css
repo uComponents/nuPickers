@@ -172,9 +172,16 @@
 .xpath-templatable-list .placeholders li {
     color:#ccc;
     text-align:center;
+    border-style:dashed;
 }
 
-.xpath-templatable-list .placeholders li.indicator {
+.xpath-templatable-list .placeholders .required { 
+}
+
+.xpath-templatable-list .placeholders .select { 
+}
+
+.xpath-templatable-list .placeholders .limit-indicator {
     color:#343434;
     border-color:transparent;
 }

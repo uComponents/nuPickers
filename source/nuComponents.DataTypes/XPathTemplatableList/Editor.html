@@ -53,15 +53,15 @@
     </ul>
 
     <ul class="placeholders">
-        <li ng-repeat="placeholder in getRequiredPlaceholderCount() track by $index">
+        <li class="required" ng-repeat="placeholder in getRequiredPlaceholderCount() track by $index">
             Required
         </li>
 
-        <li ng-show="showSelectPlaceholder()">
+        <li class="select" ng-show="showSelectPlaceholder()">
             Select
         </li>
 
-        <li class="indicator" ng-show="model.config.maxItems > 0">
+        <li class="limit-indicator" ng-show="model.config.maxItems > 0">
             {{ selectedOptions.length }} out of {{ model.config.maxItems }}
         </li>
     </ul>
