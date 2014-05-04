@@ -3,9 +3,9 @@
     <!--<link rel="stylesheet" type="text/css" ng-if="model.config.CssFile" ng-href="{{ model.config.CssFile }}" /> TODO: move this to controller and use assetsService -->
 
     <!-- filter -->
-    <div class="selectable-filter" ng-show="model.config.enableFiltering">
+    <div class="selectable-filter" ng-show="model.config.enableFiltering == '1'">
         <input type="text"
-                placeholder="Type to filter options"
+                placeholder="Type to filter"
                 ng-model="model.filterQuery"/>
     </div>
 
@@ -53,8 +53,17 @@
     </ul>
 
     <ul class="placeholders">
-        <li ng-repeat="placeholder in getPlaceholderCount() track by $index">&nbsp;</li>
-    </ul>
+        <li ng-repeat="placeholder in getRequiredPlaceholderCount() track by $index">
+            Required
+        </li>
 
+        <li ng-show="showSelectPlaceholder()">
+            Select
+        </li>
+
+        <li class="indicator" ng-show="model.config.maxItems > 0">
+            {{ selectedOptions.length }} out of {{ model.config.maxItems }}
+        </li>
+    </ul>
     
 </div>

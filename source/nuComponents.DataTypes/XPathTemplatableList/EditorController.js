@@ -67,10 +67,16 @@ angular
             };
 
             // count for dashed placeholders
-            $scope.getPlaceholderCount = function () {
+            $scope.getRequiredPlaceholderCount = function () {
                 var count = $scope.model.config.minItems - $scope.selectedOptions.length;
                 if (count > 0) { return new Array(count); }
                 return null;
+            }
+
+            $scope.showSelectPlaceholder = function () {
+
+                return ($scope.selectedOptions.length >= $scope.model.config.minItems)
+                        && (($scope.selectedOptions.length < $scope.model.config.maxItems) || $scope.model.config.maxItems == 0);
             }
 
             // return true if there is more than 1 item in the selected list
@@ -82,7 +88,6 @@ angular
             $scope.deselectOption = function ($index) {
                 $scope.selectedOptions.splice($index, 1);
             };
-
 
 
             // call api, supplying all configuration details, and expect a collection of options (key / markup) to be populated

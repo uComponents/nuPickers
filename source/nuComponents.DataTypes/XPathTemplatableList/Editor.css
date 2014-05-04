@@ -143,13 +143,16 @@
         </li>
     </ul>        
 
-    <ul class="placeholders" />
+    <ul class="placeholders"
+        <li/>
+        <li class="indicator" />
+    </ul>
 */
 .xpath-templatable-list .selected,
 .xpath-templatable-list .placeholders {
+    clear: right;
     float: right;
-    clear: none;
-    /* padding-left: TODO: calculate from scrollbar width */
+    /* padding-left: TODO: calculate from scrollbar width (want to ensure markup area is same with both sides) */
 }
 
 .xpath-templatable-list .selected .markup {
@@ -164,4 +167,14 @@
     left: 0;
     border-right: 1px solid #ccc;
     background-image: url('/Umbraco/App_Plugins/nuComponents/DataTypes/XPathTemplatableList/ButtonRemove.png');
+}
+
+.xpath-templatable-list .placeholders li {
+    color:#ccc;
+    text-align:center;
+}
+
+.xpath-templatable-list .placeholders li.indicator {
+    color:#343434;
+    border-color:transparent;
 }
