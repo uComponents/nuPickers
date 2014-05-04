@@ -44,5 +44,8 @@
 
         [PreValueField("hideUsed", "Hide Used", "boolean", Description = "when true, selected items are removed from the list of choices")]
         public bool HideUsed { get; set; }
+
+        [PreValueField("enableFiltering", "Enable Filtering", "boolean", Description = "when true, a textbox is shown allowing the user to filter the 'results'")]
+        public bool EnableFiltering { get; set; }
     }
 }

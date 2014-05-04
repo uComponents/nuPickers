@@ -14,6 +14,7 @@
     user-select: none;
 }
 
+.xpath-templatable-list .selectable-filter input,
 .xpath-templatable-list ul {
     list-style-type: none;
     width: 48%;
@@ -24,6 +25,15 @@
     border: 1px solid transparent;
     padding:1px; /* make space for the fixed height border */
 }
+
+.xpath-templatable-list .selectable-filter input {
+    /* colours same as the fixed-height (scrolling) list */
+    border-color: #f0f0f0; 
+    background-color: #fdfdfd;
+    height:2em;
+    padding-left:4px;
+}
+
 
 .xpath-templatable-list li {
     overflow: hidden;
@@ -61,6 +71,7 @@
     outline:none;
     background-position:center;
     background-repeat:no-repeat;
+    min-width:15px; /* width of icon image */
 }
 
 .xpath-templatable-list .button.disabled {
@@ -76,8 +87,6 @@
 .xpath-templatable-list .button.disabled:hover {
     background-color:transparent;
 }
-
-
 
 .xpath-templatable-list .placeholders li {
     border:1px dashed #ccc;
@@ -106,10 +115,13 @@
     overflow-y: scroll;
     border-color: #f0f0f0; /* show the border when using scrolling */
     background-color: #fdfdfd;
+    direction:rtl; /* force scrollbars left */
 }
 
 .xpath-templatable-list .selectable .markup {
- 
+    /* reset the direction:rtl */
+    float:left; 
+    text-align:left;
 }
 
 .xpath-templatable-list .selectable .button {
