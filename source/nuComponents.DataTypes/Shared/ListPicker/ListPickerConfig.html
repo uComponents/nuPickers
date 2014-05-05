@@ -1,9 +1,9 @@
 ﻿<div ng-controller="nuComponents.DataTypes.Shared.ListPicker.ListPickerConfigController">
 
-    <div class="control-group umb-control-group">
+    <!--<div class="control-group umb-control-group">
         <label class="control-label" style="padding-top:8px !important; padding:0;" for="">
             Css File
-            <!--<small>can use classes: .list-picker.data-type-id-??.property-alias=??</small>-->
+            //<small>can use classes: .list-picker.data-type-id-??.property-alias=??</small>
         </label>
 
         <div class="controls controls-row">
@@ -11,7 +11,7 @@
             <p>TODO:</p>
 
         </div>
-    </div>
+    </div>-->
 
     <!--<div class="control-group umb-control-group">
 
@@ -36,7 +36,7 @@
 
         <div class="controls controls-row">
 
-            <p>TODO:</p>
+            <input type="number" ng-model="model.value.listHeight" />
 
         </div>
     </div>
@@ -51,7 +51,7 @@
 
         <div class="controls controls-row">
 
-            <p>TODO:</p>
+            <input type="number" ng-model="model.value.minItems" />
 
         </div>
     </div>
@@ -66,7 +66,7 @@
 
         <div class="controls controls-row">
 
-            <p>TODO:</p>
+            <input type="number" ng-model="model.value.maxItems" />
 
         </div>
     </div>
@@ -82,13 +82,13 @@
 
         <div class="controls controls-row">
 
-            <p>TODO:</p>
+            <input type="checkbox" ng-model="model.value.allowDuplicates" />
 
         </div>
     </div>
 
 
-    <div class="control-group umb-control-group">
+    <div class="control-group umb-control-group" ng-hide="model.value.allowDuplicates">
 
         <label class="control-label" style="padding-top:8px !important; padding:0;" for="">
             Hide Used
@@ -97,7 +97,7 @@
 
         <div class="controls controls-row">
 
-            <p>TODO:</p>
+            <input type="checkbox" ng-model="model.value.hideUsed" />
 
         </div>
     </div>
@@ -112,13 +112,9 @@
 
         <div class="controls controls-row">
 
-            <p>TODO:</p>
+            <input type="checkbox" ng-model="model.value.enableFiltering" />
 
         </div>
-    </div>
-
-    <div>
-        model = {{ model}}
     </div>
 
 </div>

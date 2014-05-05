@@ -197,43 +197,11 @@
     <Compile Include="PropertyEditors\XmlListPicker\XmlListPickerApiController.cs" />
     <Compile Include="PropertyEditors\XmlListPicker\XmlListPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\XmlListPicker\XmlListPickerPropertyEditor.cs" />
-    <Compile Include="XPathTemplatableList\XPathTemplatableList.cs" />
-    <Compile Include="XPathTemplatableList\XPathTemplatableListApiController.cs" />
-    <Compile Include="XPathTemplatableList\XPathTemplatableListPreValueEditor.cs" />
-    <Compile Include="XPathTemplatableList\XPathTemplatableListPropertyEditor.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="XPathTemplatableList\PreValueLabelAttribute.html" />
+    <Compile Include="Shared\XmlDataSource\XmlDataSourceApiController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="XPathTemplatableList\PreValueCssFile.html" />
-    <EmbeddedResource Include="XPathTemplatableList\PreValueScriptFile.html" />
-    <EmbeddedResource Include="XPathTemplatableList\Editor.html" />
-    <EmbeddedResource Include="XPathTemplatableList\EditorController.js" />
-    <EmbeddedResource Include="XPathTemplatableList\PreValueMacro.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="XPathTemplatableList\PreValueStateResource.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="XPathTemplatableList\ApiResource.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="XPathTemplatableList\PreValueCssFileController.js" />
-    <EmbeddedResource Include="XPathTemplatableList\PreValueLabelAttributeController.js" />
-    <EmbeddedResource Include="XPathTemplatableList\PreValueMacroController.js" />
-    <EmbeddedResource Include="XPathTemplatableList\PreValueScriptFileController.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="XPathTemplatableList\Editor.css" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="XPathTemplatableList\ButtonAdd.png" />
-    <EmbeddedResource Include="XPathTemplatableList\ButtonRemove.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="PropertyEditors\SqlListPicker\" />
@@ -243,6 +211,8 @@
     <Folder Include="Shared\SqlDataSource\" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Shared\ListPicker\ButtonAdd.png" />
+    <EmbeddedResource Include="Shared\ListPicker\ButtonRemove.png" />
     <EmbeddedResource Include="Shared\ListPicker\ListPickerConfig.html" />
     <EmbeddedResource Include="Shared\ListPicker\ListPickerConfigController.js" />
     <EmbeddedResource Include="Shared\ListPicker\ListPickerEditor.css" />

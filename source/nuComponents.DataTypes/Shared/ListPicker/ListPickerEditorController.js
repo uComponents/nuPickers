@@ -32,12 +32,12 @@ angular
                             "listHeight":null,
                             "minItems":"0",
                             "maxItems":"0",
-                            "allowDuplicates":"0",
-                            "hideUsed":"1",
-                            "enableFiltering": "0"} // TODO: swap to bool
+                            "allowDuplicates":"false",
+                            "hideUsed":"false",
+                            "enableFiltering":"true"}
                         }
 
-                        // "listPickerApiController" : "XPathTemplatableListApi"
+                        "listPickerApiController" : "XPathTemplatableListApi" 
                     },
                     "hideLabel":false,
                     "id":160,
@@ -60,7 +60,7 @@ angular
 
             // returns true if option hans't yet been picked, or duplicates are allowed
             $scope.isSelectable = function (option) {
-                return ($scope.model.config.listPicker.allowDuplicates == '1' || !$scope.isUsed(option));
+                return ($scope.model.config.listPicker.allowDuplicates || !$scope.isUsed(option));
             };
 
             // returns true is this option has been picked

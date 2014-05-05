@@ -16,15 +16,14 @@
                 <option value="content">Content</option>
                 <option value="media">Media</option>
                 <option value="member">Members</option>
-                <option value="file" disabled="disabled">File</option>
-                <option value="url" disabled="disabled">Url</option>
+                <option value="file" disabled="disabled">TODO: File</option>
+                <option value="url" disabled="disabled">TODO: Url</option>
             </select>
 
         </div>
     </div>
 
     <div class="control-group umb-control-group">
-
         <label class="control-label" style="padding-top:8px !important; padding:0;" for="">
             Options XPath
             <small>all matched elements are used as options</small>
@@ -32,13 +31,12 @@
 
         <div class="controls controls-row">
 
-            <p>TODO:</p>
+            <input type="text" ng-model="model.value.optionsXPath" />
 
         </div>
     </div>
 
     <div class="control-group umb-control-group">
-
         <label class="control-label" style="padding-top:8px !important; padding:0;" for="">
             Key Attribute
             <small>attribute on each matched xml element to use as the key (this must be unique)</small>
@@ -46,14 +44,13 @@
 
         <div class="controls controls-row">
 
-            <p>TODO:</p>
+            <input type="text" ng-model="model.value.keyAttribute" />
 
         </div>
     </div>
 
 
-    <div class="control-group umb-control-group">
-
+    <div class="control-group umb-control-group" ng-hide="model.value.labelMacro">
         <label class="control-label" style="padding-top:8px !important; padding:0;" for="">
             Label Attribute
             <small>attribute on each matched xml element to use as the label (not used if macro selected)</small>
@@ -61,14 +58,13 @@
 
         <div class="controls controls-row">
 
-            <p>TODO:</p>
+            <input type="text" ng-model="model.value.labelAttribute" />
 
         </div>
     </div>
 
 
     <div class="control-group umb-control-group">
-
         <label class="control-label" style="padding-top:8px !important; padding:0;" for="">
             Label Macro
             <small>macro expects a string parameter named 'key'</small>
@@ -76,12 +72,13 @@
 
         <div class="controls controls-row">
 
-            <p>TODO:</p>
+            <select ng-model="model.value.labelMacro"
+                    ng-options="macro.alias as macro.name for macro in macros">
+                <option value=""></option>
+            </select>
+
 
         </div>
     </div>
 
-    <div>
-        model = {{ model}}
-    </div>
 </div>

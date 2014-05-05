@@ -1,10 +1,8 @@
 ﻿
 <div ng-controller="nuComponents.DataTypes.Shared.ListPicker.ListPickerEditorController" class="list-picker">
 
-    <!--<link rel="stylesheet" type="text/css" ng-if="model.config.CssFile" ng-href="{{ model.config.CssFile }}" /> TODO: move this to controller and use assetsService -->
-
     <!-- filter -->
-    <div class="selectable-filter" ng-show="model.config.listPicker.enableFiltering == '1'">
+    <div class="selectable-filter" ng-show="model.config.listPicker.enableFiltering">
         <input type="text"
                placeholder="Type to filter"
                ng-model="model.filterQuery" />
@@ -17,7 +15,7 @@
         ng-style="{'height': (model.config.listPicker.listHeight > 0 ? model.config.listPicker.listHeight + 'px' : '') }">
 
         <li ng-repeat="option in selectableOptions"
-            ng-hide="model.config.listPicker.hideUsed == '1' && !isSelectable(option)"
+            ng-hide="model.config.listPicker.hideUsed && !isSelectable(option)"
             ng-class="{lit:lit, disabled:!isValidSelection(option), used:isUsed(option)}">
             <div class="markup" ng-bind-html-unsafe="option.markup">
             </div>

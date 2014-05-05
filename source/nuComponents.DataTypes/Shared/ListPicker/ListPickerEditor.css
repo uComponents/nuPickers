@@ -121,7 +121,7 @@
 .list-picker .selectable .button {
     right: 0;
     border-left: 1px solid #ccc;
-    background-image: url('/Umbraco/App_Plugins/nuComponents/DataTypes/XPathTemplatableList/ButtonAdd.png');   
+    background-image: url('/Umbraco/App_Plugins/nuComponents/DataTypes/Shared/ListPicker/ButtonAdd.png');   
 }
 
 /*
@@ -160,7 +160,7 @@
 .list-picker .selected .button {
     left: 0;
     border-right: 1px solid #ccc;
-    background-image: url('/Umbraco/App_Plugins/nuComponents/DataTypes/XPathTemplatableList/ButtonRemove.png');
+    background-image: url('/Umbraco/App_Plugins/nuComponents/DataTypes/Shared/ListPicker/ButtonRemove.png');
 }
 
 .list-picker .placeholders li {
