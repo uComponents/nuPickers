@@ -7,47 +7,21 @@ angular
         function ($scope, listPickerResource) {
 
             /*
-            <div class="ng-binding">model.config = {
+                expects to find:
 
-                $scope.model = {
-                    "label":"Xml List Picker - Test 1",
-                    "description":"",
-                    "view":"App_Plugins/nuComponents/DataTypes/Shared/ListPicker/ListPickerEditor.html",
-                    "config":{     
-                    
-                        // THE DATA SOURCE COULD DIFFER
+                    $scope.model.config.listPicker = {
+                                "cssFile":null,
+                                "scriptFile":null,
+                                "listHeight":null,
+                                "minItems":"0",
+                                "maxItems":"0",
+                                "allowDuplicates":"false",
+                                "hideUsed":"false",
+                                "enableFiltering":"true"}
+                            }
 
-                        "xmlDataSource":{
-                            "xmlSchema":"member",
-                            "optionsXPath":"//*[@isDoc]",
-                            "keyAttribute":"id",
-                            "labelAttribute":
-                            "nodeName",
-                            "labelMacro":null
-                         },
-
-                         "listPicker": {
-                            "cssFile":null,
-                            "scriptFile":null,
-                            "listHeight":null,
-                            "minItems":"0",
-                            "maxItems":"0",
-                            "allowDuplicates":"false",
-                            "hideUsed":"false",
-                            "enableFiltering":"true"}
-                        }
-
-                        "listPickerApiController" : "XPathTemplatableListApi" 
-                    },
-                    "hideLabel":false,
-                    "id":160,
-                    "value":"1067,1068,1069",
-                    "alias":"xmlListPickerTest1"
-                };                
+                    $scope.model.condig.listPickerApiController = "XPathTemplatableListApi" 
             */
-
-
-
 
             // array of option objects, for the selectable list 
             $scope.selectableOptions = []; // [{"key":"","markup":""}...]
@@ -133,6 +107,8 @@ angular
                     // TODO: how to return error to Umbraco ?
                     //var isValid = ($scope.selectableOptions.length >= $scope.model.config.minItems
                     //               && ($scope.selectableOptions.length <= $scope.model.config.maxItems || $scope.model.config.maxItems < 1));
+
+
 
                     // toggle sorting ui
                     $scope.sortableConfiguration.disabled = !$scope.isSortable();

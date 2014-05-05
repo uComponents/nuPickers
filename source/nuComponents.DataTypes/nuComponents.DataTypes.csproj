@@ -207,6 +207,7 @@
     <Folder Include="PropertyEditors\SqlListPicker\" />
     <Folder Include="Shared\EnumDataSource\" />
     <Folder Include="Shared\JsonDataSource\" />
+    <Folder Include="Shared\RelationTypeMapping\" />
     <Folder Include="Shared\SaveFormat\" />
     <Folder Include="Shared\SqlDataSource\" />
   </ItemGroup>
