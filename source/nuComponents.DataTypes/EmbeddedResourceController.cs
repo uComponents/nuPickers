@@ -6,10 +6,11 @@
     using System.Web.Mvc;
 
     /// <summary>
-    /// Handles returning the embedded resource files for url : /Umbraco/Plug_Ins
+    /// Handles returning embedded resource files (html, js, png...)
     /// </summary>
     public class EmbeddedResourceController : Controller
     {
+        // THIS WILL BE LEGACY
         public FileStreamResult GetResource(string datatype, string file)
         {
             string resource = "nuComponents.DataTypes." + datatype + "." + file;
@@ -22,6 +23,34 @@
             {
                 return new FileStreamResult(
                                 assembly.GetManifestResourceStream(resource), 
+                                this.GetMimeType(resource));
+            }
+
+            return null;
+        }
+
+
+        // NEW
+        public FileStreamResult GetSharedResource(string folder, string file)
+        {
+            return this.GetResource("nuComponents.DataTypes.Shared." + folder + "." + file);
+        }
+
+        public FileStreamResult GetPropertyEditorResource(string folder, string file)
+        {
+            return this.GetResource("nuComponents.DataTypes.PropertyEditors." + folder + "." + file);
+        }
+
+        private FileStreamResult GetResource(string resource)
+        {
+            // get this assembly
+            Assembly assembly = typeof(EmbeddedResourceController).Assembly;
+
+            // if resource can be found
+            if (assembly.GetManifestResourceNames().Any(x => x == resource))
+            {
+                return new FileStreamResult(
+                                assembly.GetManifestResourceStream(resource),
                                 this.GetMimeType(resource));
             }
 
