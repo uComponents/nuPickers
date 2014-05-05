@@ -70,9 +70,17 @@ angular
                 // TODO: and selectable options, has valid options
             }
 
-            // return true if there is more than 1 item in the selected list
+            // return true if there is are at least two different items selected
             $scope.isSortable = function () {
-                return $scope.selectedOptions.length > 1; // TODO: check selectedOptions are not all the same
+
+                if (!$scope.model.config.allowDuplicates && $scope.selectedOptions > 1) {
+                    return true;
+                }
+
+                // else check collection contains at least two different items
+                var keys = $scope.selectedOptions.map(function (option) { return option.key; }); // key all selected keys
+
+                return keys.filter(function (value, index) { return keys.indexOf(value) == index; }).length >= 2;
             };
 
             // remove option from 'selected'
