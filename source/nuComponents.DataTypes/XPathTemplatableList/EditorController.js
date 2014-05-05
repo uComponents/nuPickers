@@ -77,11 +77,12 @@ angular
 
                 return ($scope.selectedOptions.length >= $scope.model.config.minItems)
                         && (($scope.selectedOptions.length < $scope.model.config.maxItems) || $scope.model.config.maxItems == 0);
+                        // TODO: and selectable options, has valid options
             }
 
             // return true if there is more than 1 item in the selected list
             $scope.isSortable = function () {
-                return $scope.selectedOptions.length > 1;
+                return $scope.selectedOptions.length > 1; // TODO: check selectedOptions are not all the same
             };
 
             // remove option from 'selected'

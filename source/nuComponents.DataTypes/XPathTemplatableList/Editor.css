@@ -170,18 +170,21 @@
 }
 
 .xpath-templatable-list .placeholders li {
-    color:#ccc;
-    text-align:center;
-    border-style:dashed;
+    text-align: center;
+    color: #ccc;
 }
 
 .xpath-templatable-list .placeholders .required { 
+    border-style: dotted;
+    border-color: #b94a48;
+    color: #b94a48;
 }
 
 .xpath-templatable-list .placeholders .select { 
+    border-style: dashed;
 }
 
-.xpath-templatable-list .placeholders .limit-indicator {
+/*.xpath-templatable-list .placeholders .limit-indicator {
     color:#343434;
     border-color:transparent;
-}
+}*/
