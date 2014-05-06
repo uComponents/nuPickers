@@ -137,14 +137,19 @@ angular
                         }
 
                         newValue = newValue.toLowerCase();
-
-                        $scope.selectableOptions = $scope.allSelectableOptions.filter(function (item) {
-
-                            //TODO: prevent typing that would yeild no matches
-
+                        var filteredSelectableOptions = $scope.allSelectableOptions.filter(function (item) {
                             // strip html before searching
                             return String(item.markup).replace(/(<([^>]+)>)/gm, '').toLowerCase().indexOf(newValue) != -1;
                         });
+
+                        if (filteredSelectableOptions.length > 0) {
+                            return $scope.selectableOptions = filteredSelectableOptions;
+                        }
+                        else {
+                            // reset value - TODO: flash UI ?
+                            $scope.model.filterQuery = oldValue;
+                        }
+
                     });
                 }
             });
