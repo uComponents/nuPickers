@@ -1,16 +1,17 @@
 ﻿namespace nuComponents.DataTypes.PropertyEditors.XmlDropDownList
-{
+{    
     using Umbraco.Core.PropertyEditors;
+    using nuComponents.DataTypes.Interfaces;
 
-    internal class XmlDropDownListPreValueEditor : PreValueEditor
+    internal class XmlDropDownListPreValueEditor : PreValueEditor, IPickerPreValueEditor
     {
-        [PreValueField("xmlDataSource", "", "App_Plugins/nuComponents/DataTypes/Shared/XmlDataSource/XmlDataSourceConfig.html", HideLabel = true)]
-        public string XmlDataSource { get; set; }
+        [PreValueField("", "App_Plugins/nuComponents/DataTypes/Shared/XmlDataSource/XmlDataSourceConfig.html", HideLabel = true)]
+        public string DataSource { get; set; }
 
         /// <summary>
-        /// NOTE: the name is injected into the hidden field value
+        /// NOTE: the name 'XmlDropDownListApi' is injected into the 'ApiController' hidden field value
         /// </summary>
-        [PreValueField("apiController", "XmlDropDownListApi", "App_Plugins/nuComponents/DataTypes/Shared/HiddenConstant/HiddenConstantConfig.html", HideLabel = true)]
+        [PreValueField("XmlDropDownListApi", "App_Plugins/nuComponents/DataTypes/Shared/HiddenConstant/HiddenConstantConfig.html", HideLabel = true)]
         public string ApiController { get; set; }
     }
 }

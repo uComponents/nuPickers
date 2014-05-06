@@ -193,6 +193,8 @@
     <Compile Include="EmbeddedResourceController.cs" />
     <Compile Include="EmbeddedResourceStartup.cs" />
     <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="Interfaces\IPickerApiController.cs" />
+    <Compile Include="Interfaces\IPickerPreValueEditor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyEditors\XmlDropDownList\XmlDropDownListApiController.cs" />
     <Compile Include="PropertyEditors\XmlDropDownList\XmlDropDownListPreValueEditor.cs" />
@@ -200,6 +202,7 @@
     <Compile Include="PropertyEditors\XmlListPicker\XmlListPickerApiController.cs" />
     <Compile Include="PropertyEditors\XmlListPicker\XmlListPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\XmlListPicker\XmlListPickerPropertyEditor.cs" />
+    <Compile Include="Shared\XmlDataSource\XmlDataSource.cs" />
     <Compile Include="Shared\XmlDataSource\XmlDataSourceApiController.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -232,7 +235,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Shared\DropDownList\DropDownListEditor.html" />
     <EmbeddedResource Include="Shared\DropDownList\DropDownListEditorController.js" />
-    <EmbeddedResource Include="Shared\DropDownList\DropDownListResource.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\Core\PickerResource.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
