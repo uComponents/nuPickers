@@ -1,0 +1,10 @@
+﻿
+<div ng-controller="nuComponents.DataTypes.Shared.DropDownList.DropDownListEditorController">
+
+    <select ng-model="model.value"
+            ng-options="option.key as option.markup for option in dropDownListOptions"
+            ng-required="model.isRequired">
+        <option value=""></option>
+    </select>
+
+</div>
