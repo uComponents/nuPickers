@@ -130,14 +130,20 @@ angular
                     $scope.allSelectableOptions = $scope.selectableOptions;
 
                     $scope.$watch('model.filterQuery', function (newValue, oldValue) {
-                        if (newValue == null || newValue.length == 0)
+
+                        // if the filter is empty then just return all items
+                        if (newValue == null || newValue.length == 0) {
                             return $scope.selectableOptions = $scope.allSelectableOptions;
+                        }
+
+                        newValue = newValue.toLowerCase();
 
                         $scope.selectableOptions = $scope.allSelectableOptions.filter(function (item) {
 
                             //TODO: prevent typing that would yeild no matches
 
-                            return item.markup.toLowerCase().indexOf(newValue) != -1;
+                            // strip html before searching
+                            return String(item.markup).replace(/(<([^>]+)>)/gm, '').toLowerCase().indexOf(newValue) != -1;
                         });
                     });
                 }
