@@ -1,0 +1,33 @@
+﻿/*
+<div ng-controller="nuComponents.DataTypes.Shared.CheckBoxPicker.CheckBoxPickerEditorController" class="check-box-picker">
+
+    <ul class="(horizontal || vertical)">
+        <li>
+            <label>
+                <input type="checkbox"  />
+                <span />
+            </label>
+        </li>
+    </ul>
+
+</div>
+*/
+
+.check-box-picker ul
+{
+    list-style-type: none;
+    margin: 0;
+}
+
+
+
+.check-box-picker .horizontal li
+{
+    display:inline;
+}
+
+
+.check-box-picker .vertical li
+{
+    
+}

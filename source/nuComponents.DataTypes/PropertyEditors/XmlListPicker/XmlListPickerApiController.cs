@@ -2,8 +2,8 @@
 {
     using Newtonsoft.Json.Linq;
     using nuComponents.DataTypes.Interfaces;
-    using nuComponents.DataTypes.Shared.Picker;
     using nuComponents.DataTypes.Shared.LabelMacro;
+    using nuComponents.DataTypes.Shared.Picker;
     using nuComponents.DataTypes.Shared.XmlDataSource;
     using System.Collections.Generic;
     using System.Web.Http;
@@ -13,15 +13,6 @@
     [PluginController("nuComponents")]
     public class XmlListPickerApiController : UmbracoAuthorizedJsonController, IPickerApiController
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="config">
-        ///   expects the value from $scope.model.config (Umbraco automatically serializes the PreValueEditor fields into this)
-        /// </param>
-        /// <returns>
-        ///  [{"key":"","markup":""}, ...]
-        /// </returns>
         [HttpPost]
         public IEnumerable<PickerEditorOption> GetEditorOptions([FromBody] dynamic config)
         {

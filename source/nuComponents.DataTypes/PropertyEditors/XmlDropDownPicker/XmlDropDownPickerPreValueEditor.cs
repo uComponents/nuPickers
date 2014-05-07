@@ -5,7 +5,7 @@
 
     internal class XmlDropDownPickerPreValueEditor : PreValueEditor, IPickerPreValueEditor
     {
-        [PreValueField("dataSource", "App_Plugins/nuComponents/DataTypes/Shared/XmlDataSource/XmlDataSourceConfig.html", HideLabel = true)]
+        [PreValueField("dataSource", "", "App_Plugins/nuComponents/DataTypes/Shared/XmlDataSource/XmlDataSourceConfig.html", HideLabel = true)]
         public string DataSource { get; set; }
 
         /// <summary>

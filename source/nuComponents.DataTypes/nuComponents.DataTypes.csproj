@@ -196,6 +196,9 @@
     <Compile Include="Interfaces\IPickerApiController.cs" />
     <Compile Include="Interfaces\IPickerPreValueEditor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PropertyEditors\XmlCheckBoxPicker\XmlCheckBoxPickerApiController.cs" />
+    <Compile Include="PropertyEditors\XmlCheckBoxPicker\XmlCheckBoxPickerPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\XmlCheckBoxPicker\XmlCheckBoxPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\XmlDropDownPicker\XmlDropDownPickerApiController.cs" />
     <Compile Include="PropertyEditors\XmlDropDownPicker\XmlDropDownPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\XmlDropDownPicker\XmlDropDownPickerPropertyEditor.cs" />
@@ -214,9 +217,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="PropertyEditors\SqlListPicker\" />
+    <Folder Include="PropertyEditors\XmlRadioButtonPicker\" />
     <Folder Include="Shared\EnumDataSource\" />
     <Folder Include="Shared\JsonDataSource\" />
+    <Folder Include="Shared\RadioButtonPicker\" />
     <Folder Include="Shared\RelationTypeMapping\" />
     <Folder Include="Shared\SaveFormat\" />
     <Folder Include="Shared\SqlDataSource\" />
@@ -245,6 +249,16 @@
   <ItemGroup>
     <EmbeddedResource Include="Shared\LabelMacro\LabelMacroConfig.html" />
     <EmbeddedResource Include="Shared\LabelMacro\LabelMacroConfigController.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\CheckBoxPicker\CheckBoxPickerEditorController.js" />
+    <EmbeddedResource Include="Shared\CheckBoxPicker\CheckBoxPickerEditor.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\CheckBoxPicker\CheckBoxPickerEditor.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\CheckBoxPicker\CheckBoxPickerConfig.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

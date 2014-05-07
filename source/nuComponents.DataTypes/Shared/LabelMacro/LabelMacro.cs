@@ -1,21 +1,11 @@
 ﻿
 namespace nuComponents.DataTypes.Shared.LabelMacro
 {
-    using System.Collections.Generic;
     using System.Linq;
     using System.Web;
-    using System.Web.Http;
-    using System.Xml;
-    using System.Xml.XPath;
     using umbraco;
     using umbraco.NodeFactory;
     using umbraco.presentation.templateControls;
-    using Umbraco.Web.Editors;
-    using Umbraco.Web.Mvc;
-    using LegacyMacroService = umbraco.cms.businesslogic.macro.Macro; // aliasing as Macro classes exist in two namespaces
-    using nuComponents.DataTypes.Shared.XmlDataSource;
-    using Newtonsoft.Json.Linq;
-    using nuComponents.DataTypes.Shared.Picker;
 
     public class LabelMacro
     {
@@ -33,7 +23,7 @@ namespace nuComponents.DataTypes.Shared.LabelMacro
         {
             this.Alias = alias;
 
-            // set context
+            // set a context by finding the first published node
             Node contextNode = uQuery.GetNodesByXPath(string.Concat("descendant::*[@parentID = ", uQuery.RootNodeId, "]")).FirstOrDefault();
             if (contextNode != null)
             {
@@ -42,11 +32,17 @@ namespace nuComponents.DataTypes.Shared.LabelMacro
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="key">passed by parameter into the macro</param>
+        /// <param name="fallback">value to return if macro fails</param>
+        /// <returns>the output of the macro as a string</returns>
         public string ProcessMacro(string key, string fallback)
         {
             string markup = fallback;
 
-            if (!string.IsNullOrWhiteSpace(this.Alias))
+            if (!string.IsNullOrWhiteSpace(this.Alias) && this.HasContext)
             {
                 Macro macro = new Macro() { Alias = this.Alias };
                 macro.MacroAttributes.Add("key", key);

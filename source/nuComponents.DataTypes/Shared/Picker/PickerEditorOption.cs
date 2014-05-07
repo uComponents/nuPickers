@@ -1,7 +1,8 @@
 ﻿
-using Newtonsoft.Json;
 namespace nuComponents.DataTypes.Shared.Picker
-{    
+{
+    using Newtonsoft.Json;
+
     public class PickerEditorOption
     {
         [JsonProperty("key")]
