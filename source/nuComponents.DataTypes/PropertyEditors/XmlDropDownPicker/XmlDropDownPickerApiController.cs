@@ -1,4 +1,4 @@
-﻿namespace nuComponents.DataTypes.PropertyEditors.XmlDropDownList
+﻿namespace nuComponents.DataTypes.PropertyEditors.XmlDropDownPicker
 {
     using Newtonsoft.Json.Linq;
     using nuComponents.DataTypes.Interfaces;
@@ -10,7 +10,7 @@
     using nuComponents.DataTypes.Shared.Core;
 
     [PluginController("nuComponents")]
-    public class XmlDropDownListApiController : UmbracoAuthorizedJsonController, IPickerApiController
+    public class XmlDropDownPickerApiController : UmbracoAuthorizedJsonController, IPickerApiController
     {
         [HttpPost]
         public IEnumerable<PickerEditorOption> GetEditorOptions([FromBody] dynamic config)
