@@ -10,18 +10,20 @@ namespace nuComponents.DataTypes.Shared.XmlDataSource
 
     public class XmlDataSource
     {
-        // TODO: change casing
-        public string xmlSchema { get; set; }
-        public string optionsXPath { get; set; }
-        public string keyAttribute { get; set; }
-        public string labelAttribute { get; set; }
+        public string XmlSchema { get; set; }
+
+        public string OptionsXPath { get; set; }
+        
+        public string KeyAttribute { get; set; }
+        
+        public string LabelAttribute { get; set; }
 
         public IEnumerable<PickerEditorOption> GetEditorOptions()
         {
             XmlDocument xmlDocument;
             List<PickerEditorOption> editorOptions = new List<PickerEditorOption>();
 
-            switch (this.xmlSchema)
+            switch (this.XmlSchema)
             {
                 case "content":
                     xmlDocument = uQuery.GetPublishedXml(uQuery.UmbracoObjectType.Document);
@@ -44,7 +46,7 @@ namespace nuComponents.DataTypes.Shared.XmlDataSource
             if (xmlDocument != null)
             {
                 XPathNavigator xPathNavigator = xmlDocument.CreateNavigator();
-                XPathNodeIterator xPathNodeIterator = xPathNavigator.Select(uQuery.ResolveXPath(this.optionsXPath));
+                XPathNodeIterator xPathNodeIterator = xPathNavigator.Select(uQuery.ResolveXPath(this.OptionsXPath));
                 List<string> keys = new List<string>(); // used to keep track of keys, so that duplicates aren't added
 
                 string key;
@@ -60,7 +62,7 @@ namespace nuComponents.DataTypes.Shared.XmlDataSource
                          (xPathNodeIterator.Current.Name == "Media" || xPathNodeIterator.Current.Name == "Members")))
                     {
                         // check for existance of a key attribute
-                        key = xPathNodeIterator.Current.GetAttribute(this.keyAttribute, string.Empty);
+                        key = xPathNodeIterator.Current.GetAttribute(this.KeyAttribute, string.Empty);
 
                         // only add item if it has a unique key - failsafe
                         if (!string.IsNullOrWhiteSpace(key) && !keys.Any(x => x == key))
@@ -69,7 +71,7 @@ namespace nuComponents.DataTypes.Shared.XmlDataSource
                             keys.Add(key); // add key so that it's not reused
 
                             // set default markup to use the configured label attribute
-                            markup = xPathNodeIterator.Current.GetAttribute(this.labelAttribute, string.Empty);
+                            markup = xPathNodeIterator.Current.GetAttribute(this.LabelAttribute, string.Empty);
 
                             editorOptions.Add(new PickerEditorOption()
                             {

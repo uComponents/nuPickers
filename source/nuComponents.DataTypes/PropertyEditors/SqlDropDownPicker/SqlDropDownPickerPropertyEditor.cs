@@ -1,23 +1,23 @@
-﻿namespace nuComponents.DataTypes.PropertyEditors.XmlDropDownPicker
+﻿namespace nuComponents.DataTypes.PropertyEditors.SqlDropDownPicker
 {
     using ClientDependency.Core;
     using Umbraco.Core.PropertyEditors;
     using Umbraco.Web.PropertyEditors;
 
     // EDITOR UI
-    [PropertyEditor("xmlDropDownPicker", "nuComponents: Xml DropDown Picker", "App_Plugins/nuComponents/DataTypes/Shared/DropDownPicker/DropDownPickerEditor.html", ValueType = "TEXT")]
+    [PropertyEditor("SqlDropDownPicker", "nuComponents: Sql DropDown Picker", "App_Plugins/nuComponents/DataTypes/Shared/DropDownPicker/DropDownPickerEditor.html", ValueType = "TEXT")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/Shared/DropDownPicker/DropDownPickerEditorController.js")]
 
     // RESOURCES
     [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/Shared/Picker/PickerResource.js")]
 
     // CONFIG
-    [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/Shared/XmlDataSource/XmlDataSourceConfigController.js")]
-    public class XmlDropDownPickerPropertyEditor : PropertyEditor
+    [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/Shared/SqlDataSource/SqlDataSourceConfigController.js")]
+    public class SqlDropDownPickerPropertyEditor : PropertyEditor
     {
         protected override PreValueEditor CreatePreValueEditor()
         {
-            return new XmlDropDownPickerPreValueEditor();
+            return new SqlDropDownPickerPreValueEditor();
         }
     }
 }

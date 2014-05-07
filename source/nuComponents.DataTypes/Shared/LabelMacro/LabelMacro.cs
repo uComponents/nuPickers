@@ -11,13 +11,7 @@ namespace nuComponents.DataTypes.Shared.LabelMacro
     {
         private string Alias { get; set; }
 
-        private bool HasContext 
-        {
-            get
-            {
-                return HttpContext.Current.Items.Contains("pageId");
-            }
-        }
+        private bool HasContext { get; set; }
 
         public LabelMacro(string alias)
         {
@@ -28,6 +22,7 @@ namespace nuComponents.DataTypes.Shared.LabelMacro
             if (contextNode != null)
             {
                 HttpContext.Current.Items["pageID"] = contextNode.Id; // required deeper in macro.renderMacro to get context
+                this.HasContext = true;
             }
 
         }

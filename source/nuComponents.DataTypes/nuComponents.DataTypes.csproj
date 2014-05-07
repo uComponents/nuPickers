@@ -98,6 +98,7 @@
       <HintPath>..\packages\UmbracoCms.Core.7.0.4\lib\SQLCE4Umbraco.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -196,6 +197,9 @@
     <Compile Include="Interfaces\IPickerApiController.cs" />
     <Compile Include="Interfaces\IPickerPreValueEditor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PropertyEditors\SqlDropDownPicker\SqlDropDownPickerApiController.cs" />
+    <Compile Include="PropertyEditors\SqlDropDownPicker\SqlDropDownPickerPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\SqlDropDownPicker\SqlDropDownPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\XmlCheckBoxPicker\XmlCheckBoxPickerApiController.cs" />
     <Compile Include="PropertyEditors\XmlCheckBoxPicker\XmlCheckBoxPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\XmlCheckBoxPicker\XmlCheckBoxPickerPropertyEditor.cs" />
@@ -210,6 +214,8 @@
     </Compile>
     <Compile Include="Shared\LabelMacro\LabelMacro.cs" />
     <Compile Include="Shared\LabelMacro\LabelMacroApiController.cs" />
+    <Compile Include="Shared\SqlDataSource\SqlDataSource.cs" />
+    <Compile Include="Shared\SqlDataSource\SqlDataSourceApiController.cs" />
     <Compile Include="Shared\XmlDataSource\XmlDataSource.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -217,13 +223,24 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="PropertyEditors\EnumCheckBoxPicker\" />
+    <Folder Include="PropertyEditors\EnumDropDownPicker\" />
+    <Folder Include="PropertyEditors\EnumListPicker\" />
+    <Folder Include="PropertyEditors\EnumRadioButtonPicker\" />
+    <Folder Include="PropertyEditors\JsonCheckBoxPicker\" />
+    <Folder Include="PropertyEditors\JsonDropDownPicker\" />
+    <Folder Include="PropertyEditors\JsonListPicker\" />
+    <Folder Include="PropertyEditors\JsonRadioButtonPicker\" />
+    <Folder Include="PropertyEditors\SqlCheckBoxPicker\" />
+    <Folder Include="PropertyEditors\SqlListPicker\" />
+    <Folder Include="PropertyEditors\SqlRadioButtonPicker\" />
     <Folder Include="PropertyEditors\XmlRadioButtonPicker\" />
+    <Folder Include="Shared\AutoCompletePicker\" />
     <Folder Include="Shared\EnumDataSource\" />
     <Folder Include="Shared\JsonDataSource\" />
     <Folder Include="Shared\RadioButtonPicker\" />
     <Folder Include="Shared\RelationTypeMapping\" />
     <Folder Include="Shared\SaveFormat\" />
-    <Folder Include="Shared\SqlDataSource\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Shared\ListPicker\ButtonAdd.png" />
@@ -259,6 +276,10 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Shared\CheckBoxPicker\CheckBoxPickerConfig.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\SqlDataSource\SqlDataSourceConfig.html" />
+    <EmbeddedResource Include="Shared\SqlDataSource\SqlDataSourceConfigController.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
