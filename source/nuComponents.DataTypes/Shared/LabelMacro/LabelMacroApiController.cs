@@ -7,7 +7,7 @@
     using Umbraco.Web.Mvc;
 
     [PluginController("nuComponentsDataTypesShared")]
-    public class XmlDataSourceApiController : UmbracoAuthorizedJsonController
+    public class LabelMacroApiController : UmbracoAuthorizedJsonController
     {
         /// <returns>
         ///     [{"name":"", "alias":"", "hasKey":bool}, ...]
@@ -16,11 +16,11 @@
         {
             //using legacy api as no method on Umbraco.Core.Services.MacroSerivce to get all macros
             return Macro.GetAll().Select(x => new
-                                                { 
-                                                    name = x.Name, 
-                                                    alias = x.Alias,
-                                                    hasKey = x.Properties.Any(y => y.Alias == "key")
-                                                });            
+            {
+                name = x.Name,
+                alias = x.Alias,
+                hasKey = x.Properties.Any(y => y.Alias == "key")
+            });
         }
     }
 }

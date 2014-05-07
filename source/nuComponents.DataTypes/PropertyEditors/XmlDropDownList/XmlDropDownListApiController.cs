@@ -7,12 +7,13 @@
     using System.Web.Http;
     using Umbraco.Web.Editors;
     using Umbraco.Web.Mvc;
+    using nuComponents.DataTypes.Shared.Core;
 
     [PluginController("nuComponents")]
     public class XmlDropDownListApiController : UmbracoAuthorizedJsonController, IPickerApiController
     {
         [HttpPost]
-        public IEnumerable<object> GetEditorOptions([FromBody] dynamic config)
+        public IEnumerable<PickerEditorOption> GetEditorOptions([FromBody] dynamic config)
         {
             XmlDataSource xmlDataSource = ((JObject)config.DataSource).ToObject<XmlDataSource>();
 

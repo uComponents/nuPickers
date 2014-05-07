@@ -9,7 +9,7 @@ angular.module('umbraco.resources')
 
                     return $http({
                         method: 'POST',
-                        url: 'backoffice/nuComponents/' + config.ApiController + '/GetEditorOptions',
+                        url: 'backoffice/nuComponents/' + config.apiController + '/GetEditorOptions',
                         data: config
                     });
 

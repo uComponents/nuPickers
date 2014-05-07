@@ -3,8 +3,8 @@
 angular
     .module("umbraco")
     .controller("nuComponents.DataTypes.Shared.ListPicker.ListPickerEditorController",
-        ['$scope', 'nuComponents.DataTypes.Shared.ListPicker.ListPickerResource',
-        function ($scope, listPickerResource) {
+        ['$scope', 'nuComponents.DataTypes.Shared.Core.PickerResource',
+        function ($scope, pickerResource) {
 
             /*
                 expects to find:
@@ -20,7 +20,9 @@ angular
                                 "enableFiltering":"true"}
                             }
 
-                    $scope.model.condig.listPickerApiController = "XPathTemplatableListApi" 
+                    $scope.model.config.labelMacro = ""
+
+                    $scope.model.config.apiController = "XPathTemplatableListApi" 
             */
 
             // array of option objects, for the selectable list 
@@ -91,7 +93,7 @@ angular
 
             // call api, supplying all configuration details, and expect a collection of options (key / markup) to be populated
             //pickerResource.getEditorOptions($scope.model.config.configuration).then(function (response) {
-            listPickerResource.getEditorOptions($scope.model.config).then(function (response) {
+            pickerResource.getEditorOptions($scope.model.config).then(function (response) {
 
                 var editorOptions = response.data; // [{"key":"","markup":""},{"key":"","markup":""}...]
 

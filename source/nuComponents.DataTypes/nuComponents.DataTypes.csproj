@@ -202,8 +202,12 @@
     <Compile Include="PropertyEditors\XmlListPicker\XmlListPickerApiController.cs" />
     <Compile Include="PropertyEditors\XmlListPicker\XmlListPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\XmlListPicker\XmlListPickerPropertyEditor.cs" />
+    <Compile Include="Shared\Core\PickerEditorOption.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Shared\LabelMacro\LabelMacro.cs" />
+    <Compile Include="Shared\LabelMacro\LabelMacroApiController.cs" />
     <Compile Include="Shared\XmlDataSource\XmlDataSource.cs" />
-    <Compile Include="Shared\XmlDataSource\XmlDataSourceApiController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -225,7 +229,6 @@
     <EmbeddedResource Include="Shared\ListPicker\ListPickerEditor.css" />
     <EmbeddedResource Include="Shared\ListPicker\ListPickerEditor.html" />
     <EmbeddedResource Include="Shared\ListPicker\ListPickerEditorController.js" />
-    <EmbeddedResource Include="Shared\ListPicker\ListPickerResource.js" />
     <EmbeddedResource Include="Shared\XmlDataSource\XmlDataSourceConfig.html" />
     <EmbeddedResource Include="Shared\XmlDataSource\XmlDataSourceConfigController.js" />
   </ItemGroup>
@@ -238,6 +241,10 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Shared\Core\PickerResource.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\LabelMacro\LabelMacroConfig.html" />
+    <EmbeddedResource Include="Shared\LabelMacro\LabelMacroConfigController.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

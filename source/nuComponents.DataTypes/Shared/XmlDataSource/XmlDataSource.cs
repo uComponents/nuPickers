@@ -6,20 +6,20 @@ namespace nuComponents.DataTypes.Shared.XmlDataSource
     using System.Xml;
     using System.Xml.XPath;
     using umbraco;
+    using nuComponents.DataTypes.Shared.Core;
 
     public class XmlDataSource
     {
-        // TODO: change casing (will need to update XmlListPicker)
+        // TODO: change casing
         public string xmlSchema { get; set; }
         public string optionsXPath { get; set; }
         public string keyAttribute { get; set; }
         public string labelAttribute { get; set; }
 
-        // TODO: return a strongly typed obj
-        public IEnumerable<object> GetEditorOptions()
+        public IEnumerable<PickerEditorOption> GetEditorOptions()
         {
             XmlDocument xmlDocument;
-            List<object> editorOptions = new List<object>();
+            List<PickerEditorOption> editorOptions = new List<PickerEditorOption>();
 
             switch (this.xmlSchema)
             {
@@ -71,10 +71,10 @@ namespace nuComponents.DataTypes.Shared.XmlDataSource
                             // set default markup to use the configured label attribute
                             markup = xPathNodeIterator.Current.GetAttribute(this.labelAttribute, string.Empty);
 
-                            editorOptions.Add(new
+                            editorOptions.Add(new PickerEditorOption()
                             {
-                                key = key,
-                                markup = markup
+                                Key = key,
+                                Markup = markup
                             });
                         }
                     }

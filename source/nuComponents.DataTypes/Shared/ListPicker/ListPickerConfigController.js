@@ -1,8 +1,8 @@
 ﻿angular
     .module("umbraco")
     .controller("nuComponents.DataTypes.Shared.ListPicker.ListPickerConfigController",
-    ['$scope', 'nuComponents.DataTypes.Shared.ListPicker.ListPickerResource',
-    function ($scope, listPickerResource) {
+    ['$scope',
+    function ($scope) {
 
         // Set defaults ?
         //$scope.model.value = {
