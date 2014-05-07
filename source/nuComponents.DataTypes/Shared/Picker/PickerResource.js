@@ -1,6 +1,6 @@
 ﻿
 angular.module('umbraco.resources')
-    .factory('nuComponents.DataTypes.Shared.Core.PickerResource',
+    .factory('nuComponents.DataTypes.Shared.Picker.PickerResource',
         function ($http) {
 
             return {

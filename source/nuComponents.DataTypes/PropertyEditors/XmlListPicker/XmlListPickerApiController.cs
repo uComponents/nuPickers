@@ -2,7 +2,7 @@
 {
     using Newtonsoft.Json.Linq;
     using nuComponents.DataTypes.Interfaces;
-    using nuComponents.DataTypes.Shared.Core;
+    using nuComponents.DataTypes.Shared.Picker;
     using nuComponents.DataTypes.Shared.LabelMacro;
     using nuComponents.DataTypes.Shared.XmlDataSource;
     using System.Collections.Generic;

@@ -2,7 +2,7 @@
 namespace nuComponents.DataTypes.Interfaces
 {
     using System.Collections.Generic;
-    using nuComponents.DataTypes.Shared.Core;
+    using nuComponents.DataTypes.Shared.Picker;
 
     /// <summary>
     /// every picker calls an api controller to get it's data 

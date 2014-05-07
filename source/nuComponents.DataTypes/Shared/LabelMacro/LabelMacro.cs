@@ -15,7 +15,7 @@ namespace nuComponents.DataTypes.Shared.LabelMacro
     using LegacyMacroService = umbraco.cms.businesslogic.macro.Macro; // aliasing as Macro classes exist in two namespaces
     using nuComponents.DataTypes.Shared.XmlDataSource;
     using Newtonsoft.Json.Linq;
-    using nuComponents.DataTypes.Shared.Core;
+    using nuComponents.DataTypes.Shared.Picker;
 
     public class LabelMacro
     {

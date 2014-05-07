@@ -7,7 +7,7 @@
     using System.Web.Http;
     using Umbraco.Web.Editors;
     using Umbraco.Web.Mvc;
-    using nuComponents.DataTypes.Shared.Core;
+    using nuComponents.DataTypes.Shared.Picker;
 
     [PluginController("nuComponents")]
     public class XmlDropDownPickerApiController : UmbracoAuthorizedJsonController, IPickerApiController

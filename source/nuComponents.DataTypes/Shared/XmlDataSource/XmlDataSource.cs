@@ -6,7 +6,7 @@ namespace nuComponents.DataTypes.Shared.XmlDataSource
     using System.Xml;
     using System.Xml.XPath;
     using umbraco;
-    using nuComponents.DataTypes.Shared.Core;
+    using nuComponents.DataTypes.Shared.Picker;
 
     public class XmlDataSource
     {

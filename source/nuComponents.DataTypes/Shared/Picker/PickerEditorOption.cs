@@ -1,6 +1,6 @@
 ﻿
 using Newtonsoft.Json;
-namespace nuComponents.DataTypes.Shared.Core
+namespace nuComponents.DataTypes.Shared.Picker
 {    
     public class PickerEditorOption
     {

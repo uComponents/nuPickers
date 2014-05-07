@@ -202,7 +202,7 @@
     <Compile Include="PropertyEditors\XmlListPicker\XmlListPickerApiController.cs" />
     <Compile Include="PropertyEditors\XmlListPicker\XmlListPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\XmlListPicker\XmlListPickerPropertyEditor.cs" />
-    <Compile Include="Shared\Core\PickerEditorOption.cs">
+    <Compile Include="Shared\Picker\PickerEditorOption.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Shared\LabelMacro\LabelMacro.cs" />
@@ -240,7 +240,7 @@
     <EmbeddedResource Include="Shared\DropDownPicker\DropDownPickerEditorController.js" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Shared\Core\PickerResource.js" />
+    <EmbeddedResource Include="Shared\Picker\PickerResource.js" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Shared\LabelMacro\LabelMacroConfig.html" />
