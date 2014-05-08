@@ -9,6 +9,7 @@ namespace nuComponents.DataTypes.Shared.SqlDataSource
     using System.Threading.Tasks;
     using umbraco.DataLayer;
     using nuComponents.DataTypes.Shared.Picker;
+    using System.Text.RegularExpressions;
 
     public class SqlDataSource
     {
@@ -27,7 +28,7 @@ namespace nuComponents.DataTypes.Shared.SqlDataSource
                 {
                     // TODO: token replacement eg. @currentId
 
-                    using(IRecordsReader recordsReader = sqlHelper.ExecuteReader(this.SqlExpression))
+                    using(IRecordsReader recordsReader = sqlHelper.ExecuteReader(Regex.Replace(this.SqlExpression, "\n|\r", string.Empty)))
                     {
                         if(recordsReader != null)
                         {
