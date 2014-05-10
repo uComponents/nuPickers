@@ -195,8 +195,12 @@
     <Compile Include="EmbeddedResourceStartup.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="Interfaces\IPickerApiController.cs" />
+    <Compile Include="Interfaces\IPickerDataSource.cs" />
     <Compile Include="Interfaces\IPickerPreValueEditor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PropertyEditors\EnumDropDownPicker\EnumDropDownPickerApiController.cs" />
+    <Compile Include="PropertyEditors\EnumDropDownPicker\EnumDropDownPickerPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\EnumDropDownPicker\EnumDropDownPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\SqlDropDownPicker\SqlDropDownPickerApiController.cs" />
     <Compile Include="PropertyEditors\SqlDropDownPicker\SqlDropDownPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\SqlDropDownPicker\SqlDropDownPickerPropertyEditor.cs" />
@@ -209,6 +213,9 @@
     <Compile Include="PropertyEditors\XmlListPicker\XmlListPickerApiController.cs" />
     <Compile Include="PropertyEditors\XmlListPicker\XmlListPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\XmlListPicker\XmlListPickerPropertyEditor.cs" />
+    <Compile Include="Shared\EnumDataSource\EnumDataSource.cs" />
+    <Compile Include="Shared\EnumDataSource\EnumDataSourceApiController.cs" />
+    <Compile Include="Shared\EnumDataSource\EnumDataSourceAttribute.cs" />
     <Compile Include="Shared\Picker\PickerEditorOption.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -224,20 +231,15 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="PropertyEditors\EnumCheckBoxPicker\" />
-    <Folder Include="PropertyEditors\EnumDropDownPicker\" />
     <Folder Include="PropertyEditors\EnumListPicker\" />
     <Folder Include="PropertyEditors\EnumRadioButtonPicker\" />
-    <Folder Include="PropertyEditors\JsonCheckBoxPicker\" />
-    <Folder Include="PropertyEditors\JsonDropDownPicker\" />
-    <Folder Include="PropertyEditors\JsonListPicker\" />
-    <Folder Include="PropertyEditors\JsonRadioButtonPicker\" />
     <Folder Include="PropertyEditors\SqlCheckBoxPicker\" />
     <Folder Include="PropertyEditors\SqlListPicker\" />
     <Folder Include="PropertyEditors\SqlRadioButtonPicker\" />
     <Folder Include="PropertyEditors\XmlRadioButtonPicker\" />
     <Folder Include="Shared\AutoCompletePicker\" />
-    <Folder Include="Shared\EnumDataSource\" />
     <Folder Include="Shared\JsonDataSource\" />
+    <Folder Include="Shared\MinMax\" />
     <Folder Include="Shared\RadioButtonPicker\" />
     <Folder Include="Shared\RelationTypeMapping\" />
     <Folder Include="Shared\SaveFormat\" />
@@ -280,6 +282,10 @@
   <ItemGroup>
     <EmbeddedResource Include="Shared\SqlDataSource\SqlDataSourceConfig.html" />
     <EmbeddedResource Include="Shared\SqlDataSource\SqlDataSourceConfigController.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\EnumDataSource\EnumDataSourceConfig.html" />
+    <EmbeddedResource Include="Shared\EnumDataSource\EnumDataSourceConfigController.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

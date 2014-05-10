@@ -1,0 +1,38 @@
+﻿
+<div ng-controller="nuComponents.DataTypes.Shared.EnumDataSource.EnumDataSourceConfigController">
+    
+    <div class="control-group umb-control-group">
+        <label class="control-label" style="padding-top:8px !important; padding:0;" for="">
+
+            Assembly
+            <small></small>
+
+        </label>
+
+        <div class="controls controls-row">
+
+            <select ng-model="model.value.assemblyName"
+                    ng-options="o as o for o in assemblyNames"
+                    ng-required="true"></select>
+        </div>
+    </div>
+
+    <div class="control-group umb-control-group">
+        <label class="control-label" style="padding-top:8px !important; padding:0;" for="">
+
+
+            Enum
+            <small></small>
+
+        </label>
+
+        <div class="controls controls-row">
+
+            <select ng-model="model.value.enumName"
+                    ng-options="o as o for o in enumNames"
+                    ng-required="true"></select>
+
+        </div>
+    </div>
+
+</div>

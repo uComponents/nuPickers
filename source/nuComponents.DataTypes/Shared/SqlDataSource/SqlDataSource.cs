@@ -10,8 +10,9 @@ namespace nuComponents.DataTypes.Shared.SqlDataSource
     using umbraco.DataLayer;
     using nuComponents.DataTypes.Shared.Picker;
     using System.Text.RegularExpressions;
+    using nuComponents.DataTypes.Interfaces;
 
-    public class SqlDataSource
+    public class SqlDataSource : IPickerDataSource
     {
         public string SqlExpression { get; set; }
 

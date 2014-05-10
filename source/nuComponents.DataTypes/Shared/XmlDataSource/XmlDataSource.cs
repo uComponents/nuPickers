@@ -7,8 +7,9 @@ namespace nuComponents.DataTypes.Shared.XmlDataSource
     using System.Xml.XPath;
     using umbraco;
     using nuComponents.DataTypes.Shared.Picker;
+    using nuComponents.DataTypes.Interfaces;
 
-    public class XmlDataSource
+    public class XmlDataSource : IPickerDataSource
     {
         public string XmlSchema { get; set; }
 
