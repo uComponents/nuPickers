@@ -210,6 +210,9 @@
     <Compile Include="PropertyEditors\EnumRadioButtonPicker\EnumRadioButtonPickerApiController.cs" />
     <Compile Include="PropertyEditors\EnumRadioButtonPicker\EnumRadioButtonPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\EnumRadioButtonPicker\EnumRadioButtonPickerPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\SqlCheckBoxPicker\SqlCheckBoxPickerApiController.cs" />
+    <Compile Include="PropertyEditors\SqlCheckBoxPicker\SqlCheckBoxPickerPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\SqlCheckBoxPicker\SqlCheckBoxPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\SqlDropDownPicker\SqlDropDownPickerApiController.cs" />
     <Compile Include="PropertyEditors\SqlDropDownPicker\SqlDropDownPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\SqlDropDownPicker\SqlDropDownPickerPropertyEditor.cs" />
@@ -243,7 +246,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="PropertyEditors\RelationTypeMatches\" />
-    <Folder Include="PropertyEditors\SqlCheckBoxPicker\" />
     <Folder Include="PropertyEditors\SqlListPicker\" />
     <Folder Include="PropertyEditors\SqlRadioButtonPicker\" />
     <Folder Include="Shared\AutoCompletePicker\" />
