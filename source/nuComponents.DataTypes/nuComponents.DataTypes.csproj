@@ -216,6 +216,9 @@
     <Compile Include="PropertyEditors\SqlDropDownPicker\SqlDropDownPickerApiController.cs" />
     <Compile Include="PropertyEditors\SqlDropDownPicker\SqlDropDownPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\SqlDropDownPicker\SqlDropDownPickerPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\SqlRadioButtonPicker\SqlRadioButtonPickerApiController.cs" />
+    <Compile Include="PropertyEditors\SqlRadioButtonPicker\SqlRadioButtonPickerPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\SqlRadioButtonPicker\SqlRadioButtonPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\XmlCheckBoxPicker\XmlCheckBoxPickerApiController.cs" />
     <Compile Include="PropertyEditors\XmlCheckBoxPicker\XmlCheckBoxPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\XmlCheckBoxPicker\XmlCheckBoxPickerPropertyEditor.cs" />
@@ -247,7 +250,6 @@
   <ItemGroup>
     <Folder Include="PropertyEditors\RelationTypeMatches\" />
     <Folder Include="PropertyEditors\SqlListPicker\" />
-    <Folder Include="PropertyEditors\SqlRadioButtonPicker\" />
     <Folder Include="Shared\AutoCompletePicker\" />
     <Folder Include="Shared\JsonDataSource\" />
     <Folder Include="Shared\MinMax\" />
