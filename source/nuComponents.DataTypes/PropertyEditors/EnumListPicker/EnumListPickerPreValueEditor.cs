@@ -9,6 +9,9 @@ namespace nuComponents.DataTypes.PropertyEditors.EnumListPicker
         [PreValueField("dataSource", "", "App_Plugins/nuComponents/DataTypes/Shared/EnumDataSource/EnumDataSourceConfig.html", HideLabel = true)]
         public string DataSource { get; set; }
 
+        [PreValueField("customLabel", "Label Macro", "App_Plugins/nuComponents/DataTypes/Shared/CustomLabel/CustomLabelConfig.html", HideLabel = true)]
+        public string CustomLabel { get; set; }
+
         [PreValueField("listPicker", "", "App_Plugins/nuComponents/DataTypes/Shared/ListPicker/ListPickerConfig.html", HideLabel = true)]
         public string ListPicker { get; set; }
 
