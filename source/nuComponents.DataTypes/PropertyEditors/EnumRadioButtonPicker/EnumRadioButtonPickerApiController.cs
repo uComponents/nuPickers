@@ -19,7 +19,9 @@ namespace nuComponents.DataTypes.PropertyEditors.EnumRadioButtonPicker
         {
             EnumDataSource enumDataSource = ((JObject)config.dataSource).ToObject<EnumDataSource>();
 
-            return enumDataSource.GetEditorOptions();
+            IEnumerable<PickerEditorOption> pickerEditorOptions = enumDataSource.GetEditorOptions();
+
+            return CustomLabel.ProcessPickerEditorOptions((string)config.customLabel, pickerEditorOptions);
         }
     }
 }
