@@ -9,6 +9,9 @@ namespace nuComponents.DataTypes.PropertyEditors.EnumCheckBoxPicker
         [PreValueField("dataSource", "", "App_Plugins/nuComponents/DataTypes/Shared/EnumDataSource/EnumDataSourceConfig.html", HideLabel = true)]
         public string DataSource { get; set; }
 
+        [PreValueField("checkBoxPicker", "", "App_Plugins/nuComponents/DataTypes/Shared/CheckBoxPicker/CheckBoxPickerConfig.html", HideLabel = true)]
+        public string CheckBoxPicker { get; set; }
+
         /// <summary>
         /// NOTE: the name 'EnumDropDownPickerApi' is injected into the 'apiController' hidden field value
         /// </summary>
