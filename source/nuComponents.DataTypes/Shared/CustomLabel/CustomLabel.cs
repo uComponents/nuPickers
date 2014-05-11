@@ -1,5 +1,5 @@
 ﻿
-namespace nuComponents.DataTypes.Shared.LabelMacro
+namespace nuComponents.DataTypes.Shared.CustomLabel
 {
     using nuComponents.DataTypes.Shared.Picker;
     using System.Collections.Generic;
@@ -9,14 +9,13 @@ namespace nuComponents.DataTypes.Shared.LabelMacro
     using umbraco.NodeFactory;
     using umbraco.presentation.templateControls;
 
-    // TODO: rename to CustomLabel (as stylesheet relevant when adding a macro)
-    public class LabelMacro
+    public class CustomLabel
     {
         private string Alias { get; set; }
 
         private bool HasContext { get; set; }
 
-        public LabelMacro(string alias)
+        public CustomLabel(string alias)
         {
             this.Alias = alias;
 
@@ -61,7 +60,7 @@ namespace nuComponents.DataTypes.Shared.LabelMacro
         {
             if (macroAlias != null)
             {
-                LabelMacro labelMacro = new LabelMacro(macroAlias);
+                CustomLabel labelMacro = new CustomLabel(macroAlias);
 
                 foreach (PickerEditorOption pickerEditorOption in pickerEditorOptions)
                 {

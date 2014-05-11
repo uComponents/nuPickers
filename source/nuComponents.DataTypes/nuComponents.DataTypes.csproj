@@ -231,8 +231,8 @@
     <Compile Include="Shared\Picker\PickerEditorOption.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Shared\LabelMacro\LabelMacro.cs" />
-    <Compile Include="Shared\LabelMacro\LabelMacroApiController.cs" />
+    <Compile Include="Shared\CustomLabel\CustomLabel.cs" />
+    <Compile Include="Shared\CustomLabel\CustomLabelApiController.cs" />
     <Compile Include="Shared\SqlDataSource\SqlDataSource.cs" />
     <Compile Include="Shared\SqlDataSource\SqlDataSourceApiController.cs" />
     <Compile Include="Shared\XmlDataSource\XmlDataSource.cs" />
@@ -275,8 +275,8 @@
     <EmbeddedResource Include="Shared\Picker\PickerResource.js" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Shared\LabelMacro\LabelMacroConfig.html" />
-    <EmbeddedResource Include="Shared\LabelMacro\LabelMacroConfigController.js" />
+    <EmbeddedResource Include="Shared\CustomLabel\CustomLabelConfig.html" />
+    <EmbeddedResource Include="Shared\CustomLabel\CustomLabelConfigController.js" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Shared\CheckBoxPicker\CheckBoxPickerEditorController.js" />

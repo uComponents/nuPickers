@@ -8,8 +8,8 @@
         [PreValueField("dataSource", "", "App_Plugins/nuComponents/DataTypes/Shared/XmlDataSource/XmlDataSourceConfig.html", HideLabel = true)]
         public string DataSource { get; set; }
 
-        [PreValueField("labelMacro", "Label Macro", "App_Plugins/nuComponents/DataTypes/Shared/LabelMacro/LabelMacroConfig.html", Description = "expects a string parameter named 'key'")]
-        public string LabelMacro { get; set; }
+        [PreValueField("customLabel", "Label Macro", "App_Plugins/nuComponents/DataTypes/Shared/CustomLabel/CustomLabelConfig.html", HideLabel = true)]
+        public string CustomLabel { get; set; }
 
         [PreValueField("checkBoxPicker", "", "App_Plugins/nuComponents/DataTypes/Shared/CheckBoxPicker/CheckBoxPickerConfig.html", HideLabel = true)]
         public string CheckBoxPicker { get; set; }
