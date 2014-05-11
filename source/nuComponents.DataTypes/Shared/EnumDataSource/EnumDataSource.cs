@@ -24,11 +24,8 @@ namespace nuComponents.DataTypes.Shared.EnumDataSource
             foreach(string enumItemName in Enum.GetNames(enumType))
             {
                 FieldInfo fieldInfo = enumType.GetField(enumItemName);
-                editorOptions.Add(new PickerEditorOption()
-                {
-                    Key = enumItemName,
-                    Label = enumItemName
-                });
+                string key = enumItemName;
+                string label = enumItemName;                
 
                 foreach(CustomAttributeData customAttributeData in CustomAttributeData.GetCustomAttributes(fieldInfo))
                 {
@@ -41,20 +38,22 @@ namespace nuComponents.DataTypes.Shared.EnumDataSource
                             switch(customAttributeNamedArguement.MemberInfo.Name)
                             {
                                 case "Key":
-                                    //TODO:
+                                    key = customAttributeNamedArguement.TypedValue.Value.ToString();
                                     break;
 
                                 case "Label":
-                                    //TODO:
+                                    label = customAttributeNamedArguement.TypedValue.Value.ToString();
                                     break;
 
                                 case "Enabled":
-                                    //TODO:
+                                    //enabled = (bool)customAttributeNamedArguement.TypedValue.Value;
                                     break;
                             }
                         }
                     }
                 }
+
+                editorOptions.Add(new PickerEditorOption() { Key = key, Label = label });
             }
 
             return editorOptions;
