@@ -52,7 +52,7 @@
     background-color:#f6f6fa;
 }
 
-.list-picker .markup {
+.list-picker .option-label {
     width:90%;
     padding:4px;
 }
@@ -91,7 +91,7 @@
     <ul class="selectable">
         <li class="(lit) (disabled) (used)">
 
-            <div class="markup">
+            <div class="option-label">
                 {{ custom markup }}
             </div>
 
@@ -112,7 +112,7 @@
     direction:rtl; /* force scrollbars left */
 }
 
-.list-picker .selectable .markup {
+.list-picker .selectable .option-label {
     /* reset the direction:rtl */
     float:left; 
     text-align:left;
@@ -130,7 +130,7 @@
 
             <a class="button"></a>
 
-            <div class="markup (sort)">
+            <div class="option-label (sort)">
                 {{ custom markup }}
             </div>
 
@@ -149,7 +149,7 @@
     /* padding-left: TODO: calculate from scrollbar width (want to ensure markup area is same with both sides) */
 }
 
-.list-picker .selected .markup {
+.list-picker .selected .option-label {
     margin-left:10%; /* make space for the button */
 }
 

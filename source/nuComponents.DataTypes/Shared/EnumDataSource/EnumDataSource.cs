@@ -27,7 +27,7 @@ namespace nuComponents.DataTypes.Shared.EnumDataSource
                 editorOptions.Add(new PickerEditorOption()
                 {
                     Key = enumItemName,
-                    Markup = enumItemName
+                    Label = enumItemName
                 });
 
                 foreach(CustomAttributeData customAttributeData in CustomAttributeData.GetCustomAttributes(fieldInfo))

@@ -51,7 +51,7 @@ namespace nuComponents.DataTypes.Shared.XmlDataSource
                 List<string> keys = new List<string>(); // used to keep track of keys, so that duplicates aren't added
 
                 string key;
-                string markup;
+                string label;
 
                 while (xPathNodeIterator.MoveNext())
                 {
@@ -72,12 +72,12 @@ namespace nuComponents.DataTypes.Shared.XmlDataSource
                             keys.Add(key); // add key so that it's not reused
 
                             // set default markup to use the configured label attribute
-                            markup = xPathNodeIterator.Current.GetAttribute(this.LabelAttribute, string.Empty);
+                            label = xPathNodeIterator.Current.GetAttribute(this.LabelAttribute, string.Empty);
 
                             editorOptions.Add(new PickerEditorOption()
                             {
                                 Key = key,
-                                Markup = markup
+                                Label = label
                             });
                         }
                     }

@@ -26,10 +26,10 @@ angular
             */
 
             // array of option objects, for the selectable list 
-            $scope.selectableOptions = []; // [{"key":"","markup":""}...]
+            $scope.selectableOptions = []; // [{"key":"","label":""}...]
 
             // array of option objects, for the selected list
-            $scope.selectedOptions = []; // [{"key":"","markup":""}...]
+            $scope.selectedOptions = []; // [{"key":"","label":""}...]
 
             // http://api.jqueryui.com/sortable/
             $scope.sortableConfiguration = { axis: 'y' };
@@ -91,11 +91,11 @@ angular
             };
 
 
-            // call api, supplying all configuration details, and expect a collection of options (key / markup) to be populated
+            // call api, supplying all configuration details, and expect a collection of options (key / label) to be populated
             //pickerResource.getEditorOptions($scope.model.config.configuration).then(function (response) {
             pickerResource.getEditorOptions($scope.model.config).then(function (response) {
 
-                var editorOptions = response.data; // [{"key":"","markup":""},{"key":"","markup":""}...]
+                var editorOptions = response.data; // [{"key":"","label":""},{"key":"","label":""}...]
 
                 // build selected options (from saved csv)
                 var savedKeys = $scope.model.value.split(',');
@@ -141,7 +141,7 @@ angular
                         newValue = newValue.toLowerCase();
                         var filteredSelectableOptions = $scope.allSelectableOptions.filter(function (item) {
                             // strip html before searching
-                            return String(item.markup).replace(/(<([^>]+)>)/gm, '').toLowerCase().indexOf(newValue) != -1;
+                            return String(item.label).replace(/(<([^>]+)>)/gm, '').toLowerCase().indexOf(newValue) != -1;
                         });
 
                         if (filteredSelectableOptions.length > 0) {

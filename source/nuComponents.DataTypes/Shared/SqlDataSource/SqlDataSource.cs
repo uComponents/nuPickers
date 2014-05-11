@@ -39,7 +39,7 @@ namespace nuComponents.DataTypes.Shared.SqlDataSource
                                     new PickerEditorOption()
                                     {
                                         Key = recordsReader.GetObject("Key").ToString(),
-                                        Markup = recordsReader.GetObject("Label").ToString()
+                                        Label = recordsReader.GetObject("Label").ToString()
                                     }
                                 );
                             }

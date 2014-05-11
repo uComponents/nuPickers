@@ -6,7 +6,7 @@ angular
         function ($scope, pickerResource) {
 
             pickerResource.getEditorOptions($scope.model.config).then(function (response) {
-                $scope.dropDownPickerOptions = response.data; // [{"key":"","markup":""},{"key":"","markup":""}...]
+                $scope.dropDownPickerOptions = response.data; 
             });
 
         }]);

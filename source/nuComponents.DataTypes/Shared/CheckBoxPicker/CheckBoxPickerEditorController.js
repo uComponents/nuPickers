@@ -7,7 +7,7 @@ angular
 
             pickerResource.getEditorOptions($scope.model.config).then(function (response) {
 
-                var editorOptions = response.data; // [{"key":"","markup":""},{"key":"","markup":""}...]
+                var editorOptions = response.data; 
                 
                 // set isChecked state for each option based on any saved value
                 var savedKeys = $scope.model.value.split(',');

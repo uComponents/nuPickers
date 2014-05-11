@@ -12,7 +12,7 @@
         string DataSource { get; set; }
 
         /// <summary>
-        /// every picker must define an api controller from which it's editor will get it's options [{key:markup}...]
+        /// every picker must define an api controller from which it's editor will get it's options
         /// </summary>
         string ApiController { get; set; }
     }

@@ -2,13 +2,14 @@
 namespace nuComponents.DataTypes.Shared.LabelMacro
 {
     using nuComponents.DataTypes.Shared.Picker;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using umbraco;
-using umbraco.NodeFactory;
-using umbraco.presentation.templateControls;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+    using umbraco;
+    using umbraco.NodeFactory;
+    using umbraco.presentation.templateControls;
 
+    // TODO: rename to CustomLabel (as stylesheet relevant when adding a macro)
     public class LabelMacro
     {
         private string Alias { get; set; }
@@ -37,17 +38,17 @@ using umbraco.presentation.templateControls;
         /// <returns>the output of the macro as a string</returns>
         private string ProcessMacro(string key, string fallback)
         {
-            string markup = fallback;
+            string label = fallback;
 
             if (!string.IsNullOrWhiteSpace(this.Alias) && this.HasContext)
             {
                 Macro macro = new Macro() { Alias = this.Alias };
                 macro.MacroAttributes.Add("key", key);
 
-                markup = macro.RenderToString();
+                label = macro.RenderToString();
             }
 
-            return markup;
+            return label;
         }
 
         /// <summary>
@@ -64,7 +65,7 @@ using umbraco.presentation.templateControls;
 
                 foreach (PickerEditorOption pickerEditorOption in pickerEditorOptions)
                 {
-                    pickerEditorOption.Markup = labelMacro.ProcessMacro(pickerEditorOption.Key, pickerEditorOption.Markup);
+                    pickerEditorOption.Label = labelMacro.ProcessMacro(pickerEditorOption.Key, pickerEditorOption.Label);
                 }
             }
 

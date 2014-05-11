@@ -18,7 +18,7 @@
         <li ng-repeat="option in selectableOptions"
             ng-hide="model.config.listPicker.hideUsed && !isSelectable(option)"
             ng-class="{lit:lit, disabled:!isValidSelection(option), used:isUsed(option)}">
-            <div class="markup" ng-bind-html-unsafe="option.markup">
+            <div class="option-label" ng-bind-html-unsafe="option.label">
             </div>
 
             <a href=""
@@ -46,8 +46,8 @@
 
             <div ng-mouseenter="lit = isSortable()"
                  ng-mouseleave="lit = false"
-                 ng-class="{markup:true, sort:isSortable()}"
-                 ng-bind-html-unsafe="option.markup">
+                 ng-class="{'option-label':true, sort:isSortable()}"
+                 ng-bind-html-unsafe="option.label">
             </div>
         </li>
     </ul>
