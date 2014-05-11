@@ -9,18 +9,16 @@
     [PluginController("nuComponentsDataTypesShared")]
     public class LabelMacroApiController : UmbracoAuthorizedJsonController
     {
-        /// <returns>
-        ///     [{"name":"", "alias":"", "hasKey":bool}, ...]
-        /// </returns>
         public IEnumerable<object> GetMacros()
         {
             //using legacy api as no method on Umbraco.Core.Services.MacroSerivce to get all macros
-            return Macro.GetAll().Select(x => new
-            {
-                name = x.Name,
-                alias = x.Alias,
-                hasKey = x.Properties.Any(y => y.Alias == "key")
-            });
+            return Macro.GetAll()
+                        .Where(x => x.Properties.Any(y => y.Alias == "key"))
+                        .Select(x => new
+                        {
+                            name = x.Name,
+                            alias = x.Alias
+                        });
         }
     }
 }
