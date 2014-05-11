@@ -1,32 +1,5 @@
 ﻿<div ng-controller="nuComponents.DataTypes.Shared.ListPicker.ListPickerConfigController">
 
-    <!--<div class="control-group umb-control-group">
-        <label class="control-label" style="padding-top:8px !important; padding:0;" for="">
-            Css File
-            //<small>can use classes: .list-picker.data-type-id-??.property-alias=??</small>
-        </label>
-
-        <div class="controls controls-row">
-
-            <p>TODO:</p>
-
-        </div>
-    </div>-->
-
-    <!--<div class="control-group umb-control-group">
-
-        <label class="control-label" style="padding-top:8px !important; padding:0;" for="">
-            Script File
-            <small>executed after datatype has initialized</small>
-        </label>
-
-        <div class="controls controls-row">
-
-            <p>TODO:</p>
-
-        </div>
-    </div>-->
-
     <div class="control-group umb-control-group">
 
         <label class="control-label" style="padding-top:8px !important; padding:0;" for="">
@@ -36,7 +9,9 @@
 
         <div class="controls controls-row">
 
-            <input type="number" ng-model="model.value.listHeight" />
+            <input type="number" 
+                   ng-model="model.value.listHeight" 
+                   ng-init="model.value.listHeight = model.value.listHeight || 0"/>
 
         </div>
     </div>
@@ -51,7 +26,9 @@
 
         <div class="controls controls-row">
 
-            <input type="number" ng-model="model.value.minItems" ng-init="model.value.minItems = model.value.minItems || 0" />
+            <input type="number" 
+                   ng-model="model.value.minItems" 
+                   ng-init="model.value.minItems = model.value.minItems || 0" />
 
         </div>
     </div>
@@ -66,7 +43,9 @@
 
         <div class="controls controls-row">
 
-            <input type="number" ng-model="model.value.maxItems" ng-init="model.value.maxItems = model.value.maxItems || 0" />
+            <input type="number" 
+                   ng-model="model.value.maxItems" 
+                   ng-init="model.value.maxItems = model.value.maxItems || 0" />
 
         </div>
     </div>
@@ -82,7 +61,8 @@
 
         <div class="controls controls-row">
 
-            <input type="checkbox" ng-model="model.value.allowDuplicates" />
+            <input type="checkbox" 
+                   ng-model="model.value.allowDuplicates" />
 
         </div>
     </div>
@@ -97,7 +77,8 @@
 
         <div class="controls controls-row">
 
-            <input type="checkbox" ng-model="model.value.hideUsed" />
+            <input type="checkbox" 
+                   ng-model="model.value.hideUsed" />
 
         </div>
     </div>
@@ -112,7 +93,8 @@
 
         <div class="controls controls-row">
 
-            <input type="checkbox" ng-model="model.value.enableFiltering" />
+            <input type="checkbox" 
+                   ng-model="model.value.enableFiltering" />
 
         </div>
     </div>

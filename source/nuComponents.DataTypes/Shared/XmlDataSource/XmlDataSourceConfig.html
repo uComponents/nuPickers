@@ -12,7 +12,8 @@
 
         <div class="controls controls-row">
 
-            <select ng-model="model.value.xmlSchema">
+            <select ng-model="model.value.xmlSchema" 
+                    ng-init="model.value.xmlSchema = model.value.xmlSchema || 'content'">
                 <option value="content">Content</option>
                 <option value="media">Media</option>
                 <option value="member">Members</option>
@@ -31,7 +32,9 @@
 
         <div class="controls controls-row">
 
-            <input type="text" ng-model="model.value.optionsXPath" />
+            <input type="text" 
+                   ng-model="model.value.optionsXPath" 
+                   ng-init="model.value.optionsXPath = model.value.optionsXPath || '//*[@isDoc]'" />
 
         </div>
     </div>
@@ -44,7 +47,9 @@
 
         <div class="controls controls-row">
 
-            <input type="text" ng-model="model.value.keyAttribute" />
+            <input type="text" 
+                   ng-model="model.value.keyAttribute"
+                   ng-init="model.value.keyAttribute = model.value.keyAttribute || 'id'" />
 
         </div>
     </div>
@@ -58,7 +63,9 @@
 
         <div class="controls controls-row">
 
-            <input type="text" ng-model="model.value.labelAttribute" />
+            <input type="text" 
+                   ng-model="model.value.labelAttribute" 
+                   ng-init="model.value.labelAttribute = model.value.labelAttribute || 'nodeName'"/>
 
         </div>
     </div>
