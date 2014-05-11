@@ -1,11 +1,13 @@
 ﻿
 namespace nuComponents.DataTypes.Shared.LabelMacro
 {
-    using System.Linq;
-    using System.Web;
-    using umbraco;
-    using umbraco.NodeFactory;
-    using umbraco.presentation.templateControls;
+    using nuComponents.DataTypes.Shared.Picker;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using umbraco;
+using umbraco.NodeFactory;
+using umbraco.presentation.templateControls;
 
     public class LabelMacro
     {
@@ -33,7 +35,7 @@ namespace nuComponents.DataTypes.Shared.LabelMacro
         /// <param name="key">passed by parameter into the macro</param>
         /// <param name="fallback">value to return if macro fails</param>
         /// <returns>the output of the macro as a string</returns>
-        public string ProcessMacro(string key, string fallback)
+        private string ProcessMacro(string key, string fallback)
         {
             string markup = fallback;
 
@@ -46,6 +48,27 @@ namespace nuComponents.DataTypes.Shared.LabelMacro
             }
 
             return markup;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="macroAlias">the macro to use</param>
+        /// <param name="pickerEditorOptions">collection of options, this method may update their .Label properties</param>
+        /// <returns></returns>
+        public static IEnumerable<PickerEditorOption> ProcessPickerEditorOptions(string macroAlias, IEnumerable<PickerEditorOption> pickerEditorOptions)
+        {
+            if (macroAlias != null)
+            {
+                LabelMacro labelMacro = new LabelMacro(macroAlias);
+
+                foreach (PickerEditorOption pickerEditorOption in pickerEditorOptions)
+                {
+                    pickerEditorOption.Markup = labelMacro.ProcessMacro(pickerEditorOption.Key, pickerEditorOption.Markup);
+                }
+            }
+
+            return pickerEditorOptions;
         }
     }
 }

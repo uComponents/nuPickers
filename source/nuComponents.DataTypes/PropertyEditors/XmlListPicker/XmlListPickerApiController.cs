@@ -20,17 +20,7 @@
             
             IEnumerable<PickerEditorOption> pickerEditorOptions = xmlDataSource.GetEditorOptions();
 
-            if (config.labelMacro != null)
-            {
-                LabelMacro labelMacro = new LabelMacro((string)config.labelMacro);
-
-                foreach (PickerEditorOption pickerEditorOption in pickerEditorOptions)
-                {
-                    pickerEditorOption.Markup = labelMacro.ProcessMacro(pickerEditorOption.Key, pickerEditorOption.Markup);
-                }
-            }
-
-            return pickerEditorOptions;
+            return LabelMacro.ProcessPickerEditorOptions((string)config.labelMacro, pickerEditorOptions);
         }
     }
 }
