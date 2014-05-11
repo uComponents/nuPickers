@@ -14,6 +14,7 @@
 
     // CONFIG
     [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/Shared/XmlDataSource/XmlDataSourceConfigController.js")]
+    [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/Shared/LabelMacro/LabelMacroConfigController.js")]
     public class XmlCheckBoxPickerPropertyEditor : PropertyEditor
     {
         protected override PreValueEditor CreatePreValueEditor()

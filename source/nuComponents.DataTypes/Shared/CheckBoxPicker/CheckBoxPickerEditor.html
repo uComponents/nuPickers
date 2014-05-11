@@ -6,7 +6,7 @@
 
             <label>
                 <input type="checkbox" value="{{option.key}}" ng-model="option.isChecked" />
-                <span>{{option.markup}}</span>
+                <span class="option-label" ng-bind-html-unsafe="option.markup"></span>
             </label>
 
         </li>
