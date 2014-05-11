@@ -207,6 +207,9 @@
     <Compile Include="PropertyEditors\EnumListPicker\EnumListPickerApiController.cs" />
     <Compile Include="PropertyEditors\EnumListPicker\EnumListPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\EnumListPicker\EnumListPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\EnumRadioButtonPicker\EnumRadioButtonPickerApiController.cs" />
+    <Compile Include="PropertyEditors\EnumRadioButtonPicker\EnumRadioButtonPickerPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\EnumRadioButtonPicker\EnumRadioButtonPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\SqlDropDownPicker\SqlDropDownPickerApiController.cs" />
     <Compile Include="PropertyEditors\SqlDropDownPicker\SqlDropDownPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\SqlDropDownPicker\SqlDropDownPickerPropertyEditor.cs" />
@@ -239,7 +242,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="PropertyEditors\EnumRadioButtonPicker\" />
     <Folder Include="PropertyEditors\RelationTypeMatches\" />
     <Folder Include="PropertyEditors\SqlCheckBoxPicker\" />
     <Folder Include="PropertyEditors\SqlListPicker\" />

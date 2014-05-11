@@ -5,7 +5,7 @@
         <li ng-repeat="option in radioButtonPickerOptions">
 
             <label>
-                <input name="radioButtonPicker" type="radio" value="{{ option.key }}" ng-model="model.value" />
+                <input ng-name="radioButtonPicker" type="radio" value="{{ option.key }}" ng-model="model.value" />
                 <span ng-bind-html-unsafe="option.label"></span>
             </label>
 
