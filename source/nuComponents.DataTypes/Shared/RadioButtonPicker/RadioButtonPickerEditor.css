@@ -1,7 +1,7 @@
 ﻿/*
 <div class="radio-button-picker">
 
-    <ul>
+    <ul class="(horizontal || vertical)">
         <li>
             <label>
                 <input type="radio"  />
@@ -19,8 +19,7 @@
     margin: 0;
 }
 
-
-/*.radio-button-picker .horizontal li
+.radio-button-picker .horizontal li
 {
     display:inline;
 }
@@ -28,4 +27,4 @@
 .radio-button-picker .vertical li
 {
     
-}*/
+}

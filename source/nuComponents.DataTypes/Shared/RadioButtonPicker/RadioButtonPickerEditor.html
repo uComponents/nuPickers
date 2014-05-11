@@ -1,7 +1,7 @@
 ﻿
 <div ng-controller="nuComponents.DataTypes.Shared.RadioButtonPicker.RadioButtonPickerEditorController" class="radio-button-picker">
 
-    <ul>
+    <ul ng-class="model.config.radioButtonPicker.layoutDirection">
         <li ng-repeat="option in radioButtonPickerOptions">
 
             <label>

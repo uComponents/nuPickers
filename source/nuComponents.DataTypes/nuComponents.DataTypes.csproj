@@ -295,6 +295,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Shared\RadioButtonPicker\RadioButtonPickerEditor.css" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\RadioButtonPicker\RadioButtonPickerConfig.html" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>XCOPY "$(TargetPath)" "C:\Users\Hendy\Documents\Projects\Experiments\nuComponentsUmbracoTestSite\nuComponentsUmbracoTestSite.Web\bin" /y</PostBuildEvent>
