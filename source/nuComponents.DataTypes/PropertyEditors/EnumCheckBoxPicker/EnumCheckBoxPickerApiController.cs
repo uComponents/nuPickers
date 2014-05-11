@@ -3,8 +3,9 @@ namespace nuComponents.DataTypes.PropertyEditors.EnumCheckBoxPicker
 {
     using Newtonsoft.Json.Linq;
     using nuComponents.DataTypes.Interfaces;
-    using nuComponents.DataTypes.Shared.Picker;
+    using nuComponents.DataTypes.Shared.CustomLabel;
     using nuComponents.DataTypes.Shared.EnumDataSource;
+    using nuComponents.DataTypes.Shared.Picker;
     using System.Collections.Generic;
     using System.Web.Http;
     using Umbraco.Web.Editors;
@@ -18,7 +19,9 @@ namespace nuComponents.DataTypes.PropertyEditors.EnumCheckBoxPicker
         {
             EnumDataSource enumDataSource = ((JObject)config.dataSource).ToObject<EnumDataSource>();
 
-            return enumDataSource.GetEditorOptions();
+            IEnumerable<PickerEditorOption> pickerEditorOptions = enumDataSource.GetEditorOptions();
+
+            return CustomLabel.ProcessPickerEditorOptions((string)config.customLabel, pickerEditorOptions);
         }
     }
 }
