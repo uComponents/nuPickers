@@ -1,0 +1,15 @@
+﻿
+<div ng-controller="nuComponents.DataTypes.Shared.RadioButtonPicker.RadioButtonPickerEditorController" class="radio-button-picker">
+
+    <ul>
+        <li ng-repeat="option in radioButtonPickerOptions">
+
+            <label>
+                <input name="radioButtonPicker" type="radio" value="{{ option.key }}" ng-model="model.value" />
+                <span>{{ option.markup }}</span>
+            </label>
+
+        </li>
+    </ul>
+
+</div>

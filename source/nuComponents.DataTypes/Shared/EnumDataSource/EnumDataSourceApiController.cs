@@ -1,15 +1,11 @@
 ﻿namespace nuComponents.DataTypes.Shared
 {
-    using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
     using System.Reflection;
-    using System.Web;
     using System.Web.Hosting;
     using System.Web.Http;
-    using umbraco;
-    using umbraco.cms.businesslogic.macro;
     using Umbraco.Web.Editors;
     using Umbraco.Web.Mvc;
 

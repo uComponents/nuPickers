@@ -1,0 +1,31 @@
+﻿/*
+<div class="radio-button-picker">
+
+    <ul>
+        <li>
+            <label>
+                <input type="radio"  />
+                <span />
+            </label>
+        </li>
+    </ul>
+
+</div>
+*/
+
+.radio-button-picker ul
+{
+    list-style-type: none;
+    margin: 0;
+}
+
+
+/*.radio-button-picker .horizontal li
+{
+    display:inline;
+}
+
+.radio-button-picker .vertical li
+{
+    
+}*/

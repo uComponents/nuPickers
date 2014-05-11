@@ -4,6 +4,7 @@ namespace nuComponents.DataTypes.Shared.EnumDataSource
 {
     /// <summary>
     /// Attribute that can be applied to enum fields, to configure how the EnumDataSource generates it's data
+    /// NOTE: this is virtually the same as Shared/Picker/PickerEditorOption.cs
     /// </summary>
     public class EnumDataSourceAttribute : Attribute
     {
@@ -23,7 +24,7 @@ namespace nuComponents.DataTypes.Shared.EnumDataSource
         public bool Enabled { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EnumCheckBoxListAttribute"/> class.
+        /// Initializes a new instance of the <see cref="EnumDataSourceAttribute"/> class.
         /// </summary>
         public EnumDataSourceAttribute()
         {

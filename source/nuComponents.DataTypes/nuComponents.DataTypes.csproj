@@ -213,6 +213,9 @@
     <Compile Include="PropertyEditors\XmlListPicker\XmlListPickerApiController.cs" />
     <Compile Include="PropertyEditors\XmlListPicker\XmlListPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\XmlListPicker\XmlListPickerPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\XmlRadioButtonPicker\XmlRadioButtonPickerApiController.cs" />
+    <Compile Include="PropertyEditors\XmlRadioButtonPicker\XmlRadioButtonPickerPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\XmlRadioButtonPicker\XmlRadioButtonPickerPropertyEditor.cs" />
     <Compile Include="Shared\EnumDataSource\EnumDataSource.cs" />
     <Compile Include="Shared\EnumDataSource\EnumDataSourceApiController.cs" />
     <Compile Include="Shared\EnumDataSource\EnumDataSourceAttribute.cs" />
@@ -236,11 +239,9 @@
     <Folder Include="PropertyEditors\SqlCheckBoxPicker\" />
     <Folder Include="PropertyEditors\SqlListPicker\" />
     <Folder Include="PropertyEditors\SqlRadioButtonPicker\" />
-    <Folder Include="PropertyEditors\XmlRadioButtonPicker\" />
     <Folder Include="Shared\AutoCompletePicker\" />
     <Folder Include="Shared\JsonDataSource\" />
     <Folder Include="Shared\MinMax\" />
-    <Folder Include="Shared\RadioButtonPicker\" />
     <Folder Include="Shared\RelationTypeMapping\" />
     <Folder Include="Shared\SaveFormat\" />
   </ItemGroup>
@@ -286,6 +287,13 @@
   <ItemGroup>
     <EmbeddedResource Include="Shared\EnumDataSource\EnumDataSourceConfig.html" />
     <EmbeddedResource Include="Shared\EnumDataSource\EnumDataSourceConfigController.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\RadioButtonPicker\RadioButtonPickerEditor.html" />
+    <EmbeddedResource Include="Shared\RadioButtonPicker\RadioButtonPickerEditorController.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\RadioButtonPicker\RadioButtonPickerEditor.css" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
