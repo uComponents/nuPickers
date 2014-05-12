@@ -23,7 +23,7 @@
 
             <a href=""
                class="button"
-               ng-class="{disabled:!isValidSelection(option)}"
+               ng-class="isValidSelection(option) ? 'active' : 'disabled'" 
                ng-mouseenter="lit = isValidSelection(option)"
                ng-mouseleave="lit = false"
                ng-click="lit = false; selectOption(option)">
