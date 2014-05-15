@@ -8,6 +8,9 @@ namespace nuComponents.DataTypes.Shared.CustomLabel
     using umbraco;
     using umbraco.NodeFactory;
     using umbraco.presentation.templateControls;
+    using System.IO;
+    using System.Text;
+    using System.Web.UI;
 
     public class CustomLabel
     {
@@ -44,7 +47,7 @@ namespace nuComponents.DataTypes.Shared.CustomLabel
                 Macro macro = new Macro() { Alias = this.Alias };
                 macro.MacroAttributes.Add("key", key);
 
-                label = macro.RenderToString();
+                label = this.RenderToString(macro);
             }
 
             return label;
@@ -69,6 +72,22 @@ namespace nuComponents.DataTypes.Shared.CustomLabel
             }
 
             return pickerEditorOptions;
+        }
+
+        /// <summary>
+        /// Method added here to remove the need for the more generic ControlExtensions (as unlikely to need this functionality elsewhere)
+        /// </summary>
+        /// <param name="macro"></param>
+        private string RenderToString(Macro macro)
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            using (StringWriter stringWriter = new StringWriter(stringBuilder))
+            using (HtmlTextWriter htmlTextWriter = new HtmlTextWriter(stringWriter))
+            {
+                macro.RenderControl(htmlTextWriter);
+            }
+
+            return stringBuilder.ToString();
         }
     }
 }

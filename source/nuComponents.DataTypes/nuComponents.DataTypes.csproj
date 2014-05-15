@@ -193,7 +193,6 @@
   <ItemGroup>
     <Compile Include="EmbeddedResourceController.cs" />
     <Compile Include="EmbeddedResourceStartup.cs" />
-    <Compile Include="ExtensionMethods.cs" />
     <Compile Include="Interfaces\IPickerApiController.cs" />
     <Compile Include="Interfaces\IPickerDataSource.cs" />
     <Compile Include="Interfaces\IPickerPreValueEditor.cs" />
