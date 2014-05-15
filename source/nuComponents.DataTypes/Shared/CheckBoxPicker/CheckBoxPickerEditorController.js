@@ -26,7 +26,6 @@ angular
                 $scope.$watch('checkBoxPickerOptions', function () {
 
                     //recreate the csv in model.value for Umbraco - TODO: json, xml, or csv
-                    console.log('check boxes changed')
 
                     $scope.model.value = $scope.checkBoxPickerOptions
                                                     .filter(function(option) {
