@@ -258,7 +258,6 @@
     <Folder Include="Shared\JsonDataSource\" />
     <Folder Include="Shared\MinMax\" />
     <Folder Include="Shared\RelationTypeDataSource\" />
-    <Folder Include="Shared\SaveFormat\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Shared\ListPicker\ButtonAdd.png" />
@@ -322,6 +321,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Shared\ListPicker\ButtonRight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\SaveFormat\SaveFormatConfig.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

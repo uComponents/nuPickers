@@ -5,10 +5,7 @@ angular
     .controller("nuComponents.DataTypes.Shared.ListPicker.ListPickerEditorController",
         ['$scope', 'nuComponents.DataTypes.Shared.Picker.PickerResource',
         function ($scope, pickerResource) {
-
             /*
-                expects to find:
-
                     $scope.model.config.listPicker = {
                                 "cssFile":null,
                                 "scriptFile":null,
@@ -19,10 +16,6 @@ angular
                                 "hideUsed":"false",
                                 "enableFiltering":"true"}
                             }
-
-                    $scope.model.config.labelMacro = ""
-
-                    $scope.model.config.apiController = "XPathTemplatableListApi" 
             */
 
             // array of option objects, for the selectable list 
@@ -71,10 +64,10 @@ angular
                         && (($scope.selectedOptions.length < $scope.model.config.listPicker.maxItems) || $scope.model.config.listPicker.maxItems == 0);
                 // TODO: and selectable options, has valid options
             }
-
-            // return true if there is are at least two different items selected
+            
             $scope.isSortable = function () {
 
+                // return true if there is are at least two different items selected
                 if (!$scope.model.config.allowDuplicates && $scope.selectedOptions > 1) {
                     return true;
                 }
@@ -90,15 +83,13 @@ angular
                 $scope.selectedOptions.splice($index, 1);
             };
 
-
             // call api, supplying all configuration details, and expect a collection of options (key / label) to be populated
-            //pickerResource.getEditorOptions($scope.model.config.configuration).then(function (response) {
             pickerResource.getEditorOptions($scope.model.config).then(function (response) {
 
                 var editorOptions = response.data; // [{"key":"","label":""},{"key":"","label":""}...]
 
-                // build selected options (from saved csv)
-                var savedKeys = $scope.model.value.split(',');
+                // build selected options
+                var savedKeys = pickerResource.getSavedKeys($scope.model.value);
                 for (var i = 0; i < savedKeys.length; i++) { // loop though each saved key
                     for (var j = 0; j < editorOptions.length; j++) { // loop though each editor option
                         if (savedKeys[i] == editorOptions[j].key) {
@@ -111,14 +102,12 @@ angular
                 // setup watch on selected options
                 $scope.$watchCollection('selectedOptions', function () {
 
-                    //recreate the csv in model.value for Umbraco - TODO: json, xml, or csv
-                    $scope.model.value = $scope.selectedOptions.map(function (option) { return option.key; }).join();
+                    // use the picker resourse to save in the correct format
+                    $scope.model.value = pickerResource.createSaveValue($scope.model.config, $scope.selectedOptions);
 
                     // TODO: how to return error to Umbraco ?
                     //var isValid = ($scope.selectableOptions.length >= $scope.model.config.minItems
                     //               && ($scope.selectableOptions.length <= $scope.model.config.maxItems || $scope.model.config.maxItems < 1));
-
-
 
                     // toggle sorting ui
                     $scope.sortableConfiguration.disabled = !$scope.isSortable();
