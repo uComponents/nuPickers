@@ -4,7 +4,7 @@ namespace nuComponents.DataTypes.Interfaces
     using System.Collections.Generic;
     using nuComponents.DataTypes.Shared.Picker;
 
-    interface IPickerDataSource
+    internal interface IPickerDataSource
     {
         /// <summary>
         /// all pickers require a collection to select from
