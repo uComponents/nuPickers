@@ -244,6 +244,7 @@
     <Compile Include="Shared\CustomLabel\CustomLabelApiController.cs" />
     <Compile Include="Shared\RelationTypeMapping\RelationTypeMappingApiController.cs" />
     <Compile Include="Shared\RelationTypeMapping\RelationTypeMappingEventHandler.cs" />
+    <Compile Include="Shared\SaveFormat\SaveFormat.cs" />
     <Compile Include="Shared\SqlDataSource\SqlDataSource.cs" />
     <Compile Include="Shared\SqlDataSource\SqlDataSourceApiController.cs" />
     <Compile Include="Shared\XmlDataSource\XmlDataSource.cs" />
@@ -324,6 +325,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Shared\SaveFormat\SaveFormatConfig.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\SaveFormat\SaveFormatResource.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
