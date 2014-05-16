@@ -196,6 +196,7 @@
     <Compile Include="Interfaces\IPickerApiController.cs" />
     <Compile Include="Interfaces\IPickerDataSource.cs" />
     <Compile Include="Interfaces\IPickerPreValueEditor.cs" />
+    <Compile Include="Interfaces\IRelationTypeMapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyEditors\EnumCheckBoxPicker\EnumCheckBoxPickerApiController.cs" />
     <Compile Include="PropertyEditors\EnumCheckBoxPicker\EnumCheckBoxPickerPreValueEditor.cs" />
@@ -241,6 +242,8 @@
     </Compile>
     <Compile Include="Shared\CustomLabel\CustomLabel.cs" />
     <Compile Include="Shared\CustomLabel\CustomLabelApiController.cs" />
+    <Compile Include="Shared\RelationTypeMapping\RelationTypeMappingApiController.cs" />
+    <Compile Include="Shared\RelationTypeMapping\RelationTypeMappingEventHandler.cs" />
     <Compile Include="Shared\SqlDataSource\SqlDataSource.cs" />
     <Compile Include="Shared\SqlDataSource\SqlDataSourceApiController.cs" />
     <Compile Include="Shared\XmlDataSource\XmlDataSource.cs" />
@@ -255,7 +258,6 @@
     <Folder Include="Shared\JsonDataSource\" />
     <Folder Include="Shared\MinMax\" />
     <Folder Include="Shared\RelationTypeDataSource\" />
-    <Folder Include="Shared\RelationTypeMapping\" />
     <Folder Include="Shared\SaveFormat\" />
   </ItemGroup>
   <ItemGroup>
@@ -310,6 +312,10 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Shared\RadioButtonPicker\RadioButtonPickerConfig.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\RelationTypeMapping\RelationTypeMappingConfig.html" />
+    <EmbeddedResource Include="Shared\RelationTypeMapping\RelationTypeMappingConfigController.js" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Shared\ListPicker\ButtonLeft.png" />

@@ -8,6 +8,9 @@
         [PreValueField("dataSource", "", "App_Plugins/nuComponents/DataTypes/Shared/XmlDataSource/XmlDataSourceConfig.html", HideLabel = true)]
         public string DataSource { get; set; }
 
+        [PreValueField("relationTypeMapping", "", "App_Plugins/nuComponents/DataTypes/Shared/RelationTypeMapping/RelationTypeMappingConfig.html", HideLabel = true)]
+        public string RelationTypeMapping { get; set; }
+
         /// <summary>
         /// NOTE: the name 'XmlDropDownPickerApi' is injected into the 'apiController' hidden field value
         /// </summary>
