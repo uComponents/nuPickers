@@ -31,7 +31,7 @@ angular.module('umbraco.resources')
                         //    break;
 
                         case 'xml':
-                            var xml = '<PickedOptions picker="">';
+                            var xml = '<PickedOptions>';
                             
                             for (var i = 0; i < pickedOptions.length; i++)
                             {
