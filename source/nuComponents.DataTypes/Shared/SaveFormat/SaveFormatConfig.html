@@ -1,7 +1,7 @@
 ﻿
 
 <label>
-    <input name="saveFormat" type="radio" value="csv" ng-model="model.value" />
+    <input name="saveFormat" type="radio" value="csv" ng-model="model.value" ng-init="model.value = model.value || 'csv'" />
     <span>CSV</span>
 </label>
 
