@@ -10,7 +10,7 @@ angular
                 var editorOptions = response.data; 
                 
                 // set isChecked state for each option based on any saved value
-                var savedKeys = $scope.model.value.split(',');
+                var savedKeys = pickerResource.getSavedKeys($scope.model.value);
                 for (var i = 0; i < savedKeys.length; i++) { // loop though each saved key
                     for (var j = 0; j < editorOptions.length; j++) { // loop though each editor option
                         if (savedKeys[i] == editorOptions[j].key) {
@@ -25,17 +25,10 @@ angular
                 // setup watch on selected options
                 $scope.$watch('checkBoxPickerOptions', function () {
 
-                    //recreate the csv in model.value for Umbraco - TODO: json, xml, or csv
-
-                    $scope.model.value = $scope.checkBoxPickerOptions
-                                                    .filter(function(option) {
-                                                        return option.isChecked == true;
-                                                    })
-                                                    .map(function(option) { 
-                                                        return option.key 
-                                                    })
-                                                    .join();
-
+                    $scope.model.value = pickerResource.createSaveValue($scope.model.config,
+                                                                        $scope.checkBoxPickerOptions.filter(function (option) {
+                                                                            return option.isChecked == true;
+                                                                        }));
                 },
                 true); // deep watch
 

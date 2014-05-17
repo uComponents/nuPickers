@@ -20,7 +20,6 @@ angular
                             $scope.pickedOption = $scope.dropDownPickerOptions[i];
                             found = true;
                         }
-
                         i++;
 
                     } while (!found && i < $scope.dropDownPickerOptions.length)                  

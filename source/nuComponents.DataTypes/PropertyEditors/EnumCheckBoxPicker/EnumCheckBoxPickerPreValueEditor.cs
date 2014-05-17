@@ -15,6 +15,9 @@ namespace nuComponents.DataTypes.PropertyEditors.EnumCheckBoxPicker
         [PreValueField("checkBoxPicker", "", "App_Plugins/nuComponents/DataTypes/Shared/CheckBoxPicker/CheckBoxPickerConfig.html", HideLabel = true)]
         public string CheckBoxPicker { get; set; }
 
+        [PreValueField("saveFormat", "Save Format", "App_Plugins/nuComponents/DataTypes/Shared/SaveFormat/SaveFormatConfig.html")]
+        public string SaveFormat { get; set; }
+
         [PreValueField("apiController", "EnumCheckBoxPickerApi", "App_Plugins/nuComponents/DataTypes/Shared/HiddenConstant/HiddenConstantConfig.html", HideLabel = true)]
         public string ApiController { get; set; }
     }
