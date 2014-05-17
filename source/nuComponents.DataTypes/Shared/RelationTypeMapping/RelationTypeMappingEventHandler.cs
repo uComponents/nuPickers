@@ -10,6 +10,7 @@ namespace nuComponents.DataTypes.Shared.RelationTypeMapping
     using Umbraco.Core.Services;
     using LegacyRelation = umbraco.cms.businesslogic.relation.Relation;
     using LegacyRelationType = umbraco.cms.businesslogic.relation.RelationType;
+    using nuComponents.DataTypes.Shared.SaveFormat;
 
     public class RelationTypeMappingEventHandler : ApplicationEventHandler
     {
@@ -38,11 +39,13 @@ namespace nuComponents.DataTypes.Shared.RelationTypeMapping
 
                             if (property.Value != null)
                             {
-                                IEnumerable<int> pickedIds = ((string)property.Value).Split(',').Select(int.Parse);
-
-                                foreach (int pickedId in pickedIds)
+                                foreach(string key in SaveFormat.GetSavedKeys((string)property.Value))
                                 {
-                                    CreateRelation(relationType, savedEntity.Id, pickedId, true, string.Empty);
+                                    int pickedId;
+                                    if (int.TryParse(key, out pickedId))
+                                    {
+                                        CreateRelation(relationType, savedEntity.Id, pickedId, true, string.Empty);
+                                    }
                                 }
                             }
                         }
@@ -62,7 +65,6 @@ namespace nuComponents.DataTypes.Shared.RelationTypeMapping
                     if (this.SupportsRelationTypeMapping(propertyType))
                     {
                         string relationTypeAlias = this.GetRelationTypeAlias(propertyType);
-                        //string[] keys = ((string)property.Value).Split(',');
 
                         LegacyRelationType relationType = LegacyRelationType.GetByAlias(relationTypeAlias);
                         if (relationType != null)
@@ -156,6 +158,8 @@ namespace nuComponents.DataTypes.Shared.RelationTypeMapping
 
         private static void CreateRelation(LegacyRelationType relationType, int contextId, int pickedId, bool reverseIndexing, string instanceIdentifier)
         {
+            // TODO: validate that contextId and pickedId are of the types defined on the relationtype
+
             if (reverseIndexing)
             {
                 LegacyRelation.MakeNew(pickedId, contextId, relationType, instanceIdentifier);

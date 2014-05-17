@@ -1,18 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace nuComponents.DataTypes.Shared.SaveFormat
 {
-    internal class SaveFormat
-    {
-        internal string[] GetSavedKeys(string savedValue)
-        {
-            // server side version of parsing the saved string
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Xml.Linq;
 
-            return null;
+    internal static class SaveFormat
+    {
+        internal static IEnumerable<string> GetSavedKeys(string savedValue)
+        {
+            if (!string.IsNullOrWhiteSpace(savedValue))
+            {
+                switch (savedValue[0])
+                {
+                    //case '[':
+                    //    break;
+
+                    case '<':
+                        // TODO: check xml is valid
+                        return XDocument.Parse(savedValue).Descendants("PickedOption").Select(x => x.Attribute("Key").Value);
+
+                    default: // csv
+                        return savedValue.Split(',');                          
+                }
+            }
+
+            return Enumerable.Empty<string>();
         }
     }
 }

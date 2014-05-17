@@ -46,7 +46,7 @@ angular.module('umbraco.resources')
                         //case '[':
 
 
-                        case '<':
+                        case '<': // TODO: check xml is valid, as a csv key could begin with a '<' !
                             var keys = new Array();
                             var xml = $.parseXML(saveValue); // $ is jQuery
 
