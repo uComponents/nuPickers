@@ -8,7 +8,7 @@ angular
         //$scope.model.value = $scope.model.value || new Object();
         //$scope.model.value.assemblyName = $scope.model.value.assemblyName || '';
 
-        $http.get('backoffice/nuComponentsDataTypesShared/EnumDataSourceApi/GetAssemblyNames').then(function (response) {
+        $http.get('backoffice/nuComponents/EnumDataSourceApi/GetAssemblyNames').then(function (response) {
 
             $scope.assemblyNames = response.data;
 
@@ -17,7 +17,7 @@ angular
                 $scope.enumNames = null;
                 //$scope.model.value.enumName = null;
                 
-                $http.get('backoffice/nuComponentsDataTypesShared/EnumDataSourceApi/GetEnumNames',
+                $http.get('backoffice/nuComponents/EnumDataSourceApi/GetEnumNames',
                     { params: { assemblyName: $scope.model.value.assemblyName } })
                     .then(function (response) {
 

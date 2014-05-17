@@ -11,7 +11,7 @@ angular
         };
 
 
-        $http.get('backoffice/nuComponentsDataTypesShared/SqlDataSourceApi/GetConnectionStrings').then(function (response) {
+        $http.get('backoffice/nuComponents/SqlDataSourceApi/GetConnectionStrings').then(function (response) {
             $scope.connectionStrings = response.data;
         });
 

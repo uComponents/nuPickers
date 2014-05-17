@@ -7,7 +7,7 @@
     using Umbraco.Web.Editors;
     using Umbraco.Web.Mvc;
 
-    [PluginController("nuComponentsDataTypesShared")]
+    [PluginController("nuComponents")]
     public class SqlDataSourceApiController : UmbracoAuthorizedJsonController
     {
         public IEnumerable<object> GetConnectionStrings()

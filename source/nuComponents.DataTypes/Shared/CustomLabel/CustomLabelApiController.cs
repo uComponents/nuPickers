@@ -6,7 +6,7 @@
     using Umbraco.Web.Editors;
     using Umbraco.Web.Mvc;
 
-    [PluginController("nuComponentsDataTypesShared")]
+    [PluginController("nuComponents")]
     public class CustomLabelApiController : UmbracoAuthorizedJsonController
     {
         public IEnumerable<object> GetMacros()
