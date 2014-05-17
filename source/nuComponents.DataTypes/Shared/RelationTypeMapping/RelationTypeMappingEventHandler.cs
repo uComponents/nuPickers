@@ -1,6 +1,7 @@
 ﻿
 namespace nuComponents.DataTypes.Shared.RelationTypeMapping
 {
+    using nuComponents.DataTypes.Shared.SaveFormat;
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
@@ -10,7 +11,6 @@ namespace nuComponents.DataTypes.Shared.RelationTypeMapping
     using Umbraco.Core.Services;
     using LegacyRelation = umbraco.cms.businesslogic.relation.Relation;
     using LegacyRelationType = umbraco.cms.businesslogic.relation.RelationType;
-    using nuComponents.DataTypes.Shared.SaveFormat;
 
     public class RelationTypeMappingEventHandler : ApplicationEventHandler
     {
@@ -96,9 +96,25 @@ namespace nuComponents.DataTypes.Shared.RelationTypeMapping
 
         private bool SupportsRelationTypeMapping(PropertyType propertyType)
         {
-            if (propertyType != null && propertyType.Alias == "xmlDropDownPicker")
+            //TODO: use an interface with a method to get values, then external pickers can also hook into this
+            if (propertyType != null)
             {
-                return true;
+                switch (propertyType.Alias)
+                {
+                    case "enumCheckBoxPicker":
+                    case "enumDropDownPicker":
+                    case "enumListPicker":
+                    case "enumRadioButtonPicker":
+                    case "sqlCheckBoxPicker":
+                    case "sqlDropDownPicker":
+                    case "sqlListPicker":
+                    case "sqlRadioButtonPicker":
+                    case "xmlCheckBoxPicker":
+                    case "xmlDropDownPicker":
+                    case "xmlListPicker":
+                    case "xmlRadioButtonPicker":
+                        return true;                        
+                }
             }
 
             return false;
@@ -169,6 +185,5 @@ namespace nuComponents.DataTypes.Shared.RelationTypeMapping
                 LegacyRelation.MakeNew(contextId, pickedId, relationType, instanceIdentifier);
             }
         }
-
     }
 }

@@ -15,6 +15,9 @@ namespace nuComponents.DataTypes.PropertyEditors.XmlListPicker
         [PreValueField("listPicker", "", "App_Plugins/nuComponents/DataTypes/Shared/ListPicker/ListPickerConfig.html", HideLabel = true)]
         public string ListPicker { get; set; }
 
+        [PreValueField("relationTypeMapping", "", "App_Plugins/nuComponents/DataTypes/Shared/RelationTypeMapping/RelationTypeMappingConfig.html", HideLabel = true)]
+        public string RelationTypeMapping { get; set; }
+
         [PreValueField("saveFormat", "Save Format", "App_Plugins/nuComponents/DataTypes/Shared/SaveFormat/SaveFormatConfig.html")]
         public string SaveFormat { get; set; }
 
