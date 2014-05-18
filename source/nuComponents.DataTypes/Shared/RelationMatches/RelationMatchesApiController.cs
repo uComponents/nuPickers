@@ -26,7 +26,7 @@ namespace nuComponents.DataTypes.Shared.RelationMatches
 
         
         [HttpPost]
-        public IEnumerable<PickerEditorOption> GetEditorOptions([FromBody] dynamic config)
+        public IEnumerable<PickerEditorOption> GetEditorOptions([FromBody] dynamic config, [FromUri] int contextId)
         {
             List<PickerEditorOption> pickerEditorOptions = new List<PickerEditorOption>();
 

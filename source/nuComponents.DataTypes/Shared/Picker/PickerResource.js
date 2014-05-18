@@ -1,8 +1,8 @@
 ﻿
 angular.module('umbraco.resources')
     .factory('nuComponents.DataTypes.Shared.Picker.PickerResource',
-    ['$http', 'nuComponents.DataTypes.Shared.SaveFormat.SaveFormatResource',
-        function ($http, saveFormatResource) {
+    ['$http', 'nuComponents.DataTypes.Shared.SaveFormat.SaveFormatResource', 'editorState',
+        function ($http, saveFormatResource, editorState) {
 
             return {
                  
@@ -12,6 +12,7 @@ angular.module('umbraco.resources')
                     return $http({
                         method: 'POST',
                         url: 'backoffice/nuComponents/' + config.apiController + '/GetEditorOptions',
+                        params: { 'contextId':  editorState.current.id },
                         data: config
                     });
 
