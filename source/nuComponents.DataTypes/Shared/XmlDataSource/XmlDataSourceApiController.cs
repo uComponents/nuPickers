@@ -1,5 +1,5 @@
 ﻿
-namespace nuComponents.DataTypes.PropertyEditors.XmlRadioButtonPicker
+namespace nuComponents.DataTypes.Shared.XmlDataSource
 {
     using Newtonsoft.Json.Linq;
     using nuComponents.DataTypes.Interfaces;
@@ -12,7 +12,7 @@ namespace nuComponents.DataTypes.PropertyEditors.XmlRadioButtonPicker
     using Umbraco.Web.Mvc;
 
     [PluginController("nuComponents")]
-    public class XmlRadioButtonPickerApiController : UmbracoAuthorizedJsonController, IPickerApiController
+    public class XmlDataSourceApiController : UmbracoAuthorizedJsonController, IPickerApiController
     {
         [HttpPost]
         public IEnumerable<PickerEditorOption> GetEditorOptions([FromBody] dynamic config)
@@ -25,4 +25,3 @@ namespace nuComponents.DataTypes.PropertyEditors.XmlRadioButtonPicker
         }
     }
 }
-

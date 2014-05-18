@@ -21,7 +21,7 @@ namespace nuComponents.DataTypes.PropertyEditors.XmlRadioButtonPicker
         [PreValueField("saveFormat", "Save Format", "App_Plugins/nuComponents/DataTypes/Shared/SaveFormat/SaveFormatConfig.html")]
         public string SaveFormat { get; set; }
 
-        [PreValueField("apiController", "XmlRadioButtonPickerApi", "App_Plugins/nuComponents/DataTypes/Shared/HiddenConstant/HiddenConstantConfig.html", HideLabel = true)]
+        [PreValueField("apiController", "XmlDataSourceApi", "App_Plugins/nuComponents/DataTypes/Shared/HiddenConstant/HiddenConstantConfig.html", HideLabel = true)]
         public string ApiController { get; set; }
     }
 }

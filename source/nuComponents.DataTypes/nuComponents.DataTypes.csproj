@@ -216,16 +216,12 @@
     <Compile Include="PropertyEditors\SqlListPicker\SqlListPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\SqlRadioButtonPicker\SqlRadioButtonPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\SqlRadioButtonPicker\SqlRadioButtonPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\XmlCheckBoxPicker\XmlCheckBoxPickerApiController.cs" />
     <Compile Include="PropertyEditors\XmlCheckBoxPicker\XmlCheckBoxPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\XmlCheckBoxPicker\XmlCheckBoxPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\XmlDropDownPicker\XmlDropDownPickerApiController.cs" />
     <Compile Include="PropertyEditors\XmlDropDownPicker\XmlDropDownPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\XmlDropDownPicker\XmlDropDownPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\XmlListPicker\XmlListPickerApiController.cs" />
     <Compile Include="PropertyEditors\XmlListPicker\XmlListPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\XmlListPicker\XmlListPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\XmlRadioButtonPicker\XmlRadioButtonPickerApiController.cs" />
     <Compile Include="PropertyEditors\XmlRadioButtonPicker\XmlRadioButtonPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\XmlRadioButtonPicker\XmlRadioButtonPickerPropertyEditor.cs" />
     <Compile Include="Shared\EnumDataSource\EnumDataSource.cs" />
@@ -243,6 +239,7 @@
     <Compile Include="Shared\SqlDataSource\SqlDataSource.cs" />
     <Compile Include="Shared\SqlDataSource\SqlDataSourceApiController.cs" />
     <Compile Include="Shared\XmlDataSource\XmlDataSource.cs" />
+    <Compile Include="Shared\XmlDataSource\XmlDataSourceApiController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
