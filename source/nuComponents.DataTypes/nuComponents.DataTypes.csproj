@@ -208,16 +208,12 @@
     <Compile Include="PropertyEditors\EnumRadioButtonPicker\EnumRadioButtonPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\RelationMatches\RelationMatchesPreValueEditor.cs" />
     <Compile Include="PropertyEditors\RelationMatches\RelationMatchesPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\SqlCheckBoxPicker\SqlCheckBoxPickerApiController.cs" />
     <Compile Include="PropertyEditors\SqlCheckBoxPicker\SqlCheckBoxPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\SqlCheckBoxPicker\SqlCheckBoxPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\SqlDropDownPicker\SqlDropDownPickerApiController.cs" />
     <Compile Include="PropertyEditors\SqlDropDownPicker\SqlDropDownPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\SqlDropDownPicker\SqlDropDownPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\SqlListPicker\SqlListPickerApiController.cs" />
     <Compile Include="PropertyEditors\SqlListPicker\SqlListPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\SqlListPicker\SqlListPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\SqlRadioButtonPicker\SqlRadioButtonPickerApiController.cs" />
     <Compile Include="PropertyEditors\SqlRadioButtonPicker\SqlRadioButtonPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\SqlRadioButtonPicker\SqlRadioButtonPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\XmlCheckBoxPicker\XmlCheckBoxPickerApiController.cs" />
