@@ -21,7 +21,7 @@ namespace nuComponents.DataTypes.PropertyEditors.EnumListPicker
         [PreValueField("saveFormat", "Save Format", "App_Plugins/nuComponents/DataTypes/Shared/SaveFormat/SaveFormatConfig.html")]
         public string SaveFormat { get; set; }
 
-        [PreValueField("apiController", "EnumListPickerApi", "App_Plugins/nuComponents/DataTypes/Shared/HiddenConstant/HiddenConstantConfig.html", HideLabel = true)]
+        [PreValueField("apiController", "EnumDataSourceApi", "App_Plugins/nuComponents/DataTypes/Shared/HiddenConstant/HiddenConstantConfig.html", HideLabel = true)]
         public string ApiController { get; set; }
     }
 }

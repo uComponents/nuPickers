@@ -21,7 +21,8 @@ namespace nuComponents.DataTypes.PropertyEditors.EnumCheckBoxPicker
         [PreValueField("saveFormat", "Save Format", "App_Plugins/nuComponents/DataTypes/Shared/SaveFormat/SaveFormatConfig.html")]
         public string SaveFormat { get; set; }
 
-        [PreValueField("apiController", "EnumCheckBoxPickerApi", "App_Plugins/nuComponents/DataTypes/Shared/HiddenConstant/HiddenConstantConfig.html", HideLabel = true)]
+        // TODO: rename to pickerApiController / pickerDataSourceApiContoller ?
+        [PreValueField("apiController", "EnumDataSourceApi", "App_Plugins/nuComponents/DataTypes/Shared/HiddenConstant/HiddenConstantConfig.html", HideLabel = true)]
         public string ApiController { get; set; }
     }
 }
