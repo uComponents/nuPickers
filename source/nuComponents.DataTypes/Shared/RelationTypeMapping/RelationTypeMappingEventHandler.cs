@@ -35,7 +35,7 @@ namespace nuComponents.DataTypes.Shared.RelationTypeMapping
                         LegacyRelationType relationType = LegacyRelationType.GetByAlias(this.GetRelationTypeAlias(propertyType));
                         if (relationType != null)
                         {
-                            DeleteRelations(relationType, savedEntity.Id, true, string.Empty);
+                            DeleteRelations(relationType, savedEntity.Id, true, GetInstanceIdentifier(propertyType));
 
                             if (property.Value != null)
                             {
@@ -44,7 +44,7 @@ namespace nuComponents.DataTypes.Shared.RelationTypeMapping
                                     int pickedId;
                                     if (int.TryParse(key, out pickedId))
                                     {
-                                        CreateRelation(relationType, savedEntity.Id, pickedId, true, GetInstanceIdentifier(property));
+                                        CreateRelation(relationType, savedEntity.Id, pickedId, true, GetInstanceIdentifier(propertyType));
                                     }
                                 }
                             }
@@ -70,7 +70,7 @@ namespace nuComponents.DataTypes.Shared.RelationTypeMapping
                         if (relationType != null)
                         {                            
                             // clean out any relations refering to a deleted item
-                            DeleteRelations(relationType, deletedEntity.Id, true, GetInstanceIdentifier(property));
+                            DeleteRelations(relationType, deletedEntity.Id, true, GetInstanceIdentifier(propertyType));
                         }
                     }
                 }
@@ -128,9 +128,9 @@ namespace nuComponents.DataTypes.Shared.RelationTypeMapping
                         .Value;
         }
 
-        private static string GetInstanceIdentifier(Property property)
+        private static string GetInstanceIdentifier(PropertyType propertyType)
         {
-            return property.Key.ToString();
+            return propertyType.DataTypeDefinitionId.ToString();
         }
 
         /// <summary>
@@ -143,6 +143,7 @@ namespace nuComponents.DataTypes.Shared.RelationTypeMapping
 
             if (reverseIndexing || relationType.Dual)
             {
+                getRelationsSql += "(";
                 getRelationsSql += "childId = " + contextId.ToString();
             }
             if (relationType.Dual) // need to return relations where content node id is used on both sides
@@ -154,6 +155,7 @@ namespace nuComponents.DataTypes.Shared.RelationTypeMapping
                 getRelationsSql += "parentId = " + contextId.ToString();
             }
 
+            getRelationsSql += ")";
             getRelationsSql += " AND comment = '" + instanceIdentifier + "'";
 
             using (var relations = uQuery.SqlHelper.ExecuteReader(getRelationsSql))
