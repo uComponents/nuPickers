@@ -13,6 +13,8 @@ namespace nuComponents.DataTypes.Shared.XmlDataSource
     {
         public string XmlSchema { get; set; }
 
+        public string Url { get; set; }
+
         public string OptionsXPath { get; set; }
         
         public string KeyAttribute { get; set; }
@@ -38,8 +40,12 @@ namespace nuComponents.DataTypes.Shared.XmlDataSource
                     xmlDocument = uQuery.GetPublishedXml(uQuery.UmbracoObjectType.Member);
                     break;
 
+                case "url":
+                    xmlDocument = new XmlDocument();
+                    xmlDocument.Load(this.Url);
+                    break;
+
                 default:
-                    // fallback to expecting path to an xml file ?
                     xmlDocument = null;
                     break;
             }

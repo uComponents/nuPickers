@@ -17,12 +17,29 @@
                 <option value="content">Content</option>
                 <option value="media">Media</option>
                 <option value="member">Members</option>
+                <option value="url">Url</option>
                 <option value="file" disabled="disabled">TODO: File</option>
-                <option value="url" disabled="disabled">TODO: Url</option>
             </select>
 
         </div>
     </div>
+
+    <!-- show / hide -->
+    <div class="control-group umb-control-group" ng-hide="model.value.xmlSchema != 'url'">
+        <label class="control-label" style="padding-top:8px !important; padding:0;" for="">
+
+            Url
+            <small></small>
+
+        </label>
+
+        <div class="controls controls-row">
+
+            <input type="text" ng-model="model.value.url" />
+
+        </div>
+    </div>
+
 
     <div class="control-group umb-control-group">
         <label class="control-label" style="padding-top:8px !important; padding:0;" for="">
