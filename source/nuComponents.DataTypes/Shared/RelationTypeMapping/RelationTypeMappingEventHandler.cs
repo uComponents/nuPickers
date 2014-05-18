@@ -44,7 +44,7 @@ namespace nuComponents.DataTypes.Shared.RelationTypeMapping
                                     int pickedId;
                                     if (int.TryParse(key, out pickedId))
                                     {
-                                        CreateRelation(relationType, savedEntity.Id, pickedId, true, string.Empty);
+                                        CreateRelation(relationType, savedEntity.Id, pickedId, true, GetInstanceIdentifier(property));
                                     }
                                 }
                             }
@@ -70,7 +70,7 @@ namespace nuComponents.DataTypes.Shared.RelationTypeMapping
                         if (relationType != null)
                         {                            
                             // clean out any relations refering to a deleted item
-                            DeleteRelations(relationType, deletedEntity.Id, true, string.Empty);
+                            DeleteRelations(relationType, deletedEntity.Id, true, GetInstanceIdentifier(property));
                         }
                     }
                 }
@@ -126,6 +126,11 @@ namespace nuComponents.DataTypes.Shared.RelationTypeMapping
                         .PreValuesAsDictionary.Single(x => x.Key == "relationTypeMapping")
                         .Value
                         .Value;
+        }
+
+        private static string GetInstanceIdentifier(Property property)
+        {
+            return property.Key.ToString();
         }
 
         /// <summary>
