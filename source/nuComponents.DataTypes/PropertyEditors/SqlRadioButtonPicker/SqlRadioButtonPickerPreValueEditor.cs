@@ -12,8 +12,8 @@ namespace nuComponents.DataTypes.PropertyEditors.SqlRadioButtonPicker
         [PreValueField("customLabel", "Label Macro", "App_Plugins/nuComponents/DataTypes/Shared/CustomLabel/CustomLabelConfig.html", HideLabel = true)]
         public string CustomLabel { get; set; }
 
-        [PreValueField("radioButtonPicker", "", "App_Plugins/nuComponents/DataTypes/Shared/RadioButtonPicker/RadioButtonPickerConfig.html", HideLabel = true)]
-        public string RadioButtonPicker { get; set; }
+        [PreValueField("layoutDirection", "Layout Direction", "App_Plugins/nuComponents/DataTypes/Shared/LayoutDirection/LayoutDirectionConfig.html")]
+        public string LayoutDirection { get; set; }
 
         [PreValueField("relationTypeMapping", "", "App_Plugins/nuComponents/DataTypes/Shared/RelationTypeMapping/RelationTypeMappingConfig.html", HideLabel = true)]
         public string RelationTypeMapping { get; set; }

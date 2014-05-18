@@ -297,12 +297,6 @@
     <EmbeddedResource Include="Shared\RadioButtonPicker\RadioButtonPickerEditorController.js" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Shared\RadioButtonPicker\RadioButtonPickerEditor.css" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Shared\RadioButtonPicker\RadioButtonPickerConfig.html" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Shared\RelationTypeMapping\RelationTypeMappingConfig.html" />
     <EmbeddedResource Include="Shared\RelationTypeMapping\RelationTypeMappingConfigController.js" />
   </ItemGroup>
@@ -323,9 +317,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Shared\RelationMatches\RelationMatchesEditorController.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Shared\RelationMatches\RelationMatchesEditor.css" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Shared\RelationMatches\RelationMatchesConfig.html" />
