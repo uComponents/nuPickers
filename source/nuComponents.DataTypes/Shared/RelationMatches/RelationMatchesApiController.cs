@@ -8,6 +8,8 @@ namespace nuComponents.DataTypes.Shared.RelationMatches
     using Umbraco.Web.Editors;
     using Umbraco.Web.Mvc;
     using nuComponents.DataTypes.Shared.Picker;
+    using umbraco;
+    using CustomLabel;
 
     [PluginController("nuComponents")]
     public class RelationMatchesApiController : UmbracoAuthorizedJsonController
@@ -26,13 +28,16 @@ namespace nuComponents.DataTypes.Shared.RelationMatches
 
         
         [HttpPost]
-        public IEnumerable<PickerEditorOption> GetEditorOptions([FromBody] dynamic config, [FromUri] int contextId)
+        public IEnumerable<PickerEditorOption> GetEditorOptions([FromUri] int contextId, [FromBody] dynamic config)
         {
-            List<PickerEditorOption> pickerEditorOptions = new List<PickerEditorOption>();
+            IEnumerable<PickerEditorOption> pickerEditorOptions = RelationType.GetByAlias((string)config.relationMatches)
+                                                                                .GetRelations(contextId)
+                                                                                .Select(x => new PickerEditorOption()  { 
+                                                                                                        Key = x.Child.Id.ToString(), 
+                                                                                                        Label = x.Child.Text 
+                                                                                                    });
 
-            // TODO:
-
-            return pickerEditorOptions;
+            return CustomLabel.ProcessPickerEditorOptions((string)config.customLabel, pickerEditorOptions);
         }
     }
 }
