@@ -17,9 +17,9 @@ namespace nuComponents.DataTypes.Shared.XmlDataSource
 
         public string OptionsXPath { get; set; }
         
-        public string KeyAttribute { get; set; }
+        public string KeyXPath { get; set; }
         
-        public string LabelAttribute { get; set; }
+        public string LabelXPath { get; set; }
 
         public IEnumerable<PickerEditorOption> GetEditorOptions()
         {
@@ -68,8 +68,7 @@ namespace nuComponents.DataTypes.Shared.XmlDataSource
                         !(xPathNodeIterator.Current.GetAttribute("id", string.Empty) == "-1" &&
                          (xPathNodeIterator.Current.Name == "Media" || xPathNodeIterator.Current.Name == "Members")))
                     {
-                        // check for existance of a key attribute
-                        key = xPathNodeIterator.Current.GetAttribute(this.KeyAttribute, string.Empty);
+                        key = xPathNodeIterator.Current.SelectSingleNode(this.KeyXPath).Value;
 
                         // only add item if it has a unique key - failsafe
                         if (!string.IsNullOrWhiteSpace(key) && !keys.Any(x => x == key))
@@ -77,8 +76,8 @@ namespace nuComponents.DataTypes.Shared.XmlDataSource
                             // TODO: ensure key doens't contain any commas (keys are converted saved as csv)
                             keys.Add(key); // add key so that it's not reused
 
-                            // set default markup to use the configured label attribute
-                            label = xPathNodeIterator.Current.GetAttribute(this.LabelAttribute, string.Empty);
+                            // set default markup to use the configured label XPath
+                            label = xPathNodeIterator.Current.SelectSingleNode(this.LabelXPath).Value;
 
                             editorOptions.Add(new PickerEditorOption()
                             {

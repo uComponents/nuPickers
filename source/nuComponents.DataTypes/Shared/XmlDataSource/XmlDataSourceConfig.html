@@ -44,7 +44,7 @@
     <div class="control-group umb-control-group">
         <label class="control-label" style="padding-top:8px !important; padding:0;" for="">
             Options XPath
-            <small>all matched elements are used as options</small>
+            <small>all matched nodes are used as options</small>
         </label>
 
         <div class="controls controls-row">
@@ -58,15 +58,15 @@
 
     <div class="control-group umb-control-group">
         <label class="control-label" style="padding-top:8px !important; padding:0;" for="">
-            Key Attribute
-            <small>attribute on each matched xml element to use as the key (this must be unique)</small>
+            Key XPath
+            <small>xpath to select single item (from each option) to use as the key (this must be unique)</small>
         </label>
 
         <div class="controls controls-row">
 
             <input type="text" 
-                   ng-model="model.value.keyAttribute"
-                   ng-init="model.value.keyAttribute = model.value.keyAttribute || 'id'" />
+                   ng-model="model.value.keyXPath"
+                   ng-init="model.value.keyXPath = model.value.keyXPath || '@id'" />
 
         </div>
     </div>
@@ -74,15 +74,15 @@
 
     <div class="control-group umb-control-group" ng-hide="model.value.labelMacro">
         <label class="control-label" style="padding-top:8px !important; padding:0;" for="">
-            Label Attribute
-            <small>attribute on each matched xml element to use as the label (not used if macro selected)</small>
+            Label XPath
+            <small>xpath to select single item (from each option) to use as the key (not used if macro selected)</small>
         </label>
 
         <div class="controls controls-row">
 
             <input type="text" 
-                   ng-model="model.value.labelAttribute" 
-                   ng-init="model.value.labelAttribute = model.value.labelAttribute || 'nodeName'"/>
+                   ng-model="model.value.labelXPath" 
+                   ng-init="model.value.labelXPath = model.value.labelXPath || '@nodeName'"/>
 
         </div>
     </div>

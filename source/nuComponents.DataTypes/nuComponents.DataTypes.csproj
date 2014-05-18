@@ -249,7 +249,7 @@
     <Folder Include="PropertyEditors\RelationTypeAheadPicker\" />
     <Folder Include="PropertyEditors\SqlTypeAheadPicker\" />
     <Folder Include="PropertyEditors\XmlTypeAheadPicker\" />
-    <Folder Include="PropertyEditorValueConverters\" />
+    <Folder Include="PropertyValueConverters\" />
     <Folder Include="Shared\AutoCompletePicker\" />
     <Folder Include="Shared\DataSource\" />
     <Folder Include="Shared\JsonDataSource\" />
