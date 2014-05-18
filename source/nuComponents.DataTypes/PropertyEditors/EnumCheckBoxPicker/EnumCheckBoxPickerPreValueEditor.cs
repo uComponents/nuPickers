@@ -9,11 +9,11 @@ namespace nuComponents.DataTypes.PropertyEditors.EnumCheckBoxPicker
         [PreValueField("dataSource", "", "App_Plugins/nuComponents/DataTypes/Shared/EnumDataSource/EnumDataSourceConfig.html", HideLabel = true)]
         public string DataSource { get; set; }
 
-        [PreValueField("customLabel", "Label Macro", "App_Plugins/nuComponents/DataTypes/Shared/CustomLabel/CustomLabelConfig.html", HideLabel = true)]
+        [PreValueField("customLabel", "", "App_Plugins/nuComponents/DataTypes/Shared/CustomLabel/CustomLabelConfig.html", HideLabel = true)]
         public string CustomLabel { get; set; }
 
-        [PreValueField("checkBoxPicker", "", "App_Plugins/nuComponents/DataTypes/Shared/CheckBoxPicker/CheckBoxPickerConfig.html", HideLabel = true)]
-        public string CheckBoxPicker { get; set; }
+        [PreValueField("layoutDirection", "Layout Direction", "App_Plugins/nuComponents/DataTypes/Shared/LayoutDirection/LayoutDirectionConfig.html")]
+        public string LayoutDirection { get; set; }
 
         [PreValueField("relationTypeMapping", "", "App_Plugins/nuComponents/DataTypes/Shared/RelationTypeMapping/RelationTypeMappingConfig.html", HideLabel = true)]
         public string RelationTypeMapping { get; set; }

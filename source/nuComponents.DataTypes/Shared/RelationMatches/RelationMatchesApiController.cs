@@ -35,7 +35,8 @@ namespace nuComponents.DataTypes.Shared.RelationMatches
                                                                                 .Select(x => new PickerEditorOption()  { 
                                                                                                         Key = x.Child.Id.ToString(), 
                                                                                                         Label = x.Child.Text 
-                                                                                                    });
+                                                                                                    })
+                                                                                .ToList();
 
             return CustomLabel.ProcessPickerEditorOptions((string)config.customLabel, pickerEditorOptions);
         }

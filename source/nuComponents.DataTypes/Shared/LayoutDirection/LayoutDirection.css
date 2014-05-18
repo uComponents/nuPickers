@@ -1,0 +1,15 @@
+﻿
+ul.layout-direction
+{
+    list-style-type: none;
+    margin: 0;
+}
+
+ul.layout-direction.horizontal li
+{
+    display:inline;
+}
+
+ul.layout-direction.vertical li
+{   
+}

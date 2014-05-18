@@ -7,6 +7,7 @@ namespace nuComponents.DataTypes.PropertyEditors.EnumCheckBoxPicker
 
     // EDITOR UI
     [PropertyEditor("enumCheckBoxPicker", "nuComponents: Enum CheckBox Picker", "App_Plugins/nuComponents/DataTypes/Shared/CheckBoxPicker/CheckBoxPickerEditor.html", ValueType = "TEXT")]
+    [PropertyEditorAsset(ClientDependencyType.Css, "App_Plugins/nuComponents/DataTypes/Shared/LayoutDirection/LayoutDirection.css")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/Shared/CheckBoxPicker/CheckBoxPickerEditorController.js")]
 
     // RESOURCES
