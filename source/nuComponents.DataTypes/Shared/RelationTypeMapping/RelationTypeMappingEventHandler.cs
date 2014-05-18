@@ -94,30 +94,26 @@ namespace nuComponents.DataTypes.Shared.RelationTypeMapping
             return null;
         }
 
+        /// <summary>
+        /// A PropertyType supports relation type mapping if its config has a 'relationTypeMapping' key
+        /// </summary>
+        /// <param name="propertyType"></param>
+        /// <returns></returns>
         private bool SupportsRelationTypeMapping(PropertyType propertyType)
-        {
-            //TODO: use an interface with a method to get values, then external pickers can also hook into this
-            if (propertyType != null)
+        {            
+            try
             {
-                switch (propertyType.Alias)
-                {
-                    case "enumCheckBoxPicker":
-                    case "enumDropDownPicker":
-                    case "enumListPicker":
-                    case "enumRadioButtonPicker":
-                    case "sqlCheckBoxPicker":
-                    case "sqlDropDownPicker":
-                    case "sqlListPicker":
-                    case "sqlRadioButtonPicker":
-                    case "xmlCheckBoxPicker":
-                    case "xmlDropDownPicker":
-                    case "xmlListPicker":
-                    case "xmlRadioButtonPicker":
-                        return true;                        
-                }
+                return ApplicationContext
+                        .Current
+                        .Services
+                        .DataTypeService
+                        .GetPreValuesCollectionByDataTypeId(propertyType.DataTypeDefinitionId)
+                        .PreValuesAsDictionary.Any(x => x.Key == "relationTypeMapping");
             }
-
-            return false;
+            catch
+            {
+                return false;
+            }
         }
 
         private string GetRelationTypeAlias(PropertyType propertyType)

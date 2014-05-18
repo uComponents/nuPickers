@@ -7,7 +7,7 @@ namespace nuComponents.DataTypes.PropertyEditors.SqlCheckBoxPicker
 
     // EDITOR UI
     [PropertyEditor("relationMatches", "nuComponents: Relation Matches", "App_Plugins/nuComponents/DataTypes/Shared/RelationMatches/RelationMatchesEditor.html", ValueType = "TEXT")]
-    [PropertyEditorAsset(ClientDependencyType.Css, "App_Plugins/nuComponents/DataTypes/Shared/RelationMatches/RelationMatchesEditor.css")]
+    [PropertyEditorAsset(ClientDependencyType.Css, "App_Plugins/nuComponents/DataTypes/Shared/LayoutDirection/LayoutDirection.css")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/Shared/RelationMatches/RelationMatchesEditorController.js")]
 
     // RESOURCES

@@ -1,5 +1,5 @@
 ﻿
-<ul ng-controller="nuComponents.DataTypes.Shared.RelationMatches.RelationMatchesEditorController" class="relation-matches">
+<ul ng-controller="nuComponents.DataTypes.Shared.RelationMatches.RelationMatchesEditorController" class="layout-direction" ng-class="model.config.layoutDirection">
     <li ng-repeat="option in relationMatches"
         ng-bind-html-unsafe="option.label">
     </li>
