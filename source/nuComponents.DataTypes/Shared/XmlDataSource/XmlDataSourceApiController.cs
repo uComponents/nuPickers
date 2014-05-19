@@ -22,7 +22,9 @@ namespace nuComponents.DataTypes.Shared.XmlDataSource
 
             IEnumerable<PickerEditorOption> pickerEditorOptions = xmlDataSource.GetEditorOptions(contextId);
 
-            return CustomLabel.ProcessPickerEditorOptions((string)config.customLabel, pickerEditorOptions);
+            CustomLabel customLabel = new CustomLabel((string)config.customLabel);
+
+            return customLabel.ProcessPickerEditorOptions(contextId, pickerEditorOptions);
         }
     }
 }

@@ -18,7 +18,7 @@ namespace nuComponents.DataTypes.Shared.CustomLabel
 
         private bool HasContext { get; set; }
 
-        public CustomLabel(string alias)
+        internal CustomLabel(string alias)
         {
             this.Alias = alias;
 
@@ -29,7 +29,22 @@ namespace nuComponents.DataTypes.Shared.CustomLabel
                 HttpContext.Current.Items["pageID"] = contextNode.Id; // required deeper in macro.renderMacro to get context
                 this.HasContext = true;
             }
+        }
 
+        /// <summary>
+        /// parses the collection of options, potentially transforming the content of the label
+        /// </summary>
+        /// <param name="contextId">the content / media or member being edited</param>
+        /// <param name="pickerEditorOptions">collection of options</param>
+        /// <returns></returns>
+        public IEnumerable<PickerEditorOption> ProcessPickerEditorOptions(int contextId, IEnumerable<PickerEditorOption> pickerEditorOptions)
+        {
+            foreach (PickerEditorOption pickerEditorOption in pickerEditorOptions)
+            {
+                pickerEditorOption.Label = this.ProcessMacro(pickerEditorOption.Key, pickerEditorOption.Label);
+            }
+
+            return pickerEditorOptions;
         }
 
         /// <summary>
@@ -51,27 +66,6 @@ namespace nuComponents.DataTypes.Shared.CustomLabel
             }
 
             return label;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="macroAlias">the macro to use</param>
-        /// <param name="pickerEditorOptions">collection of options, this method may update their .Label properties</param>
-        /// <returns></returns>
-        public static IEnumerable<PickerEditorOption> ProcessPickerEditorOptions(string macroAlias, IEnumerable<PickerEditorOption> pickerEditorOptions)
-        {
-            if (macroAlias != null)
-            {
-                CustomLabel labelMacro = new CustomLabel(macroAlias);
-
-                foreach (PickerEditorOption pickerEditorOption in pickerEditorOptions)
-                {
-                    pickerEditorOption.Label = labelMacro.ProcessMacro(pickerEditorOption.Key, pickerEditorOption.Label);
-                }
-            }
-
-            return pickerEditorOptions;
         }
 
         /// <summary>

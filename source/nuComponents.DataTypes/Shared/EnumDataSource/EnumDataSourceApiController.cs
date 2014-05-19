@@ -57,7 +57,9 @@
 
             IEnumerable<PickerEditorOption> pickerEditorOptions = enumDataSource.GetEditorOptions();
 
-            return CustomLabel.ProcessPickerEditorOptions((string)config.customLabel, pickerEditorOptions);
+            CustomLabel customLabel = new CustomLabel((string)config.customLabel);
+
+            return customLabel.ProcessPickerEditorOptions(contextId, pickerEditorOptions);
         }
     }
 }

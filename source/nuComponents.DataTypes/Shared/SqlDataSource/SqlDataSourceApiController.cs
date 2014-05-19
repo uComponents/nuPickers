@@ -32,7 +32,9 @@
 
             IEnumerable<PickerEditorOption> pickerEditorOptions = sqlDataSource.GetEditorOptions(contextId);
 
-            return CustomLabel.ProcessPickerEditorOptions((string)config.customLabel, pickerEditorOptions);
+            CustomLabel customLabel = new CustomLabel((string)config.customLabel);
+
+            return customLabel.ProcessPickerEditorOptions(contextId, pickerEditorOptions);
         }
     }
 }
