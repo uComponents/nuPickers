@@ -58,7 +58,7 @@ namespace nuComponents.DataTypes.Shared.CustomLabel
                 pickerEditorOption.Label = this.ProcessMacro(pickerEditorOption.Key, pickerEditorOption.Label, counter, total);
             }
 
-            return pickerEditorOptions;
+            return pickerEditorOptions.Where(x => !string.IsNullOrWhiteSpace(x.Label)); // remove any options without a label
         }
 
         /// <summary>
