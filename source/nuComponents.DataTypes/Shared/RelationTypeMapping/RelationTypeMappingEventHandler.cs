@@ -130,7 +130,7 @@ namespace nuComponents.DataTypes.Shared.RelationTypeMapping
 
         private static string GetInstanceIdentifier(PropertyType propertyType)
         {
-            return propertyType.DataTypeDefinitionId.ToString();
+            return "[{\"PropertyTypeId\":" + propertyType.Id.ToString() + "}]";
         }
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace nuComponents.DataTypes.Shared.RelationTypeMapping
                 getRelationsSql += "(";
                 getRelationsSql += "childId = " + contextId.ToString();
             }
-            if (relationType.Dual) // need to return relations where content node id is used on both sides
+            if (relationType.Dual) // need to return relations where context node id is used on both sides
             {
                 getRelationsSql += " OR ";
             }
@@ -160,7 +160,6 @@ namespace nuComponents.DataTypes.Shared.RelationTypeMapping
 
             using (var relations = uQuery.SqlHelper.ExecuteReader(getRelationsSql))
             {
-                //clear data
                 LegacyRelation relation;
                 if (relations.HasRecords)
                 {
@@ -168,7 +167,6 @@ namespace nuComponents.DataTypes.Shared.RelationTypeMapping
                     {
                         relation = new LegacyRelation(relations.GetInt("id"));
 
-                        // TODO: [HR] check to see if an instance identifier is used
                         relation.Delete();
                     }
                 }
@@ -177,15 +175,21 @@ namespace nuComponents.DataTypes.Shared.RelationTypeMapping
 
         private static void CreateRelation(LegacyRelationType relationType, int contextId, int pickedId, bool reverseIndexing, string instanceIdentifier)
         {
-            // TODO: validate that contextId and pickedId are of the types defined on the relationtype
-
             if (reverseIndexing)
             {
-                LegacyRelation.MakeNew(pickedId, contextId, relationType, instanceIdentifier);
+                if (uQuery.GetUmbracoObjectType(contextId) == relationType.GetChildUmbracoObjectType() &&
+                    uQuery.GetUmbracoObjectType(pickedId) == relationType.GetParentUmbracoObjectType())
+                {
+                    LegacyRelation.MakeNew(pickedId, contextId, relationType, instanceIdentifier);
+                }
             }
             else
             {
-                LegacyRelation.MakeNew(contextId, pickedId, relationType, instanceIdentifier);
+                if (uQuery.GetUmbracoObjectType(contextId) == relationType.GetParentUmbracoObjectType() &&
+                    uQuery.GetUmbracoObjectType(pickedId) == relationType.GetChildUmbracoObjectType())
+                {
+                    LegacyRelation.MakeNew(contextId, pickedId, relationType, instanceIdentifier);
+                }
             }
         }
     }
