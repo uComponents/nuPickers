@@ -1,15 +1,15 @@
 ﻿
-<div ng-controller="nuComponents.DataTypes.Shared.LabelMacro.LabelMacroConfigController">
+<div ng-controller="nuComponents.DataTypes.Shared.LabelMacro.LabelMacroConfigController" class="nuComponents-config">
 
-    <div class="control-group umb-control-group">
-        <label class="control-label" style="padding-top:8px !important; padding:0;" for="">
+    <div>
+        <label for="">
 
-            Label Macro 
+            Label Macro
             <small>process each option label though a macro, can use the parameters: key, counter and total</small>
 
         </label>
 
-        <div class="controls controls-row">
+        <div>
 
             <select ng-model="model.value"
                     ng-options="macro.alias as macro.name for macro in macros">

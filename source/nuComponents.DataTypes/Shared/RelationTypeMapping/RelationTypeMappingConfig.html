@@ -1,14 +1,14 @@
-﻿<div ng-controller="nuComponents.DataTypes.Shared.RelationTypeMapping.RelationTypeMappingConfigController">
+﻿<div ng-controller="nuComponents.DataTypes.Shared.RelationTypeMapping.RelationTypeMappingConfigController" class="nuComponents-config">
 
-    <div class="control-group umb-control-group">
-        <label class="control-label" style="padding-top:8px !important; padding:0;" for="">
+    <div>
+        <label for="">
 
             Relation Type
             <small>to create a Relation, picked keys must be valid integers and of the correct type</small>
 
         </label>
 
-        <div class="controls controls-row">
+        <div>
 
             <select ng-model="model.value"
                     ng-options="relationType.key as relationType.label for relationType in relationTypes">
@@ -17,6 +17,5 @@
 
         </div>
     </div>
-
 
 </div>

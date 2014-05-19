@@ -1,22 +1,20 @@
-﻿<div ng-controller="nuComponents.DataTypes.Shared.RelationMatches.RelationMatchesConfigController">
+﻿<div ng-controller="nuComponents.DataTypes.Shared.RelationMatches.RelationMatchesConfigController" class="nuComponents-config">
 
-    <div class="control-group umb-control-group">
-        <label class="control-label" style="padding-top:8px !important; padding:0;" for="">
+    <div>
+        <label for="">
 
             Relation Type
             <small></small>
 
         </label>
 
-        <div class="controls controls-row">
+        <div>
 
             <select ng-model="model.value"
                     ng-options="relationType.key as relationType.label for relationType in relationTypes"
-                    ng-required="true">
-            </select>
+                    ng-required="true"></select>
 
         </div>
     </div>
-
 
 </div>

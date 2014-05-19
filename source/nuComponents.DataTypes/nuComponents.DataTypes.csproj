@@ -328,6 +328,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Shared\LayoutDirection\LayoutDirection.css" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\PropertyEditor\PropertyEditorConfig.css" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

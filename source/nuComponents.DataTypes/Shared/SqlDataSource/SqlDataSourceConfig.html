@@ -1,14 +1,14 @@
-﻿<div ng-controller="nuComponents.DataTypes.Shared.SqlDataSource.SqlDataSourceConfigController">
+﻿<div ng-controller="nuComponents.DataTypes.Shared.SqlDataSource.SqlDataSourceConfigController" class="nuComponents-config">
 
-    <div class="control-group umb-control-group">
-        <label class="control-label" style="padding-top:8px !important; padding:0;" for="">
+    <div>
+        <label for="">
 
             SQL Expression
             <small>expects a result set containing fields 'Key' and 'Label'</small>
 
         </label>
 
-        <div class="controls controls-row">
+        <div>
 
             <textarea ng-model="model.value.sqlExpression"
                       rows="10"
@@ -17,18 +17,17 @@
         </div>
     </div>
 
-    <div class="control-group umb-control-group">
-        <label class="control-label" style="padding-top:8px !important; padding:0;" for="">
+    <div>
+        <label for="">
             Connection String
             <small>add items to the web.config &lt;connectionStrings /&gt; section to list here</small>
         </label>
 
-        <div class="controls controls-row">
+        <div>
 
             <select ng-model="model.value.connectionString"
                     ng-options="o as o for o in connectionStrings"
                     ng-required="true"></select>
-
 
         </div>
     </div>

@@ -1,18 +1,16 @@
-﻿<div ng-controller="nuComponents.DataTypes.Shared.XmlDataSource.XmlDataSourceConfigController">   
-    
-    <!-- ISSUE: how best to remove inline 'fake umbraco' styling - create angular directives for label / field ? -->
+﻿<div ng-controller="nuComponents.DataTypes.Shared.XmlDataSource.XmlDataSourceConfigController" class="nuComponents-config">
 
-    <div class="control-group umb-control-group">
-        <label class="control-label" style="padding-top:8px !important; padding:0;" for="">
+    <div>
+        <label for="">
 
             Xml Data
             <small>xml data to query</small>
 
         </label>
 
-        <div class="controls controls-row">
+        <div>
 
-            <select ng-model="model.value.xmlData" 
+            <select ng-model="model.value.xmlData"
                     ng-init="model.value.xmlData = model.value.xmlData || 'content'">
                 <option value="content">Content</option>
                 <option value="media">Media</option>
@@ -25,15 +23,15 @@
     </div>
 
     <!-- show / hide -->
-    <div class="control-group umb-control-group" ng-hide="model.value.xmlData != 'url'">
-        <label class="control-label" style="padding-top:8px !important; padding:0;" for="">
+    <div ng-hide="model.value.xmlData != 'url'">
+        <label for="">
 
             Url
             <small>use the prefix ~/ to indicate a relative url</small>
 
         </label>
 
-        <div class="controls controls-row">
+        <div>
 
             <input type="text" ng-model="model.value.url" />
 
@@ -41,8 +39,8 @@
     </div>
 
 
-    <div class="control-group umb-control-group" ng-hide="model.value.xmlData != 'file'">
-        <label class="control-label" style="padding-top:8px !important; padding:0;" for="">
+    <div ng-hide="model.value.xmlData != 'file'">
+        <label for="">
 
             File
             <small>
@@ -59,30 +57,30 @@
     </div>
 
 
-    <div class="control-group umb-control-group">
-        <label class="control-label" style="padding-top:8px !important; padding:0;" for="">
+    <div>
+        <label for="">
             Options XPath
             <small>all matched nodes are used as options</small>
         </label>
 
-        <div class="controls controls-row">
+        <div>
 
-            <input type="text" 
-                   ng-model="model.value.optionsXPath" 
+            <input type="text"
+                   ng-model="model.value.optionsXPath"
                    ng-init="model.value.optionsXPath = model.value.optionsXPath || '//*[@isDoc]'" />
 
         </div>
     </div>
 
-    <div class="control-group umb-control-group">
-        <label class="control-label" style="padding-top:8px !important; padding:0;" for="">
+    <div>
+        <label for="">
             Key XPath
             <small>xpath to select single item (from each option) to use as the key (this must be unique)</small>
         </label>
 
-        <div class="controls controls-row">
+        <div>
 
-            <input type="text" 
+            <input type="text"
                    ng-model="model.value.keyXPath"
                    ng-init="model.value.keyXPath = model.value.keyXPath || '@id'" />
 
@@ -90,17 +88,17 @@
     </div>
 
 
-    <div class="control-group umb-control-group" ng-hide="model.value.labelMacro">
-        <label class="control-label" style="padding-top:8px !important; padding:0;" for="">
+    <div ng-hide="model.value.labelMacro">
+        <label for="">
             Label XPath
             <small>xpath to select single item (from each option) to use as the key (not used if macro selected)</small>
         </label>
 
-        <div class="controls controls-row">
+        <div>
 
-            <input type="text" 
-                   ng-model="model.value.labelXPath" 
-                   ng-init="model.value.labelXPath = model.value.labelXPath || '@nodeName'"/>
+            <input type="text"
+                   ng-model="model.value.labelXPath"
+                   ng-init="model.value.labelXPath = model.value.labelXPath || '@nodeName'" />
 
         </div>
     </div>

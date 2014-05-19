@@ -1,50 +1,50 @@
-﻿<div ng-controller="nuComponents.DataTypes.Shared.ListPicker.ListPickerConfigController">
+﻿<div ng-controller="nuComponents.DataTypes.Shared.ListPicker.ListPickerConfigController" class="nuComponents-config">
 
-    <div class="control-group umb-control-group">
+    <div>
 
-        <label class="control-label" style="padding-top:8px !important; padding:0;" for="">
+        <label for="">
             List Height
             <small>fix height in px (and use scrollbar) - 0 mean fluid</small>
         </label>
 
-        <div class="controls controls-row">
+        <div>
 
-            <input type="number" 
-                   ng-model="model.value.listHeight" 
-                   ng-init="model.value.listHeight = model.value.listHeight || 0"/>
+            <input type="number"
+                   ng-model="model.value.listHeight"
+                   ng-init="model.value.listHeight = model.value.listHeight || 0" />
 
         </div>
     </div>
 
 
-    <div class="control-group umb-control-group">
+    <div>
 
-        <label class="control-label" style="padding-top:8px !important; padding:0;" for="">
+        <label for="">
             Min Items
             <small>number of items that must be selected</small>
         </label>
 
-        <div class="controls controls-row">
+        <div>
 
-            <input type="number" 
-                   ng-model="model.value.minItems" 
+            <input type="number"
+                   ng-model="model.value.minItems"
                    ng-init="model.value.minItems = model.value.minItems || 0" />
 
         </div>
     </div>
 
 
-    <div class="control-group umb-control-group">
+    <div>
 
-        <label class="control-label" style="padding-top:8px !important; padding:0;" for="">
+        <label for="">
             Max Items
             <small>number of items that can be selected - 0 means no limit</small>
         </label>
 
-        <div class="controls controls-row">
+        <div>
 
-            <input type="number" 
-                   ng-model="model.value.maxItems" 
+            <input type="number"
+                   ng-model="model.value.maxItems"
                    ng-init="model.value.maxItems = model.value.maxItems || 0" />
 
         </div>
@@ -52,50 +52,47 @@
 
 
 
-    <div class="control-group umb-control-group">
-
-        <label class="control-label" style="padding-top:8px !important; padding:0;" for="">
+    <div>
+        <label for="">
             Allow Duplicates
             <small>when true, duplicate items can be selected</small>
         </label>
 
-        <div class="controls controls-row">
+        <div>
 
-            <input type="checkbox" 
+            <input type="checkbox"
                    ng-model="model.value.allowDuplicates" />
 
         </div>
     </div>
 
-
-    <div class="control-group umb-control-group" ng-hide="model.value.allowDuplicates">
-
-        <label class="control-label" style="padding-top:8px !important; padding:0;" for="">
+    <div>
+        <label for="">
             Hide Used
             <small>when true, selected items are removed from the list of choices</small>
         </label>
 
-        <div class="controls controls-row">
+        <div>
 
-            <input type="checkbox" 
+            <input type="checkbox"
+                   ng-disabled="model.value.allowDuplicates"
                    ng-model="model.value.hideUsed" />
 
         </div>
     </div>
 
 
-    <div class="control-group umb-control-group">
+    <div>
 
-        <label class="control-label" style="padding-top:8px !important; padding:0;" for="">
+        <label for="">
             Enable Filtering
             <small>when true, a textbox is shown allowing the user to filter the choices</small>
         </label>
 
-        <div class="controls controls-row">
+        <div>
 
-            <input type="checkbox" 
+            <input type="checkbox"
                    ng-model="model.value.enableFiltering" />
-
         </div>
     </div>
 
