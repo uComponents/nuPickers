@@ -13,7 +13,6 @@
         {
             //using legacy api as no method on Umbraco.Core.Services.MacroSerivce to get all macros
             return Macro.GetAll()
-                        .Where(x => x.Properties.Any(y => y.Alias == "key"))
                         .Select(x => new
                         {
                             name = x.Name,
