@@ -1,13 +1,14 @@
 ﻿
 namespace nuComponents.DataTypes.Shared.XmlDataSource
 {
+    using nuComponents.DataTypes.Interfaces;
+    using nuComponents.DataTypes.Shared.Picker;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Web;
     using System.Xml;
     using System.Xml.XPath;
     using umbraco;
-    using nuComponents.DataTypes.Shared.Picker;
-    using nuComponents.DataTypes.Interfaces;
 
     public class XmlDataSource : IPickerDataSource
     {
@@ -21,7 +22,7 @@ namespace nuComponents.DataTypes.Shared.XmlDataSource
         
         public string LabelXPath { get; set; }
 
-        public IEnumerable<PickerEditorOption> GetEditorOptions()
+        public IEnumerable<PickerEditorOption> GetEditorOptions(int contextId)
         {
             XmlDocument xmlDocument;
             List<PickerEditorOption> editorOptions = new List<PickerEditorOption>();
@@ -51,7 +52,9 @@ namespace nuComponents.DataTypes.Shared.XmlDataSource
             }
 
             if (xmlDocument != null)
-            {
+            {                
+                HttpContext.Current.Items["pageID"] = contextId; // set here, as this is required for the uQuery.ResolveXPath
+
                 XPathNavigator xPathNavigator = xmlDocument.CreateNavigator();
                 XPathNodeIterator xPathNodeIterator = xPathNavigator.Select(uQuery.ResolveXPath(this.OptionsXPath));
                 List<string> keys = new List<string>(); // used to keep track of keys, so that duplicates aren't added

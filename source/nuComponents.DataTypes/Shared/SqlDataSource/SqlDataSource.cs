@@ -18,7 +18,7 @@ namespace nuComponents.DataTypes.Shared.SqlDataSource
 
         public string ConnectionString { get; set; }
 
-        public IEnumerable<PickerEditorOption> GetEditorOptions()
+        public IEnumerable<PickerEditorOption> GetEditorOptions(int contextId)
         {
             List<PickerEditorOption> pickerEditorOptions = new List<PickerEditorOption>();
 
@@ -27,9 +27,15 @@ namespace nuComponents.DataTypes.Shared.SqlDataSource
             {
                 using (ISqlHelper sqlHelper = DataLayerHelper.CreateSqlHelper(connectionStringSettings.ConnectionString))
                 {
-                    // TODO: token replacement eg. @currentId
+                    string sql = Regex.Replace(this.SqlExpression, "\n|\r", string.Empty);
+                    List<IParameter> parameters = new List<IParameter>();
 
-                    using(IRecordsReader recordsReader = sqlHelper.ExecuteReader(Regex.Replace(this.SqlExpression, "\n|\r", string.Empty)))
+                    if (sql.Contains("@contextId"))
+                    {
+                        parameters.Add(sqlHelper.CreateParameter("@contextId", contextId));
+                    }
+
+                    using(IRecordsReader recordsReader = sqlHelper.ExecuteReader(sql, parameters.ToArray()))
                     {
                         if(recordsReader != null)
                         {

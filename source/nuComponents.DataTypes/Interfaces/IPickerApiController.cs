@@ -8,12 +8,13 @@ namespace nuComponents.DataTypes.Interfaces
     /// every picker calls an api controller to get it's data 
     /// </summary>
     internal interface IPickerApiController
-    {
+    {        
         /// <summary>
         /// this is called by the PickerResource.js that's used by all picker editors
         /// </summary>
+        /// <param name="contextId">the id of the current content / media or member being edited</param>
         /// <param name="config">the full $scope.model.config as saved by Umbraco for the current datatype instance</param>
-        /// <returns>a collection of options for a picker to render - at the least a colleciton of key/value (label) pairs</returns>        
+        /// <returns></returns>
         IEnumerable<PickerEditorOption> GetEditorOptions(int contextId, dynamic config);
     }
 }

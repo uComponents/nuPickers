@@ -30,7 +30,7 @@
         {
             SqlDataSource sqlDataSource = ((JObject)config.dataSource).ToObject<SqlDataSource>();
 
-            IEnumerable<PickerEditorOption> pickerEditorOptions = sqlDataSource.GetEditorOptions();
+            IEnumerable<PickerEditorOption> pickerEditorOptions = sqlDataSource.GetEditorOptions(contextId);
 
             return CustomLabel.ProcessPickerEditorOptions((string)config.customLabel, pickerEditorOptions);
         }

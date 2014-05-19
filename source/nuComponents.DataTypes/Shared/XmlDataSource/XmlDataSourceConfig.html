@@ -6,7 +6,7 @@
         <label class="control-label" style="padding-top:8px !important; padding:0;" for="">
 
             Xml Data
-            <small>xml Data to query</small>
+            <small>xml data to query</small>
 
         </label>
 
@@ -36,6 +36,24 @@
         <div class="controls controls-row">
 
             <input type="text" ng-model="model.value.url" />
+
+        </div>
+    </div>
+
+
+    <div class="control-group umb-control-group" ng-hide="model.value.xmlData != 'file'">
+        <label class="control-label" style="padding-top:8px !important; padding:0;" for="">
+
+            File
+            <small>
+
+            </small>
+
+        </label>
+
+        <div class="controls controls-row">
+
+            <input type="text" ng-model="model.value.file" />
 
         </div>
     </div>

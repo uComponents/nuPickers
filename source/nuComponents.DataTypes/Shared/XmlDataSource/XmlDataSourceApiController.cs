@@ -18,11 +18,9 @@ namespace nuComponents.DataTypes.Shared.XmlDataSource
         [HttpPost]
         public IEnumerable<PickerEditorOption> GetEditorOptions([FromUri] int contextId, [FromBody] dynamic config)
         {
-            HttpContext.Current.Items["pageID"] = contextId;
-
             XmlDataSource xmlDataSource = ((JObject)config.dataSource).ToObject<XmlDataSource>();
 
-            IEnumerable<PickerEditorOption> pickerEditorOptions = xmlDataSource.GetEditorOptions();
+            IEnumerable<PickerEditorOption> pickerEditorOptions = xmlDataSource.GetEditorOptions(contextId);
 
             return CustomLabel.ProcessPickerEditorOptions((string)config.customLabel, pickerEditorOptions);
         }

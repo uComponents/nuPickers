@@ -7,9 +7,10 @@ namespace nuComponents.DataTypes.Interfaces
     internal interface IPickerDataSource
     {
         /// <summary>
-        /// all pickers require a collection to select from
+        /// 
         /// </summary>
+        /// <param name="contextId">the id of the current content / media or member being edited</param>
         /// <returns></returns>
-        IEnumerable<PickerEditorOption> GetEditorOptions();
+        IEnumerable<PickerEditorOption> GetEditorOptions(int contextId);
     }
 }
