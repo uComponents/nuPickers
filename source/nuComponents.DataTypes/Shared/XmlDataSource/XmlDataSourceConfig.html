@@ -5,15 +5,15 @@
     <div class="control-group umb-control-group">
         <label class="control-label" style="padding-top:8px !important; padding:0;" for="">
 
-            Xml Schema
-            <small>xml schema to query</small>
+            Xml Data
+            <small>xml Data to query</small>
 
         </label>
 
         <div class="controls controls-row">
 
-            <select ng-model="model.value.xmlSchema" 
-                    ng-init="model.value.xmlSchema = model.value.xmlSchema || 'content'">
+            <select ng-model="model.value.xmlData" 
+                    ng-init="model.value.xmlData = model.value.xmlData || 'content'">
                 <option value="content">Content</option>
                 <option value="media">Media</option>
                 <option value="member">Members</option>
@@ -25,11 +25,11 @@
     </div>
 
     <!-- show / hide -->
-    <div class="control-group umb-control-group" ng-hide="model.value.xmlSchema != 'url'">
+    <div class="control-group umb-control-group" ng-hide="model.value.xmlData != 'url'">
         <label class="control-label" style="padding-top:8px !important; padding:0;" for="">
 
             Url
-            <small></small>
+            <small>use the prefix ~/ to indicate a relative url</small>
 
         </label>
 

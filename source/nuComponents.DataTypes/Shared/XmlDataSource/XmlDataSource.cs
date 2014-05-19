@@ -11,7 +11,7 @@ namespace nuComponents.DataTypes.Shared.XmlDataSource
 
     public class XmlDataSource : IPickerDataSource
     {
-        public string XmlSchema { get; set; }
+        public string XmlData { get; set; }
 
         public string Url { get; set; }
 
@@ -26,7 +26,7 @@ namespace nuComponents.DataTypes.Shared.XmlDataSource
             XmlDocument xmlDocument;
             List<PickerEditorOption> editorOptions = new List<PickerEditorOption>();
 
-            switch (this.XmlSchema)
+            switch (this.XmlData)
             {
                 case "content":
                     xmlDocument = uQuery.GetPublishedXml(uQuery.UmbracoObjectType.Document);

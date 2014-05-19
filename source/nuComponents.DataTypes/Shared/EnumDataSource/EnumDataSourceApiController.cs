@@ -51,7 +51,7 @@
         }
 
         [HttpPost]
-        public IEnumerable<PickerEditorOption> GetEditorOptions([FromBody] dynamic config)
+        public IEnumerable<PickerEditorOption> GetEditorOptions([FromUri] int contextId, [FromBody] dynamic config)
         {
             EnumDataSource enumDataSource = ((JObject)config.dataSource).ToObject<EnumDataSource>();
 

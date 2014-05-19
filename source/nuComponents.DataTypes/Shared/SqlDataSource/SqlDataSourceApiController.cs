@@ -26,7 +26,7 @@
         }
 
         [HttpPost]
-        public IEnumerable<PickerEditorOption> GetEditorOptions([FromBody] dynamic config)
+        public IEnumerable<PickerEditorOption> GetEditorOptions([FromUri] int contextId, [FromBody] dynamic config)
         {
             SqlDataSource sqlDataSource = ((JObject)config.dataSource).ToObject<SqlDataSource>();
 

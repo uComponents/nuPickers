@@ -7,6 +7,7 @@ namespace nuComponents.DataTypes.Shared.XmlDataSource
     using nuComponents.DataTypes.Shared.Picker;
     using nuComponents.DataTypes.Shared.XmlDataSource;
     using System.Collections.Generic;
+    using System.Web;
     using System.Web.Http;
     using Umbraco.Web.Editors;
     using Umbraco.Web.Mvc;
@@ -15,8 +16,10 @@ namespace nuComponents.DataTypes.Shared.XmlDataSource
     public class XmlDataSourceApiController : UmbracoAuthorizedJsonController, IPickerApiController
     {
         [HttpPost]
-        public IEnumerable<PickerEditorOption> GetEditorOptions([FromBody] dynamic config)
+        public IEnumerable<PickerEditorOption> GetEditorOptions([FromUri] int contextId, [FromBody] dynamic config)
         {
+            HttpContext.Current.Items["pageID"] = contextId;
+
             XmlDataSource xmlDataSource = ((JObject)config.dataSource).ToObject<XmlDataSource>();
 
             IEnumerable<PickerEditorOption> pickerEditorOptions = xmlDataSource.GetEditorOptions();
