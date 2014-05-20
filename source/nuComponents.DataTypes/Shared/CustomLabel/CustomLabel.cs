@@ -49,13 +49,14 @@ namespace nuComponents.DataTypes.Shared.CustomLabel
         /// <returns></returns>
         public IEnumerable<PickerEditorOption> ProcessPickerEditorOptions(IEnumerable<PickerEditorOption> pickerEditorOptions)
         {
+            string keys = string.Join(", ", pickerEditorOptions.Select(x => x.Key)); // csv of all keys
             int counter = 0;
             int total = pickerEditorOptions.Count();
 
             foreach (PickerEditorOption pickerEditorOption in pickerEditorOptions)
             {
                 counter++;
-                pickerEditorOption.Label = this.ProcessMacro(pickerEditorOption.Key, pickerEditorOption.Label, counter, total);
+                pickerEditorOption.Label = this.ProcessMacro(pickerEditorOption.Key, pickerEditorOption.Label, keys, counter, total);
             }
 
             return pickerEditorOptions.Where(x => !string.IsNullOrWhiteSpace(x.Label)); // remove any options without a label
@@ -66,15 +67,19 @@ namespace nuComponents.DataTypes.Shared.CustomLabel
         /// </summary>
         /// <param name="key">passed by parameter into the macro</param>
         /// <param name="fallback">value to return if macro fails</param>
+        /// <param name="keys">csv of all keys</param>
+        /// <param name="counter">current postion</param>
+        /// <param name="total">total number of keys</param>
         /// <returns>the output of the macro as a string</returns>
-        private string ProcessMacro(string key, string fallback, int counter, int total)
+        private string ProcessMacro(string key, string fallback, string keys, int counter, int total)
         {
             string label = fallback;
 
             if (!string.IsNullOrWhiteSpace(this.Alias) && this.HasContext)
             {
                 Macro macro = new Macro() { Alias = this.Alias };
-                macro.MacroAttributes.Add("key", key);                                
+                macro.MacroAttributes.Add("key", key);
+                macro.MacroAttributes.Add("keys", keys);
                 macro.MacroAttributes.Add("counter", counter);
                 macro.MacroAttributes.Add("total", total);
 
