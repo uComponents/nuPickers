@@ -1,10 +1,7 @@
-﻿
-namespace nuComponents.DataTypes.Shared.RelationTypeMapping
+﻿namespace nuComponents.DataTypes.Shared.RelationTypeMapping
 {
     using System.Collections.Generic;
     using System.Linq;
-    using System.Web.Http;
-    using umbraco.cms.businesslogic.relation;
     using Umbraco.Web.Editors;
     using Umbraco.Web.Mvc;
 
@@ -13,13 +10,13 @@ namespace nuComponents.DataTypes.Shared.RelationTypeMapping
     {
         public IEnumerable<object> GetRelationTypes()
         {
-            return RelationType.GetAll()
+            return ApplicationContext.Services.RelationService.GetAllRelationTypes()
                         .OrderBy(x => x.Name)
                         .Select(x => new
                         {
                             key = x.Alias,
                             label = x.Name,
-                            biDirectional = x.Dual                           
+                            biDirectional = x.IsBidirectional                           
                         });
         }
     }
