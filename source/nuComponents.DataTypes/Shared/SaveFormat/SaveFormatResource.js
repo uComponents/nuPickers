@@ -7,17 +7,16 @@ angular.module('umbraco.resources')
 
                 // pickedOptions: [{"key":"","label":""},{"key":"","label":""}...]
                 createSaveValue: function (config, pickedOptions) {
-
+                    
                     switch (config.saveFormat) {
 
                         case 'csv': // "key, key..."                        
-                        default:
                             return pickedOptions.map(function (option) { return option.key; }).join();
                             break;
 
-                            //case 'json': // [{"key":"","label":""},{"key":"","label":""}...] (some pickers add extra data to the options)                            
-                            //    return pickedOptions.map(function (opion) { return { key: option.key, label: option.label } });
-                            //    break;
+                        case 'json': // some pickers add extra data to the options, so using map function to ensure only key and label are saved  
+                            return JSON.stringify(pickedOptions.map(function (option) { return { 'key': option.key, 'label': option.label } }));
+                            break;
 
                         case 'xml':
                             var xml = '<PickedOptions>';
@@ -33,19 +32,21 @@ angular.module('umbraco.resources')
                             return xml;
                             break;
 
-                            //case 'none': // when saving to relations only
-                            //    return null;
-                            //    break;
+                        case 'none': // when saving to relations only
+                        default: 
+                            return null;
+                            break;
                     }
                 },
 
                 getSavedKeys: function (saveValue) {
 
-                    // ignore the config and try and decode the save value by looking at the string (incase format is changed)
-                    switch (saveValue.charAt(0)) {
-                        //case '[':
+                    if (saveValue instanceof Array)
+                    {
+                        return saveValue.map(function (option) { return option.key }).join().split(',');
+                    }
 
-
+                   switch (saveValue.charAt(0)) {
                         case '<': // TODO: check xml is valid, as a csv key could begin with a '<' !
                             var keys = new Array();
                             var xml = $.parseXML(saveValue); // $ is jQuery
@@ -56,8 +57,8 @@ angular.module('umbraco.resources')
 
                             return keys;
 
-                        default:
-                            return saveValue.split(','); // csv
+                        default: // csv
+                            return saveValue.split(','); 
                     }
                 }
             };

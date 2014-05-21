@@ -279,6 +279,7 @@
     <Folder Include="Shared\MinMax\" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Shared\CheckBoxPicker\CheckBoxPickerEditor.html" />
     <EmbeddedResource Include="Shared\ListPicker\ButtonAdd.png" />
     <EmbeddedResource Include="Shared\ListPicker\ButtonRemove.png" />
     <EmbeddedResource Include="Shared\ListPicker\ListPickerConfig.html" />
@@ -305,7 +306,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Shared\CheckBoxPicker\CheckBoxPickerEditorController.js" />
-    <EmbeddedResource Include="Shared\CheckBoxPicker\CheckBoxPickerEditor.html" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Shared\SqlDataSource\SqlDataSourceConfig.html" />

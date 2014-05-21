@@ -28,13 +28,15 @@ namespace nuComponents.DataTypes.Shared.SaveFormat
         /// <returns></returns>
         public override XNode ConvertDbToXml(Property property, PropertyType propertyType, IDataTypeService dataTypeService)
         {
+            string value = this.ConvertDbToString(property, propertyType, dataTypeService);
+
             try
             {
-                return XElement.Parse(this.ConvertDbToString(property, propertyType, dataTypeService));
+                return XElement.Parse(value);
             }
             catch
             {
-                return new XCData(ConvertDbToString(property, propertyType, dataTypeService));
+                return new XCData(value);
             }
         }
     }

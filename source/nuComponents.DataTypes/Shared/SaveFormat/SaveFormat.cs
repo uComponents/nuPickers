@@ -1,6 +1,8 @@
 ﻿
 namespace nuComponents.DataTypes.Shared.SaveFormat
 {
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
     using System.Collections.Generic;
     using System.Linq;
     using System.Xml.Linq;
@@ -13,8 +15,9 @@ namespace nuComponents.DataTypes.Shared.SaveFormat
             {
                 switch (savedValue[0])
                 {
-                    //case '[':
-                    //    break;
+                    case '[':
+                        // TODO: check json is valid
+                        return JsonConvert.DeserializeObject<JArray>(savedValue).Select(x => x["key"].ToString());
 
                     case '<':
                         // TODO: check xml is valid
