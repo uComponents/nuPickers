@@ -20,7 +20,7 @@ namespace nuComponents.DataTypes.PropertyEditors.SqlListPicker
     [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/Shared/CustomLabel/CustomLabelConfigController.js")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/Shared/ListPicker/ListPickerConfigController.js")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/Shared/RelationTypeMapping/RelationTypeMappingConfigController.js")]
-    public class SqlListPickerPropertyEditor : PropertyEditor
+    public class SqlListPickerPropertyEditor : BasePropertyEditor
     {
         protected override PreValueEditor CreatePreValueEditor()
         {

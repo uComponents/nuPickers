@@ -19,7 +19,7 @@ namespace nuComponents.DataTypes.PropertyEditors.SqlCheckBoxPicker
     [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/Shared/SqlDataSource/SqlDataSourceConfigController.js")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/Shared/CustomLabel/CustomLabelConfigController.js")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/Shared/RelationTypeMapping/RelationTypeMappingConfigController.js")]
-    public class SqlCheckBoxPickerPropertyEditor : PropertyEditor
+    public class SqlCheckBoxPickerPropertyEditor : BasePropertyEditor
     {
         protected override PreValueEditor CreatePreValueEditor()
         {

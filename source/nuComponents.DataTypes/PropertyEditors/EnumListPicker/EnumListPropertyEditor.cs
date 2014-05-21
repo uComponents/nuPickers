@@ -20,7 +20,7 @@ namespace nuComponents.DataTypes.PropertyEditors.EnumListPicker
     [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/Shared/CustomLabel/CustomLabelConfigController.js")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/Shared/ListPicker/ListPickerConfigController.js")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/Shared/RelationTypeMapping/RelationTypeMappingConfigController.js")]
-    public class EnumListPropertyEditor : PropertyEditor
+    public class EnumListPropertyEditor : BasePropertyEditor
     {
         protected override PreValueEditor CreatePreValueEditor()
         {

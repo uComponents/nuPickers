@@ -19,7 +19,7 @@ namespace nuComponents.DataTypes.PropertyEditors.EnumCheckBoxPicker
     [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/Shared/EnumDataSource/EnumDataSourceConfigController.js")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/Shared/CustomLabel/CustomLabelConfigController.js")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/Shared/RelationTypeMapping/RelationTypeMappingConfigController.js")]
-    public class EnumCheckBoxPickerPropertyEditor : PropertyEditor
+    public class EnumCheckBoxPickerPropertyEditor : BasePropertyEditor
     {
         protected override PreValueEditor CreatePreValueEditor()
         {

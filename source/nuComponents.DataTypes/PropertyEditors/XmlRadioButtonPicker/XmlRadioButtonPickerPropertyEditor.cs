@@ -19,7 +19,7 @@ namespace nuComponents.DataTypes.PropertyEditors.XmlRadioButtonPicker
     [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/Shared/XmlDataSource/XmlDataSourceConfigController.js")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/Shared/CustomLabel/CustomLabelConfigController.js")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/Shared/RelationTypeMapping/RelationTypeMappingConfigController.js")]
-    public class XmlRadioButtonPickerPropertyEditor : PropertyEditor
+    public class XmlRadioButtonPickerPropertyEditor : BasePropertyEditor
     {
         protected override PreValueEditor CreatePreValueEditor()
         {
