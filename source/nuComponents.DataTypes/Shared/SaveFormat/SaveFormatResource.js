@@ -6,6 +6,7 @@ angular.module('umbraco.resources')
             return {
 
                 // pickedOptions: [{"key":"","label":""},{"key":"","label":""}...]
+                // returns a string representation of the picked options as per the configured SaveFormat
                 createSaveValue: function (config, pickedOptions) {
                     
                     switch (config.saveFormat) {
@@ -14,8 +15,11 @@ angular.module('umbraco.resources')
                             return pickedOptions.map(function (option) { return option.key; }).join();
                             break;
 
-                        case 'json': // some pickers add extra data to the options, so using map function to ensure only key and label are saved  
-                            return JSON.stringify(pickedOptions.map(function (option) { return { 'key': option.key, 'label': option.label } }));
+                        case 'json': // some pickers add extra data to the options, so only return a key/label collection
+                            return JSON.stringify(
+                                            pickedOptions.map(function (option) {
+                                                return { 'key': option.key, 'label': option.label }
+                                            }));
                             break;
 
                         case 'xml':
@@ -41,25 +45,24 @@ angular.module('umbraco.resources')
 
                 getSavedKeys: function (saveValue) {
 
-                    if (saveValue instanceof Array)
+                    if (saveValue instanceof Array) // json
                     {
                         return saveValue.map(function (option) { return option.key }).join().split(',');
                     }
 
-                   switch (saveValue.charAt(0)) {
-                        case '<': // TODO: check xml is valid, as a csv key could begin with a '<' !
-                            var keys = new Array();
-                            var xml = $.parseXML(saveValue); // $ is jQuery
+                    try {
+                        var xml = $.parseXML(saveValue);
+                        var keys = new Array();
+                        $(xml).find('PickedOption').each(function () {
+                            keys.push($(this).attr('Key'));
+                        });
 
-                            $(xml).find('PickedOption').each(function () {
-                                keys.push($(this).attr('Key'));
-                            });
-
-                            return keys;
-
-                        default: // csv
-                            return saveValue.split(','); 
+                        return keys;
                     }
+                    catch (error) {
+                    }
+
+                    return saveValue.split(','); // csv
                 }
             };
         }

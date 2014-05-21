@@ -8,6 +8,10 @@ namespace nuComponents.DataTypes.Shared.SaveFormat
 
     public class SaveFormatPropertyValueEditor : PropertyValueEditor
     {
+        /// <summary>
+        /// reconstruct values from original (default) property value editor
+        /// </summary>
+        /// <param name="propertyValueEditor"></param>
         public SaveFormatPropertyValueEditor(PropertyValueEditor propertyValueEditor)
         {
             this.HideLabel = propertyValueEditor.HideLabel;
