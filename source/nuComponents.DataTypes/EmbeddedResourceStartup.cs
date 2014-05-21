@@ -10,7 +10,6 @@
         {
             base.ApplicationStarted(umbracoApplication, applicationContext);
 
-            // using seperate routes to ensure /Shared/ or /PropertEditors/ in the path
             RouteTable.Routes.MapRoute(
                 name: "nuComponentsShared",
                 url: "Umbraco/App_Plugins/nuComponents/DataTypes/Shared/{folder}/{file}",
@@ -20,16 +19,6 @@
                     action = "GetSharedResource"
                 }
             );
-
-            //RouteTable.Routes.MapRoute(
-            //    name: "nuComponentsPropertyEditors",
-            //    url: "Umbraco/App_Plugins/nuComponents/DataTypes/PropertyEditors/{folder}/{file}",
-            //    defaults: new
-            //    {
-            //        controller = "EmbeddedResource",
-            //        action = "GetPropertyEditorResource"
-            //    }
-            //);
         }
     }
 }

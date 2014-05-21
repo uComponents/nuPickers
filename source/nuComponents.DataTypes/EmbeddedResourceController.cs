@@ -6,7 +6,7 @@
     using System.Web.Mvc;
 
     /// <summary>
-    /// Handles returning embedded resource files (html, js, png...)
+    /// Handles returning embedded resource files (html, css, js, png)
     /// </summary>
     public class EmbeddedResourceController : Controller
     {
@@ -14,11 +14,6 @@
         {
             return this.GetResource("nuComponents.DataTypes.Shared." + folder + "." + file);
         }
-
-        //public FileStreamResult GetPropertyEditorResource(string folder, string file)
-        //{
-        //    return this.GetResource("nuComponents.DataTypes.PropertyEditors." + folder + "." + file);
-        //}
 
         private FileStreamResult GetResource(string resource)
         {
@@ -40,9 +35,10 @@
         {
             switch (Path.GetExtension(resource))
             {
-                case ".js":     return "text/javascript";
                 case ".html":   return "text/html";
                 case ".css":    return "text/css";
+                case ".js":     return "text/javascript";
+                case ".png":    return "image/png";
                 default:        return "text";
             }
         }
