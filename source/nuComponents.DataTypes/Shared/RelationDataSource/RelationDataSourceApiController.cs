@@ -1,5 +1,5 @@
 ﻿
-namespace nuComponents.DataTypes.Shared.RelationMatches
+namespace nuComponents.DataTypes.Shared.RelationDataSource
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -12,7 +12,7 @@ namespace nuComponents.DataTypes.Shared.RelationMatches
     using CustomLabel;
 
     [PluginController("nuComponents")]
-    public class RelationMatchesApiController : UmbracoAuthorizedJsonController
+    public class RelationDataSourceApiController : UmbracoAuthorizedJsonController
     {
         public IEnumerable<object> GetRelationTypes()
         {
@@ -26,16 +26,17 @@ namespace nuComponents.DataTypes.Shared.RelationMatches
                         });
         }
 
-        
+
         [HttpPost]
         public IEnumerable<PickerEditorOption> GetEditorOptions([FromUri] int contextId, [FromBody] dynamic config)
         {
-            IEnumerable<PickerEditorOption> pickerEditorOptions = RelationType.GetByAlias((string)config.relationMatches)
+            IEnumerable<PickerEditorOption> pickerEditorOptions = RelationType.GetByAlias((string)config.dataSource.relationType)
                                                                                 .GetRelations(contextId)
-                                                                                .Select(x => new PickerEditorOption()  { 
-                                                                                                        Key = x.Child.Id.ToString(), 
-                                                                                                        Label = x.Child.Text 
-                                                                                                    })
+                                                                                .Select(x => new PickerEditorOption()
+                                                                                {
+                                                                                    Key = x.Child.Id.ToString(),
+                                                                                    Label = x.Child.Text
+                                                                                })
                                                                                 .ToList();
 
             CustomLabel customLabel = new CustomLabel((string)config.customLabel, contextId);

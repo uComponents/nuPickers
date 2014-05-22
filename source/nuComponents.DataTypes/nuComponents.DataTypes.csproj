@@ -229,6 +229,7 @@
     <Compile Include="PropertyEditors\EnumListPicker\EnumListPropertyEditor.cs" />
     <Compile Include="PropertyEditors\EnumRadioButtonPicker\EnumRadioButtonPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\EnumRadioButtonPicker\EnumRadioButtonPickerPropertyEditor.cs" />
+    <Compile Include="Shared\RelationDataSource\RelationDataSourceApiController.cs" />
     <Compile Include="Shared\SaveFormat\SaveFormatPropertyValueEditor.cs" />
     <Compile Include="PropertyEditors\RelationMatches\RelationMatchesPreValueEditor.cs" />
     <Compile Include="PropertyEditors\RelationMatches\RelationMatchesPropertyEditor.cs" />
@@ -258,7 +259,6 @@
     <Compile Include="Shared\CustomLabel\CustomLabelApiController.cs" />
     <Compile Include="Shared\RelationTypeMapping\RelationTypeMappingApiController.cs" />
     <Compile Include="Shared\RelationTypeMapping\RelationTypeMappingEventHandler.cs" />
-    <Compile Include="Shared\RelationMatches\RelationMatchesApiController.cs" />
     <Compile Include="Shared\SaveFormat\SaveFormat.cs" />
     <Compile Include="Shared\SqlDataSource\SqlDataSource.cs" />
     <Compile Include="Shared\SqlDataSource\SqlDataSourceApiController.cs" />
@@ -275,7 +275,6 @@
     <Folder Include="PropertyEditors\XmlTypeAheadPicker\" />
     <Folder Include="PropertyValueConverters\" />
     <Folder Include="Shared\AutoCompletePicker\" />
-    <Folder Include="Shared\DataSource\" />
     <Folder Include="Shared\JsonDataSource\" />
     <Folder Include="Shared\MinMax\" />
   </ItemGroup>
@@ -343,10 +342,6 @@
     <EmbeddedResource Include="Shared\RelationMatches\RelationMatchesEditorController.js" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Shared\RelationMatches\RelationMatchesConfig.html" />
-    <EmbeddedResource Include="Shared\RelationMatches\RelationMatchesConfigController.js" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Shared\LayoutDirection\LayoutDirectionConfig.html" />
   </ItemGroup>
   <ItemGroup>
@@ -354,6 +349,15 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Shared\PropertyEditor\PropertyEditorConfig.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\RelationDataSource\RelationDataSourceConfig.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\RelationDataSource\RelationDataSourceConfigController.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\DataSource\DataSourceResource.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
