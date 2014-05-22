@@ -2,7 +2,6 @@
 namespace nuComponents.DataTypes.PropertyEditors.SqlCheckBoxPicker
 {
     using Umbraco.Core.PropertyEditors;
-    using nuComponents.DataTypes.Interfaces;
 
     internal class RelationMatchesPreValueEditor : PreValueEditor
     {

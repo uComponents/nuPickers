@@ -2,9 +2,8 @@
 namespace nuComponents.DataTypes.PropertyEditors.XmlRadioButtonPicker
 {
     using Umbraco.Core.PropertyEditors;
-    using nuComponents.DataTypes.Interfaces;
 
-    internal class XmlRadioButtonPickerPreValueEditor : PreValueEditor, IPickerPreValueEditor
+    internal class XmlRadioButtonPickerPreValueEditor : PreValueEditor
     {
         [PreValueField("dataSource", "", EmbeddedResource.RootUrl + "XmlDataSource/XmlDataSourceConfig.html", HideLabel = true)]
         public string DataSource { get; set; }
@@ -20,8 +19,5 @@ namespace nuComponents.DataTypes.PropertyEditors.XmlRadioButtonPicker
 
         [PreValueField("saveFormat", "Save Format", EmbeddedResource.RootUrl + "SaveFormat/SaveFormatConfig.html")]
         public string SaveFormat { get; set; }
-
-        [PreValueField("apiController", "XmlDataSourceApi", EmbeddedResource.RootUrl + "HiddenConstant/HiddenConstantConfig.html", HideLabel = true)]
-        public string ApiController { get; set; }
     }
 }

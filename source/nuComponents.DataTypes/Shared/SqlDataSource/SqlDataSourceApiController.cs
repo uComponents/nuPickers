@@ -1,7 +1,6 @@
 ﻿namespace nuComponents.DataTypes.Shared.SqlDataSource
 {
     using Newtonsoft.Json.Linq;
-    using nuComponents.DataTypes.Interfaces;
     using nuComponents.DataTypes.Shared.CustomLabel;
     using nuComponents.DataTypes.Shared.Picker;
     using System.Collections.Generic;
@@ -11,7 +10,7 @@
     using Umbraco.Web.Mvc;
 
     [PluginController("nuComponents")]
-    public class SqlDataSourceApiController : UmbracoAuthorizedJsonController, IPickerApiController
+    public class SqlDataSourceApiController : UmbracoAuthorizedJsonController
     {
         public IEnumerable<object> GetConnectionStrings()
         {

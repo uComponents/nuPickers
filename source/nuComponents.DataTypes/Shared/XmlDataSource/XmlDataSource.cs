@@ -1,7 +1,6 @@
 ﻿
 namespace nuComponents.DataTypes.Shared.XmlDataSource
 {
-    using nuComponents.DataTypes.Interfaces;
     using nuComponents.DataTypes.Shared.Picker;
     using System.Collections.Generic;
     using System.Linq;
@@ -10,7 +9,7 @@ namespace nuComponents.DataTypes.Shared.XmlDataSource
     using System.Xml.XPath;
     using umbraco;
 
-    public class XmlDataSource : IPickerDataSource
+    public class XmlDataSource
     {
         public string XmlData { get; set; }
 

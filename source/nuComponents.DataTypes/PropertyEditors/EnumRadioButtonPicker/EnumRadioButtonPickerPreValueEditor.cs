@@ -2,9 +2,8 @@
 namespace nuComponents.DataTypes.PropertyEditors.EnumRadioButtonPicker
 {
     using Umbraco.Core.PropertyEditors;
-    using nuComponents.DataTypes.Interfaces;
 
-    internal class EnumRadioButtonPickerPreValueEditor : PreValueEditor, IPickerPreValueEditor
+    internal class EnumRadioButtonPickerPreValueEditor : PreValueEditor
     {
         [PreValueField("dataSource", "", EmbeddedResource.RootUrl + "EnumDataSource/EnumDataSourceConfig.html", HideLabel = true)]
         public string DataSource { get; set; }
@@ -20,8 +19,5 @@ namespace nuComponents.DataTypes.PropertyEditors.EnumRadioButtonPicker
 
         [PreValueField("saveFormat", "Save Format", EmbeddedResource.RootUrl + "SaveFormat/SaveFormatConfig.html")]
         public string SaveFormat { get; set; }
-
-        [PreValueField("apiController", "EnumDataSourceApi", EmbeddedResource.RootUrl + "HiddenConstant/HiddenConstantConfig.html", HideLabel = true)]
-        public string ApiController { get; set; }
     }
 }

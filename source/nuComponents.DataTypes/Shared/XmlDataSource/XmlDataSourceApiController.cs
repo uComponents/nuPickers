@@ -2,7 +2,6 @@
 namespace nuComponents.DataTypes.Shared.XmlDataSource
 {
     using Newtonsoft.Json.Linq;
-    using nuComponents.DataTypes.Interfaces;
     using nuComponents.DataTypes.Shared.CustomLabel;
     using nuComponents.DataTypes.Shared.Picker;
     using nuComponents.DataTypes.Shared.XmlDataSource;
@@ -13,7 +12,7 @@ namespace nuComponents.DataTypes.Shared.XmlDataSource
     using Umbraco.Web.Mvc;
 
     [PluginController("nuComponents")]
-    public class XmlDataSourceApiController : UmbracoAuthorizedJsonController, IPickerApiController
+    public class XmlDataSourceApiController : UmbracoAuthorizedJsonController
     {
         [HttpPost]
         public IEnumerable<PickerEditorOption> GetEditorOptions([FromUri] int contextId, [FromBody] dynamic config)

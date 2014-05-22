@@ -3,9 +3,8 @@ namespace nuComponents.DataTypes.PropertyEditors.EnumCheckBoxPicker
 {
     using Umbraco.Core.PropertyEditors;
     using nuComponents.DataTypes;
-    using nuComponents.DataTypes.Interfaces;
 
-    internal class EnumCheckBoxPickerPreValueEditor : PreValueEditor, IPickerPreValueEditor
+    internal class EnumCheckBoxPickerPreValueEditor : PreValueEditor
     {
         [PreValueField("dataSource", "", EmbeddedResource.RootUrl + "EnumDataSource/EnumDataSourceConfig.html", HideLabel = true)]
         public string DataSource { get; set; }
@@ -21,9 +20,5 @@ namespace nuComponents.DataTypes.PropertyEditors.EnumCheckBoxPicker
 
         [PreValueField("saveFormat", "Save Format", EmbeddedResource.RootUrl + "SaveFormat/SaveFormatConfig.html")]
         public string SaveFormat { get; set; }
-
-        // TODO: rename to pickerApiController / pickerDataSourceApiContoller ?
-        [PreValueField("apiController", "EnumDataSourceApi", EmbeddedResource.RootUrl + "HiddenConstant/HiddenConstantConfig.html", HideLabel = true)]
-        public string ApiController { get; set; }
     }
 }

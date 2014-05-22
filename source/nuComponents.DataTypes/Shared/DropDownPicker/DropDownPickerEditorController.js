@@ -2,7 +2,7 @@
 angular
     .module("umbraco")
     .controller("nuComponents.DataTypes.Shared.DropDownPicker.DropDownPickerEditorController",
-        ['$scope', 'nuComponents.DataTypes.Shared.Picker.PickerResource',
+        ['$scope', 'nuComponents.DataTypes.Shared.DataSource.DataSourceResource',
         function ($scope, pickerResource) {
 
             pickerResource.getEditorOptions($scope.model.config).then(function (response) {

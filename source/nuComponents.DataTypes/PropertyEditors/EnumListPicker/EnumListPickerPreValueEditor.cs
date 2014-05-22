@@ -1,10 +1,9 @@
 ﻿
 namespace nuComponents.DataTypes.PropertyEditors.EnumListPicker
 {
-    using nuComponents.DataTypes.Interfaces;
     using Umbraco.Core.PropertyEditors;
 
-    internal class EnumListPickerPreValueEditor : PreValueEditor, IPickerPreValueEditor
+    internal class EnumListPickerPreValueEditor : PreValueEditor
     {
         [PreValueField("dataSource", "", EmbeddedResource.RootUrl + "EnumDataSource/EnumDataSourceConfig.html", HideLabel = true)]
         public string DataSource { get; set; }
@@ -20,8 +19,5 @@ namespace nuComponents.DataTypes.PropertyEditors.EnumListPicker
 
         [PreValueField("saveFormat", "Save Format", EmbeddedResource.RootUrl + "SaveFormat/SaveFormatConfig.html")]
         public string SaveFormat { get; set; }
-
-        [PreValueField("apiController", "EnumDataSourceApi", EmbeddedResource.RootUrl + "HiddenConstant/HiddenConstantConfig.html", HideLabel = true)]
-        public string ApiController { get; set; }
     }
 }

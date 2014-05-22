@@ -1,10 +1,9 @@
 ﻿
 namespace nuComponents.DataTypes.PropertyEditors.XmlListPicker
 {
-    using nuComponents.DataTypes.Interfaces;
     using Umbraco.Core.PropertyEditors;
 
-    internal class XmlListPickerPreValueEditor : PreValueEditor, IPickerPreValueEditor
+    internal class XmlListPickerPreValueEditor : PreValueEditor
     {
         [PreValueField("dataSource", "", EmbeddedResource.RootUrl + "XmlDataSource/XmlDataSourceConfig.html", HideLabel = true)]
         public string DataSource { get; set; }
@@ -20,8 +19,5 @@ namespace nuComponents.DataTypes.PropertyEditors.XmlListPicker
 
         [PreValueField("saveFormat", "Save Format", EmbeddedResource.RootUrl + "SaveFormat/SaveFormatConfig.html")]
         public string SaveFormat { get; set; }
-
-        [PreValueField("apiController", "XmlDataSourceApi", EmbeddedResource.RootUrl + "HiddenConstant/HiddenConstantConfig.html", HideLabel = true)]
-        public string ApiController { get; set; }
     }
 }

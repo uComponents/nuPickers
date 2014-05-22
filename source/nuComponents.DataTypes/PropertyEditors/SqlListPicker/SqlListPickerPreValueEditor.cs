@@ -1,10 +1,9 @@
 ﻿
 namespace nuComponents.DataTypes.PropertyEditors.SqlListPicker
 {
-    using nuComponents.DataTypes.Interfaces;
     using Umbraco.Core.PropertyEditors;
 
-    internal class SqlListPickerPreValueEditor : PreValueEditor, IPickerPreValueEditor
+    internal class SqlListPickerPreValueEditor : PreValueEditor
     {
         [PreValueField("dataSource", "", EmbeddedResource.RootUrl + "SqlDataSource/SqlDataSourceConfig.html", HideLabel = true)]
         public string DataSource { get; set; }
@@ -20,8 +19,5 @@ namespace nuComponents.DataTypes.PropertyEditors.SqlListPicker
 
         [PreValueField("saveFormat", "Save Format", EmbeddedResource.RootUrl + "SaveFormat/SaveFormatConfig.html")]
         public string SaveFormat { get; set; }
-
-        [PreValueField("apiController", "SqlDataSourceApi", EmbeddedResource.RootUrl + "HiddenConstant/HiddenConstantConfig.html", HideLabel = true)]
-        public string ApiController { get; set; }
     }
 }

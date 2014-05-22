@@ -2,9 +2,8 @@
 namespace nuComponents.DataTypes.PropertyEditors.SqlRadioButtonPicker
 {
     using Umbraco.Core.PropertyEditors;
-    using nuComponents.DataTypes.Interfaces;
 
-    internal class SqlRadioButtonPickerPreValueEditor : PreValueEditor, IPickerPreValueEditor
+    internal class SqlRadioButtonPickerPreValueEditor : PreValueEditor
     {
         [PreValueField("dataSource", "", EmbeddedResource.RootUrl + "SqlDataSource/SqlDataSourceConfig.html", HideLabel = true)]
         public string DataSource { get; set; }
@@ -20,8 +19,5 @@ namespace nuComponents.DataTypes.PropertyEditors.SqlRadioButtonPicker
 
         [PreValueField("saveFormat", "Save Format", EmbeddedResource.RootUrl + "SaveFormat/SaveFormatConfig.html")]
         public string SaveFormat { get; set; }
-
-        [PreValueField("apiController", "SqlDataSourceApi", EmbeddedResource.RootUrl + "HiddenConstant/HiddenConstantConfig.html", HideLabel = true)]
-        public string ApiController { get; set; }
     }
 }

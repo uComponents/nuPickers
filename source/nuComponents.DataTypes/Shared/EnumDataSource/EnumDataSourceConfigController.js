@@ -4,9 +4,8 @@ angular
     .controller("nuComponents.DataTypes.Shared.EnumDataSource.EnumDataSourceConfigController",
     ['$scope', '$http', function ($scope, $http) {
 
-        //// is value not supplied,  then default to empty string
-        //$scope.model.value = $scope.model.value || new Object();
-        //$scope.model.value.assemblyName = $scope.model.value.assemblyName || '';
+        $scope.model.value = $scope.model.value || new Object();
+        $scope.model.value.apiController = 'EnumDataSourceApi';
 
         $http.get('backoffice/nuComponents/EnumDataSourceApi/GetAssemblyNames').then(function (response) {
 
@@ -15,7 +14,6 @@ angular
             $scope.$watch('model.value.assemblyName', function () {
 
                 $scope.enumNames = null;
-                //$scope.model.value.enumName = null;
                 
                 $http.get('backoffice/nuComponents/EnumDataSourceApi/GetEnumNames',
                     { params: { assemblyName: $scope.model.value.assemblyName } })

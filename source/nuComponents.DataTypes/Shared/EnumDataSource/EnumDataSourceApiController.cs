@@ -8,13 +8,12 @@
     using System.Web.Http;
     using Umbraco.Web.Editors;
     using Umbraco.Web.Mvc;
-    using nuComponents.DataTypes.Interfaces;
     using nuComponents.DataTypes.Shared.Picker;
     using Newtonsoft.Json.Linq;
     using nuComponents.DataTypes.Shared.CustomLabel;
 
     [PluginController("nuComponents")]
-    public class EnumDataSourceApiController : UmbracoAuthorizedJsonController, IPickerApiController
+    public class EnumDataSourceApiController : UmbracoAuthorizedJsonController
     {
         /// <summary>
         /// Gets the names of all assemblies and optional AppCode folder

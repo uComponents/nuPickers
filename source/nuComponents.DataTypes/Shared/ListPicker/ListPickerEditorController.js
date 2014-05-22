@@ -3,7 +3,7 @@
 angular
     .module("umbraco")
     .controller("nuComponents.DataTypes.Shared.ListPicker.ListPickerEditorController",
-        ['$scope', 'nuComponents.DataTypes.Shared.Picker.PickerResource',
+        ['$scope', 'nuComponents.DataTypes.Shared.DataSource.DataSourceResource',
         function ($scope, pickerResource) {
             /*
                     $scope.model.config.listPicker = {
