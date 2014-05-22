@@ -212,6 +212,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EmbeddedResource.cs" />
     <Compile Include="EmbeddedResourceController.cs" />
     <Compile Include="EmbeddedResourceStartup.cs" />
     <Compile Include="Interfaces\IPickerApiController.cs" />

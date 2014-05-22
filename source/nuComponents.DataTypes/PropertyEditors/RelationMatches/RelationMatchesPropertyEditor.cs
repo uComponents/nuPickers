@@ -6,17 +6,17 @@ namespace nuComponents.DataTypes.PropertyEditors.SqlCheckBoxPicker
     using Umbraco.Web.PropertyEditors;
 
     // EDITOR UI
-    [PropertyEditor("relationMatches", "nuComponents: Relation Matches", "App_Plugins/nuComponents/DataTypes/Shared/RelationMatches/RelationMatchesEditor.html", ValueType = "TEXT")]
-    [PropertyEditorAsset(ClientDependencyType.Css, "App_Plugins/nuComponents/DataTypes/Shared/LayoutDirection/LayoutDirection.css")]
-    [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/Shared/RelationMatches/RelationMatchesEditorController.js")]
+    [PropertyEditor("relationMatches", "nuComponents: Relation Matches", EmbeddedResource.RootUrl + "RelationMatches/RelationMatchesEditor.html", ValueType = "TEXT")]
+    [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.RootUrl + "LayoutDirection/LayoutDirection.css")]
+    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "RelationMatches/RelationMatchesEditorController.js")]
 
     // RESOURCES
-    [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/Shared/Picker/PickerResource.js")]
+    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "Picker/PickerResource.js")]
 
     // CONFIG
-    [PropertyEditorAsset(ClientDependencyType.Css, "App_Plugins/nuComponents/DataTypes/Shared/PropertyEditor/PropertyEditorConfig.css")]
-    [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/Shared/RelationMatches/RelationMatchesConfigController.js")]
-    [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/Shared/CustomLabel/CustomLabelConfigController.js")]
+    [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.RootUrl + "PropertyEditor/PropertyEditorConfig.css")]
+    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "RelationMatches/RelationMatchesConfigController.js")]
+    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "CustomLabel/CustomLabelConfigController.js")]
     public class RelationMatchesPropertyEditor : BasePropertyEditor
     {
         protected override PreValueEditor CreatePreValueEditor()
