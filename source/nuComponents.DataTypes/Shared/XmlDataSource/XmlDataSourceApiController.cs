@@ -15,13 +15,13 @@ namespace nuComponents.DataTypes.Shared.XmlDataSource
     public class XmlDataSourceApiController : UmbracoAuthorizedJsonController
     {
         [HttpPost]
-        public IEnumerable<PickerEditorOption> GetEditorOptions([FromUri] int contextId, [FromBody] dynamic config)
+        public IEnumerable<PickerEditorOption> GetEditorOptions([FromUri] int contextId, [FromBody] dynamic data)
         {
-            XmlDataSource xmlDataSource = ((JObject)config.dataSource).ToObject<XmlDataSource>();
+            XmlDataSource xmlDataSource = ((JObject)data.config.dataSource).ToObject<XmlDataSource>();
 
             IEnumerable<PickerEditorOption> pickerEditorOptions = xmlDataSource.GetEditorOptions(contextId);
 
-            CustomLabel customLabel = new CustomLabel((string)config.customLabel, contextId);
+            CustomLabel customLabel = new CustomLabel((string)data.config.customLabel, contextId);
 
             return customLabel.ProcessPickerEditorOptions(pickerEditorOptions);
         }

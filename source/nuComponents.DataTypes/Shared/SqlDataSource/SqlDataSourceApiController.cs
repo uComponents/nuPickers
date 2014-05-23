@@ -25,13 +25,14 @@
         }
 
         [HttpPost]
-        public IEnumerable<PickerEditorOption> GetEditorOptions([FromUri] int contextId, [FromBody] dynamic config)
+        public IEnumerable<PickerEditorOption> GetEditorOptions([FromUri] int contextId, [FromBody] dynamic data)
         {
-            SqlDataSource sqlDataSource = ((JObject)config.dataSource).ToObject<SqlDataSource>();
+            SqlDataSource sqlDataSource = ((JObject)data.config.dataSource).ToObject<SqlDataSource>();
+            sqlDataSource.Typeahead = (string)data.typeahead;
 
             IEnumerable<PickerEditorOption> pickerEditorOptions = sqlDataSource.GetEditorOptions(contextId);
 
-            CustomLabel customLabel = new CustomLabel((string)config.customLabel, contextId);
+            CustomLabel customLabel = new CustomLabel((string)data.config.customLabel, contextId);
 
             return customLabel.ProcessPickerEditorOptions(pickerEditorOptions);
         }

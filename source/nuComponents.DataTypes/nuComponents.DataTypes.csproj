@@ -225,6 +225,8 @@
     <Compile Include="PropertyEditors\EnumListPicker\EnumListPropertyEditor.cs" />
     <Compile Include="PropertyEditors\EnumRadioButtonPicker\EnumRadioButtonPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\EnumRadioButtonPicker\EnumRadioButtonPickerPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\SqlTypeaheadPicker\SqlTypeaheadPickerPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\SqlTypeaheadPicker\SqlTypeaheadPickerPropertyEditor.cs" />
     <Compile Include="Shared\RelationDataSource\RelationDataSourceApiController.cs" />
     <Compile Include="Shared\SaveFormat\SaveFormatPropertyValueEditor.cs" />
     <Compile Include="PropertyEditors\RelationMatches\RelationMatchesPreValueEditor.cs" />
@@ -266,13 +268,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="PropertyEditors\RelationTypeAheadPicker\" />
-    <Folder Include="PropertyEditors\SqlTypeAheadPicker\" />
-    <Folder Include="PropertyEditors\XmlTypeAheadPicker\" />
     <Folder Include="PropertyValueConverters\" />
-    <Folder Include="Shared\AutoCompletePicker\" />
-    <Folder Include="Shared\JsonDataSource\" />
-    <Folder Include="Shared\MinMax\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Shared\CheckBoxPicker\CheckBoxPickerEditor.html" />
@@ -351,6 +347,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Shared\DataSource\DataSourceResource.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\TypeaheadPicker\TypeaheadPickerEditor.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\TypeaheadPicker\TypeaheadPickerEditorController.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

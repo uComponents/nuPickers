@@ -28,9 +28,9 @@ namespace nuComponents.DataTypes.Shared.RelationDataSource
 
 
         [HttpPost]
-        public IEnumerable<PickerEditorOption> GetEditorOptions([FromUri] int contextId, [FromBody] dynamic config)
+        public IEnumerable<PickerEditorOption> GetEditorOptions([FromUri] int contextId, [FromBody] dynamic data)
         {
-            IEnumerable<PickerEditorOption> pickerEditorOptions = RelationType.GetByAlias((string)config.dataSource.relationType)
+            IEnumerable<PickerEditorOption> pickerEditorOptions = RelationType.GetByAlias((string)data.config.dataSource.relationType)
                                                                                 .GetRelations(contextId)
                                                                                 .Select(x => new PickerEditorOption()
                                                                                 {
@@ -39,7 +39,7 @@ namespace nuComponents.DataTypes.Shared.RelationDataSource
                                                                                 })
                                                                                 .ToList();
 
-            CustomLabel customLabel = new CustomLabel((string)config.customLabel, contextId);
+            CustomLabel customLabel = new CustomLabel((string)data.config.customLabel, contextId);
 
             return customLabel.ProcessPickerEditorOptions(pickerEditorOptions);
         }

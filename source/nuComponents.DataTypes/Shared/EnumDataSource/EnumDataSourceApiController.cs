@@ -50,13 +50,13 @@
         }
 
         [HttpPost]
-        public IEnumerable<PickerEditorOption> GetEditorOptions([FromUri] int contextId, [FromBody] dynamic config)
+        public IEnumerable<PickerEditorOption> GetEditorOptions([FromUri] int contextId, [FromBody] dynamic data)
         {
-            EnumDataSource enumDataSource = ((JObject)config.dataSource).ToObject<EnumDataSource>();
+            EnumDataSource enumDataSource = ((JObject)data.config.dataSource).ToObject<EnumDataSource>();
 
             IEnumerable<PickerEditorOption> pickerEditorOptions = enumDataSource.GetEditorOptions();
 
-            CustomLabel customLabel = new CustomLabel((string)config.customLabel, contextId);
+            CustomLabel customLabel = new CustomLabel((string)data.config.customLabel, contextId);
 
             return customLabel.ProcessPickerEditorOptions(pickerEditorOptions);
         }
