@@ -3,12 +3,12 @@ angular
     .module("umbraco")
     .controller("nuComponents.DataTypes.Shared.DropDownPicker.DropDownPickerEditorController",
         ['$scope', 'nuComponents.DataTypes.Shared.DataSource.DataSourceResource',
-        function ($scope, pickerResource) {
+        function ($scope, dataSourceResource) {
 
-            pickerResource.getEditorOptions($scope.model.config).then(function (response) {
+            dataSourceResource.getEditorOptions($scope.model.config).then(function (response) {
                 $scope.dropDownPickerOptions = response.data;
 
-                var savedKey = pickerResource.getSavedKeys($scope.model.value);
+                var savedKey = dataSourceResource.getSavedKeys($scope.model.value);
                 if (savedKey[0])
                 {
                     var i = 0;
@@ -29,7 +29,7 @@ angular
                     if ($scope.pickedOption == null) {
                         $scope.model.value = null;
                     } else {
-                        $scope.model.value = pickerResource.createSaveValue($scope.model.config, [$scope.pickedOption]);
+                        $scope.model.value = dataSourceResource.createSaveValue($scope.model.config, [$scope.pickedOption]);
                     }
                 });
             });

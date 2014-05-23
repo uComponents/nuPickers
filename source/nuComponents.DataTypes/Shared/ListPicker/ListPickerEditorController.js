@@ -4,7 +4,7 @@ angular
     .module("umbraco")
     .controller("nuComponents.DataTypes.Shared.ListPicker.ListPickerEditorController",
         ['$scope', 'nuComponents.DataTypes.Shared.DataSource.DataSourceResource',
-        function ($scope, pickerResource) {
+        function ($scope, dataSourceResource) {
             /*
                     $scope.model.config.listPicker = {
                                 "cssFile":null,
@@ -84,12 +84,12 @@ angular
             };
 
             // call api, supplying all configuration details, and expect a collection of options (key / label) to be populated
-            pickerResource.getEditorOptions($scope.model.config).then(function (response) {
+            dataSourceResource.getEditorOptions($scope.model.config).then(function (response) {
 
                 var editorOptions = response.data; // [{"key":"","label":""},{"key":"","label":""}...]
 
                 // build selected options
-                var savedKeys = pickerResource.getSavedKeys($scope.model.value);
+                var savedKeys = dataSourceResource.getSavedKeys($scope.model.value);
                 for (var i = 0; i < savedKeys.length; i++) { // loop though each saved key
                     for (var j = 0; j < editorOptions.length; j++) { // loop though each editor option
                         if (savedKeys[i] == editorOptions[j].key) {
@@ -103,7 +103,7 @@ angular
                 $scope.$watchCollection('selectedOptions', function () {
 
                     // use the picker resourse to save in the correct format
-                    $scope.model.value = pickerResource.createSaveValue($scope.model.config, $scope.selectedOptions);
+                    $scope.model.value = dataSourceResource.createSaveValue($scope.model.config, $scope.selectedOptions);
 
                     // TODO: how to return error to Umbraco ?
                     //var isValid = ($scope.selectableOptions.length >= $scope.model.config.minItems

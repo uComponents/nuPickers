@@ -3,12 +3,12 @@ angular
     .module("umbraco")
     .controller("nuComponents.DataTypes.Shared.RadioButtonPicker.RadioButtonPickerEditorController",
         ['$scope', 'nuComponents.DataTypes.Shared.DataSource.DataSourceResource',
-        function ($scope, pickerResource) {
+        function ($scope, dataSourceResource) {
 
-            pickerResource.getEditorOptions($scope.model.config).then(function (response) {
+            dataSourceResource.getEditorOptions($scope.model.config).then(function (response) {
                 $scope.radioButtonPickerOptions = response.data;                               
 
-                $scope.pickedKey = pickerResource.getSavedKeys($scope.model.value)[0];
+                $scope.pickedKey = dataSourceResource.getSavedKeys($scope.model.value)[0];
 
                 $scope.$watch('pickedKey', function () {
 
@@ -17,7 +17,7 @@ angular
                     do {
                         if ($scope.radioButtonPickerOptions[i].key == $scope.pickedKey) {
 
-                            $scope.model.value = pickerResource.createSaveValue($scope.model.config, [$scope.radioButtonPickerOptions[i]]);
+                            $scope.model.value = dataSourceResource.createSaveValue($scope.model.config, [$scope.radioButtonPickerOptions[i]]);
                             found = true;
                         }
                         i++;
