@@ -1,12 +1,12 @@
 ﻿
-namespace nuComponents.DataTypes.PropertyEditors.SqlTypeAheadPicker
+namespace nuComponents.DataTypes.PropertyEditors.XmlTypeAheadPicker
 {
     using ClientDependency.Core;
     using Umbraco.Core.PropertyEditors;
     using Umbraco.Web.PropertyEditors;
 
     // EDITOR UI
-    [PropertyEditor("sqlTypeaheadPicker", "nuComponents: Sql Typeahead Picker", EmbeddedResource.RootUrl + "TypeaheadPicker/TypeaheadPickerEditor.html", ValueType = "TEXT")]
+    [PropertyEditor("xmlTypeaheadPicker", "nuComponents: Xml Typeahead Picker", EmbeddedResource.RootUrl + "TypeaheadPicker/TypeaheadPickerEditor.html", ValueType = "TEXT")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "TypeaheadPicker/TypeaheadPickerEditorController.js")]
 
     // RESOURCES
@@ -15,14 +15,14 @@ namespace nuComponents.DataTypes.PropertyEditors.SqlTypeAheadPicker
 
     // CONFIG
     [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.RootUrl + "PropertyEditor/PropertyEditorConfig.css")]
-    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "SqlDataSource/SqlDataSourceConfigController.js")]
+    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "XmlDataSource/XmlDataSourceConfigController.js")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "CustomLabel/CustomLabelConfigController.js")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "RelationTypeMapping/RelationTypeMappingConfigController.js")]
-    public class SqlTypeaheadPickerPropertyEditor : BasePropertyEditor
+    public class XmlTypeaheadPickerPropertyEditor : BasePropertyEditor
     {
         protected override PreValueEditor CreatePreValueEditor()
         {
-            return new SqlTypeaheadPickerPreValueEditor();
+            return new XmlTypeaheadPickerPreValueEditor();
         }
     }
 }

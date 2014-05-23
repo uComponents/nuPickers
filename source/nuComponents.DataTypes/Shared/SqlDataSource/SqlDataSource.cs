@@ -35,8 +35,10 @@ namespace nuComponents.DataTypes.Shared.SqlDataSource
                     {
                         parameters.Add(sqlHelper.CreateParameter("@contextId", contextId));
                     }
+
                     if (sql.Contains("@typeahead"))
                     {
+                        // if @typeahead is specified in the sql, then supply it - this can be useful to reduce the result set used by the type ahead filtering later
                         parameters.Add(sqlHelper.CreateParameter("@typeahead", this.Typeahead));
                     }
 

@@ -227,6 +227,8 @@
     <Compile Include="PropertyEditors\EnumRadioButtonPicker\EnumRadioButtonPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\SqlTypeaheadPicker\SqlTypeaheadPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\SqlTypeaheadPicker\SqlTypeaheadPickerPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\XmlTypeaheadPicker\XmlTypeaheadPickerPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\XmlTypeaheadPicker\XmlTypeaheadPickerPropertyEditor.cs" />
     <Compile Include="Shared\RelationDataSource\RelationDataSourceApiController.cs" />
     <Compile Include="Shared\SaveFormat\SaveFormatPropertyValueEditor.cs" />
     <Compile Include="PropertyEditors\RelationMatches\RelationMatchesPreValueEditor.cs" />
