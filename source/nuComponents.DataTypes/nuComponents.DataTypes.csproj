@@ -262,6 +262,7 @@
     <Compile Include="Shared\SaveFormat\SaveFormat.cs" />
     <Compile Include="Shared\SqlDataSource\SqlDataSource.cs" />
     <Compile Include="Shared\SqlDataSource\SqlDataSourceApiController.cs" />
+    <Compile Include="Shared\TypeaheadPicker\TypeaheadPicker.cs" />
     <Compile Include="Shared\XmlDataSource\XmlDataSource.cs" />
     <Compile Include="Shared\XmlDataSource\XmlDataSourceApiController.cs" />
   </ItemGroup>

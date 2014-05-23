@@ -3,6 +3,7 @@
     using Newtonsoft.Json.Linq;
     using nuComponents.DataTypes.Shared.CustomLabel;
     using nuComponents.DataTypes.Shared.Picker;
+    using nuComponents.DataTypes.Shared.TypeaheadPicker;
     using System.Collections.Generic;
     using System.Configuration;
     using System.Web.Http;
@@ -33,8 +34,10 @@
             IEnumerable<PickerEditorOption> pickerEditorOptions = sqlDataSource.GetEditorOptions(contextId);
 
             CustomLabel customLabel = new CustomLabel((string)data.config.customLabel, contextId);
+            TypeaheadPicker typeaheadPicker = new TypeaheadPicker((string)data.typeahead);
 
-            return customLabel.ProcessPickerEditorOptions(pickerEditorOptions);
+            // process the labels and then handle any type ahead text
+            return typeaheadPicker.ProcessPickerEditorOptions(customLabel.ProcessPickerEditorOptions(pickerEditorOptions));
         }
     }
 }
