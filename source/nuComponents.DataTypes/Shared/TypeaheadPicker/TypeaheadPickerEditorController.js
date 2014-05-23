@@ -1,20 +1,23 @@
 ﻿
 angular
-    .module("umbraco")
+    .module('umbraco')
     .controller("nuComponents.DataTypes.Shared.TypeaheadPicker.TypeaheadPickerEditorController",
         ['$scope', 'nuComponents.DataTypes.Shared.DataSource.DataSourceResource',
         function ($scope, dataSourceResource) {
 
+            $scope.clear = function () {
+                $scope.selectableOptions = null;
+            };
 
             // setup a watch on the input
             $scope.$watch('typeahead', function (newValue, oldValue) {                
 
-                if (newValue.length > 0) {
+                if (newValue != null && newValue.length > 0) {
 
-                    dataSourceResource.getEditorOptions($scope.model.config, $scope.typeahead).then(function (response) {
+                    dataSourceResource.getEditorOptions($scope.model.config, newValue).then(function (response) {
 
                         if (response.data.length > 0) {
-                            $scope.editorOptions = response.data;
+                            $scope.selectableOptions = response.data;
                         }
                         else {
                             $scope.typeahead = oldValue;
@@ -24,12 +27,9 @@ angular
 
                 }
                 else {
-                    $scope.editorOptions = null;
+                    $scope.selectableOptions = null;
                 }
 
             });
-
-
-
 
         }]);

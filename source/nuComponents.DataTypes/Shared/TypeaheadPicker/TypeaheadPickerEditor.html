@@ -1,10 +1,16 @@
 ﻿
 <div ng-controller="nuComponents.DataTypes.Shared.TypeaheadPicker.TypeaheadPickerEditorController">
 
-    <input type="text" ng-model="typeahead">
+    <input type="text"
+           autocomplete="off"
+           ng-model="typeahead" />
 
-
-    {{ editorOptions }}
+    <ul class="selectable"
+        ng-model="selectableOptions">
+        <li ng-repeat="option in selectableOptions" ng-bind-html-unsafe="option.label">
+        </li>
+    </ul>
+    
 
 </div>
 
