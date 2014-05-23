@@ -5,7 +5,9 @@ angular
     ['$scope', '$http', function ($scope, $http) {
 
         $scope.model.value = $scope.model.value || new Object();
+        $scope.model.value.assemblyName = $scope.model.value.assemblyName || 'App_Code';
         $scope.model.value.apiController = 'EnumDataSourceApi';
+        
 
         $http.get('backoffice/nuComponents/EnumDataSourceApi/GetAssemblyNames').then(function (response) {
 
