@@ -5,6 +5,14 @@ angular
         ['$scope', 'nuComponents.DataTypes.Shared.DataSource.DataSourceResource',
         function ($scope, dataSourceResource) {
 
+            $scope.cursorUp = function () {
+                // move highlight / active of selectable to next
+            };
+
+            $scope.cursorDown = function () {
+                // move highlight / active of selectable to previous
+            };
+
             $scope.clear = function () {
                 $scope.typeahead = null;
                 $scope.selectableOptions = null;
@@ -34,20 +42,4 @@ angular
             });
 
         }]);
-
-
-
-angular
-    .module("umbraco.directives")
-    .directive('nuBlur', function () { // ng-blur isn't yet avaiable with the build of AngularJs used by Umbraco
-        return {
-            restrict: 'A',
-            link: function (scope, element, attrs) {
-
-                element.bind('blur', function () {
-                    scope.$apply(attrs.nuBlur);
-                });
-            }
-        }
-    });
 

@@ -8,6 +8,7 @@ namespace nuComponents.DataTypes.PropertyEditors.SqlTypeAheadPicker
     // EDITOR UI
     [PropertyEditor("sqlTypeaheadPicker", "nuComponents: Sql Typeahead Picker", EmbeddedResource.RootUrl + "TypeaheadPicker/TypeaheadPickerEditor.html", ValueType = "TEXT")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "TypeaheadPicker/TypeaheadPickerEditorController.js")]
+    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "TypeaheadPicker/TypeaheadPickerEditorDirectives.js")]
 
     // RESOURCES
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "SaveFormat/SaveFormatResource.js")]
