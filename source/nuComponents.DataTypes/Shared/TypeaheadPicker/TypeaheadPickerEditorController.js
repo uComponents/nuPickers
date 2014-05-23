@@ -9,12 +9,23 @@ angular
             // setup a watch on the input
             $scope.$watch('typeahead', function (newValue, oldValue) {                
 
-                dataSourceResource.getEditorOptions($scope.model.config, $scope.typeahead).then(function (response) {
+                if (newValue.length > 0) {
 
-                    $scope.editorOptions = response.data;
+                    dataSourceResource.getEditorOptions($scope.model.config, $scope.typeahead).then(function (response) {
 
-                });
+                        if (response.data.length > 0) {
+                            $scope.editorOptions = response.data;
+                        }
+                        else {
+                            $scope.typeahead = oldValue;
+                        }                                                
+                        
+                    });
 
+                }
+                else {
+                    $scope.editorOptions = null;
+                }
 
             });
 
