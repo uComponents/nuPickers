@@ -16,7 +16,7 @@
         ng-style="{'height': (model.config.prefetchListPicker.listHeight > 0 ? model.config.prefetchListPicker.listHeight + 'px' : '') }">
 
         <li ng-repeat="option in selectableOptions"
-            ng-hide="model.config.prefetchListPicker.hideUsed && !isSelectable(option)"
+            ng-hide="model.config.listPicker.hideUsed && !isSelectable(option)"
             ng-class="{lit:lit, disabled:!isValidSelection(option), used:isUsed(option)}">
             <div class="option-label" ng-bind-html-unsafe="option.label">
             </div>

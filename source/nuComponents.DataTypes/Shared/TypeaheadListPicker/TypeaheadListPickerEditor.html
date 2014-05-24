@@ -12,7 +12,18 @@
 
     <ul class="selectable"
         ng-model="selectableOptions">
-        <li ng-repeat="option in selectableOptions" ng-bind-html-unsafe="option.label">
+        <li ng-repeat="option in selectableOptions"
+            
+            ng-class="{lit:lit}">
+            <div class="option-label" ng-bind-html-unsafe="option.label">
+            </div>
+
+            <a href=""
+               class="button"
+               ng-mouseenter="lit = true"
+               ng-mouseleave="lit = false">
+            </a>
+
         </li>
     </ul>
 

@@ -17,7 +17,7 @@ angular
 
             // returns true if option hans't yet been picked, or duplicates are allowed
             $scope.isSelectable = function (option) {
-                return ($scope.model.config.prefetchListPicker.allowDuplicates || !$scope.isUsed(option));
+                return ($scope.model.config.listPicker.allowDuplicates || !$scope.isUsed(option));
             };
 
             // returns true is this option has been picked
@@ -27,7 +27,7 @@ angular
 
             // return true is option can be picked
             $scope.isValidSelection = function (option) {
-                return $scope.isSelectable(option) && ($scope.selectedOptions.length < $scope.model.config.prefetchListPicker.maxItems || $scope.model.config.prefetchListPicker.maxItems <= 0);
+                return $scope.isSelectable(option) && ($scope.selectedOptions.length < $scope.model.config.listPicker.maxItems || $scope.model.config.listPicker.maxItems <= 0);
             };
 
             // picking an item from 'selectable' for 'selected'
@@ -41,15 +41,15 @@ angular
 
             // count for dashed placeholders
             $scope.getRequiredPlaceholderCount = function () {
-                var count = $scope.model.config.prefetchListPicker.minItems - $scope.selectedOptions.length;
+                var count = $scope.model.config.listPicker.minItems - $scope.selectedOptions.length;
                 if (count > 0) { return new Array(count); }
                 return null;
             }
 
             $scope.showSelectPlaceholder = function () {
 
-                return ($scope.selectedOptions.length >= $scope.model.config.prefetchListPicker.minItems)
-                        && (($scope.selectedOptions.length < $scope.model.config.prefetchListPicker.maxItems) || $scope.model.config.prefetchListPicker.maxItems == 0);
+                return ($scope.selectedOptions.length >= $scope.model.config.listPicker.minItems)
+                        && (($scope.selectedOptions.length < $scope.model.config.listPicker.maxItems) || $scope.model.config.listPicker.maxItems == 0);
                 // TODO: and selectable options, has valid options
             }
             

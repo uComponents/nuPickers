@@ -279,7 +279,6 @@
     <EmbeddedResource Include="Shared\ListPicker\ButtonAdd.png" />
     <EmbeddedResource Include="Shared\ListPicker\ButtonRemove.png" />
     <EmbeddedResource Include="Shared\PrefetchListPicker\PrefetchListPickerConfig.html" />
-    <EmbeddedResource Include="Shared\PrefetchListPicker\PrefetchListPickerConfigController.js" />
     <EmbeddedResource Include="Shared\ListPicker\ListPickerEditor.css" />
     <EmbeddedResource Include="Shared\PrefetchListPicker\PrefetchListPickerEditor.html" />
     <EmbeddedResource Include="Shared\PrefetchListPicker\PrefetchListPickerEditorController.js" />
@@ -363,6 +362,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Shared\ListPicker\ListPickerEditorDirectives.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\ListPicker\ListPickerConfig.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

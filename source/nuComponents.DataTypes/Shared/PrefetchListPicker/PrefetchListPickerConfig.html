@@ -1,4 +1,4 @@
-﻿<div ng-controller="nuComponents.DataTypes.Shared.PrefetchListPicker.PrefetchListPickerConfigController" class="nuComponents-config">
+﻿<div class="nuComponents-config">
 
     <div>
 
@@ -15,72 +15,6 @@
 
         </div>
     </div>
-
-
-    <div>
-
-        <label for="">
-            Min Items
-            <small>number of items that must be selected</small>
-        </label>
-
-        <div>
-
-            <input type="number"
-                   ng-model="model.value.minItems"
-                   ng-init="model.value.minItems = model.value.minItems || 0" />
-
-        </div>
-    </div>
-
-
-    <div>
-
-        <label for="">
-            Max Items
-            <small>number of items that can be selected - 0 means no limit</small>
-        </label>
-
-        <div>
-
-            <input type="number"
-                   ng-model="model.value.maxItems"
-                   ng-init="model.value.maxItems = model.value.maxItems || 0" />
-
-        </div>
-    </div>
-
-
-
-    <div>
-        <label for="">
-            Allow Duplicates
-            <small>when true, duplicate items can be selected</small>
-        </label>
-
-        <div>
-
-            <input type="checkbox"
-                   ng-model="model.value.allowDuplicates" />
-
-        </div>
-    </div>
-
-    <div>
-        <label for="">
-            Hide Used
-            <small>when true, selected items are removed from the list of choices</small>
-        </label>
-
-        <div>
-
-            <input type="checkbox"
-                   ng-disabled="model.value.allowDuplicates"
-                   ng-model="model.value.hideUsed" />
-
-        </div>
-    </div>
-
 
     <div>
 
