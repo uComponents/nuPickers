@@ -1,19 +1,21 @@
 ﻿
-<div ng-controller="nuComponents.DataTypes.Shared.TypeaheadListPicker.TypeaheadListPickerEditorController">
+<div ng-controller="nuComponents.DataTypes.Shared.TypeaheadListPicker.TypeaheadListPickerEditorController" class="list-picker">
 
-    <input type="text"
-           autocomplete="off"
-           ng-model="typeahead"
-           nu-cursor-up="cursorUp()"
-           nu-cursor-down="cursorDown()"
-           nu-blur="clear()" />
+    <div class="text-input">
+        <input type="text"
+               autocomplete="off"
+               ng-model="typeahead"
+               nu-cursor-up="cursorUp()"
+               nu-cursor-down="cursorDown()"
+               nu-blur="clear()" />
+    </div>
 
     <ul class="selectable"
         ng-model="selectableOptions">
         <li ng-repeat="option in selectableOptions" ng-bind-html-unsafe="option.label">
         </li>
     </ul>
-    
+
 
 </div>
 
