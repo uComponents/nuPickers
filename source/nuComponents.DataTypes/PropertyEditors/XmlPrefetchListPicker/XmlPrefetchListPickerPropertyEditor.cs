@@ -6,7 +6,7 @@
 
     // EDITOR UI
     [PropertyEditor("xmlPrefetchListPicker", "nuComponents: Xml PrefetchList Picker", EmbeddedResource.RootUrl + "PrefetchListPicker/PrefetchListPickerEditor.html", ValueType = "TEXT")]
-    [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.RootUrl + "PrefetchListPicker/PrefetchListPickerEditor.css")]
+    [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.RootUrl + "ListPicker/ListPickerEditor.css")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "PrefetchListPicker/PrefetchListPickerEditorController.js")]
 
     // RESOURCES

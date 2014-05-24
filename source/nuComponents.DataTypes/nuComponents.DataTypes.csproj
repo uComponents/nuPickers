@@ -276,11 +276,11 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Shared\CheckBoxPicker\CheckBoxPickerEditor.html" />
-    <EmbeddedResource Include="Shared\PrefetchListPicker\ButtonAdd.png" />
-    <EmbeddedResource Include="Shared\PrefetchListPicker\ButtonRemove.png" />
+    <EmbeddedResource Include="Shared\ListPicker\ButtonAdd.png" />
+    <EmbeddedResource Include="Shared\ListPicker\ButtonRemove.png" />
     <EmbeddedResource Include="Shared\PrefetchListPicker\PrefetchListPickerConfig.html" />
     <EmbeddedResource Include="Shared\PrefetchListPicker\PrefetchListPickerConfigController.js" />
-    <EmbeddedResource Include="Shared\PrefetchListPicker\PrefetchListPickerEditor.css" />
+    <EmbeddedResource Include="Shared\ListPicker\ListPickerEditor.css" />
     <EmbeddedResource Include="Shared\PrefetchListPicker\PrefetchListPickerEditor.html" />
     <EmbeddedResource Include="Shared\PrefetchListPicker\PrefetchListPickerEditorController.js" />
     <EmbeddedResource Include="Shared\XmlDataSource\XmlDataSourceConfig.html" />
@@ -317,10 +317,10 @@
     <EmbeddedResource Include="Shared\RelationTypeMapping\RelationTypeMappingConfigController.js" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Shared\PrefetchListPicker\ButtonLeft.png" />
+    <EmbeddedResource Include="Shared\ListPicker\ButtonLeft.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Shared\PrefetchListPicker\ButtonRight.png" />
+    <EmbeddedResource Include="Shared\ListPicker\ButtonRight.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Shared\SaveFormat\SaveFormatConfig.html" />
