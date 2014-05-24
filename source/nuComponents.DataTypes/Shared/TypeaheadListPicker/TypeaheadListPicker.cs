@@ -1,5 +1,5 @@
 ﻿
-namespace nuComponents.DataTypes.Shared.TypeaheadPicker
+namespace nuComponents.DataTypes.Shared.TypeaheadListPicker
 {
     using System;
     using System.Linq;
@@ -7,11 +7,11 @@ namespace nuComponents.DataTypes.Shared.TypeaheadPicker
     using nuComponents.DataTypes.Shared.Picker;
     using System.Collections.Generic;
 
-    internal class TypeaheadPicker
+    internal class TypeaheadListPicker
     {
         private string Typeahead { get; set; } // the value supplied by the user - the current typeahead text
 
-        internal TypeaheadPicker(string typeahead)
+        internal TypeaheadListPicker(string typeahead)
         {
             this.Typeahead = typeahead;
         }

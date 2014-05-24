@@ -1,5 +1,5 @@
 ﻿
-namespace nuComponents.DataTypes.PropertyEditors.XmlListPicker
+namespace nuComponents.DataTypes.PropertyEditors.XmlPrefetchListPicker
 {
     using Umbraco.Core.PropertyEditors;
 

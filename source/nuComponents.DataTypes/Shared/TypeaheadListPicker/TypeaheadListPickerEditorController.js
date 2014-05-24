@@ -1,7 +1,7 @@
 ﻿
 angular
     .module('umbraco')
-    .controller("nuComponents.DataTypes.Shared.TypeaheadPicker.TypeaheadPickerEditorController",
+    .controller("nuComponents.DataTypes.Shared.TypeaheadListPicker.TypeaheadListPickerEditorController",
         ['$scope', 'nuComponents.DataTypes.Shared.DataSource.DataSourceResource',
         function ($scope, dataSourceResource) {
 

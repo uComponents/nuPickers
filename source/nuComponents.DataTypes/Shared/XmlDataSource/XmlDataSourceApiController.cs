@@ -4,7 +4,7 @@ namespace nuComponents.DataTypes.Shared.XmlDataSource
     using Newtonsoft.Json.Linq;
     using nuComponents.DataTypes.Shared.CustomLabel;
     using nuComponents.DataTypes.Shared.Picker;
-    using nuComponents.DataTypes.Shared.TypeaheadPicker;
+    using nuComponents.DataTypes.Shared.TypeaheadListPicker;
     using System.Collections.Generic;
     using System.Web.Http;
     using Umbraco.Web.Editors;
@@ -21,10 +21,10 @@ namespace nuComponents.DataTypes.Shared.XmlDataSource
             IEnumerable<PickerEditorOption> pickerEditorOptions = xmlDataSource.GetEditorOptions(contextId);
 
             CustomLabel customLabel = new CustomLabel((string)data.config.customLabel, contextId);
-            TypeaheadPicker typeaheadPicker = new TypeaheadPicker((string)data.typeahead);
+            TypeaheadListPicker typeaheadListPicker = new TypeaheadListPicker((string)data.typeahead);
 
             // process the labels and then handle any type ahead text
-            return typeaheadPicker.ProcessPickerEditorOptions(customLabel.ProcessPickerEditorOptions(pickerEditorOptions));
+            return typeaheadListPicker.ProcessPickerEditorOptions(customLabel.ProcessPickerEditorOptions(pickerEditorOptions));
         }
     }
 }

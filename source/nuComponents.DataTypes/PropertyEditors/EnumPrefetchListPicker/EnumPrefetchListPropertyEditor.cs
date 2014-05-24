@@ -1,5 +1,5 @@
 ﻿
-namespace nuComponents.DataTypes.PropertyEditors.EnumListPicker
+namespace nuComponents.DataTypes.PropertyEditors.EnumPrefetchListPicker
 {
     using ClientDependency.Core;
     using Umbraco.Core.PropertyEditors;

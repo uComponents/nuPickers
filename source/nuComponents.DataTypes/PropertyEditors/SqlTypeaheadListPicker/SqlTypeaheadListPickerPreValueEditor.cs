@@ -1,9 +1,9 @@
 ﻿
-namespace nuComponents.DataTypes.PropertyEditors.SqlTypeAheadPicker
+namespace nuComponents.DataTypes.PropertyEditors.SqlTypeaheadListPicker
 {
     using Umbraco.Core.PropertyEditors;
 
-    internal class SqlTypeaheadPickerPreValueEditor : PreValueEditor
+    internal class SqlTypeaheadListPickerPreValueEditor : PreValueEditor
     {
         [PreValueField("dataSource", "", EmbeddedResource.RootUrl + "SqlDataSource/SqlDataSourceConfig.html", HideLabel = true)]
         public string DataSource { get; set; }

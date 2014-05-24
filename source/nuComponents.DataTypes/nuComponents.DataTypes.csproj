@@ -225,10 +225,10 @@
     <Compile Include="PropertyEditors\EnumPrefetchListPicker\EnumPrefetchListPropertyEditor.cs" />
     <Compile Include="PropertyEditors\EnumRadioButtonPicker\EnumRadioButtonPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\EnumRadioButtonPicker\EnumRadioButtonPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\SqlTypeaheadPicker\SqlTypeaheadPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\SqlTypeaheadPicker\SqlTypeaheadPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\XmlTypeaheadPicker\XmlTypeaheadPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\XmlTypeaheadPicker\XmlTypeaheadPickerPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\SqlTypeaheadListPicker\SqlTypeaheadListPickerPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\SqlTypeaheadListPicker\SqlTypeaheadListPickerPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\XmlTypeaheadListPicker\XmlTypeaheadListPickerPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\XmlTypeaheadListPicker\XmlTypeaheadListPickerPropertyEditor.cs" />
     <Compile Include="Shared\RelationDataSource\RelationDataSourceApiController.cs" />
     <Compile Include="Shared\SaveFormat\SaveFormatPropertyValueEditor.cs" />
     <Compile Include="PropertyEditors\RelationMatches\RelationMatchesPreValueEditor.cs" />
@@ -262,7 +262,7 @@
     <Compile Include="Shared\SaveFormat\SaveFormat.cs" />
     <Compile Include="Shared\SqlDataSource\SqlDataSource.cs" />
     <Compile Include="Shared\SqlDataSource\SqlDataSourceApiController.cs" />
-    <Compile Include="Shared\TypeaheadPicker\TypeaheadPicker.cs" />
+    <Compile Include="Shared\TypeaheadListPicker\TypeaheadListPicker.cs" />
     <Compile Include="Shared\XmlDataSource\XmlDataSource.cs" />
     <Compile Include="Shared\XmlDataSource\XmlDataSourceApiController.cs" />
   </ItemGroup>
@@ -353,13 +353,13 @@
     <EmbeddedResource Include="Shared\DataSource\DataSourceResource.js" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Shared\TypeaheadPicker\TypeaheadPickerEditor.html" />
+    <EmbeddedResource Include="Shared\TypeaheadListPicker\TypeaheadListPickerEditor.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Shared\TypeaheadPicker\TypeaheadPickerEditorController.js" />
+    <EmbeddedResource Include="Shared\TypeaheadListPicker\TypeaheadListPickerEditorController.js" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Shared\TypeaheadPicker\TypeaheadPickerEditorDirectives.js" />
+    <EmbeddedResource Include="Shared\TypeaheadListPicker\TypeaheadListPickerEditorDirectives.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

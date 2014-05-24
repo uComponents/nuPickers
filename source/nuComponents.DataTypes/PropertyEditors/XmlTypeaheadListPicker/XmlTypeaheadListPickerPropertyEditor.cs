@@ -1,14 +1,14 @@
 ﻿
-namespace nuComponents.DataTypes.PropertyEditors.XmlTypeAheadPicker
+namespace nuComponents.DataTypes.PropertyEditors.XmlTypeaheadListPicker
 {
     using ClientDependency.Core;
     using Umbraco.Core.PropertyEditors;
     using Umbraco.Web.PropertyEditors;
 
     // EDITOR UI
-    [PropertyEditor("xmlTypeaheadPicker", "nuComponents: Xml Typeahead Picker", EmbeddedResource.RootUrl + "TypeaheadPicker/TypeaheadPickerEditor.html", ValueType = "TEXT")]
-    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "TypeaheadPicker/TypeaheadPickerEditorController.js")]
-    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "TypeaheadPicker/TypeaheadPickerEditorDirectives.js")]
+    [PropertyEditor("xmlTypeaheadListPicker", "nuComponents: Xml TypeaheadList Picker", EmbeddedResource.RootUrl + "TypeaheadListPicker/TypeaheadListPickerEditor.html", ValueType = "TEXT")]
+    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "TypeaheadListPicker/TypeaheadListPickerEditorController.js")]
+    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "TypeaheadListPicker/TypeaheadListPickerEditorDirectives.js")]
 
     // RESOURCES
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "SaveFormat/SaveFormatResource.js")]
@@ -23,7 +23,7 @@ namespace nuComponents.DataTypes.PropertyEditors.XmlTypeAheadPicker
     {
         protected override PreValueEditor CreatePreValueEditor()
         {
-            return new XmlTypeaheadPickerPreValueEditor();
+            return new XmlTypeaheadListPickerPreValueEditor();
         }
     }
 }

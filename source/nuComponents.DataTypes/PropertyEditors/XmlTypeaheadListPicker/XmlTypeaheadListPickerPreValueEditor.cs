@@ -1,9 +1,9 @@
 ﻿
-namespace nuComponents.DataTypes.PropertyEditors.XmlTypeAheadPicker
+namespace nuComponents.DataTypes.PropertyEditors.XmlTypeaheadListPicker
 {
     using Umbraco.Core.PropertyEditors;
 
-    internal class XmlTypeaheadPickerPreValueEditor : PreValueEditor
+    internal class XmlTypeaheadListPickerPreValueEditor : PreValueEditor
     {
         [PreValueField("dataSource", "", EmbeddedResource.RootUrl + "XmlDataSource/XmlDataSourceConfig.html", HideLabel = true)]
         public string DataSource { get; set; }

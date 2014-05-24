@@ -1,5 +1,5 @@
 ﻿
-namespace nuComponents.DataTypes.PropertyEditors.SqlListPicker
+namespace nuComponents.DataTypes.PropertyEditors.SqlPrefetchListPicker
 {
     using Umbraco.Core.PropertyEditors;
 

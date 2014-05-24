@@ -1,14 +1,14 @@
 ﻿
-namespace nuComponents.DataTypes.PropertyEditors.SqlTypeAheadPicker
+namespace nuComponents.DataTypes.PropertyEditors.SqlTypeaheadListPicker
 {
     using ClientDependency.Core;
     using Umbraco.Core.PropertyEditors;
     using Umbraco.Web.PropertyEditors;
 
     // EDITOR UI
-    [PropertyEditor("sqlTypeaheadPicker", "nuComponents: Sql Typeahead Picker", EmbeddedResource.RootUrl + "TypeaheadPicker/TypeaheadPickerEditor.html", ValueType = "TEXT")]
-    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "TypeaheadPicker/TypeaheadPickerEditorController.js")]
-    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "TypeaheadPicker/TypeaheadPickerEditorDirectives.js")]
+    [PropertyEditor("sqlTypeaheadListPicker", "nuComponents: Sql TypeaheadList Picker", EmbeddedResource.RootUrl + "TypeaheadListPicker/TypeaheadListPickerEditor.html", ValueType = "TEXT")]
+    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "TypeaheadListPicker/TypeaheadListPickerEditorController.js")]
+    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "TypeaheadListPicker/TypeaheadListPickerEditorDirectives.js")]
 
     // RESOURCES
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "SaveFormat/SaveFormatResource.js")]
@@ -19,11 +19,11 @@ namespace nuComponents.DataTypes.PropertyEditors.SqlTypeAheadPicker
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "SqlDataSource/SqlDataSourceConfigController.js")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "CustomLabel/CustomLabelConfigController.js")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "RelationTypeMapping/RelationTypeMappingConfigController.js")]
-    public class SqlTypeaheadPickerPropertyEditor : BasePropertyEditor
+    public class SqlTypeaheadListPickerPropertyEditor : BasePropertyEditor
     {
         protected override PreValueEditor CreatePreValueEditor()
         {
-            return new SqlTypeaheadPickerPreValueEditor();
+            return new SqlTypeaheadListPickerPreValueEditor();
         }
     }
 }
