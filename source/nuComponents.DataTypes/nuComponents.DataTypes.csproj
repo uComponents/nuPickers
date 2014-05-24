@@ -361,6 +361,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Shared\TypeaheadListPicker\TypeaheadListPickerEditorDirectives.js" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\ListPicker\ListPickerEditorDirectives.js" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
