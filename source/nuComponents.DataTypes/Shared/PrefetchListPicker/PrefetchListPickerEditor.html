@@ -1,8 +1,8 @@
 ﻿
-<div ng-controller="nuComponents.DataTypes.Shared.ListPicker.ListPickerEditorController" class="list-picker">
+<div ng-controller="nuComponents.DataTypes.Shared.PrefetchListPicker.PrefetchListPickerEditorController" class="list-picker">
 
     <!-- filter -->
-    <div class="selectable-filter" ng-show="model.config.listPicker.enableFiltering">
+    <div class="selectable-filter" ng-show="model.config.prefetchListPicker.enableFiltering">
         <input type="text"
                placeholder="Type to filter"
                ng-model="model.filterQuery"
@@ -12,18 +12,18 @@
     <!-- selectable -->
     <ul class="selectable"
         ng-model="selectableOptions"
-        ng-class="{'fixed-height':model.config.listPicker.listHeight > 0 }"
-        ng-style="{'height': (model.config.listPicker.listHeight > 0 ? model.config.listPicker.listHeight + 'px' : '') }">
+        ng-class="{'fixed-height':model.config.prefetchListPicker.listHeight > 0 }"
+        ng-style="{'height': (model.config.prefetchListPicker.listHeight > 0 ? model.config.prefetchListPicker.listHeight + 'px' : '') }">
 
         <li ng-repeat="option in selectableOptions"
-            ng-hide="model.config.listPicker.hideUsed && !isSelectable(option)"
+            ng-hide="model.config.prefetchListPicker.hideUsed && !isSelectable(option)"
             ng-class="{lit:lit, disabled:!isValidSelection(option), used:isUsed(option)}">
             <div class="option-label" ng-bind-html-unsafe="option.label">
             </div>
 
             <a href=""
                class="button"
-               ng-class="isValidSelection(option) ? 'active' : 'disabled'" 
+               ng-class="isValidSelection(option) ? 'active' : 'disabled'"
                ng-mouseenter="lit = isValidSelection(option)"
                ng-mouseleave="lit = false"
                ng-click="lit = false; selectOption(option)">

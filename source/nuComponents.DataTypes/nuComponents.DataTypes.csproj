@@ -221,8 +221,8 @@
     <Compile Include="PropertyEditors\EnumCheckBoxPicker\EnumCheckBoxPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\EnumDropDownPicker\EnumDropDownPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\EnumDropDownPicker\EnumDropDownPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\EnumListPicker\EnumListPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\EnumListPicker\EnumListPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\EnumPrefetchListPicker\EnumPrefetchListPickerPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\EnumPrefetchListPicker\EnumPrefetchListPropertyEditor.cs" />
     <Compile Include="PropertyEditors\EnumRadioButtonPicker\EnumRadioButtonPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\EnumRadioButtonPicker\EnumRadioButtonPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\SqlTypeaheadPicker\SqlTypeaheadPickerPreValueEditor.cs" />
@@ -237,16 +237,16 @@
     <Compile Include="PropertyEditors\SqlCheckBoxPicker\SqlCheckBoxPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\SqlDropDownPicker\SqlDropDownPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\SqlDropDownPicker\SqlDropDownPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\SqlListPicker\SqlListPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\SqlListPicker\SqlListPickerPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\SqlPrefetchListPicker\SqlPrefetchListPickerPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\SqlPrefetchListPicker\SqlPrefetchListPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\SqlRadioButtonPicker\SqlRadioButtonPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\SqlRadioButtonPicker\SqlRadioButtonPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\XmlCheckBoxPicker\XmlCheckBoxPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\XmlCheckBoxPicker\XmlCheckBoxPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\XmlDropDownPicker\XmlDropDownPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\XmlDropDownPicker\XmlDropDownPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\XmlListPicker\XmlListPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\XmlListPicker\XmlListPickerPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\XmlPrefetchListPicker\XmlPrefetchListPickerPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\XmlPrefetchListPicker\XmlPrefetchListPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\XmlRadioButtonPicker\XmlRadioButtonPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\XmlRadioButtonPicker\XmlRadioButtonPickerPropertyEditor.cs" />
     <Compile Include="Shared\EnumDataSource\EnumDataSource.cs" />
@@ -272,16 +272,17 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="PropertyValueConverters\" />
+    <Folder Include="Shared\SelectorList\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Shared\CheckBoxPicker\CheckBoxPickerEditor.html" />
-    <EmbeddedResource Include="Shared\ListPicker\ButtonAdd.png" />
-    <EmbeddedResource Include="Shared\ListPicker\ButtonRemove.png" />
-    <EmbeddedResource Include="Shared\ListPicker\ListPickerConfig.html" />
-    <EmbeddedResource Include="Shared\ListPicker\ListPickerConfigController.js" />
-    <EmbeddedResource Include="Shared\ListPicker\ListPickerEditor.css" />
-    <EmbeddedResource Include="Shared\ListPicker\ListPickerEditor.html" />
-    <EmbeddedResource Include="Shared\ListPicker\ListPickerEditorController.js" />
+    <EmbeddedResource Include="Shared\PrefetchListPicker\ButtonAdd.png" />
+    <EmbeddedResource Include="Shared\PrefetchListPicker\ButtonRemove.png" />
+    <EmbeddedResource Include="Shared\PrefetchListPicker\PrefetchListPickerConfig.html" />
+    <EmbeddedResource Include="Shared\PrefetchListPicker\PrefetchListPickerConfigController.js" />
+    <EmbeddedResource Include="Shared\PrefetchListPicker\PrefetchListPickerEditor.css" />
+    <EmbeddedResource Include="Shared\PrefetchListPicker\PrefetchListPickerEditor.html" />
+    <EmbeddedResource Include="Shared\PrefetchListPicker\PrefetchListPickerEditorController.js" />
     <EmbeddedResource Include="Shared\XmlDataSource\XmlDataSourceConfig.html" />
     <EmbeddedResource Include="Shared\XmlDataSource\XmlDataSourceConfigController.js" />
   </ItemGroup>
@@ -316,10 +317,10 @@
     <EmbeddedResource Include="Shared\RelationTypeMapping\RelationTypeMappingConfigController.js" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Shared\ListPicker\ButtonLeft.png" />
+    <EmbeddedResource Include="Shared\PrefetchListPicker\ButtonLeft.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Shared\ListPicker\ButtonRight.png" />
+    <EmbeddedResource Include="Shared\PrefetchListPicker\ButtonRight.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Shared\SaveFormat\SaveFormatConfig.html" />

@@ -3,7 +3,7 @@ namespace nuComponents.DataTypes.PropertyEditors.XmlListPicker
 {
     using Umbraco.Core.PropertyEditors;
 
-    internal class XmlListPickerPreValueEditor : PreValueEditor
+    internal class XmlPrefetchListPickerPreValueEditor : PreValueEditor
     {
         [PreValueField("dataSource", "", EmbeddedResource.RootUrl + "XmlDataSource/XmlDataSourceConfig.html", HideLabel = true)]
         public string DataSource { get; set; }
@@ -11,8 +11,8 @@ namespace nuComponents.DataTypes.PropertyEditors.XmlListPicker
         [PreValueField("customLabel", "", EmbeddedResource.RootUrl + "CustomLabel/CustomLabelConfig.html", HideLabel = true)]
         public string CustomLabel { get; set; }
 
-        [PreValueField("listPicker", "", EmbeddedResource.RootUrl + "ListPicker/ListPickerConfig.html", HideLabel = true)]
-        public string ListPicker { get; set; }
+        [PreValueField("prefetchListPicker", "", EmbeddedResource.RootUrl + "PrefetchListPicker/PrefetchListPickerConfig.html", HideLabel = true)]
+        public string PrefetchListPicker { get; set; }
 
         [PreValueField("relationTypeMapping", "", EmbeddedResource.RootUrl + "RelationTypeMapping/RelationTypeMappingConfig.html", HideLabel = true)]
         public string RelationTypeMapping { get; set; }

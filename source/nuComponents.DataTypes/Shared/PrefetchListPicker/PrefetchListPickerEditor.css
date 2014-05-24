@@ -121,11 +121,11 @@
 .list-picker .selectable .button {
     right: 0;
     border-left: 1px solid #ccc;
-    background-image: url('/Umbraco/App_Plugins/nuComponents/DataTypes/Shared/ListPicker/ButtonAdd.png');   
+    background-image: url('/Umbraco/App_Plugins/nuComponents/DataTypes/Shared/PrefetchListPicker/ButtonAdd.png');   
 }
 
 .list-picker .selectable .button.active:hover {
-    background-image: url('/Umbraco/App_Plugins/nuComponents/DataTypes/Shared/ListPicker/ButtonRight.png');   
+    background-image: url('/Umbraco/App_Plugins/nuComponents/DataTypes/Shared/PrefetchListPicker/ButtonRight.png');   
 }
 
 /*
@@ -164,11 +164,11 @@
 .list-picker .selected .button {
     left: 0;
     border-right: 1px solid #ccc;
-    background-image: url('/Umbraco/App_Plugins/nuComponents/DataTypes/Shared/ListPicker/ButtonRemove.png');
+    background-image: url('/Umbraco/App_Plugins/nuComponents/DataTypes/Shared/PrefetchListPicker/ButtonRemove.png');
 }
 
 .list-picker .selected .button:hover { /* can always click this */
-    background-image: url('/Umbraco/App_Plugins/nuComponents/DataTypes/Shared/ListPicker/ButtonLeft.png');   
+    background-image: url('/Umbraco/App_Plugins/nuComponents/DataTypes/Shared/PrefetchListPicker/ButtonLeft.png');   
 }
 
 .list-picker .placeholders li {

@@ -1,6 +1,6 @@
 ﻿angular
     .module("umbraco")
-    .controller("nuComponents.DataTypes.Shared.ListPicker.ListPickerConfigController",
+    .controller("nuComponents.DataTypes.Shared.PrefetchListPicker.PrefetchListPickerConfigController",
     ['$scope',
     function ($scope) {
 
