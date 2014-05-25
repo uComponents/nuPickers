@@ -366,10 +366,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Shared\ListPicker\ListPickerConfig.html" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\ListPicker\ListPickerEditorController.js" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>XCOPY "$(TargetPath)" "C:\Users\Hendy\Documents\Projects\Experiments\nuComponentsUmbracoTestSite\nuComponentsUmbracoTestSite.Web\bin" /y</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

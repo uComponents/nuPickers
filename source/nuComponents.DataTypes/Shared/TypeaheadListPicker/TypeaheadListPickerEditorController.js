@@ -2,8 +2,8 @@
 angular
     .module('umbraco')
     .controller("nuComponents.DataTypes.Shared.TypeaheadListPicker.TypeaheadListPickerEditorController",
-        ['$scope', 'nuComponents.DataTypes.Shared.DataSource.DataSourceResource',
-        function ($scope, dataSourceResource) {
+        ['$scope', 
+        function ($scope) {
 
             $scope.cursorUp = function () {
                 // move highlight / active of selectable to next
@@ -13,17 +13,17 @@ angular
                 // move highlight / active of selectable to previous
             };
 
-            $scope.clear = function () {
-                $scope.typeahead = null;
-                $scope.selectableOptions = null;
-            };
+            //$scope.clear = function () {
+            //    $scope.typeahead = null;
+            //    $scope.selectableOptions = null;
+            //};
 
             // setup a watch on the input
             $scope.$watch('typeahead', function (newValue, oldValue) {                
 
-                if (newValue != null && newValue.length > 0) {
-
-                    dataSourceResource.getEditorOptions($scope.model.config, newValue).then(function (response) {
+                if (newValue != null && newValue.length > 0) { // TODO: check length meets min typeahead length specified in config
+                    
+                    $scope.getEditorOptions(newValue).then(function (response) {
 
                         if (response.data.length > 0) {
                             $scope.selectableOptions = response.data;
@@ -41,5 +41,10 @@ angular
 
             });
 
-        }]);
+            // setup watch on selected options
+            $scope.$watchCollection('selectableOptions', function () {            
+                // TODO: limit to number of choices specified in config
+            });
+
+}]);
 
