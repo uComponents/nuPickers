@@ -4,15 +4,7 @@ angular
     .controller("nuComponents.DataTypes.Shared.TypeaheadListPicker.TypeaheadListPickerEditorController",
         ['$scope', 
         function ($scope) {
-
-            $scope.cursorUp = function () {
-                // move highlight / active of selectable to next
-            };
-
-            $scope.cursorDown = function () {
-                // move highlight / active of selectable to previous
-            };
-
+     
             //$scope.clear = function () {
             //    $scope.typeahead = null;
             //    $scope.selectableOptions = null;
@@ -36,7 +28,7 @@ angular
 
                 }
                 else {
-                    $scope.selectableOptions = null;
+                    $scope.selectableOptions = [];
                 }
 
             });

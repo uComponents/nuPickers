@@ -30,6 +30,18 @@ angular
                 return $scope.isSelectable(option) && ($scope.selectedOptions.length < $scope.model.config.listPicker.maxItems || $scope.model.config.listPicker.maxItems <= 0);
             };
 
+            $scope.cursorUp = function () {
+                // TODO: move highlight / active of next selectable
+            };
+
+            $scope.cursorDown = function () {
+                // TODO: move highlight / active of previous selectable
+            };
+
+            $scope.enterKey = function () {
+                // TODO: select highlighted
+            }
+
             // picking an item from 'selectable' for 'selected'
             $scope.selectOption = function (option) {
                 if ($scope.isValidSelection(option)) {

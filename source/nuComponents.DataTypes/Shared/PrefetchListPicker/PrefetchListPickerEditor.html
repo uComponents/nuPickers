@@ -13,7 +13,10 @@
             <input type="text"
                    placeholder="filter"
                    ng-model="filter"
-                   ng-trim="false" />
+                   ng-trim="false"
+                   nu-cursor-up="cursorUp()"
+                   nu-cursor-down="cursorDown()"
+                   nu-enter-key="enterKey()" />
         </div>
 
         <ng-include src="'App_Plugins/nuComponents/DataTypes/Shared/ListPicker/ListPickerPartial.html'" />
