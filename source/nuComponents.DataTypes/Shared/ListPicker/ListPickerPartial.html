@@ -1,6 +1,8 @@
 ﻿<!-- selectable -->
 <ul class="selectable"
-    ng-model="selectableOptions">
+    ng-model="selectableOptions"
+    ng-class="{'fixed-height':model.config.prefetchListPicker.listHeight > 0 }"
+    ng-style="{'height': (model.config.prefetchListPicker.listHeight > 0 ? model.config.prefetchListPicker.listHeight + 'px' : '') }">
 
     <li ng-repeat="option in selectableOptions"
         ng-hide="model.config.listPicker.hideUsed && !isSelectable(option)"
