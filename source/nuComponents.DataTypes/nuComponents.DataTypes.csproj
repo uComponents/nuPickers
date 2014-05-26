@@ -369,6 +369,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Shared\ListPicker\ListPickerEditorController.js" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\ListPicker\ListPickerPartial.html" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
