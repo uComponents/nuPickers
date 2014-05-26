@@ -6,35 +6,35 @@ angular
         ['$scope',
         function ($scope) {
 
-            var allSelectableOptions = [];
-            
-            $scope.$watchCollection('selectableOptions', function () {
-                allSelectableOptions = $scope.selectableOptions;
-            });
-
-
             // setup filtering
             if ($scope.model.config.prefetchListPicker.enableFiltering) {
 
-                $scope.$watch('filter', function (newValue, oldValue) {
+                // re-get all options so that we have a reference to restore them
+                $scope.getEditorOptions().then(function (response) {
 
-                    // if the filter is empty then just return all items
-                    if (newValue == null || newValue.length == 0) {
-                        return $scope.selectableOptions = $scope.allSelectableOptions;
-                    }
+                    var allSelectableOptions = response.data;
 
-                    newValue = newValue.toLowerCase();
-                    var filteredSelectableOptions = $scope.allSelectableOptions.filter(function (item) {
-                        // strip html before searching
-                        return String(item.label).replace(/(<([^>]+)>)/gm, '').toLowerCase().indexOf(newValue) != -1;
+                    $scope.$watch('filter', function (newValue, oldValue) {
+
+                        // if the filter is empty then just return all items
+                        if (newValue == null || newValue.length == 0) {
+                            return $scope.selectableOptions = allSelectableOptions;
+                        }
+
+                        newValue = newValue.toLowerCase();
+                        var filteredSelectableOptions = allSelectableOptions.filter(function (item) {
+                            // strip html before searching
+                            return String(item.label).replace(/(<([^>]+)>)/gm, '').toLowerCase().indexOf(newValue) != -1;
+                        });
+
+                        if (filteredSelectableOptions.length > 0) {
+                            return $scope.selectableOptions = filteredSelectableOptions;
+                        }
+                        else {
+                            $scope.filter = oldValue;
+                        }
+
                     });
-
-                    if (filteredSelectableOptions.length > 0) {
-                        return $scope.selectableOptions = filteredSelectableOptions;
-                    }
-                    else {
-                        $scope.filter = oldValue;
-                    }
 
                 });
             }
