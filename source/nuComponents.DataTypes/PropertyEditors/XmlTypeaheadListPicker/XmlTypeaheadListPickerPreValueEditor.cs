@@ -11,7 +11,8 @@ namespace nuComponents.DataTypes.PropertyEditors.XmlTypeaheadListPicker
         [PreValueField("customLabel", "Label Macro", EmbeddedResource.RootUrl + "CustomLabel/CustomLabelConfig.html", HideLabel = true)]
         public string CustomLabel { get; set; }
 
-        // TODO: TypeaheadList config
+        [PreValueField("typeaheadListPicker", "", EmbeddedResource.RootUrl + "TypeaheadListPicker/TypeaheadListPickerConfig.html", HideLabel = true)]
+        public string TypeaheadListPicker { get; set; }
 
         [PreValueField("listPicker", "", EmbeddedResource.RootUrl + "ListPicker/ListPickerConfig.html", HideLabel = true)]
         public string ListPicker { get; set; }

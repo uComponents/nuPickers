@@ -41,10 +41,11 @@ angular
 
             });
 
-            // setup watch on selected options
-            $scope.$watchCollection('selectableOptions', function () {            
-                // TODO: limit to number of choices specified in config
-            });
+            if ($scope.model.config.typeaheadListPicker.limitTo > 0) {
+                $scope.$watchCollection('selectableOptions', function () {                    
+                    $scope.selectableOptions = $scope.selectableOptions.slice(0, $scope.model.config.typeaheadListPicker.limitTo);
+                });
+            }
 
 }]);
 
