@@ -9,16 +9,19 @@
 }
 
 
-.list-picker .text-input {
+.list-picker .text-input-bar {
     border: 1px solid transparent;
     margin-bottom:2px;
+    margin-right:1px;
+    padding-bottom:2px;
+    border-bottom:solid 2px #f6f6f6;
 }
 
-.list-picker .text-input input{
+.list-picker .text-input-bar input{
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    width:100%;
+    width:48%;
     padding:15px 5px 15px 5px;
 }
 
@@ -155,6 +158,10 @@
     clear: right;
     float: right;
     /* padding-left: TODO: calculate from scrollbar width (want to ensure markup area is same with both sides) */
+}
+
+.list-picker .selected  li:last-child {
+    margin-bottom:0px; /* to ensure that the placeholder list beneath lines up */
 }
 
 .list-picker .selected .option-label {

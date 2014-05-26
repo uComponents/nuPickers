@@ -20,7 +20,7 @@ namespace nuComponents.DataTypes.Shared.TypeaheadListPicker
         {
             if (this.Typeahead != null)
             {
-                return pickerEditorOptions.Where(x => this.StripHtmlTags(x.Label).StartsWith(this.Typeahead, StringComparison.OrdinalIgnoreCase));
+                return pickerEditorOptions.Where(x => this.StripHtmlTags(x.Label).IndexOf(this.Typeahead, StringComparison.OrdinalIgnoreCase) >= 0);
             }
 
             return pickerEditorOptions;
