@@ -21,7 +21,10 @@
 
 
 <!-- selected -->
-<ul class="selected" ui-sortable="sortableConfiguration" ng-model="selectedOptions">
+<ul class="selected" 
+    ui-sortable="sortableConfiguration" 
+    ng-hide="selectedOptions.length == 0"
+    ng-model="selectedOptions">
     <li ng-class="{lit:lit}"
         ng-repeat="option in selectedOptions track by $index">
 

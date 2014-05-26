@@ -8,7 +8,20 @@
     user-select: none;
 }
 
-.list-picker .text-input input,
+
+.list-picker .text-input {
+    border: 1px solid transparent;
+    margin-bottom:2px;
+}
+
+.list-picker .text-input input{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width:100%;
+    padding:15px 5px 15px 5px;
+}
+
 .list-picker ul {
     list-style-type: none;
     width: 48%;
@@ -19,15 +32,6 @@
     border: 1px solid transparent;
     padding:1px; /* make space for the fixed height border */
 }
-
-.list-picker .text-input input {
-    /* colours same as the fixed-height (scrolling) list */
-    border-color: #f0f0f0; 
-    background-color: #fdfdfd;
-    height:2em;
-    padding-left:4px;
-}
-
 
 .list-picker li {
     overflow: hidden;
