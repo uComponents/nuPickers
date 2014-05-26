@@ -22,7 +22,7 @@ angular
 
             // returns true is this option has been picked
             $scope.isUsed = function (option) {
-                return $scope.selectedOptions.map(function (option) { return option.key; }).indexOf(option.key) > 0;
+                return $scope.selectedOptions.map(function (option) { return option.key; }).indexOf(option.key) >= 0;
             };
 
             // return true if option can be picked
