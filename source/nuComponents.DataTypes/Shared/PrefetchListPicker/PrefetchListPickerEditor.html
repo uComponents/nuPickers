@@ -1,4 +1,9 @@
 ﻿<div ng-controller="nuComponents.DataTypes.Shared.ListPicker.ListPickerEditorController" class="list-picker">
+    <ng-form name="listPickerForm">
+        <input type="hidden" name="validation" ng-model="model.value" />
+        <span val-msg-for="validation" val-toggle-msg="validationMessage"></span>
+    </ng-form>
+
     <div ng-controller="nuComponents.DataTypes.Shared.PrefetchListPicker.PrefetchListPickerEditorController">
 
         <!-- filter -->

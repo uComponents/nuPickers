@@ -98,9 +98,10 @@ angular
                 // use the picker resourse to save in the correct format
                 $scope.model.value = dataSourceResource.createSaveValue($scope.model.config, $scope.selectedOptions);
 
-                // TODO: how to return error to Umbraco ?
-                //var isValid = ($scope.selectableOptions.length >= $scope.model.config.minItems
-                //               && ($scope.selectableOptions.length <= $scope.model.config.maxItems || $scope.model.config.maxItems < 1));
+                // set validation state
+                $scope.listPickerForm.validation.$setValidity('validationMessage',
+                                    ($scope.selectedOptions.length >= $scope.model.config.listPicker.minItems &&
+                                    ($scope.selectedOptions.length <= $scope.model.config.listPicker.maxItems || $scope.model.config.listPicker.maxItems < 1)));
 
                 // toggle sorting ui
                 $scope.sortableConfiguration.disabled = !$scope.isSortable();
