@@ -6,12 +6,12 @@ angular.module('umbraco.resources')
 
             return {
 
-                getEditorOptions: function (config, typeahead) {
+                getEditorDataItems: function (config, typeahead) {
 
                     // returns [{"key":"","label":""},{"key":"","label":""}...]
                     return $http({
                         method: 'POST',
-                        url: 'backoffice/nuComponents/' + config.dataSource.apiController + '/GetEditorOptions',
+                        url: 'backoffice/nuComponents/' + config.dataSource.apiController + '/GetEditorDataItems',
                         params: {
                             'contextId': editorState.current.id
                         },

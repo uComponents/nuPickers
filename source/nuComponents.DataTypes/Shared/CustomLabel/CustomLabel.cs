@@ -1,7 +1,7 @@
 ﻿
 namespace nuComponents.DataTypes.Shared.CustomLabel
 {
-    using nuComponents.DataTypes.Shared.Picker;
+    using nuComponents.DataTypes.Shared.Editor;
     using System.Collections.Generic;
     using System.Linq;
     using System.Web;
@@ -45,21 +45,21 @@ namespace nuComponents.DataTypes.Shared.CustomLabel
         /// parses the collection of options, potentially transforming the content of the label
         /// </summary>
         /// <param name="contextId">the content / media or member being edited</param>
-        /// <param name="pickerEditorOptions">collection of options</param>
+        /// <param name="editorDataItems">collection of options</param>
         /// <returns></returns>
-        public IEnumerable<PickerEditorOption> ProcessPickerEditorOptions(IEnumerable<PickerEditorOption> pickerEditorOptions)
+        public IEnumerable<EditorDataItem> ProcessEditorDataItems(IEnumerable<EditorDataItem> editorDataItems)
         {
-            string keys = string.Join(", ", pickerEditorOptions.Select(x => x.Key)); // csv of all keys
+            string keys = string.Join(", ", editorDataItems.Select(x => x.Key)); // csv of all keys
             int counter = 0;
-            int total = pickerEditorOptions.Count();
+            int total = editorDataItems.Count();
 
-            foreach (PickerEditorOption pickerEditorOption in pickerEditorOptions)
+            foreach (EditorDataItem editorDataItem in editorDataItems)
             {
                 counter++;
-                pickerEditorOption.Label = this.ProcessMacro(pickerEditorOption.Key, pickerEditorOption.Label, keys, counter, total);
+                editorDataItem.Label = this.ProcessMacro(editorDataItem.Key, editorDataItem.Label, keys, counter, total);
             }
 
-            return pickerEditorOptions.Where(x => !string.IsNullOrWhiteSpace(x.Label)); // remove any options without a label
+            return editorDataItems.Where(x => !string.IsNullOrWhiteSpace(x.Label)); // remove any options without a label
         }
 
         /// <summary>

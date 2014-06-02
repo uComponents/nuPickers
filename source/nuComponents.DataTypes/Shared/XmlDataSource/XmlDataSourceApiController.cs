@@ -3,7 +3,7 @@ namespace nuComponents.DataTypes.Shared.XmlDataSource
 {
     using Newtonsoft.Json.Linq;
     using nuComponents.DataTypes.Shared.CustomLabel;
-    using nuComponents.DataTypes.Shared.Picker;
+    using nuComponents.DataTypes.Shared.Editor;
     using nuComponents.DataTypes.Shared.TypeaheadListPicker;
     using System.Collections.Generic;
     using System.Web.Http;
@@ -14,17 +14,17 @@ namespace nuComponents.DataTypes.Shared.XmlDataSource
     public class XmlDataSourceApiController : UmbracoAuthorizedJsonController
     {
         [HttpPost]
-        public IEnumerable<PickerEditorOption> GetEditorOptions([FromUri] int contextId, [FromBody] dynamic data)
+        public IEnumerable<EditorDataItem> GetEditorDataItems([FromUri] int contextId, [FromBody] dynamic data)
         {
             XmlDataSource xmlDataSource = ((JObject)data.config.dataSource).ToObject<XmlDataSource>();
 
-            IEnumerable<PickerEditorOption> pickerEditorOptions = xmlDataSource.GetEditorOptions(contextId);
+            IEnumerable<EditorDataItem> editorDataItems = xmlDataSource.GetEditorDataItems(contextId);
 
             CustomLabel customLabel = new CustomLabel((string)data.config.customLabel, contextId);
             TypeaheadListPicker typeaheadListPicker = new TypeaheadListPicker((string)data.typeahead);
 
             // process the labels and then handle any type ahead text
-            return typeaheadListPicker.ProcessPickerEditorOptions(customLabel.ProcessPickerEditorOptions(pickerEditorOptions));
+            return typeaheadListPicker.ProcessEditorDataItems(customLabel.ProcessEditorDataItems(editorDataItems));
         }
     }
 }

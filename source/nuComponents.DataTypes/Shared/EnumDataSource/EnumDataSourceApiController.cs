@@ -8,7 +8,7 @@
     using System.Web.Http;
     using Umbraco.Web.Editors;
     using Umbraco.Web.Mvc;
-    using nuComponents.DataTypes.Shared.Picker;
+    using nuComponents.DataTypes.Shared.Editor;
     using Newtonsoft.Json.Linq;
     using nuComponents.DataTypes.Shared.CustomLabel;
 
@@ -50,15 +50,15 @@
         }
 
         [HttpPost]
-        public IEnumerable<PickerEditorOption> GetEditorOptions([FromUri] int contextId, [FromBody] dynamic data)
+        public IEnumerable<EditorDataItem> GetEditorDataItems([FromUri] int contextId, [FromBody] dynamic data)
         {
             EnumDataSource enumDataSource = ((JObject)data.config.dataSource).ToObject<EnumDataSource>();
 
-            IEnumerable<PickerEditorOption> pickerEditorOptions = enumDataSource.GetEditorOptions();
+            IEnumerable<EditorDataItem> editorDataItems = enumDataSource.GetEditorDataItems();
 
             CustomLabel customLabel = new CustomLabel((string)data.config.customLabel, contextId);
 
-            return customLabel.ProcessPickerEditorOptions(pickerEditorOptions);
+            return customLabel.ProcessEditorDataItems(editorDataItems);
         }
     }
 }

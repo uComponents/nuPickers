@@ -1,7 +1,7 @@
 ﻿
 namespace nuComponents.DataTypes.Shared.EnumDataSource
 {
-    using nuComponents.DataTypes.Shared.Picker;
+    using nuComponents.DataTypes.Shared.Editor;
     using System;
     using System.Collections.Generic;
     using System.Reflection;
@@ -15,9 +15,9 @@ namespace nuComponents.DataTypes.Shared.EnumDataSource
 
         public string EnumName { get; set; }
 
-        public IEnumerable<PickerEditorOption> GetEditorOptions()
+        public IEnumerable<EditorDataItem> GetEditorDataItems()
         {
-            List<PickerEditorOption> editorOptions = new List<PickerEditorOption>();
+            List<EditorDataItem> editorDataItems = new List<EditorDataItem>();
 
             Type enumType = EnumDataSource.GetAssembly(this.AssemblyName).GetType(this.EnumName);
 
@@ -53,10 +53,10 @@ namespace nuComponents.DataTypes.Shared.EnumDataSource
                     }
                 }
 
-                editorOptions.Add(new PickerEditorOption() { Key = key, Label = label });
+                editorDataItems.Add(new EditorDataItem() { Key = key, Label = label });
             }
 
-            return editorOptions;
+            return editorDataItems;
         }
 
 

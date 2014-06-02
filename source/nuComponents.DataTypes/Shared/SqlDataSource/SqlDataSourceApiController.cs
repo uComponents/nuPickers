@@ -2,7 +2,7 @@
 {
     using Newtonsoft.Json.Linq;
     using nuComponents.DataTypes.Shared.CustomLabel;
-    using nuComponents.DataTypes.Shared.Picker;
+    using nuComponents.DataTypes.Shared.Editor;
     using nuComponents.DataTypes.Shared.TypeaheadListPicker;
     using System.Collections.Generic;
     using System.Configuration;
@@ -26,18 +26,18 @@
         }
 
         [HttpPost]
-        public IEnumerable<PickerEditorOption> GetEditorOptions([FromUri] int contextId, [FromBody] dynamic data)
+        public IEnumerable<EditorDataItem> GetEditorDataItems([FromUri] int contextId, [FromBody] dynamic data)
         {
             SqlDataSource sqlDataSource = ((JObject)data.config.dataSource).ToObject<SqlDataSource>();
             sqlDataSource.Typeahead = (string)data.typeahead;
 
-            IEnumerable<PickerEditorOption> pickerEditorOptions = sqlDataSource.GetEditorOptions(contextId);
+            IEnumerable<EditorDataItem> editorDataItems = sqlDataSource.GetEditorDataItems(contextId);
 
             CustomLabel customLabel = new CustomLabel((string)data.config.customLabel, contextId);
             TypeaheadListPicker typeaheadListPicker = new TypeaheadListPicker((string)data.typeahead);
 
             // process the labels and then handle any type ahead text
-            return typeaheadListPicker.ProcessPickerEditorOptions(customLabel.ProcessPickerEditorOptions(pickerEditorOptions));
+            return typeaheadListPicker.ProcessEditorDataItems(customLabel.ProcessEditorDataItems(editorDataItems));
         }
     }
 }

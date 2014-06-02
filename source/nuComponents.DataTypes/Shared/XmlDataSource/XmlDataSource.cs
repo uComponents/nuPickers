@@ -1,7 +1,7 @@
 ﻿
 namespace nuComponents.DataTypes.Shared.XmlDataSource
 {
-    using nuComponents.DataTypes.Shared.Picker;
+    using nuComponents.DataTypes.Shared.Editor;
     using System.Collections.Generic;
     using System.Linq;
     using System.Web;
@@ -21,10 +21,10 @@ namespace nuComponents.DataTypes.Shared.XmlDataSource
         
         public string LabelXPath { get; set; }
 
-        public IEnumerable<PickerEditorOption> GetEditorOptions(int contextId)
+        public IEnumerable<EditorDataItem> GetEditorDataItems(int contextId)
         {
             XmlDocument xmlDocument;
-            List<PickerEditorOption> editorOptions = new List<PickerEditorOption>();
+            List<EditorDataItem> editorDataItems = new List<EditorDataItem>();
 
             switch (this.XmlData)
             {
@@ -81,7 +81,7 @@ namespace nuComponents.DataTypes.Shared.XmlDataSource
                             // set default markup to use the configured label XPath
                             label = xPathNodeIterator.Current.SelectSingleNode(this.LabelXPath).Value;
 
-                            editorOptions.Add(new PickerEditorOption()
+                            editorDataItems.Add(new EditorDataItem()
                             {
                                 Key = key,
                                 Label = label
@@ -91,7 +91,7 @@ namespace nuComponents.DataTypes.Shared.XmlDataSource
                 }
             }
 
-            return editorOptions;
+            return editorDataItems;
         }
     }
 }

@@ -4,7 +4,7 @@ namespace nuComponents.DataTypes.Shared.TypeaheadListPicker
     using System;
     using System.Linq;
     using System.Text.RegularExpressions;
-    using nuComponents.DataTypes.Shared.Picker;
+    using nuComponents.DataTypes.Shared.Editor;
     using System.Collections.Generic;
 
     internal class TypeaheadListPicker
@@ -16,14 +16,14 @@ namespace nuComponents.DataTypes.Shared.TypeaheadListPicker
             this.Typeahead = typeahead;
         }
 
-        internal IEnumerable<PickerEditorOption> ProcessPickerEditorOptions(IEnumerable<PickerEditorOption> pickerEditorOptions)
+        internal IEnumerable<EditorDataItem> ProcessEditorDataItems(IEnumerable<EditorDataItem> editorDataItems)
         {
             if (this.Typeahead != null)
             {
-                return pickerEditorOptions.Where(x => this.StripHtmlTags(x.Label).IndexOf(this.Typeahead, StringComparison.OrdinalIgnoreCase) >= 0);
+                return editorDataItems.Where(x => this.StripHtmlTags(x.Label).IndexOf(this.Typeahead, StringComparison.OrdinalIgnoreCase) >= 0);
             }
 
-            return pickerEditorOptions;
+            return editorDataItems;
         }
 
         private string StripHtmlTags(string html)

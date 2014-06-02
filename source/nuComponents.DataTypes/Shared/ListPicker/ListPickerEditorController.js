@@ -80,7 +80,7 @@ angular
 
             // method here so that typeahead doesn't need a reference to dataSource
             $scope.getEditorOptions = function (typeahead) {
-                return dataSourceResource.getEditorOptions($scope.model.config, typeahead);
+                return dataSourceResource.getEditorDataItems($scope.model.config, typeahead);
             };
 
             var savedKeys = dataSourceResource.getSavedKeys($scope.model.value); // if set within promise callback function below, this is empty (as value is a primitive type)

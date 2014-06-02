@@ -7,7 +7,7 @@ namespace nuComponents.DataTypes.Shared.RelationDataSource
     using umbraco.cms.businesslogic.relation;
     using Umbraco.Web.Editors;
     using Umbraco.Web.Mvc;
-    using nuComponents.DataTypes.Shared.Picker;
+    using nuComponents.DataTypes.Shared.Editor;
     using umbraco;
     using CustomLabel;
 
@@ -28,11 +28,11 @@ namespace nuComponents.DataTypes.Shared.RelationDataSource
 
 
         [HttpPost]
-        public IEnumerable<PickerEditorOption> GetEditorOptions([FromUri] int contextId, [FromBody] dynamic data)
+        public IEnumerable<EditorDataItem> GetEditorDataItems([FromUri] int contextId, [FromBody] dynamic data)
         {
-            IEnumerable<PickerEditorOption> pickerEditorOptions = RelationType.GetByAlias((string)data.config.dataSource.relationType)
+            IEnumerable<EditorDataItem> editorDataItems = RelationType.GetByAlias((string)data.config.dataSource.relationType)
                                                                                 .GetRelations(contextId)
-                                                                                .Select(x => new PickerEditorOption()
+                                                                                .Select(x => new EditorDataItem()
                                                                                 {
                                                                                     Key = x.Child.Id.ToString(),
                                                                                     Label = x.Child.Text
@@ -41,7 +41,7 @@ namespace nuComponents.DataTypes.Shared.RelationDataSource
 
             CustomLabel customLabel = new CustomLabel((string)data.config.customLabel, contextId);
 
-            return customLabel.ProcessPickerEditorOptions(pickerEditorOptions);
+            return customLabel.ProcessEditorDataItems(editorDataItems);
         }
     }
 }

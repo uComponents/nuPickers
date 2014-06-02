@@ -4,7 +4,7 @@ namespace nuComponents.DataTypes.Shared.EnumDataSource
 {
     /// <summary>
     /// Attribute that can be applied to enum fields, to configure how the EnumDataSource generates it's data
-    /// NOTE: this is virtually the same as Shared/Picker/PickerEditorOption.cs
+    /// NOTE: this is virtually the same as Shared/Editor/EditorDataItem.cs
     /// </summary>
     public class EnumDataSourceAttribute : Attribute
     {

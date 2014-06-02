@@ -5,7 +5,7 @@ angular
         ['$scope', 'nuComponents.DataTypes.Shared.DataSource.DataSourceResource',
         function ($scope, dataSourceResource) {
 
-            dataSourceResource.getEditorOptions($scope.model.config).then(function (response) {
+            dataSourceResource.getEditorDataItems($scope.model.config).then(function (response) {
                 $scope.dropDownPickerOptions = response.data;
 
                 var savedKey = dataSourceResource.getSavedKeys($scope.model.value);

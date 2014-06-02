@@ -8,7 +8,7 @@ namespace nuComponents.DataTypes.Shared.SqlDataSource
     using System.Text;
     using System.Threading.Tasks;
     using umbraco.DataLayer;
-    using nuComponents.DataTypes.Shared.Picker;
+    using nuComponents.DataTypes.Shared.Editor;
     using System.Text.RegularExpressions;
 
     public class SqlDataSource
@@ -19,9 +19,9 @@ namespace nuComponents.DataTypes.Shared.SqlDataSource
 
         public string Typeahead { get; set; } // the value supplied by the user - the current typeahead text
 
-        public IEnumerable<PickerEditorOption> GetEditorOptions(int contextId) // supply option typeahead param
+        public IEnumerable<EditorDataItem> GetEditorDataItems(int contextId) // supply option typeahead param
         {
-            List<PickerEditorOption> pickerEditorOptions = new List<PickerEditorOption>();
+            List<EditorDataItem> editorDataItems = new List<EditorDataItem>();
 
             ConnectionStringSettings connectionStringSettings = ConfigurationManager.ConnectionStrings[this.ConnectionString];            
             if (connectionStringSettings != null)
@@ -48,8 +48,8 @@ namespace nuComponents.DataTypes.Shared.SqlDataSource
                         {
                             while(recordsReader.Read())
                             {
-                                pickerEditorOptions.Add(
-                                    new PickerEditorOption()
+                                editorDataItems.Add(
+                                    new EditorDataItem()
                                     {
                                         Key = recordsReader.GetObject("Key").ToString(),
                                         Label = recordsReader.GetObject("Label").ToString()
@@ -61,7 +61,7 @@ namespace nuComponents.DataTypes.Shared.SqlDataSource
                 }
             }
 
-            return pickerEditorOptions;
+            return editorDataItems;
         }
     }
 }

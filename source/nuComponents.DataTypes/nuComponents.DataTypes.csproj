@@ -252,7 +252,7 @@
     <Compile Include="Shared\EnumDataSource\EnumDataSource.cs" />
     <Compile Include="Shared\EnumDataSource\EnumDataSourceApiController.cs" />
     <Compile Include="Shared\EnumDataSource\EnumDataSourceAttribute.cs" />
-    <Compile Include="Shared\Picker\PickerEditorOption.cs">
+    <Compile Include="Shared\Editor\EditorDataItem.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Shared\CustomLabel\CustomLabel.cs" />
