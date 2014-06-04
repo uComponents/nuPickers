@@ -12,29 +12,25 @@ namespace nuComponents.DataTypes.PropertyValueConverters
     {
         /// <summary>
         /// This is a generic converter for ALL nuComponents Picker PropertyEditors
-        /// this may be subclassed in the future for specific types (eg. Enum collection properties, or Xml and Content / Media / Members etc)
+        /// this may be subclassed for specific types (eg. Enum collection properties, or Xml and Content / Media / Members)
         /// </summary>
         /// <param name="propertyType"></param>
         /// <returns></returns>
         public override bool IsConverter(PublishedPropertyType propertyType)
         {
             return new string[] { 
-                PropertyEditorConstants.EnumCheckBoxPickerAlias,
-                PropertyEditorConstants.EnumDropDownPickerAlias,
-                PropertyEditorConstants.EnumPrefetchListPickerAlias,
-                PropertyEditorConstants.EnumRadioButtonPickerAlias,
-                PropertyEditorConstants.SqlCheckBoxPickerAlias,
-                PropertyEditorConstants.SqlDropDownPickerAlias,
-                PropertyEditorConstants.SqlPrefetchListPickerAlias,
-                PropertyEditorConstants.SqlRadioButtonPickerAlias,
-                PropertyEditorConstants.SqlTypeaheadListPickerAlias,
-                PropertyEditorConstants.XmlCheckBoxPickerAlias,
-                PropertyEditorConstants.XmlDropDownPickerAlias,
-                PropertyEditorConstants.XmlPrefetchListPickerAlias,
-                PropertyEditorConstants.XmlRadioButtonPickerAlias,
-                PropertyEditorConstants.XmlTypeaheadListPickerAlias
-            }
-            .Contains(propertyType.PropertyTypeAlias);
+                        PropertyEditorConstants.SqlCheckBoxPickerAlias,
+                        PropertyEditorConstants.SqlDropDownPickerAlias,
+                        PropertyEditorConstants.SqlPrefetchListPickerAlias,
+                        PropertyEditorConstants.SqlRadioButtonPickerAlias,
+                        PropertyEditorConstants.SqlTypeaheadListPickerAlias,
+                        PropertyEditorConstants.XmlCheckBoxPickerAlias,
+                        PropertyEditorConstants.XmlDropDownPickerAlias,
+                        PropertyEditorConstants.XmlPrefetchListPickerAlias,
+                        PropertyEditorConstants.XmlRadioButtonPickerAlias,
+                        PropertyEditorConstants.XmlTypeaheadListPickerAlias
+                    }
+                    .Contains(propertyType.PropertyTypeAlias);
         }
 
         public override object ConvertDataToSource(PublishedPropertyType propertyType, object source, bool preview)

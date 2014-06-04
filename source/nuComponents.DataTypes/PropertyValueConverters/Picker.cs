@@ -51,19 +51,5 @@
                 return SaveFormat.GetSavedKeys(this.SavedValue.ToString());
             }
         }
-        
-        /// <summary>
-        /// As this object can be cached (until context item is saved) relations need to be queried every time.
-        /// </summary>
-        public IEnumerable<int> RelatedIds
-        {
-            get
-            {                
-
-               // does this data-type map to relations at all ?
-
-                return null;
-            }
-        }
     }
 }
