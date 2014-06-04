@@ -230,6 +230,12 @@
     <Compile Include="PropertyEditors\SqlTypeaheadListPicker\SqlTypeaheadListPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\XmlTypeaheadListPicker\XmlTypeaheadListPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\XmlTypeaheadListPicker\XmlTypeaheadListPickerPropertyEditor.cs" />
+    <Compile Include="PropertyValueConverters\Picker.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PropertyValueConverters\PickerPropertyValueConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Shared\RelationDataSource\RelationDataSourceApiController.cs" />
     <Compile Include="Shared\SaveFormat\SaveFormatPropertyValueEditor.cs" />
     <Compile Include="PropertyEditors\RelationMatches\RelationMatchesPreValueEditor.cs" />
@@ -271,9 +277,7 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="PropertyValueConverters\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Shared\CheckBoxPicker\CheckBoxPickerEditor.html" />
     <EmbeddedResource Include="Shared\ListPicker\ButtonAdd.png" />
