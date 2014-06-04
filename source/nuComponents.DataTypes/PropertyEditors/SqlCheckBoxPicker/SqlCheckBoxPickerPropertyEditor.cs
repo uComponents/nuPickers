@@ -4,9 +4,10 @@ namespace nuComponents.DataTypes.PropertyEditors.SqlCheckBoxPicker
     using ClientDependency.Core;
     using Umbraco.Core.PropertyEditors;
     using Umbraco.Web.PropertyEditors;
+    using nuComponents.DataTypes.PropertyEditors;
 
     // EDITOR UI
-    [PropertyEditor("sqlCheckBoxPicker", "nuComponents: Sql CheckBox Picker", EmbeddedResource.RootUrl + "CheckBoxPicker/CheckBoxPickerEditor.html", ValueType = "TEXT")]
+    [PropertyEditor(PropertyEditorConstants.SqlCheckBoxPickerAlias, "nuComponents: Sql CheckBox Picker", EmbeddedResource.RootUrl + "CheckBoxPicker/CheckBoxPickerEditor.html", ValueType = "TEXT")]
     [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.RootUrl + "LayoutDirection/LayoutDirection.css")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "CheckBoxPicker/CheckBoxPickerEditorController.js")]
 

@@ -4,9 +4,10 @@ namespace nuComponents.DataTypes.PropertyEditors.SqlCheckBoxPicker
     using ClientDependency.Core;
     using Umbraco.Core.PropertyEditors;
     using Umbraco.Web.PropertyEditors;
+    using nuComponents.DataTypes.PropertyEditors;
 
     // EDITOR UI
-    [PropertyEditor("relationMatches", "nuComponents: Relation Matches", EmbeddedResource.RootUrl + "RelationMatches/RelationMatchesEditor.html", ValueType = "TEXT")]
+    [PropertyEditor(PropertyEditorConstants.RelationMatchessAlias, "nuComponents: Relation Matches", EmbeddedResource.RootUrl + "RelationMatches/RelationMatchesEditor.html", ValueType = "TEXT")]
     [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.RootUrl + "LayoutDirection/LayoutDirection.css")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "RelationMatches/RelationMatchesEditorController.js")]
 

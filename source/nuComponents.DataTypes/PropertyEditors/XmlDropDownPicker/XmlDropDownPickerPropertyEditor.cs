@@ -3,9 +3,10 @@
     using ClientDependency.Core;
     using Umbraco.Core.PropertyEditors;
     using Umbraco.Web.PropertyEditors;
+    using nuComponents.DataTypes.PropertyEditors;
 
     // EDITOR UI
-    [PropertyEditor("xmlDropDownPicker", "nuComponents: Xml DropDown Picker", EmbeddedResource.RootUrl + "DropDownPicker/DropDownPickerEditor.html", ValueType = "TEXT")]
+    [PropertyEditor(PropertyEditorConstants.XmlDropDownPickerAlias, "nuComponents: Xml DropDown Picker", EmbeddedResource.RootUrl + "DropDownPicker/DropDownPickerEditor.html", ValueType = "TEXT")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "DropDownPicker/DropDownPickerEditorController.js")]
 
     // RESOURCES

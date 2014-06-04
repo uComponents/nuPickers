@@ -4,9 +4,10 @@ namespace nuComponents.DataTypes.PropertyEditors.XmlTypeaheadListPicker
     using ClientDependency.Core;
     using Umbraco.Core.PropertyEditors;
     using Umbraco.Web.PropertyEditors;
+    using nuComponents.DataTypes.PropertyEditors;
 
     // EDITOR UI
-    [PropertyEditor("xmlTypeaheadListPicker", "nuComponents: Xml TypeaheadList Picker", EmbeddedResource.RootUrl + "TypeaheadListPicker/TypeaheadListPickerEditor.html", ValueType = "TEXT")]
+    [PropertyEditor(PropertyEditorConstants.XmlTypeaheadListPickerAlias, "nuComponents: Xml TypeaheadList Picker", EmbeddedResource.RootUrl + "TypeaheadListPicker/TypeaheadListPickerEditor.html", ValueType = "TEXT")]
     [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.RootUrl + "ListPicker/ListPickerEditor.css")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "ListPicker/ListPickerEditorController.js")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "ListPicker/ListPickerEditorDirectives.js")]

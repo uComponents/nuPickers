@@ -4,9 +4,10 @@ namespace nuComponents.DataTypes.PropertyEditors.SqlPrefetchListPicker
     using ClientDependency.Core;
     using Umbraco.Core.PropertyEditors;
     using Umbraco.Web.PropertyEditors;
+    using nuComponents.DataTypes.PropertyEditors;
 
     // EDITOR UI
-    [PropertyEditor("sqlPrefetchListPicker", "nuComponents: Sql PrefetchList Picker", EmbeddedResource.RootUrl + "PrefetchListPicker/PrefetchListPickerEditor.html", ValueType = "TEXT")]
+    [PropertyEditor(PropertyEditorConstants.SqlPrefetchListPickerAlias, "nuComponents: Sql PrefetchList Picker", EmbeddedResource.RootUrl + "PrefetchListPicker/PrefetchListPickerEditor.html", ValueType = "TEXT")]
     [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.RootUrl + "ListPicker/ListPickerEditor.css")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "ListPicker/ListPickerEditorDirectives.js")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "PrefetchListPicker/PrefetchListPickerEditorController.js")]
