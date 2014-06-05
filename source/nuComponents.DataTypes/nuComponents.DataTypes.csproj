@@ -283,7 +283,9 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\SaveFormat\SaveFormatConfigController.js" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Shared\CheckBoxPicker\CheckBoxPickerEditor.html" />
     <EmbeddedResource Include="Shared\ListPicker\ButtonAdd.png" />

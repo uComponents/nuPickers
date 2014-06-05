@@ -6,6 +6,9 @@ namespace nuComponents.DataTypes.Shared.SaveFormat
     using Umbraco.Core.PropertyEditors;
     using Umbraco.Core.Services;
 
+    /// <summary>
+    /// This class exists so as to be able to save xml direclty into the Umbraco xml cache
+    /// </summary>
     public class SaveFormatPropertyValueEditor : PropertyValueEditor
     {
         /// <summary>

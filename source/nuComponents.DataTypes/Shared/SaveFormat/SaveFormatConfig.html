@@ -1,15 +1,18 @@
-﻿
-<label>
-    <input name="saveFormat" type="radio" value="csv" ng-model="model.value" ng-init="model.value = model.value || 'csv'" />
-    <span>CSV</span>
-</label>
+﻿ <div ng-controller="nuComponents.DataTypes.Shared.SaveFormat.SaveFormatConfigController">
 
-<label>
-    <input name="saveFormat" type="radio" value="json" ng-model="model.value" />
-    <span>JSON</span>
-</label>
+    <label>
+        <input name="saveFormat" type="radio" value="csv" ng-model="model.value" ng-init="model.value = model.value || 'csv'" />
+        <span>CSV</span>
+    </label>
 
-<label>
-    <input name="saveFormat" type="radio" value="xml" ng-model="model.value" />
-    <span>XML</span>
-</label>
+    <label>
+        <input name="saveFormat" type="radio" value="json" ng-model="model.value" />
+        <span>JSON</span>
+    </label>
+
+    <label>
+        <input name="saveFormat" type="radio" value="xml" ng-model="model.value" />
+        <span>XML</span>
+    </label>
+
+</div>
