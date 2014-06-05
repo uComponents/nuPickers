@@ -10,7 +10,7 @@ angular
                 var editorOptions = response.data; 
                 
                 // set isChecked state for each option based on any saved value
-                var savedKeys = dataSourceResource.getSavedKeys($scope.model.value);
+                var savedKeys = dataSourceResource.getPickedKeys($scope.model.config, $scope.model.value);
                 for (var i = 0; i < savedKeys.length; i++) { // loop though each saved key
                     for (var j = 0; j < editorOptions.length; j++) { // loop though each editor option
                         if (savedKeys[i] == editorOptions[j].key) {
@@ -31,6 +31,10 @@ angular
                                                                         }));
                 },
                 true); // deep watch
+
+
+                // TODO: set up an event to do something on save - this will set the relations, instead of the event handler 
+                // (as save value that the event handler relies on maybe empty)
 
             });
 

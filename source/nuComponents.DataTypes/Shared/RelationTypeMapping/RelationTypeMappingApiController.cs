@@ -16,7 +16,7 @@
                         {
                             key = x.Alias,
                             label = x.Name,
-                            biDirectional = x.IsBidirectional                           
+                            bidirectional = x.IsBidirectional                           
                         });
         }
     }

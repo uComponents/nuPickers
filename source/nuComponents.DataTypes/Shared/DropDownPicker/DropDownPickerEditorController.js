@@ -8,7 +8,7 @@ angular
             dataSourceResource.getEditorDataItems($scope.model.config).then(function (response) {
                 $scope.dropDownPickerOptions = response.data;
 
-                var savedKey = dataSourceResource.getSavedKeys($scope.model.value);
+                var savedKey = dataSourceResource.getPickedKeys($scope.model.config, $scope.model.value);
                 if (savedKey[0])
                 {
                     var i = 0;

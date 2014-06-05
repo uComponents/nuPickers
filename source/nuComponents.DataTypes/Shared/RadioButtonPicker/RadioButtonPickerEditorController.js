@@ -8,7 +8,7 @@ angular
             dataSourceResource.getEditorDataItems($scope.model.config).then(function (response) {
                 $scope.radioButtonPickerOptions = response.data;                               
 
-                $scope.pickedKey = dataSourceResource.getSavedKeys($scope.model.value)[0];
+                $scope.pickedKey = dataSourceResource.getPickedKeys($scope.model.config, $scope.model.value)[0];
 
                 $scope.$watch('pickedKey', function () {
 

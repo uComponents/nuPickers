@@ -83,7 +83,7 @@ angular
                 return dataSourceResource.getEditorDataItems($scope.model.config, typeahead);
             };
 
-            var savedKeys = dataSourceResource.getSavedKeys($scope.model.value); // if set within promise callback function below, this is empty (as value is a primitive type)
+            var savedKeys = dataSourceResource.getPickedKeys($scope.model.config, $scope.model.value); // if set within promise callback function below, this is empty (as value is a primitive type)
             $scope.getEditorOptions().then(function (response) {
 
                 var editorOptions = response.data; // [{"key":"","label":""},{"key":"","label":""}...]

@@ -46,7 +46,9 @@
         public IEnumerable<string> PickedKeys
         {
             get
-            {
+            {                
+                // if saveFormat (config) is relationsOnly...
+
                 // ignore the specified saved format, and let save format try and restore collection directly from the saved value
                 return SaveFormat.GetSavedKeys(this.SavedValue.ToString());
             }

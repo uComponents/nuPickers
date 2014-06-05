@@ -40,7 +40,7 @@ angular.module('umbraco.resources')
                             return xml;
                             break;
 
-                        case 'none': // when saving to relations only
+                        case 'relationsOnly': // when saving to relations only
                         default: 
                             return null;
                             break;

@@ -24,10 +24,19 @@ angular.module('umbraco.resources')
                 },
 
                 createSaveValue: function (config, pickedOptions) {
+
+                    // if relations only, can we check for picker save event handler here ?
+
+
+
                     return saveFormatResource.createSaveValue(config, pickedOptions);
                 },
 
-                getSavedKeys: function (savedValue) {
+                getPickedKeys: function (config, savedValue) {
+
+                    // if config.saveFormat = relationsOnly then .... get from relations
+
+                    // else
                     return saveFormatResource.getSavedKeys(savedValue);
                 }
             };

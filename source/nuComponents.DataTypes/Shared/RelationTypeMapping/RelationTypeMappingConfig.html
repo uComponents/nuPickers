@@ -10,8 +10,9 @@
 
         <div>
 
-            <select ng-model="model.value"
-                    ng-options="relationType.key as relationType.label for relationType in relationTypes">
+            <select ng-model="selectedRelationType"
+                    ng-options="relationType as relationType.label for relationType in relationTypes"
+                    ng-change="relationTypeChanged()">
                 <option value=""></option>
             </select>
 
