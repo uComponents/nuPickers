@@ -270,8 +270,8 @@
     </Compile>
     <Compile Include="Shared\CustomLabel\CustomLabel.cs" />
     <Compile Include="Shared\CustomLabel\CustomLabelApiController.cs" />
-    <Compile Include="Shared\RelationTypeMapping\RelationTypeMappingApiController.cs" />
-    <Compile Include="Shared\RelationTypeMapping\RelationTypeMappingEventHandler.cs" />
+    <Compile Include="Shared\RelationMapping\RelationMappingApiController.cs" />
+    <Compile Include="Shared\RelationMapping\RelationMappingEventHandler.cs" />
     <Compile Include="Shared\SaveFormat\SaveFormat.cs" />
     <Compile Include="Shared\SqlDataSource\SqlDataSource.cs" />
     <Compile Include="Shared\SqlDataSource\SqlDataSourceApiController.cs" />
@@ -324,8 +324,8 @@
     <EmbeddedResource Include="Shared\RadioButtonPicker\RadioButtonPickerEditorController.js" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Shared\RelationTypeMapping\RelationTypeMappingConfig.html" />
-    <EmbeddedResource Include="Shared\RelationTypeMapping\RelationTypeMappingConfigController.js" />
+    <EmbeddedResource Include="Shared\RelationMapping\RelationMappingConfig.html" />
+    <EmbeddedResource Include="Shared\RelationMapping\RelationMappingConfigController.js" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Shared\ListPicker\ButtonLeft.png" />

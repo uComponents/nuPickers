@@ -1,10 +1,10 @@
 ﻿
 angular
     .module("umbraco")
-    .controller("nuComponents.DataTypes.Shared.RelationTypeMapping.RelationTypeMappingConfigController",
+    .controller("nuComponents.DataTypes.Shared.RelationMapping.RelationMappingConfigController",
     ['$rootScope', '$scope', '$http', function ($rootScope, $scope, $http) {
 
-        $http.get('backoffice/nuComponents/RelationTypeMappingApi/GetRelationTypes').then(function (response) {
+        $http.get('backoffice/nuComponents/RelationMappingApi/GetRelationTypes').then(function (response) {
             $scope.relationTypes = response.data;
 
             // restore any saved value
@@ -28,7 +28,7 @@ angular
             }            
 
             // trigger event for SaveFormat controller to recieve
-            $rootScope.$broadcast('relationTypeMappingChanged', $scope.selectedRelationType);
+            $rootScope.$broadcast('relationMappingChanged', $scope.selectedRelationType);
         }
 
     }]);

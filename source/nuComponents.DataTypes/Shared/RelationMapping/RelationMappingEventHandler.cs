@@ -1,5 +1,5 @@
 ﻿
-namespace nuComponents.DataTypes.Shared.RelationTypeMapping
+namespace nuComponents.DataTypes.Shared.RelationMapping
 {
     using nuComponents.DataTypes.Shared.SaveFormat;
     using System.Collections.Generic;
@@ -12,9 +12,9 @@ namespace nuComponents.DataTypes.Shared.RelationTypeMapping
     using LegacyRelation = umbraco.cms.businesslogic.relation.Relation;
     using LegacyRelationType = umbraco.cms.businesslogic.relation.RelationType;
 
-    public class RelationTypeMappingEventHandler : ApplicationEventHandler
+    public class RelationMappingEventHandler : ApplicationEventHandler
     {
-        public RelationTypeMappingEventHandler()
+        public RelationMappingEventHandler()
         {
             ContentService.Saved += (sender, e) => { this.SaveEvent(e.SavedEntities); };
             ContentService.Deleting += (sender, e) => { this.DeleteEvent(e.DeletedEntities); };
@@ -30,7 +30,7 @@ namespace nuComponents.DataTypes.Shared.RelationTypeMapping
                 {
                     PropertyType propertyType = this.GetPropertyType(property);
 
-                    if (this.SupportsRelationTypeMapping(propertyType))
+                    if (this.SupportsRelationMapping(propertyType))
                     {
                         LegacyRelationType relationType = LegacyRelationType.GetByAlias(this.GetRelationTypeAlias(propertyType));
                         if (relationType != null)
@@ -62,7 +62,7 @@ namespace nuComponents.DataTypes.Shared.RelationTypeMapping
                 {
                     PropertyType propertyType = this.GetPropertyType(property);
 
-                    if (this.SupportsRelationTypeMapping(propertyType))
+                    if (this.SupportsRelationMapping(propertyType))
                     {
                         string relationTypeAlias = this.GetRelationTypeAlias(propertyType);
 
@@ -95,11 +95,11 @@ namespace nuComponents.DataTypes.Shared.RelationTypeMapping
         }
 
         /// <summary>
-        /// A PropertyType supports relation type mapping if its config has a 'relationTypeMapping' key
+        /// A PropertyType supports relation type mapping if its config has a 'relationMapping' key
         /// </summary>
         /// <param name="propertyType"></param>
         /// <returns></returns>
-        private bool SupportsRelationTypeMapping(PropertyType propertyType)
+        private bool SupportsRelationMapping(PropertyType propertyType)
         {            
             try
             {
@@ -108,7 +108,7 @@ namespace nuComponents.DataTypes.Shared.RelationTypeMapping
                         .Services
                         .DataTypeService
                         .GetPreValuesCollectionByDataTypeId(propertyType.DataTypeDefinitionId)
-                        .PreValuesAsDictionary.Any(x => x.Key == "relationTypeMapping");
+                        .PreValuesAsDictionary.Any(x => x.Key == "relationMapping");
             }
             catch
             {
@@ -123,7 +123,7 @@ namespace nuComponents.DataTypes.Shared.RelationTypeMapping
                         .Services
                         .DataTypeService
                         .GetPreValuesCollectionByDataTypeId(propertyType.DataTypeDefinitionId)
-                        .PreValuesAsDictionary.Single(x => x.Key == "relationTypeMapping")
+                        .PreValuesAsDictionary.Single(x => x.Key == "relationMapping")
                         .Value
                         .Value;
         }

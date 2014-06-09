@@ -1,4 +1,4 @@
-﻿namespace nuComponents.DataTypes.Shared.RelationTypeMapping
+﻿namespace nuComponents.DataTypes.Shared.RelationMapping
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -6,7 +6,7 @@
     using Umbraco.Web.Mvc;
 
     [PluginController("nuComponents")]
-    public class RelationTypeMappingApiController : UmbracoAuthorizedJsonController
+    public class RelationMappingApiController : UmbracoAuthorizedJsonController
     {
         public IEnumerable<object> GetRelationTypes()
         {

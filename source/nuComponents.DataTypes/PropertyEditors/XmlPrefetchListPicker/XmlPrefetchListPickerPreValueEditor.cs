@@ -17,8 +17,8 @@ namespace nuComponents.DataTypes.PropertyEditors.XmlPrefetchListPicker
         [PreValueField("listPicker", "", EmbeddedResource.RootUrl + "ListPicker/ListPickerConfig.html", HideLabel = true)]
         public string ListPicker { get; set; }
 
-        [PreValueField("relationTypeMapping", "", EmbeddedResource.RootUrl + "RelationTypeMapping/RelationTypeMappingConfig.html", HideLabel = true)]
-        public string RelationTypeMapping { get; set; }
+        [PreValueField("relationMapping", "", EmbeddedResource.RootUrl + "RelationMapping/RelationMappingConfig.html", HideLabel = true)]
+        public string RelationMapping { get; set; }
 
         [PreValueField("saveFormat", "Save Format", EmbeddedResource.RootUrl + "SaveFormat/SaveFormatConfig.html")]
         public string SaveFormat { get; set; }

@@ -12,6 +12,7 @@ namespace nuComponents.DataTypes.PropertyEditors.SqlCheckBoxPicker
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "RelationMatches/RelationMatchesEditorController.js")]
 
     // RESOURCES
+    //[PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "SaveFormat/SaveFormatResource.js")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "DataSource/DataSourceResource.js")]
 
     // CONFIG

@@ -4,13 +4,13 @@ angular
     .controller("nuComponents.DataTypes.Shared.SaveFormat.SaveFormatConfigController",
     ['$scope', function ($scope) {
 
-        $scope.relationTypeMappingBidirectional = false;
+        $scope.relationMappingBidirectional = false;
         
-        $scope.$on('relationTypeMappingChanged', function (event, relationType) {
+        $scope.$on('relationMappingChanged', function (event, relationType) {
 
-            $scope.relationTypeMappingBidirectional = (relationType != null && relationType.bidirectional);
+            $scope.relationMappingBidirectional = (relationType != null && relationType.bidirectional);
 
-            if ($scope.model.value == 'relationsOnly' && !$scope.relationTypeMappingBidirectional) {
+            if ($scope.model.value == 'relationsOnly' && !$scope.relationMappingBidirectional) {
                 // fallback to csv
                 $scope.model.value = 'csv';
             }
