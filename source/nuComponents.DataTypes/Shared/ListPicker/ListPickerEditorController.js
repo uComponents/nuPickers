@@ -3,8 +3,8 @@
 angular
     .module("umbraco")
     .controller("nuComponents.DataTypes.Shared.ListPicker.ListPickerEditorController",
-        ['$scope', 'nuComponents.DataTypes.Shared.DataSource.DataSourceResource',
-        function ($scope, dataSourceResource) {
+        ['$scope', 'nuComponents.DataTypes.Shared.Editor.EditorResource',
+        function ($scope, editorResource) {
 
             // array of option objects, for the selectable list 
             $scope.selectableOptions = []; // [{"key":"","label":""}...]
@@ -80,10 +80,10 @@ angular
 
             // method here so that typeahead doesn't need a reference to dataSource
             $scope.getEditorOptions = function (typeahead) {
-                return dataSourceResource.getEditorDataItems($scope.model.config, typeahead);
+                return editorResource.getEditorDataItems($scope.model.config, typeahead);
             };
 
-            var savedKeys = dataSourceResource.getPickedKeys($scope.model.config, $scope.model.value); // if set within promise callback function below, this is empty (as value is a primitive type)
+            var savedKeys = editorResource.getPickedKeys($scope.model.config, $scope.model.value); // if set within promise callback function below, this is empty (as value is a primitive type)
             $scope.getEditorOptions().then(function (response) {
 
                 var editorOptions = response.data; // [{"key":"","label":""},{"key":"","label":""}...]
@@ -108,7 +108,7 @@ angular
             $scope.$watchCollection('selectedOptions', function () {
 
                 // use the picker resourse to save in the correct format
-                $scope.model.value = dataSourceResource.createSaveValue($scope.model.config, $scope.selectedOptions);
+                $scope.model.value = editorResource.createSaveValue($scope.model.config, $scope.selectedOptions);
 
                 // set validation state
                 $scope.listPickerForm.validation.$setValidity('validationMessage',

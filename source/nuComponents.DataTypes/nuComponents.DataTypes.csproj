@@ -387,6 +387,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Shared\TypeaheadListPicker\TypeaheadListPickerConfig.html" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\RelationMapping\RelationMappingResource.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\Editor\EditorResource.js" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

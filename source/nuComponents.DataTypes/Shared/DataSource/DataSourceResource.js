@@ -1,8 +1,8 @@
 ﻿
 angular.module('umbraco.resources')
     .factory('nuComponents.DataTypes.Shared.DataSource.DataSourceResource',
-    ['$http', 'nuComponents.DataTypes.Shared.SaveFormat.SaveFormatResource', 'editorState',
-        function ($http, saveFormatResource, editorState) {
+    ['$http', 'editorState',
+        function ($http, editorState) {
 
             return {
 
@@ -21,24 +21,8 @@ angular.module('umbraco.resources')
                         }
                     });
 
-                },
-
-                createSaveValue: function (config, pickedOptions) {
-
-                    // if relations only, can we check for picker save event handler here ?
-
-
-
-                    return saveFormatResource.createSaveValue(config, pickedOptions);
-                },
-
-                getPickedKeys: function (config, savedValue) {
-
-                    // if config.saveFormat = relationsOnly then .... get from relations
-
-                    // else
-                    return saveFormatResource.getSavedKeys(savedValue);
                 }
+
             };
         }
     ]);
