@@ -9,7 +9,7 @@ angular.module('umbraco.resources')
                 // returns a string representation of the picked options as per the configured SaveFormat
                 createSaveValue: function (config, pickedOptions) {
                     
-                    if (pickedOptions == null || pickedOptions.length == 0) {
+                    if (pickedOptions == null || pickedOptions.length == 0 || pickedOptions[0] == null) {
                         return null;
                     }
 

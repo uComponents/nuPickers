@@ -108,7 +108,7 @@ angular
             $scope.$watchCollection('selectedOptions', function () {
 
                 // use the picker resourse to save in the correct format
-                $scope.model.value = editorResource.createSaveValue($scope.model.config, $scope.selectedOptions);
+                // $scope.model.value = editorResource.createSaveValue($scope.model.config, $scope.selectedOptions);
 
                 // set validation state
                 $scope.listPickerForm.validation.$setValidity('validationMessage',
@@ -117,6 +117,14 @@ angular
 
                 // toggle sorting ui
                 $scope.sortableConfiguration.disabled = !$scope.isSortable();
+            });
+
+            $scope.$on("formSubmitting", function () {
+
+                $scope.model.value = editorResource.createSaveValue($scope.model.config, $scope.selectedOptions);
+
+                editorResource.updateRelationMapping($scope.model.config, $scope.selectedOptions);
+
             });
 
 }]);

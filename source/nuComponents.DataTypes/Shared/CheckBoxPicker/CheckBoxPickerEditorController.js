@@ -22,19 +22,15 @@ angular
 
                 $scope.checkBoxPickerOptions = editorOptions;
 
-                // setup watch on selected options
-                $scope.$watch('checkBoxPickerOptions', function () {
+                $scope.$on("formSubmitting", function () {
 
-                    $scope.model.value = editorResource.createSaveValue($scope.model.config,
-                                                                        $scope.checkBoxPickerOptions.filter(function (option) {
-                                                                            return option.isChecked == true;
-                                                                        }));
-                },
-                true); // deep watch
+                    var pickedOptions = $scope.checkBoxPickerOptions.filter(function (option) { return option.isChecked == true; });
 
+                    $scope.model.value = editorResource.createSaveValue($scope.model.config, pickedOptions);
 
-                // TODO: set up an event to do something on save - this will set the relations, instead of the event handler 
-                // (as save value that the event handler relies on maybe empty)
+                    editorResource.updateRelationMapping($scope.model.config, pickedOptions);
+
+                });
 
             });
 

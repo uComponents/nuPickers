@@ -10,21 +10,26 @@ angular
 
                 $scope.pickedKey = editorResource.getPickedKeys($scope.model.config, $scope.model.value)[0];
 
-                $scope.$watch('pickedKey', function () {
+                $scope.$on("formSubmitting", function () {
 
                     var i = 0;
                     var found = false;
+                    var pickedOption = null;
                     do {
                         if ($scope.radioButtonPickerOptions[i].key == $scope.pickedKey) {
 
-                            $scope.model.value = editorResource.createSaveValue($scope.model.config, [$scope.radioButtonPickerOptions[i]]);
+                            pickedOption = $scope.radioButtonPickerOptions[i];
                             found = true;
                         }
                         i++;
 
                     } while (!found && i < $scope.radioButtonPickerOptions.length)
 
-                    
+
+                    $scope.model.value = editorResource.createSaveValue($scope.model.config, [pickedOption]);
+
+                    editorResource.updateRelationMapping($scope.model.config, [pickedOption]);
+
                 });
 
             });

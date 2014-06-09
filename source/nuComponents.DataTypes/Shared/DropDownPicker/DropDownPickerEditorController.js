@@ -8,14 +8,14 @@ angular
             editorResource.getEditorDataItems($scope.model.config).then(function (response) {
                 $scope.dropDownPickerOptions = response.data;
 
-                var savedKey = editorResource.getPickedKeys($scope.model.config, $scope.model.value);
-                if (savedKey[0])
+                var pickedKey = editorResource.getPickedKeys($scope.model.config, $scope.model.value)[0];
+                if (pickedKey)
                 {
                     var i = 0;
                     var found = false;
                     do
                     {
-                        if ($scope.dropDownPickerOptions[i].key == savedKey)
+                        if ($scope.dropDownPickerOptions[i].key == pickedKey)
                         {
                             $scope.pickedOption = $scope.dropDownPickerOptions[i];
                             found = true;
@@ -25,13 +25,14 @@ angular
                     } while (!found && i < $scope.dropDownPickerOptions.length)                  
                 }
 
-                $scope.$watch('pickedOption', function () {
-                    if ($scope.pickedOption == null) {
-                        $scope.model.value = null;
-                    } else {
-                        $scope.model.value = editorResource.createSaveValue($scope.model.config, [$scope.pickedOption]);
-                    }
+                $scope.$on("formSubmitting", function () {
+
+                    $scope.model.value = editorResource.createSaveValue($scope.model.config, [$scope.pickedOption]);
+
+                    editorResource.updateRelationMapping($scope.model.config, [$scope.pickedOption]);
+
                 });
+
             });
 
         }]);
