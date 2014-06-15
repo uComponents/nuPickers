@@ -352,7 +352,7 @@
     <EmbeddedResource Include="Shared\LayoutDirection\LayoutDirection.css" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Shared\Editor\EditorConfig.css" />
+    <EmbeddedResource Include="Shared\PropertyEditor\PropertyEditorConfig.css" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Shared\RelationDataSource\RelationDataSourceConfig.html" />
