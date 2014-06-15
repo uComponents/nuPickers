@@ -11,28 +11,26 @@
 
 .list-picker .text-input-bar {
     border: 1px solid transparent;
-    margin-bottom:2px;
-    margin-right:1px;
-    padding-bottom:2px;
+    padding-bottom:1px;
 }
 
 .list-picker .text-input-bar input{
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    width:48%;
-    padding:15px 5px 15px 5px;
+    width:48%;    
+
+    min-height:30px;
+    line-height:30px;
 }
 
 .list-picker ul {
     list-style-type: none;
-    /*width: 48%;*/
     margin:0;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     border: 1px solid transparent;
-    padding:1px; /* make space for the fixed height border */
 }
 
 .list-picker li {
@@ -43,7 +41,11 @@
     position: relative;
     border: 1px solid #ccc;
     cursor:default;
+    min-height:30px;
+    line-height:30px;
 }
+
+
 
 .list-picker .lit { /* li */
     border:1px solid #9e9e9e;
@@ -60,7 +62,7 @@
 
 .list-picker .option-label {
     width:90%;
-    padding:4px;
+    padding-left:4px; /* TODO: move to a child element to avoid conflict with 90% / 10% widths */
 }
 
 .list-picker .button {
@@ -90,7 +92,6 @@
 
 .list-picker .placeholders li {
     border:1px dashed #ccc;
-    padding:4px;
 }
 
 /* 
@@ -136,22 +137,24 @@
 }
 
 /*
-    <ul class="selected">
-        <li class="(lit)">
+    <div class="selected-and-placeholders">
+        <ul class="selected">
+            <li class="(lit)">
 
-            <a class="button"></a>
+                <a class="button"></a>
 
-            <div class="option-label (sort)">
-                {{ custom markup }}
-            </div>
+                <div class="option-label (sort)">
+                    {{ custom markup }}
+                </div>
 
-        </li>
-    </ul>        
+            </li>
+        </ul>        
 
-    <ul class="placeholders"
-        <li/>
-        <li class="indicator" />
-    </ul>
+        <ul class="placeholders"
+            <li/>
+            <li class="indicator" />
+        </ul>
+    </div>
 */
 .list-picker .selected-and-placeholders {
     clear: right;
@@ -161,7 +164,7 @@
 }
 
 .list-picker .has-text-input-bar .selected-and-placeholders {
-    margin-top:-40px;
+    margin-top:-35px;
 }
 
 .list-picker .selected  li:last-child {
