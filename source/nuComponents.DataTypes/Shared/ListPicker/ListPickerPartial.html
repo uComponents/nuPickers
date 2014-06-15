@@ -21,40 +21,41 @@
     </li>
 </ul>
 
+<div class="selected-and-placeholders">
+    <!-- selected -->
+    <ul class="selected"
+        ui-sortable="sortableConfiguration"
+        ng-hide="selectedOptions.length == 0"
+        ng-model="selectedOptions">
+        <li ng-class="{lit:lit}"
+            ng-repeat="option in selectedOptions track by $index">
 
-<!-- selected -->
-<ul class="selected" 
-    ui-sortable="sortableConfiguration" 
-    ng-hide="selectedOptions.length == 0"
-    ng-model="selectedOptions">
-    <li ng-class="{lit:lit}"
-        ng-repeat="option in selectedOptions track by $index">
+            <a href=""
+               class="button"
+               ng-mouseenter="lit = true"
+               ng-mouseleave="lit = false"
+               ng-click="deselectOption($index)">
+            </a>
 
-        <a href=""
-           class="button"
-           ng-mouseenter="lit = true"
-           ng-mouseleave="lit = false"
-           ng-click="deselectOption($index)">
-        </a>
+            <div ng-mouseenter="lit = isSortable()"
+                 ng-mouseleave="lit = false"
+                 ng-class="{'option-label':true, sort:isSortable()}"
+                 ng-bind-html-unsafe="option.label">
+            </div>
+        </li>
+    </ul>
 
-        <div ng-mouseenter="lit = isSortable()"
-             ng-mouseleave="lit = false"
-             ng-class="{'option-label':true, sort:isSortable()}"
-             ng-bind-html-unsafe="option.label">
-        </div>
-    </li>
-</ul>
+    <ul class="placeholders">
+        <li class="required" ng-repeat="placeholder in getRequiredPlaceholderCount() track by $index">
+            Required
+        </li>
 
-<ul class="placeholders">
-    <li class="required" ng-repeat="placeholder in getRequiredPlaceholderCount() track by $index">
-        Required
-    </li>
+        <li class="select" ng-show="showSelectPlaceholder()">
+            Select
+        </li>
 
-    <li class="select" ng-show="showSelectPlaceholder()">
-        Select
-    </li>
-
-    <!--<li class="limit-indicator" ng-show="model.config.maxItems > 0">
-        {{ selectedOptions.length }} out of {{ model.config.maxItems }}
-    </li>-->
-</ul>
+        <!--<li class="limit-indicator" ng-show="model.config.maxItems > 0">
+            {{ selectedOptions.length }} out of {{ model.config.maxItems }}
+        </li>-->
+    </ul>
+</div>

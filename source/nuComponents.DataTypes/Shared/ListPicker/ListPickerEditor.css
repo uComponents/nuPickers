@@ -14,7 +14,6 @@
     margin-bottom:2px;
     margin-right:1px;
     padding-bottom:2px;
-    border-bottom:solid 2px #f6f6f6;
 }
 
 .list-picker .text-input-bar input{
@@ -27,7 +26,7 @@
 
 .list-picker ul {
     list-style-type: none;
-    width: 48%;
+    /*width: 48%;*/
     margin:0;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -109,6 +108,7 @@
 */
 
 .list-picker .selectable {
+    width:48%;
     float: left;
 }
 
@@ -153,11 +153,15 @@
         <li class="indicator" />
     </ul>
 */
-.list-picker .selected,
-.list-picker .placeholders {
+.list-picker .selected-and-placeholders {
     clear: right;
     float: right;
+    width:48%;
     /* padding-left: TODO: calculate from scrollbar width (want to ensure markup area is same with both sides) */
+}
+
+.list-picker .has-text-input-bar .selected-and-placeholders {
+    margin-top:-40px;
 }
 
 .list-picker .selected  li:last-child {
