@@ -9,7 +9,7 @@ angular
 
             // restore any saved value
             for (var i = 0; i < $scope.relationTypes.length; i++) {
-                if ($scope.relationTypes[i].key == $scope.model.value) {
+                if ($scope.relationTypes[i].key == $scope.model.value.relationTypeAlias) {
                     $scope.selectedRelationType = $scope.relationTypes[i];
                     break;
                 }
@@ -20,15 +20,22 @@ angular
 
         $scope.relationTypeChanged = function () {
 
-            // update the value to be saved (only need to save key)
-            if ($scope.selectedRelationType != null) {                
-                $scope.model.value = $scope.selectedRelationType.key;
-            } else {
-                $scope.model.value = null;
-            }            
-
             // trigger event for SaveFormat controller to recieve
             $rootScope.$broadcast('relationMappingChanged', $scope.selectedRelationType);
         }
+
+        $scope.$on("formSubmitting", function () {
+
+            if ($scope.selectedRelationType != null) {
+
+                // rebuild the model.value
+                $scope.model.value.relationTypeAlias = $scope.selectedRelationType.key; // only need to save the key (it's alias)
+
+            } else {
+                // clear all values, as no relation type set
+                $scope.model.value = null;
+            }
+
+        });
 
     }]);

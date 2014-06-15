@@ -8,7 +8,9 @@ angular
             editorResource.getEditorDataItems($scope.model.config).then(function (response) {
                 $scope.radioButtonPickerOptions = response.data;                               
 
-                $scope.pickedKey = editorResource.getPickedKeys($scope.model.config, $scope.model.value)[0];
+                editorResource.getPickedKeys($scope.model.config, $scope.model.value).then(function (pickedKeys) {
+                    $scope.pickedKey = pickedKeys[0];
+                });
 
                 $scope.$on("formSubmitting", function () {
 

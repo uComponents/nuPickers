@@ -1,10 +1,11 @@
 ﻿
 angular.module('umbraco.resources')
     .factory('nuComponents.DataTypes.Shared.Editor.EditorResource',
-        ['nuComponents.DataTypes.Shared.DataSource.DataSourceResource',
+        ['$q',
+        'nuComponents.DataTypes.Shared.DataSource.DataSourceResource',
         'nuComponents.DataTypes.Shared.SaveFormat.SaveFormatResource',
         'nuComponents.DataTypes.Shared.RelationMapping.RelationMappingResource',
-        function (dataSourceResource, saveFormatResource, relationMappingResource) {
+        function ($q, dataSourceResource, saveFormatResource, relationMappingResource) {
 
             return {
 
@@ -14,16 +15,20 @@ angular.module('umbraco.resources')
 
                 getPickedKeys: function (config, savedValue) {
 
+                    // create a new promise....
+                    var deferred = $q.defer();
+
                     if (config.saveFormat == 'relationsOnly') {
 
-                        // TODO: convert colleciton of ints to strings ?
-
-                        return relationMappingResource.getRelatedIds(config);
+                        relationMappingResource.getRelatedIds(config).then(function (response) {
+                            deferred.resolve(response.data.map(function (id) { return id.toString(); })); // ensure returning an array of strings
+                        });
 
                     } else {
-                        return saveFormatResource.getSavedKeys(savedValue);
+                        deferred.resolve(saveFormatResource.getSavedKeys(savedValue));                        
                     }
 
+                    return deferred.promise;
                 },
 
                 createSaveValue: function (config, pickedOptions) {
@@ -31,7 +36,9 @@ angular.module('umbraco.resources')
                 },
 
                 updateRelationMapping: function (config, pickedOptions) {
-                    relationMappingResource.updateRelationMapping(config, pickedOptions);
+                    if (config.relationMapping != null) {
+                        relationMappingResource.updateRelationMapping(config, pickedOptions);
+                    }
                 }
 
             };

@@ -8,22 +8,21 @@ angular
             editorResource.getEditorDataItems($scope.model.config).then(function (response) {
                 $scope.dropDownPickerOptions = response.data;
 
-                var pickedKey = editorResource.getPickedKeys($scope.model.config, $scope.model.value)[0];
-                if (pickedKey)
-                {
-                    var i = 0;
-                    var found = false;
-                    do
-                    {
-                        if ($scope.dropDownPickerOptions[i].key == pickedKey)
-                        {
-                            $scope.pickedOption = $scope.dropDownPickerOptions[i];
-                            found = true;
-                        }
-                        i++;
+                editorResource.getPickedKeys($scope.model.config, $scope.model.value).then(function (pickedKeys) {
 
-                    } while (!found && i < $scope.dropDownPickerOptions.length)                  
-                }
+                    if (pickedKeys[0]) {
+                        var i = 0;
+                        var found = false;
+                        do {
+                            if ($scope.dropDownPickerOptions[i].key == pickedKeys[0]) {
+                                $scope.pickedOption = $scope.dropDownPickerOptions[i];
+                                found = true;
+                            }
+                            i++;
+
+                        } while (!found && i < $scope.dropDownPickerOptions.length)
+                    }
+                });
 
                 $scope.$on("formSubmitting", function () {
 

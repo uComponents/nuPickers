@@ -3,7 +3,7 @@
     <div>
         <label for="">
 
-            Relation Mapping
+            Relation Type
             <small>to create a Relation, picked keys must be valid integers and of the correct type</small>
 
         </label>
@@ -29,12 +29,13 @@
         </label>
 
         <div>
-            <!-- SCOPE:  Gloabl / Property Editor (all DataTypes) / Data Type instance -->
 
+            <select ng-init="model.value.relationScope = model.value.relationScope || ''"
+                    ng-model="model.value.relationScope"
+                    ng-disabled="selectedRelationType == null"
+                    ng-options="option.key as option.label for option in [{'key':'', 'label':''}, {'key':'dataType', 'label':'Data Type'}, {'key':'property', 'label':'Property'}]"></select>
 
         </div>
     </div>
-
-
 
 </div>

@@ -83,21 +83,24 @@ angular
                 return editorResource.getEditorDataItems($scope.model.config, typeahead);
             };
 
-            var savedKeys = editorResource.getPickedKeys($scope.model.config, $scope.model.value); // if set within promise callback function below, this is empty (as value is a primitive type)
             $scope.getEditorOptions().then(function (response) {
 
                 var editorOptions = response.data; // [{"key":"","label":""},{"key":"","label":""}...]
 
-                // build selected options                
-                for (var i = 0; i < savedKeys.length; i++) { 
-                    for (var j = 0; j < editorOptions.length; j++) { 
-                        if (savedKeys[i] == editorOptions[j].key) {
-                            $scope.selectedOptions.push(editorOptions[j]);
-                            break;
+                editorResource.getPickedKeys($scope.model.config, $scope.model.value).then(function (pickedKeys) {
+
+                    // build selected options                
+                    for (var i = 0; i < pickedKeys.length; i++) {
+                        for (var j = 0; j < editorOptions.length; j++) {
+                            if (pickedKeys[i] == editorOptions[j].key) {
+                                $scope.selectedOptions.push(editorOptions[j]);
+                                break;
+                            }
                         }
                     }
-                }
 
+                });
+              
                 // look at the config to see if it's a prefetch (so know to set initial list or not)
                 if ($scope.model.config.prefetchListPicker != null) {
                     $scope.selectableOptions = editorOptions;

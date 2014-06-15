@@ -243,6 +243,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Shared\RelationDataSource\RelationDataSourceApiController.cs" />
+    <Compile Include="Shared\RelationMapping\RelationMapping.cs" />
     <Compile Include="Shared\SaveFormat\SaveFormatPropertyValueEditor.cs" />
     <Compile Include="PropertyEditors\RelationMatches\RelationMatchesPreValueEditor.cs" />
     <Compile Include="PropertyEditors\RelationMatches\RelationMatchesPropertyEditor.cs" />
@@ -271,7 +272,6 @@
     <Compile Include="Shared\CustomLabel\CustomLabel.cs" />
     <Compile Include="Shared\CustomLabel\CustomLabelApiController.cs" />
     <Compile Include="Shared\RelationMapping\RelationMappingApiController.cs" />
-    <Compile Include="Shared\RelationMapping\RelationMappingEventHandler.cs" />
     <Compile Include="Shared\SaveFormat\SaveFormat.cs" />
     <Compile Include="Shared\SqlDataSource\SqlDataSource.cs" />
     <Compile Include="Shared\SqlDataSource\SqlDataSourceApiController.cs" />
