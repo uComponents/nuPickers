@@ -65,6 +65,10 @@ angular
             // returns true if there are at least two different items in 'selected'
             $scope.isSortable = function () {
 
+                if (!$scope.model.config.listPicker.allowSorting) {
+                    return false;
+                }
+
                 if (!$scope.model.config.allowDuplicates && $scope.selectedOptions > 1) {
                     return true;
                 }
