@@ -57,15 +57,20 @@ angular
             }
 
             $scope.showSelectPlaceholder = function () {
+
+                
+
+                // TODO: and selectable options, has valid options - noly prefetch should be able to do this
+
+
                 return ($scope.selectedOptions.length >= $scope.model.config.listPicker.minItems)
                         && (($scope.selectedOptions.length < $scope.model.config.listPicker.maxItems) || $scope.model.config.listPicker.maxItems == 0);
-                // TODO: and selectable options, has valid options
             }
 
             // returns true if there are at least two different items in 'selected'
             $scope.isSortable = function () {
 
-                if (!$scope.model.config.listPicker.allowSorting) {
+                if ($scope.$parent.model.config.prefetchListPicker && !$scope.$parent.model.config.prefetchListPicker.allowSorting) {
                     return false;
                 }
 
@@ -113,9 +118,6 @@ angular
                  
             // setup watch on selected options
             $scope.$watchCollection('selectedOptions', function () {
-
-                // use the picker resourse to save in the correct format
-                // $scope.model.value = editorResource.createSaveValue($scope.model.config, $scope.selectedOptions);
 
                 // set validation state
                 $scope.listPickerForm.validation.$setValidity('validationMessage',
