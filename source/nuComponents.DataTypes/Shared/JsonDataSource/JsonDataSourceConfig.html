@@ -1,0 +1,103 @@
+﻿<div ng-controller="nuComponents.DataTypes.Shared.JsonDataSource.JsonDataSourceConfigController" class="nuComponents-config">
+
+    <div>
+        <label for="">
+
+            json Data
+            <small>json data to query</small>
+
+        </label>
+
+        <div>
+
+            <select ng-model="model.value.jsonData"
+                    ng-init="model.value.jsonData = model.value.jsonData || 'content'">
+                <option value="url">Url</option>
+                <option value="file" disabled="disabled">TODO: File</option>
+            </select>
+
+        </div>
+    </div>
+
+    <!-- show / hide -->
+    <div ng-hide="model.value.jsonData != 'url'">
+        <label for="">
+
+            Url
+            <small>use the prefix ~/ to indicate a relative url</small>
+
+        </label>
+
+        <div>
+
+            <input type="text" ng-model="model.value.url" />
+
+        </div>
+    </div>
+
+
+    <div ng-hide="model.value.jsonData != 'file'">
+        <label for="">
+
+            File
+            <small>
+
+            </small>
+
+        </label>
+
+        <div class="controls controls-row">
+
+            <input type="text" ng-model="model.value.file" />
+
+        </div>
+    </div>
+
+
+    <div>
+        <label for="">
+            Options XPath
+            <small>all matched nodes are used as options</small>
+        </label>
+
+        <div>
+
+            <input type="text"
+                   ng-model="model.value.optionsJsonPath"
+                   ng-init="model.value.optionsJsonPath = model.value.optionsJsonPath || '//*[@isDoc]'" />
+
+        </div>
+    </div>
+
+    <div>
+        <label for="">
+            Key XPath
+            <small>xpath to select single item (from each option) to use as the key (this must be unique)</small>
+        </label>
+
+        <div>
+
+            <input type="text"
+                   ng-model="model.value.keyJsonPath"
+                   ng-init="model.value.keyJsonPath = model.value.keyJsonPath || '@id'" />
+
+        </div>
+    </div>
+
+
+    <div ng-hide="model.value.labelMacro">
+        <label for="">
+            Label XPath
+            <small>xpath to select single item (from each option) to use as the key (not used if label macro selected)</small>
+        </label>
+
+        <div>
+
+            <input type="text"
+                   ng-model="model.value.labelJsonPath"
+                   ng-init="model.value.labelJsonPath = model.value.labelJsonPath || '@nodeName'" />
+
+        </div>
+    </div>
+
+</div>
