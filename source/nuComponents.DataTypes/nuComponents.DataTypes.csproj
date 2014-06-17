@@ -11,6 +11,8 @@
     <AssemblyName>nuComponents.DataTypes</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -217,6 +219,16 @@
     <Compile Include="EmbeddedResourceStartup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyEditors\BasePropertyEditor.cs" />
+    <Compile Include="PropertyEditors\JsonTypeaheadListPicker\JsonTypeaheadListPickerPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\JsonTypeaheadListPicker\JsonTypeaheadPickerPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\JsonRadioButtonPicker\JsonRadioButtonPickerPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\JsonRadioButtonPicker\JsonRadioButtonPickerPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\JsonPrefetchListPicker\JsonPrefetchListPickerPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\JsonPrefetchListPicker\JsonPrefetchListPickerPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\JsonDropDownPicker\JsonDropDownPickerPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\JsonDropDownPicker\JsonDropDownPickerPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\JsonCheckBoxPicker\JsonCheckBoxPickerPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\JsonCheckBoxPicker\JsonCheckBoxPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\EnumCheckBoxPicker\EnumCheckBoxPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\EnumCheckBoxPicker\EnumCheckBoxPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\EnumDropDownPicker\EnumDropDownPickerPreValueEditor.cs" />
@@ -242,6 +254,8 @@
     <Compile Include="PropertyValueConverters\PickerPropertyValueConverter.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Shared\JsonDataSource\JsonDataSource.cs" />
+    <Compile Include="Shared\JsonDataSource\JsonDataSourceApiController.cs" />
     <Compile Include="Shared\RelationDataSource\RelationDataSourceApiController.cs" />
     <Compile Include="Shared\RelationMapping\RelationMapping.cs" />
     <Compile Include="Shared\SaveFormat\SaveFormatPropertyValueEditor.cs" />
@@ -393,11 +407,20 @@
   <ItemGroup>
     <EmbeddedResource Include="Shared\Editor\EditorResource.js" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\JsonDataSource\JsonDataSourceConfig.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\JsonDataSource\JsonDataSourceConfigController.js" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>if NOT %25ComputerName%25 == STE-PC GOTO end
+xcopy /S /Y /I "$(TargetDir)nuCom*.dll" "E:\Work\Self\Blog\Build\bin"
+xcopy /S /Y /I "$(TargetDir)nuCom*.pdb" "E:\Work\Self\Blog\Build\bin"
+:end</PostBuildEvent>
   </PropertyGroup>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
