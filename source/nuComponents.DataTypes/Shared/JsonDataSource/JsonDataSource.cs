@@ -1,16 +1,12 @@
 ﻿
-using System.Net;
-using Newtonsoft.Json.Linq;
-
 namespace nuComponents.DataTypes.Shared.JsonDataSource
 {
+    using Newtonsoft.Json.Linq;
     using nuComponents.DataTypes.Shared.Editor;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Net;
     using System.Web;
-    using System.Xml;
-    using System.Xml.XPath;
-    using umbraco;
 
     public class JsonDataSource
     {
@@ -26,7 +22,6 @@ namespace nuComponents.DataTypes.Shared.JsonDataSource
 
         public IEnumerable<EditorDataItem> GetEditorDataItems(int contextId)
         {
-
             JObject jsonDoc;
             List<EditorDataItem> editorDataItems = new List<EditorDataItem>();
 
@@ -86,6 +81,11 @@ namespace nuComponents.DataTypes.Shared.JsonDataSource
         {
             using (WebClient client = new WebClient())
             {
+                if (url.StartsWith("~/"))
+                {
+                    url = HttpContext.Current.Server.MapPath(url);
+                }
+
                 return client.DownloadString(url);
             }
         }

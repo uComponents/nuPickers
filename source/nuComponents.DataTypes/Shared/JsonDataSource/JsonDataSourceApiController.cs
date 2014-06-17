@@ -16,9 +16,9 @@ namespace nuComponents.DataTypes.Shared.JsonDataSource
         [HttpPost]
         public IEnumerable<EditorDataItem> GetEditorDataItems([FromUri] int contextId, [FromBody] dynamic data)
         {
-            JsonDataSource xmlDataSource = ((JObject)data.config.dataSource).ToObject<JsonDataSource>();
+            JsonDataSource jsonDataSource = ((JObject)data.config.dataSource).ToObject<JsonDataSource>();
 
-            IEnumerable<EditorDataItem> editorDataItems = xmlDataSource.GetEditorDataItems(contextId);
+            IEnumerable<EditorDataItem> editorDataItems = jsonDataSource.GetEditorDataItems(contextId);
 
             CustomLabel customLabel = new CustomLabel((string)data.config.customLabel, contextId);
             TypeaheadListPicker typeaheadListPicker = new TypeaheadListPicker((string)data.typeahead);
