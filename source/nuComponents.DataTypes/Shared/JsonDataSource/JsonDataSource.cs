@@ -34,7 +34,6 @@ namespace nuComponents.DataTypes.Shared.JsonDataSource
             {
                case "url":
                     jsonDoc = JObject.Parse(GetContents(this.Url));
-                    
                     break;
 
                 default:
@@ -44,19 +43,17 @@ namespace nuComponents.DataTypes.Shared.JsonDataSource
 
             if (jsonDoc != null)
             { 
-                
-                HttpContext.Current.Items["pageID"] = contextId; // set here, as this is required for the uQuery.ResolveXPath
+                //Do the lookups
+                var optionsIterator = jsonDoc.SelectTokens(OptionsJsonPath).GetEnumerator();
 
-                var matching = jsonDoc.SelectTokens(OptionsJsonPath).GetEnumerator();
                 List<string> keys = new List<string>(); // used to keep track of keys, so that duplicates aren't added
 
                 string key;
                 string label;
 
-                while (matching.MoveNext())
+                while (optionsIterator.MoveNext())
                 {
-                    
-                        key = matching.Current.SelectToken(this.KeyJsonPath).Value<string>();
+                    key = optionsIterator.Current.SelectToken(this.KeyJsonPath).Value<string>();
 
                         // only add item if it has a unique key - failsafe
                         if (!string.IsNullOrWhiteSpace(key) && !keys.Any(x => x == key))
@@ -65,7 +62,7 @@ namespace nuComponents.DataTypes.Shared.JsonDataSource
                             keys.Add(key); // add key so that it's not reused
 
                             // set default markup to use the configured label XPath
-                            label= matching.Current.SelectToken(this.LabelJsonPath).Value<string>();
+                            label = optionsIterator.Current.SelectToken(this.LabelJsonPath).Value<string>();
                             
                             editorDataItems.Add(new EditorDataItem()
                             {
@@ -80,7 +77,12 @@ namespace nuComponents.DataTypes.Shared.JsonDataSource
             return editorDataItems;
         }
 
-        private string GetContents(string url)
+        /// <summary>
+        /// Downloads a url resource and returns it as a string. Maybe move this into a helpers class?
+        /// </summary>
+        /// <param name="url">URL to download the resource from</param>
+        /// <returns>the string based result of the webcall</returns>
+        private static string GetContents(string url)
         {
             using (WebClient client = new WebClient())
             {
