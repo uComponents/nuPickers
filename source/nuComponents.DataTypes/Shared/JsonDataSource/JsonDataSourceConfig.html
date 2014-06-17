@@ -64,7 +64,7 @@
 
             <input type="text"
                    ng-model="model.value.optionsJsonPath"
-                   ng-init="model.value.optionsJsonPath = model.value.optionsJsonPath || '//*[@isDoc]'" />
+                   ng-init="model.value.optionsJsonPath = model.value.optionsJsonPath || '$.colorsArray[*]'" />
 
         </div>
     </div>
@@ -79,7 +79,7 @@
 
             <input type="text"
                    ng-model="model.value.keyJsonPath"
-                   ng-init="model.value.keyJsonPath = model.value.keyJsonPath || '@id'" />
+                   ng-init="model.value.keyJsonPath = model.value.keyJsonPath || 'hexValue'" />
 
         </div>
     </div>
@@ -95,7 +95,7 @@
 
             <input type="text"
                    ng-model="model.value.labelJsonPath"
-                   ng-init="model.value.labelJsonPath = model.value.labelJsonPath || '@nodeName'" />
+                   ng-init="model.value.labelJsonPath = model.value.labelJsonPath || 'colorName'" />
 
         </div>
     </div>
