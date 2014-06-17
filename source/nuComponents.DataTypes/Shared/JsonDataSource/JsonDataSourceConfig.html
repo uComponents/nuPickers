@@ -4,14 +4,14 @@
         <label for="">
 
             Json Data
-            <small>Json data to query</small>
+            <small>json data to query</small>
 
         </label>
 
         <div>
 
             <select ng-model="model.value.jsonData"
-                    ng-init="model.value.jsonData = model.value.jsonData || 'content'">
+                    ng-init="model.value.jsonData = model.value.jsonData || 'url'">
                 <option value="url">Url</option>
                 <option value="file" disabled="disabled">TODO: File</option>
             </select>
@@ -56,30 +56,30 @@
 
     <div>
         <label for="">
-            Options XPath
-            <small>all matched nodes are used as options</small>
+            Options JSONPath
+            <small></small>
         </label>
 
         <div>
 
             <input type="text"
                    ng-model="model.value.optionsJsonPath"
-                   ng-init="model.value.optionsJsonPath = model.value.optionsJsonPath || '$.colorsArray[*]'" />
+                   ng-init="model.value.optionsJsonPath = model.value.optionsJsonPath || '$..*'" />
 
         </div>
     </div>
 
     <div>
         <label for="">
-            Key XPath
-            <small>xpath to select single item (from each option) to use as the key (this must be unique)</small>
+            Key JSONPath
+            <small>jsonpath to select single item (from each option) to use as the key (this must be unique)</small>
         </label>
 
         <div>
 
             <input type="text"
                    ng-model="model.value.keyJsonPath"
-                   ng-init="model.value.keyJsonPath = model.value.keyJsonPath || 'hexValue'" />
+                   ng-init="model.value.keyJsonPath = model.value.keyJsonPath || ''" />
 
         </div>
     </div>
@@ -87,15 +87,15 @@
 
     <div ng-hide="model.value.labelMacro">
         <label for="">
-            Label XPath
-            <small>xpath to select single item (from each option) to use as the key (not used if label macro selected)</small>
+            Label JSONPath
+            <small>jsonpath to select single item (from each option) to use as the key (not used if label macro selected)</small>
         </label>
 
         <div>
 
             <input type="text"
                    ng-model="model.value.labelJsonPath"
-                   ng-init="model.value.labelJsonPath = model.value.labelJsonPath || 'colorName'" />
+                   ng-init="model.value.labelJsonPath = model.value.labelJsonPath || ''" />
 
         </div>
     </div>
