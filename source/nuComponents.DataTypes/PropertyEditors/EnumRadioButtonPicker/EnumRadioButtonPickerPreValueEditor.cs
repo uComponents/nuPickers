@@ -14,8 +14,8 @@ namespace nuComponents.DataTypes.PropertyEditors.EnumRadioButtonPicker
         [PreValueField("layoutDirection", "Layout Direction", EmbeddedResource.RootUrl + "LayoutDirection/LayoutDirectionConfig.html")]
         public string LayoutDirection { get; set; }
 
-        [PreValueField("relationMapping", "", EmbeddedResource.RootUrl + "RelationMapping/RelationMappingConfig.html", HideLabel = true)]
-        public string RelationMapping { get; set; }
+        //[PreValueField("relationMapping", "", EmbeddedResource.RootUrl + "RelationMapping/RelationMappingConfig.html", HideLabel = true)]
+        //public string RelationMapping { get; set; }
 
         [PreValueField("saveFormat", "Save Format", EmbeddedResource.RootUrl + "SaveFormat/SaveFormatConfig.html")]
         public string SaveFormat { get; set; }
