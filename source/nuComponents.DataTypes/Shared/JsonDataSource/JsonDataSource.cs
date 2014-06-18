@@ -10,8 +10,6 @@ namespace nuComponents.DataTypes.Shared.JsonDataSource
 
     public class JsonDataSource
     {
-        public string JsonData { get; set; }
-
         public string Url { get; set; }
 
         public string OptionsJsonPath { get; set; }
@@ -25,16 +23,7 @@ namespace nuComponents.DataTypes.Shared.JsonDataSource
             JObject jsonDoc;
             List<EditorDataItem> editorDataItems = new List<EditorDataItem>();
 
-            switch (this.JsonData)
-            {
-               case "url":
-                    jsonDoc = JObject.Parse(GetContents(this.Url));
-                    break;
-
-                default:
-                    jsonDoc = null;
-                    break;
-            }
+            jsonDoc = JObject.Parse(GetContents(this.Url));
 
             if (jsonDoc != null)
             { 

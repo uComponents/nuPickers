@@ -3,26 +3,6 @@
     <div>
         <label for="">
 
-            Json Data
-            <small>json data to query</small>
-
-        </label>
-
-        <div>
-
-            <select ng-model="model.value.jsonData"
-                    ng-init="model.value.jsonData = model.value.jsonData || 'url'">
-                <option value="url">Url</option>
-                <option value="file" disabled="disabled">TODO: File</option>
-            </select>
-
-        </div>
-    </div>
-
-    <!-- show / hide -->
-    <div ng-hide="model.value.jsonData != 'url'">
-        <label for="">
-
             Url
             <small>use the prefix ~/ to indicate a relative url</small>
 
@@ -34,25 +14,6 @@
 
         </div>
     </div>
-
-
-    <div ng-hide="model.value.jsonData != 'file'">
-        <label for="">
-
-            File
-            <small>
-
-            </small>
-
-        </label>
-
-        <div class="controls controls-row">
-
-            <input type="text" ng-model="model.value.file" />
-
-        </div>
-    </div>
-
 
     <div>
         <label for="">
