@@ -31,9 +31,19 @@
 
             if (relationType != null)
             {
-                return ApplicationContext.Services.RelationService.GetAllRelationsByRelationType(relationType.Id)
-                                .Where(x => x.ChildId == contextId && (string.IsNullOrWhiteSpace(relationScopeIdentifier) || x.Comment == relationScopeIdentifier))
-                                .Select(x => x.ParentId);
+                if (!relationType.IsBidirectional)
+                {
+                    return ApplicationContext.Services.RelationService.GetAllRelationsByRelationType(relationType.Id)
+                                    .Where(x => x.ChildId == contextId && (string.IsNullOrWhiteSpace(relationScopeIdentifier) || x.Comment == relationScopeIdentifier))
+                                    .Select(x => x.ParentId);
+
+                }
+                else
+                {
+                    return ApplicationContext.Services.RelationService.GetAllRelationsByRelationType(relationType.Id)
+                                    .Where(x => x.ParentId == contextId || x.ChildId == contextId && (string.IsNullOrWhiteSpace(relationScopeIdentifier) || x.Comment == relationScopeIdentifier))
+                                    .Select(x => (x.ParentId != contextId) ? x.ParentId : x.ChildId);
+                }
             }
 
             return null;
