@@ -19,22 +19,16 @@
         </div>
     </div>
 
-
-
-
     <div>
         <label for="">
-            Relation Scope
-            <small>uses the comment field to limit scope</small>
+            Relation Identifier
+            <small>when checked, uses the comment field to identify associated relations - use to limit scope if relation type is shared</small>
         </label>
 
         <div>
-
-            <select ng-init="model.value.relationScope = model.value.relationScope || ''"
-                    ng-model="model.value.relationScope"
-                    ng-disabled="selectedRelationType == null"
-                    ng-options="option.key as option.label for option in [{'key':'', 'label':''}, {'key':'dataType', 'label':'Data Type'}, {'key':'property', 'label':'Property'}]"></select>
-
+            <input type="checkbox"
+                   ng-model="model.value.relationIdentifier"
+                   ng-disabled="selectedRelationType == null" />
         </div>
     </div>
 

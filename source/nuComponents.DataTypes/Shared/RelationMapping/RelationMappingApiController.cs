@@ -24,7 +24,7 @@
         }
        
         [HttpGet]
-        public IEnumerable<int> GetRelatedIds([FromUri] int contextId, [FromUri] string relationTypeAlias, [FromUri] string relationScopeIdentifier)
+        public IEnumerable<int> GetRelatedIds([FromUri] int contextId, [FromUri] string relationTypeAlias, [FromUri] string relationIdentifier)
         {
             // Get child Ids for current contextId and relationType            
             IRelationType relationType = ApplicationContext.Services.RelationService.GetRelationTypeByAlias(relationTypeAlias);
@@ -34,14 +34,14 @@
                 if (!relationType.IsBidirectional)
                 {
                     return ApplicationContext.Services.RelationService.GetAllRelationsByRelationType(relationType.Id)
-                                    .Where(x => x.ChildId == contextId && (string.IsNullOrWhiteSpace(relationScopeIdentifier) || x.Comment == relationScopeIdentifier))
+                                    .Where(x => x.ChildId == contextId && (string.IsNullOrWhiteSpace(relationIdentifier) || x.Comment == relationIdentifier))
                                     .Select(x => x.ParentId);
 
                 }
                 else
                 {
                     return ApplicationContext.Services.RelationService.GetAllRelationsByRelationType(relationType.Id)
-                                    .Where(x => x.ParentId == contextId || x.ChildId == contextId && (string.IsNullOrWhiteSpace(relationScopeIdentifier) || x.Comment == relationScopeIdentifier))
+                                    .Where(x => x.ParentId == contextId || x.ChildId == contextId && (string.IsNullOrWhiteSpace(relationIdentifier) || x.Comment == relationIdentifier))
                                     .Select(x => (x.ParentId != contextId) ? x.ParentId : x.ChildId);
                 }
             }
@@ -50,17 +50,17 @@
         }        
 
         [HttpPost]
-        public void UpdateRelationMapping([FromUri] int contextId, [FromUri] string relationTypeAlias, [FromUri] string relationScopeIdentifier, [FromBody] dynamic data)
+        public void UpdateRelationMapping([FromUri] int contextId, [FromUri] string relationTypeAlias, [FromUri] string relationIdentifier, [FromBody] dynamic data)
         {
             IRelationType relationType = ApplicationContext.Services.RelationService.GetRelationTypeByAlias(relationTypeAlias);
 
             if (relationType != null)
             {
-                RelationMapping.DeleteRelations(relationType, contextId, relationScopeIdentifier);
+                RelationMapping.DeleteRelations(relationType, contextId, relationIdentifier);
                 
                 foreach(int pickedId in ((JArray)data).Select(x => x.Value<int>()))
                 {                    
-                    RelationMapping.CreateRelation(relationType, contextId, pickedId, relationScopeIdentifier);
+                    RelationMapping.CreateRelation(relationType, contextId, pickedId, relationIdentifier);
                 }
             }
         }
