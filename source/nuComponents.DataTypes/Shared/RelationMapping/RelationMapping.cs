@@ -9,13 +9,13 @@ namespace nuComponents.DataTypes.Shared.RelationMapping
 
     internal static class RelationMapping
     {
-        internal static void DeleteRelations(IRelationType relationType, int contextId, string relationScopeIdentifier)
+        internal static void DeleteRelations(IRelationType relationType, int contextId, string relationIdentifier)
         {
             // always using reverse index
             string sql = "SELECT id FROM umbracoRelation WHERE relType = " + relationType.Id.ToString() + " AND childId = " + contextId.ToString();
-            if (!string.IsNullOrWhiteSpace(relationScopeIdentifier))
+            if (!string.IsNullOrWhiteSpace(relationIdentifier))
             {
-                sql += " AND comment = '" + relationScopeIdentifier + "'"; // TODO: swap to an xml fragment ? or use a new db column ?
+                sql += " AND comment = '" + relationIdentifier + "'"; // TODO: swap to an xml fragment ? or use a new db column ?
             }
 
             using (var relations = uQuery.SqlHelper.ExecuteReader(sql))
@@ -32,14 +32,14 @@ namespace nuComponents.DataTypes.Shared.RelationMapping
             }            
         }
 
-        internal static void CreateRelation(IRelationType relationType, int contextId, int pickedId, string relationScopeIdentifier)
+        internal static void CreateRelation(IRelationType relationType, int contextId, int pickedId, string relationIdentifier)
         {
             LegacyRelationType legacyRelationType = new LegacyRelationType(relationType.Id);
 
             if (uQuery.GetUmbracoObjectType(contextId) == legacyRelationType.GetChildUmbracoObjectType() &&
                 uQuery.GetUmbracoObjectType(pickedId) == legacyRelationType.GetParentUmbracoObjectType())
             {
-                LegacyRelation.MakeNew(pickedId, contextId, legacyRelationType, relationScopeIdentifier ?? "");
+                LegacyRelation.MakeNew(pickedId, contextId, legacyRelationType, relationIdentifier ?? "");
             }
         }
     }

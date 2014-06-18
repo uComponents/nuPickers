@@ -4,11 +4,21 @@ angular.module('umbraco.resources')
      ['$http', 'editorState',
         function ($http, editorState) {
 
+            function getRelationIdentifier(config) {
+
+                var relationIdentifier = '';
+
+                if (config.relationMapping.relationIdentifier == '1') {
+                    // if relation type is bidirectional then use propertyType ID
+                    // else use datatype instance ID
+                }
+
+                return relationIdentifier;
+            }
+
             return {
 
                 getRelatedIds: function (config) {
-                    // TODO: calculate relationScopeIdentifier
-                    var relationScopeIdentifier = '';
 
                     return $http({
                         method: 'GET',
@@ -16,7 +26,8 @@ angular.module('umbraco.resources')
                         params: {
                             'contextId': editorState.current.id,
                             'relationTypeAlias': config.relationMapping.relationTypeAlias,
-                            'relationScopeIdentifier': relationScopeIdentifier
+                            'relationIdentifier': getRelationIdentifier(config)
+
                         }
                     });
 
@@ -24,17 +35,13 @@ angular.module('umbraco.resources')
 
                 updateRelationMapping: function (config, pickedOptions) {    
 
-                    //TODO: build identifier (for relationScope) and array of picked keys
-
-                    var relationScopeIdentifier = '';
-
                     $http({
                         method: 'POST',
                         url: 'backoffice/nuComponents/RelationMappingApi/UpdateRelationMapping',
                         params: {
                             'contextId': editorState.current.id,
                             'relationTypeAlias': config.relationMapping.relationTypeAlias,
-                            'relationScopeIdentifier': relationScopeIdentifier
+                            'relationIdentifier': getRelationIdentifier(config)
                         },
                         data:  pickedOptions.map(function (option) { return parseInt(option.key); })
                     });
