@@ -3,6 +3,7 @@ using System;
 
 namespace nuComponents.DataTypes.Shared.JsonDataSource
 {
+	using System;
     using Newtonsoft.Json.Linq;
     using nuComponents.DataTypes.Shared.Editor;
     using System.Collections.Generic;
@@ -12,8 +13,6 @@ namespace nuComponents.DataTypes.Shared.JsonDataSource
 
     public class JsonDataSource
     {
-        public string JsonData { get; set; }
-
         public string Url { get; set; }
 
         public string OptionsJsonPath { get; set; }
@@ -24,20 +23,11 @@ namespace nuComponents.DataTypes.Shared.JsonDataSource
 
         public IEnumerable<EditorDataItem> GetEditorDataItems(int contextId)
         {
-            JToken jsonDoc;
+            
             List<EditorDataItem> editorDataItems = new List<EditorDataItem>();
 
-            switch (this.JsonData)
-            {
-                case "url":
-                    jsonDoc = JContainer.Parse(Helper.Http.GetContents(this.Url));
-                    break;
-
-                default:
-                    jsonDoc = null;
-                    break;
-            }
-
+            var jsonDoc = JContainer.Parse(Helper.Http.GetContents(this.Url));
+             
             if (jsonDoc != null)
             { 
                 //detect if the data provided is in object format, or is in array format.

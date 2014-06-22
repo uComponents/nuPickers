@@ -96,7 +96,7 @@ angular
 
                 var editorOptions = response.data; // [{"key":"","label":""},{"key":"","label":""}...]
 
-                editorResource.getPickedKeys($scope.model.config, $scope.model.value).then(function (pickedKeys) {
+                editorResource.getPickedKeys($scope.model).then(function (pickedKeys) {
 
                     // build selected options                
                     for (var i = 0; i < pickedKeys.length; i++) {
@@ -132,7 +132,7 @@ angular
 
                 $scope.model.value = editorResource.createSaveValue($scope.model.config, $scope.selectedOptions);
 
-                editorResource.updateRelationMapping($scope.model.config, $scope.selectedOptions);
+                editorResource.updateRelationMapping($scope.model, $scope.selectedOptions);
 
             });
 

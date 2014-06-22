@@ -262,7 +262,7 @@
     <Compile Include="Shared\JsonDataSource\JsonDataSource.cs" />
     <Compile Include="Shared\JsonDataSource\JsonDataSourceApiController.cs" />
     <Compile Include="Shared\RelationDataSource\RelationDataSourceApiController.cs" />
-    <Compile Include="Shared\RelationMapping\RelationMapping.cs" />
+    <Compile Include="Shared\RelationMapping\RelationMappingComment.cs" />
     <Compile Include="Shared\SaveFormat\SaveFormatPropertyValueEditor.cs" />
     <Compile Include="PropertyEditors\RelationMatches\RelationMatchesPreValueEditor.cs" />
     <Compile Include="PropertyEditors\RelationMatches\RelationMatchesPropertyEditor.cs" />
