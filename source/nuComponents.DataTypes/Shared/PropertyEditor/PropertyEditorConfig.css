@@ -50,3 +50,8 @@
     padding-top: 5px;
     margin-left: 240px!important;
 }
+
+
+.nuComponents-config input.wide {
+    width:95%;
+}
