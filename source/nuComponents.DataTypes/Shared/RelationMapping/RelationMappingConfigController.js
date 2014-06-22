@@ -7,11 +7,13 @@ angular
         $http.get('backoffice/nuComponents/RelationMappingApi/GetRelationTypes').then(function (response) {
             $scope.relationTypes = response.data;
 
-            // restore any saved value
-            for (var i = 0; i < $scope.relationTypes.length; i++) {
-                if ($scope.relationTypes[i].key == $scope.model.value.relationTypeAlias) {
-                    $scope.selectedRelationType = $scope.relationTypes[i];
-                    break;
+            if ($scope.model.value) {
+                // restore any saved value
+                for (var i = 0; i < $scope.relationTypes.length; i++) {
+                    if ($scope.relationTypes[i].key == $scope.model.value.relationTypeAlias) {
+                        $scope.selectedRelationType = $scope.relationTypes[i];
+                        break;
+                    }
                 }
             }
 
