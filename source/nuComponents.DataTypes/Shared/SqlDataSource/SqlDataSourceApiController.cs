@@ -1,8 +1,4 @@
-﻿using System;
-using nuComponents.DataTypes.Shared.XmlDataSource;
-using Umbraco.Core.Logging;
-
-namespace nuComponents.DataTypes.Shared.SqlDataSource
+﻿namespace nuComponents.DataTypes.Shared.SqlDataSource
 {
     using Newtonsoft.Json.Linq;
     using nuComponents.DataTypes.Shared.CustomLabel;
@@ -13,6 +9,8 @@ namespace nuComponents.DataTypes.Shared.SqlDataSource
     using System.Web.Http;
     using Umbraco.Web.Editors;
     using Umbraco.Web.Mvc;
+    using Umbraco.Core.Logging;
+    using System;
 
     [PluginController("nuComponents")]
     public class SqlDataSourceApiController : UmbracoAuthorizedJsonController

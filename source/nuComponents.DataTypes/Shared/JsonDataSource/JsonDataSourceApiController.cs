@@ -1,10 +1,6 @@
-﻿
-using System;
-using nuComponents.DataTypes.Shared.EnumDataSource;
-using Umbraco.Core.Logging;
-
-namespace nuComponents.DataTypes.Shared.JsonDataSource
+﻿namespace nuComponents.DataTypes.Shared.JsonDataSource
 {
+    using System;
     using Newtonsoft.Json.Linq;
     using nuComponents.DataTypes.Shared.CustomLabel;
     using nuComponents.DataTypes.Shared.Editor;
@@ -13,6 +9,7 @@ namespace nuComponents.DataTypes.Shared.JsonDataSource
     using System.Web.Http;
     using Umbraco.Web.Editors;
     using Umbraco.Web.Mvc;
+    using Umbraco.Core.Logging;
 
     [PluginController("nuComponents")]
     public class JsonDataSourceApiController : UmbracoAuthorizedJsonController
