@@ -1,4 +1,9 @@
-﻿namespace nuComponents.DataTypes.Shared.EnumDataSource
+﻿using System;
+using System.Web.UI.WebControls.WebParts;
+using nuComponents.DataTypes.Shared.SqlDataSource;
+using Umbraco.Core.Logging;
+
+namespace nuComponents.DataTypes.Shared.EnumDataSource
 {
     using System.Collections.Generic;
     using System.IO;
@@ -52,13 +57,21 @@
         [HttpPost]
         public IEnumerable<EditorDataItem> GetEditorDataItems([FromUri] int contextId, [FromBody] dynamic data)
         {
-            EnumDataSource enumDataSource = ((JObject)data.config.dataSource).ToObject<EnumDataSource>();
+            try
+            {
+                EnumDataSource enumDataSource = ((JObject) data.config.dataSource).ToObject<EnumDataSource>();
 
-            IEnumerable<EditorDataItem> editorDataItems = enumDataSource.GetEditorDataItems();
+                IEnumerable<EditorDataItem> editorDataItems = enumDataSource.GetEditorDataItems();
 
-            CustomLabel customLabel = new CustomLabel((string)data.config.customLabel, contextId);
+                CustomLabel customLabel = new CustomLabel((string) data.config.customLabel, contextId);
 
-            return customLabel.ProcessEditorDataItems(editorDataItems);
+                return customLabel.ProcessEditorDataItems(editorDataItems);
+            }
+            catch (Exception e)
+            {
+                LogHelper.Error<EnumDataSourceApiController>("Error getting datasource data", e);
+                throw e;
+            }
         }
     }
 }
