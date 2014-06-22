@@ -13,31 +13,43 @@ namespace nuComponents.DataTypes.Shared.JsonDataSource
         public string Url { get; set; }
 
         public string OptionsJsonPath { get; set; }
-        
+
         public string KeyJsonPath { get; set; }
-        
+
         public string LabelJsonPath { get; set; }
 
         public IEnumerable<EditorDataItem> GetEditorDataItems(int contextId)
         {
-            JObject jsonDoc;
+
             List<EditorDataItem> editorDataItems = new List<EditorDataItem>();
 
-            jsonDoc = JObject.Parse(GetContents(this.Url));
+            var jsonDoc = JToken.Parse(GetContents(this.Url));
 
             if (jsonDoc != null)
-            { 
-                //Do the lookups
-                var optionsIterator = jsonDoc.SelectTokens(OptionsJsonPath).GetEnumerator();
-
-                List<string> keys = new List<string>(); // used to keep track of keys, so that duplicates aren't added
-
-                string key;
-                string label;
-
-                while (optionsIterator.MoveNext())
+            {
+                //detect if the data provided is in object format, or is in array format.
+                if (jsonDoc is JArray)
                 {
-                    key = optionsIterator.Current.SelectToken(this.KeyJsonPath).Value<string>();
+                    var entries = jsonDoc.ToObject<string[]>();
+                    editorDataItems = entries.Select(x => new EditorDataItem()
+                    {
+                        Key = x,
+                        Label = x
+                    }).ToList();
+                }
+                else if (jsonDoc is JObject)
+                {
+                    //Do the lookups
+                    var optionsIterator = jsonDoc.SelectTokens(OptionsJsonPath).GetEnumerator();
+
+                    List<string> keys = new List<string>(); // used to keep track of keys, so that duplicates aren't added
+
+                    string key;
+                    string label;
+
+                    while (optionsIterator.MoveNext())
+                    {
+                        key = optionsIterator.Current.SelectToken(this.KeyJsonPath).Value<string>();
 
                         // only add item if it has a unique key - failsafe
                         if (!string.IsNullOrWhiteSpace(key) && !keys.Any(x => x == key))
@@ -47,7 +59,7 @@ namespace nuComponents.DataTypes.Shared.JsonDataSource
 
                             // set default markup to use the configured label XPath
                             label = optionsIterator.Current.SelectToken(this.LabelJsonPath).Value<string>();
-                            
+
                             editorDataItems.Add(new EditorDataItem()
                             {
                                 Key = key,
@@ -56,7 +68,13 @@ namespace nuComponents.DataTypes.Shared.JsonDataSource
                         }
                     }
                 }
-            
+            }
+            else
+            {
+                //this should never happen
+                // this means the json file wasnt a jArray or a jObject
+            }
+
 
             return editorDataItems;
         }
