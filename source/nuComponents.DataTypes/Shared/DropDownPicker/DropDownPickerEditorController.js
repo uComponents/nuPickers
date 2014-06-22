@@ -8,7 +8,7 @@ angular
             editorResource.getEditorDataItems($scope.model.config).then(function (response) {
                 $scope.dropDownPickerOptions = response.data;
 
-                editorResource.getPickedKeys($scope.model.config, $scope.model.value).then(function (pickedKeys) {
+                editorResource.getPickedKeys($scope.model).then(function (pickedKeys) {
 
                     if (pickedKeys[0]) {
                         var i = 0;
@@ -28,7 +28,7 @@ angular
 
                     $scope.model.value = editorResource.createSaveValue($scope.model.config, [$scope.pickedOption]);
 
-                    editorResource.updateRelationMapping($scope.model.config, [$scope.pickedOption]);
+                    editorResource.updateRelationMapping($scope.model, [$scope.pickedOption]);
 
                 });
 

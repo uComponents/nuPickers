@@ -8,7 +8,7 @@ angular
             editorResource.getEditorDataItems($scope.model.config).then(function (response) {
                 $scope.radioButtonPickerOptions = response.data;                               
 
-                editorResource.getPickedKeys($scope.model.config, $scope.model.value).then(function (pickedKeys) {
+                editorResource.getPickedKeys($scope.model).then(function (pickedKeys) {
                     $scope.pickedKey = pickedKeys[0];
                 });
 
@@ -30,7 +30,7 @@ angular
 
                     $scope.model.value = editorResource.createSaveValue($scope.model.config, [pickedOption]);
 
-                    editorResource.updateRelationMapping($scope.model.config, [pickedOption]);
+                    editorResource.updateRelationMapping($scope.model, [pickedOption]);
 
                 });
 
