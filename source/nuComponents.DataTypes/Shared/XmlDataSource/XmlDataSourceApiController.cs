@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace nuComponents.DataTypes.Shared.XmlDataSource
 {
     using Newtonsoft.Json.Linq;
@@ -16,15 +18,23 @@ namespace nuComponents.DataTypes.Shared.XmlDataSource
         [HttpPost]
         public IEnumerable<EditorDataItem> GetEditorDataItems([FromUri] int contextId, [FromBody] dynamic data)
         {
-            XmlDataSource xmlDataSource = ((JObject)data.config.dataSource).ToObject<XmlDataSource>();
+            try
+            {
+                XmlDataSource xmlDataSource = ((JObject) data.config.dataSource).ToObject<XmlDataSource>();
 
-            IEnumerable<EditorDataItem> editorDataItems = xmlDataSource.GetEditorDataItems(contextId);
+                IEnumerable<EditorDataItem> editorDataItems = xmlDataSource.GetEditorDataItems(contextId);
 
-            CustomLabel customLabel = new CustomLabel((string)data.config.customLabel, contextId);
-            TypeaheadListPicker typeaheadListPicker = new TypeaheadListPicker((string)data.typeahead);
+                CustomLabel customLabel = new CustomLabel((string) data.config.customLabel, contextId);
+                TypeaheadListPicker typeaheadListPicker = new TypeaheadListPicker((string) data.typeahead);
 
-            // process the labels and then handle any type ahead text
-            return typeaheadListPicker.ProcessEditorDataItems(customLabel.ProcessEditorDataItems(editorDataItems));
+                // process the labels and then handle any type ahead text
+                return typeaheadListPicker.ProcessEditorDataItems(customLabel.ProcessEditorDataItems(editorDataItems));
+            }  
+            catch (Exception e)
+            {
+                Helper.Logs.LogExeption<XmlDataSourceApiController>("Error getting datasource data", e);
+                throw e;
+            }
         }
     }
 }
