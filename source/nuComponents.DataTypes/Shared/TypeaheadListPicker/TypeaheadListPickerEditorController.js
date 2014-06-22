@@ -13,7 +13,7 @@ angular
             // setup a watch on the input
             $scope.$watch('typeahead', function (newValue, oldValue) {                
 
-                if (newValue != null && newValue.length > 0) { // TODO: check length meets min typeahead length specified in config
+                if (newValue != null && newValue.length >= $scope.model.config.typeaheadListPicker.minCharacters) {
                     
                     $scope.getEditorOptions(newValue).then(function (response) {
 

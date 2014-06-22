@@ -1,7 +1,21 @@
 ﻿<div class="nuComponents-config">
 
     <div>
+        <label for="">
+            Min Characters
+            <small>the min number of characters typed, before a request for options is triggered</small>
+        </label>
 
+        <div>
+
+            <input type="number"
+                   ng-model="model.value.minCharacters"
+                   ng-init="model.value.minCharacters = model.value.minCharacters || 1" />
+
+        </div>
+    </div>
+
+    <div>
         <label for="">
             Limit To
             <small>limit the number of selectable choices - 0 mean no limit</small>
