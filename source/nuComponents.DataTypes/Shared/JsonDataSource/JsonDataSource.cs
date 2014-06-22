@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace nuComponents.DataTypes.Shared.JsonDataSource
 {
     using Newtonsoft.Json.Linq;
@@ -15,20 +17,20 @@ namespace nuComponents.DataTypes.Shared.JsonDataSource
         public string Url { get; set; }
 
         public string OptionsJsonPath { get; set; }
-        
+
         public string KeyJsonPath { get; set; }
-        
+
         public string LabelJsonPath { get; set; }
 
         public IEnumerable<EditorDataItem> GetEditorDataItems(int contextId)
         {
-            JObject jsonDoc;
+            JToken jsonDoc;
             List<EditorDataItem> editorDataItems = new List<EditorDataItem>();
 
             switch (this.JsonData)
             {
-               case "url":
-                    jsonDoc = JObject.Parse(GetContents(this.Url));
+                case "url":
+                    jsonDoc = JContainer.Parse(Helper.Http.GetContents(this.Url));
                     break;
 
                 default:
@@ -38,17 +40,30 @@ namespace nuComponents.DataTypes.Shared.JsonDataSource
 
             if (jsonDoc != null)
             { 
-                //Do the lookups
-                var optionsIterator = jsonDoc.SelectTokens(OptionsJsonPath).GetEnumerator();
-
-                List<string> keys = new List<string>(); // used to keep track of keys, so that duplicates aren't added
-
-                string key;
-                string label;
-
-                while (optionsIterator.MoveNext())
+                //detect if the data provided is in object format, or is in array format.
+                if (jsonDoc is JArray)
                 {
-                    key = optionsIterator.Current.SelectToken(this.KeyJsonPath).Value<string>();
+                    var entries = jsonDoc.ToObject<string[]>();
+                    editorDataItems = entries.Select(x=>new EditorDataItem()
+                    {
+                        Key = x,
+                        Label = x
+                    }).ToList();
+                }
+                else if (jsonDoc is JObject)
+                {
+                    //Do the lookups
+                    var optionsIterator = jsonDoc.SelectTokens(OptionsJsonPath).GetEnumerator();
+
+                    List<string> keys = new List<string>();
+                    // used to keep track of keys, so that duplicates aren't added
+
+                    string key;
+                    string label;
+
+                    while (optionsIterator.MoveNext())
+                    {
+                        key = optionsIterator.Current.SelectToken(this.KeyJsonPath).Value<string>();
 
                         // only add item if it has a unique key - failsafe
                         if (!string.IsNullOrWhiteSpace(key) && !keys.Any(x => x == key))
@@ -58,7 +73,7 @@ namespace nuComponents.DataTypes.Shared.JsonDataSource
 
                             // set default markup to use the configured label XPath
                             label = optionsIterator.Current.SelectToken(this.LabelJsonPath).Value<string>();
-                            
+
                             editorDataItems.Add(new EditorDataItem()
                             {
                                 Key = key,
@@ -67,27 +82,16 @@ namespace nuComponents.DataTypes.Shared.JsonDataSource
                         }
                     }
                 }
-            
+                else
+                {
+                    //this should never happen
+                }
+            }
+
 
             return editorDataItems;
         }
 
-        /// <summary>
-        /// Downloads a url resource and returns it as a string. Maybe move this into a helpers class?
-        /// </summary>
-        /// <param name="url">URL to download the resource from</param>
-        /// <returns>the string based result of the webcall</returns>
-        private static string GetContents(string url)
-        {
-            using (WebClient client = new WebClient())
-            {
-                if (url.StartsWith("~/"))
-                {
-                    url = HttpContext.Current.Server.MapPath(url);
-                }
-
-                return client.DownloadString(url);
-            }
-        }
+        
     }
 }

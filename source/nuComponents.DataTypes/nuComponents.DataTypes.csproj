@@ -212,9 +212,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helper-Http.cs">
+		<DependentUpon>Helper.cs</DependentUpon>
+	</Compile>
     <Compile Include="EmbeddedResource.cs" />
     <Compile Include="EmbeddedResourceController.cs" />
     <Compile Include="EmbeddedResourceStartup.cs" />
+    <Compile Include="Helper-Logs.cs">
+		<DependentUpon>Helper.cs</DependentUpon>
+	</Compile>
+    <Compile Include="Helper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyEditors\BasePropertyEditor.cs" />
     <Compile Include="PropertyEditors\JsonTypeaheadListPicker\JsonTypeaheadListPickerPreValueEditor.cs" />
@@ -413,8 +420,10 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>if NOT %25ComputerName%25 == STE-PC GOTO end
+xcopy /S /Y /I "$(TargetDir)nuCom*.dll" "E:\Work\Self\Blog\Build\bin"
+xcopy /S /Y /I "$(TargetDir)nuCom*.pdb" "E:\Work\Self\Blog\Build\bin"
+:end</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
