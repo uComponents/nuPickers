@@ -35,7 +35,7 @@ namespace nuComponents.DataTypes.PropertyValueConverters
                         PropertyEditorConstants.XmlRadioButtonPickerAlias,
                         PropertyEditorConstants.XmlTypeaheadListPickerAlias
                     }
-                    .Contains(propertyType.PropertyTypeAlias);
+                    .Contains(propertyType.PropertyEditorAlias);
         }
 
         public override object ConvertDataToSource(PublishedPropertyType propertyType, object source, bool preview)

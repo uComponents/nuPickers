@@ -19,7 +19,7 @@ namespace nuComponents.DataTypes.PropertyValueConverters
                         PropertyEditorConstants.EnumPrefetchListPickerAlias,
                         PropertyEditorConstants.EnumRadioButtonPickerAlias,
                     }
-                    .Contains(propertyType.PropertyTypeAlias);
+                    .Contains(propertyType.PropertyEditorAlias);
         }
 
         public override object ConvertDataToSource(PublishedPropertyType propertyType, object source, bool preview)
