@@ -254,6 +254,8 @@
     </Compile>
     <Compile Include="Shared\JsonDataSource\JsonDataSource.cs" />
     <Compile Include="Shared\JsonDataSource\JsonDataSourceApiController.cs" />
+    <Compile Include="Shared\LuceneDataSource\LuceneDataSource.cs" />
+    <Compile Include="Shared\LuceneDataSource\LuceneDataSourceApiController.cs" />
     <Compile Include="Shared\RelationDataSource\RelationDataSourceApiController.cs" />
     <Compile Include="Shared\RelationMapping\RelationMappingComment.cs" />
     <Compile Include="Shared\SaveFormat\SaveFormatPropertyValueEditor.cs" />
@@ -410,6 +412,10 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Shared\JsonDataSource\JsonDataSourceConfigController.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\LuceneDataSource\LuceneDataSourceConfig.html" />
+    <EmbeddedResource Include="Shared\LuceneDataSource\LuceneDataSourceConfigController.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

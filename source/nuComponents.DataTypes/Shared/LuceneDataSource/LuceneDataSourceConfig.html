@@ -1,0 +1,64 @@
+﻿<div ng-controller="nuComponents.DataTypes.Shared.XmlDataSource.LuceneDataSourceConfigController" class="nuComponents-config">
+
+    <div>
+        <label for="">
+
+            Lucene Searcher
+            <small>name of lucene searcher</small>
+
+        </label>
+
+        <div>
+
+
+        </div>
+    </div>
+
+    <div>
+        <label for="">
+            Raw Query
+            <small></small>
+        </label>
+
+        <div>
+
+            <input type="text"
+                   class="wide"
+                   ng-model="model.value.rawQuery"
+                   ng-init="model.value.rawQuery = model.value.rawQuery || ''" />
+
+        </div>
+    </div>
+
+    <div>
+        <label for="">
+            Key Field
+            <small></small>
+        </label>
+
+        <div>
+
+            <input type="text"
+                   ng-model="model.value.keyField"
+                   ng-init="model.value.keyField = model.value.keyField || ''" />
+
+        </div>
+    </div>
+
+
+    <div ng-hide="model.value.labelMacro">
+        <label for="">
+            Label Field
+            <small></small>
+        </label>
+
+        <div>
+
+            <input type="text"
+                   ng-model="model.value.labelField"
+                   ng-init="model.value.labelField = model.value.labelField || ''" />
+
+        </div>
+    </div>
+
+</div>
