@@ -3,13 +3,15 @@
     <div>
         <label for="">
 
-            Lucene Searcher
+            Examine Searcher
             <small>name of lucene searcher</small>
 
         </label>
 
         <div>
-
+            <select ng-model="model.value.examineSearcher"
+                    ng-options="o as o for o in examineSearchers"
+                    ng-required="true"></select>
 
         </div>
     </div>

@@ -6,13 +6,20 @@ namespace nuComponents.DataTypes.Shared.LuceneDataSource
     using nuComponents.DataTypes.Shared.Editor;
     using nuComponents.DataTypes.Shared.TypeaheadListPicker;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Web.Http;
     using Umbraco.Web.Editors;
     using Umbraco.Web.Mvc;
+    using UmbracoExamine;
 
     [PluginController("nuComponents")]
     public class LuceneDataSourceApiController : UmbracoAuthorizedJsonController
     {
+        public IEnumerable<object> GetExamineSearchers()
+        {
+            return Examine.ExamineManager.Instance.SearchProviderCollection.Cast<UmbracoExamineSearcher>().Select(x => x.Name);            
+        }
+
         [HttpPost]
         public IEnumerable<EditorDataItem> GetEditorDataItems([FromUri] int contextId, [FromBody] dynamic data)
         {
