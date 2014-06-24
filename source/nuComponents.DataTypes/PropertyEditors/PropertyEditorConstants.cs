@@ -10,7 +10,19 @@ namespace nuComponents.DataTypes.PropertyEditors
         public const string EnumDropDownPickerAlias = "enumDropDownPicker";
         public const string EnumPrefetchListPickerAlias = "enumPrefetchListPicker";
         public const string EnumRadioButtonPickerAlias = "enumRadioButtonPicker";
-        
+
+        public const string JsonCheckBoxPickerAlias = "jsonCheckBoxPicker";
+        public const string JsonDropDownPickerAlias = "jsonDropDownPicker";
+        public const string JsonPrefetchListPickerAlias = "jsonPrefetchListPicker";
+        public const string JsonRadioButtonPickerAlias = "jsonRadioButtonPicker";
+        public const string JsonTypeaheadListPickerAlias = "jsonTypeaheadListPicker";
+
+        public const string LuceneCheckBoxPickerAlias = "luceneCheckBoxPicker";
+        public const string LuceneDropDownPickerAlias = "luceneDropDownPicker";
+        public const string LucenePrefetchListPickerAlias = "lucenePrefetchListPicker";
+        public const string LuceneRadioButtonPickerAlias = "luceneRadioButtonPicker";
+        public const string LuceneTypeaheadListPickerAlias = "luceneTypeaheadListPicker";
+
         public const string RelationMatchessAlias = "relationMatches";
         
         public const string SqlCheckBoxPickerAlias = "sqlCheckBoxPicker";
@@ -25,10 +37,5 @@ namespace nuComponents.DataTypes.PropertyEditors
         public const string XmlRadioButtonPickerAlias = "xmlRadioButtonPicker";
         public const string XmlTypeaheadListPickerAlias = "xmlTypeaheadListPicker";
         
-        public const string JsonCheckBoxPickerAlias = "jsonCheckBoxPicker";
-        public const string JsonDropDownPickerAlias = "jsonDropDownPicker";
-        public const string JsonPrefetchListPickerAlias = "jsonPrefetchListPicker";
-        public const string JsonRadioButtonPickerAlias = "jsonRadioButtonPicker";
-        public const string JsonTypeaheadListPickerAlias = "jsonTypeaheadListPicker";
     }
 }

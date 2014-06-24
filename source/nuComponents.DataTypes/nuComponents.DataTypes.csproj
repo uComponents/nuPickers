@@ -235,6 +235,8 @@
     <Compile Include="PropertyEditors\EnumPrefetchListPicker\EnumPrefetchListPropertyEditor.cs" />
     <Compile Include="PropertyEditors\EnumRadioButtonPicker\EnumRadioButtonPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\EnumRadioButtonPicker\EnumRadioButtonPickerPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\LuceneDropDownPicker\LuceneDropDownPickerPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\LuceneDropDownPicker\LuceneDropDownPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\PropertyEditorConstants.cs" />
     <Compile Include="PropertyEditors\SqlTypeaheadListPicker\SqlTypeaheadListPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\SqlTypeaheadListPicker\SqlTypeaheadListPickerPropertyEditor.cs" />
@@ -416,6 +418,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Shared\LuceneDataSource\LuceneDataSourceConfig.html" />
     <EmbeddedResource Include="Shared\LuceneDataSource\LuceneDataSourceConfigController.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="PropertyEditors\LuceneCheckBoxPicker\" />
+    <Folder Include="PropertyEditors\LucenePrefetchListPicker\" />
+    <Folder Include="PropertyEditors\LuceneRadioButtonPicker\" />
+    <Folder Include="PropertyEditors\LuceneTypeaheadPicker\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
