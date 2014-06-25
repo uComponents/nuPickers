@@ -235,8 +235,16 @@
     <Compile Include="PropertyEditors\EnumPrefetchListPicker\EnumPrefetchListPropertyEditor.cs" />
     <Compile Include="PropertyEditors\EnumRadioButtonPicker\EnumRadioButtonPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\EnumRadioButtonPicker\EnumRadioButtonPickerPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\LuceneCheckBoxPicker\LuceneCheckBoxPickerPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\LuceneCheckBoxPicker\LuceneCheckBoxPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\LuceneDropDownPicker\LuceneDropDownPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\LuceneDropDownPicker\LuceneDropDownPickerPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\LucenePrefetchListPicker\LucenePrefetchListPickerPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\LucenePrefetchListPicker\LucenePrefetchListPickerPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\LuceneRadioButtonPicker\LuceneRadioButtonPickerPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\LuceneRadioButtonPicker\LuceneRadioButtonPickerPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\LuceneTypeaheadPicker\LuceneTypeaheadListPickerPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\LuceneTypeaheadPicker\LuceneTypeaheadPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\PropertyEditorConstants.cs" />
     <Compile Include="PropertyEditors\SqlTypeaheadListPicker\SqlTypeaheadListPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\SqlTypeaheadListPicker\SqlTypeaheadListPickerPropertyEditor.cs" />
@@ -419,12 +427,7 @@
     <EmbeddedResource Include="Shared\LuceneDataSource\LuceneDataSourceConfig.html" />
     <EmbeddedResource Include="Shared\LuceneDataSource\LuceneDataSourceConfigController.js" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="PropertyEditors\LuceneCheckBoxPicker\" />
-    <Folder Include="PropertyEditors\LucenePrefetchListPicker\" />
-    <Folder Include="PropertyEditors\LuceneRadioButtonPicker\" />
-    <Folder Include="PropertyEditors\LuceneTypeaheadPicker\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
