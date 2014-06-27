@@ -38,7 +38,7 @@ namespace nuComponents.DataTypes.PropertyValueConverters
                     .Contains(propertyType.PropertyEditorAlias);
         }
 
-        public override object ConvertDataToSource(PublishedPropertyType propertyType, object source, bool preview)
+        public override object ConvertSourceToObject(PublishedPropertyType propertyType, object source, bool preview)
         {
             return new Picker(propertyType.ContentType.Id, propertyType.DataTypeId, source);
         }

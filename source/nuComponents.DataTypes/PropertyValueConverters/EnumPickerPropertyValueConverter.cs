@@ -8,7 +8,7 @@ namespace nuComponents.DataTypes.PropertyValueConverters
     using nuComponents.DataTypes.PropertyEditors;
 
     [PropertyValueType(typeof(Picker))]
-    [PropertyValueCache(PropertyCacheValue.All, PropertyCacheLevel.Content)]
+    [PropertyValueCache(PropertyCacheValue.All, PropertyCacheLevel.ContentCache)]
     public class EnumPickerPropertyValueConverter : PropertyValueConverterBase
     {
         public override bool IsConverter(PublishedPropertyType propertyType)
@@ -22,7 +22,7 @@ namespace nuComponents.DataTypes.PropertyValueConverters
                     .Contains(propertyType.PropertyEditorAlias);
         }
 
-        public override object ConvertDataToSource(PublishedPropertyType propertyType, object source, bool preview)
+        public override object ConvertSourceToObject(PublishedPropertyType propertyType, object source, bool preview)
         {
             return new EnumPicker(propertyType.ContentType.Id, propertyType.DataTypeId, source);
         }
