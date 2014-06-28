@@ -7,9 +7,9 @@ namespace nuComponents.DataTypes.PropertyEditors.SqlCheckBoxPicker
     using nuComponents.DataTypes.PropertyEditors;
 
     // EDITOR UI
-    [PropertyEditor(PropertyEditorConstants.RelationMatchessAlias, "nuComponents: Relation Matches", EmbeddedResource.RootUrl + "RelationMatches/RelationMatchesEditor.html", ValueType = "TEXT")]
+    [PropertyEditor(PropertyEditorConstants.RelationLabelsAlias, "nuComponents: Relation Labels", EmbeddedResource.RootUrl + "Labels/LabelsEditor.html", ValueType = "TEXT")]
     [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.RootUrl + "LayoutDirection/LayoutDirection.css")]
-    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "RelationMatches/RelationMatchesEditorController.js")]
+    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "Labels/LabelsEditorController.js")]
 
     // RESOURCES (all are referenced as EditorResource consumes the others)
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "Editor/EditorResource.js")]
@@ -21,11 +21,11 @@ namespace nuComponents.DataTypes.PropertyEditors.SqlCheckBoxPicker
     [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.RootUrl + "PropertyEditor/PropertyEditorConfig.css")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "RelationDataSource/RelationDataSourceConfigController.js")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "CustomLabel/CustomLabelConfigController.js")]
-    public class RelationMatchesPropertyEditor : BasePropertyEditor
+    public class RelationLabelsPropertyEditor : BasePropertyEditor
     {
         protected override PreValueEditor CreatePreValueEditor()
         {
-            return new RelationMatchesPreValueEditor();
+            return new RelationLabelsPreValueEditor();
         }
     }
 }

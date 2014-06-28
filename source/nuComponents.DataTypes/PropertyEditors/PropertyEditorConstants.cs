@@ -23,7 +23,7 @@ namespace nuComponents.DataTypes.PropertyEditors
         public const string LuceneRadioButtonPickerAlias = "luceneRadioButtonPicker";
         public const string LuceneTypeaheadListPickerAlias = "luceneTypeaheadListPicker";
 
-        public const string RelationMatchessAlias = "relationMatches";
+        public const string RelationLabelsAlias = "relationLabels";
         
         public const string SqlCheckBoxPickerAlias = "sqlCheckBoxPicker";
         public const string SqlDropDownPickerAlias = "sqlDropDownPicker";

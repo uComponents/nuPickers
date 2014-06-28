@@ -269,8 +269,8 @@
     <Compile Include="Shared\RelationDataSource\RelationDataSourceApiController.cs" />
     <Compile Include="Shared\RelationMapping\RelationMappingComment.cs" />
     <Compile Include="Shared\SaveFormat\SaveFormatPropertyValueEditor.cs" />
-    <Compile Include="PropertyEditors\RelationMatches\RelationMatchesPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\RelationMatches\RelationMatchesPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\RelationLabels\RelationLabelsPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\RelationLabels\RelationLabelsPropertyEditor.cs" />
     <Compile Include="PropertyEditors\SqlCheckBoxPicker\SqlCheckBoxPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\SqlCheckBoxPicker\SqlCheckBoxPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\SqlDropDownPicker\SqlDropDownPickerPreValueEditor.cs" />
@@ -364,10 +364,10 @@
     <EmbeddedResource Include="Shared\SaveFormat\SaveFormatResource.js" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Shared\RelationMatches\RelationMatchesEditor.html" />
+    <EmbeddedResource Include="Shared\Labels\LabelsEditor.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Shared\RelationMatches\RelationMatchesEditorController.js" />
+    <EmbeddedResource Include="Shared\Labels\LabelsEditorController.js" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Shared\LayoutDirection\LayoutDirectionConfig.html" />
