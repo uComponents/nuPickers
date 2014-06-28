@@ -12,7 +12,7 @@ namespace nuComponents.DataTypes.Shared.JsonDataSource
     {
         public string Url { get; set; }
 
-        public string OptionsJsonPath { get; set; }
+        public string JsonPath { get; set; }
 
         public string KeyJsonPath { get; set; }
 
@@ -40,16 +40,16 @@ namespace nuComponents.DataTypes.Shared.JsonDataSource
                 else if (jsonDoc is JObject)
                 {
                     //Do the lookups
-                    var optionsIterator = jsonDoc.SelectTokens(OptionsJsonPath).GetEnumerator();
+                    var jsonPathIterator = jsonDoc.SelectTokens(JsonPath).GetEnumerator();
 
                     List<string> keys = new List<string>(); // used to keep track of keys, so that duplicates aren't added
 
                     string key;
                     string label;
 
-                    while (optionsIterator.MoveNext())
+                    while (jsonPathIterator.MoveNext())
                     {
-                        key = optionsIterator.Current.SelectToken(this.KeyJsonPath).Value<string>();
+                        key = jsonPathIterator.Current.SelectToken(this.KeyJsonPath).Value<string>();
 
                         // only add item if it has a unique key - failsafe
                         if (!string.IsNullOrWhiteSpace(key) && !keys.Any(x => x == key))
@@ -58,7 +58,7 @@ namespace nuComponents.DataTypes.Shared.JsonDataSource
                             keys.Add(key); // add key so that it's not reused
 
                             // set default markup to use the configured label XPath
-                            label = optionsIterator.Current.SelectToken(this.LabelJsonPath).Value<string>();
+                            label = jsonPathIterator.Current.SelectToken(this.LabelJsonPath).Value<string>();
 
                             editorDataItems.Add(new EditorDataItem()
                             {

@@ -39,16 +39,16 @@
 
     <div>
         <label for="">
-            Options XPath
-            <small>all matched nodes are used as options</small>
+            XPath
+            <small>all matched nodes used to build data editor items</small>
         </label>
 
         <div>
 
             <input type="text"
                    class="wide"
-                   ng-model="model.value.optionsXPath"
-                   ng-init="model.value.optionsXPath = model.value.optionsXPath || '//*[@isDoc]'" />
+                   ng-model="model.value.xPath"
+                   ng-init="model.value.xPath = model.value.xPath || '//*[@isDoc]'" />
 
         </div>
     </div>
@@ -56,7 +56,7 @@
     <div>
         <label for="">
             Key XPath
-            <small>xpath to select single item (from each option) to use as the key (this must be unique)</small>
+            <small>xpath (from each matched node) to select single value for use as the key (this must be unique)</small>
         </label>
 
         <div>
@@ -72,7 +72,7 @@
     <div ng-hide="model.value.labelMacro">
         <label for="">
             Label XPath
-            <small>xpath to select single item (from each option) to use as the key (not used if label macro selected)</small>
+            <small>xpath (from each matched node) to select single value for use as the label</small>
         </label>
 
         <div>

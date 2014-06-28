@@ -15,7 +15,7 @@ namespace nuComponents.DataTypes.Shared.XmlDataSource
 
         public string Url { get; set; }
 
-        public string OptionsXPath { get; set; }
+        public string XPath { get; set; }
         
         public string KeyXPath { get; set; }
         
@@ -55,7 +55,7 @@ namespace nuComponents.DataTypes.Shared.XmlDataSource
                 HttpContext.Current.Items["pageID"] = contextId; // set here, as this is required for the uQuery.ResolveXPath
 
                 XPathNavigator xPathNavigator = xmlDocument.CreateNavigator();
-                XPathNodeIterator xPathNodeIterator = xPathNavigator.Select(uQuery.ResolveXPath(this.OptionsXPath));
+                XPathNodeIterator xPathNodeIterator = xPathNavigator.Select(uQuery.ResolveXPath(this.XPath));
                 List<string> keys = new List<string>(); // used to keep track of keys, so that duplicates aren't added
 
                 string key;
