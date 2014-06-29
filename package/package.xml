@@ -1,31 +1,31 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <umbPackage>
-	<files />
-	<info>
-		<package>
-			<name>nuPickers</name>
-			<version>1.0.0</version>
-			<license url="http://opensource.org/licenses/MIT">MIT license</license>
-			<url>https://github.com/uComponents/nuPickers</url>
-			<requirements>
-				<major>0</major>
-				<minor>0</minor>
-				<patch>0</patch>
-			</requirements>
-		</package>
-		<author>
-			<name>Hendy Racher, Stephen Roberts, Jeavon Leopold, Tom Fulton, Lee Kelleher</name>
-			<website>https://github.com/uComponents/nuPickers</website>
-		</author>
-		<readme><![CDATA[nuPickers is a collection of Umbraco v7 Property Editors]]></readme>
-	</info>
-	<DocumentTypes />
-	<Templates />
-	<Stylesheets />
-	<Macros />
-	<DictionaryItems />
-	<Languages />
-	<DataTypes />
-	<control />
-	<Actions />
+  <info>
+    <package>
+      <name>nuPickers</name>
+      <version>1.0.0</version>
+      <license url="http://opensource.org/licenses/MIT">MIT license</license>
+      <url>https://github.com/uComponents/nuPickers</url>
+      <requirements>
+        <major>0</major>
+        <minor>0</minor>
+        <patch>0</patch>
+      </requirements>
+    </package>
+    <author>
+      <name>Hendy Racher, Stephen Roberts, Jeavon Leopold, Tom Fulton, Lee Kelleher</name>
+      <website>https://github.com/uComponents/nuPickers</website>
+    </author>
+    <readme><![CDATA[nuPickers is a collection of Umbraco v7 Property Editors]]></readme>
+  </info>
+  <DocumentTypes />
+  <Templates />
+  <Stylesheets />
+  <Macros />
+  <DictionaryItems />
+  <Languages />
+  <DataTypes />
+  <control />
+  <Actions />
+  <files />
 </umbPackage>
