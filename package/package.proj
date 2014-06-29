@@ -8,14 +8,14 @@
     <MinUmbracoVersion>7.1.0</MinUmbracoVersion>
   </PropertyGroup>
 
-  <PropertyGroup>    
+  <PropertyGroup>
     <RootDir>$(MSBuildProjectDirectory)\..</RootDir>
-    <PackageDir>$(RootDir)\package</PackageDir>
+    <PackageDir>$(MSBuildProjectDirectory)</PackageDir>
     <SourceDir>$(RootDir)\source</SourceDir>
     <ProjectDir>$(RootDir)\source\nuPickers</ProjectDir>
-    <WorkingDir>$(RootDir)\package\temp</WorkingDir>
-    <WorkingUmbracoDir>$(RootDir)\package\temp\Umbraco</WorkingUmbracoDir>
-    <WorkingNuGetDir>$(RootDir)\package\temp\NuGet</WorkingNuGetDir>
+    <WorkingDir>$(PackageDir)\temp</WorkingDir>
+    <WorkingUmbracoDir>$(PackageDir)\temp\Umbraco</WorkingUmbracoDir>
+    <WorkingNuGetDir>$(PackageDir)\temp\NuGet</WorkingNuGetDir>
   </PropertyGroup>
 
   <!-- IMPORTS -->
@@ -53,33 +53,31 @@
     <Copy SourceFiles="$(PackageDir)\package.nuspec" DestinationFolder="$(WorkingNuGetDir)\" />
   </Target>
 
-  <!-- UMBRACO MANIFEST -->
-  <Target Name="UmbracoManifest" DependsOnTargets="PrepareWorkingDir">
+  <!-- UPDATE MANIFESTS -->
+  <Target Name="UpdateManifests" DependsOnTargets="PrepareWorkingDir">    
     <ItemGroup>
-      <UmbracoManifestFiles Include="$(WorkingUmbracoDir)\**\*" Exclude="$(WorkingUmbracoDir)\package.xml" />
+      <UmbracoManifestFiles Include="$(WorkingUmbracoDir)\**\*.*" Exclude="$(WorkingUmbracoDir)\package.xml" />
+      <NuGetManifestFiles Include="$(WorkingNuGetDir)\**\*.*" Exclude="$(WorkingNuGetDir)\package.nuspec" />
     </ItemGroup>
+    
     <MSBuild.Umbraco.Tasks.ManifestUpdate 
       ManifestFile="$(WorkingUmbracoDir)\package.xml"
-			WorkingDirectory="$(WorkingUmbracoDir)\"
+			WorkingDirectory="$(WorkingUmbracoDir)"
 			MinimumRequiredUmbracoVersion="$(MinUmbracoVersion)"
 			PackageVersion="$(PackageVersion)"			
-			Files="@(UmbracoManifestFiles)" />    
+			Files="@(UmbracoManifestFiles)" />
+    
+    <MSBuild.NuGet.Tasks.ManifestUpdate
+     ManifestFile="$(WorkingNugetDir)\package.nuspec"
+     WorkingDirectory="$(WorkingNugetDir)"
+     Version="$(PackageVersion)"
+     Files="@(NuGetManifestFiles)" />
+    
   </Target>
     
-  <!-- NUGET MANIFEST -->
-  <Target Name="NuGetManifest" DependsOnTargets="UmbracoManifest">
-    <ItemGroup>
-      <NuGetManifestFiles Include="$(WorkingNuGetDir)\**\*" Exclude="$(WorkingNuGetDir)\package.nuspec" />
-    </ItemGroup>
-    <MSBuild.NuGet.Tasks.ManifestUpdate
-			ManifestFile="$(WorkingNugetDir)\package.nuspec"
-			WorkingDirectory="$(WorkingNugetDir)\"
-			Version="$(PackageVersion)"
-			Files="@(NuGetManifestFiles)" />
-  </Target>
 
   <!-- PACKAGE -->
-  <Target Name="Package" DependsOnTargets="NuGetManifest">
+  <Target Name="Package" DependsOnTargets="UpdateManifests">
     <ItemGroup>
       <UmbracoPackageFiles Include="$(WorkingUmbracoDir)\**\*.*" />
     </ItemGroup>
@@ -87,14 +85,14 @@
     <MSBuild.Umbraco.Tasks.Package 
       ManifestFile="$(WorkingUmbracoDir)\package.xml"
       WorkingDirectory="$(WorkingUmbracoDir)\"
-      OutputDirectory="$(PackageDir)"
+      OutputDirectory="$(PackageDir)\"
       Files="@(UmbracoPackageFiles)" />
     
     <MSBuild.NuGet.Tasks.Pack 
       NuGetExePath="$(SourceDir)\.nuget\NuGet.exe"
 			ManifestFile="$(WorkingNuGetDir)\package.nuspec"
-			BasePath="$(WorkingNuGetDir)"
-			OutputDirectory="$(PackageDir)"
+			BasePath="$(WorkingNuGetDir)\"
+			OutputDirectory="$(PackageDir)\"
 			Verbosity="detailed" />
 
   </Target>

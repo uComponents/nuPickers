@@ -18,7 +18,5 @@
       <dependency id="UmbracoCms.Core" version="7.1.0" />
     </dependencies>
   </metadata>
-  <files>
-    <file src="\lib\net45\uComponents.nuPickers.dll" target="lib\net45" />
-  </files>
+  <files />
 </package>
