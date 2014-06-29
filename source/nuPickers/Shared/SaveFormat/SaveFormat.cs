@@ -21,7 +21,7 @@ namespace nuPickers.Shared.SaveFormat
 
                     case '<':
                         // TODO: check xml is valid
-                        return XDocument.Parse(savedValue).Descendants("PickedOption").Select(x => x.Attribute("Key").Value);
+                        return XDocument.Parse(savedValue).Descendants("Picked").Select(x => x.Attribute("Key").Value);
 
                     default: // csv
                         return savedValue.Split(',');                          

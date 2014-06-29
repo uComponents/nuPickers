@@ -27,15 +27,15 @@ angular.module('umbraco.resources')
                             break;
 
                         case 'xml':
-                            var xml = '<PickedOptions>';
+                            var xml = '<nuPicker>';
 
                             for (var i = 0; i < pickedOptions.length; i++) {
-                                xml += '<PickedOption Key="' + pickedOptions[i].key + '">'
+                                xml += '<Picked Key="' + pickedOptions[i].key + '">'
                                 xml += '<![CDATA[' + pickedOptions[i].label + ']]>';
-                                xml += '</PickedOption>';
+                                xml += '</Picked>';
                             }
 
-                            xml += '</PickedOptions>';
+                            xml += '</nuPicker>';
 
                             return xml;
                             break;
@@ -57,7 +57,7 @@ angular.module('umbraco.resources')
                     try {
                         var xml = $.parseXML(saveValue);
                         var keys = new Array();
-                        $(xml).find('PickedOption').each(function () {
+                        $(xml).find('Picked').each(function () {
                             keys.push($(this).attr('Key'));
                         });
 
