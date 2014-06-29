@@ -1,0 +1,34 @@
+﻿<div class="nuPickers-config">
+
+    <div>
+        <label for="">
+            Min Characters
+            <small>the min number of characters typed, before a request for options is triggered</small>
+        </label>
+
+        <div>
+
+            <input type="number"
+                   ng-model="model.value.minCharacters"
+                   ng-init="model.value.minCharacters = model.value.minCharacters || 1" />
+
+        </div>
+    </div>
+
+    <div>
+        <label for="">
+            Limit To
+            <small>limit the number of selectable choices - 0 mean no limit</small>
+        </label>
+
+        <div>
+
+            <input type="number"
+                   ng-model="model.value.limitTo"
+                   ng-init="model.value.limitTo = model.value.limitTo || 0" />
+
+        </div>
+    </div>
+
+</div>
+

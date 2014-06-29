@@ -1,0 +1,22 @@
+﻿
+<div ng-controller="nuPickers.Shared.CustomLabel.CustomLabelConfigController" class="nuPickers-config">
+
+    <div>
+        <label for="">
+
+            Custom Label <!-- TODO: update wiki -->
+            <small>process each item though a macro, can use the parameters: key, keys, counter and total</small>
+
+        </label>
+
+        <div>
+
+            <select ng-model="model.value"
+                    ng-options="macro.alias as macro.name for macro in macros">
+                <option value=""></option>
+            </select>
+
+        </div>
+    </div>
+
+</div>

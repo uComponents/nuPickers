@@ -1,0 +1,25 @@
+﻿<div ng-controller="nuPickers.Shared.ListPicker.ListPickerEditorController" class="list-picker">
+
+    <ng-form name="listPickerForm">
+        <input type="hidden" name="validation" ng-model="model.value" />
+        <span val-msg-for="validation" val-toggle-msg="validationMessage"></span>
+    </ng-form>
+
+    <div ng-controller="nuPickers.Shared.TypeaheadListPicker.TypeaheadListPickerEditorController" class="has-text-input-bar">
+
+        <!-- typeahead -->
+        <div class="text-input-bar">
+            <input type="text"
+                   placeholder="typeahead"
+                   autocomplete="off"
+                   ng-model="typeahead"
+                   nu-cursor-up="cursorUp()"
+                   nu-cursor-down="cursorDown()"
+                   nu-enter-key="enterKey()" />
+                   <!--nu-blur="clear()" />-->
+        </div>
+
+        <ng-include src="'App_Plugins/nuPickers/Shared/ListPicker/ListPickerPartial.html'" /> 
+
+    </div>
+</div>

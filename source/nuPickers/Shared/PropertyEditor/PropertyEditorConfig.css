@@ -1,0 +1,57 @@
+﻿/*
+    used by property editor configurations with multiple fields to emulate umbraco styling 
+    
+    <div class="nuPickers-config">
+        <div> 
+            <label>
+                ** title **
+                <small>** description **</small>
+            </label>
+            <div>
+                ** control **
+            </div>
+        <div>
+        ...
+    </div>
+    
+*/
+
+.nuPickers-config div
+{
+    padding-bottom: 20px;
+    margin-bottom: 15px!important;
+    border-bottom: 1px solid #f8f8f8;
+}
+
+.nuPickers-config div.disabled
+{
+    background-color: #f8f8f8;
+}
+
+.nuPickers-config div:last-child
+{
+    /*padding-bottom:0;*/
+    margin-bottom:0;
+    border-bottom:none;
+}
+
+
+.nuPickers-config label 
+{
+    float:left;
+    width:160px;
+    padding-top:8px !important;
+    padding:0;
+    text-align:left;
+    display:inline-block
+}
+
+.nuPickers-config div div {
+    padding-top: 5px;
+    margin-left: 240px!important;
+}
+
+
+.nuPickers-config input.wide {
+    width:95%;
+}

@@ -1,0 +1,10 @@
+﻿
+<div ng-controller="nuPickers.Shared.DropDownPicker.DropDownPickerEditorController">
+
+    <select ng-model="pickedOption"
+            ng-options="option as option.label for option in dropDownPickerOptions"           
+            ng-required="model.isRequired">
+        <option value="" ng-click="pickedOption = null"></option>
+    </select>
+
+</div>

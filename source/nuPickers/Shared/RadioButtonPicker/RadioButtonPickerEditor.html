@@ -1,0 +1,20 @@
+﻿
+<div ng-controller="nuPickers.Shared.RadioButtonPicker.RadioButtonPickerEditorController">
+
+    <ul class="layout-direction" ng-class="model.config.layoutDirection">
+        <li ng-repeat="option in radioButtonPickerOptions">
+
+            <label>
+                <input type="radio"
+                       ng-name="radioButtonPicker"
+                       value="{{option.key}}"
+                       ng-model="$parent.pickedKey"
+                       ng-checked="option.key == $parent.pickedKey" />
+
+                <span ng-bind-html-unsafe="option.label"></span>
+            </label>
+
+        </li>
+    </ul>
+
+</div>

@@ -1,0 +1,35 @@
+﻿<div ng-controller="nuPickers.Shared.SqlDataSource.SqlDataSourceConfigController" class="nuPickers-config">
+
+    <div>
+        <label for="">
+
+            SQL Expression
+            <small>expects a result set containing fields 'Key' and 'Label', can use @contextId parameter</small>
+
+        </label>
+
+        <div>
+
+            <textarea ng-model="model.value.sqlExpression"
+                      rows="10"
+                      style="width:90%;"></textarea>
+
+        </div>
+    </div>
+
+    <div>
+        <label for="">
+            Connection String
+            <small>add items to the web.config &lt;connectionStrings /&gt; section to list here</small>
+        </label>
+
+        <div>
+
+            <select ng-model="model.value.connectionString"
+                    ng-options="o as o for o in connectionStrings"
+                    ng-required="true"></select>
+
+        </div>
+    </div>
+
+</div>
