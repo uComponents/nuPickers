@@ -43,13 +43,15 @@
   <Target Name="PrepareWorkingDir" DependsOnTargets="Compile">
     <RemoveDir Directories="$(WorkingDir)" Condition="Exists('$(WorkingDir)')" />
     <MakeDir Directories="$(WorkingDir)" />
+
+    <Copy SourceFiles="$(PackageDir)\package.txt" DestinationFolder="$(WorkingDir)\" />
     
     <!--- COPY FOR UMBRACO PACKAGE -->
-    <Copy SourceFiles="$(ProjectDir)\bin\Release\nuPickers.dll" DestinationFolder="$(WorkingUmbracoDir)\bin\" />
+    <Copy SourceFiles="$(ProjectDir)\bin\Release\uComponents.nuPickers.dll" DestinationFolder="$(WorkingUmbracoDir)\bin\" />
     <Copy SourceFiles="$(PackageDir)\package.xml" DestinationFolder="$(WorkingUmbracoDir)\" />
 
     <!-- COPY FOR NUGET PACKAGE -->
-    <Copy SourceFiles="$(ProjectDir)\bin\Release\nuPickers.dll" DestinationFolder="$(WorkingNugetDir)\lib\net45\" />
+    <Copy SourceFiles="$(ProjectDir)\bin\Release\uComponents.nuPickers.dll" DestinationFolder="$(WorkingNugetDir)\lib\net45\" />
     <Copy SourceFiles="$(PackageDir)\package.nuspec" DestinationFolder="$(WorkingNuGetDir)\" />
   </Target>
 
@@ -60,7 +62,7 @@
     </ItemGroup>
     <MSBuild.Umbraco.Tasks.ManifestUpdate 
       ManifestFile="$(WorkingUmbracoDir)\package.xml"
-			WorkingDirectory="$(WorkingUmbracoDir)\"
+			WorkingDirectory="$(WorkingDir)\"
 			MinimumRequiredUmbracoVersion="$(MinUmbracoVersion)"
 			PackageVersion="$(PackageVersion)"
 			Readme="$([System.IO.File]::ReadAllText(package.txt))"
@@ -74,7 +76,7 @@
     </ItemGroup>
     <MSBuild.NuGet.Tasks.ManifestUpdate
 			ManifestFile="$(WorkingNugetDir)\package.nuspec"
-			WorkingDirectory="$(WorkingNuGetDir)\"
+			WorkingDirectory="$(WorkingDir)\"
 			Version="$(PackageVersion)"
 			Files="@(ManifestFiles)" />
   </Target>
