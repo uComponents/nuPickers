@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Complete">
+
+  <!-- PROPERTIES -->
+  <PropertyGroup>
+    <PackageVersion>1.0</PackageVersion>
+    <MinUmbracoVersion>7.1</MinUmbracoVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>    
+    <RootDir>$(MSBuildProjectDirectory)\..</RootDir>
+    <PackageDir>$(RootDir)\package</PackageDir>
+    <SourceDir>$(RootDir)\source</SourceDir>
+    <ProjectDir>$(RootDir)\source\nuPickers</ProjectDir>
+    <WorkingDir>$(RootDir)\package\temp</WorkingDir>
+    <WorkingUmbracoDir>$(RootDir)\package\temp\Umbraco</WorkingUmbracoDir>
+    <WorkingNuGetDir>$(RootDir)\package\temp\NuGet</WorkingNuGetDir>
+  </PropertyGroup>
+
+  <!-- IMPORTS -->
+  <Import Project="$(PackageDir)\MSBuildTasks\MSBuild.Community.Tasks.Targets" />
+  <Import Project="$(PackageDir)\MSBuildTasks\MSBuild.Umbraco.Tasks.Targets" />
+  <Import Project="$(PackageDir)\MSBuildTasks\MSBuild.NuGet.Tasks.Targets" />
+
+  <Target Name="Start">
+    <Message Text="Package version: $(PackageVersion)" />
+    <Message Text="Minimum Umbraco version: $(MinUmbracoVersion)" />    
+  </Target>
+
+  <!-- UPDATE PROJECT ASSEMBLEY VERSION -->
+  <Target Name="UpdateAssemblyInfo" DependsOnTargets="Start">
+    <FileUpdate Encoding="ASCII" Files="$(ProjectDir)\Properties\AssemblyInfo.cs" Regex="AssemblyVersion\(&quot;.*&quot;\)\]" ReplacementText="AssemblyVersion(&quot;$(PackageVersion).0.0&quot;)]" />
+    <FileUpdate Encoding="ASCII" Files="$(ProjectDir)\Properties\AssemblyInfo.cs" Regex="AssemblyFileVersion\(&quot;.*&quot;\)\]" ReplacementText="AssemblyFileVersion(&quot;$(PackageVersion).0.0&quot;)]" />
+  </Target>
+
+  <!-- COMPILE SOLUTION -->
+  <Target Name="Compile" DependsOnTargets="UpdateAssemblyInfo">
+    <MSBuild Projects="$(SourceDir)\nuPickers.sln" Properties="Configuration=Release" />
+  </Target>
+
+  <!-- PREPARE WORKING DIR -->
+  <Target Name="PrepareWorkingDir" DependsOnTargets="Compile">
+    <RemoveDir Directories="$(WorkingDir)" Condition="Exists('$(WorkingDir)')" />
+    <MakeDir Directories="$(WorkingDir)" />
+    
+    <!--- COPY FOR UMBRACO PACKAGE -->
+    <Copy SourceFiles="$(ProjectDir)\bin\Release\nuPickers.dll" DestinationFolder="$(WorkingUmbracoDir)\bin\" />
+    <Copy SourceFiles="$(PackageDir)\package.xml" DestinationFolder="$(WorkingUmbracoDir)\" />
+
+    <!-- COPY FOR NUGET PACKAGE -->
+    <Copy SourceFiles="$(ProjectDir)\bin\Release\nuPickers.dll" DestinationFolder="$(WorkingNugetDir)\lib\net45\" />
+    <Copy SourceFiles="$(PackageDir)\package.nuspec" DestinationFolder="$(WorkingNuGetDir)\" />
+  </Target>
+
+  <!-- UMBRACO MANIFEST -->
+  <Target Name="UmbracoManifest" DependsOnTargets="PrepareWorkingDir">
+    <ItemGroup>
+      <ManifestFiles Include="$(WorkingUmbracoDir)\**\*" />
+    </ItemGroup>
+    <MSBuild.Umbraco.Tasks.ManifestUpdate 
+      ManifestFile="$(WorkingUmbracoDir)\package.xml"
+			WorkingDirectory="$(WorkingUmbracoDir)\"
+			MinimumRequiredUmbracoVersion="$(MinUmbracoVersion)"
+			PackageVersion="$(PackageVersion)"
+			Readme="$([System.IO.File]::ReadAllText(package.txt))"
+			Files="@(ManifestFiles)" />    
+  </Target>
+  
+  <!-- NUGET MANIFEST -->
+  <Target Name="NuGetManifest" DependsOnTargets="UmbracoManifest">
+    <ItemGroup>
+      <ManifestFiles Include="$(WorkingNuGetDir)\**\*" />
+    </ItemGroup>
+    <MSBuild.NuGet.Tasks.ManifestUpdate
+			ManifestFile="$(WorkingNugetDir)\package.nuspec"
+			WorkingDirectory="$(WorkingNuGetDir)\"
+			Version="$(PackageVersion)"
+			Files="@(ManifestFiles)" />
+  </Target>
+
+  <!-- PACKAGE -->
+  <Target Name="Package" DependsOnTargets="NuGetManifest">
+    <ItemGroup>
+      <UmbracoPackageFiles Include="$(WorkingUmbracoDir)\**\*.*" />
+    </ItemGroup>
+
+    <MSBuild.Umbraco.Tasks.Package 
+      ManifestFile="$(WorkingUmbracoDir)\package.xml"
+      WorkingDirectory="$(WorkingUmbracoDir)\"
+      OutputDirectory="$(PackageDir)"
+      Files="@(UmbracoPackageFiles)" />
+    
+    <MSBuild.NuGet.Tasks.Pack 
+      NuGetExePath="$(SourceDir)\.nuget\NuGet.exe"
+			ManifestFile="$(WorkingNuGetDir)\package.nuspec"
+			BasePath="$(WorkingNuGetDir)"
+			OutputDirectory="$(PackageDir)"
+			Verbosity="detailed" />
+
+  </Target>
+  
+  <!-- CLEAN UP -->
+  <Target Name="CleanUp" DependsOnTargets="Package">
+    <RemoveDir Directories="$(WorkingDir)" Condition="Exists('$(WorkingDir)')" />
+  </Target>
+
+  <Target Name="Complete" DependsOnTargets="CleanUp">
+    <Message Text="Complete" />
+  </Target>
+  
+</Project>

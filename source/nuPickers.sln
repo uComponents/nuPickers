@@ -12,6 +12,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{531937
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "package", "package", "{A7633875-BD4A-4C38-87BC-E908109DBDD2}"
+	ProjectSection(SolutionItems) = preProject
+		..\package\package.nuspec = ..\package\package.nuspec
+		..\package\package.proj = ..\package\package.proj
+		..\package\package.txt = ..\package\package.txt
+		..\package\package.xml = ..\package\package.xml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
