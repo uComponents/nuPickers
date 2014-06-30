@@ -38,7 +38,11 @@ namespace nuPickers.PropertyValueConverters
                         PropertyEditorConstants.XmlDropDownPickerAlias,
                         PropertyEditorConstants.XmlPrefetchListPickerAlias,
                         PropertyEditorConstants.XmlRadioButtonPickerAlias,
-                        PropertyEditorConstants.XmlTypeaheadListPickerAlias
+                        PropertyEditorConstants.XmlTypeaheadListPickerAlias,
+                        PropertyEditorConstants.EnumCheckBoxPickerAlias,
+                        PropertyEditorConstants.EnumDropDownPickerAlias,
+                        PropertyEditorConstants.EnumPrefetchListPickerAlias,
+                        PropertyEditorConstants.EnumRadioButtonPickerAlias
                     }
                     .Contains(propertyType.PropertyEditorAlias);
         }

@@ -1,8 +1,17 @@
 ﻿namespace nuPickers.PropertyValueConverters
 {
+    using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Reflection;
+    using System.Web;
+    using System.Web.Hosting;
 
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    using nuPickers.Shared.EnumDataSource;
     using nuPickers.Shared.SaveFormat;
 
     using umbraco;
@@ -17,8 +26,8 @@
         protected int DataTypeId { get; private set; }
         protected object SavedValue { get; private set; }
 
-        private IEnumerable<PreValue> dataTypePreValues = null;
-        protected IEnumerable<PreValue> DataTypePreValues
+        private IDictionary<string, PreValue> dataTypePreValues = null;
+        protected IDictionary<string, PreValue> DataTypePreValues
         {
             get
             {
@@ -29,7 +38,7 @@
                                                 .Services
                                                 .DataTypeService
                                                 .GetPreValuesCollectionByDataTypeId(this.DataTypeId)
-                                                .PreValuesAsArray;
+                                                .PreValuesAsDictionary;
                 }
 
                 return this.dataTypePreValues;
@@ -100,6 +109,43 @@
         public IEnumerable<dynamic> AsDynamicPublishedContent()
         {
             return this.AsPublishedContent().Select(x => x.AsDynamic());
+        }
+
+        public IEnumerable<T> AsEnum<T>() where T : struct, IConvertible
+        {
+            if (!typeof(T).IsEnum)
+            {
+                throw new ArgumentException("T must be an enum");
+            }
+
+            var eNumList = new List<T>();
+
+            foreach (var pickedKey in this.PickedKeys)
+            {
+                var attemptEnum = pickedKey.TryConvertTo<T>();
+                if (attemptEnum.Success)
+                {
+                    eNumList.Add(attemptEnum.Result);
+                }
+            }
+
+            return eNumList;
+        }
+
+        public IEnumerable<Enum> AsEnum()
+        {
+            var dataSourceJson = this.DataTypePreValues.FirstOrDefault(x => string.Equals(x.Key, "dataSource", StringComparison.InvariantCultureIgnoreCase)).Value;
+
+            if (dataSourceJson != null)
+            {
+                var enumDataSouce = JsonConvert.DeserializeObject<EnumDataSource>(dataSourceJson.Value);
+                var assembly = Assembly.LoadFrom(HostingEnvironment.MapPath("~/bin/" + enumDataSouce.AssemblyName));
+                var enumType = assembly.GetType(enumDataSouce.EnumName);
+
+                return this.PickedKeys.Select(pickedKey => (Enum)Enum.Parse(enumType, pickedKey)).ToArray();
+            }
+
+            return null;
         }
     }
 }

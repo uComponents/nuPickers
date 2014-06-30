@@ -252,12 +252,6 @@
     <Compile Include="PropertyEditors\SqlTypeaheadListPicker\SqlTypeaheadListPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\XmlTypeaheadListPicker\XmlTypeaheadListPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\XmlTypeaheadListPicker\XmlTypeaheadListPickerPropertyEditor.cs" />
-    <Compile Include="PropertyValueConverters\EnumPicker.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="PropertyValueConverters\EnumPickerPropertyValueConverter.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="PropertyValueConverters\Picker.cs">
       <SubType>Code</SubType>
     </Compile>
