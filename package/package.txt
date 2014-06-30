@@ -1,3 +1,0 @@
-﻿nuPickers is a collection of Umbraco v7 Property Editors
-
-https://github.com/uComponents/nuPickers

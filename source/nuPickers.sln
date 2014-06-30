@@ -16,7 +16,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "package", "package", "{A763
 	ProjectSection(SolutionItems) = preProject
 		..\package\package.nuspec = ..\package\package.nuspec
 		..\package\package.proj = ..\package\package.proj
-		..\package\package.txt = ..\package\package.txt
 		..\package\package.xml = ..\package\package.xml
 	EndProjectSection
 EndProject
