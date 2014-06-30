@@ -27,7 +27,7 @@ angular.module('umbraco.resources')
                             break;
 
                         case 'xml':
-                            var xml = '<nuPicker>';
+                            var xml = '<Picker>';
 
                             for (var i = 0; i < pickedOptions.length; i++) {
                                 xml += '<Picked Key="' + pickedOptions[i].key + '">'
@@ -35,7 +35,7 @@ angular.module('umbraco.resources')
                                 xml += '</Picked>';
                             }
 
-                            xml += '</nuPicker>';
+                            xml += '</Picker>';
 
                             return xml;
                             break;
