@@ -1,9 +1,16 @@
 ﻿namespace nuPickers.PropertyValueConverters
 {
-    using nuPickers.Shared.SaveFormat;
     using System.Collections.Generic;
+    using System.Linq;
+
+    using nuPickers.Shared.SaveFormat;
+
+    using umbraco;
+
     using Umbraco.Core;
     using Umbraco.Core.Models;
+    using Umbraco.Web;
+    using Umbraco.Web.Models;
 
     public class Picker
     {
@@ -46,12 +53,54 @@
         public IEnumerable<string> PickedKeys
         {
             get
-            {                
+            {
                 // if saveFormat (config) is relationsOnly...
 
                 // ignore the specified saved format, and let save format try and restore collection directly from the saved value
-                return SaveFormat.GetSavedKeys(this.SavedValue.ToString());
+                return this.SavedValue != null ? SaveFormat.GetSavedKeys(this.SavedValue.ToString()) : null;
             }
+        }
+
+        public IEnumerable<IPublishedContent> AsPublishedContent()
+        {
+            var umbHelper = new UmbracoHelper(UmbracoContext.Current);
+
+            var publishedContentList = new List<IPublishedContent>();
+
+            // Return empty so that don't we don't get exceptions if nothing selected
+            if (this.PickedKeys == null)
+            {
+                return Enumerable.Empty<IPublishedContent>();
+            }
+
+            foreach (var pickedKey in this.PickedKeys)
+            {
+                var attemptNodeId = pickedKey.TryConvertTo<int>();
+                if (attemptNodeId.Success)
+                {
+                    var objectType = uQuery.GetUmbracoObjectType(attemptNodeId.Result);
+
+                    switch (objectType)
+                    {
+                        case uQuery.UmbracoObjectType.Document:
+                            publishedContentList.Add(umbHelper.TypedContent(attemptNodeId.Result));
+                            break;
+                        case uQuery.UmbracoObjectType.Media:
+                            publishedContentList.Add(umbHelper.TypedMedia(attemptNodeId.Result));
+                            break;
+                        case uQuery.UmbracoObjectType.Member:
+                            publishedContentList.Add(umbHelper.TypedMember(attemptNodeId.Result));
+                            break;
+                    }
+                }
+            }
+
+            return publishedContentList.Where(x => x != null);
+        }
+
+        public IEnumerable<dynamic> AsDynamicPublishedContent()
+        {
+            return this.AsPublishedContent().Select(x => x.AsDynamic());
         }
     }
 }
