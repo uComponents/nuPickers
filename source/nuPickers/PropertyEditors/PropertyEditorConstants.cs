@@ -6,36 +6,36 @@ namespace nuPickers.PropertyEditors
     /// </summary>
     internal static class PropertyEditorConstants
     {
-        public const string EnumCheckBoxPickerAlias = "enumCheckBoxPicker";
-        public const string EnumDropDownPickerAlias = "enumDropDownPicker";
-        public const string EnumPrefetchListPickerAlias = "enumPrefetchListPicker";
-        public const string EnumRadioButtonPickerAlias = "enumRadioButtonPicker";
+        public const string EnumCheckBoxPickerAlias = "nuPickers.EnumCheckBoxPicker";
+        public const string EnumDropDownPickerAlias = "nuPickers.EnumDropDownPicker";
+        public const string EnumPrefetchListPickerAlias = "nuPickers.EnumPrefetchListPicker";
+        public const string EnumRadioButtonPickerAlias = "nuPickers.EnumRadioButtonPicker";
 
-        public const string JsonCheckBoxPickerAlias = "jsonCheckBoxPicker";
-        public const string JsonDropDownPickerAlias = "jsonDropDownPicker";
-        public const string JsonPrefetchListPickerAlias = "jsonPrefetchListPicker";
-        public const string JsonRadioButtonPickerAlias = "jsonRadioButtonPicker";
-        public const string JsonTypeaheadListPickerAlias = "jsonTypeaheadListPicker";
+        public const string JsonCheckBoxPickerAlias = "nuPickers.JsonCheckBoxPicker";
+        public const string JsonDropDownPickerAlias = "nuPickers.JsonDropDownPicker";
+        public const string JsonPrefetchListPickerAlias = "nuPickers.JsonPrefetchListPicker";
+        public const string JsonRadioButtonPickerAlias = "nuPickers.JsonRadioButtonPicker";
+        public const string JsonTypeaheadListPickerAlias = "nuPickers.JsonTypeaheadListPicker";
 
-        public const string LuceneCheckBoxPickerAlias = "luceneCheckBoxPicker";
-        public const string LuceneDropDownPickerAlias = "luceneDropDownPicker";
-        public const string LucenePrefetchListPickerAlias = "lucenePrefetchListPicker";
-        public const string LuceneRadioButtonPickerAlias = "luceneRadioButtonPicker";
-        public const string LuceneTypeaheadListPickerAlias = "luceneTypeaheadListPicker";
+        public const string LuceneCheckBoxPickerAlias = "nuPickers.LuceneCheckBoxPicker";
+        public const string LuceneDropDownPickerAlias = "nuPickers.LuceneDropDownPicker";
+        public const string LucenePrefetchListPickerAlias = "nuPickers.LucenePrefetchListPicker";
+        public const string LuceneRadioButtonPickerAlias = "nuPickers.LuceneRadioButtonPicker";
+        public const string LuceneTypeaheadListPickerAlias = "nuPickers.LuceneTypeaheadListPicker";
 
-        public const string RelationLabelsAlias = "relationLabels";
-        
-        public const string SqlCheckBoxPickerAlias = "sqlCheckBoxPicker";
-        public const string SqlDropDownPickerAlias = "sqlDropDownPicker";
-        public const string SqlPrefetchListPickerAlias = "sqlPrefetchListPicker";
-        public const string SqlRadioButtonPickerAlias = "sqlRadioButtonPicker";
-        public const string SqlTypeaheadListPickerAlias = "sqlTypeaheadListPicker";
-        
-        public const string XmlCheckBoxPickerAlias = "xmlCheckBoxPicker";
-        public const string XmlDropDownPickerAlias = "xmlDropDownPicker";
-        public const string XmlPrefetchListPickerAlias = "xmlPrefetchListPicker";
-        public const string XmlRadioButtonPickerAlias = "xmlRadioButtonPicker";
-        public const string XmlTypeaheadListPickerAlias = "xmlTypeaheadListPicker";
+        public const string RelationLabelsAlias = "nuPickers.RelationLabels";
+
+        public const string SqlCheckBoxPickerAlias = "nuPickers.SqlCheckBoxPicker";
+        public const string SqlDropDownPickerAlias = "nuPickers.SqlDropDownPicker";
+        public const string SqlPrefetchListPickerAlias = "nuPickers.SqlPrefetchListPicker";
+        public const string SqlRadioButtonPickerAlias = "nuPickers.SqlRadioButtonPicker";
+        public const string SqlTypeaheadListPickerAlias = "nuPickers.SqlTypeaheadListPicker";
+
+        public const string XmlCheckBoxPickerAlias = "nuPickers.XmlCheckBoxPicker";
+        public const string XmlDropDownPickerAlias = "nuPickers.XmlDropDownPicker";
+        public const string XmlPrefetchListPickerAlias = "nuPickers.XmlPrefetchListPicker";
+        public const string XmlRadioButtonPickerAlias = "nuPickers.XmlRadioButtonPicker";
+        public const string XmlTypeaheadListPickerAlias = "nuPickers.XmlTypeaheadListPicker";
         
     }
 }

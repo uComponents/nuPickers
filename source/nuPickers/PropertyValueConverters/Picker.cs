@@ -1,21 +1,14 @@
 ﻿namespace nuPickers.PropertyValueConverters
 {
+    using Newtonsoft.Json;
+    using nuPickers.Shared.EnumDataSource;
+    using nuPickers.Shared.SaveFormat;
     using System;
-    using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
-    using System.Web;
     using System.Web.Hosting;
-
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
-
-    using nuPickers.Shared.EnumDataSource;
-    using nuPickers.Shared.SaveFormat;
-
     using umbraco;
-
     using Umbraco.Core;
     using Umbraco.Core.Models;
     using Umbraco.Web;
@@ -71,9 +64,9 @@
 
         public IEnumerable<IPublishedContent> AsPublishedContent()
         {
-            var umbHelper = new UmbracoHelper(UmbracoContext.Current);
+            UmbracoHelper umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
 
-            var publishedContentList = new List<IPublishedContent>();
+            List<IPublishedContent> publishedContentList = new List<IPublishedContent>();
 
             // Return empty so that don't we don't get exceptions if nothing selected
             if (this.PickedKeys == null)
@@ -83,21 +76,19 @@
 
             foreach (var pickedKey in this.PickedKeys)
             {
-                var attemptNodeId = pickedKey.TryConvertTo<int>();
+                Attempt<int> attemptNodeId = pickedKey.TryConvertTo<int>();
                 if (attemptNodeId.Success)
                 {
-                    var objectType = uQuery.GetUmbracoObjectType(attemptNodeId.Result);
-
-                    switch (objectType)
+                    switch (uQuery.GetUmbracoObjectType(attemptNodeId.Result))
                     {
                         case uQuery.UmbracoObjectType.Document:
-                            publishedContentList.Add(umbHelper.TypedContent(attemptNodeId.Result));
+                            publishedContentList.Add(umbracoHelper.TypedContent(attemptNodeId.Result));
                             break;
                         case uQuery.UmbracoObjectType.Media:
-                            publishedContentList.Add(umbHelper.TypedMedia(attemptNodeId.Result));
+                            publishedContentList.Add(umbracoHelper.TypedMedia(attemptNodeId.Result));
                             break;
                         case uQuery.UmbracoObjectType.Member:
-                            publishedContentList.Add(umbHelper.TypedMember(attemptNodeId.Result));
+                            publishedContentList.Add(umbracoHelper.TypedMember(attemptNodeId.Result));
                             break;
                     }
                 }
@@ -118,29 +109,29 @@
                 throw new ArgumentException("T must be an enum");
             }
 
-            var eNumList = new List<T>();
+            List<T> enums = new List<T>();
 
             foreach (var pickedKey in this.PickedKeys)
             {
-                var attemptEnum = pickedKey.TryConvertTo<T>();
+                Attempt<T> attemptEnum = pickedKey.TryConvertTo<T>();
                 if (attemptEnum.Success)
                 {
-                    eNumList.Add(attemptEnum.Result);
+                    enums.Add(attemptEnum.Result);
                 }
             }
 
-            return eNumList;
+            return enums;
         }
 
         public IEnumerable<Enum> AsEnum()
         {
-            var dataSourceJson = this.DataTypePreValues.FirstOrDefault(x => string.Equals(x.Key, "dataSource", StringComparison.InvariantCultureIgnoreCase)).Value;
+            PreValue dataSourceJson = this.DataTypePreValues.FirstOrDefault(x => string.Equals(x.Key, "dataSource", StringComparison.InvariantCultureIgnoreCase)).Value;
 
             if (dataSourceJson != null)
             {
-                var enumDataSouce = JsonConvert.DeserializeObject<EnumDataSource>(dataSourceJson.Value);
-                var assembly = Assembly.LoadFrom(HostingEnvironment.MapPath("~/bin/" + enumDataSouce.AssemblyName));
-                var enumType = assembly.GetType(enumDataSouce.EnumName);
+                EnumDataSource enumDataSouce = JsonConvert.DeserializeObject<EnumDataSource>(dataSourceJson.Value);
+                Assembly assembly = Assembly.LoadFrom(HostingEnvironment.MapPath("~/bin/" + enumDataSouce.AssemblyName));
+                Type enumType = assembly.GetType(enumDataSouce.EnumName);
 
                 return this.PickedKeys.Select(pickedKey => (Enum)Enum.Parse(enumType, pickedKey)).ToArray();
             }
