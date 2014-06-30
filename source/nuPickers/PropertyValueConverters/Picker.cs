@@ -10,7 +10,6 @@
     using Umbraco.Core;
     using Umbraco.Core.Models;
     using Umbraco.Web;
-    using Umbraco.Web.Models;
 
     public class Picker
     {
@@ -70,7 +69,7 @@
             // Return empty so that don't we don't get exceptions if nothing selected
             if (this.PickedKeys == null)
             {
-                return Enumerable.Empty<IPublishedContent>();
+                return publishedContentList;
             }
 
             foreach (var pickedKey in this.PickedKeys)
