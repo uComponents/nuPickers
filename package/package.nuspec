@@ -9,7 +9,7 @@
     <owners>The Umbraco Community</owners>
     <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
     <projectUrl>https://github.com/uComponents/nuPickers</projectUrl>
-    <iconUrl>https://github.com/uComponents/nuPickers/blob/nuPickers/package/icon.png</iconUrl>
+    <iconUrl>https://raw.githubusercontent.com/uComponents/nuPickers/master/package/icon.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <summary />
     <description><![CDATA[nuPickers is a collection of Umbraco v7 Property Editors]]></description>
