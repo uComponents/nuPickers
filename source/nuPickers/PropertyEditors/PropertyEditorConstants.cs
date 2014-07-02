@@ -6,6 +6,12 @@ namespace nuPickers.PropertyEditors
     /// </summary>
     internal static class PropertyEditorConstants
     {
+        public const string DotNetCheckBoxPickerAlias = "nuPickers.DotNetCheckBoxPicker";
+        public const string DotNetDropDownPickerAlias = "nuPickers.DotNetDropDownPicker";
+        public const string DotNetPrefetchListPickerAlias = "nuPickers.DotNetPrefetchListPicker";
+        public const string DotNetRadioButtonPickerAlias = "nuPickers.DotNetRadioButtonPicker";
+        public const string DotNetTypeaheadListPickerAlias = "nuPickers.DotNetTypeaheadListPicker";
+
         public const string EnumCheckBoxPickerAlias = "nuPickers.EnumCheckBoxPicker";
         public const string EnumDropDownPickerAlias = "nuPickers.EnumDropDownPicker";
         public const string EnumPrefetchListPickerAlias = "nuPickers.EnumPrefetchListPicker";
