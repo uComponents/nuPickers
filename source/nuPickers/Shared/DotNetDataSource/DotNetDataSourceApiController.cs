@@ -6,6 +6,8 @@ namespace nuPickers.Shared.DotNetDataSource
     using nuPickers.Shared.CustomLabel;
     using nuPickers.Shared.Editor;
     using System.Collections.Generic;
+    using System.Linq;
+    using System.Reflection;
     using System.Web.Http;
     using Umbraco.Web.Editors;
     using Umbraco.Web.Mvc;
@@ -20,6 +22,13 @@ namespace nuPickers.Shared.DotNetDataSource
 
         public IEnumerable<object> GetClassNames([FromUri]string assemblyName)
         {
+            Assembly assembly = Helper.GetAssembly(assemblyName);
+
+            if (assembly != null)
+            {
+                return assembly.GetTypes().Where(x => typeof(IDotNetDataSource).IsAssignableFrom(x)).Select(x => x.FullName);
+            }
+            
             return null;
         }
 

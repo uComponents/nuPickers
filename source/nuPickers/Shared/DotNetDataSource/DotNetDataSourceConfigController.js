@@ -12,19 +12,19 @@ angular
 
             $scope.assemblyNames = response.data;
 
-            //$scope.$watch('model.value.assemblyName', function () {
+            $scope.$watch('model.value.assemblyName', function () {
 
-            //    $scope.enumNames = null;
+                $scope.classNames = null;
 
-            //    $http.get('backoffice/nuPickers/DotNetDataSourceApi/GetClassNames',
-            //        { params: { assemblyName: $scope.model.value.assemblyName } })
-            //        .then(function (response) {
+                $http.get('backoffice/nuPickers/DotNetDataSourceApi/GetClassNames',
+                    { params: { assemblyName: $scope.model.value.assemblyName } })
+                    .then(function (response) {
 
-            //            $scope.classNames = response.data;
+                        $scope.classNames = response.data;
 
-            //        });
+                    });
 
-            //});
+            });
 
         });
 

@@ -23,13 +23,15 @@
         <label for="">
 
             Class
-            <small>class (must implement nuPickers.Shared.DotNetDataSource.IDotNetDataSource)</small>
+            <small>(must implement IDotNetDataSource)</small>
 
         </label>
 
         <div>
 
-       
+            <select ng-model="model.value.className"
+                    ng-options="o as o for o in classNames"
+                    ng-required="true"></select>
 
         </div>
     </div>
