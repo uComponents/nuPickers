@@ -2,6 +2,7 @@
 namespace nuPickers.Shared.DotNetDataSource
 {
     using Newtonsoft.Json.Linq;
+    using nuPickers;
     using nuPickers.Shared.CustomLabel;
     using nuPickers.Shared.Editor;
     using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace nuPickers.Shared.DotNetDataSource
     {
         public IEnumerable<object> GetAssemblyNames()
         {
-            return null;
+            return Helper.GetAssemblyNames();
         }
 
         public IEnumerable<object> GetClassNames([FromUri]string assemblyName)

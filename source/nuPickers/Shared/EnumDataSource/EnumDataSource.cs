@@ -5,9 +5,6 @@ namespace nuPickers.Shared.EnumDataSource
     using System;
     using System.Collections.Generic;
     using System.Reflection;
-    using System.Web;
-    using System.Web.Hosting;
-    using umbraco;
 
     public class EnumDataSource
     {
@@ -19,7 +16,7 @@ namespace nuPickers.Shared.EnumDataSource
         {
             List<EditorDataItem> editorDataItems = new List<EditorDataItem>();
 
-            Type enumType = EnumDataSource.GetAssembly(this.AssemblyName).GetType(this.EnumName);
+            Type enumType = Helper.GetAssembly(this.AssemblyName).GetType(this.EnumName);
 
             foreach(string enumItemName in Enum.GetNames(enumType))
             {
@@ -60,44 +57,7 @@ namespace nuPickers.Shared.EnumDataSource
         }
 
 
-        /// <summary>
-        /// Gets the <see cref="Assembly"/> with the specified name.
-        /// </summary>
-        /// <remarks>Works in Medium Trust.</remarks>
-        /// <param name="assemblyName">The <see cref="Assembly"/> name.</param>
-        /// <returns>The <see cref="Assembly"/>.</returns>
-        internal static Assembly GetAssembly(string assemblyName)
-        {
-            AspNetHostingPermissionLevel appTrustLevel = GlobalSettings.ApplicationTrustLevel;
-            if (appTrustLevel == AspNetHostingPermissionLevel.Unrestricted)
-            {
-                AppDomain.CurrentDomain.ReflectionOnlyAssemblyResolve += (sender, args) =>
-                {
-                    return Assembly.ReflectionOnlyLoad(args.Name);
-                };
-            }
 
-            if (string.Equals(assemblyName, "App_Code", StringComparison.InvariantCultureIgnoreCase))
-            {
-                return Assembly.Load(assemblyName);
-            }
-
-            string assemblyFilePath = HostingEnvironment.MapPath(string.Concat("~/bin/", assemblyName));
-            if (!string.IsNullOrEmpty(assemblyFilePath))
-            {
-                if (appTrustLevel == AspNetHostingPermissionLevel.Unrestricted)
-                {
-                    return Assembly.ReflectionOnlyLoadFrom(assemblyFilePath);
-                }
-                else
-                {
-                    // Medium Trust support
-                    return Assembly.LoadFile(assemblyFilePath);
-                }
-            }
-
-            return null;
-        }
 
     }
 }

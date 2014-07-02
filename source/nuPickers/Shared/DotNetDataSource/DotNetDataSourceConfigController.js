@@ -8,26 +8,25 @@ angular
         $scope.model.value.assemblyName = $scope.model.value.assemblyName || 'App_Code';
         $scope.model.value.apiController = 'DotNetDataSourceApi';
 
+        $http.get('backoffice/nuPickers/DotNetDataSourceApi/GetAssemblyNames').then(function (response) {
 
-        //$http.get('backoffice/nuPickers/DotNetDataSourceApi/GetAssemblyNames').then(function (response) {
+            $scope.assemblyNames = response.data;
 
-        //    $scope.assemblyNames = response.data;
+            //$scope.$watch('model.value.assemblyName', function () {
 
-        //    $scope.$watch('model.value.assemblyName', function () {
+            //    $scope.enumNames = null;
 
-        //        $scope.enumNames = null;
+            //    $http.get('backoffice/nuPickers/DotNetDataSourceApi/GetClassNames',
+            //        { params: { assemblyName: $scope.model.value.assemblyName } })
+            //        .then(function (response) {
 
-        //        $http.get('backoffice/nuPickers/DotNetDataSourceApi/GetClassNames',
-        //            { params: { assemblyName: $scope.model.value.assemblyName } })
-        //            .then(function (response) {
+            //            $scope.classNames = response.data;
 
-        //                $scope.classNames = response.data;
+            //        });
 
-        //            });
+            //});
 
-        //    });
-
-        //});
+        });
 
     }]);
 

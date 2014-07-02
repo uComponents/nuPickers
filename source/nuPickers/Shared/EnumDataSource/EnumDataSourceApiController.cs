@@ -1,16 +1,15 @@
 ﻿namespace nuPickers.Shared.EnumDataSource
 {
+    using Newtonsoft.Json.Linq;
+    using nuPickers;
+    using nuPickers.Shared.CustomLabel;
+    using nuPickers.Shared.Editor;
     using System.Collections.Generic;
-    using System.IO;
     using System.Linq;
     using System.Reflection;
-    using System.Web.Hosting;
     using System.Web.Http;
     using Umbraco.Web.Editors;
     using Umbraco.Web.Mvc;
-    using nuPickers.Shared.Editor;
-    using Newtonsoft.Json.Linq;
-    using nuPickers.Shared.CustomLabel;
 
     [PluginController("nuPickers")]
     public class EnumDataSourceApiController : UmbracoAuthorizedJsonController
@@ -21,25 +20,13 @@
         /// <returns></returns>
         public IEnumerable<object> GetAssemblyNames()
         {
-            List<string> assemblyNames = new List<string>();
-
-            // check if the App_Code directory exists and has any files
-            DirectoryInfo appCode = new DirectoryInfo(HostingEnvironment.MapPath("~/App_Code"));
-            if (appCode.Exists && appCode.GetFiles().Length > 0)
-            {
-                assemblyNames.Add(appCode.Name);
-            }
-
-            // add assemblies from the /bin directory
-            assemblyNames.AddRange(Directory.GetFiles(HostingEnvironment.MapPath("~/bin"), "*.dll").Select(x => x.Substring(x.LastIndexOf('\\') + 1)));
-
-            return assemblyNames;
+            return Helper.GetAssemblyNames();
         }
 
 
         public IEnumerable<object> GetEnumNames([FromUri]string assemblyName)
         {
-            Assembly assembly = EnumDataSource.GetAssembly(assemblyName);
+            Assembly assembly = Helper.GetAssembly(assemblyName);
 
             if (assembly != null)
             {

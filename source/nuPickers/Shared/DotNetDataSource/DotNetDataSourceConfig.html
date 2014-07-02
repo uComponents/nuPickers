@@ -10,6 +10,11 @@
         </label>
 
         <div>
+
+            <select ng-model="model.value.assemblyName"
+                    ng-options="o as o for o in assemblyNames"
+                    ng-required="true"></select>
+
         </div>
 
     </div>
