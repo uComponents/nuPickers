@@ -2,7 +2,9 @@
 namespace nuPickers.Shared.DotNetDataSource
 {
     using nuPickers.Shared.Editor;
+    using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class DotNetDataSource
     {
@@ -14,9 +16,9 @@ namespace nuPickers.Shared.DotNetDataSource
         {
             List<EditorDataItem> editorDataItems = new List<EditorDataItem>();
 
-
-
-            return editorDataItems;
+            return ((IDotNetDataSource)Activator.CreateInstance(this.AssemblyName, this.ClassName).Unwrap())
+                        .GetEditorDataItems()
+                        .Select(x => new EditorDataItem() { Key = x.Key, Label = x.Value });
         }
     }
 }

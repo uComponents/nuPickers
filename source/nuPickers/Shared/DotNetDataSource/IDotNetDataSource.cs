@@ -6,7 +6,10 @@ namespace nuPickers.Shared.DotNetDataSource
 
     public interface IDotNetDataSource
     {
-        // this is the same method signature for all the internal data sources too
-        IEnumerable<EditorDataItem> GetEditorDataItems();
+        /// <returns>
+        /// 1st string is the key
+        /// 2nd string is the label
+        /// </returns>
+        IEnumerable<KeyValuePair<string, string>> GetEditorDataItems();
     }
 }

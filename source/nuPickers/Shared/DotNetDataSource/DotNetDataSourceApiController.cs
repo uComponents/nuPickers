@@ -5,6 +5,7 @@ namespace nuPickers.Shared.DotNetDataSource
     using nuPickers;
     using nuPickers.Shared.CustomLabel;
     using nuPickers.Shared.Editor;
+    using nuPickers.Shared.TypeaheadListPicker;
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
@@ -40,8 +41,10 @@ namespace nuPickers.Shared.DotNetDataSource
             IEnumerable<EditorDataItem> editorDataItems = dotNetDataSource.GetEditorDataItems();
 
             CustomLabel customLabel = new CustomLabel((string)data.config.customLabel, contextId);
+            TypeaheadListPicker typeaheadListPicker = new TypeaheadListPicker((string)data.typeahead);
 
-            return customLabel.ProcessEditorDataItems(editorDataItems);
+            // process the labels and then handle any type ahead text
+            return typeaheadListPicker.ProcessEditorDataItems(customLabel.ProcessEditorDataItems(editorDataItems));
         }
 
     }
