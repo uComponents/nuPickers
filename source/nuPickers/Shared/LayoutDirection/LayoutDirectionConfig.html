@@ -1,3 +1,10 @@
-﻿<select ng-model="model.value"
-        ng-init="model.value = model.value || 'vertical'"
-        ng-options="option.key as option.label for option in [{'key':'vertical', 'label':'Vertical'}, {'key':'horizontal', 'label':'Horizontal'}]"></select>
+﻿
+<label>
+    <input name="layoutDirection" type="radio" value="vertical" ng-model="model.value" ng-init="model.value = model.value || 'vertical'" />
+    <span>Vertical</span>
+</label>
+
+<label>
+    <input name="layoutDirection" type="radio" value="horizontal" ng-model="model.value" />
+    <span>Horizontal</span>
+</label>
