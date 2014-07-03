@@ -32,10 +32,23 @@ angular
                     { params: { assemblyName: $scope.model.value.assemblyName, className: $scope.model.value.className } })
                     .then(function (response) {
                         $scope.properties = response.data;
-                    });
-            });
 
+                        // TODO: set any existing property values
+
+                    });
+            });            
+
+
+            $scope.$on("formSubmitting", function () {
+
+                $scope.model.value.properties = $scope.properties.map(function (property) {
+                    return { 'name': property.name, 'value': property.value }
+                });
+
+            });
         });
+
+
 
     }]);
 

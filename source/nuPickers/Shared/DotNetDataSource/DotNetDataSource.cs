@@ -13,6 +13,8 @@ namespace nuPickers.Shared.DotNetDataSource
 
         public string ClassName { get; set; }
 
+        public IEnumerable<object> Properties { get; set; }
+
         public IEnumerable<EditorDataItem> GetEditorDataItems()
         {
             List<EditorDataItem> editorDataItems = new List<EditorDataItem>();
