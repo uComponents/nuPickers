@@ -55,6 +55,7 @@ namespace nuPickers.Shared.DotNetDataSource
                                 .Select(x => new
                                             {
                                                 name = x.Name,
+                                                title = ((DotNetDataSourceAttribute)x.GetCustomAttribute(typeof(DotNetDataSourceAttribute))).Title,
                                                 description = ((DotNetDataSourceAttribute)x.GetCustomAttribute(typeof(DotNetDataSourceAttribute))).Description
                                             });
                 }

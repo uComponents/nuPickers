@@ -10,7 +10,12 @@ namespace nuPickers.Shared.DotNetDataSource
     public class DotNetDataSourceAttribute : Attribute
     {
         /// <summary>
-        /// Field description rendered
+        /// Title for the the config option 
+        /// </summary>
+        public string Title { get; set; }
+
+        /// <summary>
+        /// Description for the config option
         /// </summary>
         public string Description { get; set; }
 
