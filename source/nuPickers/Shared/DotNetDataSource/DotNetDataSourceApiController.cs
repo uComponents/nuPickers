@@ -1,6 +1,7 @@
 ﻿
 namespace nuPickers.Shared.DotNetDataSource
 {
+    using System;
     using Newtonsoft.Json.Linq;
     using nuPickers;
     using nuPickers.Shared.CustomLabel;
@@ -32,6 +33,36 @@ namespace nuPickers.Shared.DotNetDataSource
             
             return null;
         }
+
+        /// <summary>
+        /// Get a collection of properties that have been marked with the DotNetDataSourceAttribute,
+        /// each one of these will be used as a custom property
+        /// </summary>
+        /// <param name="assemblyName"></param>
+        /// <param name="className"></param>
+        /// <returns></returns>
+        public IEnumerable<object> GetProperties([FromUri]string assemblyName, [FromUri]string className)
+        {
+            Assembly assembly = Helper.GetAssembly(assemblyName);
+
+            if (assembly != null)
+            {
+                Type type = assembly.GetType(className);
+                if (type != null)
+                {
+                    return type.GetProperties()
+                                .Where(x => x.GetCustomAttributes(typeof(DotNetDataSourceAttribute), false).Any())
+                                .Select(x => new
+                                            {
+                                                name = x.Name,
+                                                description = ((DotNetDataSourceAttribute)x.GetCustomAttribute(typeof(DotNetDataSourceAttribute))).Description
+                                            });
+                }
+            }
+
+            return null;
+        }
+
 
         [HttpPost]
         public IEnumerable<EditorDataItem> GetEditorDataItems([FromUri] int contextId, [FromBody] dynamic data)

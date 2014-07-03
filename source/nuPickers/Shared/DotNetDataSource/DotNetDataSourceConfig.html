@@ -36,4 +36,20 @@
         </div>
     </div>
 
+    <!-- repeat a text field for each property -->
+    <div ng-repeat="property in properties">
+        <label for="">
+
+            {{ property.name }}
+            <small>{{ property.description }}</small>
+        
+        </label>
+
+        <div>
+
+            <input type="text" />
+
+        </div>
+    </div>
+
 </div>
