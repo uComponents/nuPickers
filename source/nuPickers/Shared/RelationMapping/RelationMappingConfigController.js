@@ -31,6 +31,7 @@ angular
             if ($scope.selectedRelationType != null) {
 
                 // rebuild the model.value
+                $scope.model.value = new Object();
                 $scope.model.value.relationTypeAlias = $scope.selectedRelationType.key; // only need to save the key (it's alias)
 
             } else {
