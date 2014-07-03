@@ -13,20 +13,19 @@ namespace nuPickers.Shared.DotNetDataSource
 
         public string ClassName { get; set; }
 
-        public IEnumerable<object> Properties { get; set; }
+        public IEnumerable<DotNetDataSourceProperty> Properties { get; set; }
 
         public IEnumerable<EditorDataItem> GetEditorDataItems()
         {
             List<EditorDataItem> editorDataItems = new List<EditorDataItem>();
 
             object dotNetDataSource = Activator.CreateInstance(this.AssemblyName, this.ClassName).Unwrap();
-                        
-            // all properties with the DotNetDataSourceAttribute
-            foreach(PropertyInfo propertyInfo in dotNetDataSource.GetType().GetProperties().Where(x => x.GetCustomAttributes(typeof(DotNetDataSourceAttribute), false).Any()))
-            {                
-                //propertyInfo.SetValue(dotNetDataSource, "");
-            }
 
+            foreach (PropertyInfo propertyInfo in dotNetDataSource.GetType().GetProperties().Where(x => this.Properties.Select(y => y.Name).Contains(x.Name)))
+            {
+                // TODO: safety check to ensure property setting is a string
+                propertyInfo.SetValue(dotNetDataSource, this.Properties.Where(x => x.Name == propertyInfo.Name).Single().Value);
+            }
 
             return ((IDotNetDataSource)dotNetDataSource)
                         .GetEditorDataItems()
