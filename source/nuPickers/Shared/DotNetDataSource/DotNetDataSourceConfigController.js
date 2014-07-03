@@ -15,6 +15,9 @@ angular
             $scope.$watch('model.value.assemblyName', function () {
 
                 $scope.classNames = null;
+                $scope.properties = null;
+
+                $scope.model.value.className = null;
 
                 $http.get('backoffice/nuPickers/DotNetDataSourceApi/GetClassNames',
                     { params: { assemblyName: $scope.model.value.assemblyName } })
@@ -28,14 +31,16 @@ angular
 
                 $scope.properties = null;
 
-                $http.get('backoffice/nuPickers/DotNetDataSourceApi/GetProperties',
-                    { params: { assemblyName: $scope.model.value.assemblyName, className: $scope.model.value.className } })
-                    .then(function (response) {
-                        $scope.properties = response.data;
+                if ($scope.model.value.className != null) {
+                    $http.get('backoffice/nuPickers/DotNetDataSourceApi/GetProperties',
+                        { params: { assemblyName: $scope.model.value.assemblyName, className: $scope.model.value.className } })
+                        .then(function (response) {
+                            $scope.properties = response.data;
 
-                        // TODO: set any existing property values
+                            // TODO: set any existing property values
 
-                    });
+                        });
+                }
             });            
 
 
