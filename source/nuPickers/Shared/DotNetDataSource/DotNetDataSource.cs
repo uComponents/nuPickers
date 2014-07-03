@@ -23,8 +23,14 @@ namespace nuPickers.Shared.DotNetDataSource
 
             foreach (PropertyInfo propertyInfo in dotNetDataSource.GetType().GetProperties().Where(x => this.Properties.Select(y => y.Name).Contains(x.Name)))
             {
-                // TODO: safety check to ensure property setting is a string
-                propertyInfo.SetValue(dotNetDataSource, this.Properties.Where(x => x.Name == propertyInfo.Name).Single().Value);
+                if (propertyInfo.PropertyType == typeof(string))
+                {
+                    propertyInfo.SetValue(dotNetDataSource, this.Properties.Where(x => x.Name == propertyInfo.Name).Single().Value);
+                }
+                else
+                {
+                    // TODO: log unexpected property type
+                }
             }
 
             return ((IDotNetDataSource)dotNetDataSource)
