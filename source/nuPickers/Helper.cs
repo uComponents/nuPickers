@@ -52,7 +52,14 @@ namespace nuPickers
 
             if (string.Equals(assemblyName, "App_Code", StringComparison.InvariantCultureIgnoreCase))
             {
-                return Assembly.Load(assemblyName);
+				try
+				{
+					return Assembly.Load(assemblyName);
+				}
+				catch (FileNotFoundException)
+				{
+					return null;
+				}
             }
 
             string assemblyFilePath = HostingEnvironment.MapPath(string.Concat("~/bin/", assemblyName));
