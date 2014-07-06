@@ -13,7 +13,7 @@
       </requirements>
     </package>
     <author>
-      <name>Hendy Racher, Jeavon Leopold, Stephen Roberts, Tom Fulton, Lee Kelleher</name>
+      <name>Hendy Racher, Jeavon Leopold, Stephen Roberts, Tom Fulton, Lennart Stoop, Lee Kelleher</name>
       <website>https://github.com/uComponents/nuPickers/graphs/contributors</website>
     </author>
     <readme><![CDATA[nuPickers is a collection of Umbraco v7 Property Editors]]></readme>
