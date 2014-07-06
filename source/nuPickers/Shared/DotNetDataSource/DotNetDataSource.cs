@@ -19,7 +19,7 @@ namespace nuPickers.Shared.DotNetDataSource
         {
             List<EditorDataItem> editorDataItems = new List<EditorDataItem>();
 
-            object dotNetDataSource = Activator.CreateInstance(this.AssemblyName, this.ClassName).Unwrap();
+			object dotNetDataSource = Helper.GetAssembly(this.AssemblyName).CreateInstance(this.ClassName);
 
             foreach (PropertyInfo propertyInfo in dotNetDataSource.GetType().GetProperties().Where(x => this.Properties.Select(y => y.Name).Contains(x.Name)))
             {
