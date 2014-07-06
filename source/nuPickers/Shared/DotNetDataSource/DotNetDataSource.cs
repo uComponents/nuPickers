@@ -12,14 +12,21 @@ namespace nuPickers.Shared.DotNetDataSource
         public string AssemblyName { get; set; }
 
         public string ClassName { get; set; }
-
+     
         public IEnumerable<DotNetDataSourceProperty> Properties { get; set; }
+
+        public string Typeahead { get; set; }
 
         public IEnumerable<EditorDataItem> GetEditorDataItems()
         {
             List<EditorDataItem> editorDataItems = new List<EditorDataItem>();
 
-			object dotNetDataSource = Helper.GetAssembly(this.AssemblyName).CreateInstance(this.ClassName);
+            object dotNetDataSource = Helper.GetAssembly(this.AssemblyName).CreateInstance(this.ClassName);
+            
+            if (dotNetDataSource is IDotNetDataSourceTypeahead)
+            {
+                ((IDotNetDataSourceTypeahead)dotNetDataSource).Typeahead = this.Typeahead;
+            }
 
             foreach (PropertyInfo propertyInfo in dotNetDataSource.GetType().GetProperties().Where(x => this.Properties.Select(y => y.Name).Contains(x.Name)))
             {

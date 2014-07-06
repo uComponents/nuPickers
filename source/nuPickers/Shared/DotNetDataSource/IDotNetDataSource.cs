@@ -1,7 +1,6 @@
 ﻿
 namespace nuPickers.Shared.DotNetDataSource
 {
-    using nuPickers.Shared.Editor;
     using System.Collections.Generic;
 
     public interface IDotNetDataSource

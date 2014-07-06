@@ -18,11 +18,13 @@ angular
                     .then(function (response) {
                         $scope.properties = response.data;
 
-                        // TODO: simplify
-                        for (var i = 0; i < $scope.properties.length; i++) {
-                            for (var j = 0; j < $scope.model.value.properties.length; j++) {
-                                if ($scope.properties[i].name == $scope.model.value.properties[j].name) {
-                                    $scope.properties[j].value = $scope.model.value.properties[j].value;
+                        if ($scope.model.value.properties) {
+                            // TODO: simplify
+                            for (var i = 0; i < $scope.properties.length; i++) {
+                                for (var j = 0; j < $scope.model.value.properties.length; j++) {
+                                    if ($scope.properties[i].name == $scope.model.value.properties[j].name) {
+                                        $scope.properties[j].value = $scope.model.value.properties[j].value;
+                                    }
                                 }
                             }
                         }
