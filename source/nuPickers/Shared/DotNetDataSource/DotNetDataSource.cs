@@ -2,10 +2,10 @@
 namespace nuPickers.Shared.DotNetDataSource
 {
     using nuPickers.Shared.Editor;
-    using System;
-    using System.Reflection;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.Linq;
+    using System.Reflection;
 
     public class DotNetDataSource
     {
@@ -17,6 +17,9 @@ namespace nuPickers.Shared.DotNetDataSource
 
         public string Typeahead { get; set; }
 
+        [DefaultValue(false)]
+        internal bool HandledTypeahead { get; set; }
+
         public IEnumerable<EditorDataItem> GetEditorDataItems()
         {
             List<EditorDataItem> editorDataItems = new List<EditorDataItem>();
@@ -26,6 +29,7 @@ namespace nuPickers.Shared.DotNetDataSource
             if (dotNetDataSource is IDotNetDataSourceTypeahead)
             {
                 ((IDotNetDataSourceTypeahead)dotNetDataSource).Typeahead = this.Typeahead;
+                this.HandledTypeahead = true;
             }
 
             foreach (PropertyInfo propertyInfo in dotNetDataSource.GetType().GetProperties().Where(x => this.Properties.Select(y => y.Name).Contains(x.Name)))

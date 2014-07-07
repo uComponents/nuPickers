@@ -71,14 +71,19 @@ namespace nuPickers.Shared.DotNetDataSource
             DotNetDataSource dotNetDataSource = ((JObject)data.config.dataSource).ToObject<DotNetDataSource>();
             dotNetDataSource.Typeahead = (string)data.typeahead;
 
-            IEnumerable<EditorDataItem> editorDataItems = dotNetDataSource.GetEditorDataItems();
+            IEnumerable<EditorDataItem> editorDataItems = dotNetDataSource.GetEditorDataItems().ToList();
 
             CustomLabel customLabel = new CustomLabel((string)data.config.customLabel, contextId);
-            TypeaheadListPicker typeaheadListPicker = new TypeaheadListPicker((string)data.typeahead);
 
-            // process the labels and then handle any type ahead text
-            return typeaheadListPicker.ProcessEditorDataItems(customLabel.ProcessEditorDataItems(editorDataItems));
+            editorDataItems = customLabel.ProcessEditorDataItems(editorDataItems);
+
+            if (!dotNetDataSource.HandledTypeahead)
+            {
+                TypeaheadListPicker typeaheadListPicker = new TypeaheadListPicker((string)data.typeahead);
+                editorDataItems = typeaheadListPicker.ProcessEditorDataItems(editorDataItems);                
+            }
+
+            return editorDataItems;
         }
-
     }
 }
