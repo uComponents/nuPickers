@@ -46,6 +46,10 @@ angular
             $scope.selectOption = function (option) {
                 if ($scope.isValidSelection(option)) {
                     $scope.selectedOptions.push(option);
+
+                    $scope.model.value = editorResource.createSaveValue($scope.model.config, $scope.selectedOptions);
+
+                    editorResource.updateRelationMapping($scope.model, $scope.selectedOptions);
                 }
             };
 
@@ -128,12 +132,13 @@ angular
                 $scope.sortableConfiguration.disabled = !$scope.isSortable();
             });
 
+            /*
             $scope.$on("formSubmitting", function () {
 
                 $scope.model.value = editorResource.createSaveValue($scope.model.config, $scope.selectedOptions);
 
                 editorResource.updateRelationMapping($scope.model, $scope.selectedOptions);
-
             });
+            */
 
 }]);
