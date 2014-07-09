@@ -444,7 +444,9 @@
     <EmbeddedResource Include="Shared\DotNetDataSource\DotNetDataSourceConfig.html" />
     <EmbeddedResource Include="Shared\DotNetDataSource\DotNetDataSourceConfigController.js" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\TypeaheadListPicker\TypeaheadListPickerConfigController.js" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

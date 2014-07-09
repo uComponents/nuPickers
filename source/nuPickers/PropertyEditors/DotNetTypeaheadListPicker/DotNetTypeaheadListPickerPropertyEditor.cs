@@ -22,6 +22,7 @@ namespace nuPickers.PropertyEditors.DotNetTypeaheadListPicker
 
     // CONFIG
     [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.RootUrl + "PropertyEditor/PropertyEditorConfig.css")]
+    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "TypeaheadListPicker/TypeaheadListPickerConfigController.js")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "DotNetDataSource/DotNetDataSourceConfigController.js")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "CustomLabel/CustomLabelConfigController.js")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "RelationMapping/RelationMappingConfigController.js")]
