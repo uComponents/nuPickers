@@ -92,29 +92,32 @@ angular
                 return editorResource.getEditorDataItems($scope.model.config, typeahead);
             };
 
-            $scope.getEditorOptions().then(function (response) {
 
-                var editorOptions = response.data; // [{"key":"","label":""},{"key":"","label":""}...]
+            // if typeahead, then build picked options directly from the save value
+            if ($scope.model.config.typeaheadListPicker != null) {                   
+                $scope.selectedOptions = editorResource.getPickedItems($scope.model);
+            } else {
+                // prefetch options, and then set picked options from the keys (ensures label is up to date)
+                $scope.getEditorOptions().then(function (response) {
 
-                editorResource.getPickedKeys($scope.model).then(function (pickedKeys) {
+                    var editorOptions = response.data; 
 
-                    // build selected options                
-                    for (var i = 0; i < pickedKeys.length; i++) {
-                        for (var j = 0; j < editorOptions.length; j++) {
-                            if (pickedKeys[i] == editorOptions[j].key) {
-                                $scope.selectedOptions.push(editorOptions[j]);
-                                break;
+                    editorResource.getPickedKeys($scope.model).then(function (pickedKeys) {                        
+                        for (var i = 0; i < pickedKeys.length; i++) {
+                            for (var j = 0; j < editorOptions.length; j++) {
+                                if (pickedKeys[i] == editorOptions[j].key) {
+                                    $scope.selectedOptions.push(editorOptions[j]);
+                                    break;
+                                }
                             }
                         }
-                    }
+                    });
 
-                });
-              
-                // look at the config to see if it's a prefetch (so know to set initial list or not)
-                if ($scope.model.config.prefetchListPicker != null) {
                     $scope.selectableOptions = editorOptions;
-                }
-            });
+                });
+
+            }
+
                  
             // setup watch on selected options
             $scope.$watchCollection('selectedOptions', function () {

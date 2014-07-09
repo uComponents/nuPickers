@@ -31,6 +31,11 @@ angular.module('umbraco.resources')
                     return deferred.promise;
                 },
 
+                // get keys & labels of picked items (required by typeahead, as picked keys might not be in the source data)
+                getPickedItems: function(model) {                    
+                    return saveFormatResource.getSavedItems(model.value);
+                },
+
                 createSaveValue: function (config, pickedOptions) {
                     return saveFormatResource.createSaveValue(config, pickedOptions);
                 },

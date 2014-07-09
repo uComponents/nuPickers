@@ -67,6 +67,32 @@ angular.module('umbraco.resources')
                     }
 
                     return saveValue.split(','); // csv
+                },
+
+                // saveValue will be either json or xml, so both key/label can be returned
+                getSavedItems: function(saveValue) {
+                    if (saveValue instanceof Array) // json
+                    {
+                        return saveValue;
+                    }
+
+                    try {
+                        var xml = $.parseXML(saveValue);
+                        var items = new Array();
+                        $(xml).find('Picked').each(function () {
+                            items.push({
+                                'key': $(this).attr('Key'),
+                                'label': $(this).text()
+                            });
+                        });
+
+                        return items;
+                    }
+                    catch (error) {
+
+                    }
+
+                    return null;
                 }
             };
         }
