@@ -2,10 +2,8 @@
 angular
     .module("umbraco")
     .controller("nuPickers.Shared.TypeaheadListPicker.TypeaheadListPickerConfigController",
-    ['$rootScope', '$scope', function ($rootScope, $scope) {
+    ['$scope', 'nuPickers.Shared.TypeaheadListPicker.TypeaheadListPickerConfigState', function ($scope, typeaheadListPickerConfigState) {
 
-        // trigger event for SaveFormat controller to recieve - TODO: need to ensure the save format controller is ready to listen
-        //$rootScope.$broadcast('typeaheadListPicker', true);
-
+        typeaheadListPickerConfigState.isTypeaheadListPicker = true;
 
     }]);

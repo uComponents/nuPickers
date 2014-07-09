@@ -447,6 +447,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Shared\TypeaheadListPicker\TypeaheadListPickerConfigController.js" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\TypeaheadListPicker\TypeaheadListPickerConfigState.js" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

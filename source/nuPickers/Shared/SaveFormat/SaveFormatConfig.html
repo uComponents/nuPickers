@@ -1,7 +1,7 @@
 ﻿ <div ng-controller="nuPickers.Shared.SaveFormat.SaveFormatConfigController">
 
     <label>
-        <input name="saveFormat" type="radio" value="csv" ng-model="model.value" ng-init="model.value = model.value || 'csv'" ng-disabled="typeaheadListPicker" />
+        <input name="saveFormat" type="radio" value="csv" ng-model="model.value" ng-disabled="isTypeaheadListPicker" />
         <span>CSV</span>
     </label>
 
@@ -14,9 +14,9 @@
         <input name="saveFormat" type="radio" value="xml" ng-model="model.value" />
         <span>XML</span>
     </label>
-
+     
     <label>
-        <input name="saveFormat" type="radio" value="relationsOnly" ng-model="model.value" ng-disabled="!relationMappingBidirectional" />
+        <input name="saveFormat" type="radio" value="relationsOnly" ng-model="model.value" ng-disabled="!relationMappingBidirectional || isTypeaheadListPicker" />
         <span>Relations Only</span>
     </label>
 
