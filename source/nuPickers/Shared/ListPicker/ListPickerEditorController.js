@@ -22,12 +22,18 @@ angular
 
             // returns true is this option has been picked
             $scope.isUsed = function (option) {
-                return $scope.selectedOptions.map(function (option) { return option.key; }).indexOf(option.key) >= 0;
+                if ($scope.selectedOptions != null) {
+                    return $scope.selectedOptions.map(function (option) { return option.key; }).indexOf(option.key) >= 0;
+                }
+                return false;
             };
 
             // return true if option can be picked
             $scope.isValidSelection = function (option) {
-                return $scope.isSelectable(option) && ($scope.selectedOptions.length < $scope.model.config.listPicker.maxItems || $scope.model.config.listPicker.maxItems <= 0);
+                if ($scope.selectedOptions != null) {
+                    return $scope.isSelectable(option) && ($scope.selectedOptions.length < $scope.model.config.listPicker.maxItems || $scope.model.config.listPicker.maxItems <= 0);
+                }
+                return true;
             };
 
             $scope.cursorUp = function () {
@@ -105,6 +111,7 @@ angular
             // if typeahead, then build picked options directly from the save value
             if ($scope.model.config.hasOwnProperty('typeaheadListPicker')) {
                 $scope.selectedOptions = editorResource.getPickedItems($scope.model);
+                $scope.selectedOptions = $scope.selectedOptions || [];
             } else {
                 // prefetch options, and then set picked options from the keys (ensures label is up to date)
                 $scope.getEditorOptions().then(function (response) {
