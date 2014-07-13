@@ -9,7 +9,6 @@ angular
                 $scope.dropDownPickerOptions = response.data;
 
                 editorResource.getPickedKeys($scope.model).then(function (pickedKeys) {
-
                     if (pickedKeys[0]) {
                         var i = 0;
                         var found = false;
@@ -24,12 +23,13 @@ angular
                     }
                 });
 
-                $scope.$on("formSubmitting", function () {
 
+                $scope.dropDownChange = function() {
                     $scope.model.value = editorResource.createSaveValue($scope.model.config, [$scope.pickedOption]);
+                };
 
+                $scope.$on("formSubmitting", function () {
                     editorResource.updateRelationMapping($scope.model, [$scope.pickedOption]);
-
                 });
 
             });

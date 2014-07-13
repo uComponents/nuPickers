@@ -3,7 +3,8 @@
 
     <select ng-model="pickedOption"
             ng-options="option as option.label for option in dropDownPickerOptions"           
-            ng-required="model.isRequired">
+            ng-required="model.isRequired"
+            ng-change="dropDownChange()">
         <option value="" ng-click="pickedOption = null"></option>
     </select>
 

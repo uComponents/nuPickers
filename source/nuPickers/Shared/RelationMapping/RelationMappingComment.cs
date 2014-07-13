@@ -40,9 +40,13 @@ namespace nuPickers.Shared.RelationMapping
                     break;
             }
 
-            PropertyType propertyType = propertyTypes.Single(x => x.Alias == propertyAlias);
-            this.DataTypeDefinitionId = propertyType.DataTypeDefinitionId;
-            this.PropertyTypeId = propertyType.Id;            
+            // NOTE: Archetype supplies a virtual propertyAlias
+            PropertyType propertyType = propertyTypes.SingleOrDefault(x => x.Alias == propertyAlias);
+            if (propertyType != null)
+            {
+                this.DataTypeDefinitionId = propertyType.DataTypeDefinitionId;
+                this.PropertyTypeId = propertyType.Id;
+            }
         }
 
         /// <summary>

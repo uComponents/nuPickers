@@ -4,7 +4,6 @@ angular
     .controller("nuPickers.Shared.RadioButtonPicker.RadioButtonPickerEditorController",
         ['$scope', 'nuPickers.Shared.Editor.EditorResource',
         function ($scope, editorResource) {
-
             editorResource.getEditorDataItems($scope.model.config).then(function (response) {
                 $scope.radioButtonPickerOptions = response.data;                               
 
@@ -12,7 +11,16 @@ angular
                     $scope.pickedKey = pickedKeys[0];
                 });
 
-                $scope.$on("formSubmitting", function () {
+                $scope.radioButtonChange = function () {
+                    $scope.model.value = editorResource.createSaveValue($scope.model.config, [$scope.getPickedOption()]);
+                };
+
+                $scope.$on("formSubmitting", function () {                            
+                    editorResource.updateRelationMapping($scope.model, [$scope.getPickedOption()]);
+                });
+
+                // get picked option by copying a matching one by key from the source
+                $scope.getPickedOption = function () {
 
                     var i = 0;
                     var found = false;
@@ -27,12 +35,8 @@ angular
 
                     } while (!found && i < $scope.radioButtonPickerOptions.length)
 
-
-                    $scope.model.value = editorResource.createSaveValue($scope.model.config, [pickedOption]);
-
-                    editorResource.updateRelationMapping($scope.model, [pickedOption]);
-
-                });
+                    return pickedOption;
+                };
 
             });
 
