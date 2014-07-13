@@ -10,19 +10,21 @@ namespace nuPickers.Shared.RelationMapping
     using Umbraco.Core;
     using Umbraco.Core.Models;
 
-    [Serializable()]
     public class RelationMappingComment
     {
-        // used to identify all datatypes using a particular datatype
-        [XmlAttribute("DataTypeDefinitionId")] // NOTE: could calculate this from the propertyTypeId
-        public int DataTypeDefinitionId { get; private set; }
+        public string PropertyAlias { get; private set; }
 
         // used to identify a specifc datatype instance
-        [XmlAttribute("PropertyTypeId")]
         public int PropertyTypeId { get; private set; }
+
+        // used to identify all datatypes using a particular datatype
+        // NOTE: could calculate this from the propertyTypeId
+        public int DataTypeDefinitionId { get; private set; }
 
         internal RelationMappingComment(int contextId, string propertyAlias) 
         {
+            this.PropertyAlias = propertyAlias;
+
             IEnumerable<PropertyType> propertyTypes = Enumerable.Empty<PropertyType>();
 
             switch (uQuery.GetUmbracoObjectType(contextId)) // TODO: can this switch be removed ?
@@ -47,6 +49,11 @@ namespace nuPickers.Shared.RelationMapping
                 this.DataTypeDefinitionId = propertyType.DataTypeDefinitionId;
                 this.PropertyTypeId = propertyType.Id;
             }
+            else
+            {
+                this.DataTypeDefinitionId = -1;
+                this.PropertyTypeId = -1;
+            }
         }
 
         /// <summary>
@@ -60,21 +67,39 @@ namespace nuPickers.Shared.RelationMapping
                 try
                 {
                     XElement xml = XElement.Parse(comment);
-                    this.DataTypeDefinitionId = int.Parse(xml.Attribute("DataTypeDefinitionId").Value);
+                    this.PropertyAlias =  (xml.Attribute("PropertyAlias") != null) ? xml.Attribute("PropertyAlias").Value : string.Empty; // backwards compatable null check (propertyAlias a new value as of v1.1.4)
                     this.PropertyTypeId = int.Parse(xml.Attribute("PropertyTypeId").Value);
+                    this.DataTypeDefinitionId = int.Parse(xml.Attribute("DataTypeDefinitionId").Value);
                 }
                 catch
                 {
-                    this.DataTypeDefinitionId = -1;
+                    this.PropertyAlias = string.Empty;
                     this.PropertyTypeId = -1;
+                    this.DataTypeDefinitionId = -1;
                 }
-
             }
+        }
+
+        internal bool IsInArchetype()
+        {
+            return this.PropertyAlias.StartsWith("archetype-property");
+        }
+
+        internal bool MatchesArchetypeProperty(string propertyAlias)
+        {
+            try
+            {
+                return this.PropertyAlias.Split('-')[2] == propertyAlias.Split('-')[2];
+            }
+            catch
+            {
+                return false;
+            }            
         }
 
         internal string GetComment()
         {
-            return "<RelationMapping DataTypeDefinitionId=\"" + this.DataTypeDefinitionId.ToString() + "\" PropertyTypeId=\"" + this.PropertyTypeId.ToString() + "\" />";
+            return "<RelationMapping PropertyAlias=\"" + this.PropertyAlias + "\" PropertyTypeId=\"" + this.PropertyTypeId.ToString() + "\" DataTypeDefinitionId=\"" + this.DataTypeDefinitionId.ToString() + "\" />";
         }
 
     }

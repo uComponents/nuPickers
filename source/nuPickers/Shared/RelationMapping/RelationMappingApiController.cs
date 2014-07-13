@@ -4,13 +4,12 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Web.Http;
-    using System.Xml.Linq;
+    using umbraco;
     using Umbraco.Core.Models;
     using Umbraco.Web.Editors;
     using Umbraco.Web.Mvc;
     using LegacyRelation = umbraco.cms.businesslogic.relation.Relation;
     using LegacyRelationType = umbraco.cms.businesslogic.relation.RelationType;
-    using umbraco;
 
     [PluginController("nuPickers")]
     public class RelationMappingApiController : UmbracoAuthorizedJsonController
@@ -50,6 +49,11 @@
                 {
                     relations = relations.Where(x => x.ChildId == contextId);
                     relations = relations.Where(x => new RelationMappingComment(x.Comment).PropertyTypeId == relationMappingComment.PropertyTypeId);
+
+                    if (relationMappingComment.IsInArchetype())
+                    {
+                        relations = relations.Where(x => new RelationMappingComment(x.Comment).MatchesArchetypeProperty(relationMappingComment.PropertyAlias));
+                    }
                 }
 
                 return relations.Select(x => (x.ParentId != contextId) ? x.ParentId : x.ChildId);
@@ -81,6 +85,11 @@
                 {
                     relations = relations.Where(x => x.ChildId == contextId);
                     relations = relations.Where(x => new RelationMappingComment(x.Comment).PropertyTypeId == relationMappingComment.PropertyTypeId);
+
+                    if (relationMappingComment.IsInArchetype())
+                    {
+                        relations = relations.Where(x => new RelationMappingComment(x.Comment).MatchesArchetypeProperty(relationMappingComment.PropertyAlias));
+                    }
                 }
 
                 // clear any existing relations
