@@ -66,19 +66,18 @@ namespace nuPickers.Shared.CustomLabel
         /// 
         /// </summary>
         /// <param name="key">passed by parameter into the macro</param>
-        /// <param name="fallback">value to return if macro fails</param>
+        /// <param name="label">value to return if macro fails</param>
         /// <param name="keys">csv of all keys</param>
         /// <param name="counter">current postion</param>
         /// <param name="total">total number of keys</param>
         /// <returns>the output of the macro as a string</returns>
-        private string ProcessMacro(string key, string fallback, string keys, int counter, int total)
+        private string ProcessMacro(string key, string label, string keys, int counter, int total)
         {
-            string label = fallback;
-
             if (!string.IsNullOrWhiteSpace(this.Alias) && this.HasContext)
             {
                 Macro macro = new Macro() { Alias = this.Alias };
                 macro.MacroAttributes.Add("key", key);
+                macro.MacroAttributes.Add("label", label);
                 macro.MacroAttributes.Add("keys", keys);
                 macro.MacroAttributes.Add("counter", counter);
                 macro.MacroAttributes.Add("total", total);
