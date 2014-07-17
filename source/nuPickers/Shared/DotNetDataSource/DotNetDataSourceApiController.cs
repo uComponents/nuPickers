@@ -1,12 +1,12 @@
 ﻿
 namespace nuPickers.Shared.DotNetDataSource
 {
-    using System;
     using Newtonsoft.Json.Linq;
     using nuPickers;
     using nuPickers.Shared.CustomLabel;
     using nuPickers.Shared.Editor;
     using nuPickers.Shared.TypeaheadListPicker;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
@@ -19,7 +19,8 @@ namespace nuPickers.Shared.DotNetDataSource
     {
         public IEnumerable<object> GetAssemblyNames()
         {
-            return Helper.GetAssemblyNames();
+            return Helper.GetAssemblyNames()
+                            .Where(x => Helper.GetAssembly(x).GetTypes().Any(y => typeof(IDotNetDataSource).IsAssignableFrom(y)));
         }
 
         public IEnumerable<object> GetClassNames([FromUri]string assemblyName)
