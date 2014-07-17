@@ -22,31 +22,36 @@ namespace nuPickers.Shared.DotNetDataSource
 
         public IEnumerable<EditorDataItem> GetEditorDataItems()
         {
-            List<EditorDataItem> editorDataItems = new List<EditorDataItem>();
+            IEnumerable<EditorDataItem> editorDataItems = Enumerable.Empty<EditorDataItem>();
 
             object dotNetDataSource = Helper.GetAssembly(this.AssemblyName).CreateInstance(this.ClassName);
-            
-            if (dotNetDataSource is IDotNetDataSourceTypeahead)
+
+            if (dotNetDataSource != null)
             {
-                ((IDotNetDataSourceTypeahead)dotNetDataSource).Typeahead = this.Typeahead;
-                this.HandledTypeahead = true;
+                if (dotNetDataSource is IDotNetDataSourceTypeahead)
+                {
+                    ((IDotNetDataSourceTypeahead)dotNetDataSource).Typeahead = this.Typeahead;
+                    this.HandledTypeahead = true;
+                }
+
+                foreach (PropertyInfo propertyInfo in dotNetDataSource.GetType().GetProperties().Where(x => this.Properties.Select(y => y.Name).Contains(x.Name)))
+                {
+                    if (propertyInfo.PropertyType == typeof(string))
+                    {
+                        propertyInfo.SetValue(dotNetDataSource, this.Properties.Where(x => x.Name == propertyInfo.Name).Single().Value);
+                    }
+                    else
+                    {
+                        // TODO: log unexpected property type
+                    }
+                }
+
+                editorDataItems = ((IDotNetDataSource)dotNetDataSource)
+                                            .GetEditorDataItems()
+                                            .Select(x => new EditorDataItem() { Key = x.Key, Label = x.Value });
             }
 
-            foreach (PropertyInfo propertyInfo in dotNetDataSource.GetType().GetProperties().Where(x => this.Properties.Select(y => y.Name).Contains(x.Name)))
-            {
-                if (propertyInfo.PropertyType == typeof(string))
-                {
-                    propertyInfo.SetValue(dotNetDataSource, this.Properties.Where(x => x.Name == propertyInfo.Name).Single().Value);
-                }
-                else
-                {
-                    // TODO: log unexpected property type
-                }
-            }
-
-            return ((IDotNetDataSource)dotNetDataSource)
-                        .GetEditorDataItems()
-                        .Select(x => new EditorDataItem() { Key = x.Key, Label = x.Value });
+            return editorDataItems;
         }
     }
 }
