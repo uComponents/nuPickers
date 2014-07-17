@@ -20,7 +20,7 @@
         /// <returns></returns>
         public IEnumerable<object> GetAssemblyNames()
         {
-            return Helper.GetAssemblyNames();
+            return Helper.GetAssemblyNames().Where(x => Helper.GetAssembly(x).GetTypes().Any(y => y.IsEnum));
         }
 
 
