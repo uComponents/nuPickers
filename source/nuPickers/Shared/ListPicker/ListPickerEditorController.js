@@ -7,10 +7,10 @@ angular
         function ($scope, editorResource) {
 
             // array of option objects, for the selectable list 
-            $scope.selectableOptions = new Array(); // [{"key":"","label":""}...]
+            $scope.selectableOptions = []; // [{"key":"","label":""}...]
 
             // array of option objects, for the selected list
-            $scope.selectedOptions = new Array(); // [{"key":"","label":""}...]
+            $scope.selectedOptions = []; // [{"key":"","label":""}...]
 
             // http://api.jqueryui.com/sortable/
             $scope.sortableConfiguration = { axis: 'y' };
@@ -22,18 +22,12 @@ angular
 
             // returns true is this option has been picked
             $scope.isUsed = function (option) {
-                if ($scope.selectedOptions != null) {
-                    return $scope.selectedOptions.map(function (option) { return option.key; }).indexOf(option.key) >= 0;
-                }
-                return false;
+                return $scope.selectedOptions.map(function (option) { return option.key; }).indexOf(option.key) >= 0;
             };
 
             // return true if option can be picked
             $scope.isValidSelection = function (option) {
-                if ($scope.selectedOptions != null) {
-                    return $scope.isSelectable(option) && ($scope.selectedOptions.length < $scope.model.config.listPicker.maxItems || $scope.model.config.listPicker.maxItems <= 0);
-                }
-                return true;
+                return $scope.isSelectable(option) && ($scope.selectedOptions.length < $scope.model.config.listPicker.maxItems || $scope.model.config.listPicker.maxItems <= 0);
             };
 
             $scope.cursorUp = function () {
@@ -52,56 +46,59 @@ angular
             $scope.selectOption = function (option) {
                 if ($scope.isValidSelection(option)) {
                     $scope.selectedOptions.push(option);
-                    $scope.selectionChanged();
                 }
             };
 
-            // count for dashed placeholders
+            // count for number of dashed placeholders to render
             $scope.getRequiredPlaceholderCount = function () {
-
-                var count = $scope.model.config.listPicker.minItems;
-
-                if ($scope.selectedOptions != null) {
-                    count -= $scope.selectedOptions.length;
-                }
-
+                var count = $scope.model.config.listPicker.minItems - $scope.selectedOptions.length;
                 if (count > 0) { return new Array(count); }
                 return null;
             }
 
+            // returns true is the 'select' placeholder should be rendered
             $scope.showSelectPlaceholder = function () {
 
                 // TODO: and selectable options, has valid options - only prefetch should be able to do this
 
-                return $scope.selectedOptions == null ||
-                        (($scope.selectedOptions.length >= $scope.model.config.listPicker.minItems)
-                        && (($scope.selectedOptions.length < $scope.model.config.listPicker.maxItems) || $scope.model.config.listPicker.maxItems == 0));
+                return ($scope.selectedOptions.length >= $scope.model.config.listPicker.minItems)
+                        && (($scope.selectedOptions.length < $scope.model.config.listPicker.maxItems) || $scope.model.config.listPicker.maxItems == 0);
             }
 
-            // returns true if there are at least two different items in 'selected'
+            // returns true if selected options can be sorted
             $scope.isSortable = function () {
 
-                if ($scope.$parent.model.config.prefetchListPicker && !$scope.$parent.model.config.prefetchListPicker.allowSorting) {
-                    return false;
-                }
+                // if prefetch list doesn't allow sorting
+                if ($scope.$parent.model.config.prefetchListPicker && !$scope.$parent.model.config.prefetchListPicker.allowSorting) { return false; }
 
-                if (!$scope.model.config.allowDuplicates && $scope.selectedOptions != null && $scope.selectedOptions.length > 1) {
-                    return true;
-                }
+                // if not allowing duplicates, then check selected items > 1
+                if (!$scope.model.config.allowDuplicates && $scope.selectedOptions.length > 1) { return true; }
 
-                if ($scope.selectedOptions != null) {
-                    var keys = $scope.selectedOptions.map(function (option) { return option.key; }); // key all selected keys
-                    return keys.filter(function (value, index) { return keys.indexOf(value) == index; }).length >= 2;
-                }
-
-                return false;
+                // duplicates allowed, so chheck there are at least 2 distinct items
+                var keys = $scope.selectedOptions.map(function (option) { return option.key; }); // key all selected keys
+                return keys.filter(function (value, index) { return keys.indexOf(value) == index; }).length >= 2;
             };
 
             // remove option from 'selected'
             $scope.deselectOption = function ($index) {
                 $scope.selectedOptions.splice($index, 1);
-                $scope.selectionChanged();
             };
+
+            function initSelectedOptionsWatch() {
+                $scope.$watchCollection('selectedOptions', function () {
+
+                    // set validation state
+                    $scope.listPickerForm.validation.$setValidity('validationMessage',
+                                        ($scope.selectedOptions.length >= $scope.model.config.listPicker.minItems &&
+                                        ($scope.selectedOptions.length <= $scope.model.config.listPicker.maxItems || $scope.model.config.listPicker.maxItems < 1)));
+
+                    // toggle sorting ui
+                    $scope.sortableConfiguration.disabled = !$scope.isSortable();
+
+                    // update model for persistance
+                    $scope.model.value = editorResource.createSaveValue($scope.model.config, $scope.selectedOptions);
+                });
+            }
 
             // method here so that typeahead doesn't need a reference to dataSource
             $scope.getEditorOptions = function (typeahead) {
@@ -110,17 +107,21 @@ angular
 
             // if typeahead, then build picked options directly from the save value
             if ($scope.model.config.hasOwnProperty('typeaheadListPicker')) {
+
+                // build selected options from full stored values (as these might not be present in the selectable collection)
                 $scope.selectedOptions = editorResource.getPickedItems($scope.model);
                 $scope.selectedOptions = $scope.selectedOptions || [];
+
+                initSelectedOptionsWatch(); // selected options restored, so setup watch
+
             } else {
-                // prefetch options, and then set picked options from the keys (ensures label is up to date)
+
                 $scope.getEditorOptions().then(function (response) {
 
                     $scope.selectableOptions = response.data; 
 
+                    // build selected options from picked keys (ensures label is up to date)
                     editorResource.getPickedKeys($scope.model).then(function (pickedKeys) {
-
-                        
                         for (var i = 0; i < pickedKeys.length; i++) {
                             for (var j = 0; j < $scope.selectableOptions.length; j++) {
                                 if (pickedKeys[i] == $scope.selectableOptions[j].key) {
@@ -130,35 +131,12 @@ angular
                             }
                         }
                     });
+
+                    initSelectedOptionsWatch(); // selected options restored, so setup watch
                 });
-
-            }
-                 
-            // setup watch on selected options
-            $scope.$watchCollection('selectedOptions', function () {
-
-                var pickedCount = 0;
-
-                if ($scope.selectedOptions != null) {
-                    pickedCount = $scope.selectedOptions.length;
-                }
-
-                // set validation state
-                $scope.listPickerForm.validation.$setValidity('validationMessage',
-                                    (pickedCount >= $scope.model.config.listPicker.minItems &&
-                                    (pickedCount <= $scope.model.config.listPicker.maxItems || $scope.model.config.listPicker.maxItems < 1)));
-
-                // toggle sorting ui
-                $scope.sortableConfiguration.disabled = !$scope.isSortable();
-            });
-
-            $scope.selectionChanged = function () {
-                // update model for persistance
-                $scope.model.value = editorResource.createSaveValue($scope.model.config, $scope.selectedOptions);
             }
 
             $scope.$on("formSubmitting", function () {
                 editorResource.updateRelationMapping($scope.model, $scope.selectedOptions);
             });
-
 }]);
