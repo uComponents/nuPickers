@@ -72,7 +72,7 @@ angular
                 if ($scope.$parent.model.config.prefetchListPicker && !$scope.$parent.model.config.prefetchListPicker.allowSorting) { return false; }
 
                 // if not allowing duplicates, then check selected items > 1
-                if (!$scope.model.config.allowDuplicates && $scope.selectedOptions.length > 1) { return true; }
+                if (!$scope.model.config.listPicker.allowDuplicates && $scope.selectedOptions.length > 1) { return true; }
 
                 // duplicates allowed, so chheck there are at least 2 distinct items
                 var keys = $scope.selectedOptions.map(function (option) { return option.key; }); // key all selected keys
