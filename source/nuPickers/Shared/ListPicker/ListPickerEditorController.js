@@ -45,7 +45,25 @@ angular
             // picking an item from 'selectable' for 'selected'
             $scope.selectOption = function (option) {
                 if ($scope.isValidSelection(option)) {
-                    $scope.selectedOptions.push(option);
+                    // if sorting not allowed, then insert item in same order as in the selectable list (rebuild all picked items)
+                    if (!allowSorting()) {
+                                                
+                        var keys = $scope.selectedOptions.map(function (option) { return option.key; }); // get existing picked keys
+                        keys.push(option.key); // add new picked key
+
+                        // rebuild all selected options to match selectable ordering
+                        $scope.selectedOptions = [];                        
+                        for (var i = 0; i < $scope.selectableOptions.length; i++) {
+                            for (var j = 0; j < keys.length; j++) {
+                                if ($scope.selectableOptions[i].key == keys[j]) {
+                                    $scope.selectedOptions.push($scope.selectableOptions[i]);
+                                }
+                            }
+                        }
+                    }
+                    else {
+                        $scope.selectedOptions.push(option);
+                    }
                 }
             };
 
@@ -69,7 +87,7 @@ angular
             $scope.isSortable = function () {
 
                 // if prefetch list doesn't allow sorting
-                if ($scope.$parent.model.config.prefetchListPicker && !$scope.$parent.model.config.prefetchListPicker.allowSorting) { return false; }
+                if (!allowSorting()) { return false; }
 
                 // if not allowing duplicates, then check selected items > 1
                 if (!$scope.model.config.listPicker.allowDuplicates && $scope.selectedOptions.length > 1) { return true; }
@@ -78,6 +96,11 @@ angular
                 var keys = $scope.selectedOptions.map(function (option) { return option.key; }); // key all selected keys
                 return keys.filter(function (value, index) { return keys.indexOf(value) == index; }).length >= 2;
             };
+
+            // sorting is allowed unless it's a prefetch list and doesn't have the allow sorting option checked (typeahead allows)
+            function allowSorting() {
+                return !($scope.$parent.model.config.prefetchListPicker && !$scope.$parent.model.config.prefetchListPicker.allowSorting);
+            }
 
             // remove option from 'selected'
             $scope.deselectOption = function ($index) {
