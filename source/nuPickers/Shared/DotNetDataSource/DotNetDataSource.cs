@@ -20,7 +20,7 @@ namespace nuPickers.Shared.DotNetDataSource
         [DefaultValue(false)]
         internal bool HandledTypeahead { get; set; }
 
-        public IEnumerable<EditorDataItem> GetEditorDataItems()
+        public IEnumerable<EditorDataItem> GetEditorDataItems(int contextId)
         {
             IEnumerable<EditorDataItem> editorDataItems = Enumerable.Empty<EditorDataItem>();
 
@@ -38,7 +38,15 @@ namespace nuPickers.Shared.DotNetDataSource
                 {
                     if (propertyInfo.PropertyType == typeof(string))
                     {
-                        propertyInfo.SetValue(dotNetDataSource, this.Properties.Where(x => x.Name == propertyInfo.Name).Single().Value);
+                        string propertyValue = this.Properties.Where(x => x.Name == propertyInfo.Name).Single().Value;
+
+                        if (propertyValue != null)
+                        {
+                            // process any tokens                        
+                            propertyValue = propertyValue.Replace("$(ContextId)", contextId.ToString());
+
+                            propertyInfo.SetValue(dotNetDataSource, propertyValue);
+                        }
                     }
                     else
                     {
