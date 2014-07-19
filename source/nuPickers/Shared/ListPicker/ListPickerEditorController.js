@@ -76,10 +76,8 @@ angular
 
             // returns true is the 'select' placeholder should be rendered
             $scope.showSelectPlaceholder = function () {
-
-                // TODO: and selectable options, has valid options - only prefetch should be able to do this
-
-                return ($scope.selectedOptions.length >= $scope.model.config.listPicker.minItems)
+                return ($scope.model.config.typeaheadListPicker || $scope.model.config.listPicker.allowDuplicates || $scope.selectedOptions.length < $scope.selectableOptions.length)
+                        && ($scope.selectedOptions.length >= $scope.model.config.listPicker.minItems)
                         && (($scope.selectedOptions.length < $scope.model.config.listPicker.maxItems) || $scope.model.config.listPicker.maxItems == 0);
             }
 
@@ -99,7 +97,7 @@ angular
 
             // sorting is allowed unless it's a prefetch list and doesn't have the allow sorting option checked (typeahead allows)
             function allowSorting() {
-                return !($scope.$parent.model.config.prefetchListPicker && !$scope.$parent.model.config.prefetchListPicker.allowSorting);
+                return !($scope.model.config.prefetchListPicker && !$scope.model.config.prefetchListPicker.allowSorting);
             }
 
             // remove option from 'selected'
