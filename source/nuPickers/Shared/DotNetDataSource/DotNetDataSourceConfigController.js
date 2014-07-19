@@ -5,7 +5,7 @@ angular
     ['$scope', '$http', function ($scope, $http) {
 
         $scope.model.value = $scope.model.value || new Object();
-        $scope.model.value.assemblyName = $scope.model.value.assemblyName || 'App_Code';
+        $scope.model.value.assemblyName = $scope.model.value.assemblyName || null;
         $scope.model.value.apiController = 'DotNetDataSourceApi';
 
         $scope.buildProperties = function () {
@@ -43,13 +43,15 @@ angular
                 $scope.classNames = null; // clear, incase new ones can't be set
                 $scope.properties = null;
 
-                $http.get('backoffice/nuPickers/DotNetDataSourceApi/GetClassNames',
-                    { params: { assemblyName: $scope.model.value.assemblyName } })
-                    .then(function (response) {
-                        $scope.classNames = response.data;
-                        
-                        $scope.buildProperties(); // (re)build properties collection
-                    });
+                if ($scope.model.value.assemblyName != null) {
+                    $http.get('backoffice/nuPickers/DotNetDataSourceApi/GetClassNames',
+                        { params: { assemblyName: $scope.model.value.assemblyName } })
+                        .then(function (response) {
+                            $scope.classNames = response.data;
+
+                            $scope.buildProperties(); // (re)build properties collection
+                        });
+                }
             });
             
             $scope.$watch('model.value.className', function () {
