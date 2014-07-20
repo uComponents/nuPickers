@@ -15,12 +15,12 @@
 
     public class Picker
     {
-        protected int ContextId { get; private set; }
-        protected int DataTypeId { get; private set; }
-        protected object SavedValue { get; private set; }
+        private int ContextId { get; set; }
+        private int DataTypeId { get; set; }
+        private object SavedValue { get; set; }
 
         private IDictionary<string, PreValue> dataTypePreValues = null;
-        protected IDictionary<string, PreValue> DataTypePreValues
+        public IDictionary<string, PreValue> DataTypePreValues
         {
             get
             {
