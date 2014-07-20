@@ -15,7 +15,7 @@
     <description><![CDATA[nuPickers is a collection of Umbraco v7 Property Editors]]></description>
     <copyright />
     <dependencies>
-      <dependency id="UmbracoCms.Core" version="7.1.0" />
+      <dependency id="UmbracoCms.Core" version="7.1.3" />
     </dependencies>
   </metadata>
   <files />

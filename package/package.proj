@@ -4,8 +4,8 @@
 
   <!-- PROPERTIES -->
   <PropertyGroup>
-    <PackageVersion>1.1.5</PackageVersion>
-    <MinUmbracoVersion>7.1.0</MinUmbracoVersion>
+    <PackageVersion>1.1.6</PackageVersion>
+    <MinUmbracoVersion>7.1.3</MinUmbracoVersion>
   </PropertyGroup>
 
   <PropertyGroup>
