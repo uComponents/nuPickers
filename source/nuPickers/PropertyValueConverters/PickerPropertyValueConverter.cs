@@ -19,6 +19,11 @@ namespace nuPickers.PropertyValueConverters
         public override bool IsConverter(PublishedPropertyType propertyType)
         {
             return new string[] { 
+                        PropertyEditorConstants.DotNetCheckBoxPickerAlias,
+                        PropertyEditorConstants.DotNetDropDownPickerAlias,
+                        PropertyEditorConstants.DotNetPrefetchListPickerAlias,
+                        PropertyEditorConstants.DotNetRadioButtonPickerAlias,
+                        PropertyEditorConstants.DotNetTypeaheadListPickerAlias,
                         PropertyEditorConstants.JsonCheckBoxPickerAlias,
                         PropertyEditorConstants.JsonDropDownPickerAlias,
                         PropertyEditorConstants.JsonPrefetchListPickerAlias,
