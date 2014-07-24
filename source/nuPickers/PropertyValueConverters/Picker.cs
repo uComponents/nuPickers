@@ -1,7 +1,9 @@
 ﻿namespace nuPickers.PropertyValueConverters
 {
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
     using nuPickers.Shared.EnumDataSource;
+    using nuPickers.Shared.RelationMapping;
     using nuPickers.Shared.SaveFormat;
     using System;
     using System.Collections.Generic;
@@ -16,11 +18,12 @@
     public class Picker
     {
         private int ContextId { get; set; }
+        private string PropertyAlias { get; set; }
         private int DataTypeId { get; set; }
         private object SavedValue { get; set; }
 
         private IDictionary<string, PreValue> dataTypePreValues = null;
-        public IDictionary<string, PreValue> DataTypePreValues
+        public IDictionary<string, PreValue> DataTypePreValues // QUESTION: return this to private ?
         {
             get
             {
@@ -39,25 +42,44 @@
         }
 
         /// <summary>
+        /// Helper for DataTypePreValues dictionary collection
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns>a PreValue if found, or null</returns>
+        public PreValue GetDataTypePreValue(string key)
+        {
+            return this.DataTypePreValues.SingleOrDefault(x => string.Equals(x.Key, key, StringComparison.InvariantCultureIgnoreCase)).Value;                  
+        }
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="contextId">the id of the (content, media or member) item being edited</param>
-        /// <param name="dataTypeId">the id of the datatype (a property editor instance) this allows access to all prevalues</param>
+        /// <param name="propertyAlias">the property alias</param>
+        /// <param name="dataTypeId">the id of the datatype (a property editor instance) this allows access to all prevalues (could be caluculated from contextId + propertyAlias)</param>
         /// <param name="savedValue">the actual value saved</param>
-        internal Picker(int contextId, int dataTypeId, object savedValue)
+        internal Picker(int contextId, string propertyAlias, int dataTypeId, object savedValue)
         {
             this.ContextId = contextId;
+            this.PropertyAlias = propertyAlias;
             this.DataTypeId = dataTypeId;
             this.SavedValue = savedValue;
         }
 
+        /// <summary>
+        /// Returns a collection of all picked keys (regardless as to where they are persisted)
+        /// </summary>
         public IEnumerable<string> PickedKeys
         {
             get
             {
-                // if saveFormat (config) is relationsOnly...
+                if (this.GetDataTypePreValue("saveFormat").Value == "relationsOnly")
+                {
+                    string relationTypeAlias = JObject.Parse(this.GetDataTypePreValue("RelationMapping").Value).GetValue("relationTypeAlias").ToString();
 
-                // ignore the specified saved format, and let save format try and restore collection directly from the saved value
+                    return new RelationMappingApiController().GetRelatedIds(this.ContextId, this.PropertyAlias, relationTypeAlias, true).Select(x => x.ToString());
+                }
+                
                 return this.SavedValue != null ? SaveFormat.GetSavedKeys(this.SavedValue.ToString()) : null;
             }
         }
@@ -125,7 +147,7 @@
 
         public IEnumerable<Enum> AsEnum()
         {
-            PreValue dataSourceJson = this.DataTypePreValues.FirstOrDefault(x => string.Equals(x.Key, "dataSource", StringComparison.InvariantCultureIgnoreCase)).Value;
+            PreValue dataSourceJson = this.GetDataTypePreValue("dataSource");
 
             if (dataSourceJson != null)
             {

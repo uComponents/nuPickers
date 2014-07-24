@@ -9,6 +9,11 @@ namespace nuPickers.Shared.SaveFormat
 
     internal static class SaveFormat
     {
+        /// <summary>
+        /// ignore the specified saved format, and try and restore collection directly from the saved value
+        /// </summary>
+        /// <param name="savedValue"></param>
+        /// <returns></returns>
         internal static IEnumerable<string> GetSavedKeys(string savedValue)
         {
             if (!string.IsNullOrWhiteSpace(savedValue))

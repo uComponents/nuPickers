@@ -1,10 +1,11 @@
 ﻿
 namespace nuPickers.PropertyValueConverters
 {
-    using System.Linq;
-    using Umbraco.Core.PropertyEditors;
-    using Umbraco.Core.Models.PublishedContent;
     using nuPickers.PropertyEditors;
+    using System.Linq;
+    using Umbraco.Core.Models.PublishedContent;
+    using Umbraco.Core.PropertyEditors;
+    using Umbraco.Web;
 
     [PropertyValueType(typeof(Picker))]
     [PropertyValueCache(PropertyCacheValue.All, PropertyCacheLevel.Content)]
@@ -54,7 +55,9 @@ namespace nuPickers.PropertyValueConverters
 
         public override object ConvertSourceToObject(PublishedPropertyType propertyType, object source, bool preview)
         {
-            return new Picker(propertyType.ContentType.Id, propertyType.DataTypeId, source);
+            int contextId = new UmbracoHelper(UmbracoContext.Current).AssignedContentItem.Id;
+
+            return new Picker(contextId, propertyType.PropertyTypeAlias, propertyType.DataTypeId, source);
         }
     }
 }
