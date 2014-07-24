@@ -13,7 +13,8 @@ angular.module('umbraco.resources')
                         method: 'POST',
                         url: 'backoffice/nuPickers/' + model.config.dataSource.apiController + '/GetEditorDataItems',
                         params: {
-                            'contextId': editorState.current.id
+                            'contextId': editorState.current.id,
+                            'propertyAlias' : model.alias
                         },
                         data: {
                             'config': model.config,

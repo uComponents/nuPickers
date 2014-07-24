@@ -14,7 +14,7 @@ namespace nuPickers.Shared.XmlDataSource
     public class XmlDataSourceApiController : UmbracoAuthorizedJsonController
     {
         [HttpPost]
-        public IEnumerable<EditorDataItem> GetEditorDataItems([FromUri] int contextId, [FromBody] dynamic data)
+        public IEnumerable<EditorDataItem> GetEditorDataItems([FromUri] int contextId, [FromUri] string propertyAlias, [FromBody] dynamic data)
         {
             XmlDataSource xmlDataSource = ((JObject)data.config.dataSource).ToObject<XmlDataSource>();
 

@@ -14,7 +14,7 @@ namespace nuPickers.Shared.JsonDataSource
     public class JsonDataSourceApiController : UmbracoAuthorizedJsonController
     {
         [HttpPost]
-        public IEnumerable<EditorDataItem> GetEditorDataItems([FromUri] int contextId, [FromBody] dynamic data)
+        public IEnumerable<EditorDataItem> GetEditorDataItems([FromUri] int contextId, [FromUri] string propertyAlias, [FromBody] dynamic data)
         {
             JsonDataSource jsonDataSource = ((JObject)data.config.dataSource).ToObject<JsonDataSource>();
 

@@ -37,7 +37,7 @@
         }
 
         [HttpPost]
-        public IEnumerable<EditorDataItem> GetEditorDataItems([FromUri] int contextId, [FromBody] dynamic data)
+        public IEnumerable<EditorDataItem> GetEditorDataItems([FromUri] int contextId, [FromUri] string propertyAlias, [FromBody] dynamic data)
         {
             EnumDataSource enumDataSource = ((JObject)data.config.dataSource).ToObject<EnumDataSource>();
 
