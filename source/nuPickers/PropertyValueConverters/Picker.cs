@@ -23,7 +23,7 @@
         private object SavedValue { get; set; }
 
         private IDictionary<string, PreValue> dataTypePreValues = null;
-        public IDictionary<string, PreValue> DataTypePreValues // QUESTION: return this to private ?
+        private IDictionary<string, PreValue> DataTypePreValues
         {
             get
             {
@@ -56,13 +56,13 @@
         /// </summary>
         /// <param name="contextId">the id of the (content, media or member) item being edited</param>
         /// <param name="propertyAlias">the property alias</param>
-        /// <param name="dataTypeId">the id of the datatype (a property editor instance) this allows access to all prevalues (could be caluculated from contextId + propertyAlias)</param>
+        /// <param name="dataTypeId">the id of the datatype - this allows access to all prevalues</param>
         /// <param name="savedValue">the actual value saved</param>
         internal Picker(int contextId, string propertyAlias, int dataTypeId, object savedValue)
         {
             this.ContextId = contextId;
             this.PropertyAlias = propertyAlias;
-            this.DataTypeId = dataTypeId;
+            this.DataTypeId = dataTypeId; // (could be calculated from contextId + propertyAlias)
             this.SavedValue = savedValue;
         }
 
@@ -80,27 +80,21 @@
                     return new RelationMappingApiController().GetRelatedIds(this.ContextId, this.PropertyAlias, relationTypeAlias, true).Select(x => x.ToString());
                 }
                 
-                return this.SavedValue != null ? SaveFormat.GetSavedKeys(this.SavedValue.ToString()) : null;
+                return this.SavedValue != null ? SaveFormat.GetSavedKeys(this.SavedValue.ToString()) : Enumerable.Empty<string>();
             }
         }
 
         public IEnumerable<IPublishedContent> AsPublishedContent()
         {
-            UmbracoHelper umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
-
-            List<IPublishedContent> publishedContentList = new List<IPublishedContent>();
-
-            // Return empty so that don't we don't get exceptions if nothing selected
-            if (this.PickedKeys == null)
-            {
-                return publishedContentList;
-            }
+            List<IPublishedContent> publishedContentList = new List<IPublishedContent>();            
 
             foreach (var pickedKey in this.PickedKeys)
             {
                 Attempt<int> attemptNodeId = pickedKey.TryConvertTo<int>();
                 if (attemptNodeId.Success)
                 {
+                    UmbracoHelper umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
+
                     switch (uQuery.GetUmbracoObjectType(attemptNodeId.Result))
                     {
                         case uQuery.UmbracoObjectType.Document:
@@ -155,7 +149,7 @@
                 Assembly assembly = Assembly.LoadFrom(HostingEnvironment.MapPath("~/bin/" + enumDataSouce.AssemblyName));
                 Type enumType = assembly.GetType(enumDataSouce.EnumName);
 
-                return this.PickedKeys.Select(pickedKey => (Enum)Enum.Parse(enumType, pickedKey)).ToArray();
+                return this.PickedKeys.Select(x => (Enum)Enum.Parse(enumType, x)).ToArray();
             }
 
             return null;
