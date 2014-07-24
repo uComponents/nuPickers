@@ -1,5 +1,5 @@
 ﻿
-namespace nuPickers.PropertyValueConverters
+namespace nuPickers
 {
     using nuPickers.PropertyEditors;
     using System.Linq;

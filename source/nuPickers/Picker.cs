@@ -1,4 +1,4 @@
-﻿namespace nuPickers.PropertyValueConverters
+﻿namespace nuPickers
 {
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
