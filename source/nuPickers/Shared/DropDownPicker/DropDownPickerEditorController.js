@@ -5,7 +5,7 @@ angular
         ['$scope', 'nuPickers.Shared.Editor.EditorResource',
         function ($scope, editorResource) {
 
-            editorResource.getEditorDataItems($scope.model.config).then(function (response) {
+            editorResource.getEditorDataItems($scope.model).then(function (response) {
                 $scope.dropDownPickerOptions = response.data;
 
                 editorResource.getPickedKeys($scope.model).then(function (pickedKeys) {

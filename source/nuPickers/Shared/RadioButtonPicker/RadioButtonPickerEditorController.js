@@ -4,7 +4,7 @@ angular
     .controller("nuPickers.Shared.RadioButtonPicker.RadioButtonPickerEditorController",
         ['$scope', 'nuPickers.Shared.Editor.EditorResource',
         function ($scope, editorResource) {
-            editorResource.getEditorDataItems($scope.model.config).then(function (response) {
+            editorResource.getEditorDataItems($scope.model).then(function (response) {
                 $scope.radioButtonPickerOptions = response.data;                               
 
                 editorResource.getPickedKeys($scope.model).then(function (pickedKeys) {

@@ -120,10 +120,9 @@ angular
                     $scope.model.value = editorResource.createSaveValue($scope.model.config, $scope.selectedOptions);
                 });
             }
-
-            // method here so that typeahead doesn't need a reference to dataSource
+            
             $scope.getEditorOptions = function (typeahead) {
-                return editorResource.getEditorDataItems($scope.model.config, typeahead);
+                return editorResource.getEditorDataItems($scope.model, typeahead);
             };
 
             // if typeahead, then build picked options directly from the save value

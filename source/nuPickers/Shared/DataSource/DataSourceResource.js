@@ -6,17 +6,17 @@ angular.module('umbraco.resources')
 
             return {
 
-                getEditorDataItems: function (config, typeahead) {
+                getEditorDataItems: function (model, typeahead) {
 
                     // returns [{"key":"","label":""},{"key":"","label":""}...]
                     return $http({
                         method: 'POST',
-                        url: 'backoffice/nuPickers/' + config.dataSource.apiController + '/GetEditorDataItems',
+                        url: 'backoffice/nuPickers/' + model.config.dataSource.apiController + '/GetEditorDataItems',
                         params: {
                             'contextId': editorState.current.id
                         },
                         data: {
-                            'config': config,
+                            'config': model.config,
                             'typeahead': typeahead
                         }
                     });

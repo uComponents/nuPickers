@@ -9,8 +9,8 @@ angular.module('umbraco.resources')
 
             return {
 
-                getEditorDataItems: function (config, typeahead) {
-                    return dataSourceResource.getEditorDataItems(config, typeahead);
+                getEditorDataItems: function (model, typeahead) {
+                    return dataSourceResource.getEditorDataItems(model, typeahead);
                 },
 
                 getPickedKeys: function (model) {
