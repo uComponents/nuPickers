@@ -39,7 +39,7 @@ namespace nuPickers.Shared.RelationDataSource
                                                                                 })
                                                                                 .ToList();
 
-            CustomLabel customLabel = new CustomLabel((string)data.config.customLabel, contextId);
+            CustomLabel customLabel = new CustomLabel((string)data.config.customLabel, contextId, propertyAlias);
 
             return customLabel.ProcessEditorDataItems(editorDataItems);
         }

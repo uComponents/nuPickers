@@ -20,7 +20,7 @@ namespace nuPickers.Shared.JsonDataSource
 
             IEnumerable<EditorDataItem> editorDataItems = jsonDataSource.GetEditorDataItems(contextId);
 
-            CustomLabel customLabel = new CustomLabel((string)data.config.customLabel, contextId);
+            CustomLabel customLabel = new CustomLabel((string)data.config.customLabel, contextId, propertyAlias);
             TypeaheadListPicker typeaheadListPicker = new TypeaheadListPicker((string)data.typeahead);
 
             // process the labels and then handle any type ahead text

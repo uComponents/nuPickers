@@ -3,42 +3,61 @@ namespace nuPickers.Shared.CustomLabel
 {
     using nuPickers.Shared.Editor;
     using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.IO;
     using System.Linq;
+    using System.Text;
     using System.Web;
+    using System.Web.UI;
     using umbraco;
     using umbraco.NodeFactory;
     using umbraco.presentation.templateControls;
-    using System.IO;
-    using System.Text;
-    using System.Web.UI;
 
-    public class CustomLabel
+    internal class CustomLabel
     {
-        private string Alias { get; set; }
+        private string MacroAlias { get; set; }
 
-        private bool HasContext { get; set; }
+        /// <summary>
+        /// return true when there is a published page anywhere on the site
+        /// </summary>
+        [DefaultValue(false)]
+        private bool HasMacroContext { get; set; }
 
-        internal CustomLabel(string alias, int contextId)
+        private int ContextId { get; set; }
+
+        private string PropertyAlias { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="macroAlias">alias of Macro to execute</param>
+        /// <param name="contextId">node, media or member id</param>
+        /// <param name="propertyAlias">property alias</param>
+        internal CustomLabel(string macroAlias, int contextId, string propertyAlias)
         {
-            this.Alias = alias;
+            this.MacroAlias = macroAlias;
+            this.ContextId = contextId;
+            this.PropertyAlias = propertyAlias;
 
-            // the macro requires a published context to run in, and the current item being edited might not be a published page
+            // the macro requires a published context to run in
             Node currentNode = uQuery.GetNode(contextId);
             if (currentNode != null)
             {
+                // current page is published so use this as the macro context
                 HttpContext.Current.Items["pageID"] = contextId;
-                this.HasContext = true;
+                this.HasMacroContext = true;
             }
             else
             {
-                 // find first published page to use as host
+                 // fallback nd find first published page to use as host
                  Node contextNode = uQuery.GetNodesByXPath(string.Concat("descendant::*[@parentID = ", uQuery.RootNodeId, "]")).FirstOrDefault();
                  if (contextNode != null)
                  {
                      HttpContext.Current.Items["pageID"] = contextNode.Id;
-                     this.HasContext = true;
+                     this.HasMacroContext = true;
                  }
             }
+
         }
 
         /// <summary>
@@ -47,7 +66,7 @@ namespace nuPickers.Shared.CustomLabel
         /// <param name="contextId">the content / media or member being edited</param>
         /// <param name="editorDataItems">collection of options</param>
         /// <returns></returns>
-        public IEnumerable<EditorDataItem> ProcessEditorDataItems(IEnumerable<EditorDataItem> editorDataItems)
+        internal IEnumerable<EditorDataItem> ProcessEditorDataItems(IEnumerable<EditorDataItem> editorDataItems)
         {
             string keys = string.Join(", ", editorDataItems.Select(x => x.Key)); // csv of all keys
             int counter = 0;
@@ -73,11 +92,16 @@ namespace nuPickers.Shared.CustomLabel
         /// <returns>the output of the macro as a string</returns>
         private string ProcessMacro(string key, string label, string keys, int counter, int total)
         {
-            if (!string.IsNullOrWhiteSpace(this.Alias) && this.HasContext)
+            if (!string.IsNullOrWhiteSpace(this.MacroAlias) && this.HasMacroContext)
             {
-                Macro macro = new Macro() { Alias = this.Alias };
+                Macro macro = new Macro() { Alias = this.MacroAlias };
+
+                macro.MacroAttributes.Add("contextId", this.ContextId);
+                macro.MacroAttributes.Add("propertyAlias", this.PropertyAlias);
+
                 macro.MacroAttributes.Add("key", key);
                 macro.MacroAttributes.Add("label", label);
+
                 macro.MacroAttributes.Add("keys", keys);
                 macro.MacroAttributes.Add("counter", counter);
                 macro.MacroAttributes.Add("total", total);

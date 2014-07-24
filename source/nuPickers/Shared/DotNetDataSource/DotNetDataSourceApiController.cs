@@ -74,7 +74,7 @@ namespace nuPickers.Shared.DotNetDataSource
 
             IEnumerable<EditorDataItem> editorDataItems = dotNetDataSource.GetEditorDataItems(contextId).ToList();
 
-            CustomLabel customLabel = new CustomLabel((string)data.config.customLabel, contextId);
+            CustomLabel customLabel = new CustomLabel((string)data.config.customLabel, contextId, propertyAlias);
 
             editorDataItems = customLabel.ProcessEditorDataItems(editorDataItems);
 
