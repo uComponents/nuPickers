@@ -43,7 +43,7 @@
         /// Helper for DataTypePreValues dictionary collection
         /// </summary>
         /// <param name="key"></param>
-        /// <returns>a PreValue if found, or null</returns>
+        /// <returns>the PreValue if found, or null</returns>
         public PreValue GetDataTypePreValue(string key)
         {
             return this.DataTypePreValues.SingleOrDefault(x => string.Equals(x.Key, key, StringComparison.InvariantCultureIgnoreCase)).Value;                  
@@ -127,6 +127,10 @@
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>a collection of IPublishedContent, or an empty collection</returns>
         public IEnumerable<IPublishedContent> AsPublishedContent()
         {
             List<IPublishedContent> publishedContent = new List<IPublishedContent>();

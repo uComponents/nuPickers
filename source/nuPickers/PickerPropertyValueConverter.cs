@@ -1,8 +1,8 @@
-﻿
-namespace nuPickers
+﻿namespace nuPickers
 {
     using nuPickers.PropertyEditors;
     using System.Linq;
+    using Umbraco.Core.Models;
     using Umbraco.Core.Models.PublishedContent;
     using Umbraco.Core.PropertyEditors;
     using Umbraco.Web;
@@ -13,7 +13,6 @@ namespace nuPickers
     {
         /// <summary>
         /// This is a generic converter for all nuPicker Picker PropertyEditors
-        /// this may be subclassed for specific types (eg. Enum collection properties, or Xml and Content / Media / Members)
         /// </summary>
         /// <param name="propertyType"></param>
         /// <returns></returns>
@@ -55,8 +54,17 @@ namespace nuPickers
 
         public override object ConvertSourceToObject(PublishedPropertyType propertyType, object source, bool preview)
         {
-            int contextId = new UmbracoHelper(UmbracoContext.Current).AssignedContentItem.Id;
+            int contextId;
 
+            try
+            {
+                contextId = new UmbracoHelper(UmbracoContext.Current).AssignedContentItem.Id;
+            }
+            catch
+            {
+                contextId = -1;
+            }
+            
             return new Picker(contextId, propertyType.PropertyTypeAlias, propertyType.DataTypeId, source);
         }
     }
