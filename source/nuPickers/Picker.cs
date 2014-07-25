@@ -14,6 +14,7 @@
     using Umbraco.Core;
     using Umbraco.Core.Models;
     using Umbraco.Web;
+    using Umbraco.Core.Services;
 
     public class Picker
     {
@@ -52,7 +53,7 @@
         }
 
         /// <summary>
-        /// 
+        /// This is the constructor used by the PropertyValueConverter (supplies dataTypeId, so it doesn't have to be calculated)
         /// </summary>
         /// <param name="contextId">the id of the (content, media or member) item being edited</param>
         /// <param name="propertyAlias">the property alias</param>
@@ -64,6 +65,65 @@
             this.PropertyAlias = propertyAlias;
             this.DataTypeId = dataTypeId; // (could be calculated from contextId + propertyAlias)
             this.SavedValue = savedValue;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="contextId"></param>
+        /// <param name="propertyAlias"></param>
+        /// <param name="usePublishedValue">when true uses the published value, otherwise when false uses the lastest saved value (which may also be the published value)</param>
+        public Picker(int contextId, string propertyAlias, bool usePublishedValue = true)
+        {
+            this.ContextId = contextId;
+            this.PropertyAlias = propertyAlias;
+
+            UmbracoHelper umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
+
+            switch (uQuery.GetUmbracoObjectType(this.ContextId))
+            {
+                case uQuery.UmbracoObjectType.Document:
+                    IContent content = ApplicationContext.Current.Services.ContentService.GetById(this.ContextId);
+                    this.DataTypeId = content.PropertyTypes.Single(x => x.Alias == propertyAlias).DataTypeDefinitionId;
+                    if (usePublishedValue)
+                    {
+                        this.SavedValue = umbracoHelper.TypedContent(this.ContextId).GetPropertyValue<Picker>(this.PropertyAlias).SavedValue;                        
+                    }
+                    else
+                    {
+                        this.SavedValue = content.GetValue(propertyAlias);
+                    }
+
+                    break;
+
+                case uQuery.UmbracoObjectType.Media:
+                    IMedia media = ApplicationContext.Current.Services.MediaService.GetById(this.ContextId);
+                    this.DataTypeId = media.PropertyTypes.Single(x => x.Alias == propertyAlias).DataTypeDefinitionId;
+                    if (usePublishedValue)
+                    {
+                        this.SavedValue = umbracoHelper.TypedMedia(this.ContextId).GetPropertyValue<Picker>(this.PropertyAlias).SavedValue;                        
+                    }
+                    else
+                    {
+                        this.SavedValue = media.GetValue(propertyAlias);
+                    }
+
+                    break;
+
+                case uQuery.UmbracoObjectType.Member:
+                    IMember member = ApplicationContext.Current.Services.MemberService.GetById(this.ContextId);
+                    this.DataTypeId = member.PropertyTypes.Single(x => x.Alias == propertyAlias).DataTypeDefinitionId;
+                    if (usePublishedValue)
+                    {
+                        this.SavedValue = umbracoHelper.TypedMember(this.ContextId).GetPropertyValue<Picker>(this.PropertyAlias).SavedValue;                        
+                    }
+                    else
+                    {
+                        this.SavedValue = member.GetValue(propertyAlias);
+                    }
+
+                    break;
+            }
         }
 
         /// <summary>
