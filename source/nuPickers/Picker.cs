@@ -80,8 +80,7 @@
 
             switch (uQuery.GetUmbracoObjectType(this.ContextId))
             {
-                case uQuery.UmbracoObjectType.Document:
-                    
+                case uQuery.UmbracoObjectType.Document:                    
                     picker = umbracoHelper.TypedContent(this.ContextId).GetPropertyValue<Picker>(this.PropertyAlias);
                     this.DataTypeId = picker.DataTypeId;
 
@@ -97,19 +96,15 @@
                     break;
 
                 case uQuery.UmbracoObjectType.Media:
-
                     picker = umbracoHelper.TypedMedia(this.ContextId).GetPropertyValue<Picker>(this.PropertyAlias);
                     this.DataTypeId = picker.DataTypeId;
                     this.SavedValue = picker.SavedValue;
-
                     break;
 
                 case uQuery.UmbracoObjectType.Member:
-
                     picker = umbracoHelper.TypedMember(this.ContextId).GetPropertyValue<Picker>(this.PropertyAlias);
                     this.DataTypeId = picker.DataTypeId;
                     this.SavedValue = picker.SavedValue;
-
                     break;
             }
         }
@@ -134,31 +129,33 @@
 
         public IEnumerable<IPublishedContent> AsPublishedContent()
         {
-            List<IPublishedContent> publishedContentList = new List<IPublishedContent>();            
+            List<IPublishedContent> publishedContent = new List<IPublishedContent>();
+
+            UmbracoHelper umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
 
             foreach (var pickedKey in this.PickedKeys)
             {
                 Attempt<int> attemptNodeId = pickedKey.TryConvertTo<int>();
                 if (attemptNodeId.Success)
                 {
-                    UmbracoHelper umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
-
                     switch (uQuery.GetUmbracoObjectType(attemptNodeId.Result))
                     {
                         case uQuery.UmbracoObjectType.Document:
-                            publishedContentList.Add(umbracoHelper.TypedContent(attemptNodeId.Result));
+                            publishedContent.Add(umbracoHelper.TypedContent(attemptNodeId.Result));
                             break;
+
                         case uQuery.UmbracoObjectType.Media:
-                            publishedContentList.Add(umbracoHelper.TypedMedia(attemptNodeId.Result));
+                            publishedContent.Add(umbracoHelper.TypedMedia(attemptNodeId.Result));
                             break;
+
                         case uQuery.UmbracoObjectType.Member:
-                            publishedContentList.Add(umbracoHelper.TypedMember(attemptNodeId.Result));
+                            publishedContent.Add(umbracoHelper.TypedMember(attemptNodeId.Result));
                             break;
                     }
                 }
             }
 
-            return publishedContentList.Where(x => x != null);
+            return publishedContent.Where(x => x != null);
         }
 
         public IEnumerable<dynamic> AsDynamicPublishedContent()
