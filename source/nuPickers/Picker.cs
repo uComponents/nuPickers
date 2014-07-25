@@ -118,7 +118,7 @@
             return this.AsPublishedContent().Select(x => x.AsDynamic());
         }
 
-        public IEnumerable<T> AsEnum<T>() where T : struct, IConvertible
+        public IEnumerable<T> AsEnums<T>() where T : struct, IConvertible
         {
             if (!typeof(T).IsEnum)
             {
@@ -139,7 +139,7 @@
             return enums;
         }
 
-        public IEnumerable<Enum> AsEnum()
+        public IEnumerable<Enum> AsEnums()
         {
             PreValue dataSourceJson = this.GetDataTypePreValue("dataSource");
 
