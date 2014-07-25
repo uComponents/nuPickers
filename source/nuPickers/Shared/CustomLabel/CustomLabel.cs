@@ -96,8 +96,8 @@ namespace nuPickers.Shared.CustomLabel
             {
                 Macro macro = new Macro() { Alias = this.MacroAlias };
 
-                macro.MacroAttributes.Add("contextId", this.ContextId);
-                macro.MacroAttributes.Add("propertyAlias", this.PropertyAlias);
+                macro.MacroAttributes.Add("contextId".ToLower(), this.ContextId);
+                macro.MacroAttributes.Add("propertyAlias".ToLower(), this.PropertyAlias);
 
                 macro.MacroAttributes.Add("key", key);
                 macro.MacroAttributes.Add("label", label);
