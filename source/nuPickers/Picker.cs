@@ -8,13 +8,10 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Reflection;
-    using System.Web.Hosting;
     using umbraco;
     using Umbraco.Core;
     using Umbraco.Core.Models;
     using Umbraco.Web;
-    using Umbraco.Core.Services;
 
     public class Picker
     {
@@ -79,48 +76,39 @@
             this.PropertyAlias = propertyAlias;
 
             UmbracoHelper umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
+            Picker picker;
 
             switch (uQuery.GetUmbracoObjectType(this.ContextId))
             {
                 case uQuery.UmbracoObjectType.Document:
-                    IContent content = ApplicationContext.Current.Services.ContentService.GetById(this.ContextId);
-                    this.DataTypeId = content.PropertyTypes.Single(x => x.Alias == propertyAlias).DataTypeDefinitionId;
+                    
+                    picker = umbracoHelper.TypedContent(this.ContextId).GetPropertyValue<Picker>(this.PropertyAlias);
+                    this.DataTypeId = picker.DataTypeId;
+
                     if (usePublishedValue)
                     {
-                        this.SavedValue = umbracoHelper.TypedContent(this.ContextId).GetPropertyValue<Picker>(this.PropertyAlias).SavedValue;                        
+                        this.SavedValue = picker.SavedValue;
                     }
                     else
                     {
-                        this.SavedValue = content.GetValue(propertyAlias);
+                        this.SavedValue = ApplicationContext.Current.Services.ContentService.GetById(this.ContextId).GetValue(propertyAlias);
                     }
 
                     break;
 
                 case uQuery.UmbracoObjectType.Media:
-                    IMedia media = ApplicationContext.Current.Services.MediaService.GetById(this.ContextId);
-                    this.DataTypeId = media.PropertyTypes.Single(x => x.Alias == propertyAlias).DataTypeDefinitionId;
-                    if (usePublishedValue)
-                    {
-                        this.SavedValue = umbracoHelper.TypedMedia(this.ContextId).GetPropertyValue<Picker>(this.PropertyAlias).SavedValue;                        
-                    }
-                    else
-                    {
-                        this.SavedValue = media.GetValue(propertyAlias);
-                    }
+
+                    picker = umbracoHelper.TypedMedia(this.ContextId).GetPropertyValue<Picker>(this.PropertyAlias);
+                    this.DataTypeId = picker.DataTypeId;
+                    this.SavedValue = picker.SavedValue;
 
                     break;
 
                 case uQuery.UmbracoObjectType.Member:
-                    IMember member = ApplicationContext.Current.Services.MemberService.GetById(this.ContextId);
-                    this.DataTypeId = member.PropertyTypes.Single(x => x.Alias == propertyAlias).DataTypeDefinitionId;
-                    if (usePublishedValue)
-                    {
-                        this.SavedValue = umbracoHelper.TypedMember(this.ContextId).GetPropertyValue<Picker>(this.PropertyAlias).SavedValue;                        
-                    }
-                    else
-                    {
-                        this.SavedValue = member.GetValue(propertyAlias);
-                    }
+
+                    picker = umbracoHelper.TypedMember(this.ContextId).GetPropertyValue<Picker>(this.PropertyAlias);
+                    this.DataTypeId = picker.DataTypeId;
+                    this.SavedValue = picker.SavedValue;
 
                     break;
             }
@@ -178,6 +166,11 @@
             return this.AsPublishedContent().Select(x => x.AsDynamic());
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns>a collection of Enums of type T, or an empty collection</returns>
         public IEnumerable<T> AsEnums<T>() where T : struct, IConvertible
         {
             if (!typeof(T).IsEnum)
@@ -187,32 +180,52 @@
 
             List<T> enums = new List<T>();
 
-            foreach (var pickedKey in this.PickedKeys)
+            foreach (string pickedKey in this.PickedKeys)
             {
-                Attempt<T> attemptEnum = pickedKey.TryConvertTo<T>();
-                if (attemptEnum.Success)
+                foreach(Enum enumItem in Enum.GetValues(typeof(T)))
                 {
-                    enums.Add(attemptEnum.Result);
+                    if (pickedKey == enumItem.GetKey())
+                    {
+                        Attempt<T> attempt = enumItem.TryConvertTo<T>();
+                        if (attempt.Success)
+                        {
+                            enums.Add(attempt.Result);
+                        }
+                    }
                 }
             }
 
             return enums;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>a collection of Enums, or empty collection</returns>
         public IEnumerable<Enum> AsEnums()
         {
+            List<Enum> enums = new List<Enum>();
             PreValue dataSourceJson = this.GetDataTypePreValue("dataSource");
 
             if (dataSourceJson != null)
             {
                 EnumDataSource enumDataSouce = JsonConvert.DeserializeObject<EnumDataSource>(dataSourceJson.Value);
-                Assembly assembly = Assembly.LoadFrom(HostingEnvironment.MapPath("~/bin/" + enumDataSouce.AssemblyName));
-                Type enumType = assembly.GetType(enumDataSouce.EnumName);
 
-                return this.PickedKeys.Select(x => (Enum)Enum.Parse(enumType, x)).ToArray();
+                Type enumType = Helper.GetAssembly(enumDataSouce.AssemblyName).GetType(enumDataSouce.EnumName);
+
+                foreach(string pickedKey in this.PickedKeys)
+                {
+                    foreach(Enum enumItem in Enum.GetValues(enumType))
+                    {
+                       if (pickedKey == enumItem.GetKey())
+                       {
+                           enums.Add(enumItem);
+                       }
+                    }
+                }
             }
 
-            return null;
+            return enums;
         }
     }
 }
