@@ -50,9 +50,9 @@
         }
 
         /// <summary>
-        /// This is the constructor used by the PropertyValueConverter (supplies dataTypeId, so it doesn't have to be calculated)
+        /// This is the constructor used by the PropertyValueConverter
         /// </summary>
-        /// <param name="contextId">the id of the (content, media or member) item being edited</param>
+        /// <param name="contextId">the id of the (content, media or member) item being edited (-1 means out of context)</param>
         /// <param name="propertyAlias">the property alias</param>
         /// <param name="dataTypeId">the id of the datatype - this allows access to all prevalues</param>
         /// <param name="savedValue">the actual value saved</param>
@@ -60,7 +60,7 @@
         {
             this.ContextId = contextId;
             this.PropertyAlias = propertyAlias;
-            this.DataTypeId = dataTypeId; // (could be calculated from contextId + propertyAlias)
+            this.DataTypeId = dataTypeId;
             this.SavedValue = savedValue;
         }
 
