@@ -2,10 +2,12 @@
 namespace nuPickers.Shared.DotNetDataSource
 {
     using nuPickers.Shared.Editor;
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Linq;
     using System.Reflection;
+    using System.Runtime.Remoting;
 
     public class DotNetDataSource
     {
@@ -24,7 +26,7 @@ namespace nuPickers.Shared.DotNetDataSource
         {
             IEnumerable<EditorDataItem> editorDataItems = Enumerable.Empty<EditorDataItem>();
 
-            object dotNetDataSource = Helper.GetAssembly(this.AssemblyName).CreateInstance(this.ClassName);
+            object dotNetDataSource = AppDomain.CurrentDomain.CreateInstanceAndUnwrap(Helper.GetAssembly(this.AssemblyName).FullName, this.ClassName);
 
             if (dotNetDataSource != null)
             {
