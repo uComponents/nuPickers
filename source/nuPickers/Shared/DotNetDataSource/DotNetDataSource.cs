@@ -7,7 +7,6 @@ namespace nuPickers.Shared.DotNetDataSource
     using System.ComponentModel;
     using System.Linq;
     using System.Reflection;
-    using System.Runtime.Remoting;
 
     public class DotNetDataSource
     {
