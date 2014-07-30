@@ -4,10 +4,26 @@
 
   <!-- PROPERTIES -->
   <PropertyGroup>
-    <PackageVersion>1.2.1</PackageVersion>
-    <MinUmbracoVersion>7.1.3</MinUmbracoVersion>
+    <BasePackageVersion>1.2.2</BasePackageVersion>
+    <BaseVersionSuffix></BaseVersionSuffix>
+    <BaseMinUmbracoVersion>7.1.3</BaseMinUmbracoVersion>
   </PropertyGroup>
 
+  <Choose>
+    <When Condition="$(APPVEYOR_BUILD_NUMBER) != '' And $(APPVEYOR_REPO_BRANCH) != 'Release' ">
+      <PropertyGroup>
+        <PackageVersion>$(BasePackageVersion)-build$(APPVEYOR_BUILD_NUMBER)</PackageVersion>
+        <MinUmbracoVersion>$(BaseMinUmbracoVersion)</MinUmbracoVersion>
+      </PropertyGroup>
+    </When>
+    <Otherwise>
+      <PropertyGroup>
+        <PackageVersion>$(BasePackageVersion)$(BaseVersionSuffix)</PackageVersion>
+        <MinUmbracoVersion>$(BaseMinUmbracoVersion)</MinUmbracoVersion>
+      </PropertyGroup>
+    </Otherwise>
+  </Choose>
+  
   <PropertyGroup>
     <RootDir>$(MSBuildProjectDirectory)\..</RootDir>
     <PackageDir>$(MSBuildProjectDirectory)</PackageDir>
