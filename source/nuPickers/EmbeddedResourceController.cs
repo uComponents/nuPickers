@@ -1,8 +1,8 @@
 ﻿namespace nuPickers
 {
-    using System.IO;
+    using System.Globalization;
     using System.Linq;
-    using System.Reflection;
+    using System.Web;
     using System.Web.Mvc;
 
     /// <summary>
@@ -10,22 +10,34 @@
     /// </summary>
     public class EmbeddedResourceController : Controller
     {
-        public FileStreamResult GetSharedResource(string folder, string file)
+        public ActionResult GetSharedResource(string folder, string file)
         {
-            return this.GetResource("nuPickers.Shared." + folder + "." + file);
+            var resource = this.GetResource("nuPickers.Shared." + folder + "." + file);
+
+            if (resource != null)
+            {
+                return resource;
+            }
+
+            return this.HttpNotFound();
         }
 
         private FileStreamResult GetResource(string resource)
         {
             // get this assembly
-            Assembly assembly = typeof(EmbeddedResourceController).Assembly;
+            var assembly = typeof(EmbeddedResourceController).Assembly;
 
-            // if resource can be found
-            if (assembly.GetManifestResourceNames().Any(x => x == resource))
+            // find the resource name not case sensitive
+            var resourceName =
+                assembly.GetManifestResourceNames()
+                    .FirstOrDefault(
+                        x => x.ToLower(CultureInfo.InvariantCulture) == resource.ToLower(CultureInfo.InvariantCulture));
+
+            if (resourceName != null)
             {
                 return new FileStreamResult(
-                                assembly.GetManifestResourceStream(resource),
-                                this.GetMimeType(resource));
+                                assembly.GetManifestResourceStream(resourceName),
+                                this.GetMimeType(resourceName));
             }
 
             return null;
@@ -33,14 +45,8 @@
 
         private string GetMimeType(string resource)
         {
-            switch (Path.GetExtension(resource))
-            {
-                case ".html":   return "text/html";
-                case ".css":    return "text/css";
-                case ".js":     return "text/javascript";
-                case ".png":    return "image/png";
-                default:        return "text";
-            }
+            var mimeType = MimeMapping.GetMimeMapping(resource);
+            return mimeType ?? "text";
         }
     }
 }

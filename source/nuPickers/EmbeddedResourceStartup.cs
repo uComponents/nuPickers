@@ -12,13 +12,12 @@
 
             RouteTable.Routes.MapRoute(
                 name: "nuPickersShared",
-                url: "Umbraco/App_Plugins/nuPickers/Shared/{folder}/{file}",
+                url: "App_Plugins/nuPickers/Shared/{folder}/{file}",
                 defaults: new
                 {
                     controller = "EmbeddedResource",
                     action = "GetSharedResource"
-                }
-            );
+                });
         }
     }
 }
