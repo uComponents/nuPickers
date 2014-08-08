@@ -26,5 +26,19 @@ namespace nuPickers.Shared.XmlDataSource
             // process the labels and then handle any type ahead text
             return typeaheadListPicker.ProcessEditorDataItems(customLabel.ProcessEditorDataItems(editorDataItems));
         }
+
+        [HttpPost]
+        public IEnumerable<EditorDataItem> GetEditorDataItemsFilteredByIds([FromUri] int contextId, [FromUri] string propertyAlias, [FromUri] string ids, [FromBody] dynamic data)
+        {
+            XmlDataSource xmlDataSource = ((JObject)data.config.dataSource).ToObject<XmlDataSource>();
+
+            IEnumerable<EditorDataItem> editorDataItems = xmlDataSource.GetEditorDataItemsFilteredByIds(contextId, ids);
+
+            CustomLabel customLabel = new CustomLabel((string)data.config.customLabel, contextId, propertyAlias);
+            TypeaheadListPicker typeaheadListPicker = new TypeaheadListPicker((string)data.typeahead);
+
+            // process the labels and then handle any type ahead text
+            return typeaheadListPicker.ProcessEditorDataItems(customLabel.ProcessEditorDataItems(editorDataItems));
+        }
     }
 }

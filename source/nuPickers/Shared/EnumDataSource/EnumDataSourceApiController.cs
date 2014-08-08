@@ -47,5 +47,18 @@
 
             return customLabel.ProcessEditorDataItems(editorDataItems);
         }
+
+        [HttpPost]
+        public IEnumerable<EditorDataItem> GetEditorDataItemsFilteredByIds([FromUri] int contextId, [FromUri] string propertyAlias, [FromUri] string ids, [FromBody] dynamic data)
+        {
+            EnumDataSource enumDataSource = ((JObject)data.config.dataSource).ToObject<EnumDataSource>();
+
+            IEnumerable<EditorDataItem> editorDataItems = enumDataSource.GetEditorDataItemsFilteredByIds(ids);
+
+            CustomLabel customLabel = new CustomLabel((string)data.config.customLabel, contextId, propertyAlias);
+
+            return customLabel.ProcessEditorDataItems(editorDataItems);
+        }
+
     }
 }

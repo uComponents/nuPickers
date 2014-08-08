@@ -6,6 +6,7 @@ namespace nuPickers.Shared.LuceneDataSource
     using Examine.SearchCriteria;
     using nuPickers.Shared.Editor;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class LuceneDataSource
     {
@@ -41,5 +42,18 @@ namespace nuPickers.Shared.LuceneDataSource
 
             return editorDataItems;
         }
+
+        public IEnumerable<EditorDataItem> GetEditorDataItemsFilteredByIds(int contextId, string ids)
+        {
+            List<EditorDataItem> result = new List<EditorDataItem>();
+            if (ids != null)
+            {
+                IEnumerable<string> collectionIds = ids.Split(new char[] { ',' }, System.StringSplitOptions.RemoveEmptyEntries).AsEnumerable<string>();
+                result = GetEditorDataItems(contextId).Where(x => ids.Contains(x.Key)).ToList<EditorDataItem>();
+            }
+            return result;
+        }
+
+
     }
 }
