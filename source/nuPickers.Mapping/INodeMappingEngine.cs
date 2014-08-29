@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Web.Caching;
@@ -11,6 +12,8 @@ namespace nuPickers.Mapping
     /// </summary>
     public interface INodeMappingEngine
     {
+        Dictionary<Type, NodeMapper> NodeMappers { get; set; }
+
         /// <summary>
         /// Creates a map to a strong type from an Umbraco document type
         /// using the unqualified class name of <typeparamref name="TDestination"/> 

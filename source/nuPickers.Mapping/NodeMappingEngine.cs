@@ -29,7 +29,7 @@ namespace nuPickers.Mapping
         /// </summary>
         public NodeMappingEngine()
         {
-            this.NodeMappers = new Dictionary<Type, NodeMapper>();
+            NodeMappers = new Dictionary<Type, NodeMapper>();
         }
 
         #region Caching
