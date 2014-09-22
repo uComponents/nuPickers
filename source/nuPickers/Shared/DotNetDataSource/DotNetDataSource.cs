@@ -21,7 +21,7 @@ namespace nuPickers.Shared.DotNetDataSource
         [DefaultValue(false)]
         internal bool HandledTypeahead { get; set; }
 
-        public IEnumerable<EditorDataItem> GetEditorDataItems(int contextId)
+        public IEnumerable<EditorDataItem> GetEditorDataItems(int contextId, int parentId)
         {
             IEnumerable<EditorDataItem> editorDataItems = Enumerable.Empty<EditorDataItem>();
 

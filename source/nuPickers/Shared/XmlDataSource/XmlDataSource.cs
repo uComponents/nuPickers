@@ -21,7 +21,7 @@ namespace nuPickers.Shared.XmlDataSource
         
         public string LabelXPath { get; set; }
 
-        public IEnumerable<EditorDataItem> GetEditorDataItems(int contextId)
+        public IEnumerable<EditorDataItem> GetEditorDataItems(int contextId, int parentId)
         {
             XmlDocument xmlDocument;
             List<EditorDataItem> editorDataItems = new List<EditorDataItem>();

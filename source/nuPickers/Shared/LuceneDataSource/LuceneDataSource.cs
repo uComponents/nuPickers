@@ -17,7 +17,7 @@ namespace nuPickers.Shared.LuceneDataSource
         
         public string LabelField { get; set; }
 
-        public IEnumerable<EditorDataItem> GetEditorDataItems(int contextId)
+        public IEnumerable<EditorDataItem> GetEditorDataItems(int contextId, int parentId)
         {
             List<EditorDataItem> editorDataItems = new List<EditorDataItem>();
 

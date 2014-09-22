@@ -14,11 +14,11 @@ namespace nuPickers.Shared.JsonDataSource
     public class JsonDataSourceApiController : UmbracoAuthorizedJsonController
     {
         [HttpPost]
-        public IEnumerable<EditorDataItem> GetEditorDataItems([FromUri] int contextId, [FromUri] string propertyAlias, [FromBody] dynamic data)
+        public IEnumerable<EditorDataItem> GetEditorDataItems([FromUri] int contextId, [FromUri] int parentId, [FromUri] string propertyAlias, [FromBody] dynamic data)
         {
             JsonDataSource jsonDataSource = ((JObject)data.config.dataSource).ToObject<JsonDataSource>();
 
-            IEnumerable<EditorDataItem> editorDataItems = jsonDataSource.GetEditorDataItems(contextId);
+            IEnumerable<EditorDataItem> editorDataItems = jsonDataSource.GetEditorDataItems(contextId, parentId);
 
             CustomLabel customLabel = new CustomLabel((string)data.config.customLabel, contextId, propertyAlias);
             TypeaheadListPicker typeaheadListPicker = new TypeaheadListPicker((string)data.typeahead);

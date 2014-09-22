@@ -14,11 +14,11 @@ namespace nuPickers.Shared.XmlDataSource
     public class XmlDataSourceApiController : UmbracoAuthorizedJsonController
     {
         [HttpPost]
-        public IEnumerable<EditorDataItem> GetEditorDataItems([FromUri] int contextId, [FromUri] string propertyAlias, [FromBody] dynamic data)
+        public IEnumerable<EditorDataItem> GetEditorDataItems([FromUri] int contextId, [FromUri] int parentId, [FromUri] string propertyAlias, [FromBody] dynamic data)
         {
             XmlDataSource xmlDataSource = ((JObject)data.config.dataSource).ToObject<XmlDataSource>();
 
-            IEnumerable<EditorDataItem> editorDataItems = xmlDataSource.GetEditorDataItems(contextId);
+            IEnumerable<EditorDataItem> editorDataItems = xmlDataSource.GetEditorDataItems(contextId, parentId);
 
             CustomLabel customLabel = new CustomLabel((string)data.config.customLabel, contextId, propertyAlias);
             TypeaheadListPicker typeaheadListPicker = new TypeaheadListPicker((string)data.typeahead);

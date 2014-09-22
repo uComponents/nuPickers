@@ -63,7 +63,7 @@
         }        
 
         [HttpPost]
-        public void UpdateRelationMapping([FromUri] int contextId, [FromUri] string propertyAlias, [FromUri] string relationTypeAlias, [FromUri] bool relationsOnly, [FromBody] dynamic data)
+        public void UpdateRelationMapping([FromUri] int contextId, [FromUri] int parentId, [FromUri] string propertyAlias, [FromUri] string relationTypeAlias, [FromUri] bool relationsOnly, [FromBody] dynamic data)
         {
             IRelationType relationType = ApplicationContext.Services.RelationService.GetRelationTypeByAlias(relationTypeAlias);
 
