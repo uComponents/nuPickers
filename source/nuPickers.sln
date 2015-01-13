@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nuPickers", "nuPickers\nuPickers.csproj", "{FB665B93-6D85-4040-AB20-003B728E3ACA}"
 EndProject
@@ -14,9 +14,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{531937
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "package", "package", "{A7633875-BD4A-4C38-87BC-E908109DBDD2}"
 	ProjectSection(SolutionItems) = preProject
+		..\appveyor.yml = ..\appveyor.yml
+		..\package\Build.bat = ..\package\Build.bat
 		..\package\package.nuspec = ..\package\package.nuspec
 		..\package\package.proj = ..\package\package.proj
 		..\package\package.xml = ..\package\package.xml
+		..\package\Test.bat = ..\package\Test.bat
 	EndProjectSection
 EndProject
 Global

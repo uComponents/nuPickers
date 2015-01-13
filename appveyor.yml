@@ -1,0 +1,27 @@
+# version format
+version: 1.3.0.{build}
+
+# UMBRACO_PACKAGE_PRERELEASE_SUFFIX will only be used for Release builds
+# example UMBRACO_PACKAGE_PRERELEASE_SUFFIX=beta
+install:
+  - cmd: npm install -g grunt-cli
+  - cmd: set UMBRACO_PACKAGE_PRERELEASE_SUFFIX=
+  - cmd: set UMBRACO_PACKAGE_MIN_VERSION=7.1.3
+  - cmd: cd package
+  - cmd: Build.bat
+
+# to disable automatic builds
+build: off
+
+artifacts:
+  - path: BuildPackage\Package\*.nupkg
+  - path: BuildPackage\Package\*.zip
+
+deploy:
+  - provider: NuGet
+    server: https://www.myget.org/F/nupickers/
+    api_key:
+      secure: SASQGWG/4zNns7bwSSsJ5RPvKcKfJsBeEPuw69wsVPA3PO739QmzVtc5VwQwgvbr
+    artifact: /.*\.nupkg/
+    on:
+      branch: master
