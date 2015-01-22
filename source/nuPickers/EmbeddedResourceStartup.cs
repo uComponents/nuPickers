@@ -17,7 +17,9 @@
                 {
                     controller = "EmbeddedResource",
                     action = "GetSharedResource"
-                });
+                },
+                namespaces: new[] { "nuPickers" }
+            );
         }
     }
 }
