@@ -18,63 +18,44 @@ namespace nuPickers.Shared.JsonDataSource
 
         public string LabelJsonPath { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="contextId"></param>
+        /// <returns></returns>
         public IEnumerable<EditorDataItem> GetEditorDataItems(int contextId)
         {
-
             List<EditorDataItem> editorDataItems = new List<EditorDataItem>();
+            
+            JToken jToken = JToken.Parse(GetDataFromUrl(this.Url));
 
-            var jsonDoc = JToken.Parse(GetContents(this.Url));
-
-            if (jsonDoc != null)
+            if (jToken != null)
             {
-                //detect if the data provided is in object format, or is in array format.
-                if (jsonDoc is JArray)
+                // check for: [ 'a', 'b', 'c' ] and create editor items without using any JsonPath
+                if (jToken is JArray && jToken.ToObject<object[]>().All(x => x is string))
                 {
-                    var entries = jsonDoc.ToObject<string[]>();
-                    editorDataItems = entries.Select(x => new EditorDataItem()
-                    {
-                        Key = x,
-                        Label = x
-                    }).ToList();
+                    editorDataItems = jToken.ToObject<string[]>()
+                                            .Select(x => new EditorDataItem()
+                                                            {
+                                                                Key = x,
+                                                                Label = x
+                                                            })
+                                            .ToList();
                 }
-                else if (jsonDoc is JObject)
+                else // use JsonPaths
                 {
-                    //Do the lookups
-                    var jsonPathIterator = jsonDoc.SelectTokens(JsonPath).GetEnumerator();
-
-                    List<string> keys = new List<string>(); // used to keep track of keys, so that duplicates aren't added
-
-                    string key;
-                    string label;
-
-                    while (jsonPathIterator.MoveNext())
-                    {
-                        key = jsonPathIterator.Current.SelectToken(this.KeyJsonPath).Value<string>();
-
-                        // only add item if it has a unique key - failsafe
-                        if (!string.IsNullOrWhiteSpace(key) && !keys.Any(x => x == key))
-                        {
-                            // TODO: ensure key doens't contain any commas (keys are converted saved as csv)
-                            keys.Add(key); // add key so that it's not reused
-
-                            // set default markup to use the configured label XPath
-                            label = jsonPathIterator.Current.SelectToken(this.LabelJsonPath).Value<string>();
-
-                            editorDataItems.Add(new EditorDataItem()
-                            {
-                                Key = key,
-                                Label = label
-                            });
-                        }
-                    }
+                    editorDataItems = jToken.SelectTokens(this.JsonPath)
+                                            .Where(x => x is JObject)
+                                            .Select(x => new EditorDataItem()
+                                                            {
+                                                                Key = x.SelectToken(this.KeyJsonPath).ToString(),
+                                                                Label = x.SelectToken(this.LabelJsonPath).ToString()
+                                                            })
+                                            .ToList();
                 }
             }
-            else
-            {
-                //this should never happen
-                // this means the json file wasnt a jArray or a jObject
-            }
-
+          
+            // TODO: distinct on editor data item keys
 
             return editorDataItems;
         }
@@ -84,17 +65,24 @@ namespace nuPickers.Shared.JsonDataSource
         /// </summary>
         /// <param name="url">URL to download the resource from</param>
         /// <returns>the string based result of the webcall</returns>
-        private static string GetContents(string url)
+        private static string GetDataFromUrl(string url)
         {
+            string data = string.Empty;
+
             using (WebClient client = new WebClient())
             {
                 if (url.StartsWith("~/"))
                 {
+                    // TODO: might not be on the filesystem
+                    // https://github.com/uComponents/nuPickers/issues/50
+
                     url = HttpContext.Current.Server.MapPath(url);
                 }
 
-                return client.DownloadString(url);
+                data = client.DownloadString(url);
             }
+
+            return data;
         }
     }
 }
