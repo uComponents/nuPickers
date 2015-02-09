@@ -3,7 +3,9 @@ namespace nuPickers.Shared.JsonDataSource
 {
     using Newtonsoft.Json.Linq;
     using nuPickers.Shared.Editor;
+    using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
     using System.Net;
     using System.Web;
@@ -73,10 +75,16 @@ namespace nuPickers.Shared.JsonDataSource
             {
                 if (url.StartsWith("~/"))
                 {
-                    // TODO: might not be on the filesystem
-                    // https://github.com/uComponents/nuPickers/issues/50
+                    string filePath = HttpContext.Current.Server.MapPath(url);
 
-                    url = HttpContext.Current.Server.MapPath(url);
+                    if (File.Exists(filePath))
+                    {
+                        url = filePath;
+                    }
+                    else
+                    {
+                        url = url.Replace("~/", (HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "/"));
+                    }
                 }
 
                 data = client.DownloadString(url);
