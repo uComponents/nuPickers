@@ -20,7 +20,7 @@ namespace nuPickers.Shared.DotNetDataSource
         public IEnumerable<object> GetAssemblyNames()
         {
             return Helper.GetAssemblyNames()
-                            .Where(x => Helper.GetAssembly(x).GetTypes().Any(y => typeof(IDotNetDataSource).IsAssignableFrom(y)));
+                            .Where(x => Helper.GetAssembly(x) != null && Helper.GetAssembly(x).GetTypes().Any(y => typeof(IDotNetDataSource).IsAssignableFrom(y)));
         }
 
         public IEnumerable<object> GetClassNames([FromUri]string assemblyName)
