@@ -18,7 +18,11 @@ namespace nuPickers
             DirectoryInfo appCode = new DirectoryInfo(HostingEnvironment.MapPath("~/App_Code"));
             if (appCode.Exists && appCode.GetFiles().Length > 0)
             {
-                assemblyNames.Add(appCode.Name);
+                // safety check to see if an assembly can be got from AppCode
+                if (Helper.GetAssembly(appCode.Name) != null)
+                {
+                    assemblyNames.Add(appCode.Name);
+                }
             }
 
             // add assemblies from the /bin directory
