@@ -27,6 +27,11 @@ namespace nuPickers
             return assemblyNames;
         }
 
+        /// <summary>
+        /// attempts to get an assembly by it's name
+        /// </summary>
+        /// <param name="assemblyName"></param>
+        /// <returns>an Assembly or null</returns>
         internal static Assembly GetAssembly(string assemblyName)
         {
             if (string.Equals(assemblyName, "App_Code", StringComparison.InvariantCultureIgnoreCase))
