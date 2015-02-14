@@ -59,5 +59,26 @@ namespace nuPickers
 
             return null;
         }
+
+        /// <summary>
+        /// extension method on Assembly to handle reflection loading exceptions
+        /// </summary>
+        /// <param name="assembly">the assembly to get types from</param>
+        /// <returns>a collection of types found</returns>
+        internal static IEnumerable<Type> GetLoadableTypes(this Assembly assembly)
+        {       
+            try
+            {
+                return assembly.GetTypes();
+            }
+            catch (ReflectionTypeLoadException e)
+            {
+                return e.Types.Where(x => x != null);
+            }
+            catch
+            {
+                return Enumerable.Empty<Type>();
+            }       
+        }
     }
 }

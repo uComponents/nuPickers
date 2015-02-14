@@ -28,7 +28,7 @@
 
                 if (assembly != null)
                 {
-                    if (assembly.GetTypes().Any(x => x.IsEnum))
+                    if (assembly.GetLoadableTypes().Any(x => x.IsEnum))
                     {
                         assemblyNames.Add(assemblyName);
                     }
@@ -44,7 +44,10 @@
 
             if (assembly != null)
             {
-                return assembly.GetTypes().Where(x => x.IsEnum).Select(x => x.FullName);
+                return assembly
+                        .GetLoadableTypes()
+                        .Where(x => x.IsEnum)
+                        .Select(x => x.FullName);
             }
 
             return null;
