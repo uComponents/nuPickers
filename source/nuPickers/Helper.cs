@@ -53,8 +53,15 @@ namespace nuPickers
             string assemblyFilePath = HostingEnvironment.MapPath(string.Concat("~/bin/", assemblyName));
             if (!string.IsNullOrEmpty(assemblyFilePath))
             {
-                // HACK: http://stackoverflow.com/questions/1031431/system-reflection-assembly-loadfile-locks-file
-                return Assembly.Load(File.ReadAllBytes(assemblyFilePath));
+                try
+                {
+                    // HACK: http://stackoverflow.com/questions/1031431/system-reflection-assembly-loadfile-locks-file
+                    return Assembly.Load(File.ReadAllBytes(assemblyFilePath));
+                }
+                catch
+                {
+                    return null;
+                }
             }
 
             return null;
