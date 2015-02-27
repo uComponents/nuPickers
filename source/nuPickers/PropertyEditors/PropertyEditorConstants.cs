@@ -4,7 +4,7 @@ namespace nuPickers.PropertyEditors
     /// <summary>
     /// Class used to define constants (avoided more generic Contants class as conflicts with the use of ClientDependency)
     /// </summary>
-    internal static class PropertyEditorConstants
+    public static class PropertyEditorConstants
     {
         public const string DotNetCheckBoxPickerAlias = "nuPickers.DotNetCheckBoxPicker";
         public const string DotNetDropDownPickerAlias = "nuPickers.DotNetDropDownPicker";
