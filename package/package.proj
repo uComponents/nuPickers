@@ -62,6 +62,8 @@
     
     <!--- COPY FOR UMBRACO PACKAGE -->
     <Copy SourceFiles="$(ProjectDir)\bin\Release\uComponents.nuPickers.dll" DestinationFolder="$(WorkingUmbracoDir)\bin\" />
+    <Copy SourceFiles="$(ProjectDir)\bin\Release\ClientDependency.Core.dll" DestinationFolder="$(WorkingUmbracoDir)\bin\" />
+    <Copy SourceFiles="$(ProjectDir)\bin\Release\ClientDependency.Core.Mvc.dll" DestinationFolder="$(WorkingUmbracoDir)\bin\" />
     <Copy SourceFiles="$(PackageDir)\package.xml" DestinationFolder="$(WorkingUmbracoDir)\" />
 
     <!-- COPY FOR NUGET PACKAGE -->
