@@ -21,7 +21,6 @@
             return this.HttpNotFound();
         }
 
-        
         private string GetMimeType(string resource)
         {
             var mimeType = MimeMapping.GetMimeMapping(resource);

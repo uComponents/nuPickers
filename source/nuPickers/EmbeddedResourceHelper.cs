@@ -32,6 +32,10 @@ namespace nuPickers
             {
                 resource = "nuPickers.Shared." + resource.TrimStart(EmbeddedResource.RootUrl).Replace("/", ".").TrimEnd(".nu");
             }
+            else if (resource.EndsWith(".nu"))
+            {
+                resource = resource.TrimEnd(".nu");
+            }
 
             // get this assembly
             var assembly = typeof(EmbeddedResourceController).Assembly;

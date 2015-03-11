@@ -1,5 +1,4 @@
-﻿
-namespace nuPickers
+﻿namespace nuPickers
 {
     using System;
     using System.Collections.Generic;
