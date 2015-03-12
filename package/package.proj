@@ -43,7 +43,7 @@
     <FileVersion>$(APPVEYOR_BUILD_VERSION)</FileVersion>
   </PropertyGroup>
   <Choose>
-    <When Condition="$(APPVEYOR_BUILD_NUMBER) != '' And $(APPVEYOR_REPO_TAG) != 'true' ">
+    <When Condition="$(APPVEYOR_BUILD_NUMBER) != '' And $(APPVEYOR_REPO_BRANCH) != 'release' ">
       <PropertyGroup>
         <VersionSuffix>build$(APPVEYOR_BUILD_NUMBER)</VersionSuffix>
       </PropertyGroup>
