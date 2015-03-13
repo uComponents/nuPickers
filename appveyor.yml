@@ -1,5 +1,5 @@
 # version format
-version: 1.3.0.{build}
+version: 1.4.0.{build}
 
 # UMBRACO_PACKAGE_PRERELEASE_SUFFIX will only be used for Release builds
 # example UMBRACO_PACKAGE_PRERELEASE_SUFFIX=beta
@@ -14,22 +14,15 @@ build_script:
 - Build.bat
 
 artifacts:
-  - path: package\*.nupkg
-  - path: package\*.zip
+  - path: package\artifacts\*.nupkg
+  - path: package\artifacts\*.zip
 
 deploy:
   - provider: NuGet
     server: https://www.myget.org/F/nupickers/
+    symbol_server: https://nuget.symbolsource.org/MyGet/nupickers
     api_key:
       secure: SASQGWG/4zNns7bwSSsJ5RPvKcKfJsBeEPuw69wsVPA3PO739QmzVtc5VwQwgvbr
     artifact: /.*\.nupkg/
     on:
       branch: master
-
-  - provider: NuGet
-    server: https://www.myget.org/F/nupickers/
-    api_key:
-      secure: SASQGWG/4zNns7bwSSsJ5RPvKcKfJsBeEPuw69wsVPA3PO739QmzVtc5VwQwgvbr
-    artifact: /.*\.nupkg/
-    on:
-      branch: Shazwazza-virtualizedfiles

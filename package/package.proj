@@ -1,31 +1,49 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Package">
 
-<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Complete">
-  
+	<!-- IMPORTS -->
+	<PropertyGroup>
+		<MSBuildCommunityTasksPath>$(MSBuildProjectDirectory)\Tools\MSBuildCommunityTasks</MSBuildCommunityTasksPath>
+		<MSBuildUmbracoTasksPath>$(MSBuildProjectDirectory)\Tools\MSBuildUmbracoTasks</MSBuildUmbracoTasksPath>
+    <MSBuildNugetTasksPath>$(MSBuildProjectDirectory)\Tools\MSBuildNugetTasks</MSBuildNugetTasksPath>
+    <AppVeyorUmbracoPath>$(MSBuildProjectDirectory)\Tools\AppVeyorUmbraco</AppVeyorUmbracoPath>
+	</PropertyGroup>
+
+	<Import Project="$(MSBuildCommunityTasksPath)\MSBuild.Community.Tasks.Targets" />
+	<Import Project="$(MSBuildUmbracoTasksPath)\MSBuild.Umbraco.Tasks.Targets" />
+  <Import Project="$(MSBuildNugetTasksPath)\MSBuild.NuGet.Tasks.Targets" />
+  <Import Project="$(AppVeyorUmbracoPath)\AppVeyorUmbraco.Targets" />
+
+  <!-- SHARED PROPERTIES -->
   <PropertyGroup>
-    <RootDir>$(MSBuildProjectDirectory)\..</RootDir>
-    <PackageDir>$(MSBuildProjectDirectory)</PackageDir>
-    <SourceDir>$(RootDir)\source</SourceDir>
-    <ProjectDir>$(RootDir)\source\nuPickers</ProjectDir>
-    <WorkingDir>$(PackageDir)\temp</WorkingDir>
-    <WorkingUmbracoDir>$(PackageDir)\temp\Umbraco</WorkingUmbracoDir>
-    <WorkingNuGetDir>$(PackageDir)\temp\NuGet</WorkingNuGetDir>
-  </PropertyGroup>  
-  
-  <!-- IMPORTS -->
-  <Import Project="$(PackageDir)\MSBuildTasks\MSBuild.Community.Tasks.Targets" />
-  <Import Project="$(PackageDir)\MSBuildTasks\MSBuild.Umbraco.Tasks.Targets" />
-  <Import Project="$(PackageDir)\MSBuildTasks\MSBuild.NuGet.Tasks.Targets" />
-  <Import Project="$(PackageDir)\MSBuildTasks\AppVeyorUmbraco.Targets" />
-  
-   <!-- PROPERTIES -->
-  <PropertyGroup >
-    <MinUmbracoVersion>$(UMBRACO_PACKAGE_MIN_VERSION)</MinUmbracoVersion>
-    <FileVersion>$(APPVEYOR_BUILD_VERSION)</FileVersion>
+    <PackageName>nuPickers</PackageName>
+    <MinUmbracoVersion>7.1.3</MinUmbracoVersion>
+    <Readme>nuPickers is a collection of Umbraco v7 Property Editors</Readme>
+    <AuthorName>Hendy Racher, Jeavon Leopold, Stephen Roberts, Tom Fulton, Lennart Stoop, Lee Kelleher</AuthorName>
+    <AuthorUrl>https://github.com/uComponents/nuPickers/graphs/contributors</AuthorUrl>
+    <PackageLicenseName>MIT license</PackageLicenseName>
+    <PackageLicenseUrl>http://www.opensource.org/licenses/mit-license.php</PackageLicenseUrl>
+    <ProjectUrl>https://github.com/uComponents/nuPickers</ProjectUrl>
   </PropertyGroup>
 
+  <!-- NUGET ONLY PROPERTIES -->
+  <PropertyGroup>
+    <PackageId>nuPickers</PackageId>
+    <NuGetPackageName>Umbraco nuPickers</NuGetPackageName>
+    <Copyright>Hendy Racher</Copyright>
+    <Owners>Hendy Racher, Jeavon Leopold, Stephen Roberts, Tom Fulton, Lennart Stoop, Lee Kelleher</Owners>
+    <IconUrl>https://raw.githubusercontent.com/uComponents/nuPickers/master/package/icon.png</IconUrl>
+    <Tags>umbraco, uComponents, nuPickers</Tags>
+    <Language>en-GB</Language>
+    <RequireLicenseAcceptance>false</RequireLicenseAcceptance>
+  </PropertyGroup>
+
+  <!-- APPVEYOR PROPERTIES -->
+  <PropertyGroup>
+    <FileVersion>$(APPVEYOR_BUILD_VERSION)</FileVersion>
+  </PropertyGroup>
   <Choose>
-    <When Condition="$(APPVEYOR_BUILD_NUMBER) != '' And $(APPVEYOR_REPO_BRANCH) != 'Release' ">
+    <When Condition="$(APPVEYOR_BUILD_NUMBER) != '' And $(APPVEYOR_REPO_BRANCH) != 'release' ">
       <PropertyGroup>
         <VersionSuffix>build$(APPVEYOR_BUILD_NUMBER)</VersionSuffix>
       </PropertyGroup>
@@ -37,91 +55,132 @@
     </Otherwise>
   </Choose>
 
-  <Target Name="GenProductVersion">
+  <!-- PATHS -->
+  <PropertyGroup>
+    <BuildConfig>Release</BuildConfig>
+    <RootDir>$(MSBuildProjectDirectory)\..</RootDir>
+    <CoreProjectDir>$(RootDir)\source\nuPickers</CoreProjectDir>
+    <BuildUmbDir>$(MSBuildProjectDirectory)\_umbraco</BuildUmbDir>
+    <BuildNuGetDir>$(MSBuildProjectDirectory)\_nuget</BuildNuGetDir>
+    <ArtifactsDir>$(MSBuildProjectDirectory)\artifacts</ArtifactsDir>
+  </PropertyGroup>
+
+  <!-- TARGETS -->
+  <Target Name="GetProductVersion">
     <GetProductVersion BuildVersion="$(APPVEYOR_BUILD_VERSION)" BuildSuffix="$(VersionSuffix)">
       <Output TaskParameter="ProductVersion" PropertyName="ProductVersion"/>
     </GetProductVersion>
   </Target>
-  
-  <!-- UPDATE PROJECT ASSEMBLEY VERSION -->
-  <Target Name="UpdateAssemblyInfo" DependsOnTargets="GenProductVersion">
-    <FileUpdate Encoding="ASCII" Files="$(ProjectDir)\Properties\AssemblyInfo.cs" Regex="AssemblyVersion\(&quot;.*&quot;\)\]" ReplacementText="AssemblyVersion(&quot;$(FileVersion)&quot;)]" />
-    <FileUpdate Encoding="ASCII" Files="$(ProjectDir)\Properties\AssemblyInfo.cs" Regex="AssemblyFileVersion\(&quot;.*&quot;\)\]" ReplacementText="AssemblyFileVersion(&quot;$(FileVersion)&quot;)]" />
-    <FileUpdate Encoding="ASCII" Files="$(ProjectDir)\Properties\AssemblyInfo.cs" Regex="AssemblyInformationalVersion\(&quot;.*&quot;\)\]" ReplacementText="AssemblyInformationalVersion(&quot;$(ProductVersion)&quot;)]" />
+
+  <!-- CLEAN -->
+  <Target Name="Clean" DependsOnTargets="GetProductVersion">
+    <RemoveDir Directories="$(BuildUmbDir)" Condition="Exists('$(BuildUmbDir)')" />
+    <RemoveDir Directories="$(BuildNuGetDir)" Condition="Exists('$(BuildNuGetDir)')" />
+    <RemoveDir Directories="$(ArtifactsDir)" Condition="Exists('$(ArtifactsDir)')" />
+    <MakeDir Directories="$(BuildUmbDir)" />
+    <MakeDir Directories="$(BuildNuGetDir)" />
+    <MakeDir Directories="$(ArtifactsDir)" />
   </Target>
 
-  <!-- COMPILE SOLUTION -->
-  <Target Name="Compile" DependsOnTargets="UpdateAssemblyInfo">
-    <MSBuild Projects="$(SourceDir)\nuPickers.sln" Properties="Configuration=Release" />
+    <!-- UPDATE PROJECT ASSEMBLEY VERSION -->
+  <Target Name="UpdateAssemblyInfo" DependsOnTargets="Clean">
+    <FileUpdate Encoding="ASCII" Files="$(CoreProjectDir)\Properties\AssemblyInfo.cs" Regex="AssemblyVersion\(&quot;.*&quot;\)\]" ReplacementText="AssemblyVersion(&quot;$(FileVersion)&quot;)]" />
+    <FileUpdate Encoding="ASCII" Files="$(CoreProjectDir)\Properties\AssemblyInfo.cs" Regex="AssemblyFileVersion\(&quot;.*&quot;\)\]" ReplacementText="AssemblyFileVersion(&quot;$(FileVersion)&quot;)]" />
+    <FileUpdate Encoding="ASCII" Files="$(CoreProjectDir)\Properties\AssemblyInfo.cs" Regex="AssemblyInformationalVersion\(&quot;.*&quot;\)\]" ReplacementText="AssemblyInformationalVersion(&quot;$(ProductVersion)&quot;)]" />
   </Target>
 
-  <!-- PREPARE WORKING DIR -->
-  <Target Name="PrepareWorkingDir" DependsOnTargets="Compile">
-    <RemoveDir Directories="$(WorkingDir)" Condition="Exists('$(WorkingDir)')" />
-    <MakeDir Directories="$(WorkingDir)" />
-    
-    <!--- COPY FOR UMBRACO PACKAGE -->
-    <Copy SourceFiles="$(ProjectDir)\bin\Release\uComponents.nuPickers.dll" DestinationFolder="$(WorkingUmbracoDir)\bin\" />
-    <Copy SourceFiles="$(PackageDir)\package.xml" DestinationFolder="$(WorkingUmbracoDir)\" />
+	<!-- COMPILE -->
+	<Target Name="Compile" DependsOnTargets="UpdateAssemblyInfo">
+		<MSBuild Projects="$(CoreProjectDir)\nuPickers.csproj" Properties="Configuration=$(BuildConfig)"/>
+	</Target>
 
-    <!-- COPY FOR NUGET PACKAGE -->
-    <Copy SourceFiles="$(ProjectDir)\bin\Release\uComponents.nuPickers.dll" DestinationFolder="$(WorkingNugetDir)\lib\net45\" />
-    <Copy SourceFiles="$(PackageDir)\package.nuspec" DestinationFolder="$(WorkingNuGetDir)\" />
-  </Target>
-
-  <!-- UPDATE MANIFESTS -->
-  <Target Name="UpdateManifests" DependsOnTargets="PrepareWorkingDir">    
-    <ItemGroup>
-      <UmbracoManifestFiles Include="$(WorkingUmbracoDir)\**\*.*" Exclude="$(WorkingUmbracoDir)\package.xml" />
-      <NuGetManifestFiles Include="$(WorkingNuGetDir)\**\*.*" Exclude="$(WorkingNuGetDir)\package.nuspec" />
+	<!-- PREPARE FILES -->
+	<Target Name="PrepareFiles" DependsOnTargets="Compile">
+		<ItemGroup>
+			<BinFiles Include="$(CoreProjectDir)\Bin\$(BuildConfig)\uComponents.nuPickers.dll" />
+      <PdbFiles Include="$(CoreProjectDir)\Bin\$(BuildConfig)\uComponents.nuPickers.pdb" />
+      <CDFFiles Include="$(CoreProjectDir)\Bin\$(BuildConfig)\ClientDependency.*.dll" />
+      <SrcFiles Include="$(CoreProjectDir)\**\*.cs" Exclude="$(CoreProjectDir)\obj\**"/>
+			<PackageFile Include="$(MSBuildProjectDirectory)\package.xml" />
+      <NuSpecFile Include="$(MSBuildProjectDirectory)\package.nuspec" />
     </ItemGroup>
-    
-    <MSBuild.Umbraco.Tasks.ManifestUpdate 
-      ManifestFile="$(WorkingUmbracoDir)\package.xml"
-			WorkingDirectory="$(WorkingUmbracoDir)"
-			MinimumRequiredUmbracoVersion="$(MinUmbracoVersion)"
-			PackageVersion="$(ProductVersion)"			
-			Files="@(UmbracoManifestFiles)" />
-    
-    <MSBuild.NuGet.Tasks.ManifestUpdate
-     ManifestFile="$(WorkingNugetDir)\package.nuspec"
-     WorkingDirectory="$(WorkingNugetDir)"
-     Title="$(ProjectName)"
-     Version="$(ProductVersion)"
-     Files="@(NuGetManifestFiles)" />
-    
+    <Copy SourceFiles="@(BinFiles)" DestinationFolder="$(BuildUmbDir)\bin" />
+    <Copy SourceFiles="@(CDFFiles)" DestinationFolder="$(BuildUmbDir)\bin" />
+    <Copy SourceFiles="@(PackageFile)" DestinationFolder="$(BuildUmbDir)" />
+    <Copy SourceFiles="@(BinFiles)" DestinationFolder="$(BuildNuGetDir)\lib\net45" />
+    <Copy SourceFiles="@(PdbFiles)" DestinationFolder="$(BuildNuGetDir)\lib\net45" />
+    <Copy SourceFiles="@(SrcFiles)"
+   DestinationFiles="@(SrcFiles->'$(BuildNuGetDir)\src\%(RecursiveDir)%(Filename)%(Extension)')" />
+    <Copy SourceFiles="@(NuSpecFile)" DestinationFolder="$(BuildNuGetDir)" />
   </Target>
-    
+
+  <!-- MANIFEST UMBRACO -->
+  <Target Name="ManifestUmbraco" DependsOnTargets="PrepareFiles">
+    <ItemGroup>
+      <ManifestFiles Include="$(BuildUmbDir)\**\*" Exclude="$(BuildUmbDir)\package.xml" />
+    </ItemGroup>
+    <ManifestUpdate
+			ManifestFile="$(BuildUmbDir)\package.xml"
+			WorkingDirectory="$(BuildUmbDir)"
+			MinimumRequiredUmbracoVersion="$(MinUmbracoVersion)"
+			PackageName="$(PackageName)"
+			PackageVersion="$(ProductVersion)"
+			AuthorName="$(AuthorName)"
+			AuthorUrl="$(AuthorUrl)"
+			Readme="$(Readme)"
+			PackageLicenseName="$(PackageLicenseName)"
+			PackageLicenseUrl="$(PackageLicenseUrl)"
+			PackageUrl="$(ProjectUrl)"
+			Files="@(ManifestFiles)" />
+  </Target>
+
+  <!-- MANIFEST FOR NUGET PACKAGE -->
+  <Target Name="ManifestNuGet" DependsOnTargets="PrepareFiles">
+    <ItemGroup>
+      <ManifestFiles Include="$(BuildNuGetDir)\**\*" Exclude="$(BuildNuGetDir)\package.nuspec" />
+    </ItemGroup>
+    <MSBuild.NuGet.Tasks.ManifestUpdate
+			ManifestFile="$(BuildNuGetDir)\package.nuspec"
+			WorkingDirectory="$(BuildNuGetDir)"
+			Title="$(NuGetPackageName)"
+			Description="$(Readme)"
+			Summary="$(Readme)"
+			Version="$(ProductVersion)"
+			MinimumRequiredUmbracoVersion ="$(MinUmbracoVersion)"
+			Authors="$(AuthorName)"
+			Owners="$(Owners)"
+			Copyright="$(Copyright)"
+			LicenseUrl="$(PackageLicenseUrl)"
+			ProjectUrl="$(ProjectUrl)"
+			Id="$(PackageId)"
+			IconUrl="$(IconUrl)"
+			Language="$(Language)"
+			RequireLicenseAcceptance="$(RequireLicenseAcceptance)"
+			Tags="$(Tags)"
+			Files="@(ManifestFiles)" />
+  </Target>
 
   <!-- PACKAGE -->
-  <Target Name="Package" DependsOnTargets="UpdateManifests">
+  <Target Name="Package" DependsOnTargets="ManifestUmbraco; ManifestNuGet">
     <ItemGroup>
-      <UmbracoPackageFiles Include="$(WorkingUmbracoDir)\**\*.*" />
+      <PackageFiles Include="$(BuildUmbDir)\**\*.*" />
     </ItemGroup>
 
-    <MSBuild.Umbraco.Tasks.Package 
-      ManifestFile="$(WorkingUmbracoDir)\package.xml"
-      WorkingDirectory="$(WorkingUmbracoDir)\"
-      OutputDirectory="$(PackageDir)\"
-      Files="@(UmbracoPackageFiles)" />
-    
-    <MSBuild.NuGet.Tasks.Pack 
-      NuGetExePath="$(SourceDir)\.nuget\NuGet.exe"
-			ManifestFile="$(WorkingNuGetDir)\package.nuspec"
-			BasePath="$(WorkingNuGetDir)\"
-      Version="$(ProductVersion)"
-			OutputDirectory="$(PackageDir)\"
-			Verbosity="detailed" />
+    <Package ManifestFile="$(BuildUmbDir)\package.xml"
+			WorkingDirectory="$(BuildUmbDir)"
+			OutputDirectory="$(ArtifactsDir)"
+			Files="@(PackageFiles)" />
+
+    <MSBuild.NuGet.Tasks.Pack NuGetExePath="$(RootDir)\package\Tools\NuGet.exe"
+          ManifestFile="$(BuildNuGetDir)\package.nuspec"
+          BasePath="$(BuildNuGetDir)"
+          Version="$(ProductVersion)"
+          OutputDirectory="$(ArtifactsDir)"
+          Symbols="true" />
+
+    <RemoveDir Directories="$(BuildUmbDir)" Condition="Exists('$(BuildUmbDir)')" />
+    <RemoveDir Directories="$(BuildNuGetDir)" Condition="Exists('$(BuildNuGetDir)')" />
 
   </Target>
-  
-  <!-- CLEAN UP -->
-  <Target Name="CleanUp" DependsOnTargets="Package">
-    <RemoveDir Directories="$(WorkingDir)" Condition="Exists('$(WorkingDir)')" />
-  </Target>
 
-  <Target Name="Complete" DependsOnTargets="CleanUp">
-    <Message Text="Complete" />
-  </Target>
-  
 </Project>
