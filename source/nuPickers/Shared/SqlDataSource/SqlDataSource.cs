@@ -5,7 +5,6 @@ namespace nuPickers.Shared.SqlDataSource
     using System.Collections.Generic;
     using System.Text.RegularExpressions;
     using Umbraco.Core.Persistence;
-    using System.Linq;
 
     public class SqlDataSource
     {
@@ -32,17 +31,6 @@ namespace nuPickers.Shared.SqlDataSource
             }
 
             return editorDataItems;
-        }
-
-        public IEnumerable<EditorDataItem> GetEditorDataItemsFilteredByIds(int contextId, string ids)
-        {
-            List<EditorDataItem> result = new List<EditorDataItem>();
-            if (ids != null)
-            {
-                IEnumerable<string> collectionIds = ids.Split(new char[] { ',' }, System.StringSplitOptions.RemoveEmptyEntries).AsEnumerable<string>();
-                result = GetEditorDataItems(contextId).Where(x => ids.Contains(x.Key)).ToList<EditorDataItem>();
-            }
-            return result;
         }
     }
 }

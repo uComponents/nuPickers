@@ -16,7 +16,7 @@
     </label>
      
     <label>
-        <input name="saveFormat" type="radio" value="relationsOnly" ng-model="model.value" ng-disabled="!relationMappingBidirectional" />
+        <input name="saveFormat" type="radio" value="relationsOnly" ng-model="model.value" ng-disabled="!relationMappingBidirectional || isTypeaheadListPicker" />
         <span>Relations Only</span>
     </label>
 
