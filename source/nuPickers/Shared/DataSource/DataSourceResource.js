@@ -22,6 +22,24 @@ angular.module('umbraco.resources')
                         }
                     });
 
+                },
+
+                getEditorDataItemsByIds: function (model, ids) {
+
+                    // returns [{"key":"","label":""},{"key":"","label":""}...]
+                    return $http({
+                        method: 'POST',
+                        url: 'backoffice/nuPickers/' + model.config.dataSource.apiController + '/getEditorDataItemsByIds',
+                        params: {
+                            'contextId': editorState.current.id,
+                            'propertyAlias': model.alias,
+                            'ids': ids
+                        },
+                        data: {
+                            'config': model.config
+                        }
+                    });
+
                 }
 
             };

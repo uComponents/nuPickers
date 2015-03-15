@@ -33,7 +33,24 @@ angular.module('umbraco.resources')
 
                 // get keys & labels of picked items (required by typeahead, as picked keys might not be in the source data)
                 getPickedItems: function(model) {                    
-                    return saveFormatResource.getSavedItems(model.value);
+
+                    // create a new promise....
+                    var deferred = $q.defer();
+
+                    if (model.config.saveFormat == 'relationsOnly') {
+                        relationMappingResource.getRelatedIds(model).then(function (response) {
+                            var ids = response.data.map(function (id) { return id.toString(); }).join(",");
+                            dataSourceResource.getEditorDataItemsByIds(model, ids).then(function (response) {
+                                deferred.resolve(saveFormatResource.getSavedItems(response.data));
+                            });
+                        });
+                    } else {
+                        var ids = saveFormatResource.getSavedKeys(model.value).join(",");
+                        dataSourceResource.getEditorDataItemsByIds(model, ids).then(function (response) {
+                            deferred.resolve(saveFormatResource.getSavedItems(response.data));
+                        });
+                    }
+                    return deferred.promise;
                 },
 
                 createSaveValue: function (config, pickedOptions) {

@@ -104,5 +104,35 @@ namespace nuPickers.Shared.DotNetDataSource
 
             return editorDataItems;
         }
+
+        [HttpPost]
+        public IEnumerable<EditorDataItem> getEditorDataItemsByIds([FromUri] int contextId, [FromUri] string propertyAlias, [FromUri] string ids, [FromBody] dynamic data)
+        {
+            DotNetDataSource dotNetDataSource = ((JObject)data.config.dataSource).ToObject<DotNetDataSource>();
+            dotNetDataSource.Typeahead = null;
+
+            IEnumerable<EditorDataItem> editorDataItems = dotNetDataSource.GetEditorDataItems(contextId).ToList();
+
+            if (ids != null)
+            {
+                IEnumerable<string> collectionIds = ids.Split(new char[] { ',' }, System.StringSplitOptions.RemoveEmptyEntries).AsEnumerable<string>();
+                editorDataItems = editorDataItems.Where(x => ids.Contains(x.Key));
+            }
+
+            CustomLabel customLabel = new CustomLabel((string)data.config.customLabel, contextId, propertyAlias);
+
+            editorDataItems = customLabel.ProcessEditorDataItems(editorDataItems);
+
+            // if the typeahead wasn't handled by the custom data-source, then fallback to default typeahead processing
+            if (!dotNetDataSource.HandledTypeahead)
+            {
+                TypeaheadListPicker typeaheadListPicker = new TypeaheadListPicker(null);
+                editorDataItems = typeaheadListPicker.ProcessEditorDataItems(editorDataItems);
+            }
+
+            return editorDataItems;
+
+        }
+
     }
 }
