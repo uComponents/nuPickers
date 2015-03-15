@@ -1,22 +1,23 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
-    <id>nuPickers</id>
+    <id></id>
     <version>0.0.0</version>
-    <title>Umbraco nuPickers</title>
-    <tags>Umbraco</tags>
-    <authors>Hendy Racher, Jeavon Leopold, Stephen Roberts, Tom Fulton, Lennart Stoop, Lee Kelleher</authors>
-    <owners>The Umbraco Community</owners>
-    <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
-    <projectUrl>https://github.com/uComponents/nuPickers</projectUrl>
-    <iconUrl>https://raw.githubusercontent.com/uComponents/nuPickers/master/package/icon.png</iconUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <summary />
-    <description><![CDATA[nuPickers is a collection of Umbraco v7 Property Editors]]></description>
-    <copyright />
+    <title></title>
+    <authors></authors>
+    <owners></owners>
+    <projectUrl></projectUrl>
+    <iconUrl></iconUrl>
+    <requireLicenseAcceptance></requireLicenseAcceptance>
+    <description></description>
+    <summary></summary>
+    <copyright></copyright>
+    <licenseUrl></licenseUrl>
+    <language></language>
+    <tags></tags>
     <dependencies>
-      <dependency id="UmbracoCms.Core" version="7.1.3" />
+      <dependency id="UmbracoCms.Core" version="0.0.0" />
+      <dependency id="ClientDependency" version="1.8.3" />
     </dependencies>
   </metadata>
-  <files />
 </package>

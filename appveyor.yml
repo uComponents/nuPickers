@@ -1,0 +1,28 @@
+# version format
+version: 1.4.0.{build}
+
+# UMBRACO_PACKAGE_PRERELEASE_SUFFIX will only be used for Release builds
+# example UMBRACO_PACKAGE_PRERELEASE_SUFFIX=beta
+init:
+- set UMBRACO_PACKAGE_PRERELEASE_SUFFIX=
+
+install:
+  - cmd: npm install -g grunt-cli
+
+build_script:
+- cd package
+- Build.bat
+
+artifacts:
+  - path: package\artifacts\*.nupkg
+  - path: package\artifacts\*.zip
+
+deploy:
+  - provider: NuGet
+    server: https://www.myget.org/F/nupickers/
+    symbol_server: https://nuget.symbolsource.org/MyGet/nupickers
+    api_key:
+      secure: SASQGWG/4zNns7bwSSsJ5RPvKcKfJsBeEPuw69wsVPA3PO739QmzVtc5VwQwgvbr
+    artifact: /.*\.nupkg/
+    on:
+      branch: master

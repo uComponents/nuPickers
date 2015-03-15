@@ -15,14 +15,28 @@
     public class EnumDataSourceApiController : UmbracoAuthorizedJsonController
     {
         /// <summary>
-        /// Gets the names of all assemblies and optional AppCode folder
+        /// 
         /// </summary>
-        /// <returns></returns>
+        /// <returns>a collection of assembly names that have enums in them</returns>
         public IEnumerable<object> GetAssemblyNames()
         {
-            return Helper.GetAssemblyNames().Where(x => Helper.GetAssembly(x).GetTypes().Any(y => y.IsEnum));
-        }
+            List<string> assemblyNames = new List<string>();
 
+            foreach(string assemblyName in Helper.GetAssemblyNames())
+            {
+                Assembly assembly = Helper.GetAssembly(assemblyName);
+
+                if (assembly != null)
+                {
+                    if (assembly.GetLoadableTypes().Any(x => x.IsEnum))
+                    {
+                        assemblyNames.Add(assemblyName);
+                    }
+                }
+            }
+
+            return assemblyNames;
+        }
 
         public IEnumerable<object> GetEnumNames([FromUri]string assemblyName)
         {
@@ -30,7 +44,10 @@
 
             if (assembly != null)
             {
-                return assembly.GetTypes().Where(x => x.IsEnum).Select(x => x.FullName);
+                return assembly
+                        .GetLoadableTypes()
+                        .Where(x => x.IsEnum)
+                        .Select(x => x.FullName);
             }
 
             return null;

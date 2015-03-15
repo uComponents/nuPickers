@@ -19,8 +19,22 @@ namespace nuPickers.Shared.DotNetDataSource
     {
         public IEnumerable<object> GetAssemblyNames()
         {
-            return Helper.GetAssemblyNames()
-                            .Where(x => Helper.GetAssembly(x).GetTypes().Any(y => typeof(IDotNetDataSource).IsAssignableFrom(y)));
+            List<string> assemblyNames = new List<string>();
+
+            foreach (string assemblyName in Helper.GetAssemblyNames())
+            {
+                Assembly assembly = Helper.GetAssembly(assemblyName);
+
+                if (assembly != null)
+                {
+                    if (assembly.GetLoadableTypes().Any(x => typeof(IDotNetDataSource).IsAssignableFrom(x)))
+                    {
+                        assemblyNames.Add(assemblyName);
+                    }
+                }
+            }
+
+            return assemblyNames;
         }
 
         public IEnumerable<object> GetClassNames([FromUri]string assemblyName)
@@ -29,7 +43,10 @@ namespace nuPickers.Shared.DotNetDataSource
 
             if (assembly != null)
             {
-                return assembly.GetTypes().Where(x => typeof(IDotNetDataSource).IsAssignableFrom(x)).Select(x => x.FullName);
+                return assembly
+                        .GetLoadableTypes()
+                        .Where(x => typeof(IDotNetDataSource).IsAssignableFrom(x))
+                        .Select(x => x.FullName);
             }
             
             return null;

@@ -9,6 +9,6 @@ namespace nuPickers.Shared.DotNetDataSource
         /// 1st string is the key
         /// 2nd string is the label
         /// </returns>
-        IEnumerable<KeyValuePair<string, string>> GetEditorDataItems();
+        IEnumerable<KeyValuePair<string, string>> GetEditorDataItems(int contextId);
     }
 }

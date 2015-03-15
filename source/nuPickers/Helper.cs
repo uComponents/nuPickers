@@ -1,5 +1,4 @@
-﻿
-namespace nuPickers
+﻿namespace nuPickers
 {
     using System;
     using System.Collections.Generic;
@@ -18,7 +17,11 @@ namespace nuPickers
             DirectoryInfo appCode = new DirectoryInfo(HostingEnvironment.MapPath("~/App_Code"));
             if (appCode.Exists && appCode.GetFiles().Length > 0)
             {
-                assemblyNames.Add(appCode.Name);
+                // safety check to see if an assembly can be got from AppCode
+                if (Helper.GetAssembly(appCode.Name) != null)
+                {
+                    assemblyNames.Add(appCode.Name);
+                }
             }
 
             // add assemblies from the /bin directory
@@ -27,6 +30,11 @@ namespace nuPickers
             return assemblyNames;
         }
 
+        /// <summary>
+        /// attempts to get an assembly by it's name
+        /// </summary>
+        /// <param name="assemblyName"></param>
+        /// <returns>an Assembly or null</returns>
         internal static Assembly GetAssembly(string assemblyName)
         {
             if (string.Equals(assemblyName, "App_Code", StringComparison.InvariantCultureIgnoreCase))
@@ -44,11 +52,39 @@ namespace nuPickers
             string assemblyFilePath = HostingEnvironment.MapPath(string.Concat("~/bin/", assemblyName));
             if (!string.IsNullOrEmpty(assemblyFilePath))
             {
-                // HACK: http://stackoverflow.com/questions/1031431/system-reflection-assembly-loadfile-locks-file
-                return Assembly.Load(File.ReadAllBytes(assemblyFilePath));
+                try
+                {
+                    // HACK: http://stackoverflow.com/questions/1031431/system-reflection-assembly-loadfile-locks-file
+                    return Assembly.Load(File.ReadAllBytes(assemblyFilePath));
+                }
+                catch
+                {
+                    return null;
+                }
             }
 
             return null;
+        }
+
+        /// <summary>
+        /// extension method on Assembly to handle reflection loading exceptions
+        /// </summary>
+        /// <param name="assembly">the assembly to get types from</param>
+        /// <returns>a collection of types found</returns>
+        internal static IEnumerable<Type> GetLoadableTypes(this Assembly assembly)
+        {       
+            try
+            {
+                return assembly.GetTypes();
+            }
+            catch (ReflectionTypeLoadException e)
+            {
+                return e.Types.Where(x => x != null);
+            }
+            catch
+            {
+                return Enumerable.Empty<Type>();
+            }       
         }
     }
 }

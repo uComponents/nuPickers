@@ -56,7 +56,7 @@ namespace nuPickers.Shared.DotNetDataSource
                 }
 
                 editorDataItems = ((IDotNetDataSource)dotNetDataSource)
-                                            .GetEditorDataItems()
+                                            .GetEditorDataItems(contextId)
                                             .Select(x => new EditorDataItem() { Key = x.Key, Label = x.Value });
             }
 

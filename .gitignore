@@ -155,5 +155,4 @@ $RECYCLE.BIN/
 # Mac desktop service store files
 .DS_Store
 
-package/nuPickers.*.nupkg
-package/nuPickers_*.zip
+package/artifacts/*
