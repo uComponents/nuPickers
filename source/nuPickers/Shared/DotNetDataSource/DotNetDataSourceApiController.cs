@@ -108,16 +108,16 @@ namespace nuPickers.Shared.DotNetDataSource
         [HttpPost]
         public IEnumerable<EditorDataItem> getEditorDataItemsByIds([FromUri] int contextId, [FromUri] string propertyAlias, [FromUri] string ids, [FromBody] dynamic data)
         {
+            if (string.IsNullOrWhiteSpace(ids))
+                return null;
+
             DotNetDataSource dotNetDataSource = ((JObject)data.config.dataSource).ToObject<DotNetDataSource>();
             dotNetDataSource.Typeahead = null;
 
             IEnumerable<EditorDataItem> editorDataItems = dotNetDataSource.GetEditorDataItems(contextId).ToList();
 
-            if (ids != null)
-            {
-                IEnumerable<string> collectionIds = ids.Split(new char[] { ',' }, System.StringSplitOptions.RemoveEmptyEntries).AsEnumerable<string>();
-                editorDataItems = editorDataItems.Where(x => ids.Contains(x.Key));
-            }
+            IEnumerable<string> collectionIds = ids.Split(new char[] { ',' }, System.StringSplitOptions.RemoveEmptyEntries).AsEnumerable<string>();
+            editorDataItems = editorDataItems.Where(x => ids.Contains(x.Key));
 
             CustomLabel customLabel = new CustomLabel((string)data.config.customLabel, contextId, propertyAlias);
 
