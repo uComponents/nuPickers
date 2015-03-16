@@ -17,8 +17,8 @@
             var pos = BuildVersion.LastIndexOf('.');
             var len = BuildVersion.Length - pos - 1;
             
-            var buildNumber = ("000" + BuildVersion.Substring(pos + 1, len));
-            var buildNumberWithZeros = buildNumber.Substring(buildNumber.Length - 4);
+            var buildNumber = ("00000" + BuildVersion.Substring(pos + 1, len));
+            var buildNumberWithZeros = buildNumber.Substring(buildNumber.Length - 6);
 
             var baseVersion = BuildVersion.Substring(0, pos);
 
@@ -36,7 +36,7 @@
             }
             else if (!string.IsNullOrEmpty(BuildSuffix) && Release == "false"){
                 ProductVersion = baseVersion + "-" + BuildSuffix + "-" + buildNumberWithZeros;
-            }         
+            }               
 //Log.LogError(OutputVer);
 ]]>
       </Code>
