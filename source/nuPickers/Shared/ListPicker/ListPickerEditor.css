@@ -121,7 +121,8 @@
 }
 
 .list-picker .selectable .option-label {
-    /* reset the direction:rtl */
+    /* reset the direction */
+    direction:ltr;
     float:left; 
     text-align:left;
 }
