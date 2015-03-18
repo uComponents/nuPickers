@@ -222,6 +222,7 @@
     <Compile Include="EmbeddedResourceVirtualPathProvider.cs" />
     <Compile Include="EmbeddedResourceWriter.cs" />
     <Compile Include="Helper.cs" />
+    <Compile Include="NuHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyEditors\BasePropertyEditor.cs" />
     <Compile Include="PropertyEditors\DotNetCheckBoxPicker\DotNetCheckBoxPickerPreValueEditor.cs" />
