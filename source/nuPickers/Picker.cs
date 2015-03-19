@@ -18,7 +18,7 @@
         private int ContextId { get; set; }
         private string PropertyAlias { get; set; }
         private int DataTypeId { get; set; }
-        private object SavedValue { get; set; }
+        public object SavedValue { get; private set; }
 
         private IDictionary<string, PreValue> dataTypePreValues = null;
         private IDictionary<string, PreValue> DataTypePreValues
