@@ -22,21 +22,26 @@
 
             var baseVersion = BuildVersion.Substring(0, pos);
 
-            if (string.IsNullOrEmpty(BuildSuffix) && Release == "true")
+            if ((string.IsNullOrEmpty(BuildSuffix) || BuildSuffix == "rtm") && Release == "true")
             {
                 ProductVersion = baseVersion;
             }
             else if (string.IsNullOrEmpty(BuildSuffix) && Release == "false")
             {
-                ProductVersion = baseVersion + "-build-" + buildNumberWithZeros;
+                ProductVersion = baseVersion + "-alpha-" + buildNumberWithZeros;
             }
             else if (!string.IsNullOrEmpty(BuildSuffix) && Release == "true")
             {
                 ProductVersion = baseVersion + "-" + BuildSuffix;
             }
-            else if (!string.IsNullOrEmpty(BuildSuffix) && Release == "false"){
+            else if (!string.IsNullOrEmpty(BuildSuffix) && BuildSuffix != "rtm" && Release == "false")
+            {
                 ProductVersion = baseVersion + "-" + BuildSuffix + "-" + buildNumberWithZeros;
-            }               
+            }
+            else
+            {
+                ProductVersion = "";
+            }          
 //Log.LogError(OutputVer);
 ]]>
       </Code>
