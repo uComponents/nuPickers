@@ -33,6 +33,8 @@ angular.module('umbraco.resources')
                             'relationsOnly': model.config.saveFormat == 'relationsOnly'
                         },
                         data:  pickedOptions.map(function (option) { return parseInt(option.key); })
+                        data: (pickedOptions == null || pickedOptions.length == 0 || pickedOptions[0] == null) ? []
+                            : pickedOptions.map(function (option) { return parseInt(option.key); })
                     });
 
                 }
