@@ -18,6 +18,7 @@ artifacts:
   - path: package\artifacts\*.zip
 
 deploy:
+    # MyGet Deployment for builds & releases
   - provider: NuGet
     server: https://www.myget.org/F/nupickers/
     symbol_server: https://nuget.symbolsource.org/MyGet/nupickers
@@ -26,3 +27,22 @@ deploy:
     artifact: /.*\.nupkg/
     on:
       branch: master
+
+     # NuGet Deployment for releases
+  - provider: NuGet
+    server: 
+    api_key:
+      secure: adk3pI9HCByZg2VRxplX9UR6qHf97bA3as6dusxLswCKI8BQQE8DO5a0frLrI+EO
+    artifact: /.*\.nupkg/
+    on:
+      branch: release
+
+     # GitHub Deployment for releases
+  - provider: GitHub
+    auth_token:
+      secure: c0LwOGqoFZIieyy8CHrUtYQOD0HL0rG5tV2DS+8FHv34BKs/LSGGtmWWep5O7GbV
+    artifact: /.*\.zip/            # upload all Zip packages to release assets
+    draft: false
+    prerelease: false
+    on:
+      branch: release
