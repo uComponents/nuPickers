@@ -4,7 +4,7 @@ version: 1.4.1.{build}
 # Do not build on tags
 skip_tags: true
 
-# UMBRACO_PACKAGE_PRERELEASE_SUFFIX will only be used for Release builds
+# UMBRACO_PACKAGE_PRERELEASE_SUFFIX if a rtm release build this should be blank, otherwise if empty will default to alpha
 # example UMBRACO_PACKAGE_PRERELEASE_SUFFIX=beta
 init:
 - set UMBRACO_PACKAGE_PRERELEASE_SUFFIX=
