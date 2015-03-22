@@ -5,8 +5,8 @@ angular.module('umbraco.resources')
 
             return {
 
-                // pickedOptions: [{"key":"","label":""},{"key":"","label":""}...]
-                // returns a string representation of the picked options as per the configured SaveFormat
+                /// pickedOptions: [{"key":"","label":""},{"key":"","label":""}...]
+                /// returns a string representation of the picked options as per the configured SaveFormat
                 createSaveValue: function (config, pickedOptions) {
 
                     if (pickedOptions == null || pickedOptions.length == 0 || pickedOptions[0] == null) {
@@ -47,13 +47,25 @@ angular.module('umbraco.resources')
                     }
                 },
 
+                /// returns an array of strings
+                /// saveValue is expected to be a string or an object
                 getSavedKeys: function (saveValue) {
 
-                    if (saveValue instanceof Array) // json
+                    // known json save format
+                    if (saveValue instanceof Array)
                     {
                         return saveValue.map(function (option) { return option.key }).join().split(',');
                     }
 
+                    // commented out fix as per PR #86
+                    //// parse for nested JSON save format (incase supplied saveValue represented as a string rather than array)
+                    //try {
+                    //    var jsonSaveValue = JSON.parse(saveValue);
+                    //    return jsonSaveValue.map(function (option) { return option.key }).join().split(',');
+                    //}
+                    //catch (error) { } // suppress
+
+                    // known xml save format
                     try {
                         var xml = $.parseXML(saveValue);
                         var keys = new Array();
@@ -63,19 +75,30 @@ angular.module('umbraco.resources')
 
                         return keys;
                     }
-                    catch (error) {
-                    }
+                    catch (error) { } // suppress
 
-                    return saveValue.split(','); // csv
+                    // fallback to csv save format
+                    return saveValue.split(',');
                 },
 
-                // saveValue will be either json or xml, so both key/label can be returned
+                /// returns an array of { 'key': '', 'label': '' } objects
+                /// saveValue expected to be either json or xml
                 getSavedItems: function (saveValue) {
-                    if (saveValue instanceof Array) // json
+
+                    // known json save format
+                    if (saveValue instanceof Array)
                     {
                         return saveValue;
                     }
 
+                    // commented out fix as per PR #86
+                    //// parse for nested JSON save format (incase supplied saveValue represented as a string rather than array)
+                    //try {
+                    //    return JSON.parse(saveValue);
+                    //}
+                    //catch (error) { } // suppress
+
+                    // known xml save format
                     try {
                         var xml = $.parseXML(saveValue);
                         var items = new Array();
@@ -88,10 +111,9 @@ angular.module('umbraco.resources')
 
                         return items;
                     }
-                    catch (error) {
+                    catch (error) { } // suppress
 
-                    }
-
+                    // csv doesn't support storing of label data
                     return null;
                 }
             };
