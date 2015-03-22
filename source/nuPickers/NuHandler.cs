@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace nuPickers
 {
+    using System;
     using System.IO;
-    using System.Net;
     using System.Web;
     using System.Web.Routing;
 
