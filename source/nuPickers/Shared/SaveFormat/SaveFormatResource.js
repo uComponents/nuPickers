@@ -8,7 +8,7 @@ angular.module('umbraco.resources')
                 // pickedOptions: [{"key":"","label":""},{"key":"","label":""}...]
                 // returns a string representation of the picked options as per the configured SaveFormat
                 createSaveValue: function (config, pickedOptions) {
-                    
+
                     if (pickedOptions == null || pickedOptions.length == 0 || pickedOptions[0] == null) {
                         return null;
                     }
@@ -41,7 +41,7 @@ angular.module('umbraco.resources')
                             break;
 
                         case 'relationsOnly': // when saving to relations only
-                        default: 
+                        default:
                             return null;
                             break;
                     }
@@ -49,30 +49,21 @@ angular.module('umbraco.resources')
 
                 getSavedKeys: function (saveValue) {
 
-                    if (!(saveValue instanceof Array)) {
-                        try {
-
-                            saveValue = JSON.parse(saveValue);
-                            return saveValue.map(function (option) { return option.key }).join().split(',');
-
-                        } catch (error) {
-
-                            //its not json its probably XML.
-                            try {
-                                var xml = $.parseXML(saveValue);
-                                var keys = new Array();
-                                $(xml).find('Picked').each(function () {
-                                    keys.push($(this).attr('Key'));
-                                });
-
-                                return keys;
-                            }
-                            catch (error) {}
-
-                        }
-                    } else // its json already
+                    if (saveValue instanceof Array) // json
                     {
                         return saveValue.map(function (option) { return option.key }).join().split(',');
+                    }
+
+                    try {
+                        var xml = $.parseXML(saveValue);
+                        var keys = new Array();
+                        $(xml).find('Picked').each(function () {
+                            keys.push($(this).attr('Key'));
+                        });
+
+                        return keys;
+                    }
+                    catch (error) {
                     }
 
                     return saveValue.split(','); // csv
@@ -80,37 +71,26 @@ angular.module('umbraco.resources')
 
                 // saveValue will be either json or xml, so both key/label can be returned
                 getSavedItems: function (saveValue) {
-
-                    if (!(saveValue instanceof Array)) {
-                        try {
-
-                            saveValue = JSON.parse(saveValue);
-                            return saveValue;
-
-                        } catch (error) {
-
-                            //its not json its probably XML.
-                            try {
-                                var xml = $.parseXML(saveValue);
-                                var items = new Array();
-                                $(xml).find('Picked').each(function () {
-                                    items.push({
-                                        'key': $(this).attr('Key'),
-                                        'label': $(this).text()
-                                    });
-                                });
-
-                                return items;
-                            }
-                            catch (error) {}
-
-                        }
-                    } else // its json already
+                    if (saveValue instanceof Array) // json
                     {
                         return saveValue;
                     }
 
-                    
+                    try {
+                        var xml = $.parseXML(saveValue);
+                        var items = new Array();
+                        $(xml).find('Picked').each(function () {
+                            items.push({
+                                'key': $(this).attr('Key'),
+                                'label': $(this).text()
+                            });
+                        });
+
+                        return items;
+                    }
+                    catch (error) {
+
+                    }
 
                     return null;
                 }
