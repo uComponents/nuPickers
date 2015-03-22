@@ -156,4 +156,13 @@ $RECYCLE.BIN/
 .DS_Store
 
 package/artifacts/*
+
+# Exclude built packages
+package/nuPickers*.nupkg
+package/nuPickers*.zip
+
+# Exclude local test site
+www/
+
 source/nuWebTestSite/App_Data/ClientDependency/*
+
