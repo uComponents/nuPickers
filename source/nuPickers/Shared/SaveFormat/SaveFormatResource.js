@@ -5,8 +5,8 @@ angular.module('umbraco.resources')
 
             return {
 
-                /// pickedOptions: [{"key":"","label":""},{"key":"","label":""}...]
                 /// returns a string representation of the picked options as per the configured SaveFormat
+                /// pickedOptions expected to be an array of { 'key': '', 'label': '' } objects
                 createSaveValue: function (config, pickedOptions) {
 
                     if (pickedOptions == null || pickedOptions.length == 0 || pickedOptions[0] == null) {
@@ -15,7 +15,7 @@ angular.module('umbraco.resources')
 
                     switch (config.saveFormat) {
 
-                        case 'csv': // "key, key..."                        
+                        case 'csv': // 'key, key...'
                             return pickedOptions.map(function (option) { return option.key; }).join();
                             break;
 
@@ -48,24 +48,23 @@ angular.module('umbraco.resources')
                 },
 
                 /// returns an array of strings
-                /// saveValue is expected to be a string or an object
+                /// saveValue is expected to be a string or an array of { 'key': '', 'label': '' } objects
                 getSavedKeys: function (saveValue) {
 
-                    // known json save format
+                    // json save format
                     if (saveValue instanceof Array)
                     {
                         return saveValue.map(function (option) { return option.key }).join().split(',');
                     }
 
-                    // parse for nested JSON save format (incase supplied saveValue represented as a string rather than array)
-                    // fix to support Doc Type Grid Editor package
+                    // parse string for nested json save format (fix to support the Doc Type Grid Editor package)
                     try {
                         var jsonSaveValue = JSON.parse(saveValue);
                         return jsonSaveValue.map(function (option) { return option.key }).join().split(',');
                     }
                     catch (error) { } // suppress
 
-                    // known xml save format
+                    // xml save format
                     try {
                         var xml = $.parseXML(saveValue);
                         var keys = new Array();
@@ -77,7 +76,7 @@ angular.module('umbraco.resources')
                     }
                     catch (error) { } // suppress
 
-                    // fallback to csv save format
+                    // csv save format
                     return saveValue.split(',');
                 },
 
@@ -85,20 +84,19 @@ angular.module('umbraco.resources')
                 /// saveValue expected to be either json or xml
                 getSavedItems: function (saveValue) {
 
-                    // known json save format
+                    // json save format
                     if (saveValue instanceof Array)
                     {
                         return saveValue;
                     }
 
-                    // parse for nested JSON save format (incase supplied saveValue represented as a string rather than array)
-                    // fix to support Doc Type Grid Editor package
+                    // parse string for nested json save format (fix to support the Doc Type Grid Editor package)
                     try {
                         return JSON.parse(saveValue);
                     }
                     catch (error) { } // suppress
 
-                    // known xml save format
+                    // xml save format
                     try {
                         var xml = $.parseXML(saveValue);
                         var items = new Array();
@@ -113,7 +111,7 @@ angular.module('umbraco.resources')
                     }
                     catch (error) { } // suppress
 
-                    // csv doesn't support storing of label data
+                    // csv save format - doesn't support storing of label data
                     return null;
                 }
             };
