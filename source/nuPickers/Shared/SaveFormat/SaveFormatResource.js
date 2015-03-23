@@ -57,13 +57,13 @@ angular.module('umbraco.resources')
                         return saveValue.map(function (option) { return option.key }).join().split(',');
                     }
 
-                    // commented out fix as per PR #86
-                    //// parse for nested JSON save format (incase supplied saveValue represented as a string rather than array)
-                    //try {
-                    //    var jsonSaveValue = JSON.parse(saveValue);
-                    //    return jsonSaveValue.map(function (option) { return option.key }).join().split(',');
-                    //}
-                    //catch (error) { } // suppress
+                    // parse for nested JSON save format (incase supplied saveValue represented as a string rather than array)
+                    // fix to support Doc Type Grid Editor package
+                    try {
+                        var jsonSaveValue = JSON.parse(saveValue);
+                        return jsonSaveValue.map(function (option) { return option.key }).join().split(',');
+                    }
+                    catch (error) { } // suppress
 
                     // known xml save format
                     try {
@@ -91,12 +91,12 @@ angular.module('umbraco.resources')
                         return saveValue;
                     }
 
-                    // commented out fix as per PR #86
-                    //// parse for nested JSON save format (incase supplied saveValue represented as a string rather than array)
-                    //try {
-                    //    return JSON.parse(saveValue);
-                    //}
-                    //catch (error) { } // suppress
+                    // parse for nested JSON save format (incase supplied saveValue represented as a string rather than array)
+                    // fix to support Doc Type Grid Editor package
+                    try {
+                        return JSON.parse(saveValue);
+                    }
+                    catch (error) { } // suppress
 
                     // known xml save format
                     try {
