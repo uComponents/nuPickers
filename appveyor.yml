@@ -9,9 +9,6 @@ skip_tags: true
 init:
 - set UMBRACO_PACKAGE_PRERELEASE_SUFFIX=
 
-install:
-  - cmd: npm install -g grunt-cli
-
 build_script:
 - cd package
 - Build.bat
