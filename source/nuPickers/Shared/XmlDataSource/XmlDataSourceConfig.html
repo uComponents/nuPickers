@@ -3,8 +3,8 @@
     <div>
         <label for="">
 
-            Xml Data
-            <small>xml data to query</small>
+            XML Data
+            <small>XML data to query</small>
 
         </label>
 
@@ -15,7 +15,7 @@
                 <option value="content">Content</option>
                 <option value="media">Media</option>
                 <option value="members">Members</option>
-                <option value="url">Url</option>
+                <option value="url">URL</option>
             </select>
 
         </div>
@@ -25,8 +25,8 @@
     <div ng-hide="model.value.xmlData != 'url'">
         <label for="">
 
-            Url
-            <small>use the prefix ~/ to indicate a relative url</small>
+            URL
+            <small>use the prefix ~/ to indicate a URL relative to the site's root</small>
 
         </label>
 
@@ -40,7 +40,7 @@
     <div>
         <label for="">
             XPath
-            <small>all matched nodes used to build data editor items</small>
+            <small>all matched nodes are used to build data editor items</small>
         </label>
 
         <div>
@@ -56,7 +56,7 @@
     <div>
         <label for="">
             Key XPath
-            <small>xpath (from each matched node) to select single value for use as the key (this must be unique)</small>
+            <small>XPath (from each matched node) to select a single value for use as the key (this must be unique)</small>
         </label>
 
         <div>
@@ -72,7 +72,7 @@
     <div ng-hide="model.value.labelMacro">
         <label for="">
             Label XPath
-            <small>xpath (from each matched node) to select single value for use as the label</small>
+            <small>XPath (from each matched node) to select a single value for use as the label</small>
         </label>
 
         <div>
