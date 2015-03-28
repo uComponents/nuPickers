@@ -44,11 +44,14 @@ angular.module('umbraco.resources')
                                 deferred.resolve(saveFormatResource.getSavedItems(response.data));
                             });
                         });
-                    } else {
+                    } else if (model.config.saveFormat == 'csv') {
                         var ids = saveFormatResource.getSavedKeys(model.value).join(",");
                         dataSourceResource.getEditorDataItemsByIds(model, ids).then(function (response) {
                             deferred.resolve(saveFormatResource.getSavedItems(response.data));
                         });
+                    }
+                    else {
+                        deferred.resolve(saveFormatResource.getSavedItems(model.value));
                     }
                     return deferred.promise;
                 },

@@ -30,36 +30,27 @@
         public IEnumerable<EditorDataItem> GetEditorDataItems([FromUri] int contextId, [FromUri] string propertyAlias, [FromBody] dynamic data)
         {
             SqlDataSource sqlDataSource = ((JObject)data.config.dataSource).ToObject<SqlDataSource>();
-            sqlDataSource.Typeahead = (string)data.typeahead;
+            // if there are ids then ignore typeahead
+            sqlDataSource.Typeahead = data.ids != null ? null : (string)data.typeahead;
 
             IEnumerable<EditorDataItem> editorDataItems = sqlDataSource.GetEditorDataItems(contextId);
 
             CustomLabel customLabel = new CustomLabel((string)data.config.customLabel, contextId, propertyAlias);
-            TypeaheadListPicker typeaheadListPicker = new TypeaheadListPicker((string)data.typeahead);
+            // if there are ids then ignore typeahead
+            TypeaheadListPicker typeaheadListPicker = new TypeaheadListPicker(data.ids != null ? null : (string)data.typeahead);
 
             // process the labels and then handle any type ahead text
-            return typeaheadListPicker.ProcessEditorDataItems(customLabel.ProcessEditorDataItems(editorDataItems));
-        }
+            editorDataItems = typeaheadListPicker.ProcessEditorDataItems(customLabel.ProcessEditorDataItems(editorDataItems));
 
-        [HttpPost]
-        public IEnumerable<EditorDataItem> getEditorDataItemsByIds([FromUri] int contextId, [FromUri] string propertyAlias, [FromUri] string ids, [FromBody] dynamic data)
+            // if there are ids then filter by ids
+            if (data.ids != null)
         {
-            if (string.IsNullOrWhiteSpace(ids))
-                return null;
+                IEnumerable<string> collectionIds = data.ids.Split(new char[] { ',' }, System.StringSplitOptions.RemoveEmptyEntries).AsEnumerable<string>();
+                editorDataItems = editorDataItems.Where(x => collectionIds.Contains(x.Key));
+            }
 
-            SqlDataSource sqlDataSource = ((JObject)data.config.dataSource).ToObject<SqlDataSource>();
-            sqlDataSource.Typeahead = null;
+            return editorDataItems;
 
-            IEnumerable<EditorDataItem> editorDataItems = sqlDataSource.GetEditorDataItems(contextId);
-
-            IEnumerable<string> collectionIds = ids.Split(new char[] { ',' }, System.StringSplitOptions.RemoveEmptyEntries).AsEnumerable<string>();
-            editorDataItems = editorDataItems.Where(x => ids.Contains(x.Key));
-
-            CustomLabel customLabel = new CustomLabel((string)data.config.customLabel, contextId, propertyAlias);
-            TypeaheadListPicker typeaheadListPicker = new TypeaheadListPicker(null);
-
-            // process the labels and then handle any type ahead text
-            return typeaheadListPicker.ProcessEditorDataItems(customLabel.ProcessEditorDataItems(editorDataItems));
         }
     }
 }

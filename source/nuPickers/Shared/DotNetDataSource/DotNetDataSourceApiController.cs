@@ -87,7 +87,8 @@ namespace nuPickers.Shared.DotNetDataSource
         public IEnumerable<EditorDataItem> GetEditorDataItems([FromUri] int contextId, [FromUri] string propertyAlias, [FromBody] dynamic data)
         {
             DotNetDataSource dotNetDataSource = ((JObject)data.config.dataSource).ToObject<DotNetDataSource>();
-            dotNetDataSource.Typeahead = (string)data.typeahead;
+            // if there are ids then ignore typeahead
+            dotNetDataSource.Typeahead = data.ids != null ? null : (string)data.typeahead;
 
             IEnumerable<EditorDataItem> editorDataItems = dotNetDataSource.GetEditorDataItems(contextId).ToList();
 
@@ -96,38 +97,18 @@ namespace nuPickers.Shared.DotNetDataSource
             editorDataItems = customLabel.ProcessEditorDataItems(editorDataItems);
 
             // if the typeahead wasn't handled by the custom data-source, then fallback to default typeahead processing
-            if (!dotNetDataSource.HandledTypeahead)
+            // if there are ids then ignore typeahead
+            if (data.ids == null && !dotNetDataSource.HandledTypeahead)
             {
                 TypeaheadListPicker typeaheadListPicker = new TypeaheadListPicker((string)data.typeahead);
                 editorDataItems = typeaheadListPicker.ProcessEditorDataItems(editorDataItems);                
             }
 
-            return editorDataItems;
-        }
-
-        [HttpPost]
-        public IEnumerable<EditorDataItem> getEditorDataItemsByIds([FromUri] int contextId, [FromUri] string propertyAlias, [FromUri] string ids, [FromBody] dynamic data)
+            // if there are ids then filter by ids
+            if (data.ids != null)
         {
-            if (string.IsNullOrWhiteSpace(ids))
-                return null;
-
-            DotNetDataSource dotNetDataSource = ((JObject)data.config.dataSource).ToObject<DotNetDataSource>();
-            dotNetDataSource.Typeahead = null;
-
-            IEnumerable<EditorDataItem> editorDataItems = dotNetDataSource.GetEditorDataItems(contextId).ToList();
-
-            IEnumerable<string> collectionIds = ids.Split(new char[] { ',' }, System.StringSplitOptions.RemoveEmptyEntries).AsEnumerable<string>();
-            editorDataItems = editorDataItems.Where(x => ids.Contains(x.Key));
-
-            CustomLabel customLabel = new CustomLabel((string)data.config.customLabel, contextId, propertyAlias);
-
-            editorDataItems = customLabel.ProcessEditorDataItems(editorDataItems);
-
-            // if the typeahead wasn't handled by the custom data-source, then fallback to default typeahead processing
-            if (!dotNetDataSource.HandledTypeahead)
-            {
-                TypeaheadListPicker typeaheadListPicker = new TypeaheadListPicker(null);
-                editorDataItems = typeaheadListPicker.ProcessEditorDataItems(editorDataItems);
+                IEnumerable<string> collectionIds = data.ids.Split(new char[] { ',' }, System.StringSplitOptions.RemoveEmptyEntries).AsEnumerable<string>();
+                editorDataItems = editorDataItems.Where(x => collectionIds.Contains(x.Key));
             }
 
             return editorDataItems;

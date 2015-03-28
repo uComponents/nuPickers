@@ -9,34 +9,24 @@ angular.module('umbraco.resources')
                 getEditorDataItems: function (model, typeahead) {
 
                     // returns [{"key":"","label":""},{"key":"","label":""}...]
+                    return getEditorDataItems(model, typeahead, null);
+
+                },
+
+                getEditorDataItems: function (model, typeahead, ids) {
+
+                    // returns [{"key":"","label":""},{"key":"","label":""}...]
                     return $http({
                         method: 'POST',
                         url: 'backoffice/nuPickers/' + model.config.dataSource.apiController + '/GetEditorDataItems',
                         params: {
                             'contextId': editorState.current.id,
-                            'propertyAlias' : model.alias
+                            'propertyAlias': model.alias
                         },
                         data: {
                             'config': model.config,
-                            'typeahead': typeahead
-                        }
-                    });
-
-                },
-
-                getEditorDataItemsByIds: function (model, ids) {
-
-                    // returns [{"key":"","label":""},{"key":"","label":""}...]
-                    return $http({
-                        method: 'POST',
-                        url: 'backoffice/nuPickers/' + model.config.dataSource.apiController + '/getEditorDataItemsByIds',
-                        params: {
-                            'contextId': editorState.current.id,
-                            'propertyAlias': model.alias,
+                            'typeahead': typeahead,
                             'ids': ids
-                        },
-                        data: {
-                            'config': model.config
                         }
                     });
 
