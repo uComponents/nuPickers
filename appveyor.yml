@@ -1,27 +1,58 @@
 # version format
-version: 1.3.0.{build}
+version: 1.4.1.{build}
 
-# UMBRACO_PACKAGE_PRERELEASE_SUFFIX will only be used for Release builds
+# Do not build on tags
+skip_tags: true
+
+# UMBRACO_PACKAGE_PRERELEASE_SUFFIX if a rtm release build this should be blank, otherwise if empty will default to alpha
 # example UMBRACO_PACKAGE_PRERELEASE_SUFFIX=beta
-install:
-  - cmd: npm install -g grunt-cli
-  - cmd: set UMBRACO_PACKAGE_PRERELEASE_SUFFIX=
-  - cmd: set UMBRACO_PACKAGE_MIN_VERSION=7.1.3
-  - cmd: cd package
-  - cmd: Build.bat
+init:
+- set UMBRACO_PACKAGE_PRERELEASE_SUFFIX=
 
-# to disable automatic builds
-build: off
+build_script:
+- cd package
+- Build.bat
 
 artifacts:
-  - path: package\*.nupkg
-  - path: package\*.zip
+  - path: package\artifacts\*.nupkg
+  - path: package\artifacts\*.zip
 
 deploy:
+    # MyGet Deployment for builds
   - provider: NuGet
     server: https://www.myget.org/F/nupickers/
+    symbol_server: https://nuget.symbolsource.org/MyGet/nupickers
     api_key:
       secure: SASQGWG/4zNns7bwSSsJ5RPvKcKfJsBeEPuw69wsVPA3PO739QmzVtc5VwQwgvbr
     artifact: /.*\.nupkg/
     on:
       branch: master
+
+    # MyGet Deployment for releases
+  - provider: NuGet
+    server: https://www.myget.org/F/nupickers/
+    symbol_server: https://nuget.symbolsource.org/MyGet/nupickers
+    api_key:
+      secure: SASQGWG/4zNns7bwSSsJ5RPvKcKfJsBeEPuw69wsVPA3PO739QmzVtc5VwQwgvbr
+    artifact: /.*\.nupkg/
+    on:
+      branch: release
+
+     # NuGet Deployment for releases
+  - provider: NuGet
+    server: 
+    api_key:
+      secure: adk3pI9HCByZg2VRxplX9UR6qHf97bA3as6dusxLswCKI8BQQE8DO5a0frLrI+EO
+    artifact: /.*\.nupkg/
+    on:
+      branch: release
+
+     # GitHub Deployment for releases
+  - provider: GitHub
+    auth_token:
+      secure: c0LwOGqoFZIieyy8CHrUtYQOD0HL0rG5tV2DS+8FHv34BKs/LSGGtmWWep5O7GbV
+    artifact: /.*\.zip/            # upload all Zip packages to release assets
+    draft: false
+    prerelease: false
+    on:
+      branch: release
