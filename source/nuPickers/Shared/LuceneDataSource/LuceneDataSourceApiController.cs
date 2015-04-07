@@ -17,11 +17,17 @@ namespace nuPickers.Shared.LuceneDataSource
     {
         public IEnumerable<object> GetExamineSearchers()
         {
-            return Examine.ExamineManager.Instance.SearchProviderCollection.Cast<UmbracoExamineSearcher>().Select(x => x.Name);            
+            return Examine.ExamineManager.Instance.SearchProviderCollection.Cast<UmbracoExamineSearcher>().Select(x => x.Name);
         }
 
         [HttpPost]
         public IEnumerable<EditorDataItem> GetEditorDataItems([FromUri] int contextId, [FromUri] string propertyAlias, [FromBody] dynamic data)
+        {
+            return GetEditorDataItems(contextId, propertyAlias, null, data);
+        }
+
+        [HttpPost]
+        public IEnumerable<EditorDataItem> GetEditorDataItems([FromUri] int contextId, [FromUri] string propertyAlias, [FromUri] string ids, [FromBody] dynamic data)
         {
             LuceneDataSource luceneDataSource = ((JObject)data.config.dataSource).ToObject<LuceneDataSource>();
 
@@ -29,15 +35,15 @@ namespace nuPickers.Shared.LuceneDataSource
 
             CustomLabel customLabel = new CustomLabel((string)data.config.customLabel, contextId, propertyAlias);
             // if there are ids then ignore typeahead
-            TypeaheadListPicker typeaheadListPicker = new TypeaheadListPicker(data.ids != null ? null : (string)data.typeahead);
+            TypeaheadListPicker typeaheadListPicker = new TypeaheadListPicker(ids != null ? null : (string)data.typeahead);
 
             // process the labels and then handle any type ahead text
             editorDataItems = typeaheadListPicker.ProcessEditorDataItems(customLabel.ProcessEditorDataItems(editorDataItems));
 
             // if there are ids then filter by ids
-            if (data.ids != null)
-        {
-                IEnumerable<string> collectionIds = data.ids.Split(new char[] { ',' }, System.StringSplitOptions.RemoveEmptyEntries).AsEnumerable<string>();
+            if (ids != null)
+            {
+                IEnumerable<string> collectionIds = ids.Split(new char[] { ',' }, System.StringSplitOptions.RemoveEmptyEntries).AsEnumerable<string>();
                 editorDataItems = editorDataItems.Where(x => collectionIds.Contains(x.Key));
             }
 
