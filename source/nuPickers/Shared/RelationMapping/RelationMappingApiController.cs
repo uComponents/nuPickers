@@ -8,8 +8,6 @@
     using Umbraco.Core.Models;
     using Umbraco.Web.Editors;
     using Umbraco.Web.Mvc;
-    using LegacyRelation = umbraco.cms.businesslogic.relation.Relation;
-    using LegacyRelationType = umbraco.cms.businesslogic.relation.RelationType;
 
     [PluginController("nuPickers")]
     public class RelationMappingApiController : UmbracoAuthorizedJsonController
@@ -22,15 +20,15 @@
                         {
                             key = x.Alias,
                             label = x.Name,
-                            bidirectional = x.IsBidirectional                           
+                            bidirectional = x.IsBidirectional
                         });
         }
-       
+
         [HttpGet]
         public IEnumerable<int> GetRelatedIds([FromUri] int contextId, [FromUri] string propertyAlias, [FromUri] string relationTypeAlias, [FromUri] bool relationsOnly)
-        {   
+        {
             IRelationType relationType = ApplicationContext.Services.RelationService.GetRelationTypeByAlias(relationTypeAlias);
-            
+
             if (relationType != null)
             {
                 // get all relations of this type
@@ -60,7 +58,7 @@
             }
 
             return null;
-        }        
+        }
 
         [HttpPost]
         public void UpdateRelationMapping([FromUri] int contextId, [FromUri] string propertyAlias, [FromUri] string relationTypeAlias, [FromUri] bool relationsOnly, [FromBody] dynamic data)
@@ -71,46 +69,53 @@
             {
                 // WARNING: Duplicate code
                 // get all relations of this type
-                IEnumerable<IRelation> relations = ApplicationContext.Services.RelationService.GetAllRelationsByRelationType(relationType.Id);
+                List<IRelation> relations = ApplicationContext.Services.RelationService.GetAllRelationsByRelationType(relationType.Id).ToList();
 
                 // construct object used to identify a relation (this is serialized into the relation comment field)
                 RelationMappingComment relationMappingComment = new RelationMappingComment(contextId, propertyAlias);
 
                 if (relationType.IsBidirectional && relationsOnly)
                 {
-                    relations = relations.Where(x => x.ChildId == contextId || x.ParentId == contextId);
-                    relations = relations.Where(x => new RelationMappingComment(x.Comment).DataTypeDefinitionId == relationMappingComment.DataTypeDefinitionId);
+                    relations = relations.Where(x => x.ChildId == contextId || x.ParentId == contextId).ToList();
+                    relations = relations.Where(x => new RelationMappingComment(x.Comment).DataTypeDefinitionId == relationMappingComment.DataTypeDefinitionId).ToList();
                 }
                 else
                 {
-                    relations = relations.Where(x => x.ChildId == contextId);
-                    relations = relations.Where(x => new RelationMappingComment(x.Comment).PropertyTypeId == relationMappingComment.PropertyTypeId);
+                    relations = relations.Where(x => x.ChildId == contextId).ToList();
+                    relations = relations.Where(x => new RelationMappingComment(x.Comment).PropertyTypeId == relationMappingComment.PropertyTypeId).ToList();
 
                     if (relationMappingComment.IsInArchetype())
                     {
-                        relations = relations.Where(x => new RelationMappingComment(x.Comment).MatchesArchetypeProperty(relationMappingComment.PropertyAlias));
+                        relations = relations.Where(x => new RelationMappingComment(x.Comment).MatchesArchetypeProperty(relationMappingComment.PropertyAlias)).ToList();
                     }
                 }
 
-                // clear any existing relations
-                foreach (IRelation relation in relations)
-                {
-                    ApplicationContext.Services.RelationService.Delete(relation);
-                }
-
-                // create new relations
-                LegacyRelationType legacyRelationType = new LegacyRelationType(relationType.Id);
-
-                // ensure context type is valid
-                if (uQuery.GetUmbracoObjectType(contextId) == legacyRelationType.GetChildUmbracoObjectType())
+                if (ApplicationContext.Services.EntityService.GetObjectType(contextId) == UmbracoObjectTypesExtensions.GetUmbracoObjectType(relationType.ChildObjectType))
                 {
                     foreach (int pickedId in ((JArray)data).Select(x => x.Value<int>()))
                     {
                         // ensure picked type is valid
-                        if (uQuery.GetUmbracoObjectType(pickedId) == legacyRelationType.GetParentUmbracoObjectType())
+                        if (ApplicationContext.Services.EntityService.GetObjectType(pickedId) == UmbracoObjectTypesExtensions.GetUmbracoObjectType(relationType.ParentObjectType))
                         {
-                            LegacyRelation.MakeNew(pickedId, contextId, legacyRelationType, relationMappingComment.GetComment());
+
+                            if (!relations.Exists(x => x.ParentId == pickedId))
+                            {
+                                Relation r = new Relation(pickedId, contextId, relationType);
+                                r.Comment = relationMappingComment.GetComment();
+                                ApplicationContext.Services.RelationService.Save(r);
+                            }
+                            // housekeeping
+                            relations.RemoveAll(x => x.ChildId == contextId && x.ParentId == pickedId && x.RelationTypeId == relationType.Id);
                         }
+                    }
+                }
+
+                // clean up remaining relations
+                if (relations.Any())
+                {
+                    foreach (IRelation relation in relations)
+                    {
+                        ApplicationContext.Services.RelationService.Delete(relation);
                     }
                 }
             }
