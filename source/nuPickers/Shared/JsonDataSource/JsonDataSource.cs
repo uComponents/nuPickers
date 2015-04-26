@@ -3,12 +3,8 @@ namespace nuPickers.Shared.JsonDataSource
 {
     using Newtonsoft.Json.Linq;
     using nuPickers.Shared.Editor;
-    using System;
     using System.Collections.Generic;
-    using System.IO;
     using System.Linq;
-    using System.Net;
-    using System.Web;
 
     public class JsonDataSource
     {
@@ -29,7 +25,7 @@ namespace nuPickers.Shared.JsonDataSource
         {
             List<EditorDataItem> editorDataItems = new List<EditorDataItem>();
             
-            JToken jToken = JToken.Parse(GetDataFromUrl(this.Url));
+            JToken jToken = JToken.Parse(Helper.GetDataFromUrl(this.Url));
 
             if (jToken != null)
             {
@@ -60,37 +56,6 @@ namespace nuPickers.Shared.JsonDataSource
             // TODO: distinct on editor data item keys
 
             return editorDataItems;
-        }
-
-        /// <summary>
-        /// Downloads a url resource and returns it as a string. Maybe move this into a helpers class?
-        /// </summary>
-        /// <param name="url">URL to download the resource from</param>
-        /// <returns>the string based result of the webcall</returns>
-        private static string GetDataFromUrl(string url)
-        {
-            string data = string.Empty;
-
-            using (WebClient client = new WebClient())
-            {
-                if (url.StartsWith("~/"))
-                {
-                    string filePath = HttpContext.Current.Server.MapPath(url);
-
-                    if (File.Exists(filePath))
-                    {
-                        url = filePath;
-                    }
-                    else
-                    {
-                        url = url.Replace("~/", (HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "/"));
-                    }
-                }
-
-                data = client.DownloadString(url);
-            }
-
-            return data;
         }
     }
 }

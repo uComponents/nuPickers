@@ -238,7 +238,9 @@
         public override string ToString()
         {
             if (this.SavedValue != null)
+            {
                 return this.SavedValue.ToString();
+            }
 
             return base.ToString();
         }

@@ -1,10 +1,10 @@
-﻿namespace nuPickers.PropertyEditors.RelationLabels
+﻿namespace nuPickers.PropertyEditors.SqlLabels
 {
     using Umbraco.Core.PropertyEditors;
 
-    internal class RelationLabelsPreValueEditor : PreValueEditor
+    internal class SqlLabelsPreValueEditor : PreValueEditor
     {
-        [PreValueField("dataSource", "", EmbeddedResource.RootUrl + "RelationDataSource/RelationDataSourceConfig.html", HideLabel = true)]
+        [PreValueField("dataSource", "", EmbeddedResource.RootUrl + "SqlDataSource/SqlDataSourceConfig.html", HideLabel = true)]
         public string DataSource { get; set; }
 
         [PreValueField("customLabel", "", EmbeddedResource.RootUrl + "CustomLabel/CustomLabelConfig.html", HideLabel = true)]

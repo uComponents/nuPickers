@@ -33,6 +33,7 @@ namespace nuPickers.PropertyEditors
 
         public const string SqlCheckBoxPickerAlias = "nuPickers.SqlCheckBoxPicker";
         public const string SqlDropDownPickerAlias = "nuPickers.SqlDropDownPicker";
+        public const string SqlLabelsAlias = "nuPickers.SqlLabels";
         public const string SqlPrefetchListPickerAlias = "nuPickers.SqlPrefetchListPicker";
         public const string SqlRadioButtonPickerAlias = "nuPickers.SqlRadioButtonPicker";
         public const string SqlTypeaheadListPickerAlias = "nuPickers.SqlTypeaheadListPicker";

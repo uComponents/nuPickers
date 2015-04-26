@@ -1,4 +1,4 @@
-﻿namespace nuPickers.PropertyEditors.RelationLabels
+﻿namespace nuPickers.PropertyEditors.SqlLabels
 {
     using ClientDependency.Core;
 
@@ -8,7 +8,7 @@
     using Umbraco.Web.PropertyEditors;
 
     // EDITOR UI
-    [PropertyEditor(PropertyEditorConstants.RelationLabelsAlias, "nuPickers: Relation Labels", EmbeddedResource.RootUrl + "Labels/LabelsEditor.html", ValueType = "TEXT")]
+    [PropertyEditor(PropertyEditorConstants.SqlLabelsAlias, "nuPickers: Sql Labels", EmbeddedResource.RootUrl + "Labels/LabelsEditor.html", ValueType = "TEXT")]
     [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.RootUrl + "LayoutDirection/LayoutDirection.css.nu")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "Labels/LabelsEditorController.js.nu")]
 
@@ -22,11 +22,11 @@
     [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.RootUrl + "PropertyEditor/PropertyEditorConfig.css.nu")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "RelationDataSource/RelationDataSourceConfigController.js.nu")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "CustomLabel/CustomLabelConfigController.js.nu")]
-    public class RelationLabelsPropertyEditor : BasePropertyEditor
+    public class SqlLabelsPropertyEditor : BasePropertyEditor
     {
         protected override PreValueEditor CreatePreValueEditor()
         {
-            return new RelationLabelsPreValueEditor();
+            return new SqlLabelsPreValueEditor();
         }
     }
 }

@@ -1,5 +1,5 @@
 # version format
-version: 1.4.1.{build}
+version: 1.5.0.{build}
 
 # Do not build on tags
 skip_tags: true
@@ -8,9 +8,6 @@ skip_tags: true
 # example UMBRACO_PACKAGE_PRERELEASE_SUFFIX=beta
 init:
 - set UMBRACO_PACKAGE_PRERELEASE_SUFFIX=
-
-install:
-  - cmd: npm install -g grunt-cli
 
 build_script:
 - cd package

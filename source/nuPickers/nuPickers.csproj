@@ -263,6 +263,8 @@
     <Compile Include="PropertyEditors\LuceneTypeaheadPicker\LuceneTypeaheadListPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\LuceneTypeaheadPicker\LuceneTypeaheadPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\PropertyEditorConstants.cs" />
+    <Compile Include="PropertyEditors\SqlLabels\SqlLabelsPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\SqlLabels\SqlLabelsPropertyEditor.cs" />
     <Compile Include="PropertyEditors\SqlTypeaheadListPicker\SqlTypeaheadListPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\SqlTypeaheadListPicker\SqlTypeaheadListPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\XmlTypeaheadListPicker\XmlTypeaheadListPickerPreValueEditor.cs" />
