@@ -4,7 +4,9 @@
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
+    using System.Net;
     using System.Reflection;
+    using System.Web;
     using System.Web.Hosting;
 
     internal static class Helper
@@ -85,6 +87,37 @@
             {
                 return Enumerable.Empty<Type>();
             }       
+        }
+
+        /// <summary>
+        /// uses supplied url to check the file system (if prefixed with ~/) else makes an http query
+        /// </summary>
+        /// <param name="url">Url to download the resource from</param>
+        /// <returns>the string based result of either a file or an http response</returns>
+        internal static string GetDataFromUrl(string url)
+        {
+            string data = string.Empty;
+
+            using (WebClient client = new WebClient())
+            {
+                if (url.StartsWith("~/"))
+                {
+                    string filePath = HttpContext.Current.Server.MapPath(url);
+
+                    if (File.Exists(filePath))
+                    {
+                        url = filePath;
+                    }
+                    else
+                    {
+                        url = url.Replace("~/", (HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "/"));
+                    }
+                }
+
+                data = client.DownloadString(url);
+            }
+
+            return data;
         }
     }
 }
