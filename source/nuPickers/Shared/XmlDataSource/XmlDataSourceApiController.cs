@@ -5,6 +5,7 @@ namespace nuPickers.Shared.XmlDataSource
     using nuPickers.Shared.CustomLabel;
     using nuPickers.Shared.Editor;
     using nuPickers.Shared.TypeaheadListPicker;
+    using System;
     using System.Collections.Generic;
     using System.Web.Http;
     using Umbraco.Web.Editors;
@@ -36,9 +37,9 @@ namespace nuPickers.Shared.XmlDataSource
 
             // if there are ids then filter by ids
             if (ids != null)
-        {
+            {
                 IEnumerable<string> collectionIds = ids.Split(new char[] { ',' }, System.StringSplitOptions.RemoveEmptyEntries).AsEnumerable<string>();
-                editorDataItems = editorDataItems.Where(x => collectionIds.Contains(x.Key));
+                editorDataItems = editorDataItems.Where(x => collectionIds.Contains(x.Key)).OrderBy(x => Array.FindIndex(collectionIds.ToArray(), y => y == x.Key)); ;
             }
 
             return editorDataItems;

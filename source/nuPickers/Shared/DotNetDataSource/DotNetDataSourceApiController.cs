@@ -48,7 +48,7 @@ namespace nuPickers.Shared.DotNetDataSource
                         .Where(x => typeof(IDotNetDataSource).IsAssignableFrom(x))
                         .Select(x => x.FullName);
             }
-            
+
             return null;
         }
 
@@ -107,14 +107,14 @@ namespace nuPickers.Shared.DotNetDataSource
             if (ids == null && !dotNetDataSource.HandledTypeahead)
             {
                 TypeaheadListPicker typeaheadListPicker = new TypeaheadListPicker((string)data.typeahead);
-                editorDataItems = typeaheadListPicker.ProcessEditorDataItems(editorDataItems);                
+                editorDataItems = typeaheadListPicker.ProcessEditorDataItems(editorDataItems);
             }
 
             // if there are ids then filter by ids
             if (ids != null)
-        {
+            {
                 IEnumerable<string> collectionIds = ids.Split(new char[] { ',' }, System.StringSplitOptions.RemoveEmptyEntries).AsEnumerable<string>();
-                editorDataItems = editorDataItems.Where(x => collectionIds.Contains(x.Key));
+                editorDataItems = editorDataItems.Where(x => collectionIds.Contains(x.Key)).OrderBy(x => Array.FindIndex(collectionIds.ToArray(), y => y == x.Key));
             }
 
             return editorDataItems;

@@ -5,6 +5,7 @@ namespace nuPickers.Shared.LuceneDataSource
     using nuPickers.Shared.CustomLabel;
     using nuPickers.Shared.Editor;
     using nuPickers.Shared.TypeaheadListPicker;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Web.Http;
@@ -44,7 +45,7 @@ namespace nuPickers.Shared.LuceneDataSource
             if (ids != null)
             {
                 IEnumerable<string> collectionIds = ids.Split(new char[] { ',' }, System.StringSplitOptions.RemoveEmptyEntries).AsEnumerable<string>();
-                editorDataItems = editorDataItems.Where(x => collectionIds.Contains(x.Key));
+                editorDataItems = editorDataItems.Where(x => collectionIds.Contains(x.Key)).OrderBy(x => Array.FindIndex(collectionIds.ToArray(), y => y == x.Key));
             }
 
             return editorDataItems;
