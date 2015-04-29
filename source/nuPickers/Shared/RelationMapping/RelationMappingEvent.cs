@@ -10,7 +10,7 @@ namespace nuPickers.Shared.RelationMapping
     using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// server side event to update any relation mapping on change of any content / media / member using a nuPicker with Relations
+    /// server side event to update relations on change of any content / media / member using a nuPicker with relation mapping
     /// </summary>
     public class RelationMappingEvent : ApplicationEventHandler
     {
@@ -40,7 +40,11 @@ namespace nuPickers.Shared.RelationMapping
             this.Saved((IService)sender, e.SavedEntities);
         }
 
-        // combined event for content / media / member
+        /// <summary>
+        /// combined event for content / media / member 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="savedEntities"></param>
         private void Saved(IService sender, IEnumerable<IContentBase> savedEntities)
         {
             foreach (IContentBase savedEntity in savedEntities)

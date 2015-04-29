@@ -15,12 +15,34 @@
 
     public class Picker
     {
+        /// <summary>
+        /// the id of the content, media or member item
+        /// </summary>
         private int ContextId { get; set; }
+
+        /// <summary>
+        /// the alias of this picker on the content, media or member item
+        /// </summary>
         private string PropertyAlias { get; set; }
+
+        /// <summary>
+        /// the data-type this picker is using (no association with a specific SaveValue)
+        /// </summary>
         private int DataTypeId { get; set; }
+        
+        /// <summary>
+        /// the value of this picker
+        /// </summary>
         public object SavedValue { get; private set; }
 
+        /// <summary>
+        /// set once, stores the configuration options for the data-type this picker is using
+        /// </summary>
         private IDictionary<string, PreValue> dataTypePreValues = null;
+
+        /// <summary>
+        /// property accessor to ensure the query to populate the data-type configruation options is only done once
+        /// </summary>
         private IDictionary<string, PreValue> DataTypePreValues
         {
             get
@@ -50,11 +72,11 @@
         }
 
         /// <summary>
-        /// This is the constructor used by the PropertyValueConverter
+        /// internal constructor - picker value is supplied (used by PropertyValueConverter & RelationMappingEvent)
         /// </summary>
-        /// <param name="contextId">the id of the (content, media or member) item being edited (-1 means out of context)</param>
+        /// <param name="contextId">the id of the content, media or member (-1 means out of context)</param>
         /// <param name="propertyAlias">the property alias</param>
-        /// <param name="dataTypeId">the id of the datatype - this allows access to all prevalues</param>
+        /// <param name="dataTypeId">the id of the datatype (to access to prevalues)</param>
         /// <param name="savedValue">the actual value saved</param>
         internal Picker(int contextId, string propertyAlias, int dataTypeId, object savedValue)
         {
@@ -65,10 +87,10 @@
         }
 
         /// <summary>
-        /// 
+        /// public constructor - picker value is calculated from lookup
         /// </summary>
-        /// <param name="contextId"></param>
-        /// <param name="propertyAlias"></param>
+        /// <param name="contextId">the id of the content, media or member</param>
+        /// <param name="propertyAlias">the property alias</param>
         /// <param name="usePublishedValue">when true uses the published value, otherwise when false uses the lastest saved value (which may also be the published value)</param>
         public Picker(int contextId, string propertyAlias, bool usePublishedValue = true)
         {
@@ -110,7 +132,7 @@
         }
 
         /// <summary>
-        /// Returns a collection of all picked keys (regardless as to where they are persisted)
+        /// Returns a collection of all picked keys (regardless as to how / where they are persisted)
         /// </summary>
         public IEnumerable<string> PickedKeys
         {
@@ -128,7 +150,7 @@
         }
 
         /// <summary>
-        /// 
+        /// get all picked items, objects may be typed Content, Media or Member (but all returned as IPublishedContent)
         /// </summary>
         /// <returns>a collection of IPublishedContent, or an empty collection</returns>
         public IEnumerable<IPublishedContent> AsPublishedContent()
@@ -162,13 +184,17 @@
             return publishedContent.Where(x => x != null);
         }
 
+        /// <summary>
+        /// get all picked items, objects may be typed Content, Media or Member (but all returned as dynamic) 
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<dynamic> AsDynamicPublishedContent()
         {
             return this.AsPublishedContent().Select(x => x.AsDynamic());
         }
 
         /// <summary>
-        /// 
+        /// get all picked items and attempt to convert them to the supplied enum type T
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns>a collection of Enums of type T, or an empty collection</returns>
@@ -200,7 +226,7 @@
         }
 
         /// <summary>
-        /// 
+        /// get all picked items as a collection of Enum
         /// </summary>
         /// <returns>a collection of Enums, or empty collection</returns>
         public IEnumerable<Enum> AsEnums()

@@ -6,10 +6,18 @@
     using Umbraco.Core.Models;
 
     /// <summary>
-    /// the core relation mapping functionality (to be migrated out from api controller - now (also?) used by a server event)
+    /// the core relation mapping functionality
     /// </summary>
     internal class RelationMapping
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="contextId">the id of the content, media or member item</param>
+        /// <param name="propertyAlias">the property alias of the picker using relation mapping</param>
+        /// <param name="relationTypeAlias">the alias of the relation type to use</param>
+        /// <param name="relationsOnly"></param>
+        /// <returns></returns>
         internal static IEnumerable<int> GetRelatedIds(int contextId, string propertyAlias, string relationTypeAlias, bool relationsOnly)
         {
             IRelationType relationType = ApplicationContext.Current.Services.RelationService.GetRelationTypeByAlias(relationTypeAlias);
@@ -48,11 +56,11 @@
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="contextId"></param>
-        /// <param name="propertyAlias"></param>
-        /// <param name="relationTypeAlias"></param>
+        /// <param name="contextId">the id of the content, media or member item</param>
+        /// <param name="propertyAlias">the property alias of the picker using relation mapping</param>
+        /// <param name="relationTypeAlias">the alias of the relation type to use</param>
         /// <param name="relationsOnly"></param>
-        /// <param name="pickedIds"></param>
+        /// <param name="pickedIds">the ids of all picked items that are to be related to the contextId</param>
         internal static void UpdateRelationMapping(int contextId, string propertyAlias, string relationTypeAlias, bool relationsOnly, int[] pickedIds)
         {
             IRelationType relationType = ApplicationContext.Current.Services.RelationService.GetRelationTypeByAlias(relationTypeAlias);
