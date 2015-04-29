@@ -7,6 +7,7 @@ namespace nuPickers.Shared.RelationMapping
     using Umbraco.Core.Events;
     using Umbraco.Core.Models;
     using Umbraco.Core.Services;
+    using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// server side event to update any relation mapping on change of any content / media / member using a nuPicker with Relations
@@ -44,9 +45,44 @@ namespace nuPickers.Shared.RelationMapping
         {
             foreach (IContentBase savedEntity in savedEntities)
             {
-                foreach (PropertyType propertyType in savedEntity.PropertyTypes.Where(x => x.PropertyEditorAlias.StartsWith("nuPickers.")))
+                foreach (PropertyType propertyType in savedEntity.PropertyTypes
+                                                            .Where(x => PickerPropertyValueConverter.IsPicker(x.PropertyEditorAlias)))
                 {
-                    // does this property type support relations ?
+                    // using picker to get at the prevalues TODO: consider passing this picker obj to the UpdateRelationMapping method
+                    Picker picker = new Picker(savedEntity.Id, propertyType.Alias, propertyType.DataTypeDefinitionId, savedEntity.GetValue(propertyType.Alias));
+
+                    // not all pickers support relation mapping, so null check required
+                    PreValue relationMappingPreValue = picker.GetDataTypePreValue("relationMapping");
+                    if (relationMappingPreValue != null && !string.IsNullOrWhiteSpace(relationMappingPreValue.Value))
+                    {
+                        // parse the json config to get a relationType alias
+                        string relationTypeAlias = JObject.Parse(relationMappingPreValue.Value).GetValue("relationTypeAlias").ToString();
+
+                        // if relationType specified
+                        if (!string.IsNullOrWhiteSpace(relationTypeAlias))
+                        {
+                            // is the picker saving as relations only ?
+                            // every picker has a save format, so null check NOT required
+                            bool relationsOnly = picker.GetDataTypePreValue("saveFormat").Value == "relationsOnly";
+
+                            int pickedId;
+                            List<int> pickedIds = new List<int>();
+                            foreach(string pickedKey in picker.PickedKeys)
+                            {
+                                if (int.TryParse(pickedKey, out pickedId))
+                                {
+                                    pickedIds.Add(pickedId);
+                                }
+                            }
+
+                            RelationMapping.UpdateRelationMapping(
+                                                savedEntity.Id,
+                                                propertyType.Alias,
+                                                relationTypeAlias,
+                                                relationsOnly,
+                                                pickedIds.ToArray());
+                        }
+                    }
                 }
             }
         }

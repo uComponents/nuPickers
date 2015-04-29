@@ -25,10 +25,6 @@ angular
                     $scope.model.value = editorResource.createSaveValue($scope.model.config, $scope.getPickedOptions());
                 }
 
-                $scope.$on("formSubmitting", function () {
-                    editorResource.updateRelationMapping($scope.model, $scope.getPickedOptions());
-                });
-
                 $scope.getPickedOptions = function () {
                     return $scope.checkBoxPickerOptions.filter(function (option) { return option.isChecked == true; });
                 };

@@ -120,7 +120,7 @@
                 {
                     string relationTypeAlias = JObject.Parse(this.GetDataTypePreValue("RelationMapping").Value).GetValue("relationTypeAlias").ToString();
 
-                    return new RelationMappingApiController().GetRelatedIds(this.ContextId, this.PropertyAlias, relationTypeAlias, true).Select(x => x.ToString());
+                    return RelationMapping.GetRelatedIds(this.ContextId, this.PropertyAlias, relationTypeAlias, true).Select(x => x.ToString());
                 }
                 
                 return this.SavedValue != null ? SaveFormat.GetSavedKeys(this.SavedValue.ToString()) : Enumerable.Empty<string>();

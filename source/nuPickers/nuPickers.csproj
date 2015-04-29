@@ -288,6 +288,7 @@
     <Compile Include="Shared\LuceneDataSource\LuceneDataSource.cs" />
     <Compile Include="Shared\LuceneDataSource\LuceneDataSourceApiController.cs" />
     <Compile Include="Shared\RelationDataSource\RelationDataSourceApiController.cs" />
+    <Compile Include="Shared\RelationMapping\RelationMapping.cs" />
     <Compile Include="Shared\RelationMapping\RelationMappingComment.cs" />
     <Compile Include="Shared\RelationMapping\RelationMappingEvent.cs" />
     <Compile Include="Shared\SaveFormat\SaveFormatPropertyValueEditor.cs" />

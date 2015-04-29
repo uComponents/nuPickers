@@ -2,7 +2,6 @@
 {
     using nuPickers.PropertyEditors;
     using System.Linq;
-    using Umbraco.Core.Models;
     using Umbraco.Core.Models.PublishedContent;
     using Umbraco.Core.PropertyEditors;
     using Umbraco.Web;
@@ -14,9 +13,19 @@
         /// <summary>
         /// This is a generic converter for all nuPicker Picker PropertyEditors
         /// </summary>
-        /// <param name="propertyType"></param>
+        /// <param name="publishedPropertyType"></param>
         /// <returns></returns>
-        public override bool IsConverter(PublishedPropertyType propertyType)
+        public override bool IsConverter(PublishedPropertyType publishedPropertyType)
+        {
+            return PickerPropertyValueConverter.IsPicker(publishedPropertyType.PropertyEditorAlias);
+        }
+
+        /// <summary>
+        /// Helper to check to see if the supplied propertyEditorAlias corresponds with a nuPicker Picker
+        /// </summary>
+        /// <param name="propertyEditorAlias"></param>
+        /// <returns></returns>
+        internal static bool IsPicker(string propertyEditorAlias)
         {
             return new string[] { 
                         PropertyEditorConstants.DotNetCheckBoxPickerAlias,
@@ -49,7 +58,7 @@
                         PropertyEditorConstants.EnumPrefetchListPickerAlias,
                         PropertyEditorConstants.EnumRadioButtonPickerAlias
                     }
-                    .Contains(propertyType.PropertyEditorAlias);
+                 .Contains(propertyEditorAlias);
         }
 
         public override object ConvertSourceToObject(PublishedPropertyType propertyType, object source, bool preview)
