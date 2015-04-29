@@ -36,55 +36,9 @@
         public object SavedValue { get; private set; }
 
         /// <summary>
-        /// set once, stores the configuration options for the data-type this picker is using
+        /// cache var, set once, stores the configuration options for the data-type this picker is using
         /// </summary>
         private IDictionary<string, PreValue> dataTypePreValues = null;
-
-        /// <summary>
-        /// property accessor to ensure the query to populate the data-type configruation options is only done once
-        /// </summary>
-        private IDictionary<string, PreValue> DataTypePreValues
-        {
-            get
-            {
-                if (this.dataTypePreValues == null)
-                {
-                    this.dataTypePreValues = ApplicationContext
-                                                .Current
-                                                .Services
-                                                .DataTypeService
-                                                .GetPreValuesCollectionByDataTypeId(this.DataTypeId)
-                                                .PreValuesAsDictionary;
-                }
-
-                return this.dataTypePreValues;
-            }
-        }
-
-        /// <summary>
-        /// Helper for DataTypePreValues dictionary collection
-        /// </summary>
-        /// <param name="key"></param>
-        /// <returns>the PreValue if found, or null</returns>
-        public PreValue GetDataTypePreValue(string key)
-        {
-            return this.DataTypePreValues.SingleOrDefault(x => string.Equals(x.Key, key, StringComparison.InvariantCultureIgnoreCase)).Value;                  
-        }
-
-        /// <summary>
-        /// internal constructor - picker value is supplied (used by PropertyValueConverter & RelationMappingEvent)
-        /// </summary>
-        /// <param name="contextId">the id of the content, media or member (-1 means out of context)</param>
-        /// <param name="propertyAlias">the property alias</param>
-        /// <param name="dataTypeId">the id of the datatype (to access to prevalues)</param>
-        /// <param name="savedValue">the actual value saved</param>
-        internal Picker(int contextId, string propertyAlias, int dataTypeId, object savedValue)
-        {
-            this.ContextId = contextId;
-            this.PropertyAlias = propertyAlias;
-            this.DataTypeId = dataTypeId;
-            this.SavedValue = savedValue;
-        }
 
         /// <summary>
         /// public constructor - picker value is calculated from lookup
@@ -102,7 +56,7 @@
 
             switch (uQuery.GetUmbracoObjectType(this.ContextId))
             {
-                case uQuery.UmbracoObjectType.Document:                    
+                case uQuery.UmbracoObjectType.Document:
                     picker = umbracoHelper.TypedContent(this.ContextId).GetPropertyValue<Picker>(this.PropertyAlias);
                     this.DataTypeId = picker.DataTypeId;
 
@@ -132,6 +86,21 @@
         }
 
         /// <summary>
+        /// internal constructor - picker value is supplied (used by PropertyValueConverter & RelationMappingEvent)
+        /// </summary>
+        /// <param name="contextId">the id of the content, media or member (-1 means out of context)</param>
+        /// <param name="propertyAlias">the property alias</param>
+        /// <param name="dataTypeId">the id of the datatype (to access to prevalues)</param>
+        /// <param name="savedValue">the actual value saved</param>
+        internal Picker(int contextId, string propertyAlias, int dataTypeId, object savedValue)
+        {
+            this.ContextId = contextId;
+            this.PropertyAlias = propertyAlias;
+            this.DataTypeId = dataTypeId;
+            this.SavedValue = savedValue;
+        }
+
+        /// <summary>
         /// Returns a collection of all picked keys (regardless as to how / where they are persisted)
         /// </summary>
         public IEnumerable<string> PickedKeys
@@ -144,9 +113,40 @@
 
                     return RelationMapping.GetRelatedIds(this.ContextId, this.PropertyAlias, relationTypeAlias, true).Select(x => x.ToString());
                 }
-                
+
                 return this.SavedValue != null ? SaveFormat.GetSavedKeys(this.SavedValue.ToString()) : Enumerable.Empty<string>();
             }
+        }
+
+        /// <summary>
+        /// property accessor to ensure the query to populate the data-type configruation options is only done once
+        /// </summary>
+        private IDictionary<string, PreValue> DataTypePreValues
+        {
+            get
+            {
+                if (this.dataTypePreValues == null)
+                {
+                    this.dataTypePreValues = ApplicationContext
+                                                .Current
+                                                .Services
+                                                .DataTypeService
+                                                .GetPreValuesCollectionByDataTypeId(this.DataTypeId)
+                                                .PreValuesAsDictionary;
+                }
+
+                return this.dataTypePreValues;
+            }
+        }
+
+        /// <summary>
+        /// Helper for DataTypePreValues dictionary collection
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns>the PreValue if found, or null</returns>
+        public PreValue GetDataTypePreValue(string key)
+        {
+            return this.DataTypePreValues.SingleOrDefault(x => string.Equals(x.Key, key, StringComparison.InvariantCultureIgnoreCase)).Value;
         }
 
         /// <summary>
