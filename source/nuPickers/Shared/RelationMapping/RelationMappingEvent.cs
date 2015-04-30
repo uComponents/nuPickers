@@ -16,13 +16,15 @@ namespace nuPickers.Shared.RelationMapping
     {
         protected override void ApplicationStarted(UmbracoApplicationBase umbracoApplication, ApplicationContext applicationContext)
         {
-            ContentService.Saved += ContentService_Saved;
-            MediaService.Saved += MediaService_Saved;
-            MemberService.Saved += MemberService_Saved;
+            ContentService.Saved += this.ContentService_Saved;
+            MediaService.Saved += this.MediaService_Saved;
+            MemberService.Saved += this.MemberService_Saved;
 
-            ContentService.Deleting += ContentService_Deleting;
-            MediaService.Deleting += MediaService_Deleting;
-            MemberService.Deleting += MemberService_Deleting;
+            //ContentService.Trashed += this.ContentService_Trashed;
+            //MediaService.Trashed += this.MediaService_Trashed;
+            // Members can't be trashed
+            
+            // NOTE: all relations to an id are automatically deleted when emptying the recycle bin
         }
 
         private void ContentService_Saved(IContentService sender, SaveEventArgs<IContent> e)
@@ -49,58 +51,66 @@ namespace nuPickers.Shared.RelationMapping
         {
             foreach (IContentBase savedEntity in savedEntities)
             {
-                foreach (PropertyType propertyType in savedEntity.PropertyTypes
-                                                            .Where(x => PickerPropertyValueConverter.IsPicker(x.PropertyEditorAlias)))
+                // for each property
+                foreach (PropertyType propertyType in savedEntity.PropertyTypes.Where(x => PickerPropertyValueConverter.IsPicker(x.PropertyEditorAlias)))
                 {
-                    // using picker to get at the prevalues TODO: consider passing this picker obj to the UpdateRelationMapping method
-                    Picker picker = new Picker(savedEntity.Id, propertyType.Alias, propertyType.DataTypeDefinitionId, savedEntity.GetValue(propertyType.Alias));
+                    // create picker supplying all values
+                    Picker picker = new Picker(savedEntity.Id, 
+                                                propertyType.Alias, 
+                                                propertyType.DataTypeDefinitionId, 
+                                                savedEntity.GetValue(propertyType.Alias));
 
-                    // not all pickers support relation mapping, so null check required
-                    PreValue relationMappingPreValue = picker.GetDataTypePreValue("relationMapping");
-                    if (relationMappingPreValue != null && !string.IsNullOrWhiteSpace(relationMappingPreValue.Value))
+                    if (!string.IsNullOrWhiteSpace(picker.RelationTypeAlias))
                     {
-                        // parse the json config to get a relationType alias
-                        string relationTypeAlias = JObject.Parse(relationMappingPreValue.Value).GetValue("relationTypeAlias").ToString();
-
-                        // if relationType specified
-                        if (!string.IsNullOrWhiteSpace(relationTypeAlias))
-                        {
-                            // is the picker saving as relations only ?
-                            // every picker has a save format, so null check NOT required
-                            bool relationsOnly = picker.GetDataTypePreValue("saveFormat").Value == "relationsOnly";
-
-                            int pickedId;
-                            List<int> pickedIds = new List<int>();
-                            foreach(string pickedKey in picker.PickedKeys)
-                            {
-                                if (int.TryParse(pickedKey, out pickedId))
-                                {
-                                    pickedIds.Add(pickedId);
-                                }
-                            }
-
-                            RelationMapping.UpdateRelationMapping(
-                                                savedEntity.Id,
-                                                propertyType.Alias,
-                                                relationTypeAlias,
-                                                relationsOnly,
-                                                pickedIds.ToArray());
-                        }
+                        RelationMapping.UpdateRelationMapping(
+                                                picker.ContextId,           // savedEntity.Id
+                                                picker.PropertyAlias,       // propertyType.Alias
+                                                picker.RelationTypeAlias,
+                                                picker.GetDataTypePreValue("saveFormat").Value == "relationsOnly",
+                                                picker.PickedIds.ToArray());
                     }
                 }
             }
         }
 
-        private void ContentService_Deleting(IContentService sender, DeleteEventArgs<IContent> e)
-        {
-        }
+        //private void MediaService_Trashed(IMediaService sender, MoveEventArgs<IMedia> e)
+        //{
+        //    this.Trashed((IService)sender, e.Entity);
+        //}
 
-        private void MediaService_Deleting(IMediaService sender, DeleteEventArgs<IMedia> e)
-        {
-        }
+        //private void ContentService_Trashed(IContentService sender, MoveEventArgs<IContent> e)
+        //{
+        //    this.Trashed((IService)sender, e.Entity);
+        //}
 
-        private void MemberService_Deleting(IMemberService sender, DeleteEventArgs<IMember> e)
-        {
-        }
+        ///// <summary>
+        ///// combined event for content / media
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="entity"></param>
+        //private void Trashed(IService sender, IContentBase trashedEntity)
+        //{
+        //    // for each property
+        //    foreach (PropertyType propertyType in trashedEntity.PropertyTypes.Where(x => PickerPropertyValueConverter.IsPicker(x.PropertyEditorAlias)))
+        //    {
+        //        // create picker supplying all values
+        //        Picker picker = new Picker(trashedEntity.Id,
+        //                                    propertyType.Alias,
+        //                                    propertyType.DataTypeDefinitionId,
+        //                                    trashedEntity.GetValue(propertyType.Alias));
+
+        //        if (!string.IsNullOrWhiteSpace(picker.RelationTypeAlias))
+        //        {
+        //            // trigger update with no items picked - causes relations to be deleted
+        //            // (relations can be recreated after a delete, by resaving after restore)
+        //            RelationMapping.UpdateRelationMapping(
+        //                                    picker.ContextId,
+        //                                    picker.PropertyAlias,
+        //                                    picker.RelationTypeAlias,
+        //                                    picker.GetDataTypePreValue("saveFormat").Value == "relationsOnly",
+        //                                    new int[] {});
+        //        }
+        //    }
+        //}
     }
 }
