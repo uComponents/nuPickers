@@ -26,7 +26,7 @@
         private string[] pickedKeys = null;
 
         /// <summary>
-        /// public constructor - picker value is calculated from lookup
+        /// public constructor - picker value is calculated from lookup, either the published value from cache, or the latest saved db value 
         /// </summary>
         /// <param name="contextId">the id of the content, media or member</param>
         /// <param name="propertyAlias">the property alias</param>
