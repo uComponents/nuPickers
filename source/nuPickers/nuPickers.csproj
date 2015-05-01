@@ -460,6 +460,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Shared\TypeaheadListPicker\TypeaheadListPickerConfigState.js" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\CheckBoxPicker\CheckBoxPickerConfig.html" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
