@@ -21,9 +21,20 @@ angular
                     }
                 });
                
+                $scope.checkAllState = false;
+                $scope.checkAllClick = function () {
+
+                    $scope.checkAllState = !$scope.checkAllState;
+
+                    angular.forEach($scope.checkBoxPickerOptions, function (option) {
+                        option.isChecked = $scope.checkAllState;
+                    });
+
+                };
+
                 $scope.checkBoxChange = function () {
                     $scope.model.value = editorResource.createSaveValue($scope.model.config, $scope.getPickedOptions());
-                }
+                };
 
                 $scope.getPickedOptions = function () {
                     return $scope.checkBoxPickerOptions.filter(function (option) { return option.isChecked == true; });

@@ -1,6 +1,14 @@
 ﻿
 <div ng-controller="nuPickers.Shared.CheckBoxPicker.CheckBoxPickerEditorController">
 
+    <div class="check-all"
+         ng-hide="{{model.config.checkBoxPicker.checkAll != true}}">
+
+        <input type="checkbox" ng-click="checkAllClick()" />
+        <hr />
+
+    </div>
+
     <ul class="layout-direction" ng-class="model.config.layoutDirection">
         <li ng-repeat="option in checkBoxPickerOptions">
 
@@ -14,5 +22,5 @@
 
         </li>
     </ul>
-
+    
 </div>
