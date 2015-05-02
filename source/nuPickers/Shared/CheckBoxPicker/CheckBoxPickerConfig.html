@@ -3,14 +3,23 @@
     <div>
         <label for="">
             Check All
-            <small>renders a checkbox, when changed, updates all other checkboxes to it's state</small>
+            <small>renders a checkbox, when changed updates all other checkboxes to its state</small>
         </label>
 
         <div>
+            <input type="checkbox" ng-model="model.value.checkAll" />
+        </div>
+    </div>
 
-            <input type="checkbox"
-                   ng-model="model.value.checkAll" />
 
+    <div>
+        <label for="">
+            Counter
+            <small>renders the number of items picked and the total</small>
+        </label>
+
+        <div>
+            <input type="checkbox" ng-model="model.value.counter" />
         </div>
     </div>
 

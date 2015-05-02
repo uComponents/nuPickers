@@ -1,11 +1,13 @@
 ﻿
 <div ng-controller="nuPickers.Shared.CheckBoxPicker.CheckBoxPickerEditorController" class="check-box-picker">
 
-    <div class="check-all" ng-show="{{model.config.checkBoxPicker.checkAll}}">
-        <input type="checkbox" 
-               ng-checked="checkAllState" 
-               ng-click="checkAllClick()" />
-        
+    <div ng-show="{{model.config.checkBoxPicker.checkAll}}">
+        <label class="check-all">
+            <input type="checkbox"
+                   ng-checked="checkAllState"
+                   ng-click="checkAllClick()" />
+        </label>
+
         <hr />
     </div>
 
@@ -22,10 +24,15 @@
 
         </li>
     </ul>
-    
-    <!--<div class="stats">
-        <hr />
-        <span>{{getPickedOptions().length}} / {{checkBoxPickerOptions.length}}</span>
-    </div>-->
+
+    <div ng-show="{{model.config.checkBoxPicker.counter}}">
+        <hr/>
+        <span ng-show="getPickedOptions().length == 0">None</span>
+        <span ng-hide="getPickedOptions().length == 0 || getPickedOptions().length == checkBoxPickerOptions.length">
+            {{getPickedOptions().length}} out of {{checkBoxPickerOptions.length}}
+        </span>
+        <span ng-show="getPickedOptions().length == checkBoxPickerOptions.length">All</span>
+              
+    </div>
 
 </div>
