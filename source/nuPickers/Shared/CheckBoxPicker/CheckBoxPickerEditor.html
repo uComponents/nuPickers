@@ -1,10 +1,11 @@
 ﻿
 <div ng-controller="nuPickers.Shared.CheckBoxPicker.CheckBoxPickerEditorController">
 
-    <div class="check-all"
-         ng-hide="{{model.config.checkBoxPicker.checkAll != true}}">
+    <div class="check-all" ng-hide="{{model.config.checkBoxPicker.checkAll != true}}">
 
-        <input type="checkbox" ng-click="checkAllClick()" />
+        <input type="checkbox" 
+               ng-checked="checkAllState" 
+               ng-click="checkAllClick()" />
         <hr />
 
     </div>
