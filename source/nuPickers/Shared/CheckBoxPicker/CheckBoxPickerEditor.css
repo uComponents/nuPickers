@@ -1,11 +1,15 @@
-﻿.check-box-picker hr {
+﻿.check-box-picker .check-all {
+    background-color: #f8f8f8;
+}
+
+.check-box-picker .counter {
+    font-size:smaller;
+}
+
+.check-box-picker hr {
     margin: 4px 0;
 }
 
 .check-box-picker label {
     padding:1px 2px;
-}
-
-.check-box-picker .check-all {
-    background-color: #f8f8f8;
 }
