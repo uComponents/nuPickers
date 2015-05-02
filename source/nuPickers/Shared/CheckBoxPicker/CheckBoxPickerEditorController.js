@@ -16,29 +16,27 @@ angular
                     option.isChecked = $scope.checkAllState;
                 });
 
-                $scope.generateSaveValue();
+                generateSaveValue();
             };
 
             $scope.checkBoxChange = function () {
 
-                if (!$scope.areAllChecked()) { $scope.checkAllState = false; }
+                $scope.checkAllState = areAllChecked();
 
-                $scope.generateSaveValue();
-            };
-
-            $scope.areAllChecked = function () {
-                return $scope.getPickedOptions().length == $scope.checkBoxPickerOptions.length;
+                generateSaveValue();
             };
 
             $scope.getPickedOptions = function () {
                 return $scope.checkBoxPickerOptions.filter(function (option) { return option.isChecked == true; });
             };
 
-            $scope.generateSaveValue = function () {
-                $scope.model.value = editorResource.createSaveValue($scope.model.config, $scope.getPickedOptions());
+            function areAllChecked() {
+                return $scope.getPickedOptions().length == $scope.checkBoxPickerOptions.length;
             };
 
-
+            function generateSaveValue () {
+                $scope.model.value = editorResource.createSaveValue($scope.model.config, $scope.getPickedOptions());
+            };
 
             editorResource.getEditorDataItems($scope.model).then(function (response) {
 
@@ -55,7 +53,7 @@ angular
                         }
                     }
 
-                    $scope.checkAllState = $scope.areAllChecked();
+                    $scope.checkAllState = areAllChecked();
                 });
 
             });

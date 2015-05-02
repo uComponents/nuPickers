@@ -9,6 +9,7 @@
 
     // EDITOR UI
     [PropertyEditor(PropertyEditorConstants.DotNetCheckBoxPickerAlias, "nuPickers: DotNet CheckBox Picker", EmbeddedResource.RootUrl + "CheckBoxPicker/CheckBoxPickerEditor.html", ValueType = "TEXT")]
+    [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.RootUrl + "CheckBoxPicker/CheckBoxPickerEditor.css.nu")]
     [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.RootUrl + "LayoutDirection/LayoutDirection.css.nu")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "CheckBoxPicker/CheckBoxPickerEditorController.js.nu")]
 

@@ -463,6 +463,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Shared\CheckBoxPicker\CheckBoxPickerConfig.html" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\CheckBoxPicker\CheckBoxPickerEditor.css" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
