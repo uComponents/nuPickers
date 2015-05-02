@@ -40,6 +40,7 @@ namespace nuPickers.PropertyEditors
 
         public const string XmlCheckBoxPickerAlias = "nuPickers.XmlCheckBoxPicker";
         public const string XmlDropDownPickerAlias = "nuPickers.XmlDropDownPicker";
+        public const string XmlLabelsAlias = "nuPickers.XmlLabels";
         public const string XmlPrefetchListPickerAlias = "nuPickers.XmlPrefetchListPicker";
         public const string XmlRadioButtonPickerAlias = "nuPickers.XmlRadioButtonPicker";
         public const string XmlTypeaheadListPickerAlias = "nuPickers.XmlTypeaheadListPicker";

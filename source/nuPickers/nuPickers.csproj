@@ -267,6 +267,8 @@
     <Compile Include="PropertyEditors\SqlLabels\SqlLabelsPropertyEditor.cs" />
     <Compile Include="PropertyEditors\SqlTypeaheadListPicker\SqlTypeaheadListPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\SqlTypeaheadListPicker\SqlTypeaheadListPickerPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\XmlLabels\XmlLabelsPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\XmlLabels\XmlLabelsPropertyEditor.cs" />
     <Compile Include="PropertyEditors\XmlTypeaheadListPicker\XmlTypeaheadListPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\XmlTypeaheadListPicker\XmlTypeaheadListPickerPropertyEditor.cs" />
     <Compile Include="Picker.cs">
