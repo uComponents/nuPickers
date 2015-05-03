@@ -468,6 +468,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Shared\CheckBoxPicker\CheckBoxPickerEditor.css" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\Labels\LabelsConfigController.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\Labels\LabelsConfig.html" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
