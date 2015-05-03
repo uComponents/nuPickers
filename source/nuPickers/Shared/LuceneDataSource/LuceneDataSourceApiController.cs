@@ -17,7 +17,7 @@ namespace nuPickers.Shared.LuceneDataSource
     {
         public IEnumerable<object> GetExamineSearchers()
         {
-            return Examine.ExamineManager.Instance.SearchProviderCollection.Cast<UmbracoExamineSearcher>().Select(x => x.Name);            
+            return Examine.ExamineManager.Instance.SearchProviderCollection.OfType<UmbracoExamineSearcher>().Select(x => x.Name);            
         }
 
         [HttpPost]
