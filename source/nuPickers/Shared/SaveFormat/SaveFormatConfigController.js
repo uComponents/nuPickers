@@ -2,19 +2,14 @@
 angular
     .module("umbraco")
     .controller("nuPickers.Shared.SaveFormat.SaveFormatConfigController",
-    ['$scope', 'nuPickers.Shared.TypeaheadListPicker.TypeaheadListPickerConfigState', function ($scope, typeaheadListPickerConfigState) {
+    ['$rootScope', '$scope', function ($rootScope, $scope) {
         
         $scope.isTypeaheadListPicker = false;
+        $scope.$on('isTypeaheadListPicker', function (event, arg) { console.log('arg= ' + arg); $scope.isTypeaheadListPicker = arg; });
+        $rootScope.$broadcast('saveFormatListening');
 
-        if (typeaheadListPickerConfigState.isTypeaheadListPicker)
-        {
-            $scope.isTypeaheadListPicker = true; // (remove CSV and RelationsOnly options)
-            typeaheadListPickerConfigState.isTypeaheadListPicker = false; // reset
-        }
-        
         $scope.relationMappingBidirectional = false;
         
-
         if (!$scope.isTypeaheadListPicker) {
 
             $scope.model.value = $scope.model.value || 'csv';

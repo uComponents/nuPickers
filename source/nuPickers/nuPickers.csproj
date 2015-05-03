@@ -460,9 +460,6 @@
     <EmbeddedResource Include="Shared\TypeaheadListPicker\TypeaheadListPickerConfigController.js" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Shared\TypeaheadListPicker\TypeaheadListPickerConfigState.js" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Shared\CheckBoxPicker\CheckBoxPickerConfig.html" />
   </ItemGroup>
   <ItemGroup>

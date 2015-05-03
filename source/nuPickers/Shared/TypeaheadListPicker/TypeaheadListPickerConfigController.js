@@ -2,8 +2,11 @@
 angular
     .module("umbraco")
     .controller("nuPickers.Shared.TypeaheadListPicker.TypeaheadListPickerConfigController",
-    ['$scope', 'nuPickers.Shared.TypeaheadListPicker.TypeaheadListPickerConfigState', function ($scope, typeaheadListPickerConfigState) {
+    ['$rootScope', '$scope', function ($rootScope, $scope) {
 
-        typeaheadListPickerConfigState.isTypeaheadListPicker = true;
+        // when save format is ready, tell it this picker is a typeahead
+        $scope.$on('saveFormatListening', function (event, arg) {
+            $rootScope.$broadcast('isTypeaheadListPicker', true);
+        });
 
     }]);
