@@ -256,6 +256,8 @@
     <Compile Include="PropertyEditors\LuceneCheckBoxPicker\LuceneCheckBoxPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\LuceneDropDownPicker\LuceneDropDownPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\LuceneDropDownPicker\LuceneDropDownPickerPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\LuceneLabels\LuceneLabelsPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\LuceneLabels\LuceneLabelsPropertyEditor.cs" />
     <Compile Include="PropertyEditors\LucenePrefetchListPicker\LucenePrefetchListPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\LucenePrefetchListPicker\LucenePrefetchListPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\LuceneRadioButtonPicker\LuceneRadioButtonPickerPreValueEditor.cs" />

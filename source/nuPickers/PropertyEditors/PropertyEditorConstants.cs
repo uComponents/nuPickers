@@ -25,6 +25,7 @@ namespace nuPickers.PropertyEditors
 
         public const string LuceneCheckBoxPickerAlias = "nuPickers.LuceneCheckBoxPicker";
         public const string LuceneDropDownPickerAlias = "nuPickers.LuceneDropDownPicker";
+        public const string LuceneLabelsAlias = "nuPickers.LuceneLabels";
         public const string LucenePrefetchListPickerAlias = "nuPickers.LucenePrefetchListPicker";
         public const string LuceneRadioButtonPickerAlias = "nuPickers.LuceneRadioButtonPicker";
         public const string LuceneTypeaheadListPickerAlias = "nuPickers.LuceneTypeaheadListPicker";
