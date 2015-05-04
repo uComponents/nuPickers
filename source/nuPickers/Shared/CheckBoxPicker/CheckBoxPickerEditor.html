@@ -8,6 +8,10 @@
                    ng-click="checkAllClick()" />
         </label>
 
+        <span class="counter" ng-show="{{model.config.checkBoxPicker.counter}}">
+            ({{getPickedOptions().length}}/{{checkBoxPickerOptions.length}})
+        </span>
+
         <hr />
     </div>
 
@@ -24,15 +28,5 @@
 
         </li>
     </ul>
-
-    <div ng-show="{{model.config.checkBoxPicker.counter}}">
-        <hr/>
-        <span ng-show="getPickedOptions().length == 0">None</span>
-        <span ng-hide="getPickedOptions().length == 0 || getPickedOptions().length == checkBoxPickerOptions.length">
-            {{getPickedOptions().length}} out of {{checkBoxPickerOptions.length}}
-        </span>
-        <span ng-show="getPickedOptions().length == checkBoxPickerOptions.length">All</span>
-              
-    </div>
 
 </div>
