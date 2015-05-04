@@ -19,6 +19,7 @@ namespace nuPickers.PropertyEditors
 
         public const string JsonCheckBoxPickerAlias = "nuPickers.JsonCheckBoxPicker";
         public const string JsonDropDownPickerAlias = "nuPickers.JsonDropDownPicker";
+        public const string JsonLabelsAlias = "nuPickers.JsonLabels";
         public const string JsonPrefetchListPickerAlias = "nuPickers.JsonPrefetchListPicker";
         public const string JsonRadioButtonPickerAlias = "nuPickers.JsonRadioButtonPicker";
         public const string JsonTypeaheadListPickerAlias = "nuPickers.JsonTypeaheadListPicker";
