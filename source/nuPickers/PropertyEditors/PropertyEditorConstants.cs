@@ -8,23 +8,27 @@ namespace nuPickers.PropertyEditors
     {
         public const string DotNetCheckBoxPickerAlias = "nuPickers.DotNetCheckBoxPicker";
         public const string DotNetDropDownPickerAlias = "nuPickers.DotNetDropDownPicker";
+        public const string DotNetLabelsAlias = "nuPickers.DotNetLabels";
         public const string DotNetPrefetchListPickerAlias = "nuPickers.DotNetPrefetchListPicker";
         public const string DotNetRadioButtonPickerAlias = "nuPickers.DotNetRadioButtonPicker";
         public const string DotNetTypeaheadListPickerAlias = "nuPickers.DotNetTypeaheadListPicker";
 
         public const string EnumCheckBoxPickerAlias = "nuPickers.EnumCheckBoxPicker";
         public const string EnumDropDownPickerAlias = "nuPickers.EnumDropDownPicker";
+        public const string EnumLabelsAlias = "nuPickers.EnumLabels";
         public const string EnumPrefetchListPickerAlias = "nuPickers.EnumPrefetchListPicker";
         public const string EnumRadioButtonPickerAlias = "nuPickers.EnumRadioButtonPicker";
 
         public const string JsonCheckBoxPickerAlias = "nuPickers.JsonCheckBoxPicker";
         public const string JsonDropDownPickerAlias = "nuPickers.JsonDropDownPicker";
+        public const string JsonLabelsAlias = "nuPickers.JsonLabels";
         public const string JsonPrefetchListPickerAlias = "nuPickers.JsonPrefetchListPicker";
         public const string JsonRadioButtonPickerAlias = "nuPickers.JsonRadioButtonPicker";
         public const string JsonTypeaheadListPickerAlias = "nuPickers.JsonTypeaheadListPicker";
 
         public const string LuceneCheckBoxPickerAlias = "nuPickers.LuceneCheckBoxPicker";
         public const string LuceneDropDownPickerAlias = "nuPickers.LuceneDropDownPicker";
+        public const string LuceneLabelsAlias = "nuPickers.LuceneLabels";
         public const string LucenePrefetchListPickerAlias = "nuPickers.LucenePrefetchListPicker";
         public const string LuceneRadioButtonPickerAlias = "nuPickers.LuceneRadioButtonPicker";
         public const string LuceneTypeaheadListPickerAlias = "nuPickers.LuceneTypeaheadListPicker";
@@ -40,6 +44,7 @@ namespace nuPickers.PropertyEditors
 
         public const string XmlCheckBoxPickerAlias = "nuPickers.XmlCheckBoxPicker";
         public const string XmlDropDownPickerAlias = "nuPickers.XmlDropDownPicker";
+        public const string XmlLabelsAlias = "nuPickers.XmlLabels";
         public const string XmlPrefetchListPickerAlias = "nuPickers.XmlPrefetchListPicker";
         public const string XmlRadioButtonPickerAlias = "nuPickers.XmlRadioButtonPicker";
         public const string XmlTypeaheadListPickerAlias = "nuPickers.XmlTypeaheadListPicker";

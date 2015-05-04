@@ -1,4 +1,4 @@
-﻿namespace nuPickers.PropertyEditors.SqlLabels
+﻿namespace nuPickers.PropertyEditors.XmlLabels
 {
     using ClientDependency.Core;
 
@@ -8,7 +8,7 @@
     using Umbraco.Web.PropertyEditors;
 
     // EDITOR UI
-    [PropertyEditor(PropertyEditorConstants.SqlLabelsAlias, "nuPickers: Sql Labels", EmbeddedResource.RootUrl + "Labels/LabelsEditor.html", ValueType = "TEXT")]
+    [PropertyEditor(PropertyEditorConstants.XmlLabelsAlias, "nuPickers: Xml Labels", EmbeddedResource.RootUrl + "Labels/LabelsEditor.html", ValueType = "TEXT")]
     [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.RootUrl + "LayoutDirection/LayoutDirection.css.nu")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "Labels/LabelsEditorController.js.nu")]
 
@@ -20,14 +20,14 @@
 
     // CONFIG
     [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.RootUrl + "PropertyEditor/PropertyEditorConfig.css.nu")]
-    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "SqlDataSource/SqlDataSourceConfigController.js.nu")]
+    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "XmlDataSource/XmlDataSourceConfigController.js.nu")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "Labels/LabelsConfigController.js.nu")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.RootUrl + "CustomLabel/CustomLabelConfigController.js.nu")]
-    public class SqlLabelsPropertyEditor : BasePropertyEditor
+    public class XmlLabelsPropertyEditor : BasePropertyEditor
     {
         protected override PreValueEditor CreatePreValueEditor()
         {
-            return new SqlLabelsPreValueEditor();
+            return new XmlLabelsPreValueEditor();
         }
     }
 }
