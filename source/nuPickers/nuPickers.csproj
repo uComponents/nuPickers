@@ -228,6 +228,8 @@
     <Compile Include="PropertyEditors\DotNetCheckBoxPicker\DotNetCheckBoxPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\DotNetDropDownPicker\DotNetDropDownPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\DotNetDropDownPicker\DotNetDropDownPickerPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\DotNetLabels\DotNetLabelsPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\DotNetLabels\DotLabelsPropertyEditor.cs" />
     <Compile Include="PropertyEditors\DotNetPrefetchListPicker\DotNetPrefetchListPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\DotNetPrefetchListPicker\DotNetPrefetchListPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\DotNetRadioButtonPicker\DotNetRadioButtonPickerPreValueEditor.cs" />

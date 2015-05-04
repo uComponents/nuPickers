@@ -8,6 +8,7 @@ namespace nuPickers.PropertyEditors
     {
         public const string DotNetCheckBoxPickerAlias = "nuPickers.DotNetCheckBoxPicker";
         public const string DotNetDropDownPickerAlias = "nuPickers.DotNetDropDownPicker";
+        public const string DotNetLabelsAlias = "nuPickers.DotNetLabels";
         public const string DotNetPrefetchListPickerAlias = "nuPickers.DotNetPrefetchListPicker";
         public const string DotNetRadioButtonPickerAlias = "nuPickers.DotNetRadioButtonPicker";
         public const string DotNetTypeaheadListPickerAlias = "nuPickers.DotNetTypeaheadListPicker";
