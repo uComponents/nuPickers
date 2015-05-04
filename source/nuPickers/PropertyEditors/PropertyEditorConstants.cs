@@ -14,6 +14,7 @@ namespace nuPickers.PropertyEditors
 
         public const string EnumCheckBoxPickerAlias = "nuPickers.EnumCheckBoxPicker";
         public const string EnumDropDownPickerAlias = "nuPickers.EnumDropDownPicker";
+        public const string EnumLabelsAlias = "nuPickers.EnumLabels";
         public const string EnumPrefetchListPickerAlias = "nuPickers.EnumPrefetchListPicker";
         public const string EnumRadioButtonPickerAlias = "nuPickers.EnumRadioButtonPicker";
 
