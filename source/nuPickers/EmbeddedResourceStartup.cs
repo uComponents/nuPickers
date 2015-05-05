@@ -1,9 +1,7 @@
 ﻿namespace nuPickers
 {
-    using System.Web.Routing;
-
     using ClientDependency.Core;
-
+    using System.Web.Routing;
     using Umbraco.Core;
 
     public class EmbeddedResourceStartup : ApplicationEventHandler

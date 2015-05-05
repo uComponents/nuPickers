@@ -158,7 +158,4 @@ angular
                 });
             }
 
-            $scope.$on("formSubmitting", function () {
-                editorResource.updateRelationMapping($scope.model, $scope.selectedOptions);
-            });
 }]);

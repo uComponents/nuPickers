@@ -1,8 +1,7 @@
 ﻿namespace nuPickers
 {
-    using System.IO;
-
     using ClientDependency.Core.CompositeFiles;
+    using System.IO;
 
     /// <summary>
     /// The embedded resource virtual file.
@@ -10,9 +9,9 @@
     internal class EmbeddedResourceVirtualFile : IVirtualFile
     {
         /// <summary>
-        /// The _virtual path.
+        /// The virtual path.
         /// </summary>
-        private readonly string _virtualPath;
+        private readonly string virtualPath;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="EmbeddedResourceVirtualFile"/> class. 
@@ -23,7 +22,7 @@
         /// </param>
         public EmbeddedResourceVirtualFile(string virtualPath)
         {
-            _virtualPath = virtualPath;
+            this.virtualPath = virtualPath;
         }
 
         /// <summary>
@@ -35,7 +34,7 @@
         public Stream Open()
         {
             string resourceName;
-            return EmbeddedResourceHelper.GetResource(_virtualPath, out resourceName);
+            return EmbeddedResourceHelper.GetResource(this.virtualPath, out resourceName);
         }
 
         /// <summary>
@@ -43,7 +42,7 @@
         /// </summary>
         public string Path
         {
-            get { return _virtualPath; }
+            get { return this.virtualPath; }
         }
     }
 }

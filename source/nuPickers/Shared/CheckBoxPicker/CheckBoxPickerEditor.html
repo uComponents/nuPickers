@@ -1,5 +1,19 @@
 ﻿
-<div ng-controller="nuPickers.Shared.CheckBoxPicker.CheckBoxPickerEditorController">
+<div ng-controller="nuPickers.Shared.CheckBoxPicker.CheckBoxPickerEditorController" class="check-box-picker">
+
+    <div ng-show="{{model.config.checkBoxPicker.checkAll}}">
+        <label class="check-all">
+            <input type="checkbox"
+                   ng-checked="checkAllState"
+                   ng-click="checkAllClick()" />
+        </label>
+
+        <span class="counter" ng-show="{{model.config.checkBoxPicker.counter}}">
+            ({{getPickedOptions().length}}/{{checkBoxPickerOptions.length}})
+        </span>
+
+        <hr />
+    </div>
 
     <ul class="layout-direction" ng-class="model.config.layoutDirection">
         <li ng-repeat="option in checkBoxPickerOptions">

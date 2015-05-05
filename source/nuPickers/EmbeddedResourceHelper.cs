@@ -1,10 +1,10 @@
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using Umbraco.Core;
-
 namespace nuPickers
 {
+    using System.Globalization;
+    using System.IO;
+    using System.Linq;
+    using Umbraco.Core;
+
     internal class EmbeddedResourceHelper
     {
         public static bool ResourceExists(string resource)
@@ -53,6 +53,5 @@ namespace nuPickers
 
             return null;
         }
-
     }
 }

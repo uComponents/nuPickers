@@ -28,10 +28,6 @@ angular
                     $scope.model.value = editorResource.createSaveValue($scope.model.config, [$scope.pickedOption]);
                 };
 
-                $scope.$on("formSubmitting", function () {
-                    editorResource.updateRelationMapping($scope.model, [$scope.pickedOption]);
-                });
-
             });
 
         }]);

@@ -58,12 +58,6 @@ angular.module('umbraco.resources')
 
                 createSaveValue: function (config, pickedOptions) {
                     return saveFormatResource.createSaveValue(config, pickedOptions);
-                },
-
-                updateRelationMapping: function (model, pickedOptions) {
-                    if (model.config.relationMapping != null) {
-                        relationMappingResource.updateRelationMapping(model, pickedOptions);
-                    }
                 }
 
             };

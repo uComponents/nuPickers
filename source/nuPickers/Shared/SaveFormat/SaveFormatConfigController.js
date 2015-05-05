@@ -2,10 +2,16 @@
 angular
     .module("umbraco")
     .controller("nuPickers.Shared.SaveFormat.SaveFormatConfigController",
-    ['$scope', 'nuPickers.Shared.TypeaheadListPicker.TypeaheadListPickerConfigState', function ($scope, typeaheadListPickerConfigState) {
+    ['$rootScope', '$scope', function ($rootScope, $scope) {
         
+        $scope.isTypeaheadListPicker = false;
+        //$scope.$on('isTypeaheadListPicker', function (event, arg) { $scope.isTypeaheadListPicker = arg; });
+        $rootScope.$broadcast('saveFormatListening');
+
         $scope.relationMappingBidirectional = false;
         
+        if (!$scope.isTypeaheadListPicker) {
+
             $scope.model.value = $scope.model.value || 'csv';
 
             $scope.$on('relationMappingChanged', function (event, relationType) {
@@ -15,5 +21,11 @@ angular
                     $scope.model.value = 'csv'; // fallback to csv
                 }
             });
+
+        }
+        else { // it's a typeahead so only allow formats that save both key and label
+            $scope.model.value = $scope.model.value || 'json';
+        }
+
 
     }]);

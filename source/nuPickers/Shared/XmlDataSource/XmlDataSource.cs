@@ -42,7 +42,7 @@ namespace nuPickers.Shared.XmlDataSource
 
                 case "url":
                     xmlDocument = new XmlDocument();
-                    xmlDocument.Load(this.Url);
+                    xmlDocument.LoadXml(Helper.GetDataFromUrl(this.Url));
                     break;
 
                 default:

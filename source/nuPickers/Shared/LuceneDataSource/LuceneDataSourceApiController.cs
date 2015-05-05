@@ -16,9 +16,11 @@ namespace nuPickers.Shared.LuceneDataSource
     [PluginController("nuPickers")]
     public class LuceneDataSourceApiController : UmbracoAuthorizedJsonController
     {
-        public IEnumerable<object> GetExamineSearchers()
+
+
+	public IEnumerable<object> GetExamineSearchers()
         {
-            return Examine.ExamineManager.Instance.SearchProviderCollection.Cast<UmbracoExamineSearcher>().Select(x => x.Name);
+            return Examine.ExamineManager.Instance.SearchProviderCollection.OfType<UmbracoExamineSearcher>().Select(x => x.Name);            
         }
 
         [HttpPost]

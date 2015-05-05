@@ -1,5 +1,4 @@
-﻿
-namespace nuPickers.PropertyEditors.SqlCheckBoxPicker
+﻿namespace nuPickers.PropertyEditors.RelationLabels
 {
     using Umbraco.Core.PropertyEditors;
 

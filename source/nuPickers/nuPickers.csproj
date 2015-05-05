@@ -228,12 +228,18 @@
     <Compile Include="PropertyEditors\DotNetCheckBoxPicker\DotNetCheckBoxPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\DotNetDropDownPicker\DotNetDropDownPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\DotNetDropDownPicker\DotNetDropDownPickerPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\DotNetLabels\DotNetLabelsPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\DotNetLabels\DotLabelsPropertyEditor.cs" />
     <Compile Include="PropertyEditors\DotNetPrefetchListPicker\DotNetPrefetchListPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\DotNetPrefetchListPicker\DotNetPrefetchListPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\DotNetRadioButtonPicker\DotNetRadioButtonPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\DotNetRadioButtonPicker\DotNetRadioButtonPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\DotNetTypeaheadListPicker\DotNetTypeaheadListPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\DotNetTypeaheadListPicker\DotNetTypeaheadListPickerPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\EnumLabels\EnumLabelsPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\EnumLabels\EnumLabelsPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\JsonLabels\JsonLabelsPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\JsonLabels\JsonLabelsPropertyEditor.cs" />
     <Compile Include="PropertyEditors\JsonTypeaheadListPicker\JsonTypeaheadListPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\JsonTypeaheadListPicker\JsonTypeaheadPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\JsonRadioButtonPicker\JsonRadioButtonPickerPreValueEditor.cs" />
@@ -256,6 +262,8 @@
     <Compile Include="PropertyEditors\LuceneCheckBoxPicker\LuceneCheckBoxPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\LuceneDropDownPicker\LuceneDropDownPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\LuceneDropDownPicker\LuceneDropDownPickerPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\LuceneLabels\LuceneLabelsPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\LuceneLabels\LuceneLabelsPropertyEditor.cs" />
     <Compile Include="PropertyEditors\LucenePrefetchListPicker\LucenePrefetchListPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\LucenePrefetchListPicker\LucenePrefetchListPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\LuceneRadioButtonPicker\LuceneRadioButtonPickerPreValueEditor.cs" />
@@ -263,8 +271,12 @@
     <Compile Include="PropertyEditors\LuceneTypeaheadPicker\LuceneTypeaheadListPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\LuceneTypeaheadPicker\LuceneTypeaheadPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\PropertyEditorConstants.cs" />
+    <Compile Include="PropertyEditors\SqlLabels\SqlLabelsPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\SqlLabels\SqlLabelsPropertyEditor.cs" />
     <Compile Include="PropertyEditors\SqlTypeaheadListPicker\SqlTypeaheadListPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\SqlTypeaheadListPicker\SqlTypeaheadListPickerPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\XmlLabels\XmlLabelsPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\XmlLabels\XmlLabelsPropertyEditor.cs" />
     <Compile Include="PropertyEditors\XmlTypeaheadListPicker\XmlTypeaheadListPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\XmlTypeaheadListPicker\XmlTypeaheadListPickerPropertyEditor.cs" />
     <Compile Include="Picker.cs">
@@ -286,7 +298,9 @@
     <Compile Include="Shared\LuceneDataSource\LuceneDataSource.cs" />
     <Compile Include="Shared\LuceneDataSource\LuceneDataSourceApiController.cs" />
     <Compile Include="Shared\RelationDataSource\RelationDataSourceApiController.cs" />
+    <Compile Include="Shared\RelationMapping\RelationMapping.cs" />
     <Compile Include="Shared\RelationMapping\RelationMappingComment.cs" />
+    <Compile Include="Shared\RelationMapping\RelationMappingEvent.cs" />
     <Compile Include="Shared\SaveFormat\SaveFormatPropertyValueEditor.cs" />
     <Compile Include="PropertyEditors\RelationLabels\RelationLabelsPreValueEditor.cs" />
     <Compile Include="PropertyEditors\RelationLabels\RelationLabelsPropertyEditor.cs" />
@@ -454,7 +468,16 @@
     <EmbeddedResource Include="Shared\TypeaheadListPicker\TypeaheadListPickerConfigController.js" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Shared\TypeaheadListPicker\TypeaheadListPickerConfigState.js" />
+    <EmbeddedResource Include="Shared\CheckBoxPicker\CheckBoxPickerConfig.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\CheckBoxPicker\CheckBoxPickerEditor.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\Labels\LabelsConfigController.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\Labels\LabelsConfig.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
