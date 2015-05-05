@@ -5,7 +5,7 @@ angular
     ['$rootScope', '$scope', function ($rootScope, $scope) {
         
         $scope.isTypeaheadListPicker = false;
-        $scope.$on('isTypeaheadListPicker', function (event, arg) { $scope.isTypeaheadListPicker = arg; });
+        //$scope.$on('isTypeaheadListPicker', function (event, arg) { $scope.isTypeaheadListPicker = arg; });
         $rootScope.$broadcast('saveFormatListening');
 
         $scope.relationMappingBidirectional = false;

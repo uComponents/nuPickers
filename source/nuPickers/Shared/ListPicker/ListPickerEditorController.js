@@ -129,10 +129,12 @@ angular
             if ($scope.model.config.hasOwnProperty('typeaheadListPicker')) {
 
                 // build selected options from full stored values (as these might not be present in the selectable collection)
-                $scope.selectedOptions = editorResource.getPickedItems($scope.model);
-                $scope.selectedOptions = $scope.selectedOptions || [];
+                editorResource.getPickedItems($scope.model).then(function (selectedOptions) {
+                    $scope.selectedOptions = selectedOptions || [];
 
-                initSelectedOptionsWatch(); // selected options restored, so setup watch
+                    initSelectedOptionsWatch(); // selected options restored, so setup watch
+
+                });
 
             } else {
 

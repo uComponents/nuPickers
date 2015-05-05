@@ -48,7 +48,7 @@ namespace nuPickers.Shared.DotNetDataSource
                         .Where(x => typeof(IDotNetDataSource).IsAssignableFrom(x))
                         .Select(x => x.FullName);
             }
-            
+
             return null;
         }
 
@@ -86,8 +86,15 @@ namespace nuPickers.Shared.DotNetDataSource
         [HttpPost]
         public IEnumerable<EditorDataItem> GetEditorDataItems([FromUri] int contextId, [FromUri] string propertyAlias, [FromBody] dynamic data)
         {
+            return GetEditorDataItems(contextId, propertyAlias, null, data);
+        }
+
+        [HttpPost]
+        public IEnumerable<EditorDataItem> GetEditorDataItems([FromUri] int contextId, [FromUri] string propertyAlias, [FromUri] string ids, [FromBody] dynamic data)
+        {
             DotNetDataSource dotNetDataSource = ((JObject)data.config.dataSource).ToObject<DotNetDataSource>();
-            dotNetDataSource.Typeahead = (string)data.typeahead;
+            // if there are ids then ignore typeahead
+            dotNetDataSource.Typeahead = ids != null ? null : (string)data.typeahead;
 
             IEnumerable<EditorDataItem> editorDataItems = dotNetDataSource.GetEditorDataItems(contextId).ToList();
 
@@ -96,13 +103,23 @@ namespace nuPickers.Shared.DotNetDataSource
             editorDataItems = customLabel.ProcessEditorDataItems(editorDataItems);
 
             // if the typeahead wasn't handled by the custom data-source, then fallback to default typeahead processing
-            if (!dotNetDataSource.HandledTypeahead)
+            // if there are ids then ignore typeahead
+            if (ids == null && !dotNetDataSource.HandledTypeahead)
             {
                 TypeaheadListPicker typeaheadListPicker = new TypeaheadListPicker((string)data.typeahead);
-                editorDataItems = typeaheadListPicker.ProcessEditorDataItems(editorDataItems);                
+                editorDataItems = typeaheadListPicker.ProcessEditorDataItems(editorDataItems);
+            }
+
+            // if there are ids then filter by ids
+            if (ids != null)
+            {
+                IEnumerable<string> collectionIds = ids.Split(new char[] { ',' }, System.StringSplitOptions.RemoveEmptyEntries).AsEnumerable<string>();
+                editorDataItems = editorDataItems.Where(x => collectionIds.Contains(x.Key)).OrderBy(x => Array.FindIndex(collectionIds.ToArray(), y => y == x.Key));
             }
 
             return editorDataItems;
+
         }
+
     }
 }
