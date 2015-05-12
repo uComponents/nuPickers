@@ -21,7 +21,7 @@ namespace nuPickers.Shared.LuceneDataSource
         }
 
         [HttpPost]
-        public IEnumerable<EditorDataItem> GetEditorDataItems([FromUri] int contextId, [FromUri] string propertyAlias, [FromBody] dynamic data)
+        public IEnumerable<EditorDataItem> GetEditorDataItems([FromUri] int contextId, [FromUri] int parentId, [FromUri] string propertyAlias, [FromBody] dynamic data)
         {
             LuceneDataSource luceneDataSource = ((JObject)data.config.dataSource).ToObject<LuceneDataSource>();
 

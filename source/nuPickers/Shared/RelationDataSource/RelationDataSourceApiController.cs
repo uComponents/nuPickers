@@ -26,9 +26,8 @@ namespace nuPickers.Shared.RelationDataSource
                         });
         }
 
-
         [HttpPost]
-        public IEnumerable<EditorDataItem> GetEditorDataItems([FromUri] int contextId, [FromUri] string propertyAlias, [FromBody] dynamic data)
+        public IEnumerable<EditorDataItem> GetEditorDataItems([FromUri] int contextId, [FromUri] int parentId, [FromUri] string propertyAlias, [FromBody] dynamic data)
         {
             IEnumerable<EditorDataItem> editorDataItems = RelationType.GetByAlias((string)data.config.dataSource.relationType)
                                                                                 .GetRelations(contextId)
