@@ -83,8 +83,10 @@ namespace nuPickers.Shared.DotNetDataSource
         }
 
         [HttpPost]
-        public IEnumerable<EditorDataItem> GetEditorDataItems([FromUri] int contextId, [FromUri] int parentId, [FromUri] string propertyAlias, [FromBody] dynamic data)
+        public IEnumerable<EditorDataItem> GetEditorDataItems([FromUri] int currentId, [FromUri] int parentId, [FromUri] string propertyAlias, [FromBody] dynamic data)
         {
+            int contextId = currentId;
+
             DotNetDataSource dotNetDataSource = ((JObject)data.config.dataSource).ToObject<DotNetDataSource>();
             dotNetDataSource.Typeahead = (string)data.typeahead;
 
