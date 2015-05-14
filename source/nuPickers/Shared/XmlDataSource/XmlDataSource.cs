@@ -21,7 +21,7 @@ namespace nuPickers.Shared.XmlDataSource
         
         public string LabelXPath { get; set; }
 
-        public IEnumerable<EditorDataItem> GetEditorDataItems(int contextId)
+        public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId)
         {
             XmlDocument xmlDocument;
             List<EditorDataItem> editorDataItems = new List<EditorDataItem>();
@@ -51,11 +51,13 @@ namespace nuPickers.Shared.XmlDataSource
             }
 
             if (xmlDocument != null)
-            {                
-                HttpContext.Current.Items["pageID"] = contextId; // set here, as this is required for the uQuery.ResolveXPath
+            {
+                int ancestorOrSelfId = currentId > 0 ? currentId : parentId > 0 ? parentId : -1;
+
+                string xPath = this.XPath.Replace("$ancestorOrSelf", string.Concat("/descendant::*[@id='", ancestorOrSelfId, "']"));
 
                 XPathNavigator xPathNavigator = xmlDocument.CreateNavigator();
-                XPathNodeIterator xPathNodeIterator = xPathNavigator.Select(uQuery.ResolveXPath(this.XPath));
+                XPathNodeIterator xPathNodeIterator = xPathNavigator.Select(xPath);
                 List<string> keys = new List<string>(); // used to keep track of keys, so that duplicates aren't added
 
                 string key;
@@ -65,7 +67,6 @@ namespace nuPickers.Shared.XmlDataSource
                 {
                     // media xml is wrapped in a <Media id="-1" /> node to be valid, exclude this from any results
                     // member xml is wrapped in <Members id="-1" /> node to be valid, exclude this from any results
-                    // TODO: nuQuery should append something unique to this root wrapper to simplify check here
                     if (xPathNodeIterator.CurrentPosition > 1 ||
                         !(xPathNodeIterator.Current.GetAttribute("id", string.Empty) == "-1" &&
                          (xPathNodeIterator.Current.Name == "Media" || xPathNodeIterator.Current.Name == "Members")))

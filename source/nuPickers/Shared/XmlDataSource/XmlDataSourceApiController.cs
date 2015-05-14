@@ -20,7 +20,7 @@ namespace nuPickers.Shared.XmlDataSource
 
             XmlDataSource xmlDataSource = ((JObject)data.config.dataSource).ToObject<XmlDataSource>();
 
-            IEnumerable<EditorDataItem> editorDataItems = xmlDataSource.GetEditorDataItems(contextId);
+            IEnumerable<EditorDataItem> editorDataItems = xmlDataSource.GetEditorDataItems(currentId, parentId);
 
             CustomLabel customLabel = new CustomLabel((string)data.config.customLabel, contextId, propertyAlias);
             TypeaheadListPicker typeaheadListPicker = new TypeaheadListPicker((string)data.typeahead);
