@@ -52,6 +52,7 @@ namespace nuPickers.Shared.XmlDataSource
 
             if (xmlDocument != null)
             {
+                // really the logic is self-or-parent-or-root
                 int ancestorOrSelfId = currentId > 0 ? currentId : parentId > 0 ? parentId : -1;
 
                 string xPath = this.XPath.Replace("$ancestorOrSelf", string.Concat("/descendant::*[@id='", ancestorOrSelfId, "']"));
