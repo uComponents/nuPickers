@@ -21,6 +21,12 @@ namespace nuPickers.Shared.DotNetDataSource
         [DefaultValue(false)]
         internal bool HandledTypeahead { get; set; }
 
+        /// <summary>
+        /// when using a tree picker, the collection of editor data items returned are those beneath this key
+        /// (if null, then root items expected)
+        /// </summary>
+        public string ParentKey { get; set; }
+
         public IEnumerable<EditorDataItem> GetEditorDataItems(int contextId)
         {
             IEnumerable<EditorDataItem> editorDataItems = Enumerable.Empty<EditorDataItem>();
@@ -33,6 +39,11 @@ namespace nuPickers.Shared.DotNetDataSource
                 {
                     ((IDotNetDataSourceTypeahead)dotNetDataSource).Typeahead = this.Typeahead;
                     this.HandledTypeahead = true;
+                }
+
+                if (dotNetDataSource is IDotNetDataSourceTree)
+                {
+                    ((IDotNetDataSourceTree)dotNetDataSource).ParentKey = this.ParentKey;
                 }
 
                 // hydrate state using the data type configuration

@@ -89,6 +89,7 @@ namespace nuPickers.Shared.DotNetDataSource
 
             DotNetDataSource dotNetDataSource = ((JObject)data.config.dataSource).ToObject<DotNetDataSource>();
             dotNetDataSource.Typeahead = (string)data.typeahead;
+            dotNetDataSource.ParentKey = (string)data.parentKey;
 
             IEnumerable<EditorDataItem> editorDataItems = dotNetDataSource.GetEditorDataItems(contextId).ToList();
 
