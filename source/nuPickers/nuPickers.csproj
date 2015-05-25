@@ -234,6 +234,8 @@
     <Compile Include="PropertyEditors\DotNetPrefetchListPicker\DotNetPrefetchListPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\DotNetRadioButtonPicker\DotNetRadioButtonPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\DotNetRadioButtonPicker\DotNetRadioButtonPickerPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\DotNetTreePicker\DotNetTreePickerPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\DotNetTreePicker\DotNetTreePickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\DotNetTypeaheadListPicker\DotNetTypeaheadListPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\DotNetTypeaheadListPicker\DotNetTypeaheadListPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\EnumLabels\EnumLabelsPreValueEditor.cs" />
