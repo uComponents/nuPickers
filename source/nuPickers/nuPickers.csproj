@@ -480,6 +480,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Shared\Labels\LabelsConfig.html" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\TreePicker\TreePickerEditor.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\TreePicker\TreePickerEditorController.js" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
