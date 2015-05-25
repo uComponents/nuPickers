@@ -6,7 +6,8 @@ angular.module('umbraco.resources')
 
             return {
 
-                getEditorDataItems: function (model, typeahead) {
+                // the optional editorParameter allows the typeahead & tree pickers to supply additional data
+                getEditorDataItems: function (model, editorParameter) {
 
                     // returns [{"key":"","label":""},{"key":"","label":""}...]
                     return $http({
@@ -19,7 +20,8 @@ angular.module('umbraco.resources')
                         },
                         data: {
                             'config': model.config,
-                            'typeahead': typeahead
+                            'typeahead': editorParameter ? editorParameter.typeahead : null,
+                            'parentKey': editorParameter ? editorParameter.parentKey : null
                         }
                     });
 

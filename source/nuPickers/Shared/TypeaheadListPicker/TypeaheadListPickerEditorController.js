@@ -15,6 +15,7 @@ angular
 
                 if (newValue != null && newValue.length >= $scope.model.config.typeaheadListPicker.minCharacters) {
                     
+                    // wrapper to the editorResource
                     $scope.getEditorOptions(newValue).then(function (response) {
 
                         if (response.data.length > 0) {

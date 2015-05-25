@@ -122,7 +122,7 @@ angular
             }
             
             $scope.getEditorOptions = function (typeahead) {
-                return editorResource.getEditorDataItems($scope.model, typeahead);
+                return editorResource.getEditorDataItems($scope.model, { 'typeahead': typeahead });
             };
 
             // if typeahead, then build picked options directly from the save value

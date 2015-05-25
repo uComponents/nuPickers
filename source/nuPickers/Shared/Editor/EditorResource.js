@@ -8,9 +8,12 @@ angular.module('umbraco.resources')
         function ($q, dataSourceResource, saveFormatResource, relationMappingResource) {
 
             return {
-
-                getEditorDataItems: function (model, typeahead) {
-                    return dataSourceResource.getEditorDataItems(model, typeahead);
+                
+                // editorParameter is used by the typeahead and tree pickers,
+                // so as to supply additional data to enable the appropriate collection of items to be returned
+                // editorParameter expected to be an obj with one property, either 'typeahead' or 'parentKey'
+                getEditorDataItems: function (model, editorParameter) {
+                    return dataSourceResource.getEditorDataItems(model, editorParameter);
                 },
 
                 getPickedKeys: function (model) {
