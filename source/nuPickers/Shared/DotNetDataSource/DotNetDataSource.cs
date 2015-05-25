@@ -35,6 +35,7 @@ namespace nuPickers.Shared.DotNetDataSource
                     this.HandledTypeahead = true;
                 }
 
+                // hydrate state using the data type configuration
                 foreach (PropertyInfo propertyInfo in dotNetDataSource.GetType().GetProperties().Where(x => this.Properties.Select(y => y.Name).Contains(x.Name)))
                 {
                     if (propertyInfo.PropertyType == typeof(string))
