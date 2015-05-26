@@ -275,6 +275,8 @@
     <Compile Include="PropertyEditors\SqlLabels\SqlLabelsPropertyEditor.cs" />
     <Compile Include="PropertyEditors\SqlTypeaheadListPicker\SqlTypeaheadListPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\SqlTypeaheadListPicker\SqlTypeaheadListPickerPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\UmbracoTreeTreePicker\UmbracoTreeTreePickerPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\UmbracoTreeTreePicker\UmbracoTreeTreePickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\XmlLabels\XmlLabelsPreValueEditor.cs" />
     <Compile Include="PropertyEditors\XmlLabels\XmlLabelsPropertyEditor.cs" />
     <Compile Include="PropertyEditors\XmlTypeaheadListPicker\XmlTypeaheadListPickerPreValueEditor.cs" />
@@ -333,6 +335,7 @@
     <Compile Include="Shared\SqlDataSource\SqlDataSource.cs" />
     <Compile Include="Shared\SqlDataSource\SqlDataSourceApiController.cs" />
     <Compile Include="Shared\TypeaheadListPicker\TypeaheadListPicker.cs" />
+    <Compile Include="Shared\UmbracoTreeDataSource\UmbracoTreeDataSource.cs" />
     <Compile Include="Shared\XmlDataSource\XmlDataSource.cs" />
     <Compile Include="Shared\XmlDataSource\XmlDataSourceApiController.cs" />
   </ItemGroup>
@@ -478,6 +481,19 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Shared\Labels\LabelsConfig.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\TreePicker\TreePickerConfig.html" />
+    <EmbeddedResource Include="Shared\TreePicker\TreePickerEditor.html" />
+    <EmbeddedResource Include="Shared\TreePicker\TreePickerEditorController.js" />
+    <EmbeddedResource Include="Shared\TreePicker\TreePickerEditorDialog.html" />
+    <EmbeddedResource Include="Shared\TreePicker\TreePickerEditorDialogController.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\UmbracoTreeDataSource\UmbracoTreeDataSourceConfig.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\UmbracoTreeDataSource\UmbracoTreeDataSourceConfigController.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

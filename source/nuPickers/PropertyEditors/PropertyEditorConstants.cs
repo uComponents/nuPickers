@@ -48,6 +48,8 @@ namespace nuPickers.PropertyEditors
         public const string XmlPrefetchListPickerAlias = "nuPickers.XmlPrefetchListPicker";
         public const string XmlRadioButtonPickerAlias = "nuPickers.XmlRadioButtonPicker";
         public const string XmlTypeaheadListPickerAlias = "nuPickers.XmlTypeaheadListPicker";
-        
+
+        public const string UmbracoTreeTreePickerAlias = "nuPickers.UmbracoTreeTreePicker";
+
     }
 }

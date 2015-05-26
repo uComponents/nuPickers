@@ -1,0 +1,36 @@
+﻿<div ng-controller="nuPickers.Shared.TreePicker.TreePickerEditorController">
+
+    <ul class="unstyled list-icons"
+        ui-sortable
+        ng-model="selectedItems">
+
+        <li ng-repeat="node in selectedItems">
+            <i class="icon icon-navigation handle"></i>
+
+            <a href="#"
+               prevent-default
+               ng-click="remove($index)">
+                <i class="icon icon-delete red hover-show"></i>
+                <i class="{{node.icon}} hover-hide"></i>
+                {{node.label}}
+            </a>
+
+            <div ng-if="!dialogEditor && model.config.showEditButton">
+                <small><a href umb-launch-mini-editor="node"><localize key="edit">Edit</localize></a></small>
+            </div>
+        </li>
+    </ul>
+
+    <ul class="unstyled list-icons"
+        ng-show="model.config.treePicker.multipicker === true || selectedItems.length === 0">
+        <li>
+            <i class="icon icon-add blue"></i>
+            <a href="#"
+               prevent-default
+               ng-click="openTreePicker(model.config.dataSource.treeAlias)">
+                <localize key="general_add">Add</localize>
+            </a>
+        </li>
+    </ul>
+
+</div>
