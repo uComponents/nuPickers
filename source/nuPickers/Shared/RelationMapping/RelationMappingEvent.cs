@@ -7,7 +7,6 @@ namespace nuPickers.Shared.RelationMapping
     using Umbraco.Core.Events;
     using Umbraco.Core.Models;
     using Umbraco.Core.Services;
-    using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// server side event to update relations on change of any content / media / member using a nuPicker with relation mapping
@@ -19,10 +18,6 @@ namespace nuPickers.Shared.RelationMapping
             ContentService.Saved += this.ContentService_Saved;
             MediaService.Saved += this.MediaService_Saved;
             MemberService.Saved += this.MemberService_Saved;
-
-            //ContentService.Trashed += this.ContentService_Trashed;
-            //MediaService.Trashed += this.MediaService_Trashed;
-            // Members can't be trashed
             
             // NOTE: all relations to an id are automatically deleted when emptying the recycle bin
         }
@@ -72,45 +67,5 @@ namespace nuPickers.Shared.RelationMapping
                 }
             }
         }
-
-        //private void MediaService_Trashed(IMediaService sender, MoveEventArgs<IMedia> e)
-        //{
-        //    this.Trashed((IService)sender, e.Entity);
-        //}
-
-        //private void ContentService_Trashed(IContentService sender, MoveEventArgs<IContent> e)
-        //{
-        //    this.Trashed((IService)sender, e.Entity);
-        //}
-
-        ///// <summary>
-        ///// combined event for content / media
-        ///// </summary>
-        ///// <param name="sender"></param>
-        ///// <param name="entity"></param>
-        //private void Trashed(IService sender, IContentBase trashedEntity)
-        //{
-        //    // for each property
-        //    foreach (PropertyType propertyType in trashedEntity.PropertyTypes.Where(x => PickerPropertyValueConverter.IsPicker(x.PropertyEditorAlias)))
-        //    {
-        //        // create picker supplying all values
-        //        Picker picker = new Picker(trashedEntity.Id,
-        //                                    propertyType.Alias,
-        //                                    propertyType.DataTypeDefinitionId,
-        //                                    trashedEntity.GetValue(propertyType.Alias));
-
-        //        if (!string.IsNullOrWhiteSpace(picker.RelationTypeAlias))
-        //        {
-        //            // trigger update with no items picked - causes relations to be deleted
-        //            // (relations can be recreated after a delete, by resaving after restore)
-        //            RelationMapping.UpdateRelationMapping(
-        //                                    picker.ContextId,
-        //                                    picker.PropertyAlias,
-        //                                    picker.RelationTypeAlias,
-        //                                    picker.GetDataTypePreValue("saveFormat").Value == "relationsOnly",
-        //                                    new int[] {});
-        //        }
-        //    }
-        //}
     }
 }
