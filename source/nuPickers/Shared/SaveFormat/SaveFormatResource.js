@@ -16,6 +16,7 @@ angular.module('umbraco.resources')
                     switch (config.saveFormat) {
 
                         case 'csv': // 'key, key...'
+                        case 'relationsOnly': // special case - used server-side by relationsOnly mapping event (where this value is then wiped)
                             return pickedOptions.map(function (option) { return option.key; }).join();
                             break;
 
@@ -39,19 +40,6 @@ angular.module('umbraco.resources')
 
                             return xml;
                             break;
-
-                        case 'relationsOnly':
-                            // special case - so server-side relation-mapping can read these values and then delete them
-                            // (relations must be set server side, as new items do not have an id available client-side)
-
-                            var ids = [];
-                            for (var i = 0; i < pickedOptions.length; i++) {
-                                if (parseInt(Number(pickedOptions[i].key)), 10) {
-                                    ids.push(pickedOptions[i].key);
-                                }
-                            }
-
-                            return ids.join();
 
                         default:
                             return null;

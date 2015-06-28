@@ -1,6 +1,7 @@
 ﻿
 namespace nuPickers.Shared.RelationMapping
 {
+    using nuPickers.Shared.SaveFormat;
     using System.Collections.Generic;
     using System.Linq;
     using Umbraco.Core;
@@ -57,46 +58,44 @@ namespace nuPickers.Shared.RelationMapping
 
                     if (!string.IsNullOrWhiteSpace(picker.RelationTypeAlias))
                     {
-                        int[] pickedIds;
                         bool isRelationsOnly = picker.GetDataTypePreValue("saveFormat").Value == "relationsOnly";
 
                         if (isRelationsOnly) 
                         {
-                            pickedIds = picker.SavedValue != null // special case - read saved value
-                                            ? picker.SavedValue.ToString().Split(',').Select(x => int.Parse(x)).ToArray()
-                                            : new int[]{};
-
-                            if (pickedIds.Any())
+                            if (picker.SavedValue == null)
                             {
-                                // delete saved value
+                                picker.PickedKeys = new string[] { };
+                            }
+                            else
+                            {
+                                // manually set on picker obj, so it doesn't then attempt to read picked keys from the database
+                                picker.PickedKeys = SaveFormat.GetSavedKeys(picker.SavedValue.ToString()).ToArray();
+
+                                // delete saved value (setting it to null)
                                 savedEntity.SetValue(propertyType.Alias, null);
 
                                 if (sender is IContentService)
                                 {
                                     ((IContentService)sender).Save((IContent)savedEntity, 0, false);
-                                } 
+                                }
                                 else if (sender is IMediaService)
                                 {
                                     ((IMediaService)sender).Save((IMedia)savedEntity, 0, false);
-                                } 
+                                }
                                 else if (sender is IMemberService)
                                 {
                                     ((IMemberService)sender).Save((IMember)savedEntity, false);
                                 }
                             }
                         }
-                        else
-                        {
-                            // read current saved value
-                            pickedIds = picker.PickedIds.ToArray();
-                        }
-
+                       
+                        // update database
                         RelationMapping.UpdateRelationMapping(
                                                 picker.ContextId,           // savedEntity.Id
                                                 picker.PropertyAlias,       // propertyType.Alias
                                                 picker.RelationTypeAlias,
                                                 isRelationsOnly,
-                                                pickedIds);
+                                                picker.PickedIds.ToArray());
                     }
                 }
             }

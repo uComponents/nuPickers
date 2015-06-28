@@ -116,6 +116,12 @@
 
                 return this.pickedKeys;
             }
+
+            // special case - allows relation-mapping event to set here (so preventing them from being taken from the database)
+            internal set
+            {
+                this.pickedKeys = value.ToArray();
+            }
         }
 
         /// <summary>
