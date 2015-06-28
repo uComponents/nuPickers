@@ -40,7 +40,19 @@ angular.module('umbraco.resources')
                             return xml;
                             break;
 
-                        case 'relationsOnly': // when saving to relations only
+                        case 'relationsOnly':
+                            // special case - so server-side relation-mapping can read these values and then delete them
+                            // (relations must be set server side, as new items do not have an id available client-side)
+
+                            var ids = [];
+                            for (var i = 0; i < pickedOptions.length; i++) {
+                                if (parseInt(Number(pickedOptions[i].key)), 10) {
+                                    ids.push(pickedOptions[i].key);
+                                }
+                            }
+
+                            return ids.join();
+
                         default:
                             return null;
                             break;

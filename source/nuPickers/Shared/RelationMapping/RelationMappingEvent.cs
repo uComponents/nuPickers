@@ -57,12 +57,46 @@ namespace nuPickers.Shared.RelationMapping
 
                     if (!string.IsNullOrWhiteSpace(picker.RelationTypeAlias))
                     {
+                        int[] pickedIds;
+                        bool isRelationsOnly = picker.GetDataTypePreValue("saveFormat").Value == "relationsOnly";
+
+                        if (isRelationsOnly) 
+                        {
+                            pickedIds = picker.SavedValue != null // special case - read saved value
+                                            ? picker.SavedValue.ToString().Split(',').Select(x => int.Parse(x)).ToArray()
+                                            : new int[]{};
+
+                            if (pickedIds.Any())
+                            {
+                                // delete saved value
+                                savedEntity.SetValue(propertyType.Alias, null);
+
+                                if (sender is IContentService)
+                                {
+                                    ((IContentService)sender).Save((IContent)savedEntity, 0, false);
+                                } 
+                                else if (sender is IMediaService)
+                                {
+                                    ((IMediaService)sender).Save((IMedia)savedEntity, 0, false);
+                                } 
+                                else if (sender is IMemberService)
+                                {
+                                    ((IMemberService)sender).Save((IMember)savedEntity, false);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            // read current saved value
+                            pickedIds = picker.PickedIds.ToArray();
+                        }
+
                         RelationMapping.UpdateRelationMapping(
                                                 picker.ContextId,           // savedEntity.Id
                                                 picker.PropertyAlias,       // propertyType.Alias
                                                 picker.RelationTypeAlias,
-                                                picker.GetDataTypePreValue("saveFormat").Value == "relationsOnly",
-                                                picker.PickedIds.ToArray());
+                                                isRelationsOnly,
+                                                pickedIds);
                     }
                 }
             }
