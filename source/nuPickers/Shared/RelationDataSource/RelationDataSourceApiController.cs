@@ -31,14 +31,17 @@ namespace nuPickers.Shared.RelationDataSource
         {
             int contextId = currentId;
 
-            IEnumerable<EditorDataItem> editorDataItems = RelationType.GetByAlias((string)data.config.dataSource.relationType)
-                                                                                .GetRelations(contextId)
-                                                                                .Select(x => new EditorDataItem()
-                                                                                {
-                                                                                    Key = x.Child.Id.ToString(),
-                                                                                    Label = x.Child.Text
-                                                                                })
-                                                                                .ToList();
+            var relationService = this.ApplicationContext.Services.RelationService;
+
+            IEnumerable<EditorDataItem> editorDataItems = relationService.GetEntitiesFromRelations(
+                                                            relationService.GetByRelationTypeAlias((string)data.config.dataSource.relationType)
+                                                            .Where(r => r.ParentId == contextId))
+                                                            .Select(x => new EditorDataItem()
+                                                            {
+                                                                Key = x.Item2.Id.ToString(),
+                                                                Label = x.Item2.Name.ToString()
+                                                            })
+                                                            .ToList();
 
             CustomLabel customLabel = new CustomLabel((string)data.config.customLabel, contextId, propertyAlias);
 
