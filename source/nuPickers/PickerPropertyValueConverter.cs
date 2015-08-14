@@ -25,7 +25,7 @@
         /// </summary>
         /// <param name="propertyEditorAlias"></param>
         /// <returns></returns>
-        internal static bool IsPicker(string propertyEditorAlias)
+        public static bool IsPicker(string propertyEditorAlias)
         {
             return new string[] { 
                         PropertyEditorConstants.DotNetCheckBoxPickerAlias,

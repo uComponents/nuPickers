@@ -8,9 +8,9 @@ angular.module('umbraco.resources')
 
                 getEditorDataItems: function (model, typeahead) {
                     
-                    var parentId = 0;
                     var currentId = 0;
-		    
+                    var parentId = 0;
+
                     if (editorState.current) {
                         currentId = editorState.current.id;
 			            parentId = editorState.current.parentId;
