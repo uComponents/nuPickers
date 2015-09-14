@@ -1,34 +1,44 @@
-﻿
+
 angular
     .module('umbraco')
     .controller("nuPickers.Shared.TypeaheadListPicker.TypeaheadListPickerEditorController",
-        ['$scope', 
-        function ($scope) {
+        ['$scope', '$timeout', '$q', 
+        function ($scope, $timeout) {
      
             //$scope.clear = function () {
             //    $scope.typeahead = null;
             //    $scope.selectableOptions = null;
             //};
 
+            var wait;
+
             // setup a watch on the input
-            $scope.$watch('typeahead', function (newValue, oldValue) {                
+            $scope.$watch('typeahead', function (newValue, oldValue) {
 
                 if (newValue != null && newValue.length >= $scope.model.config.typeaheadListPicker.minCharacters) {
+
+                    // Cancel the timeout as we set a new
+                    if (wait) {
+                        $timeout.cancel(wait);
+                    }
                     
-                    $scope.getEditorOptions(newValue).then(function (response) {
+                    wait = $timeout(function () {
 
-                        if (response.data.length > 0) {
+                        $scope.getEditorOptions(newValue).then(function (response) {
                             $scope.selectableOptions = response.data;
-                        }
-                        else {
-                            $scope.typeahead = oldValue;
-                        }                                                
-                        
-                    });
+                        });
 
-                }
-                else {
+                    }, 250);
+
+                } else {
+
+                    // Cancel the timeout (since we're not actually doing a search)
+                    if (wait) {
+                        $timeout.cancel(wait);
+                    }
+
                     $scope.selectableOptions = [];
+
                 }
 
             });
