@@ -15,15 +15,7 @@
 
         protected override bool ExecuteWhenApplicationNotConfigured
         {
-            get
-            {
-                if (RouteTable.Routes["nuPickersShared"] == null)
-                {
-                    RouteBuilder.BuildRoutes(RouteTable.Routes);
-                    FileWriters.AddWriterForExtension(".nu", new EmbeddedResourceWriter());
-                }
-                return base.ExecuteWhenApplicationNotConfigured;
-            }
+            get { return true; }
         }
     }
 }
