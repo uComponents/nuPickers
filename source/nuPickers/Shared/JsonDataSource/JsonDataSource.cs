@@ -1,4 +1,4 @@
-namespace nuPickers.Shared.JsonDataSource
+﻿namespace nuPickers.Shared.JsonDataSource
 {
     using Newtonsoft.Json.Linq;
     using nuPickers.Shared.Editor;
@@ -24,14 +24,18 @@ namespace nuPickers.Shared.JsonDataSource
         /// <returns>List of items for displaying inside a nuPicker JSON data type.</returns>
         public IEnumerable<EditorDataItem> GetEditorDataItems(int contextId)
         {
-            List<EditorDataItem> editorDataItems = new List<EditorDataItem>();
+            List<EditorDataItem> editorDataItems = new List<EditorDataItem>(); // prepare return value
 
-            var dataFromUrl = Helper.GetDataFromUrl(this.Url);
+            JToken jToken = null; // object representation of all json source data
 
-            if (!string.IsNullOrEmpty(dataFromUrl))
+            try
             {
-
-                JToken jToken = JToken.Parse(dataFromUrl);
+                jToken = JToken.Parse(Helper.GetDataFromUrl(this.Url));
+            }
+            catch
+            {
+                // invalid json source data
+            }
 
             if (jToken != null)
             {
@@ -40,57 +44,47 @@ namespace nuPickers.Shared.JsonDataSource
                 {
                     editorDataItems = jToken.ToObject<string[]>()
                                             .Select(x => new EditorDataItem()
-                                                            {
-                                                                Key = x,
-                                                                Label = x
-                                                            })
+                                            {
+                                                Key = x,
+                                                Label = x
+                                            })
                                             .ToList();
                 }
-                else // use JsonPaths
+                else // use JsonPath
                 {
-						// we will manually iterate jToken results and only add items with Key and Label
-                        var dataItems = new List<EditorDataItem>(); 
+                    IEnumerable<JToken> jTokens = null;
 
-                        IEnumerable<JToken> selectTokens = null;
+                    try
+                    {
+                        jTokens = jToken.SelectTokens(this.JsonPath);
+                    }
+                    catch (JsonException jsonException)
+                    {
+                        LogHelper.Error(typeof(nuPickers.Shared.JsonDataSource.JsonDataSource), "Check JSONPath: " + this.JsonPath, jsonException);
+                    }
 
-                        try // we cannot evaluate JSONPath validity so we'll wrap in a Try Catch
+                    if (jTokens != null)
+                    {
+                        foreach(JToken jsonPathToken in jTokens.Where(x => x is JObject && x.HasValues))
                         {
-                            selectTokens = jToken.SelectTokens(this.JsonPath);
-                        }
-                        catch (JsonException jEx)
-                        {
-                            LogHelper.Error(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType, "Check JSONPath: " + this.JsonPath, jEx);
-                        }
+                            JToken keyToken = jsonPathToken.SelectToken(this.KeyJsonPath);
+                            JToken labelToken = jsonPathToken.SelectToken(this.LabelJsonPath);
 
-                        if (selectTokens != null)
-                        {
-                            IEnumerable<JToken> tokens = selectTokens.Where(x => x != null);
-
-                            foreach (JToken token in tokens) // manually iterate
+                            if (keyToken != null && labelToken != null)
                             {
-                                if (token.HasValues)   // prevents NullReferenceExceptions
-                                {
-                                    var item = new EditorDataItem();
-
-                                    var keySelect = token.SelectToken(this.KeyJsonPath);
-                                    var tokenSelect = token.SelectToken(this.LabelJsonPath);
-
-                                    if (keySelect != null && tokenSelect != null) 
+                                editorDataItems.Add(
+                                    new EditorDataItem()
                                     {
-                                        item.Key = keySelect.ToString();
-                                        item.Label = tokenSelect.ToString();
-
-                                        dataItems.Add(item);
-                                    }
-                                }
+                                        Key = keyToken.ToString(),
+                                        Label =labelToken.ToString()
+                                    });
                             }
                         }
-
-                        editorDataItems = dataItems.ToList();
                     }
                 }
-                // TODO: distinct on editor data item keys
             }
+
+            // TODO: distinct on editor data item keys
 
             return editorDataItems;
         }
