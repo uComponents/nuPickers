@@ -15,21 +15,23 @@
         {
             List<string> assemblyNames = new List<string>();
 
-            // check if the App_Code directory exists and has any files
-            var mapPath = HostingEnvironment.MapPath("~/App_Code"); // nullable type in some cases
-            if (mapPath != null) // so we check if it is null
+            // try to add App_Code directory
+            string appCodePath = HostingEnvironment.MapPath("~/App_Code");
+            if (appCodePath != null)
             {
-                DirectoryInfo appCode = new DirectoryInfo(mapPath);
-                if (appCode.Exists && appCode.GetFiles().Length > 0 && GetAssembly(appCode.Name) != null)  // safety check to see if an assembly can be got from AppCode
+                DirectoryInfo appCode = new DirectoryInfo(appCodePath);
+                if (appCode.Exists && appCode.GetFiles().Length > 0 && Helper.GetAssembly(appCode.Name) != null)
                 {
                     assemblyNames.Add(appCode.Name);
                 }
             }
 
-            // add assemblies from the /bin directory
-            var binPath = HostingEnvironment.MapPath("~/bin"); // another nullable type 
-            if (binPath != null)   // let's check path exists
+            // add any .dll assemblies from the /bin directory
+            string binPath = HostingEnvironment.MapPath("~/bin");
+            if (binPath != null)
+            {
                 assemblyNames.AddRange(Directory.GetFiles(binPath, "*.dll").Select(x => x.Substring(x.LastIndexOf('\\') + 1)));
+            }
 
             return assemblyNames;
         }
@@ -76,7 +78,7 @@
         /// <param name="assembly">the assembly to get types from</param>
         /// <returns>a collection of types found</returns>
         internal static IEnumerable<Type> GetLoadableTypes(this Assembly assembly)
-        {       
+        {
             try
             {
                 return assembly.GetTypes();
@@ -88,7 +90,7 @@
             catch
             {
                 return Enumerable.Empty<Type>();
-            }       
+            }
         }
 
         /// <summary>
