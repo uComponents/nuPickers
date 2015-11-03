@@ -102,19 +102,22 @@
         {
             string data = string.Empty;
 
-            if (!string.IsNullOrEmpty(url))	// do nothing if we don't have a URL
+            if (!string.IsNullOrEmpty(url))
             {
-            using (WebClient client = new WebClient())
-            {
-                if (url.StartsWith("~/"))
+                using (WebClient client = new WebClient())
                 {
-                    string filePath = HttpContext.Current.Server.MapPath(url);
+                    if (url.StartsWith("~/"))
+                    {
+                        string filePath = HttpContext.Current.Server.MapPath(url);
 
-                        var newValue = (HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "/");
-
-                        url = File.Exists(filePath)
-                            ? filePath
-                            : url.Replace("~/", newValue);
+                        if (File.Exists(filePath))
+                        {
+                            url = filePath;
+                        }
+                        else
+                        {
+                            url = url.Replace("~/", (HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "/"));
+                        }
                     }
 
                     data = client.DownloadString(url);
