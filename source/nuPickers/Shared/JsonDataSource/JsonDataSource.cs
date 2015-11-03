@@ -1,10 +1,11 @@
-﻿
 namespace nuPickers.Shared.JsonDataSource
 {
     using Newtonsoft.Json.Linq;
-    using nuPickers.Shared.Editor;
+    using Editor;
     using System.Collections.Generic;
     using System.Linq;
+	using Newtonsoft.Json;
+	using Umbraco.Core.Logging;
 
     public class JsonDataSource
     {
@@ -16,46 +17,81 @@ namespace nuPickers.Shared.JsonDataSource
 
         public string LabelJsonPath { get; set; }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="contextId"></param>
-        /// <returns></returns>
-        public IEnumerable<EditorDataItem> GetEditorDataItems(int contextId)
-        {
-            List<EditorDataItem> editorDataItems = new List<EditorDataItem>();
-            
-            JToken jToken = JToken.Parse(Helper.GetDataFromUrl(this.Url));
+	    /// <summary>
+	    /// Main method for retrieving nuPicker data items.
+	    /// </summary>
+	    /// <param name="contextId">Current context node Id</param>
+	    /// <returns>List of items for displaying inside a nuPicker JSON data type.</returns>
+	    public IEnumerable<EditorDataItem> GetEditorDataItems(int contextId)
+	    {
+		    List<EditorDataItem> editorDataItems = new List<EditorDataItem>();
 
-            if (jToken != null)
-            {
-                // check for: [ 'a', 'b', 'c' ] and create editor items without using any JsonPath
-                if (jToken is JArray && jToken.ToObject<object[]>().All(x => x is string))
-                {
-                    editorDataItems = jToken.ToObject<string[]>()
-                                            .Select(x => new EditorDataItem()
-                                                            {
-                                                                Key = x,
-                                                                Label = x
-                                                            })
-                                            .ToList();
-                }
-                else // use JsonPaths
-                {
-                    editorDataItems = jToken.SelectTokens(this.JsonPath)
-                                            .Where(x => x is JObject)
-                                            .Select(x => new EditorDataItem()
-                                                            {
-                                                                Key = x.SelectToken(this.KeyJsonPath).ToString(),
-                                                                Label = x.SelectToken(this.LabelJsonPath).ToString()
-                                                            })
-                                            .ToList();
-                }
-            }
-          
-            // TODO: distinct on editor data item keys
+		    var dataFromUrl = Helper.GetDataFromUrl(this.Url);
 
-            return editorDataItems;
+		    if (!string.IsNullOrEmpty(dataFromUrl))
+		    {
+
+			    JToken jToken = JToken.Parse(dataFromUrl);
+
+			    if (jToken != null)
+			    {
+				    // check for: [ 'a', 'b', 'c' ] and create editor items without using any JsonPath
+				    if (jToken is JArray && jToken.ToObject<object[]>().All(x => x is string))
+				    {
+					    editorDataItems = jToken.ToObject<string[]>()
+						    .Select(x => new EditorDataItem()
+						    {
+							    Key = x,
+							    Label = x
+						    })
+						    .ToList();
+				    }
+				    else // use JsonPaths
+				    {
+					    var dataItems = new List<EditorDataItem>();
+					    
+						IEnumerable<JToken> selectTokens = null;
+					    
+						try // we cannot evaluate JSONPath validity so we'll wrap in a Try Catch
+					    {
+							selectTokens = jToken.SelectTokens(this.JsonPath);
+					    }
+					    catch (JsonException jEx)
+					    {
+							LogHelper.Error(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType, "Check JSONPath: " + this.JsonPath, jEx);
+					    }
+
+					    if (selectTokens != null)
+					    {
+						    IEnumerable<JToken> tokens = selectTokens.Where(x => x != null);
+
+						    foreach (JToken token in tokens)
+						    {
+							    if (token.HasValues)   // prevents NullReferenceExceptions
+							    {
+								    var item = new EditorDataItem();
+
+								    var keySelect = token.SelectToken(this.KeyJsonPath);
+								    var tokenSelect = token.SelectToken(this.LabelJsonPath);
+
+								    if (keySelect != null && tokenSelect != null) // only add value if we match a Key AND a Label
+								    {
+									    item.Key = keySelect.ToString();
+									    item.Label = tokenSelect.ToString();
+
+									    dataItems.Add(item);
+								    }
+							    }
+						    }
+					    }
+
+					    editorDataItems = dataItems.ToList();
+				    }
+			    }
+			    // TODO: distinct on editor data item keys
+		    }
+
+		    return editorDataItems;
         }
     }
 }
