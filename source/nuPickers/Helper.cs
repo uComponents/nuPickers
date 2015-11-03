@@ -16,18 +16,20 @@
             List<string> assemblyNames = new List<string>();
 
             // check if the App_Code directory exists and has any files
-            DirectoryInfo appCode = new DirectoryInfo(HostingEnvironment.MapPath("~/App_Code"));
-            if (appCode.Exists && appCode.GetFiles().Length > 0)
+            var mapPath = HostingEnvironment.MapPath("~/App_Code"); // nullable type in some cases
+            if (mapPath != null) // so we check if it is null
             {
-                // safety check to see if an assembly can be got from AppCode
-                if (Helper.GetAssembly(appCode.Name) != null)
+                DirectoryInfo appCode = new DirectoryInfo(mapPath);
+                if (appCode.Exists && appCode.GetFiles().Length > 0 && GetAssembly(appCode.Name) != null)  // safety check to see if an assembly can be got from AppCode
                 {
                     assemblyNames.Add(appCode.Name);
                 }
             }
 
             // add assemblies from the /bin directory
-            assemblyNames.AddRange(Directory.GetFiles(HostingEnvironment.MapPath("~/bin"), "*.dll").Select(x => x.Substring(x.LastIndexOf('\\') + 1)));
+            var binPath = HostingEnvironment.MapPath("~/bin"); // another nullable type 
+            if (binPath != null)   // let's check path exists
+                assemblyNames.AddRange(Directory.GetFiles(binPath, "*.dll").Select(x => x.Substring(x.LastIndexOf('\\') + 1)));
 
             return assemblyNames;
         }
@@ -98,23 +100,23 @@
         {
             string data = string.Empty;
 
+            if (!string.IsNullOrEmpty(url))	// do nothing if we don't have a URL
+            {
             using (WebClient client = new WebClient())
             {
                 if (url.StartsWith("~/"))
                 {
                     string filePath = HttpContext.Current.Server.MapPath(url);
 
-                    if (File.Exists(filePath))
-                    {
-                        url = filePath;
-                    }
-                    else
-                    {
-                        url = url.Replace("~/", (HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "/"));
-                    }
-                }
+                        var newValue = (HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "/");
 
-                data = client.DownloadString(url);
+                        url = File.Exists(filePath)
+                            ? filePath
+                            : url.Replace("~/", newValue);
+                    }
+
+                    data = client.DownloadString(url);
+                }
             }
 
             return data;
