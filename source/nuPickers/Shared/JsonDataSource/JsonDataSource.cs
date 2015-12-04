@@ -1,10 +1,10 @@
 ﻿namespace nuPickers.Shared.JsonDataSource
 {
+    using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
     using nuPickers.Shared.Editor;
     using System.Collections.Generic;
     using System.Linq;
-    using Newtonsoft.Json;
     using Umbraco.Core.Logging;
 
     public class JsonDataSource
@@ -32,9 +32,9 @@
             {
                 jToken = JToken.Parse(Helper.GetDataFromUrl(this.Url));
             }
-            catch
+            catch (JsonException jsonException)
             {
-                // invalid json source data
+                LogHelper.Error(typeof(nuPickers.Shared.JsonDataSource.JsonDataSource), "Check JSON at Url: " + this.Url, jsonException);
             }
 
             if (jToken != null)
