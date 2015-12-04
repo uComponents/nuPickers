@@ -13,7 +13,7 @@ namespace nuPickers.Shared.DotNetDataSource
         public string AssemblyName { get; set; }
 
         public string ClassName { get; set; }
-     
+
         public IEnumerable<DotNetDataSourceProperty> Properties { get; set; }
 
         public string Typeahead { get; set; }
@@ -43,7 +43,7 @@ namespace nuPickers.Shared.DotNetDataSource
 
                         if (propertyValue != null)
                         {
-                            // process any tokens                        
+                            // process any tokens
                             propertyValue = propertyValue.Replace("$(ContextId)", contextId.ToString());
 
                             propertyInfo.SetValue(dotNetDataSource, propertyValue);

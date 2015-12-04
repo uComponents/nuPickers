@@ -97,7 +97,7 @@
         /// uses supplied url to check the file system (if prefixed with ~/) else makes an http query
         /// </summary>
         /// <param name="url">Url to download the resource from</param>
-        /// <returns>the string based result of either a file or an http response</returns>
+        /// <returns>An empty string, or the string result of either a file or an http response</returns>
         internal static string GetDataFromUrl(string url)
         {
             string data = string.Empty;
