@@ -60,7 +60,7 @@ namespace nuPickers.Shared.RelationMapping
                     {
                         bool isRelationsOnly = picker.GetDataTypePreValue("saveFormat").Value == "relationsOnly";
 
-                        if (isRelationsOnly) 
+                        if (isRelationsOnly)
                         {
                             if (picker.SavedValue == null)
                             {
@@ -72,23 +72,23 @@ namespace nuPickers.Shared.RelationMapping
                                 picker.PickedKeys = SaveFormat.GetSavedKeys(picker.SavedValue.ToString()).ToArray();
 
                                 // delete saved value (setting it to null)
-                                savedEntity.SetValue(propertyType.Alias, null);
+                                //savedEntity.SetValue(propertyType.Alias, null);
 
-                                if (sender is IContentService)
-                                {
-                                    ((IContentService)sender).Save((IContent)savedEntity, 0, false);
-                                }
-                                else if (sender is IMediaService)
-                                {
-                                    ((IMediaService)sender).Save((IMedia)savedEntity, 0, false);
-                                }
-                                else if (sender is IMemberService)
-                                {
-                                    ((IMemberService)sender).Save((IMember)savedEntity, false);
-                                }
+                                //if (sender is IContentService)
+                                //{
+                                //    ((IContentService)sender).Save((IContent)savedEntity, 0, false);
+                                //}
+                                //else if (sender is IMediaService)
+                                //{
+                                //    ((IMediaService)sender).Save((IMedia)savedEntity, 0, false);
+                                //}
+                                //else if (sender is IMemberService)
+                                //{
+                                //    ((IMemberService)sender).Save((IMember)savedEntity, false);
+                                //}
                             }
                         }
-                       
+
                         // update database
                         RelationMapping.UpdateRelationMapping(
                                                 picker.ContextId,           // savedEntity.Id
