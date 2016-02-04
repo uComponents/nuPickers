@@ -10,6 +10,11 @@ ul.layout-direction.horizontal li
     display:inline;
 }
 
+ul.layout-direction.horizontal li label {
+    display: inline;
+    margin-right: 10px;
+}
+
 ul.layout-direction.vertical li
 {   
 }
