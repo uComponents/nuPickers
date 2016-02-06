@@ -4,7 +4,6 @@ namespace nuPickers.Shared.XmlDataSource
     using nuPickers.Shared.Editor;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Web;
     using System.Xml;
     using System.Xml.XPath;
     using umbraco;
@@ -16,9 +15,9 @@ namespace nuPickers.Shared.XmlDataSource
         public string Url { get; set; }
 
         public string XPath { get; set; }
-        
+
         public string KeyXPath { get; set; }
-        
+
         public string LabelXPath { get; set; }
 
         public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId)
@@ -52,10 +51,35 @@ namespace nuPickers.Shared.XmlDataSource
 
             if (xmlDocument != null)
             {
-                // really the logic is self-or-parent-or-root
-                int ancestorOrSelfId = currentId > 0 ? currentId : parentId > 0 ? parentId : -1;
+                string xPath = this.XPath;
 
-                string xPath = this.XPath.Replace("$ancestorOrSelf", string.Concat("/descendant::*[@id='", ancestorOrSelfId, "']"));
+                if (xPath.Contains("$ancestorOrSelf"))
+                {
+                    // default to 'self-or-parent-or-root'
+                    int ancestorOrSelfId = currentId > 0 ? currentId : parentId > 0 ? parentId : -1;
+
+                    // could have an id, but it might not be published in the xml
+                    if (this.XmlData == "content" && ancestorOrSelfId > 0)
+                    {
+                        // TODO: get path of nodes from self to root (other than just current / parent / root)
+
+                        // if current node un-published
+                        if (xmlDocument.SelectSingleNode("/descendant::*[@id='" + currentId + "']") == null)
+                        {
+                            // set to parent
+                            ancestorOrSelfId = parentId;
+
+                            // if  parent node un-published
+                            if (xmlDocument.SelectSingleNode("/descendant::*[@id='" + parentId + "']") == null)
+                            {
+                                // fall back to root
+                                ancestorOrSelfId = -1;
+                            }
+                        }
+                    }
+
+                    xPath = this.XPath.Replace("$ancestorOrSelf", string.Concat("/descendant::*[@id='", ancestorOrSelfId, "']"));
+                }
 
                 XPathNavigator xPathNavigator = xmlDocument.CreateNavigator();
                 XPathNodeIterator xPathNodeIterator = xPathNavigator.Select(xPath);
