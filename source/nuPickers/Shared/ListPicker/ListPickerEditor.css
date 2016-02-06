@@ -1,5 +1,5 @@
 ﻿
-.list-picker {        
+.list-picker {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -14,14 +14,18 @@
     padding-bottom:1px;
 }
 
-.list-picker .text-input-bar input{
+.list-picker .text-input-bar input {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    width:48%;    
+    width:48%;
 
     min-height:30px;
     line-height:30px;
+}
+
+.list-picker .text-input-bar input.no-match {
+    color:red;
 }
 
 .list-picker ul {
@@ -94,7 +98,7 @@
     border:1px dashed #ccc;
 }
 
-/* 
+/*
     <ul class="selectable">
         <li class="(lit) (disabled) (used)">
 
@@ -105,7 +109,7 @@
             <a class="button (disabled)"></a>
 
         </li>
-    </ul>    
+    </ul>
 */
 
 .list-picker .selectable {
@@ -123,18 +127,18 @@
 .list-picker .selectable .option-label {
     /* reset the direction */
     direction:ltr;
-    float:left; 
+    float:left;
     text-align:left;
 }
 
 .list-picker .selectable .button {
     right: 0;
     border-left: 1px solid #ccc;
-    background-image: url('/App_Plugins/nuPickers/Shared/ListPicker/ButtonAdd.png?ipignore=true');   
+    background-image: url('/App_Plugins/nuPickers/Shared/ListPicker/ButtonAdd.png?ipignore=true');
 }
 
 .list-picker .selectable .button.active:hover {
-    background-image: url('/App_Plugins/nuPickers/Shared/ListPicker/ButtonRight.png?ipignore=true');   
+    background-image: url('/App_Plugins/nuPickers/Shared/ListPicker/ButtonRight.png?ipignore=true');
 }
 
 /*
@@ -149,7 +153,7 @@
                 </div>
 
             </li>
-        </ul>        
+        </ul>
 
         <ul class="placeholders"
             <li/>
@@ -187,7 +191,7 @@
 }
 
 .list-picker .selected .button:hover { /* can always click this */
-    background-image: url('/App_Plugins/nuPickers/Shared/ListPicker/ButtonLeft.png?ipignore=true');   
+    background-image: url('/App_Plugins/nuPickers/Shared/ListPicker/ButtonLeft.png?ipignore=true');
 }
 
 .list-picker .placeholders li {
@@ -195,13 +199,13 @@
     color: #ccc;
 }
 
-.list-picker .placeholders .required { 
+.list-picker .placeholders .required {
     border-style: dotted;
     border-color: #b94a48;
     color: #b94a48;
 }
 
-.list-picker .placeholders .select { 
+.list-picker .placeholders .select {
     border-style: dashed;
 }
 

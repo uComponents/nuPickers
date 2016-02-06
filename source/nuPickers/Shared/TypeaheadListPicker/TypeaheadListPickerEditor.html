@@ -13,13 +13,14 @@
                    placeholder="typeahead"
                    autocomplete="off"
                    ng-model="typeahead"
+                   ng-class="{'no-match': noMatch}"
                    nu-cursor-up="cursorUp()"
                    nu-cursor-down="cursorDown()"
                    nu-enter-key="enterKey()" />
                    <!--nu-blur="clear()" />-->
         </div>
 
-        <ng-include src="'/App_Plugins/nuPickers/Shared/ListPicker/ListPickerPartial.html'" /> 
+        <ng-include src="'/App_Plugins/nuPickers/Shared/ListPicker/ListPickerPartial.html'" />
 
     </div>
 </div>

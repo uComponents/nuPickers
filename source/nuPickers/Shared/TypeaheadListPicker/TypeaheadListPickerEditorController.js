@@ -10,14 +10,15 @@ angular
             //    $scope.selectableOptions = null;
             //};
 
-            var wait;
+            var wait; // typeahead call to get options based on text input
 
             // setup a watch on the input
             $scope.$watch('typeahead', function (newValue, oldValue) {
 
+                $scope.noMatch = false;
                 if (newValue != null && newValue.length >= $scope.model.config.typeaheadListPicker.minCharacters) {
 
-                    // Cancel the timeout as we set a new
+                    // cancel the timeout as setting a new one
                     if (wait) {
                         $timeout.cancel(wait);
                     }
@@ -25,6 +26,12 @@ angular
                     wait = $timeout(function () {
 
                         $scope.getEditorOptions(newValue).then(function (response) {
+
+                            // no options returned
+                            if (response.data.length == 0){
+                                $scope.noMatch = true;
+                            }
+
                             $scope.selectableOptions = response.data;
                         });
 
