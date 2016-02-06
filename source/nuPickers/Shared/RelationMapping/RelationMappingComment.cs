@@ -27,7 +27,7 @@ namespace nuPickers.Shared.RelationMapping
 
             IEnumerable<PropertyType> propertyTypes = Enumerable.Empty<PropertyType>();
 
-            switch (uQuery.GetUmbracoObjectType(contextId)) // TODO: can this switch be removed ?
+            switch (Helper.GetUmbracoObjectType(contextId)) // TODO: can this switch be removed ?
             {
                 case uQuery.UmbracoObjectType.Document:
                     propertyTypes = ApplicationContext.Current.Services.ContentService.GetById(contextId).PropertyTypes;

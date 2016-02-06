@@ -8,6 +8,7 @@
     using System.Reflection;
     using System.Web;
     using System.Web.Hosting;
+    using umbraco;
 
     internal static class Helper
     {
@@ -125,6 +126,19 @@
             }
 
             return data;
+        }
+
+        /// <summary>
+        /// replacement for built-in uQuery method (as that hits the database)
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        internal static uQuery.UmbracoObjectType GetUmbracoObjectType(int id)
+        {
+            // TODO:
+
+            // HACK: returning uQuery call, to prevent breaking
+            return uQuery.GetUmbracoObjectType(id);
         }
     }
 }

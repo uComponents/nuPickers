@@ -39,7 +39,7 @@
             UmbracoHelper umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
             Picker picker;
 
-            switch (uQuery.GetUmbracoObjectType(this.ContextId))
+            switch (Helper.GetUmbracoObjectType(this.ContextId))
             {
                 case uQuery.UmbracoObjectType.Document:
                     picker = umbracoHelper.TypedContent(this.ContextId).GetPropertyValue<Picker>(this.PropertyAlias);
@@ -225,7 +225,7 @@
                 Attempt<int> attemptNodeId = pickedKey.TryConvertTo<int>();
                 if (attemptNodeId.Success)
                 {
-                    switch (uQuery.GetUmbracoObjectType(attemptNodeId.Result))
+                    switch (Helper.GetUmbracoObjectType(attemptNodeId.Result))
                     {
                         case uQuery.UmbracoObjectType.Document:
                             publishedContent.Add(umbracoHelper.TypedContent(attemptNodeId.Result));
