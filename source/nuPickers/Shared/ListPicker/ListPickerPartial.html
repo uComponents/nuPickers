@@ -11,8 +11,8 @@
         </div>
 
         <a href=""
-           class="button"
-           ng-class="isValidSelection(option) ? 'active' : 'disabled'"
+           class="button icon blue"
+           ng-class="isValidSelection(option) ? 'active icon-add' : 'disabled'"
            ng-mouseenter="lit = isValidSelection(option)"
            ng-mouseleave="lit = false"
            ng-click="lit = false; selectOption(option)">
@@ -31,7 +31,7 @@
             ng-repeat="option in selectedOptions track by $index">
 
             <a href=""
-               class="button"
+               class="button icon icon-delete red"
                ng-mouseenter="lit = true"
                ng-mouseleave="lit = false"
                ng-click="deselectOption($index)">
