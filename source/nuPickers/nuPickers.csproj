@@ -342,8 +342,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Shared\CheckBoxPicker\CheckBoxPickerEditor.html" />
-    <EmbeddedResource Include="Shared\ListPicker\ButtonAdd.png" />
-    <EmbeddedResource Include="Shared\ListPicker\ButtonRemove.png" />
     <EmbeddedResource Include="Shared\PrefetchListPicker\PrefetchListPickerConfig.html" />
     <EmbeddedResource Include="Shared\ListPicker\ListPickerEditor.css" />
     <EmbeddedResource Include="Shared\PrefetchListPicker\PrefetchListPickerEditor.html" />
@@ -380,12 +378,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Shared\RelationMapping\RelationMappingConfig.html" />
     <EmbeddedResource Include="Shared\RelationMapping\RelationMappingConfigController.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Shared\ListPicker\ButtonLeft.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Shared\ListPicker\ButtonRight.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Shared\SaveFormat\SaveFormatConfig.html" />
