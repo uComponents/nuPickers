@@ -1,10 +1,10 @@
-
+﻿
 angular
     .module('umbraco')
     .controller("nuPickers.Shared.TypeaheadListPicker.TypeaheadListPickerEditorController",
-        ['$scope', '$timeout', '$q', 
+        ['$scope', '$timeout',
         function ($scope, $timeout) {
-     
+
             //$scope.clear = function () {
             //    $scope.typeahead = null;
             //    $scope.selectableOptions = null;
@@ -21,7 +21,7 @@ angular
                     if (wait) {
                         $timeout.cancel(wait);
                     }
-                    
+
                     wait = $timeout(function () {
 
                         $scope.getEditorOptions(newValue).then(function (response) {
@@ -44,7 +44,7 @@ angular
             });
 
             if ($scope.model.config.typeaheadListPicker.limitTo > 0) {
-                $scope.$watchCollection('selectableOptions', function () {                    
+                $scope.$watchCollection('selectableOptions', function () {
                     $scope.selectableOptions = $scope.selectableOptions.slice(0, $scope.model.config.typeaheadListPicker.limitTo);
                 });
             }
