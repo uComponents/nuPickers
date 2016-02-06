@@ -8,7 +8,6 @@
     user-select: none;
 }
 
-
 .list-picker .text-input-bar {
     border: 1px solid transparent;
     padding-bottom:1px;
@@ -49,8 +48,6 @@
     line-height:30px;
 }
 
-
-
 .list-picker .lit { /* li */
     border:1px solid #9e9e9e;
 }
@@ -73,11 +70,8 @@
     width: 10%;
     height: 100%;
     position: absolute;
-    top: 0;
-    outline:none;
-    background-position:center;
-    background-repeat:no-repeat;
-    min-width:15px; /* width of icon image */
+    /*font-size:20px;*/
+    text-align:center;
 }
 
 .list-picker .button.disabled {
@@ -134,11 +128,10 @@
 .list-picker .selectable .button {
     right: 0;
     border-left: 1px solid #ccc;
-    background-image: url('/App_Plugins/nuPickers/Shared/ListPicker/ButtonAdd.png?ipignore=true');
 }
 
-.list-picker .selectable .button.active:hover {
-    background-image: url('/App_Plugins/nuPickers/Shared/ListPicker/ButtonRight.png?ipignore=true');
+.list-picker .disabled .button {
+    border-left:none; /* no icon, so remove the line indicating a button */
 }
 
 /*
@@ -187,11 +180,6 @@
 .list-picker .selected .button {
     left: 0;
     border-right: 1px solid #ccc;
-    background-image: url('/App_Plugins/nuPickers/Shared/ListPicker/ButtonRemove.png?ipignore=true');
-}
-
-.list-picker .selected .button:hover { /* can always click this */
-    background-image: url('/App_Plugins/nuPickers/Shared/ListPicker/ButtonLeft.png?ipignore=true');
 }
 
 .list-picker .placeholders li {
