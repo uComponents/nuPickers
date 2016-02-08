@@ -18,8 +18,8 @@
   <PropertyGroup>
     <PackageName>nuPickers</PackageName>
     <MinUmbracoVersion>7.2.3</MinUmbracoVersion>
-    <Readme>nuPickers is a collection of Umbraco v7 Property Editors ** nuPickers v1.5.2 is only compatible with Umbraco v7.2.3+ **</Readme>
-    <AuthorName>Hendy Racher, Jeavon Leopold, Stephen Roberts, Shannon Deminick, Lennart Stoop, Tom Fulton, Chriztian Steinmeier, Lee Kelleher, Alain Mangin, Peter Gregory, Vincent Baaij</AuthorName>
+    <Readme>nuPickers is a collection of Umbraco v7 Property Editors</Readme>
+    <AuthorName>Hendy Racher, Jeavon Leopold, Stephen Roberts, Shannon Deminick, Lee Kelleher, Chriztian Steinmeier, Peter Gregory, Tom Fulton, Lennart Stoop, Anders Bjerner, Joel Hansen, Vincent Baaij, Alain Mangin, Chris Randle, Nic Bell</AuthorName>
     <AuthorUrl>https://github.com/uComponents/nuPickers/graphs/contributors</AuthorUrl>
     <PackageLicenseName>MIT license</PackageLicenseName>
     <PackageLicenseUrl>http://www.opensource.org/licenses/mit-license.php</PackageLicenseUrl>
