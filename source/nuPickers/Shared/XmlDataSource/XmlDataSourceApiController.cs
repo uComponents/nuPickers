@@ -5,7 +5,9 @@ namespace nuPickers.Shared.XmlDataSource
     using nuPickers.Shared.CustomLabel;
     using nuPickers.Shared.Editor;
     using nuPickers.Shared.TypeaheadListPicker;
+    using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Web.Http;
     using Umbraco.Web.Editors;
     using Umbraco.Web.Mvc;
@@ -16,6 +18,12 @@ namespace nuPickers.Shared.XmlDataSource
         [HttpPost]
         public IEnumerable<EditorDataItem> GetEditorDataItems([FromUri] int currentId, [FromUri] int parentId, [FromUri] string propertyAlias, [FromBody] dynamic data)
         {
+            return GetEditorDataItems(currentId, parentId, propertyAlias, null, data);
+        }
+
+        [HttpPost]
+        public IEnumerable<EditorDataItem> GetEditorDataItems([FromUri] int currentId, [FromUri] int parentId, [FromUri] string propertyAlias, [FromUri] string ids, [FromBody] dynamic data)
+        {
             int contextId = currentId;
 
             XmlDataSource xmlDataSource = ((JObject)data.config.dataSource).ToObject<XmlDataSource>();
@@ -23,10 +31,39 @@ namespace nuPickers.Shared.XmlDataSource
             IEnumerable<EditorDataItem> editorDataItems = xmlDataSource.GetEditorDataItems(currentId, parentId);
 
             CustomLabel customLabel = new CustomLabel((string)data.config.customLabel, contextId, propertyAlias);
-            TypeaheadListPicker typeaheadListPicker = new TypeaheadListPicker((string)data.typeahead);
 
-            // process the labels and then handle any type ahead text
-            return typeaheadListPicker.ProcessEditorDataItems(customLabel.ProcessEditorDataItems(editorDataItems));
+            // if there are ids then ignore typeahead
+            if (ids != null)
+            {
+                IEnumerable<string> collectionIds = ids.Split(new char[] { ',' }, System.StringSplitOptions.RemoveEmptyEntries).AsEnumerable<string>();
+                editorDataItems = editorDataItems.Where(x => collectionIds.Contains(x.Key)).OrderBy(x => Array.FindIndex(collectionIds.ToArray(), y => y == x.Key));
+                editorDataItems = customLabel.ProcessEditorDataItems(editorDataItems);
+            }
+            else
+            {
+                // check whether typeahead should query the dataItems after processing them with the custom label
+                bool isTypeaheadQueryOnCustomLabels = false;
+                if (data.config.typeaheadListPicker != null && data.config.typeaheadListPicker.queryOnCustomLabels != null)
+                {
+                    bool.TryParse((string)data.config.typeaheadListPicker.queryOnCustomLabels, out isTypeaheadQueryOnCustomLabels);
+                }
+
+                if (isTypeaheadQueryOnCustomLabels)
+                {
+                    editorDataItems = customLabel.ProcessEditorDataItems(editorDataItems);
+                }
+
+                // handle type ahead text
+            TypeaheadListPicker typeaheadListPicker = new TypeaheadListPicker((string)data.typeahead);
+                editorDataItems = typeaheadListPicker.ProcessEditorDataItems(editorDataItems);
+
+                if (!isTypeaheadQueryOnCustomLabels)
+                {
+                    editorDataItems = customLabel.ProcessEditorDataItems(editorDataItems);
+                }
+            }
+
+            return editorDataItems;
         }
     }
 }

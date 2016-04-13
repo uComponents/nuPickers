@@ -30,5 +30,17 @@
         </div>
     </div>
 
+    <div>
+        <label for="">
+            Query on custom label's output (instead of the datasource)
+            <small>Get items (selectables choices) by querying the custom label's output text instead of the datasource returned value.
+                Warning: this could be very expensive when there are lots of items (the custom label macro will be rendered for every item)</small>
+        </label>
+
+        <div>
+            <input type="checkbox" ng-model="model.value.queryOnCustomLabels" />
+        </div>
+    </div>
+
 </div>
 

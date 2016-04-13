@@ -21,6 +21,8 @@ namespace nuPickers.Shared.LuceneDataSource
         {
             List<EditorDataItem> editorDataItems = new List<EditorDataItem>();
 
+            if (!string.IsNullOrWhiteSpace(this.RawQuery))
+            {
             BaseSearchProvider searchProvider = ExamineManager.Instance.SearchProviderCollection[this.ExamineSearcher];
 
             if (searchProvider != null)
@@ -37,6 +39,7 @@ namespace nuPickers.Shared.LuceneDataSource
                                 Label = searchResult.Fields.ContainsKey(this.LabelField) ? searchResult.Fields[this.LabelField] : null
                             });
                 }
+            }
             }
 
             return editorDataItems;
