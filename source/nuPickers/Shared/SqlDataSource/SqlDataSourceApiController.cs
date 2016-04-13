@@ -26,8 +26,10 @@
         }
 
         [HttpPost]
-        public IEnumerable<EditorDataItem> GetEditorDataItems([FromUri] int contextId, [FromUri] string propertyAlias, [FromBody] dynamic data)
+        public IEnumerable<EditorDataItem> GetEditorDataItems([FromUri] int currentId, [FromUri] int parentId, [FromUri] string propertyAlias, [FromBody] dynamic data)
         {
+            int contextId = currentId;
+
             SqlDataSource sqlDataSource = ((JObject)data.config.dataSource).ToObject<SqlDataSource>();
             sqlDataSource.Typeahead = (string)data.typeahead;
 

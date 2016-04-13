@@ -26,7 +26,10 @@
         <label for="">
 
             URL
-            <small>use the prefix ~/ to indicate a URL relative to the site's root</small>
+            <small>
+                use ~/ prefix to indicate a relative url to the site root<br/>
+                eg. ~/App_Data/Example.xml
+            </small>
 
         </label>
 
@@ -40,7 +43,7 @@
     <div>
         <label for="">
             XPath
-            <small>all matched nodes are used to build data editor items</small>
+            <small>all matched nodes are used to build data editor items (the token $ancestorOrSelf can be used)</small>
         </label>
 
         <div>
@@ -53,7 +56,7 @@
         </div>
     </div>
 
-    <div>
+    <div ng-hide="isLabels">
         <label for="">
             Key XPath
             <small>XPath (from each matched node) to select a single value for use as the key (this must be unique)</small>

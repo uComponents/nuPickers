@@ -17,12 +17,14 @@ namespace nuPickers.Shared.LuceneDataSource
     {
         public IEnumerable<object> GetExamineSearchers()
         {
-            return Examine.ExamineManager.Instance.SearchProviderCollection.Cast<UmbracoExamineSearcher>().Select(x => x.Name);            
+            return Examine.ExamineManager.Instance.SearchProviderCollection.OfType<UmbracoExamineSearcher>().Select(x => x.Name);            
         }
 
         [HttpPost]
-        public IEnumerable<EditorDataItem> GetEditorDataItems([FromUri] int contextId, [FromUri] string propertyAlias, [FromBody] dynamic data)
+        public IEnumerable<EditorDataItem> GetEditorDataItems([FromUri] int currentId, [FromUri] int parentId, [FromUri] string propertyAlias, [FromBody] dynamic data)
         {
+            int contextId = currentId;
+
             LuceneDataSource luceneDataSource = ((JObject)data.config.dataSource).ToObject<LuceneDataSource>();
 
             IEnumerable<EditorDataItem> editorDataItems = luceneDataSource.GetEditorDataItems(contextId);

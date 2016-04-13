@@ -1,5 +1,5 @@
 ﻿
-.list-picker {        
+.list-picker {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -8,20 +8,23 @@
     user-select: none;
 }
 
-
 .list-picker .text-input-bar {
     border: 1px solid transparent;
     padding-bottom:1px;
 }
 
-.list-picker .text-input-bar input{
+.list-picker .text-input-bar input {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    width:48%;    
+    width:48%;
 
     min-height:30px;
     line-height:30px;
+}
+
+.list-picker .text-input-bar input.no-match {
+    color:red;
 }
 
 .list-picker ul {
@@ -45,8 +48,6 @@
     line-height:30px;
 }
 
-
-
 .list-picker .lit { /* li */
     border:1px solid #9e9e9e;
 }
@@ -69,11 +70,8 @@
     width: 10%;
     height: 100%;
     position: absolute;
-    top: 0;
-    outline:none;
-    background-position:center;
-    background-repeat:no-repeat;
-    min-width:15px; /* width of icon image */
+    /*font-size:20px;*/
+    text-align:center;
 }
 
 .list-picker .button.disabled {
@@ -94,7 +92,7 @@
     border:1px dashed #ccc;
 }
 
-/* 
+/*
     <ul class="selectable">
         <li class="(lit) (disabled) (used)">
 
@@ -105,7 +103,7 @@
             <a class="button (disabled)"></a>
 
         </li>
-    </ul>    
+    </ul>
 */
 
 .list-picker .selectable {
@@ -123,18 +121,17 @@
 .list-picker .selectable .option-label {
     /* reset the direction */
     direction:ltr;
-    float:left; 
+    float:left;
     text-align:left;
 }
 
 .list-picker .selectable .button {
     right: 0;
     border-left: 1px solid #ccc;
-    background-image: url('/App_Plugins/nuPickers/Shared/ListPicker/ButtonAdd.png');   
 }
 
-.list-picker .selectable .button.active:hover {
-    background-image: url('/App_Plugins/nuPickers/Shared/ListPicker/ButtonRight.png');   
+.list-picker .disabled .button {
+    border-left:none; /* no icon, so remove the line indicating a button */
 }
 
 /*
@@ -149,7 +146,7 @@
                 </div>
 
             </li>
-        </ul>        
+        </ul>
 
         <ul class="placeholders"
             <li/>
@@ -183,11 +180,6 @@
 .list-picker .selected .button {
     left: 0;
     border-right: 1px solid #ccc;
-    background-image: url('/App_Plugins/nuPickers/Shared/ListPicker/ButtonRemove.png');
-}
-
-.list-picker .selected .button:hover { /* can always click this */
-    background-image: url('/App_Plugins/nuPickers/Shared/ListPicker/ButtonLeft.png');   
 }
 
 .list-picker .placeholders li {
@@ -195,13 +187,13 @@
     color: #ccc;
 }
 
-.list-picker .placeholders .required { 
+.list-picker .placeholders .required {
     border-style: dotted;
     border-color: #b94a48;
     color: #b94a48;
 }
 
-.list-picker .placeholders .select { 
+.list-picker .placeholders .select {
     border-style: dashed;
 }
 

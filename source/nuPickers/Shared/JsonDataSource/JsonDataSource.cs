@@ -1,14 +1,11 @@
-﻿
-namespace nuPickers.Shared.JsonDataSource
+﻿namespace nuPickers.Shared.JsonDataSource
 {
+    using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
     using nuPickers.Shared.Editor;
-    using System;
     using System.Collections.Generic;
-    using System.IO;
     using System.Linq;
-    using System.Net;
-    using System.Web;
+    using Umbraco.Core.Logging;
 
     public class JsonDataSource
     {
@@ -21,15 +18,24 @@ namespace nuPickers.Shared.JsonDataSource
         public string LabelJsonPath { get; set; }
 
         /// <summary>
-        /// 
+        /// Main method for retrieving nuPicker data items.
         /// </summary>
-        /// <param name="contextId"></param>
-        /// <returns></returns>
+        /// <param name="contextId">Current context node Id</param>
+        /// <returns>List of items for displaying inside a nuPicker JSON data type.</returns>
         public IEnumerable<EditorDataItem> GetEditorDataItems(int contextId)
         {
-            List<EditorDataItem> editorDataItems = new List<EditorDataItem>();
-            
-            JToken jToken = JToken.Parse(GetDataFromUrl(this.Url));
+            List<EditorDataItem> editorDataItems = new List<EditorDataItem>(); // prepare return value
+
+            JToken jToken = null; // object representation of all json source data
+
+            try
+            {
+                jToken = JToken.Parse(Helper.GetDataFromUrl(this.Url));
+            }
+            catch (JsonException jsonException)
+            {
+                LogHelper.Error(typeof(nuPickers.Shared.JsonDataSource.JsonDataSource), "Check JSON at Url: " + this.Url, jsonException);
+            }
 
             if (jToken != null)
             {
@@ -38,59 +44,49 @@ namespace nuPickers.Shared.JsonDataSource
                 {
                     editorDataItems = jToken.ToObject<string[]>()
                                             .Select(x => new EditorDataItem()
-                                                            {
-                                                                Key = x,
-                                                                Label = x
-                                                            })
+                                            {
+                                                Key = x,
+                                                Label = x
+                                            })
                                             .ToList();
                 }
-                else // use JsonPaths
+                else // use JsonPath
                 {
-                    editorDataItems = jToken.SelectTokens(this.JsonPath)
-                                            .Where(x => x is JObject)
-                                            .Select(x => new EditorDataItem()
-                                                            {
-                                                                Key = x.SelectToken(this.KeyJsonPath).ToString(),
-                                                                Label = x.SelectToken(this.LabelJsonPath).ToString()
-                                                            })
-                                            .ToList();
+                    IEnumerable<JToken> jTokens = null;
+
+                    try
+                    {
+                        jTokens = jToken.SelectTokens(this.JsonPath);
+                    }
+                    catch (JsonException jsonException)
+                    {
+                        LogHelper.Error(typeof(nuPickers.Shared.JsonDataSource.JsonDataSource), "Check JSONPath: " + this.JsonPath, jsonException);
+                    }
+
+                    if (jTokens != null)
+                    {
+                        foreach(JToken jsonPathToken in jTokens.Where(x => x is JObject && x.HasValues))
+                        {
+                            JToken keyToken = jsonPathToken.SelectToken(this.KeyJsonPath);
+                            JToken labelToken = jsonPathToken.SelectToken(this.LabelJsonPath);
+
+                            if (keyToken != null && labelToken != null)
+                            {
+                                editorDataItems.Add(
+                                    new EditorDataItem()
+                                    {
+                                        Key = keyToken.ToString(),
+                                        Label =labelToken.ToString()
+                                    });
+                            }
+                        }
+                    }
                 }
             }
-          
+
             // TODO: distinct on editor data item keys
 
             return editorDataItems;
-        }
-
-        /// <summary>
-        /// Downloads a url resource and returns it as a string. Maybe move this into a helpers class?
-        /// </summary>
-        /// <param name="url">URL to download the resource from</param>
-        /// <returns>the string based result of the webcall</returns>
-        private static string GetDataFromUrl(string url)
-        {
-            string data = string.Empty;
-
-            using (WebClient client = new WebClient())
-            {
-                if (url.StartsWith("~/"))
-                {
-                    string filePath = HttpContext.Current.Server.MapPath(url);
-
-                    if (File.Exists(filePath))
-                    {
-                        url = filePath;
-                    }
-                    else
-                    {
-                        url = url.Replace("~/", (HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "/"));
-                    }
-                }
-
-                data = client.DownloadString(url);
-            }
-
-            return data;
         }
     }
 }

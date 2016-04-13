@@ -15,10 +15,6 @@ angular
                     $scope.model.value = editorResource.createSaveValue($scope.model.config, [$scope.getPickedOption()]);
                 };
 
-                $scope.$on("formSubmitting", function () {                            
-                    editorResource.updateRelationMapping($scope.model, [$scope.getPickedOption()]);
-                });
-
                 // get picked option by copying a matching one by key from the source
                 $scope.getPickedOption = function () {
 

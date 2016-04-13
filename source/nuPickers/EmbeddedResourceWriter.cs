@@ -1,12 +1,11 @@
 ﻿namespace nuPickers
 {
-    using System;
-    using System.IO;
-    using System.Web;
-
     using ClientDependency.Core;
     using ClientDependency.Core.CompositeFiles;
     using ClientDependency.Core.CompositeFiles.Providers;
+    using System;
+    using System.IO;
+    using System.Web;
 
     /// <summary>
     /// The embedded resource writer.

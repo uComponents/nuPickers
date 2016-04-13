@@ -33,8 +33,8 @@ namespace nuPickers.Shared.LuceneDataSource
                     editorDataItems.Add(
                         new EditorDataItem() 
                             { 
-                                Key = searchResult.Fields[this.KeyField],
-                                Label = searchResult.Fields[this.LabelField]
+                                Key = searchResult.Fields.ContainsKey(this.KeyField) ? searchResult.Fields[this.KeyField] : null,
+                                Label = searchResult.Fields.ContainsKey(this.LabelField) ? searchResult.Fields[this.LabelField] : null
                             });
                 }
             }

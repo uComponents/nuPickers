@@ -17,9 +17,9 @@
   <!-- SHARED PROPERTIES -->
   <PropertyGroup>
     <PackageName>nuPickers</PackageName>
-    <MinUmbracoVersion>7.1.3</MinUmbracoVersion>
+    <MinUmbracoVersion>7.2.3</MinUmbracoVersion>
     <Readme>nuPickers is a collection of Umbraco v7 Property Editors</Readme>
-    <AuthorName>Hendy Racher, Jeavon Leopold, Stephen Roberts, Shannon Deminick, Lennart Stoop, Tom Fulton, Chriztian Steinmeier, Lee Kelleher, Alain Mangin, Peter Gregory</AuthorName>
+    <AuthorName>Hendy Racher, Jeavon Leopold, Stephen Roberts, Shannon Deminick, Lee Kelleher, Chriztian Steinmeier, Peter Gregory, Tom Fulton, Lennart Stoop, Anders Bjerner, Joel Hansen, Vincent Baaij, Alain Mangin, Chris Randle, Nic Bell</AuthorName>
     <AuthorUrl>https://github.com/uComponents/nuPickers/graphs/contributors</AuthorUrl>
     <PackageLicenseName>MIT license</PackageLicenseName>
     <PackageLicenseUrl>http://www.opensource.org/licenses/mit-license.php</PackageLicenseUrl>
@@ -113,13 +113,11 @@
 		<ItemGroup>
 			<BinFiles Include="$(CoreProjectDir)\Bin\$(BuildConfig)\uComponents.nuPickers.dll" />
       <PdbFiles Include="$(CoreProjectDir)\Bin\$(BuildConfig)\uComponents.nuPickers.pdb" />
-      <CDFFiles Include="$(CoreProjectDir)\Bin\$(BuildConfig)\ClientDependency.*.dll" />
       <SrcFiles Include="$(CoreProjectDir)\**\*.cs" Exclude="$(CoreProjectDir)\obj\**"/>
 			<PackageFile Include="$(MSBuildProjectDirectory)\package.xml" />
       <NuSpecFile Include="$(MSBuildProjectDirectory)\package.nuspec" />
     </ItemGroup>
     <Copy SourceFiles="@(BinFiles)" DestinationFolder="$(BuildUmbDir)\bin" />
-    <Copy SourceFiles="@(CDFFiles)" DestinationFolder="$(BuildUmbDir)\bin" />
     <Copy SourceFiles="@(PackageFile)" DestinationFolder="$(BuildUmbDir)" />
     <Copy SourceFiles="@(BinFiles)" DestinationFolder="$(BuildNuGetDir)\lib\net45" />
     <Copy SourceFiles="@(PdbFiles)" DestinationFolder="$(BuildNuGetDir)\lib\net45" />

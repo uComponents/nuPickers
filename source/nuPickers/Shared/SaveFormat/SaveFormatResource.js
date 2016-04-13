@@ -16,6 +16,7 @@ angular.module('umbraco.resources')
                     switch (config.saveFormat) {
 
                         case 'csv': // 'key, key...'
+                        case 'relationsOnly': // special case - used server-side by relationsOnly mapping event (where this value is then wiped)
                             return pickedOptions.map(function (option) { return option.key; }).join();
                             break;
 
@@ -40,7 +41,6 @@ angular.module('umbraco.resources')
                             return xml;
                             break;
 
-                        case 'relationsOnly': // when saving to relations only
                         default:
                             return null;
                             break;

@@ -1,8 +1,7 @@
 ﻿namespace nuPickers
 {
-    using System;
-
     using ClientDependency.Core.CompositeFiles;
+    using System;
 
     /// <summary>
     /// The embedded resource virtual path provider.

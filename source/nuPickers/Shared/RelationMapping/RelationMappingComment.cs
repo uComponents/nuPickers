@@ -21,13 +21,13 @@ namespace nuPickers.Shared.RelationMapping
         // NOTE: could calculate this from the propertyTypeId
         public int DataTypeDefinitionId { get; private set; }
 
-        internal RelationMappingComment(int contextId, string propertyAlias) 
+        internal RelationMappingComment(int contextId, string propertyAlias)
         {
             this.PropertyAlias = propertyAlias;
 
             IEnumerable<PropertyType> propertyTypes = Enumerable.Empty<PropertyType>();
 
-            switch (uQuery.GetUmbracoObjectType(contextId)) // TODO: can this switch be removed ?
+            switch (Helper.GetUmbracoObjectType(contextId)) // TODO: can this switch be removed ?
             {
                 case uQuery.UmbracoObjectType.Document:
                     propertyTypes = ApplicationContext.Current.Services.ContentService.GetById(contextId).PropertyTypes;
@@ -57,7 +57,7 @@ namespace nuPickers.Shared.RelationMapping
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="comment">serialized string from the db comment field</param>
         internal RelationMappingComment(string comment)
@@ -94,7 +94,7 @@ namespace nuPickers.Shared.RelationMapping
             catch
             {
                 return false;
-            }            
+            }
         }
 
         internal string GetComment()
