@@ -3,11 +3,11 @@
     
     <div class="nuPickers-config">
         <div> 
-            <label>
+            <label class="control-label">
                 ** title **
                 <small>** description **</small>
             </label>
-            <div>
+            <div class="controls">
                 ** control **
             </div>
         <div>
@@ -34,23 +34,6 @@
     margin-bottom:0;
     border-bottom:none;
 }
-
-
-.nuPickers-config label 
-{
-    float:left;
-    width:160px;
-    padding-top:8px !important;
-    padding:0;
-    text-align:left;
-    display:inline-block
-}
-
-.nuPickers-config div div {
-    padding-top: 5px;
-    margin-left: 240px!important;
-}
-
 
 .nuPickers-config input.wide {
     width:95%;

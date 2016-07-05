@@ -1,16 +1,12 @@
-﻿
-<div ng-controller="nuPickers.Shared.EnumDataSource.EnumDataSourceConfigController" class="nuPickers-config">
+﻿<div ng-controller="nuPickers.Shared.EnumDataSource.EnumDataSourceConfigController" class="nuPickers-config">
 
     <div>
-        <label for="">
-
+        <label class="control-label" for="">
             Assembly
             <small>DLL or App_Code folder to reflect</small>
-
         </label>
 
-        <div>
-
+        <div class="controls">
             <select ng-model="model.value.assemblyName"
                     ng-options="o as o for o in assemblyNames"
                     ng-required="true"></select>
@@ -19,19 +15,15 @@
     </div>
 
     <div>
-        <label for="">
-
+        <label class="control-label" for="">
             Enum
-            <small>the enum</small>
-
+            <small>The enum</small>
         </label>
 
-        <div>
-
+        <div class="controls">
             <select ng-model="model.value.enumName"
                     ng-options="o as o for o in enumNames"
                     ng-required="true"></select>
-
         </div>
     </div>
 
