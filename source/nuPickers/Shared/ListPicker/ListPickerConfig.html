@@ -1,31 +1,25 @@
 ﻿<div class="nuPickers-config">
 
     <div>
-
-        <label for="">
+        <label class="control-label" for="">
             Min Items
-            <small>number of items that must be selected</small>
+            <small>Number of items that must be selected</small>
         </label>
 
-        <div>
-
+        <div class="controls controls-row">
             <input type="number"
                    ng-model="model.value.minItems"
                    ng-init="model.value.minItems = model.value.minItems || 0" />
-
         </div>
     </div>
 
-
     <div>
-
-        <label for="">
+        <label class="control-label" for="">
             Max Items
-            <small>number of items that can be selected - 0 means no limit</small>
+            <small>Number of items that can be selected - 0 means no limit</small>
         </label>
 
-        <div>
-
+        <div class="controls controls-row">
             <input type="number"
                    ng-model="model.value.maxItems"
                    ng-init="model.value.maxItems = model.value.maxItems || 0" />
@@ -34,33 +28,28 @@
     </div>
 
     <div>
-        <label for="">
+        <label class="control-label" for="">
             Allow Duplicates
-            <small>when checked, duplicate items can be selected</small>
+            <small>When checked, duplicate items can be selected</small>
         </label>
 
-        <div>
-
+        <div class="controls controls-row">
             <input type="checkbox"
                    ng-model="model.value.allowDuplicates" />
-
         </div>
     </div>
 
     <div>
-        <label for="">
+        <label class="control-label" for="">
             Hide Used
-            <small>when checked, selected items are removed from the list of choices</small>
+            <small>When checked, selected items are removed from the list of choices</small>
         </label>
 
-        <div>
-
+        <div class="controls controls-row">
             <input type="checkbox"
                    ng-disabled="model.value.allowDuplicates"
                    ng-model="model.value.hideUsed" />
-
         </div>
     </div>
 
 </div>
-

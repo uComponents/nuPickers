@@ -2,21 +2,16 @@
 <div ng-controller="nuPickers.Shared.RelationDataSource.RelationDataSourceConfigController" class="nuPickers-config">
     
     <div>
-        <label for="">
-
+        <label class="control-label" for="">
             Relation Type
             <small></small>
-
         </label>
 
-        <div>
-
+        <div class="controls controls-row">
             <select ng-model="model.value.relationType"
                     ng-init="model.value.relationType = model.value.relationType || ''"
                     ng-options="relationType.key as relationType.label for relationType in relationTypes"
-                    ng-required="true">
-            </select>
-
+                    ng-required="true"></select>
         </div>
     </div>
 

@@ -1,23 +1,22 @@
 ﻿<div class="nuPickers-config">
 
     <div>
-        <label for="">
+        <label class="control-label" for="">
             Enable Filtering
-            <small>when true, a textbox is shown allowing the user to filter the choices</small>
+            <small>When true, a textbox is shown allowing the user to filter the choices</small>
         </label>
-        <div>
+        <div class="controls controls-row">
             <input type="checkbox"
                    ng-model="model.value.enableFiltering" />
         </div>
     </div>
 
     <div>
-
-        <label for="">
+        <label class="control-label" for="">
             List Height
-            <small>fix height in px (and use scrollbar) - 0 means fluid</small>
+            <small>Fix height in px (and use scrollbar) - 0 means fluid</small>
         </label>
-        <div>
+        <div class="controls controls-row">
             <input type="number"
                    ng-model="model.value.listHeight"
                    ng-init="model.value.listHeight = model.value.listHeight || 0" />
@@ -25,19 +24,15 @@
     </div>
 
     <div>
-        <label for="">
+        <label class="control-label" for="">
             Allow Sorting
-            <small>when checked, picked items can be sorted</small>
+            <small>When checked, picked items can be sorted</small>
         </label>
 
-        <div>
-
+        <div class="controls controls-row">
             <input type="checkbox"
                    ng-model="model.value.allowSorting" />
-
         </div>
     </div>
 
-
 </div>
-

@@ -1,51 +1,39 @@
-﻿
-<div ng-controller="nuPickers.Shared.DotNetDataSource.DotNetDataSourceConfigController" class="nuPickers-config">
+﻿<div ng-controller="nuPickers.Shared.DotNetDataSource.DotNetDataSourceConfigController" class="nuPickers-config">
 
     <div>
-        <label for="">
-
+        <label class="control-label" for="">
             Assembly
             <small>DLL or App_Code folder to reflect</small>
-
         </label>
 
-        <div>
-
+        <div class="controls controls-row">
             <select ng-model="model.value.assemblyName"
                     ng-options="o as o for o in assemblyNames"
                     ng-required="true"></select>
-
         </div>
 
     </div>
 
     <div>
-        <label for="">
-
+        <label class="control-label" for="">
             Class
-            <small>(must implement IDotNetDataSource)</small>
-
+            <small>Must implement IDotNetDataSource</small>
         </label>
 
-        <div>
-
+        <div class="controls controls-row"
             <select ng-model="model.value.className"
                     ng-options="o as o for o in classNames"
                     ng-required="true"></select>
-
         </div>
     </div>
 
     <!-- repeat a text field for each property -->
     <div ng-repeat="property in properties">
-        <label for="">
-
+        <label class="control-label" for="">
             {{ property.title }}
             <small>{{ property.description }}</small>
-        
         </label>
-
-        <div>
+        <div class="controls controls-row">
             <input type="text" ng-model="property.value" />
         </div>
     </div>

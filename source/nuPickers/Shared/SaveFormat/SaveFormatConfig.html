@@ -1,21 +1,21 @@
 ﻿ <div ng-controller="nuPickers.Shared.SaveFormat.SaveFormatConfigController">
 
-    <label>
+    <label class="radio">
         <input name="saveFormat" type="radio" value="csv" ng-model="model.value" ng-disabled="isTypeaheadListPicker" />
         <span>CSV</span>
     </label>
 
-    <label>
+    <label class="radio">
         <input name="saveFormat" type="radio" value="json" ng-model="model.value" />
         <span>JSON</span>
     </label>
 
-    <label>
+    <label class ="radio">
         <input name="saveFormat" type="radio" value="xml" ng-model="model.value" />
         <span>XML</span>
-    </label>
+    </labelclass>
      
-    <label>
+    <label class="radio">
         <input name="saveFormat" type="radio" value="relationsOnly" ng-model="model.value" ng-disabled="!relationMappingBidirectional || isTypeaheadListPicker" />
         <span>Relations Only</span>
     </label>

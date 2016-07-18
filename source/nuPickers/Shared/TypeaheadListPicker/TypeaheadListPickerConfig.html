@@ -1,34 +1,29 @@
 ﻿<div ng-controller="nuPickers.Shared.TypeaheadListPicker.TypeaheadListPickerConfigController" class="nuPickers-config">
 
     <div>
-        <label for="">
+        <label class="control-label" for="">
             Min Characters
-            <small>the minimum number of characters typed, before a request for options is triggered</small>
+            <small>The minimum number of characters typed, before a request for options is triggered</small>
         </label>
 
-        <div>
-
+        <div class="controls controls-row">
             <input type="number"
                    ng-model="model.value.minCharacters"
                    ng-init="model.value.minCharacters = model.value.minCharacters || 1" />
-
         </div>
     </div>
 
     <div>
-        <label for="">
+        <label class="control-label" for="">
             Limit To
-            <small>limit the number of selectable choices - 0 means no limit</small>
+            <small>Limit the number of selectable choices - 0 means no limit</small>
         </label>
 
-        <div>
-
+        <div class="controls controls-row">
             <input type="number"
                    ng-model="model.value.limitTo"
                    ng-init="model.value.limitTo = model.value.limitTo || 0" />
-
         </div>
     </div>
 
 </div>
-
