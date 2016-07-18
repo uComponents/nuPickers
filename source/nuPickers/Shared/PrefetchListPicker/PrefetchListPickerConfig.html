@@ -5,7 +5,7 @@
             Enable Filtering
             <small>When true, a textbox is shown allowing the user to filter the choices</small>
         </label>
-        <div class="controls">
+        <div class="controls controls-row">
             <input type="checkbox"
                    ng-model="model.value.enableFiltering" />
         </div>
@@ -16,7 +16,7 @@
             List Height
             <small>Fix height in px (and use scrollbar) - 0 means fluid</small>
         </label>
-        <div class="controls">
+        <div class="controls controls-row">
             <input type="number"
                    ng-model="model.value.listHeight"
                    ng-init="model.value.listHeight = model.value.listHeight || 0" />
@@ -29,7 +29,7 @@
             <small>When checked, picked items can be sorted</small>
         </label>
 
-        <div class="controls">
+        <div class="controls controls-row">
             <input type="checkbox"
                    ng-model="model.value.allowSorting" />
         </div>

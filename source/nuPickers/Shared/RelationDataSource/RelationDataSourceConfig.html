@@ -7,7 +7,7 @@
             <small></small>
         </label>
 
-        <div class="controls">
+        <div class="controls controls-row">
             <select ng-model="model.value.relationType"
                     ng-init="model.value.relationType = model.value.relationType || ''"
                     ng-options="relationType.key as relationType.label for relationType in relationTypes"

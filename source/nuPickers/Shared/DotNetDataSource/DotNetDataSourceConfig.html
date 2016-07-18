@@ -6,7 +6,7 @@
             <small>DLL or App_Code folder to reflect</small>
         </label>
 
-        <div class="controls">
+        <div class="controls controls-row">
             <select ng-model="model.value.assemblyName"
                     ng-options="o as o for o in assemblyNames"
                     ng-required="true"></select>
@@ -20,7 +20,7 @@
             <small>Must implement IDotNetDataSource</small>
         </label>
 
-        <div class="controls"
+        <div class="controls controls-row"
             <select ng-model="model.value.className"
                     ng-options="o as o for o in classNames"
                     ng-required="true"></select>
@@ -33,7 +33,7 @@
             {{ property.title }}
             <small>{{ property.description }}</small>
         </label>
-        <div class="controls">
+        <div class="controls controls-row">
             <input type="text" ng-model="property.value" />
         </div>
     </div>

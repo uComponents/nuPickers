@@ -6,7 +6,7 @@
             <small>Number of items that must be selected</small>
         </label>
 
-        <div class="controls">
+        <div class="controls controls-row">
             <input type="number"
                    ng-model="model.value.minItems"
                    ng-init="model.value.minItems = model.value.minItems || 0" />
@@ -19,7 +19,7 @@
             <small>Number of items that can be selected - 0 means no limit</small>
         </label>
 
-        <div class="controls">
+        <div class="controls controls-row">
             <input type="number"
                    ng-model="model.value.maxItems"
                    ng-init="model.value.maxItems = model.value.maxItems || 0" />
@@ -33,7 +33,7 @@
             <small>When checked, duplicate items can be selected</small>
         </label>
 
-        <div class="controls">
+        <div class="controls controls-row">
             <input type="checkbox"
                    ng-model="model.value.allowDuplicates" />
         </div>
@@ -45,7 +45,7 @@
             <small>When checked, selected items are removed from the list of choices</small>
         </label>
 
-        <div class="controls">
+        <div class="controls controls-row">
             <input type="checkbox"
                    ng-disabled="model.value.allowDuplicates"
                    ng-model="model.value.hideUsed" />

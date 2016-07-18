@@ -6,7 +6,7 @@
             <small>(Optional) synchronise picked keys with a relation type (keys must be valid ids for the relation type)</small>
         </label>
 
-        <div class="controls">
+        <div class="controls controls-row">
             <select ng-model="selectedRelationType"
                     ng-options="relationType as relationType.label for relationType in relationTypes"
                     ng-change="relationTypeChanged()">

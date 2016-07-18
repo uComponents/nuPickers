@@ -6,7 +6,7 @@
             <small>Name of Lucene searcher</small>
         </label>
 
-        <div class="controls">
+        <div class="controls controls-row">
             <select ng-model="model.value.examineSearcher"
                     ng-options="o as o for o in examineSearchers"
                     ng-required="true"></select>
@@ -19,7 +19,7 @@
             <small></small>
         </label>
 
-        <div class="controls">
+        <div class="controls controls-row">
             <input type="text"
                    class="wide"
                    ng-model="model.value.rawQuery"
@@ -33,7 +33,7 @@
             <small></small>
         </label>
 
-        <div class="controls">
+        <div class="controls controls-row">
             <input type="text"
                    ng-model="model.value.keyField"
                    ng-init="model.value.keyField = model.value.keyField || ''" />
@@ -46,7 +46,7 @@
             <small></small>
         </label>
 
-        <div class="controls">
+        <div class="controls controls-row">
             <input type="text"
                    ng-model="model.value.labelField"
                    ng-init="model.value.labelField = model.value.labelField || ''" />

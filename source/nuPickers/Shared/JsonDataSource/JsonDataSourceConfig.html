@@ -6,7 +6,7 @@
             <small>Use the prefix ~/ to indicate a URL relative to the site's root. JSON can either be an object or a simple array </small>
         </label>
 
-        <div class="controls">
+        <div class="controls controls-row">
             <input type="text" ng-model="model.value.url" />
         </div>
     </div>
@@ -17,7 +17,7 @@
             <small>All matched objects are used to build editor data items</small>
         </label>
 
-        <div class="controls">
+        <div class="controls controls-row">
             <input type="text"
                    ng-model="model.value.jsonPath"
                    ng-init="model.value.jsonPath = model.value.jsonPath || '$..*'" />
@@ -30,7 +30,7 @@
             <small>JSONPath (from each matched object) to select a single value for use as the key (this must be unique)</small>
         </label>
 
-        <div class="controls">
+        <div class="controls controls-row">
             <input type="text"
                    ng-model="model.value.keyJsonPath"
                    ng-init="model.value.keyJsonPath = model.value.keyJsonPath || ''" />
@@ -44,7 +44,7 @@
             <small>JSONPath (from each matched object) to select a single vlaue for use as the label</small>
         </label>
 
-        <div class="controls">
+        <div class="controls controls-row">
             <input type="text"
                    ng-model="model.value.labelJsonPath"
                    ng-init="model.value.labelJsonPath = model.value.labelJsonPath || ''" />

@@ -6,7 +6,7 @@
             <small>XML data to query</small>
         </label>
 
-        <div class="controls">
+        <div class="controls controls-row">
             <select ng-model="model.value.xmlData"
                     ng-init="model.value.xmlData = model.value.xmlData || 'content'">
                 <option value="content">Content</option>
@@ -27,7 +27,7 @@
             </small>
         </label>
 
-        <div class="controls">
+        <div class="controls controls-row">
             <input type="text" ng-model="model.value.url" />
         </div>
     </div>
@@ -38,7 +38,7 @@
             <small>All matched nodes are used to build data editor items (the token $ancestorOrSelf can be used)</small>
         </label>
 
-        <div class="controls">
+        <div class="controls controls-row">
             <input type="text"
                    class="wide"
                    ng-model="model.value.xPath"
@@ -52,7 +52,7 @@
             <small>XPath (from each matched node) to select a single value for use as the key (this must be unique)</small>
         </label>
 
-        <div class="controls">
+        <div class="controls controls-row">
             <input type="text"
                    ng-model="model.value.keyXPath"
                    ng-init="model.value.keyXPath = model.value.keyXPath || '@id'" />
@@ -66,7 +66,7 @@
             <small>XPath (from each matched node) to select a single value for use as the label</small>
         </label>
 
-        <div class="controls">
+        <div class="controls controls-row">
             <input type="text"
                    ng-model="model.value.labelXPath"
                    ng-init="model.value.labelXPath = model.value.labelXPath || '@nodeName'" />

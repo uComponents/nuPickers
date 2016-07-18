@@ -6,7 +6,7 @@
             <small>The minimum number of characters typed, before a request for options is triggered</small>
         </label>
 
-        <div class="controls">
+        <div class="controls controls-row">
             <input type="number"
                    ng-model="model.value.minCharacters"
                    ng-init="model.value.minCharacters = model.value.minCharacters || 1" />
@@ -19,7 +19,7 @@
             <small>Limit the number of selectable choices - 0 means no limit</small>
         </label>
 
-        <div class="controls">
+        <div class="controls controls-row">
             <input type="number"
                    ng-model="model.value.limitTo"
                    ng-init="model.value.limitTo = model.value.limitTo || 0" />
