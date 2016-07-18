@@ -1,14 +1,12 @@
-﻿
-namespace nuPickers.Shared.RelationDataSource
+﻿namespace nuPickers.Shared.RelationDataSource
 {
     using System.Collections.Generic;
     using System.Linq;
     using System.Web.Http;
-    using umbraco.cms.businesslogic.relation;
+    using Umbraco.Core.Models;
     using Umbraco.Web.Editors;
     using Umbraco.Web.Mvc;
     using nuPickers.Shared.Editor;
-    using umbraco;
     using CustomLabel;
 
     [PluginController("nuPickers")]
@@ -16,14 +14,15 @@ namespace nuPickers.Shared.RelationDataSource
     {
         public IEnumerable<object> GetRelationTypes()
         {
-            return RelationType.GetAll()
-                        .OrderBy(x => x.Name)
-                        .Select(x => new
-                        {
-                            key = x.Alias,
-                            label = x.Name,
-                            biDirectional = x.Dual
-                        });
+            var relationService = this.ApplicationContext.Services.RelationService;
+
+            return relationService.GetAllRelationTypes()
+                    .OrderBy(x => x.Name)
+                    .Select(x => new {
+                                      key = x.Alias,
+                                      label = x.Name,
+                                      biDirectional = x.IsBidirectional
+                                     });
         }
 
         [HttpPost]
@@ -33,19 +32,39 @@ namespace nuPickers.Shared.RelationDataSource
 
             var relationService = this.ApplicationContext.Services.RelationService;
 
-            IEnumerable<EditorDataItem> editorDataItems = relationService.GetEntitiesFromRelations(
-                                                            relationService.GetByRelationTypeAlias((string)data.config.dataSource.relationType)
-                                                            .Where(r => r.ParentId == contextId))
-                                                            .Select(x => new EditorDataItem()
-                                                            {
-                                                                Key = x.Item2.Id.ToString(),
-                                                                Label = x.Item2.Name.ToString()
-                                                            })
-                                                            .ToList();
+            var relation = relationService.GetByRelationTypeAlias((string) data.config.dataSource.relationType).FirstOrDefault();
+            if (relation != null)
+            {
+                var realtionType = relation.RelationType;
 
-            CustomLabel customLabel = new CustomLabel((string)data.config.customLabel, contextId, propertyAlias);
+                IEnumerable<IRelation> editorUmbracoEntities;
 
-            return customLabel.ProcessEditorDataItems(editorDataItems);
+                if (realtionType.IsBidirectional)
+                {
+                    editorUmbracoEntities = relationService.GetByRelationTypeAlias((string) data.config.dataSource.relationType)
+                                            .Where(r => r.ParentId == contextId || r.ChildId == contextId);
+                }
+                else
+                {
+                    editorUmbracoEntities = relationService.GetByRelationTypeAlias((string)data.config.dataSource.relationType)
+                                            .Where(r => r.ParentId == contextId);
+                }
+
+                IEnumerable<EditorDataItem> editorDataItems = relationService.GetEntitiesFromRelations(editorUmbracoEntities)
+                                                              .Select(x => new EditorDataItem()
+                                                              {
+                                                                  Key = x.Item2.Id.ToString(),
+                                                                  Label = x.Item2.Name.ToString()
+                                                              })
+                                                              .ToList();
+
+                CustomLabel customLabel = new CustomLabel((string)data.config.customLabel, contextId, propertyAlias);
+
+                return customLabel.ProcessEditorDataItems(editorDataItems);
+            }
+
+            return null;
+
         }
     }
 }
