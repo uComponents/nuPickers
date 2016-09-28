@@ -25,7 +25,7 @@ angular.module('umbraco.resources')
                         });
 
                     } else {
-                        deferred.resolve(saveFormatResource.getSavedKeys(model.value));                        
+                        deferred.resolve(saveFormatResource.getSavedKeys(model.value, model.config.saveFormat));
                     }
 
                     return deferred.promise;

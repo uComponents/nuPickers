@@ -16,6 +16,7 @@ angular.module('umbraco.resources')
                     switch (config.saveFormat) {
 
                         case 'csv': // 'key, key...'
+                        case 'raw':
                         case 'relationsOnly': // special case - used server-side by relationsOnly mapping event (where this value is then wiped)
                             return pickedOptions.map(function (option) { return option.key; }).join();
                             break;
@@ -49,7 +50,7 @@ angular.module('umbraco.resources')
 
                 /// returns an array of strings
                 /// saveValue is expected to be a string or an array of { 'key': '', 'label': '' } objects
-                getSavedKeys: function (saveValue) {
+                getSavedKeys: function (saveValue, saveFormat) {
 
                     // json save format
                     if (saveValue instanceof Array)
@@ -77,7 +78,12 @@ angular.module('umbraco.resources')
                     catch (error) { } // suppress
 
                     // csv save format
-                    return saveValue.split(',');
+                    if (saveFormat === 'csv') {
+                        return saveValue.split(',');
+                    }
+
+                    // raw format
+                    return [saveValue];
                 },
 
                 /// returns an array of { 'key': '', 'label': '' } objects
