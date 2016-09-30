@@ -16,6 +16,7 @@ angular.module('umbraco.resources')
                     switch (config.saveFormat) {
 
                         case 'csv': // 'key, key...'
+                        case 'raw':
                         case 'relationsOnly': // special case - used server-side by relationsOnly mapping event (where this value is then wiped)
                             return pickedOptions.map(function (option) { return option.key; }).join();
                             break;
@@ -49,35 +50,28 @@ angular.module('umbraco.resources')
 
                 /// returns an array of strings
                 /// saveValue is expected to be a string or an array of { 'key': '', 'label': '' } objects
-                getSavedKeys: function (saveValue) {
+                getSavedKeys: function (saveValue, saveFormat) {
 
-                    // json save format
-                    if (saveValue instanceof Array)
-                    {
-                        return saveValue.map(function (option) { return option.key }).join().split(',');
+                    switch (saveFormat) {
+
+                        case 'json':
+                            return JSON.parse(saveValue).map(function (option) { return option.key }).join().split(',');
+
+                        case 'xml':
+                            var xml = $.parseXML(saveValue);
+                            var keys = new Array();
+                            $(xml).find('Picked').each(function () {
+                                keys.push($(this).attr('Key'));
+                            });
+
+                            return keys;
+
+                        case 'csv':
+                            return saveValue.split(',');
+
+                        default: // raw format
+                            return [saveValue];
                     }
-
-                    // parse string for nested json save format (fix to support the Doc Type Grid Editor package)
-                    try {
-                        var jsonSaveValue = JSON.parse(saveValue);
-                        return jsonSaveValue.map(function (option) { return option.key }).join().split(',');
-                    }
-                    catch (error) { } // suppress
-
-                    // xml save format
-                    try {
-                        var xml = $.parseXML(saveValue);
-                        var keys = new Array();
-                        $(xml).find('Picked').each(function () {
-                            keys.push($(this).attr('Key'));
-                        });
-
-                        return keys;
-                    }
-                    catch (error) { } // suppress
-
-                    // csv save format
-                    return saveValue.split(',');
                 },
 
                 /// returns an array of { 'key': '', 'label': '' } objects

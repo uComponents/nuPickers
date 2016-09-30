@@ -13,23 +13,27 @@ namespace nuPickers.Shared.SaveFormat
         /// ignore the specified saved format, and try and restore collection directly from the saved value
         /// </summary>
         /// <param name="savedValue"></param>
+        /// /// <param name="saveFormat"></param>
         /// <returns></returns>
-        internal static IEnumerable<string> GetSavedKeys(string savedValue)
+        internal static IEnumerable<string> GetSavedKeys(string savedValue, string saveFormat)
         {
             if (!string.IsNullOrWhiteSpace(savedValue))
             {
-                switch (savedValue[0])
+                switch (saveFormat)
                 {
-                    case '[':
+                    case "json":
                         // TODO: check json is valid
                         return JsonConvert.DeserializeObject<JArray>(savedValue).Select(x => x["key"].ToString());
 
-                    case '<':
+                    case "xml":
                         // TODO: check xml is valid
                         return XDocument.Parse(savedValue).Descendants("Picked").Select(x => x.Attribute("Key").Value);
 
-                    default: // csv
-                        return savedValue.Split(',');                          
+                    case "csv":
+                        return savedValue.Split(',');
+
+                    default: // raw
+                        return new[] { savedValue };
                 }
             }
 
