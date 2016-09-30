@@ -109,7 +109,7 @@
                     else
                     {
                         this.pickedKeys = this.SavedValue != null ? SaveFormat
-                                                                        .GetSavedKeys(this.SavedValue.ToString())
+                                                                        .GetSavedKeys(this.SavedValue.ToString(), this.GetDataTypePreValue("saveFormat").Value)
                                                                         .ToArray() : new string[]{};
                     }
                 }

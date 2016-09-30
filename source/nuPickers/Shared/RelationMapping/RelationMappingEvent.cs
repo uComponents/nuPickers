@@ -69,7 +69,7 @@ namespace nuPickers.Shared.RelationMapping
                             else
                             {
                                 // manually set on picker obj, so it doesn't then attempt to read picked keys from the database
-                                picker.PickedKeys = SaveFormat.GetSavedKeys(picker.SavedValue.ToString()).ToArray();
+                                picker.PickedKeys = SaveFormat.GetSavedKeys(picker.SavedValue.ToString(), picker.GetDataTypePreValue("saveFormat").Value).ToArray();
 
                                 // delete saved value (setting it to null)
                                 savedEntity.SetValue(propertyType.Alias, null);
