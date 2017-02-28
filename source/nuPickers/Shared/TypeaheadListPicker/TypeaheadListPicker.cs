@@ -16,11 +16,18 @@ namespace nuPickers.Shared.TypeaheadListPicker
             this.Typeahead = typeahead;
         }
 
-        internal IEnumerable<EditorDataItem> ProcessEditorDataItems(IEnumerable<EditorDataItem> editorDataItems)
+        internal IEnumerable<EditorDataItem> ProcessEditorDataItems(IEnumerable<EditorDataItem> editorDataItems, bool StripHtmlTags = true)
         {
             if (this.Typeahead != null)
             {
+                if (StripHtmlTags)
+                {
                 return editorDataItems.Where(x => this.StripHtmlTags(x.Label).IndexOf(this.Typeahead, StringComparison.OrdinalIgnoreCase) >= 0);
+                }
+                else
+                {
+                    return editorDataItems.Where(x => x.Label.IndexOf(this.Typeahead, StringComparison.OrdinalIgnoreCase) >= 0);
+                }
             }
 
             return editorDataItems;
