@@ -68,7 +68,7 @@
 
                 // handle type ahead text
             TypeaheadListPicker typeaheadListPicker = new TypeaheadListPicker((string)data.typeahead);
-                editorDataItems = typeaheadListPicker.ProcessEditorDataItems(editorDataItems);
+                editorDataItems = typeaheadListPicker.ProcessEditorDataItems(editorDataItems, isTypeaheadQueryOnCustomLabels);
 
                 if (!isTypeaheadQueryOnCustomLabels)
                 {
