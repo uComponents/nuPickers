@@ -27,7 +27,8 @@ namespace nuPickers.Shared.DotNetDataSource
 
                 if (assembly != null)
                 {
-                    if (assembly.GetLoadableTypes().Any(x => typeof(IDotNetDataSource).IsAssignableFrom(x)))
+                    if (assembly.GetLoadableTypes().Any(x => typeof(IDotNetDataSource).IsAssignableFrom(x) || 
+                                                             typeof(IDotNetDataSourceV2).IsAssignableFrom(x)))
                     {
                         assemblyNames.Add(assemblyName);
                     }
@@ -45,7 +46,8 @@ namespace nuPickers.Shared.DotNetDataSource
             {
                 return assembly
                         .GetLoadableTypes()
-                        .Where(x => typeof(IDotNetDataSource).IsAssignableFrom(x))
+                        .Where(x => typeof(IDotNetDataSource).IsAssignableFrom(x) ||
+                                    typeof(IDotNetDataSourceV2).IsAssignableFrom(x))
                         .Select(x => x.FullName);
             }
             
@@ -90,7 +92,7 @@ namespace nuPickers.Shared.DotNetDataSource
             DotNetDataSource dotNetDataSource = ((JObject)data.config.dataSource).ToObject<DotNetDataSource>();
             dotNetDataSource.Typeahead = (string)data.typeahead;
 
-            IEnumerable<EditorDataItem> editorDataItems = dotNetDataSource.GetEditorDataItems(contextId).ToList();
+            IEnumerable<EditorDataItem> editorDataItems = dotNetDataSource.GetEditorDataItems(contextId, parentId).ToList();
 
             CustomLabel customLabel = new CustomLabel((string)data.config.customLabel, contextId, propertyAlias);
 

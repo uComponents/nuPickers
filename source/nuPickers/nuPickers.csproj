@@ -287,6 +287,7 @@
     <Compile Include="Shared\DotNetDataSource\DotNetDataSourceApiController.cs" />
     <Compile Include="Shared\DotNetDataSource\DotNetDataSourceAttribute.cs" />
     <Compile Include="Shared\DotNetDataSource\DotNetDataSourceProperty.cs" />
+    <Compile Include="Shared\DotNetDataSource\IDotNetDataSourceV2.cs" />
     <Compile Include="Shared\DotNetDataSource\IDotNetDataSource.cs" />
     <Compile Include="Shared\DotNetDataSource\IDotNetDataSourceTypeahead.cs" />
     <Compile Include="Shared\EnumDataSource\EnumExtensions.cs" />
