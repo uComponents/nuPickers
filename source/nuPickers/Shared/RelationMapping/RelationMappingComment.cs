@@ -12,6 +12,8 @@ namespace nuPickers.Shared.RelationMapping
 
     public class RelationMappingComment
     {
+        public int SortOrder { get; set; }
+
         public string PropertyAlias { get; private set; }
 
         // used to identify a specifc datatype instance
@@ -24,6 +26,7 @@ namespace nuPickers.Shared.RelationMapping
         internal RelationMappingComment(int contextId, string propertyAlias)
         {
             this.PropertyAlias = propertyAlias;
+            this.SortOrder = -1;
 
             IEnumerable<PropertyType> propertyTypes = Enumerable.Empty<PropertyType>();
 
@@ -70,12 +73,14 @@ namespace nuPickers.Shared.RelationMapping
                     this.PropertyAlias =  (xml.Attribute("PropertyAlias") != null) ? xml.Attribute("PropertyAlias").Value : string.Empty; // backwards compatable null check (propertyAlias a new value as of v1.1.4)
                     this.PropertyTypeId = int.Parse(xml.Attribute("PropertyTypeId").Value);
                     this.DataTypeDefinitionId = int.Parse(xml.Attribute("DataTypeDefinitionId").Value);
+                    this.SortOrder = xml.Attribute("SortOrder").Value != null ? int.Parse(xml.Attribute("SortOrder").Value) : -1; // backwards compatable null check
                 }
                 catch
                 {
                     this.PropertyAlias = string.Empty;
                     this.PropertyTypeId = -1;
                     this.DataTypeDefinitionId = -1;
+                    this.SortOrder = -1;
                 }
             }
         }
@@ -99,7 +104,7 @@ namespace nuPickers.Shared.RelationMapping
 
         internal string GetComment()
         {
-            return "<RelationMapping PropertyAlias=\"" + this.PropertyAlias + "\" PropertyTypeId=\"" + this.PropertyTypeId.ToString() + "\" DataTypeDefinitionId=\"" + this.DataTypeDefinitionId.ToString() + "\" />";
+            return "<RelationMapping PropertyAlias=\"" + this.PropertyAlias + "\" PropertyTypeId=\"" + this.PropertyTypeId.ToString() + "\" DataTypeDefinitionId=\"" + this.DataTypeDefinitionId.ToString() + "\" SortOrder=\"" + this.SortOrder.ToString() + "\" />";
         }
 
     }
