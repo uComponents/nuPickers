@@ -1,21 +1,17 @@
 ﻿<div ng-controller ="nuPickers.Shared.RelationMapping.RelationMappingConfigController" class="nuPickers-config">
 
     <div>
-        <label for="">
-
+        <label class="control-label" for="">
             Relation Mapping
-            <small>(optional) synchronise picked keys with a relation type (keys must be valid ids for the relation type)</small>
-
+            <small>(Optional) synchronise picked keys with a relation type (keys must be valid ids for the relation type)</small>
         </label>
 
-        <div>
-
+        <div class="controls controls-row">
             <select ng-model="selectedRelationType"
                     ng-options="relationType as relationType.label for relationType in relationTypes"
                     ng-change="relationTypeChanged()">
                 <option value=""></option>
             </select>
-
         </div>
     </div>
 
