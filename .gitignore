@@ -6,6 +6,9 @@
 *.user
 *.sln.docstates
 
+# Visual Studio 2015 cache/options directory
+.vs/
+
 # Build results
 
 [Dd]ebug/
@@ -155,6 +158,10 @@ $RECYCLE.BIN/
 # Mac desktop service store files
 .DS_Store
 
+# =========================
+# nuPickers
+# =========================
+
 package/artifacts/*
 
 # Exclude built packages
@@ -164,4 +171,3 @@ package/nuPickers*.zip
 # Exclude local test sites
 www*/
 source/nuWebTestSite/
-
