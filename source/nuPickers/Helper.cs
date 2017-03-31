@@ -22,7 +22,8 @@
             if (appCodePath != null)
             {
                 DirectoryInfo appCode = new DirectoryInfo(appCodePath);
-                if (appCode.Exists && appCode.GetFiles().Length > 0 && Helper.GetAssembly(appCode.Name) != null)
+
+                if (appCode.Exists && Helper.GetAssembly(appCode.Name) != null)
                 {
                     assemblyNames.Add(appCode.Name);
                 }
