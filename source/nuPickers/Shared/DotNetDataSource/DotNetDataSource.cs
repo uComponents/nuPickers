@@ -21,7 +21,7 @@ namespace nuPickers.Shared.DotNetDataSource
         [DefaultValue(false)]
         internal bool HandledTypeahead { get; set; }
 
-        public IEnumerable<EditorDataItem> GetEditorDataItems(int contextId)
+        public IEnumerable<EditorDataItem> GetEditorDataItems(int contextId, int parentId)
         {
             IEnumerable<EditorDataItem> editorDataItems = Enumerable.Empty<EditorDataItem>();
 
@@ -55,9 +55,11 @@ namespace nuPickers.Shared.DotNetDataSource
                     }
                 }
 
-                editorDataItems = ((IDotNetDataSource)dotNetDataSource)
-                                            .GetEditorDataItems(contextId)
-                                            .Select(x => new EditorDataItem() { Key = x.Key, Label = x.Value });
+                var editorKeyPairValues = dotNetDataSource is IDotNetDataSource
+                    ? ((IDotNetDataSource) dotNetDataSource).GetEditorDataItems(contextId)
+                    : ((IDotNetDataSourceV2) dotNetDataSource).GetEditorDataItems(contextId, parentId);
+
+                editorDataItems = editorKeyPairValues.Select(x => new EditorDataItem() { Key = x.Key, Label = x.Value });
             }
 
             return editorDataItems;
