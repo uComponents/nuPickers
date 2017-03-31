@@ -12,17 +12,18 @@ angular
                     if (pickedKeys[0]) {
                         var i = 0;
                         var found = false;
-                        do {
+
+                        while (!found && i < $scope.dropDownPickerOptions.length) {
+
                             if ($scope.dropDownPickerOptions[i].key == pickedKeys[0]) {
                                 $scope.pickedOption = $scope.dropDownPickerOptions[i];
                                 found = true;
                             }
-                            i++;
 
-                        } while (!found && i < $scope.dropDownPickerOptions.length)
+                            i++;
+                        } 
                     }
                 });
-
 
                 $scope.dropDownChange = function() {
                     $scope.model.value = editorResource.createSaveValue($scope.model.config, [$scope.pickedOption]);
