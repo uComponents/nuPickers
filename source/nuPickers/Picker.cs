@@ -5,6 +5,7 @@
     using nuPickers.Shared.EnumDataSource;
     using nuPickers.Shared.RelationMapping;
     using nuPickers.Shared.SaveFormat;
+    using Shared.Editor;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -89,6 +90,17 @@
         /// the value of this picker
         /// </summary>
         public object SavedValue { get; private set; }
+
+        /// <summary>
+        /// the collection of all picked items (where an item consists of the key and a label)
+        /// </summary>
+        public IEnumerable<EditorDataItem> PickedItems
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
 
         /// <summary>
         /// returns a collection of all picked keys (regardless as to how / where they are persisted)
@@ -208,6 +220,17 @@
         public PreValue GetDataTypePreValue(string key)
         {
             return this.DataTypePreValues.SingleOrDefault(x => string.Equals(x.Key, key, StringComparison.InvariantCultureIgnoreCase)).Value;
+        }
+
+        /// <summary>
+        /// get a collection of all items for this picker (where an item consists of the key and a label)
+        /// NOTE: typeahead pickers return only those items for the supplied typeahead text
+        /// </summary>
+        /// <param name="typeahead">typeahead text (required for typeahead pickers, ignored for non-typeahead pickers)</param>
+        /// <returns>a collection of <see cref="EditorDataItem"/> items</returns>
+        public IEnumerable<EditorDataItem> GetItems(string typeahead = null)
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>
