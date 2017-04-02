@@ -28,18 +28,13 @@
         [HttpPost]
         public IEnumerable<EditorDataItem> GetEditorDataItems([FromUri] int currentId, [FromUri] int parentId, [FromUri] string propertyAlias, [FromBody] dynamic data)
         {
-            int contextId = currentId;
-
-            SqlDataSource sqlDataSource = ((JObject)data.config.dataSource).ToObject<SqlDataSource>();
-            sqlDataSource.Typeahead = (string)data.typeahead;
-
-            IEnumerable<EditorDataItem> editorDataItems = sqlDataSource.GetEditorDataItems(contextId);
-
-            CustomLabel customLabel = new CustomLabel((string)data.config.customLabel, contextId, propertyAlias);
-            TypeaheadListPicker typeaheadListPicker = new TypeaheadListPicker((string)data.typeahead);
-
-            // process the labels and then handle any type ahead text
-            return typeaheadListPicker.ProcessEditorDataItems(customLabel.ProcessEditorDataItems(editorDataItems));
+            return Editor.GetEditorDataItems(
+                            currentId,
+                            parentId,
+                            propertyAlias,
+                            ((JObject)data.config.dataSource).ToObject<SqlDataSource>(),
+                            (string)data.config.customLabel,
+                            (string)data.typeahead);
         }
     }
 }
