@@ -283,12 +283,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="RouteBuilder.cs" />
+    <Compile Include="Shared\DataSource\IDataSource.cs" />
     <Compile Include="Shared\DotNetDataSource\DotNetDataSource.cs" />
     <Compile Include="Shared\DotNetDataSource\DotNetDataSourceApiController.cs" />
     <Compile Include="Shared\DotNetDataSource\DotNetDataSourceAttribute.cs" />
     <Compile Include="Shared\DotNetDataSource\DotNetDataSourceProperty.cs" />
     <Compile Include="Shared\DotNetDataSource\IDotNetDataSource.cs" />
     <Compile Include="Shared\DotNetDataSource\IDotNetDataSourceTypeahead.cs" />
+    <Compile Include="Shared\Editor\Editor.cs" />
     <Compile Include="Shared\EnumDataSource\EnumExtensions.cs" />
     <Compile Include="Shared\JsonDataSource\JsonDataSource.cs" />
     <Compile Include="Shared\JsonDataSource\JsonDataSourceApiController.cs" />
