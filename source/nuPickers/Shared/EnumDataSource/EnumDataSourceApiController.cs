@@ -2,7 +2,6 @@
 {
     using Newtonsoft.Json.Linq;
     using nuPickers;
-    using nuPickers.Shared.CustomLabel;
     using nuPickers.Shared.Editor;
     using System.Collections.Generic;
     using System.Linq;
@@ -56,15 +55,13 @@
         [HttpPost]
         public IEnumerable<EditorDataItem> GetEditorDataItems([FromUri] int currentId, [FromUri] int parentId, [FromUri] string propertyAlias, [FromBody] dynamic data)
         {
-            int contextId = currentId;
-
-            EnumDataSource enumDataSource = ((JObject)data.config.dataSource).ToObject<EnumDataSource>();
-
-            IEnumerable<EditorDataItem> editorDataItems = enumDataSource.GetEditorDataItems();
-
-            CustomLabel customLabel = new CustomLabel((string)data.config.customLabel, contextId, propertyAlias);
-
-            return customLabel.ProcessEditorDataItems(editorDataItems);
+            return Editor.GetEditorDataItems(
+                            currentId,
+                            parentId,
+                            propertyAlias,
+                            ((JObject)data.config.dataSource).ToObject<EnumDataSource>(),
+                            (string)data.config.customLabel,
+                            null); // enums never use typeahead
         }
     }
 }

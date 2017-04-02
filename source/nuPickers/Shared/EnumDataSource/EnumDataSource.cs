@@ -1,16 +1,27 @@
 ﻿namespace nuPickers.Shared.EnumDataSource
 {
+    using DataSource;
     using nuPickers.Shared.Editor;
     using System;
     using System.Collections.Generic;
     using System.Reflection;
 
-    public class EnumDataSource
+    public class EnumDataSource : IDataSource
     {
         public string AssemblyName { get; set; }
 
         public string EnumName { get; set; }
 
+        public string Typeahead { set { /* ignore */ } }
+
+        public bool HandledTypeahead { get { return false; } }
+
+        public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId)
+        {
+            return this.GetEditorDataItems();
+        }
+
+        [Obsolete]
         public IEnumerable<EditorDataItem> GetEditorDataItems()
         {
             List<EditorDataItem> editorDataItems = new List<EditorDataItem>();
@@ -54,9 +65,5 @@
 
             return editorDataItems;
         }
-
-
-
-
     }
 }
