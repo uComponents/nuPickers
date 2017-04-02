@@ -18,6 +18,7 @@
     {        
         /// <summary>
         /// cache var, set once, stores the configuration options for the data-type this picker is using
+        /// not inflated in constructor, as getting at these values not always necessary
         /// </summary>
         private IDictionary<string, PreValue> dataTypePreValues = null;
 
@@ -25,6 +26,8 @@
         /// cache var, stores value after querying relations or parsing a save format
         /// </summary>
         private string[] pickedKeys = null;
+
+        #region Constructors
 
         /// <summary>
         /// public constructor - picker value is calculated from lookup, either the published value from cache, or the latest saved db value 
@@ -86,10 +89,18 @@
             this.SavedValue = savedValue;
         }
 
+        #endregion
+
+        #region Properties
+
         /// <summary>
         /// the value of this picker
         /// </summary>
-        public object SavedValue { get; private set; }
+        public object SavedValue
+        {
+            get;
+            private set;
+        }
 
         /// <summary>
         /// the collection of all picked items (where an item consists of the key and a label)
@@ -212,8 +223,21 @@
             }
         }
 
+        #endregion
+
+        #region Methods
+
         /// <summary>
-        /// Helper for DataTypePreValues dictionary collection
+        /// Get all the prevalues (used for testing - is there a consumer use-case ?)
+        /// </summary>
+        /// <returns>collection of all <see cref="PreValue"/> for this datatype</returns>
+        public IDictionary<string, PreValue> GetDataTypePreValues()
+        {
+            return this.dataTypePreValues;
+        }
+
+        /// <summary>
+        /// Helper to find a specific PreValue in the DataTypePreValues dictionary
         /// </summary>
         /// <param name="key"></param>
         /// <returns>the PreValue if found, or null</returns>
@@ -340,11 +364,9 @@
         }
 
         /// <summary>
-        /// Returns a <see cref="System.String" /> that represents this instance.
+        /// Returns the string value for this picker
         /// </summary>
-        /// <returns>
-        /// A <see cref="System.String" /> that represents this instance.
-        /// </returns>
+        /// <returns>The SavedValue as a string, otherwise base object.ToString()</returns>
         public override string ToString()
         {
             if (this.SavedValue != null)
@@ -354,5 +376,7 @@
 
             return base.ToString();
         }
+
+        #endregion
     }
 }
