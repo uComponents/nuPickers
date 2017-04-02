@@ -9,7 +9,7 @@ namespace nuPickers.Shared.Editor
     internal static class Editor
     {
         /// <summary>
-        /// Get all options for a picker
+        /// Get all options for a picker (will be used by all API controllers, and the Picker obj)
         /// </summary>
         /// <param name="currentId">the current id</param>
         /// <param name="parentId">the parent id</param>
@@ -37,7 +37,7 @@ namespace nuPickers.Shared.Editor
             }
 
             // if the datasource didn't handle the typeahead text, then it needs to be done post custom label processing
-            if (!dataSource.HandledTypeahead)
+            if (!dataSource.HandledTypeahead && !string.IsNullOrWhiteSpace(typeahead))
             {
                 editorDataItems = new TypeaheadListPicker(typeahead)
                                         .ProcessEditorDataItems(editorDataItems);
