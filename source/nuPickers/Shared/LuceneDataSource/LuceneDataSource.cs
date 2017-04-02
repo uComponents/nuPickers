@@ -1,13 +1,15 @@
 ﻿
 namespace nuPickers.Shared.LuceneDataSource
 {
+    using DataSource;
     using Examine;
     using Examine.Providers;
     using Examine.SearchCriteria;
     using nuPickers.Shared.Editor;
+    using System;
     using System.Collections.Generic;
 
-    public class LuceneDataSource
+    public class LuceneDataSource : IDataSource
     {
         public string ExamineSearcher { get; set; }
 
@@ -17,6 +19,16 @@ namespace nuPickers.Shared.LuceneDataSource
         
         public string LabelField { get; set; }
 
+        public string Typeahead { set { /* ignore */ } } // TODO: Implement token replacement for Lucene queries
+
+        public bool HandledTypeahead { get { return false; } } // TODO: Implement token replacement for Lucene queries
+
+        public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId)
+        {
+            return this.GetEditorDataItems(currentId);
+        }
+
+        [Obsolete]
         public IEnumerable<EditorDataItem> GetEditorDataItems(int contextId)
         {
             List<EditorDataItem> editorDataItems = new List<EditorDataItem>();
