@@ -1,6 +1,7 @@
 ﻿
 namespace nuPickers.Shared.XmlDataSource
 {
+    using DataSource;
     using nuPickers.Shared.Editor;
     using System.Collections.Generic;
     using System.Linq;
@@ -9,7 +10,7 @@ namespace nuPickers.Shared.XmlDataSource
     using umbraco;
     using Umbraco.Core;
 
-    public class XmlDataSource
+    public class XmlDataSource : IDataSource
     {
         public string XmlData { get; set; }
 
@@ -20,6 +21,10 @@ namespace nuPickers.Shared.XmlDataSource
         public string KeyXPath { get; set; }
 
         public string LabelXPath { get; set; }
+
+        public string Typeahead { set { /* ignore */ } }
+
+        public bool HandledTypeahead { get { return false; } }
 
         public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId)
         {
