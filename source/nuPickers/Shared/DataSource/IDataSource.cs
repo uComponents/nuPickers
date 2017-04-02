@@ -12,7 +12,7 @@ namespace nuPickers.Shared.DataSource
         /// <summary>
         /// set any typeahead text so that it may be handled by the data source
         /// </summary>
-        string Typeahead {set; }
+        string Typeahead { set; }
 
         /// <summary>
         /// flag to indicate whether the datasource handled any type ahead text

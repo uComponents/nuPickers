@@ -1,6 +1,7 @@
 ﻿
 namespace nuPickers.Shared.DotNetDataSource
 {
+    using DataSource;
     using nuPickers.Shared.Editor;
     using System;
     using System.Collections.Generic;
@@ -8,7 +9,7 @@ namespace nuPickers.Shared.DotNetDataSource
     using System.Linq;
     using System.Reflection;
 
-    public class DotNetDataSource
+    public class DotNetDataSource : IDataSource
     {
         public string AssemblyName { get; set; }
 
@@ -19,8 +20,14 @@ namespace nuPickers.Shared.DotNetDataSource
         public string Typeahead { get; set; }
 
         [DefaultValue(false)]
-        internal bool HandledTypeahead { get; set; }
+        public bool HandledTypeahead { get; private set; }
 
+        public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId)
+        {
+            return this.GetEditorDataItems(currentId);
+        }
+
+        [Obsolete]
         public IEnumerable<EditorDataItem> GetEditorDataItems(int contextId)
         {
             IEnumerable<EditorDataItem> editorDataItems = Enumerable.Empty<EditorDataItem>();

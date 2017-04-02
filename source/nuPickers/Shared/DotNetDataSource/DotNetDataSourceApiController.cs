@@ -3,9 +3,7 @@ namespace nuPickers.Shared.DotNetDataSource
 {
     using Newtonsoft.Json.Linq;
     using nuPickers;
-    using nuPickers.Shared.CustomLabel;
     using nuPickers.Shared.Editor;
-    using nuPickers.Shared.TypeaheadListPicker;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -85,25 +83,13 @@ namespace nuPickers.Shared.DotNetDataSource
         [HttpPost]
         public IEnumerable<EditorDataItem> GetEditorDataItems([FromUri] int currentId, [FromUri] int parentId, [FromUri] string propertyAlias, [FromBody] dynamic data)
         {
-            int contextId = currentId;
-
-            DotNetDataSource dotNetDataSource = ((JObject)data.config.dataSource).ToObject<DotNetDataSource>();
-            dotNetDataSource.Typeahead = (string)data.typeahead;
-
-            IEnumerable<EditorDataItem> editorDataItems = dotNetDataSource.GetEditorDataItems(contextId).ToList();
-
-            CustomLabel customLabel = new CustomLabel((string)data.config.customLabel, contextId, propertyAlias);
-
-            editorDataItems = customLabel.ProcessEditorDataItems(editorDataItems);
-
-            // if the typeahead wasn't handled by the custom data-source, then fallback to default typeahead processing
-            if (!dotNetDataSource.HandledTypeahead)
-            {
-                TypeaheadListPicker typeaheadListPicker = new TypeaheadListPicker((string)data.typeahead);
-                editorDataItems = typeaheadListPicker.ProcessEditorDataItems(editorDataItems);                
-            }
-
-            return editorDataItems;
+            return Editor.GetEditorDataItems(
+                            currentId,
+                            parentId,
+                            propertyAlias,
+                            ((JObject)data.config.dataSource).ToObject<DotNetDataSource>(),
+                            (string)data.config.customLabel,
+                            (string)data.typeahead);
         }
     }
 }
