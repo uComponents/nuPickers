@@ -1,13 +1,15 @@
 ﻿namespace nuPickers.Shared.JsonDataSource
 {
+    using DataSource;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
     using nuPickers.Shared.Editor;
     using System.Collections.Generic;
     using System.Linq;
     using Umbraco.Core.Logging;
+    using System;
 
-    public class JsonDataSource
+    public class JsonDataSource : IDataSource
     {
         public string Url { get; set; }
 
@@ -17,11 +19,21 @@
 
         public string LabelJsonPath { get; set; }
 
+        public string Typeahead {  set { /* ignore */ } }
+
+        public bool HandledTypeahead { get { return false; } }
+
+        public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId)
+        {
+            return this.GetEditorDataItems(currentId);
+        }
+
         /// <summary>
         /// Main method for retrieving nuPicker data items.
         /// </summary>
         /// <param name="contextId">Current context node Id</param>
         /// <returns>List of items for displaying inside a nuPicker JSON data type.</returns>
+        [Obsolete]
         public IEnumerable<EditorDataItem> GetEditorDataItems(int contextId)
         {
             List<EditorDataItem> editorDataItems = new List<EditorDataItem>(); // prepare return value

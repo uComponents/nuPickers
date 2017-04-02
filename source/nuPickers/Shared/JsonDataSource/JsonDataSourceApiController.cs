@@ -16,17 +16,13 @@ namespace nuPickers.Shared.JsonDataSource
         [HttpPost]
         public IEnumerable<EditorDataItem> GetEditorDataItems([FromUri] int currentId, [FromUri] int parentId, [FromUri] string propertyAlias, [FromBody] dynamic data)
         {
-            int contextId = currentId;
-
-            JsonDataSource jsonDataSource = ((JObject)data.config.dataSource).ToObject<JsonDataSource>();
-
-            IEnumerable<EditorDataItem> editorDataItems = jsonDataSource.GetEditorDataItems(contextId);
-
-            CustomLabel customLabel = new CustomLabel((string)data.config.customLabel, contextId, propertyAlias);
-            TypeaheadListPicker typeaheadListPicker = new TypeaheadListPicker((string)data.typeahead);
-
-            // process the labels and then handle any type ahead text
-            return typeaheadListPicker.ProcessEditorDataItems(customLabel.ProcessEditorDataItems(editorDataItems));
+            return Editor.GetEditorDataItems(
+                            currentId,
+                            parentId,
+                            propertyAlias,
+                            ((JObject)data.config.dataSource).ToObject<JsonDataSource>(),
+                            (string)data.config.customLabel,
+                            (string)data.typeahead);
         }
     }
 }
