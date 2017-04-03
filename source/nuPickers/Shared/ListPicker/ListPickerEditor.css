@@ -158,6 +158,7 @@
     clear: right;
     float: right;
     width:48%;
+    position:relative;
     /* padding-left: TODO: calculate from scrollbar width (want to ensure markup area is same with both sides) */
 }
 
