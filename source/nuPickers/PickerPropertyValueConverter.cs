@@ -2,6 +2,7 @@
 {
     using nuPickers.PropertyEditors;
     using System.Linq;
+    using Umbraco.Core.Models;
     using Umbraco.Core.Models.PublishedContent;
     using Umbraco.Core.PropertyEditors;
     using Umbraco.Web;
@@ -63,22 +64,29 @@
 
         public override object ConvertSourceToObject(PublishedPropertyType publishedPropertyType, object source, bool preview)
         {
-            int contextId;
-            int parentId;
+            int contextId = -1;
+            int parentId = -1;
+            IPublishedContent assignedContentItem;
 
             try
             {
-                UmbracoHelper umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
-
-                contextId = umbracoHelper.AssignedContentItem.Id;
-                parentId = umbracoHelper.AssignedContentItem.Parent.Id;
+                assignedContentItem = new UmbracoHelper(UmbracoContext.Current).AssignedContentItem;
             }
             catch
             {
-                contextId = -1;
-                parentId = -1;
+                assignedContentItem = null;
             }
-            
+
+            if (assignedContentItem != null)
+            {
+                contextId = assignedContentItem.Id;
+
+                if (assignedContentItem.Parent != null)
+                {
+                    parentId = assignedContentItem.Parent.Id;
+                }
+            }
+
             return new Picker(
                         contextId, 
                         parentId,
