@@ -1,5 +1,4 @@
-﻿
-namespace nuPickers.Shared.Editor
+﻿namespace nuPickers.Shared.Editor
 {
     using DataSource;
     using nuPickers.Shared.CustomLabel;
@@ -10,7 +9,7 @@ namespace nuPickers.Shared.Editor
     internal static class Editor
     {
         /// <summary>
-        /// Get all options for a picker (will be used by all API controllers, and the Picker obj)
+        /// Get a collection of all the (key/label) items for a picker
         /// </summary>
         /// <param name="currentId">the current id</param>
         /// <param name="parentId">the parent id</param>
@@ -18,7 +17,7 @@ namespace nuPickers.Shared.Editor
         /// <param name="dataSource">the datasource</param>
         /// <param name="customLabelMacro">an optional macro to use for custom labels</param>
         /// <param name="typeahead">optional typeahead text to filter down on items returned</param>
-        /// <returns></returns>
+        /// <returns>a collection of <see cref="EditorDataItem"/></returns>
         internal static IEnumerable<EditorDataItem> GetEditorDataItems(                                                        
                                                         int currentId,
                                                         int parentId,
@@ -33,7 +32,7 @@ namespace nuPickers.Shared.Editor
             {
                 dataSource.Typeahead = typeahead; // set any typeahead text that the datasource may filter on
 
-                editorDataItems = dataSource.GetEditorDataItems(currentId, parentId);
+                editorDataItems = dataSource.GetEditorDataItems(currentId, parentId); // both are passed as current id may = 0 (new content)
 
                 if (!string.IsNullOrWhiteSpace(customLabelMacro))
                 {
@@ -41,7 +40,7 @@ namespace nuPickers.Shared.Editor
                                             .ProcessEditorDataItems(editorDataItems);
                 }
 
-                // if the datasource didn't handle the typeahead text, then it needs to be done post custom label processing
+                // if the datasource didn't handle the typeahead text, then it needs to be done here (post custom label processing ?)
                 if (!dataSource.HandledTypeahead && !string.IsNullOrWhiteSpace(typeahead))
                 {
                     editorDataItems = new TypeaheadListPicker(typeahead)

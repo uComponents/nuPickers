@@ -263,8 +263,9 @@
         }
 
         /// <summary>
-        /// get a collection of all items for this picker (where an item consists of the key and a label)
+        /// Get a collection of all (key/label) items for this picker
         /// NOTE: typeahead pickers return only those items for the supplied typeahead text
+        /// WARNING: this method will re-query the data source
         /// </summary>
         /// <param name="typeahead">typeahead text (required for typeahead pickers, ignored for non-typeahead pickers)</param>
         /// <returns>a collection of <see cref="EditorDataItem"/> items</returns>
