@@ -1,6 +1,6 @@
-﻿
-namespace nuPickers.PropertyEditors.JsonPrefetchListPicker
+﻿namespace nuPickers.PropertyEditors.JsonPrefetchListPicker
 {
+    using nuPickers.EmbeddedResource;
     using Umbraco.Core.PropertyEditors;
 
     internal class JsonPrefetchListPickerPreValueEditor : PreValueEditor

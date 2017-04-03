@@ -1,4 +1,4 @@
-namespace nuPickers
+namespace nuPickers.EmbeddedResource
 {
     using System.Globalization;
     using System.IO;

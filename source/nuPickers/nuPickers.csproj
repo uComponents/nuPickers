@@ -211,13 +211,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EmbeddedResource.cs" />
-    <Compile Include="EmbeddedResourceController.cs" />
-    <Compile Include="EmbeddedResourceHelper.cs" />
-    <Compile Include="EmbeddedResourceStartup.cs" />
-    <Compile Include="EmbeddedResourceVirtualFile.cs" />
-    <Compile Include="EmbeddedResourceVirtualPathProvider.cs" />
-    <Compile Include="EmbeddedResourceWriter.cs" />
+    <Compile Include="EmbeddedResource\EmbeddedResource.cs" />
+    <Compile Include="EmbeddedResource\EmbeddedResourceController.cs" />
+    <Compile Include="EmbeddedResource\EmbeddedResourceHelper.cs" />
+    <Compile Include="EmbeddedResource\EmbeddedResourceStartup.cs" />
+    <Compile Include="EmbeddedResource\EmbeddedResourceVirtualFile.cs" />
+    <Compile Include="EmbeddedResource\EmbeddedResourceVirtualPathProvider.cs" />
+    <Compile Include="EmbeddedResource\EmbeddedResourceWriter.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyEditors\BasePropertyEditor.cs" />
@@ -282,7 +282,7 @@
     <Compile Include="PickerPropertyValueConverter.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="RouteBuilder.cs" />
+    <Compile Include="EmbeddedResource\RouteBuilder.cs" />
     <Compile Include="Shared\DataSource\DataSource.cs" />
     <Compile Include="Shared\DataSource\IDataSource.cs" />
     <Compile Include="Shared\DotNetDataSource\DotNetDataSource.cs" />

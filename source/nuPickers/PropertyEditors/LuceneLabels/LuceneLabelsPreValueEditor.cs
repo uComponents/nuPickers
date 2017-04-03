@@ -1,5 +1,6 @@
 ﻿namespace nuPickers.PropertyEditors.LuceneLabels
 {
+    using nuPickers.EmbeddedResource;
     using Umbraco.Core.PropertyEditors;
 
     internal class LuceneLabelsPreValueEditor : PreValueEditor

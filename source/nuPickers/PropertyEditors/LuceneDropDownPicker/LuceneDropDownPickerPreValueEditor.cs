@@ -1,6 +1,6 @@
-﻿
-namespace nuPickers.PropertyEditors.LuceneDropDownPicker
+﻿namespace nuPickers.PropertyEditors.LuceneDropDownPicker
 {
+    using nuPickers.EmbeddedResource;
     using Umbraco.Core.PropertyEditors;
 
     internal class LuceneDropDownPickerPreValueEditor : PreValueEditor
@@ -13,4 +13,5 @@ namespace nuPickers.PropertyEditors.LuceneDropDownPicker
 
         [PreValueField("saveFormat", "Save Format", EmbeddedResource.RootUrl + "SaveFormat/SaveFormatConfig.html")]
         public string SaveFormat { get; set; }
-    }}
+    }
+}

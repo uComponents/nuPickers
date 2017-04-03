@@ -1,5 +1,6 @@
 ﻿namespace nuPickers.PropertyEditors.JsonCheckBoxPicker
 {
+    using nuPickers.EmbeddedResource;
     using Umbraco.Core.PropertyEditors;
 
     internal class JsonCheckBoxPickerPreValueEditor : PreValueEditor

@@ -1,4 +1,4 @@
-﻿namespace nuPickers
+﻿namespace nuPickers.EmbeddedResource
 {
     using ClientDependency.Core;
     using System.Web.Routing;

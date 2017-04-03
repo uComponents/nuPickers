@@ -1,5 +1,6 @@
 ﻿namespace nuPickers.PropertyEditors.JsonLabels
 {
+    using nuPickers.EmbeddedResource;
     using Umbraco.Core.PropertyEditors;
 
     internal class JsonLabelsPreValueEditor : PreValueEditor

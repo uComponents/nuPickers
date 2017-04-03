@@ -1,6 +1,6 @@
-﻿
-namespace nuPickers.PropertyEditors.JsonRadioButtonPicker
+﻿namespace nuPickers.PropertyEditors.JsonRadioButtonPicker
 {
+    using nuPickers.EmbeddedResource;
     using Umbraco.Core.PropertyEditors;
 
     internal class JsonRadioButtonPickerPreValueEditor : PreValueEditor

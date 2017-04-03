@@ -1,6 +1,6 @@
-﻿
-namespace nuPickers.PropertyEditors.XmlTypeaheadListPicker
+﻿namespace nuPickers.PropertyEditors.XmlTypeaheadListPicker
 {
+    using nuPickers.EmbeddedResource;
     using Umbraco.Core.PropertyEditors;
 
     internal class XmlTypeaheadListPickerPreValueEditor : PreValueEditor

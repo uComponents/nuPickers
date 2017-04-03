@@ -1,6 +1,6 @@
-﻿
-namespace nuPickers.PropertyEditors.LuceneTypeaheadListPicker
+﻿namespace nuPickers.PropertyEditors.LuceneTypeaheadListPicker
 {
+    using nuPickers.EmbeddedResource;
     using Umbraco.Core.PropertyEditors;
 
     internal class LuceneTypeaheadListPickerPreValueEditor : PreValueEditor

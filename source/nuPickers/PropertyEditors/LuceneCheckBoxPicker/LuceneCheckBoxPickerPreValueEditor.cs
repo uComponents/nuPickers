@@ -1,5 +1,6 @@
 ﻿namespace nuPickers.PropertyEditors.LuceneCheckBoxPicker
 {
+    using nuPickers.EmbeddedResource;
     using Umbraco.Core.PropertyEditors;
 
     internal class LuceneCheckBoxPickerPreValueEditor : PreValueEditor

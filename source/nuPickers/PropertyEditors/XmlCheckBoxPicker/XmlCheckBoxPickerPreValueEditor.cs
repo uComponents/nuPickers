@@ -1,5 +1,6 @@
 ﻿namespace nuPickers.PropertyEditors.XmlCheckBoxPicker
 {
+    using nuPickers.EmbeddedResource;
     using Umbraco.Core.PropertyEditors;
 
     internal class XmlCheckBoxPickerPreValueEditor : PreValueEditor

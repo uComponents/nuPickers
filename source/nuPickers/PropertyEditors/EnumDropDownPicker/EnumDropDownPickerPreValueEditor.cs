@@ -1,6 +1,7 @@
 ﻿
 namespace nuPickers.PropertyEditors.EnumDropDownPicker
 {
+    using nuPickers.EmbeddedResource;
     using Umbraco.Core.PropertyEditors;
 
     internal class EnumDropDownPickerPreValueEditor : PreValueEditor

@@ -1,5 +1,6 @@
 ﻿namespace nuPickers.PropertyEditors.JsonDropDownPicker
-{    
+{
+    using nuPickers.EmbeddedResource;
     using Umbraco.Core.PropertyEditors;
 
     internal class JsonDropDownPickerPreValueEditor : PreValueEditor

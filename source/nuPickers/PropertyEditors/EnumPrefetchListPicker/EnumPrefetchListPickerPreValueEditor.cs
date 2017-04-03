@@ -1,6 +1,6 @@
-﻿
-namespace nuPickers.PropertyEditors.EnumPrefetchListPicker
+﻿namespace nuPickers.PropertyEditors.EnumPrefetchListPicker
 {
+    using nuPickers.EmbeddedResource;
     using Umbraco.Core.PropertyEditors;
 
     internal class EnumPrefetchListPickerPreValueEditor : PreValueEditor

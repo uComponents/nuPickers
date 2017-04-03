@@ -1,6 +1,6 @@
-﻿
-namespace nuPickers.PropertyEditors.DotNetRadioButtonPicker
+﻿namespace nuPickers.PropertyEditors.DotNetRadioButtonPicker
 {
+    using nuPickers.EmbeddedResource;
     using Umbraco.Core.PropertyEditors;
 
     internal class DotNetRadioButtonPickerPreValueEditor : PreValueEditor

@@ -1,5 +1,6 @@
 ﻿namespace nuPickers.PropertyEditors.EnumLabels
 {
+    using nuPickers.EmbeddedResource;
     using Umbraco.Core.PropertyEditors;
 
     internal class EnumLabelsPreValueEditor : PreValueEditor

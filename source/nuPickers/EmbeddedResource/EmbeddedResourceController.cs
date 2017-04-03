@@ -1,4 +1,4 @@
-﻿namespace nuPickers
+﻿namespace nuPickers.EmbeddedResource
 {
     using System.Web;
     using System.Web.Mvc;

@@ -1,4 +1,4 @@
-﻿namespace nuPickers
+﻿namespace nuPickers.EmbeddedResource
 {
     internal static class EmbeddedResource
     {

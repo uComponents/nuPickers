@@ -1,9 +1,8 @@
 ﻿namespace nuPickers.PropertyEditors.XmlCheckBoxPicker
 {
     using ClientDependency.Core;
-
+    using nuPickers.EmbeddedResource;
     using nuPickers.PropertyEditors;
-
     using Umbraco.Core.PropertyEditors;
     using Umbraco.Web.PropertyEditors;
 

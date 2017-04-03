@@ -1,8 +1,7 @@
-﻿
-namespace nuPickers.PropertyEditors.EnumCheckBoxPicker
+﻿namespace nuPickers.PropertyEditors.EnumCheckBoxPicker
 {
+    using nuPickers.EmbeddedResource;
     using Umbraco.Core.PropertyEditors;
-    using nuPickers;
 
     internal class EnumCheckBoxPickerPreValueEditor : PreValueEditor
     {

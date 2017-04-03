@@ -1,6 +1,6 @@
-﻿
-namespace nuPickers.PropertyEditors.LucenePrefetchListPicker
+﻿namespace nuPickers.PropertyEditors.LucenePrefetchListPicker
 {
+    using nuPickers.EmbeddedResource;
     using Umbraco.Core.PropertyEditors;
 
     internal class LucenePrefetchListPickerPreValueEditor : PreValueEditor

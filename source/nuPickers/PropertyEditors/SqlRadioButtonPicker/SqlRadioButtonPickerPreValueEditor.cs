@@ -1,6 +1,6 @@
-﻿
-namespace nuPickers.PropertyEditors.SqlRadioButtonPicker
+﻿namespace nuPickers.PropertyEditors.SqlRadioButtonPicker
 {
+    using nuPickers.EmbeddedResource;
     using Umbraco.Core.PropertyEditors;
 
     internal class SqlRadioButtonPickerPreValueEditor : PreValueEditor
