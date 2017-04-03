@@ -61,20 +61,31 @@
                  .Contains(propertyEditorAlias);
         }
 
-        public override object ConvertSourceToObject(PublishedPropertyType propertyType, object source, bool preview)
+        public override object ConvertSourceToObject(PublishedPropertyType publishedPropertyType, object source, bool preview)
         {
             int contextId;
+            int parentId;
 
             try
             {
-                contextId = new UmbracoHelper(UmbracoContext.Current).AssignedContentItem.Id;
+                UmbracoHelper umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
+
+                contextId = umbracoHelper.AssignedContentItem.Id;
+                parentId = umbracoHelper.AssignedContentItem.Parent.Id;
             }
             catch
             {
                 contextId = -1;
+                parentId = -1;
             }
             
-            return new Picker(contextId, propertyType.PropertyTypeAlias, propertyType.DataTypeId, source);
+            return new Picker(
+                        contextId, 
+                        parentId,
+                        publishedPropertyType.PropertyTypeAlias, 
+                        publishedPropertyType.DataTypeId, 
+                        publishedPropertyType.PropertyEditorAlias, 
+                        source);
         }
     }
 }

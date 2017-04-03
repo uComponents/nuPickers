@@ -5,6 +5,7 @@
     using nuPickers.Shared.EnumDataSource;
     using nuPickers.Shared.RelationMapping;
     using nuPickers.Shared.SaveFormat;
+    using Shared.DataSource;
     using Shared.Editor;
     using System;
     using System.Collections.Generic;
@@ -47,7 +48,9 @@
             {
                 case uQuery.UmbracoObjectType.Document:
                     picker = umbracoHelper.TypedContent(this.ContextId).GetPropertyValue<Picker>(this.PropertyAlias);
+                    this.ParentId = picker.ParentId;
                     this.DataTypeId = picker.DataTypeId;
+                    this.PropertyEditorAlias = picker.PropertyEditorAlias;
 
                     if (usePublishedValue)
                     {
@@ -62,13 +65,17 @@
 
                 case uQuery.UmbracoObjectType.Media:
                     picker = umbracoHelper.TypedMedia(this.ContextId).GetPropertyValue<Picker>(this.PropertyAlias);
+                    this.ParentId = picker.ParentId;
                     this.DataTypeId = picker.DataTypeId;
+                    this.PropertyEditorAlias = picker.PropertyEditorAlias;
                     this.SavedValue = picker.SavedValue;
                     break;
 
                 case uQuery.UmbracoObjectType.Member:
                     picker = umbracoHelper.TypedMember(this.ContextId).GetPropertyValue<Picker>(this.PropertyAlias);
+                    this.ParentId = picker.ParentId;
                     this.DataTypeId = picker.DataTypeId;
+                    this.PropertyEditorAlias = picker.PropertyEditorAlias;
                     this.SavedValue = picker.SavedValue;
                     break;
             }
@@ -78,14 +85,15 @@
         /// internal constructor - picker value is supplied (used by PropertyValueConverter & RelationMappingEvent)
         /// </summary>
         /// <param name="contextId">the id of the content, media or member (-1 means out of context)</param>
-        /// <param name="propertyAlias">the property alias</param>
-        /// <param name="dataTypeId">the id of the datatype (to access to prevalues)</param>
+        /// <param name="PublishedPropertyType">contains details about the propety editor</param>
         /// <param name="savedValue">the actual value saved</param>
-        internal Picker(int contextId, string propertyAlias, int dataTypeId, object savedValue)
+        internal Picker(int contextId, int parentId, string propertyAlias, int dataTypeId, string propertyEditorAlias, object savedValue)
         {
             this.ContextId = contextId;
+            this.ParentId = parentId;
             this.PropertyAlias = propertyAlias;
             this.DataTypeId = dataTypeId;
+            this.PropertyEditorAlias = propertyEditorAlias;
             this.SavedValue = savedValue;
         }
 
@@ -109,7 +117,7 @@
         {
             get
             {
-                throw new NotImplementedException();
+                return Enumerable.Empty<EditorDataItem>();
             }
         }
 
@@ -190,7 +198,9 @@
         /// <summary>
         /// the id of the content, media or member item
         /// </summary>
-        internal int ContextId { get; set; }
+        internal int ContextId { get; set; } // TODO: rename to current
+
+        private int ParentId { get; set; }
 
         /// <summary>
         /// the alias of this picker on the content, media or member item
@@ -201,6 +211,12 @@
         /// the data-type this picker is using (no association with a specific SaveValue)
         /// </summary>
         private int DataTypeId { get; set; }
+
+        /// <summary>
+        /// The alias used to identify a picker type (could be calculated from the dataType id, but this avoids additional queries)
+        /// (aka dataType alias)
+        /// </summary>
+        private string PropertyEditorAlias { get; set; }
 
         /// <summary>
         /// property accessor to ensure the query to populate the data-type configruation options is only done once
@@ -254,7 +270,13 @@
         /// <returns>a collection of <see cref="EditorDataItem"/> items</returns>
         public IEnumerable<EditorDataItem> GetItems(string typeahead = null)
         {
-            throw new NotImplementedException();
+            return Editor.GetEditorDataItems(
+                            this.ContextId,
+                            this.ParentId,
+                            this.PropertyAlias,
+                            DataSource.GetDataSource(this.PropertyEditorAlias, this.GetDataTypePreValue("dataSource").Value),
+                            this.GetDataTypePreValue("customLabel").Value,
+                            typeahead);
         }
 
         /// <summary>

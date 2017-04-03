@@ -51,10 +51,13 @@ namespace nuPickers.Shared.RelationMapping
                 foreach (PropertyType propertyType in savedEntity.PropertyTypes.Where(x => PickerPropertyValueConverter.IsPicker(x.PropertyEditorAlias)))
                 {
                     // create picker supplying all values
-                    Picker picker = new Picker(savedEntity.Id, 
-                                                propertyType.Alias, 
-                                                propertyType.DataTypeDefinitionId, 
-                                                savedEntity.GetValue(propertyType.Alias));
+                    Picker picker = new Picker(
+                                            savedEntity.Id, 
+                                            savedEntity.ParentId,
+                                            propertyType.Alias, 
+                                            propertyType.DataTypeDefinitionId, 
+                                            propertyType.PropertyEditorAlias,
+                                            savedEntity.GetValue(propertyType.Alias));
 
                     if (!string.IsNullOrWhiteSpace(picker.RelationTypeAlias))
                     {
