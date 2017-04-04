@@ -121,7 +121,7 @@
                     else
                     {
                         this.pickedKeys = this.SavedValue != null ? SaveFormat
-                                                                        .GetSavedKeys(this.SavedValue.ToString())
+                                                                        .GetKeys(this.SavedValue.ToString())
                                                                         .ToArray() : new string[]{};
                     }
                 }

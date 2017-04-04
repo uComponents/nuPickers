@@ -10,26 +10,26 @@
     internal static class SaveFormat
     {
         /// <summary>
-        /// Ignore the specified saved format, and try and restore collection directly from the saved value
+        /// Ignore the specified saved format, and try and restore collection directly from the supplied string value
         /// </summary>
-        /// <param name="savedValue">the saved value as a string</param>
+        /// <param name="value">the value as a string</param>
         /// <returns></returns>
-        internal static IEnumerable<string> GetSavedKeys(string savedValue)
+        internal static IEnumerable<string> GetKeys(string value)
         {
-            if (!string.IsNullOrWhiteSpace(savedValue))
+            if (!string.IsNullOrWhiteSpace(value))
             {
-                switch (savedValue[0])
+                switch (value[0])
                 {
                     case '[':
                         // TODO: check json is valid
-                        return JsonConvert.DeserializeObject<JArray>(savedValue).Select(x => x["key"].ToString());
+                        return JsonConvert.DeserializeObject<JArray>(value).Select(x => x["key"].ToString());
 
                     case '<':
                         // TODO: check xml is valid
-                        return XDocument.Parse(savedValue).Descendants("Picked").Select(x => x.Attribute("Key").Value);
+                        return XDocument.Parse(value).Descendants("Picked").Select(x => x.Attribute("Key").Value);
 
                     default: // csv
-                        return savedValue.Split(',');
+                        return value.Split(',');
                 }
             }
 
