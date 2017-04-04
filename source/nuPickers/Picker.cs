@@ -2,6 +2,7 @@
 {
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using nuPickers.Caching;
     using nuPickers.Shared.EnumDataSource;
     using nuPickers.Shared.RelationMapping;
     using nuPickers.Shared.SaveFormat;
@@ -17,12 +18,6 @@
 
     public class Picker
     {        
-        /// <summary>
-        /// cache var, set once, stores the configuration options for the data-type this picker is using
-        /// not inflated in constructor, as getting at these values not always necessary
-        /// </summary>
-        private IDictionary<string, PreValue> dataTypePreValues = null;
-
         /// <summary>
         /// cache var, stores value after querying relations or parsing a save format
         /// </summary>
@@ -219,23 +214,21 @@
         private string PropertyEditorAlias { get; set; }
 
         /// <summary>
-        /// property accessor to ensure the query to populate the data-type configruation options is only done once
+        /// Property accessor to ensure the query to populate the data-type configruation options is only done once per server
         /// </summary>
         private IDictionary<string, PreValue> DataTypePreValues
         {
             get
             {
-                if (this.dataTypePreValues == null)
+                return Cache.Instance.GetSet(CacheConstants.DataTypePreValuesPrefix + this.DataTypeId, () =>
                 {
-                    this.dataTypePreValues = ApplicationContext
-                                                .Current
-                                                .Services
-                                                .DataTypeService
-                                                .GetPreValuesCollectionByDataTypeId(this.DataTypeId)
-                                                .PreValuesAsDictionary;
-                }
-
-                return this.dataTypePreValues;
+                    return  ApplicationContext
+                                .Current
+                                .Services
+                                .DataTypeService
+                                .GetPreValuesCollectionByDataTypeId(this.DataTypeId)
+                                .PreValuesAsDictionary;
+                });
             }
         }
 
@@ -249,7 +242,7 @@
         /// <returns>collection of all <see cref="PreValue"/> for this datatype</returns>
         public IDictionary<string, PreValue> GetDataTypePreValues()
         {
-            return this.dataTypePreValues;
+            return this.DataTypePreValues;
         }
 
         /// <summary>
