@@ -8,7 +8,7 @@
     /// <summary>
     /// the core relation mapping functionality
     /// </summary>
-    internal class RelationMapping
+    internal static class RelationMapping
     {
         /// <summary>
         /// 
