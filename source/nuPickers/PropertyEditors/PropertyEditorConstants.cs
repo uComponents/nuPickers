@@ -1,5 +1,4 @@
-﻿
-namespace nuPickers.PropertyEditors
+﻿namespace nuPickers.PropertyEditors
 {
     /// <summary>
     /// Class used to define constants (avoided more generic Contants class as conflicts with the use of ClientDependency)
@@ -47,7 +46,6 @@ namespace nuPickers.PropertyEditors
         public const string XmlLabelsAlias = "nuPickers.XmlLabels";
         public const string XmlPrefetchListPickerAlias = "nuPickers.XmlPrefetchListPicker";
         public const string XmlRadioButtonPickerAlias = "nuPickers.XmlRadioButtonPicker";
-        public const string XmlTypeaheadListPickerAlias = "nuPickers.XmlTypeaheadListPicker";
-        
+        public const string XmlTypeaheadListPickerAlias = "nuPickers.XmlTypeaheadListPicker";        
     }
 }

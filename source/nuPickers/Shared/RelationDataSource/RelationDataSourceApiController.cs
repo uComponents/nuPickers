@@ -1,16 +1,13 @@
-﻿
-namespace nuPickers.Shared.RelationDataSource
+﻿namespace nuPickers.Shared.RelationDataSource
 {
+    using Newtonsoft.Json.Linq;
+    using nuPickers.Shared.Editor;
     using System.Collections.Generic;
     using System.Linq;
     using System.Web.Http;
     using umbraco.cms.businesslogic.relation;
     using Umbraco.Web.Editors;
     using Umbraco.Web.Mvc;
-    using nuPickers.Shared.Editor;
-    using umbraco;
-    using CustomLabel;
-    using Newtonsoft.Json.Linq;
 
     [PluginController("nuPickers")]
     public class RelationDataSourceApiController : UmbracoAuthorizedJsonController

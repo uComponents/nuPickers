@@ -1,5 +1,4 @@
-﻿
-namespace nuPickers.Shared.SqlDataSource
+﻿namespace nuPickers.Shared.SqlDataSource
 {
     using DataSource;
     using nuPickers.Shared.Editor;
