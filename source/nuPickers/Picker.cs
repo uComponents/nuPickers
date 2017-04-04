@@ -37,43 +37,29 @@
             this.PropertyAlias = propertyAlias;
 
             UmbracoHelper umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
-            Picker picker;
+            Picker picker = null;
 
+            // based on type, ask Umbraco for a picker obj (via the PickerPropertyValueConverter)
             switch (Helper.GetUmbracoObjectType(this.ContextId))
             {
-                case uQuery.UmbracoObjectType.Document:
-                    picker = umbracoHelper.TypedContent(this.ContextId).GetPropertyValue<Picker>(this.PropertyAlias);
-                    this.ParentId = picker.ParentId;
-                    this.DataTypeId = picker.DataTypeId;
-                    this.PropertyEditorAlias = picker.PropertyEditorAlias;
+                case uQuery.UmbracoObjectType.Document: picker = umbracoHelper.TypedContent(this.ContextId).GetPropertyValue<Picker>(this.PropertyAlias);
 
-                    if (usePublishedValue)
+                    if (!usePublishedValue)
                     {
-                        this.SavedValue = picker.SavedValue;
-                    }
-                    else
-                    {
-                        this.SavedValue = ApplicationContext.Current.Services.ContentService.GetById(this.ContextId).GetValue(propertyAlias);
+                        // reset (private) property on returned picker, so it's value is taken from the database
+                        picker.SavedValue = ApplicationContext.Current.Services.ContentService.GetById(this.ContextId).GetValue(propertyAlias);
                     }
 
                     break;
 
-                case uQuery.UmbracoObjectType.Media:
-                    picker = umbracoHelper.TypedMedia(this.ContextId).GetPropertyValue<Picker>(this.PropertyAlias);
-                    this.ParentId = picker.ParentId;
-                    this.DataTypeId = picker.DataTypeId;
-                    this.PropertyEditorAlias = picker.PropertyEditorAlias;
-                    this.SavedValue = picker.SavedValue;
-                    break;
-
-                case uQuery.UmbracoObjectType.Member:
-                    picker = umbracoHelper.TypedMember(this.ContextId).GetPropertyValue<Picker>(this.PropertyAlias);
-                    this.ParentId = picker.ParentId;
-                    this.DataTypeId = picker.DataTypeId;
-                    this.PropertyEditorAlias = picker.PropertyEditorAlias;
-                    this.SavedValue = picker.SavedValue;
-                    break;
+                case uQuery.UmbracoObjectType.Media: picker = umbracoHelper.TypedMedia(this.ContextId).GetPropertyValue<Picker>(this.PropertyAlias); break;
+                case uQuery.UmbracoObjectType.Member: picker = umbracoHelper.TypedMember(this.ContextId).GetPropertyValue<Picker>(this.PropertyAlias);  break;
             }
+
+            this.ParentId = picker.ParentId;
+            this.DataTypeId = picker.DataTypeId;
+            this.PropertyEditorAlias = picker.PropertyEditorAlias;
+            this.SavedValue = picker.SavedValue;
         }
 
         /// <summary>
