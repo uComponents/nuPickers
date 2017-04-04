@@ -3,6 +3,7 @@
     using DataSource;
     using nuPickers.Shared.CustomLabel;
     using nuPickers.Shared.TypeaheadListPicker;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -24,7 +25,7 @@
                                                         string propertyAlias, // used in custom label
                                                         IDataSource dataSource, 
                                                         string customLabelMacro,
-                                                        string typeahead)
+                                                        string typeahead = null)
         {
             IEnumerable<EditorDataItem> editorDataItems = Enumerable.Empty<EditorDataItem>(); // default return data
 
@@ -47,6 +48,31 @@
                                             .ProcessEditorDataItems(editorDataItems);
                 }
             }
+
+            return editorDataItems;
+        }
+
+        /// <summary>
+        /// Get a collection of the picked (key/label) items
+        /// </summary>
+        /// <param name="currentId">the current id</param>
+        /// <param name="parentId">the parent id</param>
+        /// <param name="propertyAlias">the property alias</param>
+        /// <param name="dataSource">the datasource</param>
+        /// <param name="customLabelMacro">an optional macro to use for custom labels</param>
+        /// <returns>a collection of <see cref="EditorDataItem"/></returns>
+        internal static IEnumerable<EditorDataItem> GetPickedEditorDataItems(
+                                                        int currentId,
+                                                        int parentId,
+                                                        string propertyAlias, // used in custom label
+                                                        IDataSource dataSource,
+                                                        string customLabelMacro)
+
+        {
+            IEnumerable<EditorDataItem> editorDataItems = Enumerable.Empty<EditorDataItem>(); // default return data
+
+            throw new NotImplementedException();
+
             return editorDataItems;
         }
     }
