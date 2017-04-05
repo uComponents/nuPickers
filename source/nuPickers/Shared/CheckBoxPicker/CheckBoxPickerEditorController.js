@@ -5,7 +5,7 @@ angular
         ['$scope', 'nuPickers.Shared.Editor.EditorResource',
         function ($scope, editorResource) {
 
-            $scope.checkAllState = false;
+            $scope.checkAllState = false; // flag to indicate that all check boxes are currently checked
             $scope.checkBoxPickerOptions = [];
 
             $scope.checkAllClick = function () {
@@ -15,15 +15,11 @@ angular
                 angular.forEach($scope.checkBoxPickerOptions, function (option) {
                     option.isChecked = $scope.checkAllState;
                 });
-
-                generateSaveValue();
             };
 
             $scope.checkBoxChange = function () {
 
                 $scope.checkAllState = areAllChecked();
-
-                generateSaveValue();
             };
 
             $scope.getPickedOptions = function () {
@@ -34,7 +30,7 @@ angular
                 return $scope.getPickedOptions().length == $scope.checkBoxPickerOptions.length;
             };
 
-            function generateSaveValue () {
+            function generateSaveValue() {
                 $scope.model.value = editorResource.createSaveValue($scope.model.config, $scope.getPickedOptions());
             };
 
@@ -54,8 +50,12 @@ angular
                     }
 
                     $scope.checkAllState = areAllChecked();
-                });
 
+                });
+            });
+
+            $scope.$on("formSubmitting", function () {
+                generateSaveValue();
             });
 
         }]);
