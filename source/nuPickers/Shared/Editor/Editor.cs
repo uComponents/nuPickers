@@ -69,11 +69,7 @@
                                                         string customLabelMacro)
 
         {
-            IEnumerable<EditorDataItem> editorDataItems = Enumerable.Empty<EditorDataItem>(); // default return data
-
             throw new NotImplementedException();
-
-            return editorDataItems;
         }
     }
 }

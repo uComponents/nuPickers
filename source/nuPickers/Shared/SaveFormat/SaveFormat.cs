@@ -37,16 +37,16 @@
         }
 
 
-        /// <summary>
-        /// Attempt to create a collection of the picked (key/label) items from the saved string value
-        /// NOTE: the CSV format, or relations only will not work, as the data isn't in the saved value (will return false)
-        /// </summary>
-        /// <param name="savedValue">the saved value as a string</param>
-        /// <param name="items"></param>
-        /// <returns>bool flag to indicate whether the items could be created from the savedValue supplied</returns>
-        internal static bool TryGetSavedItems(string savedValue, out IEnumerable<EditorDataItem> items)
-        {
-            throw new System.NotImplementedException();
-        }
+        ///// <summary>
+        ///// Attempt to create a collection of the picked (key/label) items from the saved string value
+        ///// NOTE: the CSV format, or relations only will not work, as the data isn't in the saved value (will return false)
+        ///// </summary>
+        ///// <param name="value">the saved value as a string</param>
+        ///// <param name="editorDataItems"></param>
+        ///// <returns>bool flag to indicate whether the items could be created from the savedValue supplied</returns>
+        //internal static bool TryGetDataEditorItems(string value, out EditorDataItem[] editorDataItems)
+        //{
+        //    throw new System.NotImplementedException();
+        //}
     }
 }

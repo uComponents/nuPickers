@@ -211,14 +211,14 @@
 
         #region Methods
 
-        /// <summary>
-        /// Get all the prevalues (used for testing - is there a consumer use-case ?)
-        /// </summary>
-        /// <returns>collection of all <see cref="PreValue"/> for this datatype</returns>
-        public IDictionary<string, PreValue> GetDataTypePreValues()
-        {
-            return this.DataTypePreValues;
-        }
+        ///// <summary>
+        ///// Get all the prevalues
+        ///// </summary>
+        ///// <returns>collection of all <see cref="PreValue"/> for this datatype</returns>
+        //public IDictionary<string, PreValue> GetDataTypePreValues()
+        //{
+        //    return this.DataTypePreValues;
+        //}
 
         /// <summary>
         /// Helper to find a specific PreValue in the DataTypePreValues dictionary
@@ -237,7 +237,7 @@
         /// </summary>
         /// <param name="typeahead">typeahead text (required for typeahead pickers, ignored for non-typeahead pickers)</param>
         /// <returns>a collection of <see cref="EditorDataItem"/> items</returns>
-        public IEnumerable<EditorDataItem> GetItems(string typeahead = null)
+        public IEnumerable<EditorDataItem> GetEditorDataItems(string typeahead = null)
         {
             return Editor.GetEditorDataItems(
                             this.ContextId,
@@ -253,11 +253,16 @@
         ///// WARNING: for CSV and Relation Only save formats, the label data is missing, so will trigger a query
         ///// </summary>
         ///// <returns></returns>
-        //public IEnumerable<EditorDataItem> GetPickedItems()
+        //public IEnumerable<EditorDataItem> GetPickedEditorDataItems()
         //{
-        //    throw new NotImplementedException();
+        //    EditorDataItem[] editorDataItems = null;
 
-        //    return Enumerable.Empty<EditorDataItem>();
+        //    if (!SaveFormat.TryGetDataEditorItems(this.SavedValue.ToString(), out editorDataItems))
+        //    {
+        //        // TODO:
+        //    }
+
+        //    return editorDataItems ?? Enumerable.Empty<EditorDataItem>();
         //}
 
         /// <summary>
