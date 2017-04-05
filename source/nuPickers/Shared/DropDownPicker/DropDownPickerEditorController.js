@@ -25,10 +25,10 @@ angular
                     }
                 });
 
-                $scope.dropDownChange = function() {
-                    $scope.model.value = editorResource.createSaveValue($scope.model.config, [$scope.pickedOption]);
-                };
+            });
 
+            $scope.$on("formSubmitting", function () {
+                $scope.model.value = editorResource.createSaveValue($scope.model.config, [$scope.pickedOption]);
             });
 
         }]);
