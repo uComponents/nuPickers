@@ -9,8 +9,7 @@
                        ng-name="radioButtonPicker"
                        value="{{option.key}}"
                        ng-model="$parent.pickedKey"
-                       ng-checked="option.key == $parent.pickedKey"
-                       ng-change="radioButtonChange()" />
+                       ng-checked="option.key == $parent.pickedKey" />
 
                 <span ng-bind-html-unsafe="option.label"></span>
             </label>

@@ -11,10 +11,6 @@ angular
                     $scope.pickedKey = pickedKeys[0];
                 });
 
-                $scope.radioButtonChange = function () {
-                    $scope.model.value = editorResource.createSaveValue($scope.model.config, [$scope.getPickedOption()]);
-                };
-
                 // get picked option by copying a matching one by key from the source
                 $scope.getPickedOption = function () {
 
@@ -34,6 +30,10 @@ angular
                     return pickedOption;
                 };
 
+            });
+
+            $scope.$on("formSubmitting", function () {
+                $scope.model.value = editorResource.createSaveValue($scope.model.config, [$scope.getPickedOption()]);
             });
 
         }]);
