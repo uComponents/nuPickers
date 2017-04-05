@@ -9,16 +9,13 @@ angular
             $scope.checkBoxPickerOptions = [];
 
             $scope.checkAllClick = function () {
-
                 $scope.checkAllState = !$scope.checkAllState;
-
                 angular.forEach($scope.checkBoxPickerOptions, function (option) {
                     option.isChecked = $scope.checkAllState;
                 });
             };
 
             $scope.checkBoxChange = function () {
-
                 $scope.checkAllState = areAllChecked();
             };
 
@@ -28,10 +25,6 @@ angular
 
             function areAllChecked() {
                 return $scope.getPickedOptions().length == $scope.checkBoxPickerOptions.length;
-            };
-
-            function generateSaveValue() {
-                $scope.model.value = editorResource.createSaveValue($scope.model.config, $scope.getPickedOptions());
             };
 
             editorResource.getEditorDataItems($scope.model).then(function (response) {
@@ -55,7 +48,7 @@ angular
             });
 
             $scope.$on("formSubmitting", function () {
-                generateSaveValue();
+                $scope.model.value = editorResource.createSaveValue($scope.model.config, $scope.getPickedOptions());
             });
 
         }]);
