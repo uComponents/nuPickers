@@ -115,9 +115,6 @@ angular
 
                     // toggle sorting ui
                     $scope.sortableConfiguration.disabled = !$scope.isSortable();
-
-                    // update model for persistance
-                    $scope.model.value = editorResource.createSaveValue($scope.model.config, $scope.selectedOptions);
                 });
             }
             
@@ -156,4 +153,8 @@ angular
                 });
             }
 
-}]);
+            $scope.$on("formSubmitting", function () {
+                $scope.model.value = editorResource.createSaveValue($scope.model.config, $scope.selectedOptions);
+            });
+
+        }]);
