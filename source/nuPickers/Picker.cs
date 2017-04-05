@@ -84,23 +84,9 @@
 
         /// <summary>
         /// the value of this picker
+        /// TODO: breaking change for 2.0.0, rename to Value (as it might be the saved, or it might be the published)
         /// </summary>
-        public object SavedValue
-        {
-            get;
-            private set;
-        }
-
-        /// <summary>
-        /// the collection of all picked items (where an item consists of the key and a label)
-        /// </summary>
-        public IEnumerable<EditorDataItem> PickedItems
-        {
-            get
-            {
-                return Enumerable.Empty<EditorDataItem>();
-            }
-        }
+        public object SavedValue { get; private set; }
 
         /// <summary>
         /// returns a collection of all picked keys (regardless as to how / where they are persisted)
@@ -261,6 +247,18 @@
                             this.GetDataTypePreValue("customLabel").Value,
                             typeahead);
         }
+
+        ///// <summary>
+        ///// Get a collection of the picked (key/label) items
+        ///// WARNING: for CSV and Relation Only save formats, the label data is missing, so will trigger a query
+        ///// </summary>
+        ///// <returns></returns>
+        //public IEnumerable<EditorDataItem> GetPickedItems()
+        //{
+        //    throw new NotImplementedException();
+
+        //    return Enumerable.Empty<EditorDataItem>();
+        //}
 
         /// <summary>
         /// get all picked items, objects may be typed Content, Media or Member (but all returned as IPublishedContent)
