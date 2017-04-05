@@ -143,7 +143,7 @@
         }
 
         /// <summary>
-        /// Deletes an item from cache
+        /// Remove an item from cache
         /// </summary>
         /// <param name="cacheKey">the key to the item to remove</param>
         internal void Remove(string cacheKey)
@@ -152,13 +152,17 @@
         }
 
         /// <summary>
-        /// Wipe all cache items
+        /// Remove all items from cache for which the lambda returns true
         /// </summary>
-        internal void Wipe()
+        /// <param name="lambda">function to test a string cache key, and return true if it should be removed from cache</param>
+        internal void Remove(Func<string, bool> lambda)
         {
             foreach (string key in this.memoryCache.Select(x => x.Key))
             {
-                this.memoryCache.Remove(key);
+                if (lambda(key))
+                {
+                    this.memoryCache.Remove(key);
+                }
             }
         }
     }

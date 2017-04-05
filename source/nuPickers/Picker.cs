@@ -113,10 +113,13 @@
                 {
                     if (this.GetDataTypePreValue("saveFormat").Value == "relationsOnly")
                     {
-                        this.pickedKeys = RelationMapping
-                                            .GetRelatedIds(this.ContextId, this.PropertyAlias, this.RelationTypeAlias, true)
-                                            .Select(x => x.ToString())
-                                            .ToArray();
+                        this.pickedKeys = Cache.Instance.GetSet(CacheConstants.PickedKeysPrefix + this.ContextId.ToString() + "_" + this.PropertyAlias, () =>
+                        {
+                            return RelationMapping
+                                    .GetRelatedIds(this.ContextId, this.PropertyAlias, this.RelationTypeAlias, true)
+                                    .Select(x => x.ToString())
+                                    .ToArray();
+                        });
                     }
                     else
                     {

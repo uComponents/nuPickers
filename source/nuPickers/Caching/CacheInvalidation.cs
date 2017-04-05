@@ -9,8 +9,21 @@
     {
         protected override void ApplicationStarted(UmbracoApplicationBase umbracoApplication, ApplicationContext applicationContext)
         {
-            DataTypeService.Saved += DataTypeService_Saved;
-            DataTypeService.Deleted += DataTypeService_Deleted;
+            ContentService.Saved += this.ContentService_Saved;
+            ContentService.Deleted += this.ContentService_Deleted;
+
+            DataTypeService.Saved += this.DataTypeService_Saved;
+            DataTypeService.Deleted += this.DataTypeService_Deleted;
+        }
+
+        private void ContentService_Saved(IContentService sender, SaveEventArgs<IContent> e)
+        {
+            e.SavedEntities.ForEach(x => Cache.Instance.Remove(y => y.StartsWith(CacheConstants.PickedKeysPrefix + x.Id.ToString())));
+        }
+
+        private void ContentService_Deleted(IContentService sender, DeleteEventArgs<IContent> e)
+        {
+            e.DeletedEntities.ForEach(x => Cache.Instance.Remove(y => y.StartsWith(CacheConstants.PickedKeysPrefix + x.Id.ToString())));
         }
 
         private void DataTypeService_Saved(IDataTypeService sender, SaveEventArgs<IDataTypeDefinition> e)
