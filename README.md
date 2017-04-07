@@ -13,15 +13,7 @@ Umbraco Package (zip file): [![AppVeyor Artifacts](https://img.shields.io/badge/
 
 [![Build status](https://img.shields.io/appveyor/ci/jeavonleopold/nupickers/master.svg)](https://ci.appveyor.com/project/JeavonLeopold/nupickers/branch/master)
 
- [![Join the chat at https://gitter.im/uComponents/nuPickers](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/uComponents/nuPickers?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://gitter.im/uComponents/nuPickers](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/uComponents/nuPickers?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 
-__Support:__ [Documentation (GitHub Wiki)](https://github.com/uComponents/nuPickers/wiki) __|__ [Questions (Our Umbraco Forum)](https://our.umbraco.org/projects/backoffice-extensions/nupickers/questionssuggestions/) __|__ [Issue Logging](https://github.com/uComponents/nuPickers/issues)
-
-
-
-
-
-
-
-
+__Support:__ [Documentation](https://github.com/uComponents/nuPickers/wiki) (GitHub Wiki) __|__ [Questions](https://our.umbraco.org/projects/backoffice-extensions/nupickers/questionssuggestions/)  (Our Umbraco Forum) __|__ [Issue Logging](https://github.com/uComponents/nuPickers/issues) (GitHub Issues)
