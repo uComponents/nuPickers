@@ -304,11 +304,7 @@
 
             foreach (var pickedKey in this.PickedKeys)
             {
-                Attempt<int> attemptNodeId = pickedKey.TryConvertTo<int>();
-                if (attemptNodeId.Success)
-                {
-                    publishedContent.Add(umbracoHelper.GetPublishedContent(attemptNodeId.Result));
-                }
+                publishedContent.Add(umbracoHelper.GetPublishedContent(pickedKey));
             }
 
             return publishedContent.Where(x => x != null);
