@@ -1,5 +1,4 @@
-﻿
-namespace nuPickers.Shared.RelationMapping
+﻿namespace nuPickers.Shared.RelationMapping
 {
     using nuPickers.Shared.SaveFormat;
     using System.Collections.Generic;

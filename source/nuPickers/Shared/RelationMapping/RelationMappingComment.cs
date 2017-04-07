@@ -1,63 +1,80 @@
-﻿
-namespace nuPickers.Shared.RelationMapping
+﻿namespace nuPickers.Shared.RelationMapping
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Xml.Linq;
-    using System.Xml.Serialization;
-    using umbraco;
     using Umbraco.Core;
     using Umbraco.Core.Models;
 
+    /// <summary>
+    /// Represents the data stored in the comment field of a relation
+    /// </summary>
     public class RelationMappingComment
     {
+        /// <summary>
+        /// The property alias of the picker using relations
+        /// </summary>
         public string PropertyAlias { get; private set; }
 
-        // used to identify a specifc datatype instance
+        /// <summary>
+        /// Used to identify a specific dataType instance
+        /// </summary>
         public int PropertyTypeId { get; private set; }
 
-        // used to identify all datatypes using a particular datatype
-        // NOTE: could calculate this from the propertyTypeId
+        /// <summary>
+        /// Used to identify a dataType
+        /// </summary>
         public int DataTypeDefinitionId { get; private set; }
 
+        /// <summary>
+        /// Initialize a new instance of <see cref="RelationMappingComment"/>
+        /// </summary>
+        /// <param name="contextId">the id of the content / media or member with the picker</param>
+        /// <param name="propertyAlias">the property alias of the picker</param>
         internal RelationMappingComment(int contextId, string propertyAlias)
         {
-            this.PropertyAlias = propertyAlias;
+            PropertyType propertyType = null;
 
-            IEnumerable<PropertyType> propertyTypes = Enumerable.Empty<PropertyType>();
+            // is there a better way of getting the property types for an id without having to check content / media / members independently ?
+            var content = ApplicationContext.Current.Services.ContentService.GetById(contextId);
 
-            switch (Helper.GetUmbracoObjectType(contextId)) // TODO: can this switch be removed ?
+            if (content != null)
             {
-                case uQuery.UmbracoObjectType.Document:
-                    propertyTypes = ApplicationContext.Current.Services.ContentService.GetById(contextId).PropertyTypes;
-                    break;
-
-                case uQuery.UmbracoObjectType.Media:
-                    propertyTypes = ApplicationContext.Current.Services.MediaService.GetById(contextId).PropertyTypes;
-                    break;
-
-                case uQuery.UmbracoObjectType.Member:
-                    propertyTypes = ApplicationContext.Current.Services.MemberService.GetById(contextId).PropertyTypes;
-                    break;
-            }
-
-            // NOTE: Archetype supplies a virtual propertyAlias
-            PropertyType propertyType = propertyTypes.SingleOrDefault(x => x.Alias == propertyAlias);
-            if (propertyType != null)
-            {
-                this.DataTypeDefinitionId = propertyType.DataTypeDefinitionId;
-                this.PropertyTypeId = propertyType.Id;
+                propertyType = content.PropertyTypes.SingleOrDefault(x => x.Alias == propertyAlias);
             }
             else
             {
-                this.DataTypeDefinitionId = -1;
-                this.PropertyTypeId = -1;
+                var media = ApplicationContext.Current.Services.MediaService.GetById(contextId);
+
+                if (media != null)
+                {
+                    propertyType = media.PropertyTypes.SingleOrDefault(x => x.Alias == propertyAlias);
+                }
+                else
+                {
+                    var member = ApplicationContext.Current.Services.MemberService.GetById(contextId);
+
+                    if (member != null)
+                    {
+                        propertyType = member.PropertyTypes.SingleOrDefault(x => x.Alias == propertyAlias);
+                    }
+                }
+            }
+
+            if (propertyType != null)
+            {
+                this.PropertyAlias = propertyAlias;
+                this.PropertyTypeId = propertyType.Id;
+                this.DataTypeDefinitionId = propertyType.DataTypeDefinitionId;
+            }
+            else
+            {
+                throw new Exception(string.Format("Unable to find property type for ContextId: {0}, PropertyAlias: {1}", contextId.ToString(), propertyAlias));
             }
         }
 
         /// <summary>
-        ///
+        /// Initialize a new instance of <see cref="RelationMappingComment"/>
         /// </summary>
         /// <param name="comment">serialized string from the db comment field</param>
         internal RelationMappingComment(string comment)
@@ -80,6 +97,10 @@ namespace nuPickers.Shared.RelationMapping
             }
         }
 
+        /// <summary>
+        /// Helper to determine if the property is inside an Archetype
+        /// </summary>
+        /// <returns>flag to indicate if property is inside an Archetype</returns>
         internal bool IsInArchetype()
         {
             return this.PropertyAlias.StartsWith("archetype-property");
@@ -97,6 +118,10 @@ namespace nuPickers.Shared.RelationMapping
             }
         }
 
+        /// <summary>
+        /// Get the serialized XML comment
+        /// </summary>
+        /// <returns>String XML fragment</returns>
         internal string GetComment()
         {
             return "<RelationMapping PropertyAlias=\"" + this.PropertyAlias + "\" PropertyTypeId=\"" + this.PropertyTypeId.ToString() + "\" DataTypeDefinitionId=\"" + this.DataTypeDefinitionId.ToString() + "\" />";

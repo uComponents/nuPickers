@@ -11,46 +11,49 @@
     internal static class RelationMapping
     {
         /// <summary>
-        /// 
+        /// Get all related id for the supplied criteria
         /// </summary>
         /// <param name="contextId">the id of the content, media or member item</param>
         /// <param name="propertyAlias">the property alias of the picker using relation mapping</param>
         /// <param name="relationTypeAlias">the alias of the relation type to use</param>
         /// <param name="relationsOnly"></param>
-        /// <returns></returns>
+        /// <returns>a collection of related ids, or an empty collection</returns>
         internal static IEnumerable<int> GetRelatedIds(int contextId, string propertyAlias, string relationTypeAlias, bool relationsOnly)
         {
-            IRelationType relationType = ApplicationContext.Current.Services.RelationService.GetRelationTypeByAlias(relationTypeAlias);
-
-            if (relationType != null)
+            if (contextId != 0) // new content / media / members don't have an id (so can't have any relations)
             {
-                // get all relations of this type
-                IEnumerable<IRelation> relations = ApplicationContext.Current.Services.RelationService.GetAllRelationsByRelationType(relationType.Id);
+                IRelationType relationType = ApplicationContext.Current.Services.RelationService.GetRelationTypeByAlias(relationTypeAlias);
 
-                // construct object used to identify a relation (this is serialized into the relation comment field)
-                RelationMappingComment relationMappingComment = new RelationMappingComment(contextId, propertyAlias);
-
-                // filter down potential relations, by relation type direction
-                if (relationType.IsBidirectional && relationsOnly)
+                if (relationType != null)
                 {
-                    relations = relations.Where(x => x.ChildId == contextId || x.ParentId == contextId);
-                    relations = relations.Where(x => new RelationMappingComment(x.Comment).DataTypeDefinitionId == relationMappingComment.DataTypeDefinitionId);
-                }
-                else
-                {
-                    relations = relations.Where(x => x.ChildId == contextId);
-                    relations = relations.Where(x => new RelationMappingComment(x.Comment).PropertyTypeId == relationMappingComment.PropertyTypeId);
+                    // get all relations of this type
+                    IEnumerable<IRelation> relations = ApplicationContext.Current.Services.RelationService.GetAllRelationsByRelationType(relationType.Id);
 
-                    if (relationMappingComment.IsInArchetype())
+                    // construct object used to identify a relation (this is serialized into the relation comment field)
+                    RelationMappingComment relationMappingComment = new RelationMappingComment(contextId, propertyAlias);
+
+                    // filter down potential relations, by relation type direction
+                    if (relationType.IsBidirectional && relationsOnly)
                     {
-                        relations = relations.Where(x => new RelationMappingComment(x.Comment).MatchesArchetypeProperty(relationMappingComment.PropertyAlias));
+                        relations = relations.Where(x => x.ChildId == contextId || x.ParentId == contextId);
+                        relations = relations.Where(x => new RelationMappingComment(x.Comment).DataTypeDefinitionId == relationMappingComment.DataTypeDefinitionId);
                     }
-                }
+                    else
+                    {
+                        relations = relations.Where(x => x.ChildId == contextId);
+                        relations = relations.Where(x => new RelationMappingComment(x.Comment).PropertyTypeId == relationMappingComment.PropertyTypeId);
 
-                return relations.Select(x => (x.ParentId != contextId) ? x.ParentId : x.ChildId);
+                        if (relationMappingComment.IsInArchetype())
+                        {
+                            relations = relations.Where(x => new RelationMappingComment(x.Comment).MatchesArchetypeProperty(relationMappingComment.PropertyAlias));
+                        }
+                    }
+
+                    return relations.Select(x => (x.ParentId != contextId) ? x.ParentId : x.ChildId);
+                }
             }
 
-            return null;
+            return Enumerable.Empty<int>();
         }
 
         /// <summary>
