@@ -297,16 +297,9 @@
         /// <returns>a collection of IPublishedContent, or an empty collection</returns>
         public IEnumerable<IPublishedContent> AsPublishedContent()
         {
-            List<IPublishedContent> publishedContent = new List<IPublishedContent>();
-
             UmbracoHelper umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
 
-            foreach (var pickedKey in this.PickedKeys)
-            {
-                publishedContent.Add(umbracoHelper.GetPublishedContent(pickedKey));
-            }
-
-            return publishedContent.Where(x => x != null);
+            return this.PickedKeys.Select(x => umbracoHelper.GetPublishedContent(x));
         }
 
         /// <summary>
