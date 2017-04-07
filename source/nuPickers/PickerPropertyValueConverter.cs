@@ -62,6 +62,14 @@
                  .Contains(propertyEditorAlias);
         }
 
+        /// <summary>
+        /// WARNING: currently PropertyValueConverters are unaware of their context, as such this should only be used by the current page
+        /// https://our.umbraco.org/forum/developing-packages/85047-context-property-value-converters
+        /// </summary>
+        /// <param name="publishedPropertyType"></param>
+        /// <param name="source"></param>
+        /// <param name="preview"></param>
+        /// <returns></returns>
         public override object ConvertSourceToObject(PublishedPropertyType publishedPropertyType, object source, bool preview)
         {
             int contextId = -1;

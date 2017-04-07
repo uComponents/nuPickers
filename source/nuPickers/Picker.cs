@@ -3,6 +3,7 @@
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
     using nuPickers.Caching;
+    using nuPickers.Extensions;
     using nuPickers.Shared.EnumDataSource;
     using nuPickers.Shared.RelationMapping;
     using nuPickers.Shared.SaveFormat;
@@ -33,40 +34,66 @@
         /// <param name="usePublishedValue">when true uses the published value, otherwise when false uses the lastest saved value (which may also be the published value)</param>
         public Picker(int contextId, string propertyAlias, bool usePublishedValue = true)
         {
-            this.ContextId = contextId;
-            this.PropertyAlias = propertyAlias;
+            bool success = false;
 
-            UmbracoHelper umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
-            Picker picker = null;
+            var publishedContent = new UmbracoHelper(UmbracoContext.Current).GetPublishedContent(contextId);
 
-            // based on type, ask Umbraco for a picker obj (via the PickerPropertyValueConverter)
-            switch (Helper.GetUmbracoObjectType(this.ContextId))
+            if (usePublishedValue && publishedContent != null)
+            {                
+                var property = publishedContent.GetProperty(propertyAlias);
+
+                if (property != null) // safety check - ensure property alias supplied exists
+                {
+                    var propertyType = publishedContent.ContentType.PropertyTypes.Single(x => x.PropertyTypeAlias == property.PropertyTypeAlias);
+
+                    this.ContextId = publishedContent.Id;
+                    this.ParentId = (publishedContent.Parent != null) ? publishedContent.Parent.Id : -1;
+                    this.PropertyAlias = propertyAlias;
+                    this.DataTypeId = propertyType.DataTypeId;
+                    this.PropertyEditorAlias = propertyType.PropertyEditorAlias;
+                    this.SavedValue = property.Value;
+
+                    success = true;
+                }
+            }
+            else // use unpublished data
             {
-                case uQuery.UmbracoObjectType.Document: picker = umbracoHelper.TypedContent(this.ContextId).GetPropertyValue<Picker>(this.PropertyAlias);
+                var content = ApplicationContext.Current.Services.ContentService.GetById(contextId);
 
-                    if (!usePublishedValue)
+                if (content != null)
+                {
+                    var property = content.Properties.SingleOrDefault(x => x.Alias == propertyAlias);
+
+                    if (property != null)
                     {
-                        // reset (private) property on returned picker, so it's value is taken from the database
-                        picker.SavedValue = ApplicationContext.Current.Services.ContentService.GetById(this.ContextId).GetValue(propertyAlias);
+                        var propertyType = content.PropertyTypes.Single(x => x.Alias == property.Alias);
+
+                        this.ContextId = content.Id;
+                        this.ParentId = content.ParentId;
+                        this.PropertyAlias = propertyAlias;
+                        this.DataTypeId = propertyType.DataTypeDefinitionId;
+                        this.PropertyEditorAlias = propertyType.PropertyEditorAlias;
+                        this.SavedValue = content.GetValue(PropertyAlias);
+
+                        success = true;
                     }
-
-                    break;
-
-                case uQuery.UmbracoObjectType.Media: picker = umbracoHelper.TypedMedia(this.ContextId).GetPropertyValue<Picker>(this.PropertyAlias); break;
-                case uQuery.UmbracoObjectType.Member: picker = umbracoHelper.TypedMember(this.ContextId).GetPropertyValue<Picker>(this.PropertyAlias);  break;
+                }
             }
 
-            this.ParentId = picker.ParentId;
-            this.DataTypeId = picker.DataTypeId;
-            this.PropertyEditorAlias = picker.PropertyEditorAlias;
-            this.SavedValue = picker.SavedValue;
+            if (!success)
+            {
+                throw new Exception(string.Format("Unable to create Picker object for ContextId: {0}, PropertyAlias: {1}", contextId.ToString(), propertyAlias));
+            }
         }
 
         /// <summary>
         /// internal constructor - picker value is supplied (used by PropertyValueConverter & RelationMappingEvent)
         /// </summary>
         /// <param name="contextId">the id of the content, media or member (-1 means out of context)</param>
-        /// <param name="PublishedPropertyType">contains details about the propety editor</param>
+        /// <param name="parentId">the partent id of the content or media</param>
+        /// <param name="propertyAlias">the property alias for this picker instance</param>
+        /// <param name="dataTypeId">the dataType id of this picker</param>
+        /// <param name="propertyEditorAlias">the alias of the dataType</param>
         /// <param name="savedValue">the actual value saved</param>
         internal Picker(int contextId, int parentId, string propertyAlias, int dataTypeId, string propertyEditorAlias, object savedValue)
         {
