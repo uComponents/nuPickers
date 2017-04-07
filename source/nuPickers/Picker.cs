@@ -12,7 +12,6 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using umbraco;
     using Umbraco.Core;
     using Umbraco.Core.Models;
     using Umbraco.Web;
@@ -42,7 +41,7 @@
             {                
                 var property = publishedContent.GetProperty(propertyAlias);
 
-                if (property != null) // safety check - ensure property alias supplied exists
+                if (property != null)
                 {
                     var propertyType = publishedContent.ContentType.PropertyTypes.Single(x => x.PropertyTypeAlias == property.PropertyTypeAlias);
 
