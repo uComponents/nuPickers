@@ -1,5 +1,4 @@
-﻿
-namespace nuPickers.Shared.DotNetDataSource
+﻿namespace nuPickers.Shared.DotNetDataSource
 {
     using DataSource;
     using nuPickers.Shared.Editor;
@@ -24,9 +23,14 @@ namespace nuPickers.Shared.DotNetDataSource
 
         public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId)
         {
-            return this.GetEditorDataItems(currentId);
+            return this.GetEditorDataItems(currentId == 0 ? parentId : currentId); // fix from PR #110
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="contextId">'contextId' implies that it could be the current node id, or it could be the parent node id</param>
+        /// <returns></returns>
         [Obsolete]
         public IEnumerable<EditorDataItem> GetEditorDataItems(int contextId)
         {
