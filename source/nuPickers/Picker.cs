@@ -307,20 +307,7 @@
                 Attempt<int> attemptNodeId = pickedKey.TryConvertTo<int>();
                 if (attemptNodeId.Success)
                 {
-                    switch (Helper.GetUmbracoObjectType(attemptNodeId.Result))
-                    {
-                        case uQuery.UmbracoObjectType.Document:
-                            publishedContent.Add(umbracoHelper.TypedContent(attemptNodeId.Result));
-                            break;
-
-                        case uQuery.UmbracoObjectType.Media:
-                            publishedContent.Add(umbracoHelper.TypedMedia(attemptNodeId.Result));
-                            break;
-
-                        case uQuery.UmbracoObjectType.Member:
-                            publishedContent.Add(umbracoHelper.TypedMember(attemptNodeId.Result));
-                            break;
-                    }
+                    publishedContent.Add(umbracoHelper.GetPublishedContent(attemptNodeId.Result));
                 }
             }
 

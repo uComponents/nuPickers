@@ -8,7 +8,6 @@
     using System.Reflection;
     using System.Web;
     using System.Web.Hosting;
-    using umbraco;
     using Umbraco.Web;
 
     internal static class Helper
@@ -128,50 +127,6 @@
             }
 
             return data;
-        }
-
-        /// <summary>
-        /// temp replacement for built-in uQuery method (as that hits the database)
-        /// </summary>
-        /// <param name="id">the id of a content, media or member item</param>
-        /// <returns>an enum instance of the UmbracoObjectType</returns>
-        internal static uQuery.UmbracoObjectType GetUmbracoObjectType(int id)
-        {
-            // return variable
-            uQuery.UmbracoObjectType umbracoObjectType = uQuery.UmbracoObjectType.Unknown;
-
-            UmbracoHelper umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
-
-            // attempt to get content
-            if (umbracoHelper.TypedContent(id) != null)
-            {
-                umbracoObjectType = uQuery.UmbracoObjectType.Document;
-            }
-            else
-            {
-                // attempt to get media
-                if(umbracoHelper.TypedMedia(id) != null)
-                {
-                    umbracoObjectType = uQuery.UmbracoObjectType.Media;
-                }
-                else
-                {
-                    // attempt to get member
-                    try
-                    {
-                        if (umbracoHelper.TypedMember(id) != null)
-                        {
-                            umbracoObjectType = uQuery.UmbracoObjectType.Member;
-                        }
-                    }
-                    catch
-                    {
-                        // HACK: suppress Umbraco error
-                    }
-                }
-            }
-
-            return umbracoObjectType;
         }
     }
 }
