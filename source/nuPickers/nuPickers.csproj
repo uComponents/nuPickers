@@ -222,6 +222,7 @@
     <Compile Include="EmbeddedResource\EmbeddedResourceVirtualFile.cs" />
     <Compile Include="EmbeddedResource\EmbeddedResourceVirtualPathProvider.cs" />
     <Compile Include="EmbeddedResource\EmbeddedResourceWriter.cs" />
+    <Compile Include="Extensions\IPublishedContentExtensions.cs" />
     <Compile Include="Extensions\UmbracoHelperExtensions.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
