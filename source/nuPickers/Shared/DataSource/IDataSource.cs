@@ -18,18 +18,18 @@
         /// Get the data items to pick from
         /// </summary>
         /// <param name="currentId">the current id</param>
-        /// <param name="parentId">the parent id</param>
-        /// <param name="typeahead"></param>
+        /// <param name="parentId">the parent id (incase it's a new item so current = 0)</param>
+        /// <param name="typeahead">any typeahead text that the datasource can filter on (can be null)</param>
         /// <returns>collection of <see cref="EditorDataItem"/> POCOs that are used as options for a picker</returns>
         IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId, string typeahead);
 
         /// <summary>
         /// Get the data items for the specified keys
         /// </summary>
-        /// <param name="currentId"></param>
-        /// <param name="parentId"></param>
-        /// <param name="keys"></param>
-        /// <returns></returns>
+        /// <param name="currentId">the current id</param>
+        /// <param name="parentId">the parent id (incase it's a new item so current = 0)</param>
+        /// <param name="keys">the collection of keys to get items for</param>
+        /// <returns>collection of <see cref="EditorDataItem"/> POCOs that have been picked</returns>
         IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId, string[] keys);
     }
 }

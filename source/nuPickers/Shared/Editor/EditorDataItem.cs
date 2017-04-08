@@ -1,5 +1,4 @@
-﻿
-namespace nuPickers.Shared.Editor
+﻿namespace nuPickers.Shared.Editor
 {
     using Newtonsoft.Json;
 

@@ -1,5 +1,4 @@
-﻿
-namespace nuPickers.Shared.TypeaheadListPicker
+﻿namespace nuPickers.Shared.TypeaheadListPicker
 {
     using System;
     using System.Linq;

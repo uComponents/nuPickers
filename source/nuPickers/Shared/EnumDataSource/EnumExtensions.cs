@@ -1,5 +1,4 @@
-﻿
-namespace nuPickers.Shared.EnumDataSource
+﻿namespace nuPickers.Shared.EnumDataSource
 {
     using System;
     using System.Linq;

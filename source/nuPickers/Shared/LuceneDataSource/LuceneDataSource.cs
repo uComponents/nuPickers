@@ -1,5 +1,4 @@
-﻿
-namespace nuPickers.Shared.LuceneDataSource
+﻿namespace nuPickers.Shared.LuceneDataSource
 {
     using DataSource;
     using Examine;

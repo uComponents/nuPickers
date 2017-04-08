@@ -1,5 +1,4 @@
-﻿
-namespace nuPickers.Shared.DotNetDataSource
+﻿namespace nuPickers.Shared.DotNetDataSource
 {
     public interface IDotNetDataSourceTypeahead
     {

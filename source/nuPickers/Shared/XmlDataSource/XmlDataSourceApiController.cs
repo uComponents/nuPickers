@@ -1,10 +1,7 @@
-﻿
-namespace nuPickers.Shared.XmlDataSource
+﻿namespace nuPickers.Shared.XmlDataSource
 {
     using Newtonsoft.Json.Linq;
-    using nuPickers.Shared.CustomLabel;
     using nuPickers.Shared.Editor;
-    using nuPickers.Shared.TypeaheadListPicker;
     using System.Collections.Generic;
     using System.Web.Http;
     using Umbraco.Web.Editors;

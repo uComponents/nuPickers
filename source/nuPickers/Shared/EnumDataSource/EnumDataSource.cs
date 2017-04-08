@@ -15,7 +15,7 @@
 
         public bool HandledTypeahead { get { return false; } }
 
-        public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId, string typeahead = null)
+        public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId, string typeahead)
         {
             return this.GetEditorDataItems();
         }

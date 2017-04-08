@@ -1,5 +1,4 @@
-﻿
-namespace nuPickers.Shared.DotNetDataSource
+﻿namespace nuPickers.Shared.DotNetDataSource
 {
     using System;
 
@@ -19,6 +18,9 @@ namespace nuPickers.Shared.DotNetDataSource
         /// </summary>
         public string Description { get; set; }
 
+        /// <summary>
+        /// Initialize a new instance of <see cref="DotNetDataSourceAttribute"/>
+        /// </summary>
         public DotNetDataSourceAttribute()
         {
         }

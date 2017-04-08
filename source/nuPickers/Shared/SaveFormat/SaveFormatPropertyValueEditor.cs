@@ -1,5 +1,4 @@
-﻿
-namespace nuPickers.Shared.SaveFormat
+﻿namespace nuPickers.Shared.SaveFormat
 {
     using System.Xml.Linq;
     using Umbraco.Core.Models;
