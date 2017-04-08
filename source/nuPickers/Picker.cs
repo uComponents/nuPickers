@@ -110,8 +110,8 @@
 
         /// <summary>
         /// the value of this picker
-        /// TODO: breaking change for 2.0.0, rename to Value (as it might be the saved, or it might be the published)
         /// </summary>
+        //[Obsolete("[v2.0.0] rename to Value (as it might be the saved value, or it might be the published value)")]
         public object SavedValue { get; private set; }
 
         /// <summary>
@@ -264,22 +264,28 @@
                             typeahead);
         }
 
-        ///// <summary>
-        ///// Get a collection of the picked (key/label) items
-        ///// WARNING: for CSV and Relation Only save formats, the label data is missing, so will trigger a query
-        ///// </summary>
-        ///// <returns></returns>
-        //public IEnumerable<EditorDataItem> GetPickedEditorDataItems()
-        //{
-        //    EditorDataItem[] editorDataItems = null;
+        /// <summary>
+        /// Get a collection of the picked (key/label) items
+        /// WARNING: for CSV and Relation Only save formats, the label data is missing, so will trigger a query
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<EditorDataItem> GetPickedEditorDataItems()
+        {
+            IEnumerable<EditorDataItem> editorDataItems;
 
-        //    if (!SaveFormat.TryGetDataEditorItems(this.SavedValue.ToString(), out editorDataItems))
-        //    {
-        //        // TODO:
-        //    }
+            if (!SaveFormat.TryGetDataEditorItems(this.SavedValue.ToString(), out editorDataItems))
+            {
+                editorDataItems = Editor.GetEditorDataItems(
+                                    this.ContextId,
+                                    this.ParentId,
+                                    this.PropertyAlias,
+                                    DataSource.GetDataSource(this.PropertyEditorAlias, this.GetDataTypePreValue("dataSource").Value),
+                                    this.GetDataTypePreValue("customLabel").Value,
+                                    this.PickedKeys.ToArray());
+            }
 
-        //    return editorDataItems ?? Enumerable.Empty<EditorDataItem>();
-        //}
+            return editorDataItems ?? Enumerable.Empty<EditorDataItem>();
+        }
 
         /// <summary>
         /// Get all picked items, objects may be typed Content, Media or Member (but all returned as IPublishedContent)
