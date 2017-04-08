@@ -1,8 +1,8 @@
-﻿
-namespace nuPickers.Shared.XmlDataSource
+﻿namespace nuPickers.Shared.XmlDataSource
 {
     using DataSource;
     using nuPickers.Shared.Editor;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Xml;
@@ -22,10 +22,19 @@ namespace nuPickers.Shared.XmlDataSource
 
         public string LabelXPath { get; set; }
 
-        public string Typeahead { set { /* ignore */ } }
-
         public bool HandledTypeahead { get { return false; } }
 
+        public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId, string typeahead)
+        {
+            return this.GetEditorDataItems(currentId, parentId);
+        }
+
+        public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId, string[] keys)
+        {
+            return Enumerable.Empty<EditorDataItem>();
+        }
+
+        [Obsolete("[v2.0.0]")]
         public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId)
         {
             XmlDocument xmlDocument;

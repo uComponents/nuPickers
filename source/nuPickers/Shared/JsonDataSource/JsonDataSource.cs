@@ -4,10 +4,10 @@
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
     using nuPickers.Shared.Editor;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using Umbraco.Core.Logging;
-    using System;
 
     public class JsonDataSource : IDataSource
     {
@@ -19,13 +19,16 @@
 
         public string LabelJsonPath { get; set; }
 
-        public string Typeahead {  set { /* ignore */ } }
-
         public bool HandledTypeahead { get { return false; } }
 
-        public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId)
+        public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId, string typeahead)
         {
             return this.GetEditorDataItems(currentId);
+        }
+
+        public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId, string[] keys)
+        {
+            return Enumerable.Empty<EditorDataItem>();
         }
 
         /// <summary>
@@ -33,7 +36,7 @@
         /// </summary>
         /// <param name="contextId">Current context node Id</param>
         /// <returns>List of items for displaying inside a nuPicker JSON data type.</returns>
-        [Obsolete]
+        [Obsolete("[v2.0.0]")]
         public IEnumerable<EditorDataItem> GetEditorDataItems(int contextId)
         {
             List<EditorDataItem> editorDataItems = new List<EditorDataItem>(); // prepare return value

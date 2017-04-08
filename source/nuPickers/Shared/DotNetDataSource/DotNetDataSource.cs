@@ -16,14 +16,26 @@
 
         public IEnumerable<DotNetDataSourceProperty> Properties { get; set; }
 
+        [Obsolete("[v2.0.0]")]
         public string Typeahead { get; set; }
 
         [DefaultValue(false)]
         public bool HandledTypeahead { get; private set; }
 
-        public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId)
+        public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId, string typeahead)
         {
             return this.GetEditorDataItems(currentId == 0 ? parentId : currentId); // fix from PR #110
+        }
+
+        public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId, string[] keys)
+        {
+            return Enumerable.Empty<EditorDataItem>();
+        }
+
+        [Obsolete("[v2.0.0]")]
+        public IEnumerable<EditorDataItem> GetEditorDataItems(int contextId)
+        {
+            return this.GetEditorDataItems(contextId, this.Typeahead);
         }
 
         /// <summary>
@@ -31,8 +43,7 @@
         /// </summary>
         /// <param name="contextId">'contextId' implies that it could be the current node id, or it could be the parent node id</param>
         /// <returns></returns>
-        [Obsolete]
-        public IEnumerable<EditorDataItem> GetEditorDataItems(int contextId)
+        private IEnumerable<EditorDataItem> GetEditorDataItems(int contextId, string typeahead)
         {
             IEnumerable<EditorDataItem> editorDataItems = Enumerable.Empty<EditorDataItem>();
 
@@ -42,7 +53,7 @@
             {
                 if (dotNetDataSource is IDotNetDataSourceTypeahead)
                 {
-                    ((IDotNetDataSourceTypeahead)dotNetDataSource).Typeahead = this.Typeahead;
+                    ((IDotNetDataSourceTypeahead)dotNetDataSource).Typeahead = typeahead;
                     this.HandledTypeahead = true;
                 }
 

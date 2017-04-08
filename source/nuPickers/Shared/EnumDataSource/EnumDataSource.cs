@@ -4,6 +4,7 @@
     using nuPickers.Shared.Editor;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Reflection;
 
     public class EnumDataSource : IDataSource
@@ -12,17 +13,20 @@
 
         public string EnumName { get; set; }
 
-        public string Typeahead { set { /* ignore */ } }
-
         public bool HandledTypeahead { get { return false; } }
 
-        public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId)
+        public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId, string typeahead = null)
         {
             return this.GetEditorDataItems();
         }
 
-        [Obsolete]
-        public IEnumerable<EditorDataItem> GetEditorDataItems()
+        public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId, string[] keys)
+        {
+            return Enumerable.Empty<EditorDataItem>();
+        }
+
+        [Obsolete("[v2.0.0]")]
+        public  IEnumerable<EditorDataItem> GetEditorDataItems()
         {
             List<EditorDataItem> editorDataItems = new List<EditorDataItem>();
 

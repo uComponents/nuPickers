@@ -1,5 +1,4 @@
-﻿
-namespace nuPickers.Shared.DataSource
+﻿namespace nuPickers.Shared.DataSource
 {
     using Newtonsoft.Json;
     using nuPickers.PropertyEditors;

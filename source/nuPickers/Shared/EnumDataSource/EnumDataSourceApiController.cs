@@ -60,8 +60,7 @@
                             parentId,
                             propertyAlias,
                             ((JObject)data.config.dataSource).ToObject<EnumDataSource>(),
-                            (string)data.config.customLabel,
-                            null); // enums never use typeahead
+                            (string)data.config.customLabel);
         }
     }
 }

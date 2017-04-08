@@ -1,8 +1,8 @@
-﻿
-namespace nuPickers.Shared.RelationDataSource
+﻿namespace nuPickers.Shared.RelationDataSource
 {
     using DataSource;
     using Editor;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using Umbraco.Core;
@@ -12,11 +12,19 @@ namespace nuPickers.Shared.RelationDataSource
     {
         public string RelationType { get; set; }
 
-        public string Typeahead { set { /* ignore */ } }
-
         public bool HandledTypeahead {  get { return false; } }
 
-        public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId)
+        public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId, string typeahead)
+        {
+            return this.GetEditorDataItems(currentId, parentId);
+        }
+
+        public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId, string[] keys)
+        {
+            return Enumerable.Empty<EditorDataItem>();
+        }
+
+        private IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId)
         {
             var relationService = ApplicationContext.Current.Services.RelationService;
 

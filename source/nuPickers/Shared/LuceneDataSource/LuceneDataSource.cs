@@ -8,6 +8,7 @@ namespace nuPickers.Shared.LuceneDataSource
     using nuPickers.Shared.Editor;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class LuceneDataSource : IDataSource
     {
@@ -19,16 +20,19 @@ namespace nuPickers.Shared.LuceneDataSource
         
         public string LabelField { get; set; }
 
-        public string Typeahead { set { /* ignore */ } } // TODO: Implement token replacement for Lucene queries
-
         public bool HandledTypeahead { get { return false; } } // TODO: Implement token replacement for Lucene queries
 
-        public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId)
+        public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId, string typeahead)
         {
             return this.GetEditorDataItems(currentId);
         }
 
-        [Obsolete]
+        public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId, string[] keys)
+        {
+            return Enumerable.Empty<EditorDataItem>();
+        }
+
+        [Obsolete("[v2.0.0]")]
         public IEnumerable<EditorDataItem> GetEditorDataItems(int contextId)
         {
             List<EditorDataItem> editorDataItems = new List<EditorDataItem>();

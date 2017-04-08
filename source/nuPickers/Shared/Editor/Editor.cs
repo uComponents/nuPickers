@@ -22,7 +22,7 @@
         internal static IEnumerable<EditorDataItem> GetEditorDataItems(                                                        
                                                         int currentId,
                                                         int parentId,
-                                                        string propertyAlias, // used in custom label
+                                                        string propertyAlias,
                                                         IDataSource dataSource, 
                                                         string customLabelMacro,
                                                         string typeahead = null)
@@ -31,9 +31,7 @@
 
             if (dataSource != null)
             {
-                dataSource.Typeahead = typeahead; // set any typeahead text that the datasource may filter on
-
-                editorDataItems = dataSource.GetEditorDataItems(currentId, parentId); // both are passed as current id may = 0 (new content)
+                editorDataItems = dataSource.GetEditorDataItems(currentId, parentId, typeahead); // both are passed as current id may = 0 (new content)
 
                 if (!string.IsNullOrWhiteSpace(customLabelMacro))
                 {
@@ -61,15 +59,29 @@
         /// <param name="dataSource">the datasource</param>
         /// <param name="customLabelMacro">an optional macro to use for custom labels</param>
         /// <returns>a collection of <see cref="EditorDataItem"/></returns>
-        internal static IEnumerable<EditorDataItem> GetPickedEditorDataItems(
+        internal static IEnumerable<EditorDataItem> GetEditorDataItems(
                                                         int currentId,
                                                         int parentId,
-                                                        string propertyAlias, // used in custom label
+                                                        string propertyAlias,
                                                         IDataSource dataSource,
-                                                        string customLabelMacro)
+                                                        string customLabelMacro,
+                                                        string[] keys)
 
         {
-            throw new NotImplementedException();
+            IEnumerable<EditorDataItem> editorDataItems = Enumerable.Empty<EditorDataItem>(); // default return data
+
+            if (dataSource != null)
+            {
+                editorDataItems = dataSource.GetEditorDataItems(currentId, parentId, keys);
+
+                if (!string.IsNullOrWhiteSpace(customLabelMacro))
+                {
+                    editorDataItems = new CustomLabel(customLabelMacro, currentId, propertyAlias)
+                                            .ProcessEditorDataItems(editorDataItems);
+                }
+            }
+
+            return editorDataItems;
         }
     }
 }

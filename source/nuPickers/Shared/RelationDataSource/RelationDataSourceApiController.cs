@@ -32,8 +32,7 @@
                             parentId,
                             propertyAlias,
                             ((JObject)data.config.dataSource).ToObject<RelationDataSource>(),
-                            (string)data.config.customLabel,
-                            null);
+                            (string)data.config.customLabel);
         }
     }
 }
