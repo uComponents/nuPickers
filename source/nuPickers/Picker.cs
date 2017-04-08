@@ -282,18 +282,20 @@
         //}
 
         /// <summary>
-        /// get all picked items, objects may be typed Content, Media or Member (but all returned as IPublishedContent)
+        /// Get all picked items, objects may be typed Content, Media or Member (but all returned as IPublishedContent)
         /// </summary>
         /// <returns>a collection of IPublishedContent, or an empty collection</returns>
         public IEnumerable<IPublishedContent> AsPublishedContent()
         {
             UmbracoHelper umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
 
-            return this.PickedKeys.Select(x => umbracoHelper.GetPublishedContent(x));
+            return this.PickedKeys
+                        .Select(x => umbracoHelper.GetPublishedContent(x))
+                        .Where(x => x != null);
         }
 
         /// <summary>
-        /// get all picked items, objects may be typed Content, Media or Member (but all returned as dynamic) 
+        /// Get all picked items, objects may be typed Content, Media or Member (but all returned as dynamic) 
         /// </summary>
         /// <returns></returns>
         public IEnumerable<dynamic> AsDynamicPublishedContent()
