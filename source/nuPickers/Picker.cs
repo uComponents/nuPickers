@@ -135,9 +135,7 @@
                     }
                     else
                     {
-                        this.pickedKeys = this.SavedValue != null ? SaveFormat
-                                                                        .GetKeys(this.SavedValue.ToString())
-                                                                        .ToArray() : new string[]{};
+                        this.pickedKeys = this.SavedValue != null ? SaveFormat.GetKeys(this.SavedValue.ToString()).ToArray() : new string[]{};
                     }
                 }
 
@@ -158,17 +156,9 @@
         {
             get
             {
-                int pickedId;
-                List<int> pickedIds = new List<int>();
-                foreach (string pickedKey in this.PickedKeys)
-                {
-                    if (int.TryParse(pickedKey, out pickedId))
-                    {
-                        pickedIds.Add(pickedId);
-                    }
-                }
-
-                return pickedIds;
+                return this.PickedKeys
+                            .Where(x => { int id; return int.TryParse(x, out id); })
+                            .Select(int.Parse);
             }
         }
 
@@ -238,7 +228,7 @@
         #region Methods
 
         /// <summary>
-        /// Get all the prevalues
+        /// Get all the prevalues for this picker 
         /// </summary>
         /// <returns>collection of all <see cref="PreValue"/> for this datatype</returns>
         public IDictionary<string, PreValue> GetDataTypePreValues()
@@ -247,10 +237,10 @@
         }
 
         /// <summary>
-        /// Helper to find a specific PreValue in the DataTypePreValues dictionary
+        /// Find a specific prevalue for this picker 
         /// </summary>
         /// <param name="key"></param>
-        /// <returns>the PreValue if found, or null</returns>
+        /// <returns>the <see cref="PreValue"/> if found, or null</returns>
         public PreValue GetDataTypePreValue(string key)
         {
             return this.DataTypePreValues.SingleOrDefault(x => string.Equals(x.Key, key, StringComparison.InvariantCultureIgnoreCase)).Value;
@@ -379,12 +369,7 @@
         /// <returns>The SavedValue as a string, otherwise base object.ToString()</returns>
         public override string ToString()
         {
-            if (this.SavedValue != null)
-            {
-                return this.SavedValue.ToString();
-            }
-
-            return base.ToString();
+            return this.SavedValue != null ? this.SavedValue.ToString() : base.ToString();
         }
 
         #endregion
