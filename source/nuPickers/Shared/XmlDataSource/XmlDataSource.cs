@@ -24,6 +24,13 @@
 
         public bool HandledTypeahead { get { return false; } }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="currentId"></param>
+        /// <param name="parentId"></param>
+        /// <param name="typeahead">ignored</param>
+        /// <returns></returns>
         public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId, string typeahead)
         {
             return this.GetEditorDataItems(currentId, parentId);
@@ -31,7 +38,7 @@
 
         public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId, string[] keys)
         {
-            return Enumerable.Empty<EditorDataItem>();
+            return this.GetEditorDataItems(currentId, parentId).Where(x => keys.Contains(x.Key));
         }
 
         [Obsolete("[v2.0.0]")]
