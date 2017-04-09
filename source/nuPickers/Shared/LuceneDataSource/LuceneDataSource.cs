@@ -28,7 +28,7 @@
 
         public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId, string[] keys)
         {
-            return Enumerable.Empty<EditorDataItem>();
+            return this.GetEditorDataItems(currentId).Where(x => keys.Contains(x.Key));
         }
 
         [Obsolete("[v2.0.0]")]
