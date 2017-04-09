@@ -16,6 +16,10 @@
     using Umbraco.Core.Models;
     using Umbraco.Web;
 
+    /// <summary>
+    /// This class is the main consumer interface
+    /// Umbraco Models Builder will return this class automatically (for the current context)
+    /// </summary>
     public class Picker
     {        
         /// <summary>
@@ -125,8 +129,10 @@
                 {
                     if (this.GetDataTypePreValue("saveFormat").Value == "relationsOnly")
                     {
+                        // attempt to find relations data in memory cache
                         this.pickedKeys = Cache.Instance.GetSet(CacheConstants.PickedKeysPrefix + this.ContextId.ToString() + "_" + this.PropertyAlias, () =>
                         {
+                            // fallback to hitting database
                             return RelationMapping
                                     .GetRelatedIds(this.ContextId, this.PropertyAlias, this.RelationTypeAlias, true)
                                     .Select(x => x.ToString())

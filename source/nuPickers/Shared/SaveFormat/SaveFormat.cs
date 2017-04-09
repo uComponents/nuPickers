@@ -55,7 +55,7 @@
                         return XDocument.Parse(value).Descendants("Picked").Select(x => new KeyValuePair<string, string>(x.Attribute("Key").Value, x.Value));
 
                     default: // csv
-                        return value.Split(',').Select(x => new KeyValuePair<string, string>(x, null));
+                        return value.Split(',').Select(x => new KeyValuePair<string, string>(x, null)); // NOTE: label is null
                 }
             }
 
