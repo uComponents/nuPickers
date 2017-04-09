@@ -20,7 +20,7 @@
 
         public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId, string[] keys)
         {
-            return Enumerable.Empty<EditorDataItem>();
+            return this.GetEditorDataItems(currentId, parentId).Where(x => keys.Contains(x.Key));
         }
 
         private IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId)
