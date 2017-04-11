@@ -6,10 +6,10 @@
     public static class IPublishedContentExtensions
     {
         /// <summary>
-        /// Get a Picker model for the supplied propertyAlias on this <see cref="IPublishedContent"/>  
+        /// Get a Picker model for the supplied propertyAlias on this <see cref="IPublishedContent"/>
         /// </summary>
-        /// <param name="publishedContent"></param>
-        /// <param name="propertyAlias"></param>
+        /// <param name="publishedContent">The IPublishedContent that this extension method extends</param>
+        /// <param name="propertyAlias">The property alias to get the Picker for</param>
         /// <returns>A <see cref="Picker"/> or null</returns>
         public static Picker GetPicker(this IPublishedContent publishedContent, string propertyAlias)
         {

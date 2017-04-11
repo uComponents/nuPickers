@@ -192,6 +192,9 @@
         /// </summary>
         internal int ContextId { get; set; } // TODO: rename to current
 
+        /// <summary>
+        /// 
+        /// </summary>
         private int ParentId { get; set; }
 
         /// <summary>
@@ -297,19 +300,17 @@
         /// Get all picked items, objects may be typed Content, Media or Member (but all returned as IPublishedContent)
         /// </summary>
         /// <returns>a collection of IPublishedContent, or an empty collection</returns>
+        //[Obsolete("[v2.0.0] use picker.PickedKeys.AsPublishedContent() instead")]
         public IEnumerable<IPublishedContent> AsPublishedContent()
         {
-            UmbracoHelper umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
-
-            return this.PickedKeys
-                        .Select(x => umbracoHelper.GetPublishedContent(x))
-                        .Where(x => x != null);
+            return this.PickedKeys.AsPublishedContent();
         }
 
         /// <summary>
         /// Get all picked items, objects may be typed Content, Media or Member (but all returned as dynamic) 
         /// </summary>
         /// <returns></returns>
+        //[Obsolete("[v2.0.0]")]
         public IEnumerable<dynamic> AsDynamicPublishedContent()
         {
             return this.AsPublishedContent().Select(x => x.AsDynamic());

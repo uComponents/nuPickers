@@ -39,7 +39,7 @@
         /// Keys are always stored, but labels are not stored in when using CSV or Relations Only
         /// </summary>
         /// <param name="value">the raw string value</param>
-        /// <returns>a collection of key / label pairs, where labels are populated if in the source data</returns>
+        /// <returns>a collection of key / label pairs, where labels are populated if in the source data (null indicates data not available in saved value)</returns>
         private static IEnumerable<KeyValuePair<string, string>> GetKeyValuePairs(string value)
         {
             if (!string.IsNullOrWhiteSpace(value))
