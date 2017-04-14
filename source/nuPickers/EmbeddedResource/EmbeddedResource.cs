@@ -2,7 +2,10 @@
 {
     internal static class EmbeddedResource
     {
-        internal const string RootUrl = "~/App_Plugins/nuPickers/Shared/";
+        /// <summary>
+        /// Root url for all embedded resources
+        /// </summary>
+        internal const string ROOT_URL = "~/App_Plugins/nuPickers/Shared/";
 
         /// <summary>
         /// Custom extension so ClientDependency framework can delegate handling back to nuPickers for the embedded content 
