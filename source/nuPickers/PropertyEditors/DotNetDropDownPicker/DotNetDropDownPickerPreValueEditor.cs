@@ -5,13 +5,13 @@
 
     internal class DotNetDropDownPickerPreValueEditor : PreValueEditor
     {
-        [PreValueField("dataSource", "", EmbeddedResource.RootUrlPrefixed + "DotNetDataSource/DotNetDataSourceConfig.html", HideLabel = true)]
+        [PreValueField("dataSource", "", EmbeddedResource.RootUrl + "DotNetDataSource/DotNetDataSourceConfig.html", HideLabel = true)]
         public string DataSource { get; set; }
 
-        [PreValueField("relationMapping", "", EmbeddedResource.RootUrlPrefixed + "RelationMapping/RelationMappingConfig.html", HideLabel = true)]
+        [PreValueField("relationMapping", "", EmbeddedResource.RootUrl + "RelationMapping/RelationMappingConfig.html", HideLabel = true)]
         public string RelationMapping { get; set; }
 
-        [PreValueField("saveFormat", "Save Format", EmbeddedResource.RootUrlPrefixed + "SaveFormat/SaveFormatConfig.html")]
+        [PreValueField("saveFormat", "Save Format", EmbeddedResource.RootUrl + "SaveFormat/SaveFormatConfig.html")]
         public string SaveFormat { get; set; }
     }
 }

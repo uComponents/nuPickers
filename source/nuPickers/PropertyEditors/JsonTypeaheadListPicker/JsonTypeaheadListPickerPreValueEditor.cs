@@ -5,22 +5,22 @@
 
     internal class JsonTypeaheadListPickerPreValueEditor : PreValueEditor
     {
-        [PreValueField("dataSource", "", EmbeddedResource.RootUrlPrefixed + "JsonDataSource/JsonDataSourceConfig.html", HideLabel = true)]
+        [PreValueField("dataSource", "", EmbeddedResource.RootUrl + "JsonDataSource/JsonDataSourceConfig.html", HideLabel = true)]
         public string DataSource { get; set; }
 
-        [PreValueField("customLabel", "Label Macro", EmbeddedResource.RootUrlPrefixed + "CustomLabel/CustomLabelConfig.html", HideLabel = true)]
+        [PreValueField("customLabel", "Label Macro", EmbeddedResource.RootUrl + "CustomLabel/CustomLabelConfig.html", HideLabel = true)]
         public string CustomLabel { get; set; }
 
-        [PreValueField("typeaheadListPicker", "", EmbeddedResource.RootUrlPrefixed + "TypeaheadListPicker/TypeaheadListPickerConfig.html", HideLabel = true)]
+        [PreValueField("typeaheadListPicker", "", EmbeddedResource.RootUrl + "TypeaheadListPicker/TypeaheadListPickerConfig.html", HideLabel = true)]
         public string TypeaheadListPicker { get; set; }
 
-        [PreValueField("listPicker", "", EmbeddedResource.RootUrlPrefixed + "ListPicker/ListPickerConfig.html", HideLabel = true)]
+        [PreValueField("listPicker", "", EmbeddedResource.RootUrl + "ListPicker/ListPickerConfig.html", HideLabel = true)]
         public string ListPicker { get; set; }
 
-        [PreValueField("relationMapping", "", EmbeddedResource.RootUrlPrefixed + "RelationMapping/RelationMappingConfig.html", HideLabel = true)]
+        [PreValueField("relationMapping", "", EmbeddedResource.RootUrl + "RelationMapping/RelationMappingConfig.html", HideLabel = true)]
         public string RelationMapping { get; set; }
 
-        [PreValueField("saveFormat", "Save Format", EmbeddedResource.RootUrlPrefixed + "SaveFormat/SaveFormatConfig.html")]
+        [PreValueField("saveFormat", "Save Format", EmbeddedResource.RootUrl + "SaveFormat/SaveFormatConfig.html")]
         public string SaveFormat { get; set; }
     }
 }

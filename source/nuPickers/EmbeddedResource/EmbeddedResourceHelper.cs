@@ -60,9 +60,9 @@ namespace nuPickers.EmbeddedResource
                 path = VirtualPathUtility.ToAppRelative(path);
             }
 
-            if (path.StartsWith(EmbeddedResource.RootUrlPrefixed))
+            if (path.StartsWith(EmbeddedResource.RootUrl))
             {
-                resourceName = "nuPickers.Shared." + path.TrimStart(EmbeddedResource.RootUrlPrefixed).Replace("/", ".").TrimEnd(".nu");
+                resourceName = "nuPickers.Shared." + path.TrimStart(EmbeddedResource.RootUrl).Replace("/", ".").TrimEnd(".nu");
             }
 
             return resourceName;
