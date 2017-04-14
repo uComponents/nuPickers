@@ -22,20 +22,17 @@ namespace nuPickers.EmbeddedResource
         }
 
         /// <summary>
-        /// 
+        /// Gets the stream for the given resource name
         /// </summary>
         /// <param name="resource">exepted namespaced resource</param>
         /// <returns>null or the resource stream</returns>
         internal static Stream GetResource(string resourceName)
         {
-            // get this assembly
             var assembly = typeof(EmbeddedResourceController).Assembly;
 
-            // find the resource name not case sensitive
-            var manifestResourceName =
-                assembly.GetManifestResourceNames()
-                    .FirstOrDefault(
-                        x => x.ToLower(CultureInfo.InvariantCulture) == resourceName.ToLower(CultureInfo.InvariantCulture));
+            var manifestResourceName = assembly
+                                        .GetManifestResourceNames()
+                                        .FirstOrDefault(x => x.InvariantEquals(resourceName));
 
             if (manifestResourceName != null)
             {
@@ -44,7 +41,6 @@ namespace nuPickers.EmbeddedResource
 
             return null;
         }
-
 
         /// <summary>
         /// Convert a url for an embedded resource, to a namespaced string for an embedded resource
