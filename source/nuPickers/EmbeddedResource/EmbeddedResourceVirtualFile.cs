@@ -33,8 +33,9 @@
         /// </returns>
         public Stream Open()
         {
-            string resourceName;
-            return EmbeddedResourceHelper.GetResource(this.virtualPath, out resourceName);
+            string resourceName = EmbeddedResourceHelper.GetResourceNameFromPath(this.virtualPath);
+
+            return EmbeddedResourceHelper.GetResource(resourceName);
         }
 
         /// <summary>

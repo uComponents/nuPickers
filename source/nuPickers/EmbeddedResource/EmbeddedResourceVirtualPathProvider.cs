@@ -21,7 +21,9 @@
         {
             if (!virtualPath.EndsWith(".nu", StringComparison.InvariantCultureIgnoreCase)) return false;
 
-            return EmbeddedResourceHelper.ResourceExists(virtualPath);
+            string resourceName = EmbeddedResourceHelper.GetResourceNameFromPath(virtualPath);
+
+            return EmbeddedResourceHelper.ResourceExists(resourceName);
         }
 
         /// <summary>

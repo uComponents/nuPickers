@@ -2,6 +2,7 @@
 {
     using System.Web;
     using System.Web.Mvc;
+    using Umbraco.Core;
 
     /// <summary>
     /// Handles returning embedded resource files (html, css, js, png)
@@ -10,12 +11,12 @@
     {
         public ActionResult GetSharedResource(string folder, string file)
         {
-            string resourceName;
-            var resourceStream = EmbeddedResourceHelper.GetResource("nuPickers.Shared." + folder + "." + file, out resourceName);
+            string fileName = file.TrimEnd(".nu");
+            var resourceStream = EmbeddedResourceHelper.GetResource("nuPickers.Shared." + folder + "." + fileName);
             
             if (resourceStream != null)
             {
-                return new FileStreamResult(resourceStream, GetMimeType(resourceName)); ;
+                return new FileStreamResult(resourceStream, GetMimeType(fileName)); ;
             }
 
             return this.HttpNotFound();
