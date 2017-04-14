@@ -19,7 +19,7 @@
         /// </returns>
         public bool FileExists(string virtualPath)
         {
-            if (!virtualPath.EndsWith(".nu", StringComparison.InvariantCultureIgnoreCase)) return false;
+            if (!virtualPath.EndsWith(EmbeddedResource.FILE_EXTENSION, StringComparison.InvariantCultureIgnoreCase)) return false;
 
             string resourceName = EmbeddedResourceHelper.GetResourceNameFromPath(virtualPath);
 

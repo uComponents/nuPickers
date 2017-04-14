@@ -10,7 +10,7 @@
         {
             base.ApplicationStarted(umbracoApplication, applicationContext);
             RouteBuilder.BuildRoutes(RouteTable.Routes);
-            FileWriters.AddWriterForExtension(".nu", new EmbeddedResourceWriter());
+            FileWriters.AddWriterForExtension(EmbeddedResource.FILE_EXTENSION, new EmbeddedResourceWriter());
         }
 
         protected override bool ExecuteWhenApplicationNotConfigured
