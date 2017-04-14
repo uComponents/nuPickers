@@ -1,16 +1,16 @@
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("nuPickers")]
+[assembly: AssemblyTitle("nuPickers.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("nuPickers")]
-[assembly: AssemblyCopyright("Copyright The Umbraco Community 2015")]
+[assembly: AssemblyProduct("nuPickers.Tests")]
+[assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("edb56992-de9e-4708-a3d2-c6ca6db7aeeb")]
+[assembly: Guid("1e675c32-7bcc-42ff-bc95-dc480e67d3f0")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -31,11 +31,6 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
-// [assembly: AssemblyVersion("1.5.2.111")]
-[assembly: AssemblyVersion("1.5.2.111")]
-[assembly: AssemblyFileVersion("1.5.2.111")]
-[assembly: AssemblyInformationalVersion("1.5.2-alpha-000111")]
-
-
-// expose internals to the unit testing project
-[assembly: InternalsVisibleTo("nuPickers.Tests")]
+// [assembly: AssemblyVersion("1.0.*")]
+[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]
