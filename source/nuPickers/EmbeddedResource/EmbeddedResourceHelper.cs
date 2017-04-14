@@ -6,10 +6,14 @@ namespace nuPickers.EmbeddedResource
     using Umbraco.Core;
     using System.Web;
 
-    internal class EmbeddedResourceHelper
+    internal static class EmbeddedResourceHelper
     {
-        // resource expected to always end in .nu
-        public static bool ResourceExists(string resource)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="resource"></param>
+        /// <returns></returns>
+        internal static bool ResourceExists(string resource)
         {
             // remove any virtual directory from the url path
             if (!VirtualPathUtility.IsAppRelative(resource))
@@ -40,7 +44,7 @@ namespace nuPickers.EmbeddedResource
         /// <param name="resource"></param>
         /// <param name="resourceName"></param>
         /// <returns></returns>
-        public static Stream GetResource(string resource, out string resourceName)
+        internal static Stream GetResource(string resource, out string resourceName)
         {
             if (resource.StartsWith("/") && !VirtualPathUtility.IsAppRelative(resource))
             {
