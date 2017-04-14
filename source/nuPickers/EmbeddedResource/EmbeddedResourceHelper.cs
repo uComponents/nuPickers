@@ -9,22 +9,16 @@ namespace nuPickers.EmbeddedResource
     internal static class EmbeddedResourceHelper
     {
         /// <summary>
-        /// 
+        /// Determine if a resource exists for the given resource name
         /// </summary>
         /// <param name="resource">expecting a namespaced string to the resource</param>
-        /// <returns></returns>
+        /// <returns>true if the resource exists, otherwise false</returns>
         internal static bool ResourceExists(string resourceName)
         {
-            // get this assembly
-            var assembly = typeof(EmbeddedResourceController).Assembly;
-
-            // find the resource name not case sensitive
-            var manifestResourceName =
-                assembly.GetManifestResourceNames()
-                    .FirstOrDefault(
-                        x => x.ToLower(CultureInfo.InvariantCulture) == resourceName.ToLower(CultureInfo.InvariantCulture));
-
-            return !string.IsNullOrEmpty(manifestResourceName);
+            return typeof(EmbeddedResourceController)
+                    .Assembly
+                    .GetManifestResourceNames()
+                    .Any(x => x.InvariantEquals(resourceName));
         }
 
         /// <summary>
