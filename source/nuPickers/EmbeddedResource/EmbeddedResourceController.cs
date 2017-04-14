@@ -12,7 +12,7 @@
         public ActionResult GetSharedResource(string folder, string file)
         {
             string fileName = file.TrimEnd(EmbeddedResource.FILE_EXTENSION);
-            var resourceStream = EmbeddedResourceHelper.GetResource("nuPickers.Shared." + folder + "." + fileName);
+            var resourceStream = EmbeddedResourceHelper.GetResource(EmbeddedResource.RESOURCE_PREFIX + folder + "." + fileName);
             
             if (resourceStream != null)
             {

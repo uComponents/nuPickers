@@ -58,7 +58,7 @@ namespace nuPickers.EmbeddedResource
 
             if (path.StartsWith(EmbeddedResource.ROOT_URL))
             {
-                resourceName = "nuPickers.Shared." + path.TrimStart(EmbeddedResource.ROOT_URL).Replace("/", ".").TrimEnd(EmbeddedResource.FILE_EXTENSION);
+                resourceName = EmbeddedResource.RESOURCE_PREFIX + path.TrimStart(EmbeddedResource.ROOT_URL).Replace("/", ".").TrimEnd(EmbeddedResource.FILE_EXTENSION);
             }
 
             return resourceName;
