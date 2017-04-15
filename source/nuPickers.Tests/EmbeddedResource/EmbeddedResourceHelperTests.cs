@@ -6,21 +6,28 @@
     [TestClass]
     public class HelperEmbeddedResourceHelperTests
     {
+        // reference to known embedded resources (picked first folder in shared)
+        private const string HTML_RESOURCE = "CheckBoxPicker.CheckBoxPickerEditor.html";
+        private const string CSS_RESOURCE = "CheckBoxPicker.CheckBoxPickerEditor.css";
+        private const string JS_RESOURCE = "CheckBoxPicker.CheckBoxPickerEditorController.js";
+
+
         [TestMethod]
         public void ResourceNamesThatDoNotExist()
         {
             Assert.IsFalse(EmbeddedResourceHelper.ResourceExists(null));
             Assert.IsFalse(EmbeddedResourceHelper.ResourceExists(string.Empty));
-            Assert.IsFalse(EmbeddedResourceHelper.ResourceExists("nuPickers.Shared.CheckBoxPicker.CheckBoxPickerEditor.css.nu"));
-            Assert.IsFalse(EmbeddedResourceHelper.ResourceExists("nuPickers.Shared.CheckBoxPicker.CheckBoxPickerEditorController.js.nu"));
+            // file extension is for client dependency framework, so used not needed for html files
+            Assert.IsFalse(EmbeddedResourceHelper.ResourceExists(EmbeddedResource.RESOURCE_PREFIX + CSS_RESOURCE + EmbeddedResource.FILE_EXTENSION));
+            Assert.IsFalse(EmbeddedResourceHelper.ResourceExists(EmbeddedResource.RESOURCE_PREFIX + JS_RESOURCE + EmbeddedResource.FILE_EXTENSION));
         }
 
         [TestMethod]
         public void ResourceNamesThatExist()
         {
-            Assert.IsTrue(EmbeddedResourceHelper.ResourceExists("nuPickers.Shared.CheckBoxPicker.CheckBoxPickerEditor.css"));
-            Assert.IsTrue(EmbeddedResourceHelper.ResourceExists("nuPickers.Shared.CheckBoxPicker.CheckBoxPickerEditor.html"));
-            Assert.IsTrue(EmbeddedResourceHelper.ResourceExists("nuPickers.Shared.CheckBoxPicker.CheckBoxPickerEditorController.js"));
+            Assert.IsTrue(EmbeddedResourceHelper.ResourceExists(EmbeddedResource.RESOURCE_PREFIX + HTML_RESOURCE));
+            Assert.IsTrue(EmbeddedResourceHelper.ResourceExists(EmbeddedResource.RESOURCE_PREFIX + CSS_RESOURCE));
+            Assert.IsTrue(EmbeddedResourceHelper.ResourceExists(EmbeddedResource.RESOURCE_PREFIX + JS_RESOURCE));
         }
 
         [TestMethod]
@@ -28,16 +35,17 @@
         {
             Assert.IsNull(EmbeddedResourceHelper.GetResource(null));
             Assert.IsNull(EmbeddedResourceHelper.GetResource(string.Empty));
-            Assert.IsNull(EmbeddedResourceHelper.GetResource("nuPickers.Shared.CheckBoxPicker.CheckBoxPickerEditor.css.nu"));
-            Assert.IsNull(EmbeddedResourceHelper.GetResource("nuPickers.Shared.CheckBoxPicker.CheckBoxPickerEditorController.js.nu"));
+            // file extension is for client dependency framework, so used not needed for html files
+            Assert.IsNull(EmbeddedResourceHelper.GetResource(EmbeddedResource.RESOURCE_PREFIX + CSS_RESOURCE + EmbeddedResource.FILE_EXTENSION));
+            Assert.IsNull(EmbeddedResourceHelper.GetResource(EmbeddedResource.RESOURCE_PREFIX + JS_RESOURCE + EmbeddedResource.FILE_EXTENSION));
         }
 
         [TestMethod]
         public void GetResourcesThatExist()
         {
-            Assert.IsNotNull(EmbeddedResourceHelper.GetResource("nuPickers.Shared.CheckBoxPicker.CheckBoxPickerEditor.css"));
-            Assert.IsNotNull(EmbeddedResourceHelper.GetResource("nuPickers.Shared.CheckBoxPicker.CheckBoxPickerEditor.html"));
-            Assert.IsNotNull(EmbeddedResourceHelper.GetResource("nuPickers.Shared.CheckBoxPicker.CheckBoxPickerEditorController.js"));
+            Assert.IsNotNull(EmbeddedResourceHelper.GetResource(EmbeddedResource.RESOURCE_PREFIX + HTML_RESOURCE));
+            Assert.IsNotNull(EmbeddedResourceHelper.GetResource(EmbeddedResource.RESOURCE_PREFIX + CSS_RESOURCE));
+            Assert.IsNotNull(EmbeddedResourceHelper.GetResource(EmbeddedResource.RESOURCE_PREFIX + JS_RESOURCE));
         }
 
         [TestMethod]
@@ -61,8 +69,10 @@
         {
             Assert.IsNull(EmbeddedResourceHelper.GetResourceNameFromPath(null));
             Assert.IsNull(EmbeddedResourceHelper.GetResourceNameFromPath(string.Empty));
+            Assert.IsNull(EmbeddedResourceHelper.GetResourceNameFromPath("folder/file.ext"));
+            Assert.IsNull(EmbeddedResourceHelper.GetResourceNameFromPath("/folder/file.ext"));
             Assert.IsNull(EmbeddedResourceHelper.GetResourceNameFromPath("~/folder/file.ext"));
+            Assert.IsNull(EmbeddedResourceHelper.GetResourceNameFromPath("~/folder/file.ext" + EmbeddedResource.FILE_EXTENSION));
         }
-
     }
 }
