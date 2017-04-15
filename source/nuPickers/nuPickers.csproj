@@ -289,7 +289,6 @@
     <Compile Include="PickerPropertyValueConverter.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="EmbeddedResource\RouteBuilder.cs" />
     <Compile Include="Shared\DataSource\DataSource.cs" />
     <Compile Include="Shared\DataSource\IDataSource.cs" />
     <Compile Include="Shared\DotNetDataSource\DotNetDataSource.cs" />

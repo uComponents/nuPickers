@@ -15,7 +15,7 @@
                 .Routes
                 .MapRoute(
                     name: "nuPickersShared",
-                    url: "App_Plugins/nuPickers/Shared/{folder}/{file}",
+                    url:  EmbeddedResource.ROOT_URL.TrimStart("~/") + "{folder}/{file}",
                     defaults: new
                     {
                         controller = "EmbeddedResource",
