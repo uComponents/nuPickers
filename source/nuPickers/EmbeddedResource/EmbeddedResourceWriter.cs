@@ -12,30 +12,6 @@
     /// </summary>
     public sealed class EmbeddedResourceWriter : IVirtualFileWriter
     {
-        /// <summary>
-        /// The write to stream.
-        /// </summary>
-        /// <param name="provider">
-        /// The provider.
-        /// </param>
-        /// <param name="sw">
-        /// The sw.
-        /// </param>
-        /// <param name="vf">
-        /// The vf.
-        /// </param>
-        /// <param name="type">
-        /// The type.
-        /// </param>
-        /// <param name="origUrl">
-        /// The orig url.
-        /// </param>
-        /// <param name="http">
-        /// The http.
-        /// </param>
-        /// <returns>
-        /// The <see cref="bool"/>.
-        /// </returns>
         public bool WriteToStream(BaseCompositeFileProcessingProvider provider, StreamWriter sw, IVirtualFile vf, ClientDependencyType type, string origUrl, HttpContextBase http)
         {
             try

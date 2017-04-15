@@ -11,7 +11,6 @@
         private const string CSS_RESOURCE = "CheckBoxPicker.CheckBoxPickerEditor.css";
         private const string JS_RESOURCE = "CheckBoxPicker.CheckBoxPickerEditorController.js";
 
-
         [TestMethod]
         public void ResourceNamesThatDoNotExist()
         {
