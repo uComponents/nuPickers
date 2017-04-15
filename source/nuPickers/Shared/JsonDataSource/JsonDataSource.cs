@@ -49,7 +49,7 @@
             }
             catch (JsonException jsonException)
             {
-                LogHelper.Error(typeof(nuPickers.Shared.JsonDataSource.JsonDataSource), "Check JSON at Url: " + this.Url, jsonException);
+                LogHelper.Error(typeof(JsonDataSource), "Check JSON at Url: " + this.Url, jsonException);
             }
 
             if (jToken != null)
@@ -75,7 +75,7 @@
                     }
                     catch (JsonException jsonException)
                     {
-                        LogHelper.Error(typeof(nuPickers.Shared.JsonDataSource.JsonDataSource), "Check JSONPath: " + this.JsonPath, jsonException);
+                        LogHelper.Error(typeof(JsonDataSource), "Check JSONPath: " + this.JsonPath, jsonException);
                     }
 
                     if (jTokens != null)

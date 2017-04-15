@@ -106,22 +106,29 @@
 
             if (!string.IsNullOrEmpty(url))
             {
-                using (WebClient client = new WebClient())
+                if (VirtualPathUtility.IsAppRelative(url)) // starts with ~/
                 {
-                    if (url.StartsWith("~/"))
+                    bool fileExists = false;
+
+                    if (!url.Contains("?"))
                     {
                         string filePath = HttpContext.Current.Server.MapPath(url);
 
                         if (File.Exists(filePath))
                         {
                             url = filePath;
-                        }
-                        else
-                        {
-                            url = url.Replace("~/", (HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "/"));
+                            fileExists = true;
                         }
                     }
 
+                    if (!fileExists)
+                    {
+                        url = url.Replace("~/", (HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "/"));
+                    }
+                }
+
+                using (WebClient client = new WebClient())
+                {
                     data = client.DownloadString(url);
                 }
             }
