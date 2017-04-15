@@ -1,6 +1,5 @@
 namespace nuPickers.EmbeddedResource
 {
-    using System.Globalization;
     using System.IO;
     using System.Linq;
     using System.Web;
@@ -51,12 +50,13 @@ namespace nuPickers.EmbeddedResource
         {
             string resourceName = null;
 
+            if (HttpContext.Current != null) // for unit testing
             if (!VirtualPathUtility.IsAppRelative(path))
             {
                 path = VirtualPathUtility.ToAppRelative(path);
             }
 
-            if (path.StartsWith(EmbeddedResource.ROOT_URL))
+            if (path != null && path.StartsWith(EmbeddedResource.ROOT_URL))
             {
                 resourceName = EmbeddedResource.RESOURCE_PREFIX + path.TrimStart(EmbeddedResource.ROOT_URL).Replace("/", ".").TrimEnd(EmbeddedResource.FILE_EXTENSION);
             }
