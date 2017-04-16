@@ -92,7 +92,11 @@ angular.module('umbraco.resources')
 
                     // parse string for nested json save format (fix to support the Doc Type Grid Editor package)
                     try {
-                        return JSON.parse(saveValue);
+                        var nestedJson = JSON.parse(saveValue);
+                        if (nestedJson instanceof Array)
+                        {
+                            return nestedJson;
+                        }
                     }
                     catch (error) { } // suppress
 
