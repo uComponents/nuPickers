@@ -118,6 +118,10 @@ angular
                 });
             }
             
+            /**
+             * Get all items for the picker
+             * @param {string} typeahead - optional typeahead text to filter on
+             */
             $scope.getEditorOptions = function (typeahead) {
                 return editorResource.getEditorDataItems($scope.model, typeahead);
             };
@@ -125,11 +129,10 @@ angular
             // if typeahead, then build picked options directly from the save value
             if ($scope.model.config.hasOwnProperty('typeaheadListPicker')) {
 
-                // build selected options from full stored values (as these might not be present in the selectable collection)
-                $scope.selectedOptions = editorResource.getPickedItems($scope.model);
-                $scope.selectedOptions = $scope.selectedOptions || [];
-
-                initSelectedOptionsWatch(); // selected options restored, so setup watch
+                editorResource.getPickedEditorDataItems($scope.model).then(function (editorDataItems) {
+                    $scope.selectedOptions = editorDataItems;
+                    initSelectedOptionsWatch(); // selected options restored, so setup watch
+                });
 
             } else {
 

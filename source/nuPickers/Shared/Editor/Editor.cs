@@ -3,7 +3,6 @@
     using DataSource;
     using nuPickers.Shared.CustomLabel;
     using nuPickers.Shared.TypeaheadListPicker;
-    using System;
     using System.Collections.Generic;
     using System.Linq;
 

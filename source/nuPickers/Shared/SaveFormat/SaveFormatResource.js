@@ -82,7 +82,7 @@ angular.module('umbraco.resources')
 
                 /// returns an array of { 'key': '', 'label': '' } objects
                 /// saveValue expected to be either json or xml
-                getSavedItems: function (saveValue) {
+                tryGetDataEditorItems: function (saveValue) {
 
                     // json save format
                     if (saveValue instanceof Array)
