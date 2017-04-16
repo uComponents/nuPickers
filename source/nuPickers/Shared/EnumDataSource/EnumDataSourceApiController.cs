@@ -1,8 +1,6 @@
 ﻿namespace nuPickers.Shared.EnumDataSource
 {
-    using Newtonsoft.Json.Linq;
     using nuPickers;
-    using nuPickers.Shared.Editor;
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;

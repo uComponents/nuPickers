@@ -1,8 +1,6 @@
 ﻿namespace nuPickers.Shared.DotNetDataSource
 {
-    using Newtonsoft.Json.Linq;
     using nuPickers;
-    using nuPickers.Shared.Editor;
     using System;
     using System.Collections.Generic;
     using System.Linq;

@@ -1,12 +1,18 @@
-﻿
-angular.module('umbraco.resources')
+﻿angular.module('umbraco.resources')
     .factory('nuPickers.Shared.DataSource.DataSourceResource',
     ['$http', 'editorState',
         function ($http, editorState) {
 
             return {
 
-                getEditorDataItems: function (model, typeahead) {
+                /**
+                 * Get 'editor data items', either the collection for picking, or specifc ones identified by key
+                 * @param {Object} - the property editor model
+                 * @param {string} - optional typeahead text
+                 * @param {Array} - optional array of picked keys
+                 * @returns {Object} - a promise to return an array of 'editor data items',  [{"key":"","label":""},{"key":"","label":""}...]
+                 */
+                getEditorDataItems: function (model, typeahead, keys) {
                     
                     var currentId = 0;
                     var parentId = 0;
@@ -16,7 +22,6 @@ angular.module('umbraco.resources')
 			            parentId = editorState.current.parentId;
                     }
 
-                    // returns [{"key":"","label":""},{"key":"","label":""}...]
                     return $http({
                         method: 'POST',
                         url: 'backoffice/nuPickers/DataSourceApi/GetEditorDataItems',
@@ -27,14 +32,12 @@ angular.module('umbraco.resources')
                         },
                         data: {
                             'config': model.config,
-                            'typeahead': typeahead
+                            'typeahead': typeahead,
+                            'keys': keys
                         }
                     });
 
                 }
-
-
-
 
             };
         }

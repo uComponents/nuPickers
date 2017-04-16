@@ -46,7 +46,18 @@
             }
 
             if (dataSource != null)
-            {
+            {                
+                if (data.keys is JArray)
+                {
+                    return Editor.GetEditorDataItems(
+                        currentId,
+                        parentId,
+                        propertyAlias,
+                        dataSource,
+                        (string)data.config.customLabel,
+                        ((JArray)data.keys).Select(x => x.ToString()).ToArray());
+                }
+
                 return Editor.GetEditorDataItems(
                     currentId,
                     parentId,

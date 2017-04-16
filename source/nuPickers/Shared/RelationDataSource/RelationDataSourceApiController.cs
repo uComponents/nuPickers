@@ -1,10 +1,7 @@
 ﻿namespace nuPickers.Shared.RelationDataSource
 {
-    using Newtonsoft.Json.Linq;
-    using nuPickers.Shared.Editor;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Web.Http;
     using umbraco.cms.businesslogic.relation;
     using Umbraco.Web.Editors;
     using Umbraco.Web.Mvc;

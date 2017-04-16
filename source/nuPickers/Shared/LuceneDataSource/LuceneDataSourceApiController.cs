@@ -1,10 +1,7 @@
 ﻿namespace nuPickers.Shared.LuceneDataSource
 {
-    using Newtonsoft.Json.Linq;
-    using nuPickers.Shared.Editor;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Web.Http;
     using Umbraco.Web.Editors;
     using Umbraco.Web.Mvc;
     using UmbracoExamine;
