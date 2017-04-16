@@ -23,16 +23,5 @@
                             biDirectional = x.Dual
                         });
         }
-
-        [HttpPost]
-        public IEnumerable<EditorDataItem> GetEditorDataItems([FromUri] int currentId, [FromUri] int parentId, [FromUri] string propertyAlias, [FromBody] dynamic data)
-        {
-            return Editor.GetEditorDataItems(
-                            currentId,
-                            parentId,
-                            propertyAlias,
-                            ((JObject)data.config.dataSource).ToObject<RelationDataSource>(),
-                            (string)data.config.customLabel);
-        }
     }
 }

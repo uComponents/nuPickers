@@ -291,6 +291,7 @@
     </Compile>
     <Compile Include="Shared\DataSource\DataSource.cs" />
     <Compile Include="Shared\DataSource\IDataSource.cs" />
+    <Compile Include="Shared\DataSource\DataSourceApiController.cs" />
     <Compile Include="Shared\DotNetDataSource\DotNetDataSource.cs" />
     <Compile Include="Shared\DotNetDataSource\DotNetDataSourceApiController.cs" />
     <Compile Include="Shared\DotNetDataSource\DotNetDataSourceAttribute.cs" />
@@ -300,7 +301,6 @@
     <Compile Include="Shared\Editor\Editor.cs" />
     <Compile Include="Shared\EnumDataSource\EnumExtensions.cs" />
     <Compile Include="Shared\JsonDataSource\JsonDataSource.cs" />
-    <Compile Include="Shared\JsonDataSource\JsonDataSourceApiController.cs" />
     <Compile Include="Shared\LuceneDataSource\LuceneDataSource.cs" />
     <Compile Include="Shared\LuceneDataSource\LuceneDataSourceApiController.cs" />
     <Compile Include="Shared\RelationDataSource\RelationDataSource.cs" />
@@ -341,7 +341,6 @@
     <Compile Include="Shared\SqlDataSource\SqlDataSourceApiController.cs" />
     <Compile Include="Shared\TypeaheadListPicker\TypeaheadListPicker.cs" />
     <Compile Include="Shared\XmlDataSource\XmlDataSource.cs" />
-    <Compile Include="Shared\XmlDataSource\XmlDataSourceApiController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

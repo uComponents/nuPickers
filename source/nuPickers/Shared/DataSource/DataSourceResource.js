@@ -19,7 +19,7 @@ angular.module('umbraco.resources')
                     // returns [{"key":"","label":""},{"key":"","label":""}...]
                     return $http({
                         method: 'POST',
-                        url: 'backoffice/nuPickers/' + model.config.dataSource.apiController + '/GetEditorDataItems',
+                        url: 'backoffice/nuPickers/DataSourceApi/GetEditorDataItems',
                         params: {
                             'currentId': currentId,
                             'parentId': parentId,
