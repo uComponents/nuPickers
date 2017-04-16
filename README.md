@@ -4,7 +4,7 @@ nuPickers
 __Latest Release:__ 
 
 [![NuGet release](https://img.shields.io/nuget/v/nuPickers.svg)](https://www.nuget.org/packages/nuPickers) 
-[![Our Umbraco project page](https://img.shields.io/badge/our-umbraco%20package-blue.svg)](https://our.umbraco.org/projects/backoffice-extensions/nupickers) 
+[![Our Umbraco project page](https://img.shields.io/badge/umbraco-v.1.5.3-blue.svg)](https://our.umbraco.org/projects/backoffice-extensions/nupickers) 
 
 __Latest Build:__ 
 

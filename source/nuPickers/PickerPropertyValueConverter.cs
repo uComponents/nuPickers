@@ -67,7 +67,7 @@
         /// https://our.umbraco.org/forum/developing-packages/85047-context-property-value-converters
         /// </summary>
         /// <param name="publishedPropertyType"></param>
-        /// <param name="source"></param>
+        /// <param name="source">expected as a string</param>
         /// <param name="preview"></param>
         /// <returns></returns>
         public override object ConvertSourceToObject(PublishedPropertyType publishedPropertyType, object source, bool preview)
@@ -102,6 +102,19 @@
                         publishedPropertyType.DataTypeId, 
                         publishedPropertyType.PropertyEditorAlias, 
                         source);
+        }
+
+        /// <summary>
+        /// Override the default behavour which duck types (converting a string that looks like a number into a number)
+        /// to always return a string (or null)
+        /// </summary>
+        /// <param name="propertyType"></param>
+        /// <param name="source">expected as a string</param>
+        /// <param name="preview">flag to indicate if in preview mode</param>
+        /// <returns>source as a string, or null</returns>
+        public override object ConvertDataToSource(PublishedPropertyType propertyType, object source, bool preview)
+        {
+            return source as string;
         }
     }
 }
