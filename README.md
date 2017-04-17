@@ -4,13 +4,13 @@ nuPickers
 __Latest Release:__ 
 
 [![NuGet release](https://img.shields.io/nuget/v/nuPickers.svg)](https://www.nuget.org/packages/nuPickers) 
-[![Our Umbraco project page](https://img.shields.io/badge/umbraco-v.1.6.0-blue.svg)](https://our.umbraco.org/projects/backoffice-extensions/nupickers) 
+[![Our Umbraco project page](https://img.shields.io/badge/umbraco-v.1.6.1-blue.svg)](https://our.umbraco.org/projects/backoffice-extensions/nupickers) 
 
 __Latest Build:__ 
 
 [![Build status](https://img.shields.io/appveyor/ci/jeavonleopold/nupickers/master.svg)](https://ci.appveyor.com/project/JeavonLeopold/nupickers/branch/master)
 [![MyGet build](https://img.shields.io/myget/nupickers/vpre/nuPickers.svg)](https://www.myget.org/gallery/nupickers)
-[![AppVeyor Artifacts](https://img.shields.io/badge/nupickers-v1.6.1.bleeding--edge-red.svg)](https://ci.appveyor.com/project/JeavonLeopold/nupickers/build/artifacts) 
+[![AppVeyor Artifacts](https://img.shields.io/badge/nupickers-v1.6.2.bleeding--edge-red.svg)](https://ci.appveyor.com/project/JeavonLeopold/nupickers/build/artifacts) 
 
 __Support:__
 
