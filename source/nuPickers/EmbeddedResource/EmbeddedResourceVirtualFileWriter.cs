@@ -6,11 +6,12 @@
     using System;
     using System.IO;
     using System.Web;
+    using Umbraco.Core.Logging;
 
     /// <summary>
     /// The embedded resource writer.
     /// </summary>
-    public sealed class EmbeddedResourceWriter : IVirtualFileWriter
+    public sealed class EmbeddedResourceVirtualFileWriter : IVirtualFileWriter
     {
         public bool WriteToStream(BaseCompositeFileProcessingProvider provider, StreamWriter sw, IVirtualFile vf, ClientDependencyType type, string origUrl, HttpContextBase http)
         {
@@ -24,9 +25,10 @@
                     return true;
                 }
             }
-            catch (Exception)
+            catch (Exception exception)
             {
-                // the file must have failed to open
+                LogHelper.Warn(typeof(EmbeddedResourceVirtualFileWriter), exception.Message);
+
                 return false;
             }
         }
@@ -36,7 +38,7 @@
         /// </summary>
         public IVirtualFileProvider FileProvider
         {
-            get { return new EmbeddedResourceVirtualPathProvider(); }
+            get { return new EmbeddedResourceVirtualFileProvider(); }
         }
     }
 }

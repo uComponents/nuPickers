@@ -9,20 +9,20 @@
     internal class EmbeddedResourceVirtualFile : IVirtualFile
     {
         /// <summary>
-        /// The virtual path.
+        /// The virtual file
         /// </summary>
-        private readonly string virtualPath;
+        private readonly string virtualFile;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="EmbeddedResourceVirtualFile"/> class. 
         /// Initializes a new instance of the <see cref="T:System.Web.Hosting.VirtualFile"/> class. 
         /// </summary>
-        /// <param name="virtualPath">
+        /// <param name="virtualFile">
         /// The virtual path to the resource represented by this instance. 
         /// </param>
-        public EmbeddedResourceVirtualFile(string virtualPath)
+        public EmbeddedResourceVirtualFile(string virtualFile)
         {
-            this.virtualPath = virtualPath;
+            this.virtualFile = virtualFile;
         }
 
         /// <summary>
@@ -33,7 +33,7 @@
         /// </returns>
         public Stream Open()
         {
-            string resourceName = EmbeddedResourceHelper.GetResourceNameFromPath(this.virtualPath);
+            string resourceName = EmbeddedResourceHelper.GetResourceNameFromPath(this.virtualFile);
 
             return EmbeddedResourceHelper.GetResource(resourceName);
         }
@@ -43,7 +43,7 @@
         /// </summary>
         public string Path
         {
-            get { return this.virtualPath; }
+            get { return this.virtualFile; }
         }
     }
 }

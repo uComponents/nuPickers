@@ -220,8 +220,8 @@
     <Compile Include="EmbeddedResource\EmbeddedResourceHelper.cs" />
     <Compile Include="EmbeddedResource\EmbeddedResourceStartup.cs" />
     <Compile Include="EmbeddedResource\EmbeddedResourceVirtualFile.cs" />
-    <Compile Include="EmbeddedResource\EmbeddedResourceVirtualPathProvider.cs" />
-    <Compile Include="EmbeddedResource\EmbeddedResourceWriter.cs" />
+    <Compile Include="EmbeddedResource\EmbeddedResourceVirtualFileProvider.cs" />
+    <Compile Include="EmbeddedResource\EmbeddedResourceVirtualFileWriter.cs" />
     <Compile Include="Extensions\IEnumerableStringExtensions.cs" />
     <Compile Include="Extensions\IPublishedContentExtensions.cs" />
     <Compile Include="Extensions\UmbracoHelperExtensions.cs" />

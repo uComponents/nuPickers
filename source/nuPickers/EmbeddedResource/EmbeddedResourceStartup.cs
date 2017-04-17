@@ -23,7 +23,7 @@
                     },
                     namespaces: new[] { "nuPickers.EmbeddedResource" });
 
-            FileWriters.AddWriterForExtension(EmbeddedResource.FILE_EXTENSION, new EmbeddedResourceWriter());
+            FileWriters.AddWriterForExtension(EmbeddedResource.FILE_EXTENSION, new EmbeddedResourceVirtualFileWriter());
         }
 
         protected override bool ExecuteWhenApplicationNotConfigured
