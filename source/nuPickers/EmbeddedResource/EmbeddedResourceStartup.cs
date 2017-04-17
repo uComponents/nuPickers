@@ -21,7 +21,7 @@
                         controller = "EmbeddedResource",
                         action = "GetSharedResource"
                     },
-                    namespaces: new[] { "nuPickers" });
+                    namespaces: new[] { "nuPickers.EmbeddedResource" });
 
             FileWriters.AddWriterForExtension(EmbeddedResource.FILE_EXTENSION, new EmbeddedResourceWriter());
         }
