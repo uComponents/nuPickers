@@ -5,6 +5,7 @@
     using nuPickers.Shared.TypeaheadListPicker;
     using System.Collections.Generic;
     using System.Linq;
+    using Umbraco.Core;
 
     internal static class Editor
     {
@@ -78,6 +79,9 @@
                     editorDataItems = new CustomLabel(customLabelMacro, currentId, propertyAlias)
                                             .ProcessEditorDataItems(editorDataItems);
                 }
+
+                // ensure sort order matches order of keys supplied
+                editorDataItems = editorDataItems.OrderBy(x => keys.IndexOf(x.Key));
             }
 
             return editorDataItems;
