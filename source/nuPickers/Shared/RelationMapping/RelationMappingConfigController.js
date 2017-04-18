@@ -24,7 +24,7 @@ angular
 
             // trigger event for SaveFormat controller to recieve
             $rootScope.$broadcast('relationMappingChanged', $scope.selectedRelationType);
-        }
+        };
 
         $scope.$on("formSubmitting", function () {
 

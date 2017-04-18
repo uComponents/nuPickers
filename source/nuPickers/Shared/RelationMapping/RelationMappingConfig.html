@@ -8,7 +8,7 @@
 
         <div class="controls controls-row">
             <select ng-model="selectedRelationType"
-                    ng-options="relationType as relationType.label for relationType in relationTypes"
+                    ng-options="x.label group by (x.bidirectional ?  'Bidirectional' : 'Parent to Child') for x in relationTypes"
                     ng-change="relationTypeChanged()">
                 <option value=""></option>
             </select>
