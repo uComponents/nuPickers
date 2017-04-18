@@ -30,11 +30,13 @@
     <div>
         <label class="control-label" for="">
             Allow Duplicates
-            <small>When checked, duplicate items can be selected</small>
+            <small>When checked, duplicate items can be selected (disabled when 'Hide Used' is checked)</small>
         </label>
 
         <div class="controls controls-row">
             <input type="checkbox"
+                   ng-disabled="model.value.hideUsed"
+                   ng-checked="!model.value.hideUsed && model.value.allowDuplicates"
                    ng-model="model.value.allowDuplicates" />
         </div>
     </div>
@@ -42,12 +44,13 @@
     <div>
         <label class="control-label" for="">
             Hide Used
-            <small>When checked, selected items are removed from the list of choices</small>
+            <small>When checked, selected items are removed from the list of choices (disabled when 'Allow Duplicates' is checked)</small>
         </label>
 
         <div class="controls controls-row">
             <input type="checkbox"
                    ng-disabled="model.value.allowDuplicates"
+                   ng-checked="!model.value.allowDuplicates && model.value.hideUsed"
                    ng-model="model.value.hideUsed" />
         </div>
     </div>
