@@ -31,6 +31,7 @@
             return new string[] { 
                         PropertyEditorConstants.DotNetCheckBoxPickerAlias,
                         PropertyEditorConstants.DotNetDropDownPickerAlias,
+                        PropertyEditorConstants.DotNetPagedListPickerAlias,
                         PropertyEditorConstants.DotNetPrefetchListPickerAlias,
                         PropertyEditorConstants.DotNetRadioButtonPickerAlias,
                         PropertyEditorConstants.DotNetTypeaheadListPickerAlias,

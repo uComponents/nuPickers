@@ -234,6 +234,8 @@
     <Compile Include="PropertyEditors\DotNetDropDownPicker\DotNetDropDownPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\DotNetLabels\DotNetLabelsPreValueEditor.cs" />
     <Compile Include="PropertyEditors\DotNetLabels\DotLabelsPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\DotNetPagedListPicker\DotNetPagedListPickerPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\DotNetPagedListPicker\DotNetPagedListPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\DotNetPrefetchListPicker\DotNetPrefetchListPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\DotNetPrefetchListPicker\DotNetPrefetchListPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\DotNetRadioButtonPicker\DotNetRadioButtonPickerPreValueEditor.cs" />
@@ -473,6 +475,11 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Shared\Labels\LabelsConfig.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\PagedListPicker\PagedListPickerConfig.html" />
+    <EmbeddedResource Include="Shared\PagedListPicker\PagedListPickerEditor.html" />
+    <EmbeddedResource Include="Shared\PagedListPicker\PagedListPickerEditorController.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
