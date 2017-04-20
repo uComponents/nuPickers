@@ -7,6 +7,7 @@
     using System.ComponentModel;
     using System.Linq;
     using System.Reflection;
+    using Umbraco.Core.Logging;
 
     public class DotNetDataSource : IDataSource
     {
@@ -73,7 +74,7 @@
                     }
                     else
                     {
-                        // TODO: log unexpected property type
+                        LogHelper.Warn(typeof(DotNetDataSource), "Unexpected PropertyType, " + propertyInfo.Name + " is not a string");
                     }
                 }
 
