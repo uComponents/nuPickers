@@ -25,12 +25,13 @@
 
         public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId, string typeahead)
         {
-            return this.GetEditorDataItems(currentId == 0 ? parentId : currentId); // fix from PR #110
+            return this.GetEditorDataItems(currentId == 0 ? parentId : currentId, typeahead); // fix from PR #110
         }
 
         public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId, string[] keys)
         {
-            return Enumerable.Empty<EditorDataItem>();
+            return this.GetEditorDataItems(currentId == 0 ? parentId : currentId).Where(x => keys.Contains(x.Key));
+            //TODO: update public IDotNetDataSource so keys can be passed though (so it can do a more efficient query)
         }
 
         [Obsolete("[v2.0.0]")]
