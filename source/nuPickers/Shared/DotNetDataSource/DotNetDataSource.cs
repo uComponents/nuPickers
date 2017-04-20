@@ -45,7 +45,7 @@
         /// <returns></returns>
         private IEnumerable<EditorDataItem> GetEditorDataItems(int contextId, string typeahead)
         {
-            IEnumerable<EditorDataItem> editorDataItems = Enumerable.Empty<EditorDataItem>();
+            List<EditorDataItem> editorDataItems = new List<EditorDataItem>();
 
             object dotNetDataSource = AppDomain.CurrentDomain.CreateInstanceAndUnwrap(Helper.GetAssembly(this.AssemblyName).FullName, this.ClassName);
 
@@ -79,7 +79,8 @@
 
                 editorDataItems = ((IDotNetDataSource)dotNetDataSource)
                                             .GetEditorDataItems(contextId)
-                                            .Select(x => new EditorDataItem() { Key = x.Key, Label = x.Value });
+                                            .Select(x => new EditorDataItem() { Key = x.Key, Label = x.Value })
+                                            .ToList();
             }
 
             return editorDataItems;
