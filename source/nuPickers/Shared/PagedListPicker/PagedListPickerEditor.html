@@ -1,9 +1,6 @@
 ﻿<div ng-controller="nuPickers.Shared.ListPicker.ListPickerEditorController" class="list-picker">
 
-    <ng-form name="listPickerForm">
-        <input type="hidden" name="validation" ng-model="model.value" />
-        <span val-msg-for="validation" val-toggle-msg="validationMessage"></span>
-    </ng-form>
+    <ng-include src="'/App_Plugins/nuPickers/Shared/ListPicker/ListPickerValidationPartial.html'" />
 
     <div ng-controller="nuPickers.Shared.PagedListPicker.PagedListPickerEditorController">
 
