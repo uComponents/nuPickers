@@ -484,9 +484,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Shared\ListPicker\ListPickerSelectablePartial.html" />
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Shared\ListPicker\ListPickerValidationPartial.html" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
