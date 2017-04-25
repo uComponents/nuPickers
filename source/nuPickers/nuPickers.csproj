@@ -439,7 +439,7 @@
     <EmbeddedResource Include="Shared\ListPicker\ListPickerEditorController.js" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Shared\ListPicker\ListPickerPartial.html" />
+    <EmbeddedResource Include="Shared\ListPicker\ListPickerSelectedPartial.html" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Shared\TypeaheadListPicker\TypeaheadListPickerConfig.html" />
@@ -480,6 +480,9 @@
     <EmbeddedResource Include="Shared\PagedListPicker\PagedListPickerConfig.html" />
     <EmbeddedResource Include="Shared\PagedListPicker\PagedListPickerEditor.html" />
     <EmbeddedResource Include="Shared\PagedListPicker\PagedListPickerEditorController.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\ListPicker\ListPickerSelectablePartial.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

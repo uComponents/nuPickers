@@ -1,0 +1,22 @@
+﻿<!-- selectable -->
+<ul class="selectable"
+    ng-model="selectableOptions"
+    ng-class="{'fixed-height':model.config.prefetchListPicker.listHeight > 0 }"
+    ng-style="{'height': (model.config.prefetchListPicker.listHeight > 0 ? model.config.prefetchListPicker.listHeight + 'px' : '') }">
+
+    <li ng-repeat="option in selectableOptions"
+        ng-hide="model.config.listPicker.hideUsed && !isSelectable(option)"
+        ng-class="{lit:lit, disabled:!isValidSelection(option), used:isUsed(option)}">
+        <div class="option-label" ng-bind-html-unsafe="option.label">
+        </div>
+
+        <a href=""
+           class="button icon blue"
+           ng-class="isValidSelection(option) ? 'active icon-add' : 'disabled'"
+           ng-mouseenter="lit = isValidSelection(option)"
+           ng-mouseleave="lit = false"
+           ng-click="lit = false; selectOption(option)">
+        </a>
+
+    </li>
+</ul>
