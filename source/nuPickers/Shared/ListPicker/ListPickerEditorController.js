@@ -112,24 +112,19 @@ angular
 
             // so child controller can set scope var here
             $scope.setSelectedOptions = function (options) {
-
                 $scope.selectedOptions = options;
-                initSelectedOptionsWatch();
             };
              
+            $scope.$watchCollection('selectedOptions', function () {
 
-            function initSelectedOptionsWatch() {
-                $scope.$watchCollection('selectedOptions', function () {
+                // set validation state
+                $scope.listPickerForm.validation.$setValidity('validationMessage',
+                                    ($scope.selectedOptions.length >= $scope.model.config.listPicker.minItems &&
+                                    ($scope.selectedOptions.length <= $scope.model.config.listPicker.maxItems || $scope.model.config.listPicker.maxItems < 1)));
 
-                    // set validation state
-                    $scope.listPickerForm.validation.$setValidity('validationMessage',
-                                        ($scope.selectedOptions.length >= $scope.model.config.listPicker.minItems &&
-                                        ($scope.selectedOptions.length <= $scope.model.config.listPicker.maxItems || $scope.model.config.listPicker.maxItems < 1)));
-
-                    // toggle sorting ui
-                    $scope.sortableConfiguration.disabled = !$scope.isSortable();
-                });
-            }         
+                // toggle sorting ui
+                $scope.sortableConfiguration.disabled = !$scope.isSortable();
+            });
 
             $scope.$on("formSubmitting", function () {
                 $scope.model.value = editorResource.createSaveValue($scope.model.config, $scope.selectedOptions);
