@@ -12,11 +12,31 @@
                  * Get the 'data editor items' for a property editor
                  * Proxy to dataSourceResource.getEditorDataItems
                  * @param {Object} model - the property editor model
-                 * @param {string} or {Array} typeahead - optional typeahead text
+                 * @param {string} or {Array} or {Number} 
+                 *          - a string indicates typeahead text
+                 *          - an array indicates a collection of keys to match
+                 *          - a number indicates a context (a page or a parent)
                  * @returns {Object} - a promise of an http response with data of an array of 'data editor item' objects: [{ key: '', label: '' }]
                  */
-                getEditorDataItems: function (model, typeahead) {
-                    return dataSourceResource.getEditorDataItems(model, typeahead);
+                getEditorDataItems: function (model, query) {
+
+                    if (angular.isNumber(query))
+                    {
+                        return dataSourceResource.getEditorDataItems(model, null, null, query);
+                    }
+                    else if (angular.isArray(query))
+                    {
+                        return dataSourceResource.getEditorDataItems(model, null, query);
+                    }
+                    else if (angular.isString(query))
+                    {
+                        return dataSourceResource.getEditorDataItems(model, query);
+                    }
+                    else
+                    {
+                        return dataSourceResource.getEditorDataItems(model);
+                    }
+
                 },
 
                 /**
@@ -62,7 +82,7 @@
                         var keys = saveFormatResource.getSavedKeys(model.value);
 
                         // re-query data source supplying keys
-                        dataSourceResource.getEditorDataItems(model, null, keys).then(function (response) {
+                        this.getEditorDataItems(model, keys).then(function (response) {
                             deferred.resolve(response.data);
                         });
                     }
