@@ -5,7 +5,7 @@
         function ($scope, editorResource) {
             
             // get slectable options
-            editorResource.getEditorDataItems($scope.model).then(function (response) {
+            editorResource.getEditorDataItems($scope.model, 1).then(function (response) {
                 $scope.$parent.selectableOptions = response.data;
             });
 

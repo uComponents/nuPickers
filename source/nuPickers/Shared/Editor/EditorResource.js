@@ -20,23 +20,18 @@
                  */
                 getEditorDataItems: function (model, query) {
 
-                    if (angular.isNumber(query))
-                    {
+                    if (angular.isString(query)) { // typeahead
+                        return dataSourceResource.getEditorDataItems(model, query);
+
+                    } else if (angular.isArray(query)) { // keys
+                        return dataSourceResource.getEditorDataItems(model, null, query);
+
+                    } else if (angular.isNumber(query)) { // page
                         return dataSourceResource.getEditorDataItems(model, null, null, query);
                     }
-                    else if (angular.isArray(query))
-                    {
-                        return dataSourceResource.getEditorDataItems(model, null, query);
-                    }
-                    else if (angular.isString(query))
-                    {
-                        return dataSourceResource.getEditorDataItems(model, query);
-                    }
-                    else
-                    {
+                    else { // default (no additional query)
                         return dataSourceResource.getEditorDataItems(model);
                     }
-
                 },
 
                 /**

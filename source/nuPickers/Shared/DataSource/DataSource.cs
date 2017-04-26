@@ -19,6 +19,7 @@
                 case PropertyEditorConstants.DotNetCheckBoxPickerAlias:
                 case PropertyEditorConstants.DotNetDropDownPickerAlias:
                 case PropertyEditorConstants.DotNetLabelsAlias:
+                case PropertyEditorConstants.DotNetPagedListPickerAlias:
                 case PropertyEditorConstants.DotNetPrefetchListPickerAlias:
                 case PropertyEditorConstants.DotNetRadioButtonPickerAlias:
                 case PropertyEditorConstants.DotNetTypeaheadListPickerAlias:

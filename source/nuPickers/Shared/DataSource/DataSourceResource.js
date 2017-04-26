@@ -6,14 +6,14 @@
             return {
 
                 /**
-                 * Get 'editor data items' for a property editor (none or only one of the the optional: typeahead, keys, context params should be set)
+                 * Get 'editor data items' for a property editor (none or only one of the the optional: typeahead, keys, page params should be set)
                  * @param {Object} - the property editor model
                  * @param {string} - optional typeahead text
                  * @param {Array} - optional array of picked keys
-                 * @param {Number} - optional page index or tree parent
+                 * @param {Number} - optional page 
                  * @returns {Object} - a promise to return an array of 'editor data items',  [{"key":"","label":""},{"key":"","label":""}...]
                  */
-                getEditorDataItems: function (model, typeahead, keys, context) {
+                getEditorDataItems: function (model, typeahead, keys, page) {
                     
                     var currentId = 0;
                     var parentId = 0;
@@ -35,7 +35,7 @@
                             'config': model.config,
                             'typeahead': typeahead,
                             'keys': keys,
-                            'context' : context
+                            'page' : page
                         }
                     });
 

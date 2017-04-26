@@ -46,25 +46,59 @@
             }
 
             if (dataSource != null)
-            {                
-                if (data.keys is JArray)
+            {             
+                // TODO: log error if more than one param (typeahead, keys, page) supplied
+
+                // typeahead
+                if (data.typeahead != null)
                 {
                     return Editor.GetEditorDataItems(
-                        currentId,
-                        parentId,
-                        propertyAlias,
-                        dataSource,
-                        (string)data.config.customLabel,
-                        ((JArray)data.keys).Select(x => x.ToString()).ToArray());
+                                currentId,
+                                parentId,
+                                propertyAlias,
+                                dataSource,
+                                (string)data.config.customLabel,
+                                (string)data.typeahead);
+                }
+                // keys
+                else if (data.keys != null)
+                {
+                    return Editor.GetEditorDataItems(
+                                    currentId,
+                                    parentId,
+                                    propertyAlias,
+                                    dataSource,
+                                    (string)data.config.customLabel,
+                                    ((JArray)data.keys).Select(x => x.ToString()).ToArray());
+                }
+                // page
+                else if (data.page != null)
+                {
+                    // using the config value of items per page, use this and requested page number, to calculate skip and take values
+
+                    int itemsPerPage = (int)data.config.pagedListPicker.itemsPerPage;
+                    int page = (int)data.page;
+
+                    int skip = itemsPerPage * (page - 1);
+                    int take = itemsPerPage;
+
+                    return Editor.GetEditorDataItems(
+                                    currentId,
+                                    parentId,
+                                    propertyAlias,
+                                    dataSource,
+                                    (string)data.config.customLabel,
+                                    skip,
+                                    take);
                 }
 
+                // default
                 return Editor.GetEditorDataItems(
-                    currentId,
-                    parentId,
-                    propertyAlias,
-                    dataSource,
-                    (string)data.config.customLabel,
-                    (string)data.typeahead);
+                                currentId,
+                                parentId,
+                                propertyAlias,
+                                dataSource,
+                                (string)data.config.customLabel);
             }
 
             return Enumerable.Empty<EditorDataItem>();

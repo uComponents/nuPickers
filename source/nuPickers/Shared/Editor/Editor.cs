@@ -10,7 +10,7 @@
     internal static class Editor
     {
         /// <summary>
-        /// Get a collection of all the (key/label) items for a picker
+        /// Get a collection of all the (key/label) items for a picker (with optional typeahead)
         /// </summary>
         /// <param name="currentId">the current id</param>
         /// <param name="parentId">the parent id</param>
@@ -85,6 +85,31 @@
             }
 
             return editorDataItems;
+        }
+
+        /// <summary>
+        /// Get a page of (key/label) items for a picker
+        /// </summary>
+        /// <param name="currentId">the current id</param>
+        /// <param name="parentId">the parent id</param>
+        /// <param name="propertyAlias">the property alias</param>
+        /// <param name="dataSource">the datasource</param>
+        /// <param name="customLabelMacro">an optional macro to use for custom labels</param>
+        /// <param name="skip"></param>
+        /// <param name="take"></param>
+        /// <returns>a collection of <see cref="EditorDataItem"/></returns>
+        internal static IEnumerable<EditorDataItem> GetEditorDataItems(
+                                                int currentId,
+                                                int parentId,
+                                                string propertyAlias,
+                                                IDataSource dataSource,
+                                                string customLabelMacro,
+                                                int skip,
+                                                int take)
+        {
+            // NOTE: shortcut, implemented here as a quick fix to getting the picker functional
+            // TODO: defer the paging functionalty to the datasource
+            return Editor.GetEditorDataItems(currentId, parentId, propertyAlias, dataSource, customLabelMacro).Skip(skip).Take(take);
         }
     }
 }
