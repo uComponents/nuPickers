@@ -6,12 +6,12 @@
             
             // get slectable options
             editorResource.getEditorDataItems($scope.model).then(function (response) {
-                $scope.setSelectableOptions(response.data);
+                $scope.$parent.selectableOptions = response.data;
             });
 
             // get selected options
             editorResource.getPickedEditorDataItems($scope.model).then(function (editorDataItems) {
-                $scope.setSelectedOptions(editorDataItems);
+                $scope.$parent.selectedOptions = editorDataItems;
             });
 
         }]);

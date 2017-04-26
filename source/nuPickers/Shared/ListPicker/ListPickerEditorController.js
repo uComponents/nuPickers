@@ -104,16 +104,6 @@ angular
             $scope.deselectOption = function ($index) {
                 $scope.selectedOptions.splice($index, 1);
             };
-
-            // so child controller can set scope var here
-            $scope.setSelectableOptions = function (options) {
-                $scope.selectableOptions = options;
-            };
-
-            // so child controller can set scope var here
-            $scope.setSelectedOptions = function (options) {
-                $scope.selectedOptions = options;
-            };
              
             $scope.$watchCollection('selectedOptions', function () {
 
@@ -122,7 +112,7 @@ angular
                                     ($scope.selectedOptions.length >= $scope.model.config.listPicker.minItems &&
                                     ($scope.selectedOptions.length <= $scope.model.config.listPicker.maxItems || $scope.model.config.listPicker.maxItems < 1)));
 
-                // toggle sorting ui
+                // toggle sorting ui (updated on change, for example if all picked items are identical)
                 $scope.sortableConfiguration.disabled = !$scope.isSortable();
             });
 

@@ -9,7 +9,7 @@ angular
             // get slectable options, and then build selected options
             editorResource.getEditorDataItems($scope.model).then(function (response) {
 
-                $scope.setSelectableOptions(response.data);
+                $scope.$parent.selectableOptions = response.data;
 
                 // build selected options from picked keys (avoids a potential ajax call if the save value doesn't contain label data)
                 editorResource.getPickedKeys($scope.model).then(function (pickedKeys) {
@@ -25,7 +25,7 @@ angular
                         }
                     }
 
-                    $scope.setSelectedOptions(selectedOptions);
+                    $scope.$parent.selectedOptions = selectedOptions;
                 });
 
                 // setup filtering
@@ -37,7 +37,7 @@ angular
 
                         // if the filter is empty then just return all items
                         if (newValue == null || newValue.length == 0) {
-                            return $scope.selectableOptions = allSelectableOptions;
+                            return $scope.$parent.selectableOptions = allSelectableOptions;
                         }
 
                         newValue = newValue.toLowerCase();
@@ -47,7 +47,7 @@ angular
                         });
 
                         if (filteredSelectableOptions.length > 0) {
-                            return $scope.selectableOptions = filteredSelectableOptions;
+                            return $scope.$parent.selectableOptions = filteredSelectableOptions;
                         }
                         else {
                             $scope.filter = oldValue;
