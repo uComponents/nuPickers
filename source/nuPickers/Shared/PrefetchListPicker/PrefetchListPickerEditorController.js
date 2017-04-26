@@ -3,16 +3,35 @@
 angular
     .module("umbraco")
     .controller("nuPickers.Shared.PrefetchListPicker.PrefetchListPickerEditorController",
-        ['$scope',
-        function ($scope) {
+        ['$scope', 'nuPickers.Shared.Editor.EditorResource',
+        function ($scope, editorResource) {
 
-            // setup filtering
-            if ($scope.model.config.prefetchListPicker.enableFiltering) {
+            // get slectable options, and then build selected options
+            editorResource.getEditorDataItems($scope.model).then(function (response) {
 
-                // re-get all options so that we have a reference to restore them
-                $scope.getEditorOptions().then(function (response) {
+                $scope.setSelectableOptions(response.data);
 
-                    var allSelectableOptions = response.data;
+                // build selected options from picked keys (avoids a potential ajax call if the save value doesn't contain label data)
+                editorResource.getPickedKeys($scope.model).then(function (pickedKeys) {
+
+                    var selectedOptions = [];
+
+                    for (var i = 0; i < pickedKeys.length; i++) {
+                        for (var j = 0; j < $scope.selectableOptions.length; j++) {
+                            if (pickedKeys[i] == $scope.selectableOptions[j].key) {
+                                selectedOptions.push($scope.selectableOptions[j]);
+                                break;
+                            }
+                        }
+                    }
+
+                    $scope.setSelectedOptions(selectedOptions);
+                });
+
+                // setup filtering
+                if ($scope.model.config.prefetchListPicker.enableFiltering) {
+
+                    var allSelectableOptions = $scope.selectableOptions;
 
                     $scope.$watch('filter', function (newValue, oldValue) {
 
@@ -36,7 +55,8 @@ angular
 
                     });
 
-                });
-            }
+                }
+
+            });
 
 }]);

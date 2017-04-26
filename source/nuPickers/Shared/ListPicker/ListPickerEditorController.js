@@ -1,4 +1,4 @@
-﻿// this is used as an abstract base controller for both the PrefetchList and TypeaheadList controllers
+﻿// this is used as an abstract base controller for the PagedList, PrefetchList and TypeaheadList controllers
 
 angular
     .module("umbraco")
@@ -105,6 +105,19 @@ angular
                 $scope.selectedOptions.splice($index, 1);
             };
 
+            // so child controller can set scope var here
+            $scope.setSelectableOptions = function (options) {
+                $scope.selectableOptions = options;
+            };
+
+            // so child controller can set scope var here
+            $scope.setSelectedOptions = function (options) {
+
+                $scope.selectedOptions = options;
+                initSelectedOptionsWatch();
+            };
+             
+
             function initSelectedOptionsWatch() {
                 $scope.$watchCollection('selectedOptions', function () {
 
@@ -116,45 +129,7 @@ angular
                     // toggle sorting ui
                     $scope.sortableConfiguration.disabled = !$scope.isSortable();
                 });
-            }
-            
-            /**
-             * Get all items for the picker
-             * @param {string} typeahead - optional typeahead text to filter on
-             */
-            $scope.getEditorOptions = function (typeahead) {
-                return editorResource.getEditorDataItems($scope.model, typeahead);
-            };
-
-            // if typeahead, then build picked options directly from the save value
-            if ($scope.model.config.hasOwnProperty('typeaheadListPicker')) {
-
-                editorResource.getPickedEditorDataItems($scope.model).then(function (editorDataItems) {
-                    $scope.selectedOptions = editorDataItems;
-                    initSelectedOptionsWatch(); // selected options restored, so setup watch
-                });
-
-            } else {
-
-                $scope.getEditorOptions().then(function (response) {
-
-                    $scope.selectableOptions = response.data; 
-
-                    // build selected options from picked keys (ensures label is up to date)
-                    editorResource.getPickedKeys($scope.model).then(function (pickedKeys) {
-                        for (var i = 0; i < pickedKeys.length; i++) {
-                            for (var j = 0; j < $scope.selectableOptions.length; j++) {
-                                if (pickedKeys[i] == $scope.selectableOptions[j].key) {
-                                    $scope.selectedOptions.push($scope.selectableOptions[j]);
-                                    break;
-                                }
-                            }
-                        }
-                    });
-
-                    initSelectedOptionsWatch(); // selected options restored, so setup watch
-                });
-            }
+            }         
 
             $scope.$on("formSubmitting", function () {
                 $scope.model.value = editorResource.createSaveValue($scope.model.config, $scope.selectedOptions);

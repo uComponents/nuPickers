@@ -2,8 +2,13 @@
 angular
     .module('umbraco')
     .controller("nuPickers.Shared.TypeaheadListPicker.TypeaheadListPickerEditorController",
-        ['$scope', '$timeout',
-        function ($scope, $timeout) {
+        ['$scope', '$timeout', 'nuPickers.Shared.Editor.EditorResource',
+        function ($scope, $timeout, editorResource) {
+
+            // build selected options (typeahead doesn't have any default selectable options without first entering some typeahead text)
+            editorResource.getPickedEditorDataItems($scope.model).then(function (editorDataItems) {
+                $scope.setSelectedOptions(editorDataItems);
+            });
 
             //$scope.clear = function () {
             //    $scope.typeahead = null;
@@ -21,7 +26,7 @@ angular
                 if (newValue != null && newValue.length >= $scope.model.config.typeaheadListPicker.minCharacters) {
 
                     wait = $timeout(function () {
-                        $scope.getEditorOptions(newValue).then(function (response) {
+                        editorResource.getEditorDataItems($scope.model, newValue).then(function (response) {
                             $scope.noMatch = response.data.length == 0;
                             $scope.selectableOptions = response.data;
                         });
