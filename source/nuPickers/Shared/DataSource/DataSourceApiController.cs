@@ -2,7 +2,6 @@
 {
     using Newtonsoft.Json.Linq;
     using nuPickers.Shared.Editor;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Web.Http;
     using Umbraco.Web.Editors;
@@ -25,10 +24,15 @@
         /// <param name="parentId"></param>
         /// <param name="propertyAlias"></param>
         /// <param name="data"></param>
-        /// <returns></returns>
+        /// <returns>a <see cref="GetEditorDataItemsResponse"/> object</returns>
         [HttpPost]
-        public IEnumerable<EditorDataItem> GetEditorDataItems([FromUri] int currentId, [FromUri] int parentId, [FromUri] string propertyAlias, [FromBody] dynamic data)
+        public GetEditorDataItemsResponse GetEditorDataItems([FromUri] int currentId, [FromUri] int parentId, [FromUri] string propertyAlias, [FromBody] dynamic data)
         {
+            // build return object
+            GetEditorDataItemsResponse response = new GetEditorDataItemsResponse();
+
+            response.EditorDataItems = Enumerable.Empty<EditorDataItem>();
+
             IDataSource dataSource = null;
 
             // NOTE: the value of 'apiController' was previously used in the js to identify an api controller to call for a specific data-source.
@@ -46,30 +50,35 @@
             }
 
             if (dataSource != null)
-            {             
+            {
                 // TODO: log error if more than one param (typeahead, keys, page) supplied
+
 
                 // typeahead
                 if (data.typeahead != null)
                 {
-                    return Editor.GetEditorDataItems(
-                                currentId,
-                                parentId,
-                                propertyAlias,
-                                dataSource,
-                                (string)data.config.customLabel,
-                                (string)data.typeahead);
+                    response.EditorDataItems = Editor.GetEditorDataItems(
+                                                        currentId,
+                                                        parentId,
+                                                        propertyAlias,
+                                                        dataSource,
+                                                        (string)data.config.customLabel,
+                                                        (string)data.typeahead);
+
+                    // response.Count not set, as full collection size not known
                 }
                 // keys
                 else if (data.keys != null)
                 {
-                    return Editor.GetEditorDataItems(
-                                    currentId,
-                                    parentId,
-                                    propertyAlias,
-                                    dataSource,
-                                    (string)data.config.customLabel,
-                                    ((JArray)data.keys).Select(x => x.ToString()).ToArray());
+                    response.EditorDataItems = Editor.GetEditorDataItems(
+                                                        currentId,
+                                                        parentId,
+                                                        propertyAlias,
+                                                        dataSource,
+                                                        (string)data.config.customLabel,
+                                                        ((JArray)data.keys).Select(x => x.ToString()).ToArray());
+
+                    // response.count not set, as request is for specific items
                 }
                 // page
                 else if (data.page != null)
@@ -81,27 +90,36 @@
 
                     int skip = itemsPerPage * (page - 1);
                     int take = itemsPerPage;
+                    int count;
 
-                    return Editor.GetEditorDataItems(
-                                    currentId,
-                                    parentId,
-                                    propertyAlias,
-                                    dataSource,
-                                    (string)data.config.customLabel,
-                                    skip,
-                                    take);
+                    response.EditorDataItems = Editor.GetEditorDataItems(
+                                                        currentId,
+                                                        parentId,
+                                                        propertyAlias,
+                                                        dataSource,
+                                                        (string)data.config.customLabel,
+                                                        skip,
+                                                        take, 
+                                                        out count);
+
+                    response.Count = count;
                 }
-
                 // default
-                return Editor.GetEditorDataItems(
-                                currentId,
-                                parentId,
-                                propertyAlias,
-                                dataSource,
-                                (string)data.config.customLabel);
+                else
+                {
+                    response.EditorDataItems = Editor.GetEditorDataItems(
+                                                        currentId,
+                                                        parentId,
+                                                        propertyAlias,
+                                                        dataSource,
+                                                        (string)data.config.customLabel);
+
+                    // full collection returned
+                    response.Count = response.EditorDataItems.Count();
+                }
             }
 
-            return Enumerable.Empty<EditorDataItem>();
+            return response;
         }
     }
 }

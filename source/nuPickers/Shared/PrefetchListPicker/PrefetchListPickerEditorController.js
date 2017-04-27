@@ -9,7 +9,7 @@ angular
             // get slectable options, and then build selected options
             editorResource.getEditorDataItems($scope.model).then(function (response) {
 
-                $scope.$parent.selectableOptions = response.data;
+                $scope.$parent.selectableOptions = response.data.editorDataItems;
 
                 // build selected options from picked keys (avoids a potential ajax call if the save value doesn't contain label data)
                 editorResource.getPickedKeys($scope.model).then(function (pickedKeys) {

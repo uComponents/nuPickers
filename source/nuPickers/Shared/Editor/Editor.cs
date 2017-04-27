@@ -35,15 +35,13 @@
 
                 if (!string.IsNullOrWhiteSpace(customLabelMacro))
                 {
-                    editorDataItems = new CustomLabel(customLabelMacro, currentId, propertyAlias)
-                                            .ProcessEditorDataItems(editorDataItems);
+                    editorDataItems = new CustomLabel(customLabelMacro, currentId, propertyAlias).ProcessEditorDataItems(editorDataItems);
                 }
 
                 // if the datasource didn't handle the typeahead text, then it needs to be done here (post custom label processing ?)
                 if (!dataSource.HandledTypeahead && !string.IsNullOrWhiteSpace(typeahead))
                 {
-                    editorDataItems = new TypeaheadListPicker(typeahead)
-                                            .ProcessEditorDataItems(editorDataItems);
+                    editorDataItems = new TypeaheadListPicker(typeahead).ProcessEditorDataItems(editorDataItems);
                 }
             }
 
@@ -76,8 +74,7 @@
 
                 if (!string.IsNullOrWhiteSpace(customLabelMacro))
                 {
-                    editorDataItems = new CustomLabel(customLabelMacro, currentId, propertyAlias)
-                                            .ProcessEditorDataItems(editorDataItems);
+                    editorDataItems = new CustomLabel(customLabelMacro, currentId, propertyAlias).ProcessEditorDataItems(editorDataItems);
                 }
 
                 // ensure sort order matches order of keys supplied
@@ -105,11 +102,27 @@
                                                 IDataSource dataSource,
                                                 string customLabelMacro,
                                                 int skip,
-                                                int take)
+                                                int take,
+                                                out int count)
         {
-            // NOTE: shortcut, implemented here as a quick fix to getting the picker functional
+            // NOTE: shortcut, implemented here as a quick fix to get the picker functional
             // TODO: defer the paging functionalty to the datasource
-            return Editor.GetEditorDataItems(currentId, parentId, propertyAlias, dataSource, customLabelMacro).Skip(skip).Take(take);
+
+            //get all items without processing labels
+            IEnumerable<EditorDataItem> editorDataItems = Editor.GetEditorDataItems(currentId, parentId, propertyAlias, dataSource, null);
+
+            count = editorDataItems.Count();
+
+            // get subset
+            editorDataItems = editorDataItems.Skip(skip).Take(take);
+
+            // process labels for subset
+            if (!string.IsNullOrWhiteSpace(customLabelMacro))
+            {
+                editorDataItems = new CustomLabel(customLabelMacro, currentId, propertyAlias).ProcessEditorDataItems(editorDataItems);
+            }
+
+            return editorDataItems;
         }
     }
 }

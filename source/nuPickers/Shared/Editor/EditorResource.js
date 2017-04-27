@@ -78,7 +78,7 @@
 
                         // re-query data source supplying keys
                         this.getEditorDataItems(model, keys).then(function (response) {
-                            deferred.resolve(response.data);
+                            deferred.resolve(response.data.editorDataItems);
                         });
                     }
 

@@ -7,7 +7,7 @@ angular
 
             editorResource.getEditorDataItems($scope.model).then(function (response) {
 
-                $scope.options = response.data;
+                $scope.options = response.data.editorDataItems;
 
             });
 

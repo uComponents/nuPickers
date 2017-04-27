@@ -27,8 +27,8 @@ angular
 
                     wait = $timeout(function () {
                         editorResource.getEditorDataItems($scope.model, newValue).then(function (response) {
-                            $scope.noMatch = response.data.length == 0;
-                            $scope.$parent.selectableOptions = response.data;
+                            $scope.noMatch = response.data.editorDataItems.length == 0;
+                            $scope.$parent.selectableOptions = response.data.editorDataItems;
                         });
                     }, 250);
 

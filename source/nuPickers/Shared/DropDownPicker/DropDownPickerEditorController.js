@@ -6,7 +6,7 @@ angular
         function ($scope, editorResource) {
 
             editorResource.getEditorDataItems($scope.model).then(function (response) {
-                $scope.dropDownPickerOptions = response.data;
+                $scope.dropDownPickerOptions = response.data.editorDataItems;
 
                 editorResource.getPickedKeys($scope.model).then(function (pickedKeys) {
                     if (pickedKeys[0]) {

@@ -29,7 +29,7 @@ angular
 
             editorResource.getEditorDataItems($scope.model).then(function (response) {
 
-                $scope.checkBoxPickerOptions = response.data; 
+                $scope.checkBoxPickerOptions = response.data.editorDataItems;
 
                 // restore any saved values
                 editorResource.getPickedKeys($scope.model).then(function (pickedKeys) {

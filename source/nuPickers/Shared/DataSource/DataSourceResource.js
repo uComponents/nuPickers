@@ -11,7 +11,7 @@
                  * @param {string} - optional typeahead text
                  * @param {Array} - optional array of picked keys
                  * @param {Number} - optional page 
-                 * @returns {Object} - a promise to return an array of 'editor data items',  [{"key":"","label":""},{"key":"","label":""}...]
+                 * @returns {Object} - a promise to return an http response with data for an array of editorDataItems [{"key":"","label":""},{"key":"","label":""}] and a count when known
                  */
                 getEditorDataItems: function (model, typeahead, keys, page) {
                     
