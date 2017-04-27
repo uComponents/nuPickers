@@ -29,9 +29,11 @@
         public GetEditorDataItemsResponse GetEditorDataItems([FromUri] int currentId, [FromUri] int parentId, [FromUri] string propertyAlias, [FromBody] dynamic data)
         {
             // build return object
-            GetEditorDataItemsResponse response = new GetEditorDataItemsResponse();
-
-            response.EditorDataItems = Enumerable.Empty<EditorDataItem>();
+            var response = new GetEditorDataItemsResponse()
+            {
+                EditorDataItems = Enumerable.Empty<EditorDataItem>(),
+                Count = null
+            };
 
             IDataSource dataSource = null;
 
@@ -83,13 +85,6 @@
                 // page
                 else if (data.page != null)
                 {
-                    // using the config value of items per page, use this and requested page number, to calculate skip and take values
-
-                    int itemsPerPage = (int)data.config.pagedListPicker.itemsPerPage;
-                    int page = (int)data.page;
-
-                    int skip = itemsPerPage * (page - 1);
-                    int take = itemsPerPage;
                     int count;
 
                     response.EditorDataItems = Editor.GetEditorDataItems(
@@ -98,8 +93,8 @@
                                                         propertyAlias,
                                                         dataSource,
                                                         (string)data.config.customLabel,
-                                                        skip,
-                                                        take, 
+                                                        (int)data.config.pagedListPicker.itemsPerPage,
+                                                        (int)data.page, 
                                                         out count);
 
                     response.Count = count;

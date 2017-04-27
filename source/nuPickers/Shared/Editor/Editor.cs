@@ -92,8 +92,8 @@
         /// <param name="propertyAlias">the property alias</param>
         /// <param name="dataSource">the datasource</param>
         /// <param name="customLabelMacro">an optional macro to use for custom labels</param>
-        /// <param name="skip"></param>
-        /// <param name="take"></param>
+        /// <param name="itemsPerPage"></param>
+        /// <param name="page"></param>
         /// <returns>a collection of <see cref="EditorDataItem"/></returns>
         internal static IEnumerable<EditorDataItem> GetEditorDataItems(
                                                 int currentId,
@@ -101,8 +101,8 @@
                                                 string propertyAlias,
                                                 IDataSource dataSource,
                                                 string customLabelMacro,
-                                                int skip,
-                                                int take,
+                                                int itemsPerPage,
+                                                int page,
                                                 out int count)
         {
             // NOTE: shortcut, implemented here as a quick fix to get the picker functional
@@ -114,6 +114,9 @@
             count = editorDataItems.Count();
 
             // get subset
+            int skip = itemsPerPage * (page - 1);
+            int take = itemsPerPage;
+
             editorDataItems = editorDataItems.Skip(skip).Take(take);
 
             // process labels for subset

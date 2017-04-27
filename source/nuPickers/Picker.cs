@@ -190,7 +190,7 @@
         /// <summary>
         /// the id of the content, media or member item
         /// </summary>
-        internal int ContextId { get; set; } // TODO: rename to current
+        internal int ContextId { get; set; }
 
         /// <summary>
         /// 
