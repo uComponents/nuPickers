@@ -53,9 +53,6 @@
 
             if (dataSource != null)
             {
-                // TODO: log error if more than one param (typeahead, keys, page) supplied
-
-
                 // typeahead
                 if (data.typeahead != null)
                 {
@@ -109,7 +106,6 @@
                                                         dataSource,
                                                         (string)data.config.customLabel);
 
-                    // full collection returned
                     response.Count = response.EditorDataItems.Count();
                 }
             }

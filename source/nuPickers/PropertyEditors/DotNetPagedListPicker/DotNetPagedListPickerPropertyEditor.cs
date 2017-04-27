@@ -9,6 +9,7 @@
     // EDITOR UI
     [PropertyEditor(PropertyEditorConstants.DotNetPagedListPickerAlias, "nuPickers: DotNet PagedList Picker", EmbeddedResource.ROOT_URL + "PagedListPicker/PagedListPickerEditor.html", ValueType = "TEXT")]
     [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.ROOT_URL + "ListPicker/ListPickerEditor.css" + EmbeddedResource.FILE_EXTENSION)]
+    [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.ROOT_URL + "PagedListPicker/PagedListPickerEditor.css" + EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "ListPicker/ListPickerEditorDirectives.js" + EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "PagedListPicker/PagedListPickerEditorController.js" + EmbeddedResource.FILE_EXTENSION)]
 

@@ -92,8 +92,8 @@
         /// <param name="propertyAlias">the property alias</param>
         /// <param name="dataSource">the datasource</param>
         /// <param name="customLabelMacro">an optional macro to use for custom labels</param>
-        /// <param name="itemsPerPage"></param>
-        /// <param name="page"></param>
+        /// <param name="itemsPerPage">number of items per page</param>
+        /// <param name="page">the page of (key/label) items to get</param>
         /// <returns>a collection of <see cref="EditorDataItem"/></returns>
         internal static IEnumerable<EditorDataItem> GetEditorDataItems(
                                                 int currentId,

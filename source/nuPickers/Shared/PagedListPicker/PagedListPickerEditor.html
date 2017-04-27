@@ -5,18 +5,18 @@
         <span val-msg-for="validation" val-toggle-msg="validationMessage"></span>
     </ng-form>
 
-    <div ng-controller="nuPickers.Shared.PagedListPicker.PagedListPickerEditorController">
+    <div ng-controller="nuPickers.Shared.PagedListPicker.PagedListPickerEditorController" class="paged-list-picker">
 
 
-        <ng-include src="'/App_Plugins/nuPickers/Shared/ListPicker/ListPickerSelectablePartial.html'" />
+        <div>
+            <ng-include src="'/App_Plugins/nuPickers/Shared/ListPicker/ListPickerSelectablePartial.html'" />
 
-        <!-- paging markup here -->
-        count = {{ count }}
-        <ul>
-            <li ng-repeat="page in pages">
-                
-            </li>
-        </ul>
+            <div class="pager">
+                <span ng-repeat="page in pages">
+                    <a ng-click="changePage(page)">{{page}}</a>
+                </span>
+            </div>
+        </div>
 
         <ng-include src="'/App_Plugins/nuPickers/Shared/ListPicker/ListPickerSelectedPartial.html'" />
 
