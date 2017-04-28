@@ -1,4 +1,13 @@
-﻿.paged-list-picker .pager {
-    border:solid 1px red;
+﻿
+/* pull styling up from the .selectable ul in to this new wrapper*/
+.paged-list-picker .selectable-and-pager {
 
+    width:48%;
+    float: left;
+
+}
+
+/* reset .selectable to fill wrapper */
+.paged-list-picker .selectable {
+    width:100%;
 }

@@ -8,6 +8,8 @@
     user-select: none;
 }
 
+/* text-input-bar could be the filtering textbox or the typeahead textbox */
+
 .list-picker .text-input-bar {
     border: 1px solid transparent;
     padding-bottom:1px;
@@ -27,7 +29,7 @@
     color:red;
 }
 
-.list-picker ul {
+.list-picker .bars {
     list-style-type: none;
     margin:0;
     -webkit-box-sizing: border-box;
@@ -36,7 +38,7 @@
     border: 1px solid transparent;
 }
 
-.list-picker li {
+.list-picker .bars li {
     overflow: hidden;
     background-color: white;
     margin-bottom: 3px;
@@ -93,7 +95,7 @@
 }
 
 /*
-    <ul class="selectable">
+    <ul class="bars selectable">
         <li class="(lit) (disabled) (used)">
 
             <div class="option-label">
@@ -136,7 +138,7 @@
 
 /*
     <div class="selected-and-placeholders">
-        <ul class="selected">
+        <ul class="bars selected">
             <li class="(lit)">
 
                 <a class="button"></a>
@@ -148,7 +150,7 @@
             </li>
         </ul>
 
-        <ul class="placeholders"
+        <ul class="bars placeholders"
             <li/>
             <li class="indicator" />
         </ul>

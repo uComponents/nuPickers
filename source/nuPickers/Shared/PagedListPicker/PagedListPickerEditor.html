@@ -8,14 +8,14 @@
     <div ng-controller="nuPickers.Shared.PagedListPicker.PagedListPickerEditorController" class="paged-list-picker">
 
 
-        <div>
+        <div class="selectable-and-pager">
             <ng-include src="'/App_Plugins/nuPickers/Shared/ListPicker/ListPickerSelectablePartial.html'" />
 
-            <div class="pager">
-                <span ng-repeat="page in pages">
-                    <a ng-click="changePage(page)">{{page}}</a>
-                </span>
-            </div>
+            <ul class="pager">
+                <li ng-repeat="page in pages" ng-class="{active:page == currentPage}">
+                    <a prevent-default href="#" ng-click="changePage(page)">{{page}}</a>
+                </li>
+            </ul>
         </div>
 
         <ng-include src="'/App_Plugins/nuPickers/Shared/ListPicker/ListPickerSelectedPartial.html'" />

@@ -1,6 +1,6 @@
 ﻿<div class="selected-and-placeholders">
     <!-- selected -->
-    <ul class="selected"
+    <ul class="bars selected"
         ui-sortable="sortableConfiguration"
         ng-hide="selectedOptions.length == 0"
         ng-model="selectedOptions">
@@ -22,7 +22,7 @@
         </li>
     </ul>
 
-    <ul class="placeholders">
+    <ul class="bars placeholders">
         <li class="required" ng-repeat="placeholder in getRequiredPlaceholderCount() track by $index">
             Required
         </li>
