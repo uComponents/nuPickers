@@ -69,6 +69,12 @@
                     this.HandledTypeahead = true;
                 }
 
+                //if (dotNetDataSource is IDotNetDataSourcePaged)
+                //{
+                //    ((IDotNetDataSourcePaged)dotNetDataSource).Skip = 0;
+                //    ((IDotNetDataSourcePaged)dotNetDataSource).Take = 0;
+                //}
+
                 foreach (PropertyInfo propertyInfo in dotNetDataSource.GetType().GetProperties().Where(x => this.Properties.Select(y => y.Name).Contains(x.Name)))
                 {
                     if (propertyInfo.PropertyType == typeof(string))
