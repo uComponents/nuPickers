@@ -21,14 +21,23 @@
 
         public bool HandledTypeahead { get { return false; } } // TODO: Implement token replacement for Lucene queries
 
-        public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId, string typeahead)
+        public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId, string typeahead) //TODO: change to explicit
         {
             return this.GetEditorDataItems(currentId);
         }
 
-        public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId, string[] keys)
+        public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId, string[] keys) //TODO: change to explicit
         {
             return this.GetEditorDataItems(currentId).Where(x => keys.Contains(x.Key));
+        }
+
+        IEnumerable<EditorDataItem> IDataSource.GetEditorDataItems(int currentId, int parentId, int skip, int take, out int count)
+        {
+            var editorDataItems = this.GetEditorDataItems(currentId);
+
+            count = editorDataItems.Count();
+
+            return editorDataItems.Skip(skip).Take(take);
         }
 
         [Obsolete("[v2.0.0]")]

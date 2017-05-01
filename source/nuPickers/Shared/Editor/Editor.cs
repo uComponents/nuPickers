@@ -105,24 +105,20 @@
                                                 int page,
                                                 out int count)
         {
-            // NOTE: shortcut, implemented here as a quick fix to get the picker functional
-            // TODO: defer the paging functionalty to the datasource
+            IEnumerable<EditorDataItem> editorDataItems = Enumerable.Empty<EditorDataItem>(); // default return data
+            count = 0;
 
-            //get all items without processing labels
-            IEnumerable<EditorDataItem> editorDataItems = Editor.GetEditorDataItems(currentId, parentId, propertyAlias, dataSource, null);
-
-            count = editorDataItems.Count();
-
-            // get subset
             int skip = itemsPerPage * (page - 1);
             int take = itemsPerPage;
 
-            editorDataItems = editorDataItems.Skip(skip).Take(take);
-
-            // process labels for subset
-            if (!string.IsNullOrWhiteSpace(customLabelMacro))
+            if (dataSource != null)
             {
-                editorDataItems = new CustomLabel(customLabelMacro, currentId, propertyAlias).ProcessEditorDataItems(editorDataItems);
+                editorDataItems = dataSource.GetEditorDataItems(currentId, parentId, skip, take, out count);
+
+                if (!string.IsNullOrWhiteSpace(customLabelMacro))
+                {
+                    editorDataItems = new CustomLabel(customLabelMacro, currentId, propertyAlias).ProcessEditorDataItems(editorDataItems);
+                }
             }
 
             return editorDataItems;
