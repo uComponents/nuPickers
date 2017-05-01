@@ -103,17 +103,17 @@
                                                 string customLabelMacro,
                                                 int itemsPerPage,
                                                 int page,
-                                                out int count)
+                                                out int total)
         {
             IEnumerable<EditorDataItem> editorDataItems = Enumerable.Empty<EditorDataItem>(); // default return data
-            count = 0;
+            total = 0;
 
             int skip = itemsPerPage * (page - 1);
             int take = itemsPerPage;
 
             if (dataSource != null)
             {
-                editorDataItems = dataSource.GetEditorDataItems(currentId, parentId, skip, take, out count);
+                editorDataItems = dataSource.GetEditorDataItems(currentId, parentId, skip, take, out total);
 
                 if (!string.IsNullOrWhiteSpace(customLabelMacro))
                 {

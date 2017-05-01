@@ -39,8 +39,8 @@
         /// <param name="parentId">the parent id (incase it's a new item so current = 0)</param>
         /// <param name="skip">the number of items to skip</param>
         /// <param name="take">the number of items to take</param>
-        /// <param name="count">the total number of items in full data collection (not just subset supplied)</param>
+        /// <param name="total">the total number of items in full data collection (not just subset supplied)</param>
         /// <returns>collection of <see cref="EditorDataItem"/> POCOs that are used as options for a paged picker</returns>
-        IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId, int skip, int take, out int count);
+        IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId, int skip, int take, out int total);
     }
 }

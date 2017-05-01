@@ -34,12 +34,12 @@
             //TODO: update public IDotNetDataSource so keys can be passed though (so it can do a more efficient query)
         }
 
-        IEnumerable<EditorDataItem> IDataSource.GetEditorDataItems(int currentId, int parentId, int skip, int take, out int count)
+        IEnumerable<EditorDataItem> IDataSource.GetEditorDataItems(int currentId, int parentId, int skip, int take, out int total)
         {
             //HACK: paging implemented here until IDotNetDataSourcePage has been implemented
             var editorDataItems = this.GetEditorDataItems(currentId == 0 ? parentId : currentId);
 
-            count = editorDataItems.Count();
+            total = editorDataItems.Count();
 
             return editorDataItems.Skip(skip).Take(take);
         }

@@ -15,6 +15,6 @@
         /// <summary>
         /// The total number of items available (regardless of skip and take values - read by nuPickers after query)
         /// </summary>
-        int Count { get; }
+        int Total { get; }
     }
 }

@@ -7,10 +7,10 @@
             //var itemsPerPage = $scope.model.config.pagedListPicker.itemsPerPage;
             $scope.currentPage = 1;
             $scope.pages = []; // an array of page numbers (suitable for ng-repeat)
-            $scope.count = null;
+            $scope.total = null;
 
             // watch count, as if it changes, the number of pages will need to be recalculated
-            $scope.$watch('count', function (newValue, oldValue) {
+            $scope.$watch('total', function (newValue, oldValue) {
                 if (newValue != oldValue) {
 
                     var totalPages = Math.ceil(newValue / $scope.model.config.pagedListPicker.itemsPerPage);
@@ -32,7 +32,7 @@
             function getEditorDataItems() {
                 editorResource.getEditorDataItems($scope.model, $scope.currentPage).then(function (response) {
                     $scope.$parent.selectableOptions = response.data.editorDataItems;
-                    $scope.count = response.data.count;
+                    $scope.total = response.data.total;
                 });
             }
 

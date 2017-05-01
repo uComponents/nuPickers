@@ -18,7 +18,7 @@
         /// <summary>
         /// total of available editor data items (not all may be in the collection, for example a paged picker will request a subset)
         /// </summary>
-        [JsonProperty("count")]
-        public int? Count { get; internal set; }
+        [JsonProperty("total")]
+        public int Total { get; internal set; }
     }
 }

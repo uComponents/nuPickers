@@ -31,11 +31,11 @@
             return this.GetEditorDataItems(currentId == 0 ? parentId : currentId).Where(x => keys.Contains(x.Key));
         }
 
-        IEnumerable<EditorDataItem> IDataSource.GetEditorDataItems(int currentId, int parentId, int skip, int take, out int count)
+        IEnumerable<EditorDataItem> IDataSource.GetEditorDataItems(int currentId, int parentId, int skip, int take, out int total)
         {
             var editorDataItems = this.GetEditorDataItems(currentId == 0 ? parentId : currentId);
 
-            count = editorDataItems.Count();
+            total = editorDataItems.Count();
 
             return editorDataItems.Skip(skip).Take(take);
         }

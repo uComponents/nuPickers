@@ -32,7 +32,7 @@
             var response = new GetEditorDataItemsResponse()
             {
                 EditorDataItems = Enumerable.Empty<EditorDataItem>(),
-                Count = null
+                Total = 0
             };
 
             IDataSource dataSource = null;
@@ -64,7 +64,7 @@
                                                         (string)data.config.customLabel,
                                                         (string)data.typeahead);
 
-                    // response.Count not set, as full collection size not known
+                    response.Total = response.EditorDataItems.Count();
                 }
                 // keys
                 else if (data.keys != null)
@@ -77,12 +77,12 @@
                                                         (string)data.config.customLabel,
                                                         ((JArray)data.keys).Select(x => x.ToString()).ToArray());
 
-                    // response.count not set, as request is for specific items
+                    response.Total = response.EditorDataItems.Count();
                 }
                 // page
                 else if (data.page != null)
                 {
-                    int count;
+                    int total;
 
                     response.EditorDataItems = Editor.GetEditorDataItems(
                                                         currentId,
@@ -92,9 +92,9 @@
                                                         (string)data.config.customLabel,
                                                         (int)data.config.pagedListPicker.itemsPerPage,
                                                         (int)data.page, 
-                                                        out count);
+                                                        out total);
 
-                    response.Count = count;
+                    response.Total = total;
                 }
                 // default
                 else
@@ -106,7 +106,7 @@
                                                         dataSource,
                                                         (string)data.config.customLabel);
 
-                    response.Count = response.EditorDataItems.Count();
+                    response.Total = response.EditorDataItems.Count();
                 }
             }
 
