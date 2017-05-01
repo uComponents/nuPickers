@@ -292,7 +292,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Shared\DataSource\DataSource.cs" />
-    <Compile Include="Shared\DataSource\GetEditorDataItemsResponse.cs" />
+    <Compile Include="Shared\DataSource\DataSourceApiResponse.cs" />
     <Compile Include="Shared\DataSource\IDataSource.cs" />
     <Compile Include="Shared\DataSource\DataSourceApiController.cs" />
     <Compile Include="Shared\DotNetDataSource\DotNetDataSource.cs" />

@@ -7,7 +7,7 @@
     /// <summary>
     /// Model for the api controller response
     /// </summary>
-    public class GetEditorDataItemsResponse
+    public class DataSourceApiResponse
     {
         /// <summary>
         /// collection of editor data items

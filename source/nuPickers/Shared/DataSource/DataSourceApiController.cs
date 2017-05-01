@@ -24,12 +24,12 @@
         /// <param name="parentId"></param>
         /// <param name="propertyAlias"></param>
         /// <param name="data"></param>
-        /// <returns>a <see cref="GetEditorDataItemsResponse"/> object</returns>
+        /// <returns>a <see cref="DataSourceApiResponse"/> object</returns>
         [HttpPost]
-        public GetEditorDataItemsResponse GetEditorDataItems([FromUri] int currentId, [FromUri] int parentId, [FromUri] string propertyAlias, [FromBody] dynamic data)
+        public DataSourceApiResponse GetEditorDataItems([FromUri] int currentId, [FromUri] int parentId, [FromUri] string propertyAlias, [FromBody] dynamic data)
         {
             // build return object
-            var response = new GetEditorDataItemsResponse()
+            var response = new DataSourceApiResponse()
             {
                 EditorDataItems = Enumerable.Empty<EditorDataItem>(),
                 Total = 0
