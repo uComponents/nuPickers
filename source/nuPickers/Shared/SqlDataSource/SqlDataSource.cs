@@ -16,9 +16,6 @@
 
         public string ConnectionString { get; set; }
 
-        [Obsolete("[v2.0.0]")]
-        public string Typeahead { get; set; }
-
         bool IDataSource.HandledTypeahead { get { return this.handledTypeahead; } }
 
         IEnumerable<EditorDataItem> IDataSource.GetEditorDataItems(int currentId, int parentId, string typeahead)
@@ -40,17 +37,12 @@
             return editorDataItems.Skip(skip).Take(take);
         }
 
-        private IEnumerable<EditorDataItem> GetEditorDataItems(int contextId)
-        {
-            return this.GetEditorDataItems(contextId, this.Typeahead);
-        }
-
         /// <summary>
         ///
         /// </summary>
         /// <param name="contextId"></param>
         /// <returns></returns>
-        private IEnumerable<EditorDataItem> GetEditorDataItems(int contextId, string typeahead)
+        private IEnumerable<EditorDataItem> GetEditorDataItems(int contextId, string typeahead = null)
         {
             List<EditorDataItem> editorDataItems = new List<EditorDataItem>();
 
