@@ -31,12 +31,12 @@
         /// <param name="parentId"></param>
         /// <param name="typeahead">ignored</param>
         /// <returns></returns>
-        public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId, string typeahead) //TODO: change to explicit
+        IEnumerable<EditorDataItem> IDataSource.GetEditorDataItems(int currentId, int parentId, string typeahead)
         {
             return this.GetEditorDataItems(currentId, parentId);
         }
 
-        public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId, string[] keys) //TODO: change to explicit
+        IEnumerable<EditorDataItem> IDataSource.GetEditorDataItems(int currentId, int parentId, string[] keys)
         {
             return this.GetEditorDataItems(currentId, parentId).Where(x => keys.Contains(x.Key));
         }
@@ -50,8 +50,7 @@
             return editorDataItems.Skip(skip).Take(take);
         }
 
-        [Obsolete("[v2.0.0]")]
-        public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId)
+        private IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId)
         {
             XmlDocument xmlDocument;
             List<EditorDataItem> editorDataItems = new List<EditorDataItem>();
