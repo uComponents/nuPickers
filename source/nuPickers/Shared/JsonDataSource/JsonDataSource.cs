@@ -19,7 +19,7 @@
 
         public string LabelJsonPath { get; set; }
 
-        public bool HandledTypeahead { get { return false; } }
+        bool IDataSource.HandledTypeahead { get { return false; } }
 
         IEnumerable<EditorDataItem> IDataSource.GetEditorDataItems(int currentId, int parentId, string typeahead)
         {

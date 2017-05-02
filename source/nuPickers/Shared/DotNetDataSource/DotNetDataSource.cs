@@ -4,13 +4,14 @@
     using nuPickers.Shared.Editor;
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.Linq;
     using System.Reflection;
     using Umbraco.Core.Logging;
 
     public class DotNetDataSource : IDataSource
     {
+        private bool handledTypeahead = false;
+
         public string AssemblyName { get; set; }
 
         public string ClassName { get; set; }
@@ -20,8 +21,7 @@
         [Obsolete("[v2.0.0]")]
         public string Typeahead { get; set; }
 
-        [DefaultValue(false)]
-        public bool HandledTypeahead { get; private set; }
+        bool IDataSource.HandledTypeahead { get { return this.handledTypeahead; } }
 
         IEnumerable<EditorDataItem> IDataSource.GetEditorDataItems(int currentId, int parentId, string typeahead)
         {
@@ -65,7 +65,7 @@
                 if (dotNetDataSource is IDotNetDataSourceTypeahead)
                 {
                     ((IDotNetDataSourceTypeahead)dotNetDataSource).Typeahead = typeahead;
-                    this.HandledTypeahead = true;
+                    this.handledTypeahead = true;
                 }
 
                 //if (dotNetDataSource is IDotNetDataSourcePaged)

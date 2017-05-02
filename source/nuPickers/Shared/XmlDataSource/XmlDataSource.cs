@@ -22,7 +22,7 @@
 
         public string LabelXPath { get; set; }
 
-        public bool HandledTypeahead { get { return false; } }
+        bool IDataSource.HandledTypeahead { get { return false; } }
 
         /// <summary>
         /// 

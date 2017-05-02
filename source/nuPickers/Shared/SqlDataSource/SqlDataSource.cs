@@ -4,13 +4,14 @@
     using nuPickers.Shared.Editor;
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.Linq;
     using System.Text.RegularExpressions;
     using Umbraco.Core.Persistence;
 
     public class SqlDataSource : IDataSource
     {
+        private bool handledTypeahead = false;
+
         public string SqlExpression { get; set; }
 
         public string ConnectionString { get; set; }
@@ -18,8 +19,7 @@
         [Obsolete("[v2.0.0]")]
         public string Typeahead { get; set; }
 
-        [DefaultValue(false)]
-        public bool HandledTypeahead { get; private set; }
+        bool IDataSource.HandledTypeahead { get { return this.handledTypeahead; } }
 
         IEnumerable<EditorDataItem> IDataSource.GetEditorDataItems(int currentId, int parentId, string typeahead)
         {
@@ -64,7 +64,7 @@
                 
                 if (this.SqlExpression.Contains("@typeahead")) // WARNING: not a perfect check !
                 {
-                    this.HandledTypeahead = true;
+                    this.handledTypeahead = true;
                 }
 
                 editorDataItems = database.Fetch<EditorDataItem>(sql, contextId, typeahead);

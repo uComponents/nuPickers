@@ -18,7 +18,7 @@
         
         public string LabelField { get; set; }
 
-        public bool HandledTypeahead { get { return false; } } // TODO: Implement token replacement for Lucene queries
+        bool IDataSource.HandledTypeahead { get { return false; } } // TODO: Implement token replacement for Lucene queries
 
         IEnumerable<EditorDataItem> IDataSource.GetEditorDataItems(int currentId, int parentId, string typeahead)
         {
