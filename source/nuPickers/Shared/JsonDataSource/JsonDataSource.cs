@@ -20,14 +20,14 @@
 
         public string LabelJsonPath { get; set; }
 
-        public bool HandledTypeahead { get { return false; } }
+        bool IDataSource.HandledTypeahead { get { return false; } }
 
-        public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId, string typeahead) //TODO: change to explicit
+        IEnumerable<EditorDataItem> IDataSource.GetEditorDataItems(int currentId, int parentId, string typeahead)
         {
             return this.GetEditorDataItems(currentId);
         }
 
-        public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId, string[] keys) //TODO: change to explicit
+        IEnumerable<EditorDataItem> IDataSource.GetEditorDataItems(int currentId, int parentId, string[] keys)
         {
             return this.GetEditorDataItems(currentId).Where(x => keys.Contains(x.Key));
         }
@@ -45,9 +45,8 @@
         /// Main method for retrieving nuPicker data items.
         /// </summary>
         /// <param name="contextId">Current context node Id</param>
-        /// <returns>List of items for displaying inside a nuPicker JSON data type.</returns>
-        [Obsolete("[v2.0.0]")]
-        public IEnumerable<EditorDataItem> GetEditorDataItems(int contextId)
+        /// <returns>List of items for displaying inside a nuPicker JSON data type.</returns>        
+        private IEnumerable<EditorDataItem> GetEditorDataItems(int contextId)
         {
             List<EditorDataItem> editorDataItems = new List<EditorDataItem>(); // prepare return value
 

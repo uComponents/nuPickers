@@ -20,14 +20,14 @@
         
         public string LabelField { get; set; }
 
-        public bool HandledTypeahead { get { return false; } } // TODO: Implement token replacement for Lucene queries
+        bool IDataSource.HandledTypeahead { get { return false; } } // TODO: Implement token replacement for Lucene queries
 
-        public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId, string typeahead) //TODO: change to explicit
+        IEnumerable<EditorDataItem> IDataSource.GetEditorDataItems(int currentId, int parentId, string typeahead)
         {
             return this.GetEditorDataItems(currentId);
         }
 
-        public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId, string[] keys) //TODO: change to explicit
+        IEnumerable<EditorDataItem> IDataSource.GetEditorDataItems(int currentId, int parentId, string[] keys)
         {
             return this.GetEditorDataItems(currentId).Where(x => keys.Contains(x.Key));
         }
@@ -41,8 +41,7 @@
             return editorDataItems.Skip(pageMarker.Skip).Take(pageMarker.Take);
         }
 
-        [Obsolete("[v2.0.0]")]
-        public IEnumerable<EditorDataItem> GetEditorDataItems(int contextId)
+        private IEnumerable<EditorDataItem> GetEditorDataItems(int contextId)
         {
             List<EditorDataItem> editorDataItems = new List<EditorDataItem>();
 

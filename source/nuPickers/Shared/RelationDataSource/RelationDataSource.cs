@@ -12,14 +12,14 @@
     {
         public string RelationType { get; set; }
 
-        public bool HandledTypeahead {  get { return false; } }
+        bool IDataSource.HandledTypeahead {  get { return false; } }
 
-        public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId, string typeahead) //TODO: change to explicit
+        IEnumerable<EditorDataItem> IDataSource.GetEditorDataItems(int currentId, int parentId, string typeahead)
         {
             return this.GetEditorDataItems(currentId, parentId);
         }
 
-        public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId, string[] keys) //TODO: change to explicit
+        IEnumerable<EditorDataItem> IDataSource.GetEditorDataItems(int currentId, int parentId, string[] keys)
         {
             return this.GetEditorDataItems(currentId, parentId).Where(x => keys.Contains(x.Key));
         }

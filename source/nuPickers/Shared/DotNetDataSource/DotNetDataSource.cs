@@ -5,31 +5,28 @@
     using Paging;
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.Linq;
     using System.Reflection;
     using Umbraco.Core.Logging;
 
     public class DotNetDataSource : IDataSource
     {
+        private bool handledTypeahead = false;
+
         public string AssemblyName { get; set; }
 
         public string ClassName { get; set; }
 
         public IEnumerable<DotNetDataSourceProperty> Properties { get; set; }
 
-        [Obsolete("[v2.0.0]")]
-        public string Typeahead { get; set; }
+        bool IDataSource.HandledTypeahead { get { return this.handledTypeahead; } }
 
-        [DefaultValue(false)]
-        public bool HandledTypeahead { get; private set; }
-
-        public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId, string typeahead) //TODO: change to explicit
+        IEnumerable<EditorDataItem> IDataSource.GetEditorDataItems(int currentId, int parentId, string typeahead)
         {
             return this.GetEditorDataItems(currentId == 0 ? parentId : currentId, typeahead); // fix from PR #110
         }
 
-        public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId, string[] keys) //TODO: change to explicit
+        IEnumerable<EditorDataItem> IDataSource.GetEditorDataItems(int currentId, int parentId, string[] keys)
         {
             return this.GetEditorDataItems(currentId == 0 ? parentId : currentId).Where(x => keys.Contains(x.Key));
             //TODO: update public IDotNetDataSource so keys can be passed though (so it can do a more efficient query)
@@ -45,18 +42,12 @@
             return editorDataItems.Skip(pageMarker.Skip).Take(pageMarker.Take);
         }
 
-        [Obsolete("[v2.0.0]")]
-        public IEnumerable<EditorDataItem> GetEditorDataItems(int contextId)
-        {
-            return this.GetEditorDataItems(contextId, this.Typeahead);
-        }
-
         /// <summary>
         /// 
         /// </summary>
         /// <param name="contextId">'contextId' implies that it could be the current node id, or it could be the parent node id</param>
         /// <returns></returns>
-        private IEnumerable<EditorDataItem> GetEditorDataItems(int contextId, string typeahead)
+        private IEnumerable<EditorDataItem> GetEditorDataItems(int contextId, string typeahead = null)
         {
             List<EditorDataItem> editorDataItems = new List<EditorDataItem>();
 
@@ -67,7 +58,7 @@
                 if (dotNetDataSource is IDotNetDataSourceTypeahead)
                 {
                     ((IDotNetDataSourceTypeahead)dotNetDataSource).Typeahead = typeahead;
-                    this.HandledTypeahead = true;
+                    this.handledTypeahead = true;
                 }
 
                 //if (dotNetDataSource is IDotNetDataSourcePaged)

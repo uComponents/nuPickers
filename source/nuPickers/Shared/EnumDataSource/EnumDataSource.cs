@@ -14,14 +14,14 @@
 
         public string EnumName { get; set; }
 
-        public bool HandledTypeahead { get { return false; } }
+        bool IDataSource.HandledTypeahead { get { return false; } }
 
-        public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId, string typeahead) //TODO: change to explicit
+        IEnumerable<EditorDataItem> IDataSource.GetEditorDataItems(int currentId, int parentId, string typeahead)
         {
             return this.GetEditorDataItems();
         }
 
-        public IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId, string[] keys) //TODO: change to explicit
+        IEnumerable<EditorDataItem> IDataSource.GetEditorDataItems(int currentId, int parentId, string[] keys)
         {
             return this.GetEditorDataItems().Where(x => keys.Contains(x.Key));
         }
@@ -35,8 +35,7 @@
             return editorDataItems.Skip(pageMarker.Skip).Take(pageMarker.Take);
         }
 
-        [Obsolete("[v2.0.0]")]
-        public  IEnumerable<EditorDataItem> GetEditorDataItems()
+        private IEnumerable<EditorDataItem> GetEditorDataItems()
         {
             List<EditorDataItem> editorDataItems = new List<EditorDataItem>();
 
