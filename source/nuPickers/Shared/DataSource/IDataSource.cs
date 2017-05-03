@@ -1,6 +1,7 @@
 ﻿namespace nuPickers.Shared.DataSource
 {
     using nuPickers.Shared.Editor;
+    using Paging;
     using System.Collections.Generic;
 
     /// <summary>
@@ -33,14 +34,13 @@
         IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId, string[] keys);
 
         /// <summary>
-        /// Get the data items for a page (supplied as skip/take, rather then itemsPerPage/page, to avoid calculating in each datasource)
+        /// Get the data items for a page
         /// </summary>
         /// <param name="currentId">the current id</param>
         /// <param name="parentId">the parent id (incase it's a new item so current = 0)</param>
-        /// <param name="skip">the number of items to skip</param>
-        /// <param name="take">the number of items to take</param>
-        /// <param name="total">the total number of items in full data collection (not just subset supplied)</param>
+        /// <param name="pageMarker">specifies the itemsPerPage & page values</param>
+        /// <param name="total">the total number of items in full data collection (not just subset requested)</param>
         /// <returns>collection of <see cref="EditorDataItem"/> POCOs that are used as options for a paged picker</returns>
-        IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId, int skip, int take, out int total);
+        IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId, PageMarker pageMarker, out int total);
     }
 }

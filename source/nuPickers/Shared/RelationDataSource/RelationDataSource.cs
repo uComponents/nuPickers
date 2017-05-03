@@ -2,6 +2,7 @@
 {
     using DataSource;
     using Editor;
+    using Paging;
     using System.Collections.Generic;
     using System.Linq;
     using Umbraco.Core;
@@ -22,13 +23,13 @@
         {
             return this.GetEditorDataItems(currentId, parentId).Where(x => keys.Contains(x.Key));
         }
-        IEnumerable<EditorDataItem> IDataSource.GetEditorDataItems(int currentId, int parentId, int skip, int take, out int total)
+        IEnumerable<EditorDataItem> IDataSource.GetEditorDataItems(int currentId, int parentId, PageMarker pageMarker, out int total)
         {
             var editorDataItems = this.GetEditorDataItems(currentId, parentId);
 
             total = editorDataItems.Count();
 
-            return editorDataItems.Skip(skip).Take(take);
+            return editorDataItems.Skip(pageMarker.Skip).Take(pageMarker.Take);
         }
 
         private IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId)

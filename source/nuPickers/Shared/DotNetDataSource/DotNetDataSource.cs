@@ -2,6 +2,7 @@
 {
     using DataSource;
     using nuPickers.Shared.Editor;
+    using Paging;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
@@ -34,14 +35,14 @@
             //TODO: update public IDotNetDataSource so keys can be passed though (so it can do a more efficient query)
         }
 
-        IEnumerable<EditorDataItem> IDataSource.GetEditorDataItems(int currentId, int parentId, int skip, int take, out int total)
+        IEnumerable<EditorDataItem> IDataSource.GetEditorDataItems(int currentId, int parentId, PageMarker pageMarker, out int total)
         {
             //HACK: paging implemented here until IDotNetDataSourcePage has been implemented
             var editorDataItems = this.GetEditorDataItems(currentId == 0 ? parentId : currentId);
 
             total = editorDataItems.Count();
 
-            return editorDataItems.Skip(skip).Take(take);
+            return editorDataItems.Skip(pageMarker.Skip).Take(pageMarker.Take);
         }
 
         [Obsolete("[v2.0.0]")]

@@ -2,6 +2,7 @@
 {
     using DataSource;
     using nuPickers.Shared.Editor;
+    using Paging;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -41,13 +42,13 @@
             return this.GetEditorDataItems(currentId, parentId).Where(x => keys.Contains(x.Key));
         }
 
-        IEnumerable<EditorDataItem> IDataSource.GetEditorDataItems(int currentId, int parentId, int skip, int take, out int count)
+        IEnumerable<EditorDataItem> IDataSource.GetEditorDataItems(int currentId, int parentId, PageMarker pageMarker, out int count)
         {
             var editorDataItems = this.GetEditorDataItems(currentId, parentId);
 
             count = editorDataItems.Count();
 
-            return editorDataItems.Skip(skip).Take(take);
+            return editorDataItems.Skip(pageMarker.Skip).Take(pageMarker.Take);
         }
 
         [Obsolete("[v2.0.0]")]

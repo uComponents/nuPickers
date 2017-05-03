@@ -1,19 +1,23 @@
 ﻿namespace nuPickers.Shared.DotNetDataSource
 {
+    /// <summary>
+    /// Implementing this interface will enable a dot-net-data-source to support returning a page sub-set of options 
+    /// ItemsPerPage/Page passed in preference to Skip/Take, as can reliably convert from: ItemsPerPage/Page -> Skip/Take, the same cannot be said for: Skip/Take -> ItemsPerPage/Page
+    /// </summary>
     public interface IDotNetDataSourcePaged
     {
         /// <summary>
-        /// Number of items to skip (set by nuPickers before query)
+        /// (set by nuPickers before query)
         /// </summary>
-        int Skip { set; }
+        int ItemsPerPage { set; }
 
         /// <summary>
-        /// Number of items to take (set by nuPickers before query)
+        /// (set by nuPickers before query)
         /// </summary>
-        int Take { set; }
+        int Page { set; }
 
         /// <summary>
-        /// The total number of items available (regardless of skip and take values - read by nuPickers after query)
+        /// The total number of items available, as if skip=0 and take=infinite (read by nuPickers after query)
         /// </summary>
         int Total { get; }
     }

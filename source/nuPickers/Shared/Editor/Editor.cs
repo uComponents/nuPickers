@@ -3,6 +3,7 @@
     using DataSource;
     using nuPickers.Shared.CustomLabel;
     using nuPickers.Shared.TypeaheadListPicker;
+    using Paging;
     using System.Collections.Generic;
     using System.Linq;
     using Umbraco.Core;
@@ -106,14 +107,15 @@
                                                 out int total)
         {
             IEnumerable<EditorDataItem> editorDataItems = Enumerable.Empty<EditorDataItem>(); // default return data
-            total = 0;
-
-            int skip = itemsPerPage * (page - 1);
-            int take = itemsPerPage;
+            total = -1;
 
             if (dataSource != null)
             {
-                editorDataItems = dataSource.GetEditorDataItems(currentId, parentId, skip, take, out total);
+                editorDataItems = dataSource.GetEditorDataItems(
+                                                currentId, 
+                                                parentId, 
+                                                new PageMarker(itemsPerPage, page), 
+                                                out total);
 
                 if (!string.IsNullOrWhiteSpace(customLabelMacro))
                 {

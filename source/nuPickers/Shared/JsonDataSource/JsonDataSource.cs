@@ -4,6 +4,7 @@
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
     using nuPickers.Shared.Editor;
+    using Paging;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -31,13 +32,13 @@
             return this.GetEditorDataItems(currentId).Where(x => keys.Contains(x.Key));
         }
 
-        IEnumerable<EditorDataItem> IDataSource.GetEditorDataItems(int currentId, int parentId, int skip, int take, out int total)
+        IEnumerable<EditorDataItem> IDataSource.GetEditorDataItems(int currentId, int parentId, PageMarker pageMarker, out int total)
         {
             var editorDataItems = this.GetEditorDataItems(currentId);
 
             total = editorDataItems.Count();
 
-            return editorDataItems.Skip(skip).Take(take);
+            return editorDataItems.Skip(pageMarker.Skip).Take(pageMarker.Take);
         }
 
         /// <summary>
