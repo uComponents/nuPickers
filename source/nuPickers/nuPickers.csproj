@@ -300,6 +300,7 @@
     <Compile Include="Shared\DotNetDataSource\DotNetDataSourceAttribute.cs" />
     <Compile Include="Shared\DotNetDataSource\DotNetDataSourceProperty.cs" />
     <Compile Include="Shared\DotNetDataSource\IDotNetDataSource.cs" />
+    <Compile Include="Shared\DotNetDataSource\IDotNetDataSourceKeyed.cs" />
     <Compile Include="Shared\DotNetDataSource\IDotNetDataSourcePaged.cs" />
     <Compile Include="Shared\DotNetDataSource\IDotNetDataSourceTypeahead.cs" />
     <Compile Include="Shared\Editor\Editor.cs" />

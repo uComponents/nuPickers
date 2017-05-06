@@ -42,11 +42,11 @@
             return this.GetEditorDataItems(currentId, parentId).Where(x => keys.Contains(x.Key));
         }
 
-        IEnumerable<EditorDataItem> IDataSource.GetEditorDataItems(int currentId, int parentId, PageMarker pageMarker, out int count)
+        IEnumerable<EditorDataItem> IDataSource.GetEditorDataItems(int currentId, int parentId, PageMarker pageMarker, out int total)
         {
             var editorDataItems = this.GetEditorDataItems(currentId, parentId);
 
-            count = editorDataItems.Count();
+            total = editorDataItems.Count();
 
             return editorDataItems.Skip(pageMarker.Skip).Take(pageMarker.Take);
         }
