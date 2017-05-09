@@ -5,52 +5,20 @@
     /// </summary>
     internal class PageMarker
     {
-        private int itemsPerPage;
+        internal int ItemsPerPage { get; private set; }
 
-        private int page;
+        internal int Page { get; private set; }
 
-        private int skip;
+        internal int Skip { get; private set; }
 
-        private int take;
-
-        internal int ItemsPerPage
-        {
-            get
-            {
-                return this.itemsPerPage;
-            }
-        }
-
-        internal int Page
-        {
-            get
-            {
-                return this.page;
-            }
-        }
-
-        internal int Skip
-        {
-            get
-            {
-                return this.skip;
-            }
-        }
-
-        internal int Take
-        {
-            get
-            {
-                return this.take;
-            }
-        }
+        internal int Take { get; private set; }
 
         internal PageMarker(int itemsPerPage, int page)
         {
-            this.itemsPerPage = itemsPerPage;
-            this.page = page;
-            this.skip = itemsPerPage * (page - 1);
-            this.take = itemsPerPage;
+            this.ItemsPerPage = itemsPerPage;
+            this.Page = page;
+            this.Skip = itemsPerPage * (page - 1);
+            this.Take = itemsPerPage;
         }
     }
 }

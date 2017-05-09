@@ -30,6 +30,10 @@
             };
 
             function getEditorDataItems() {
+
+                // has this page been requested before ?
+
+
                 editorResource.getEditorDataItems($scope.model, $scope.currentPage).then(function (response) {
                     $scope.$parent.selectableOptions = response.data.editorDataItems;
                     $scope.total = response.data.total;
