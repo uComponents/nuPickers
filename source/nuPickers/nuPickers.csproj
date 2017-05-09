@@ -246,6 +246,8 @@
     <Compile Include="PropertyEditors\EnumLabels\EnumLabelsPropertyEditor.cs" />
     <Compile Include="PropertyEditors\JsonLabels\JsonLabelsPreValueEditor.cs" />
     <Compile Include="PropertyEditors\JsonLabels\JsonLabelsPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\JsonPagedListPicker\JsonPagedListPickerPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\JsonPagedListPicker\JsonPagedListPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\JsonTypeaheadListPicker\JsonTypeaheadListPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\JsonTypeaheadListPicker\JsonTypeaheadPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\JsonRadioButtonPicker\JsonRadioButtonPickerPreValueEditor.cs" />
@@ -270,6 +272,8 @@
     <Compile Include="PropertyEditors\LuceneDropDownPicker\LuceneDropDownPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\LuceneLabels\LuceneLabelsPreValueEditor.cs" />
     <Compile Include="PropertyEditors\LuceneLabels\LuceneLabelsPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\LucenePagedListPicker\LucenePagedListPickerPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\LucenePagedListPicker\LucenePagedListPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\LucenePrefetchListPicker\LucenePrefetchListPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\LucenePrefetchListPicker\LucenePrefetchListPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\LuceneRadioButtonPicker\LuceneRadioButtonPickerPreValueEditor.cs" />
@@ -279,10 +283,14 @@
     <Compile Include="PropertyEditors\PropertyEditorConstants.cs" />
     <Compile Include="PropertyEditors\SqlLabels\SqlLabelsPreValueEditor.cs" />
     <Compile Include="PropertyEditors\SqlLabels\SqlLabelsPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\SqlPagedListPicker\SqlPagedListPickerPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\SqlPagedListPicker\SqlPagedListPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\SqlTypeaheadListPicker\SqlTypeaheadListPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\SqlTypeaheadListPicker\SqlTypeaheadListPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\XmlLabels\XmlLabelsPreValueEditor.cs" />
     <Compile Include="PropertyEditors\XmlLabels\XmlLabelsPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\XmlPagedListPicker\XmlPagedListPickerPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\XmlPagedListPicker\XmlPagedListPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\XmlTypeaheadListPicker\XmlTypeaheadListPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\XmlTypeaheadListPicker\XmlTypeaheadListPickerPropertyEditor.cs" />
     <Compile Include="Picker.cs">
