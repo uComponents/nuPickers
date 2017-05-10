@@ -1,13 +1,41 @@
 ﻿
 /* pull styling up from the .selectable ul in to this new wrapper*/
 .paged-list-picker .selectable-and-pager {
-
     width:48%;
     float: left;
-
 }
 
 /* reset .selectable to fill wrapper */
 .paged-list-picker .selectable {
     width:100%;
+}
+
+
+.paged-list-picker .paging-buttons {
+    margin: 20px 0;
+    text-align: center;
+    list-style: none;
+}
+
+.paged-list-picker .paging-buttons li {
+    display: inline;
+    line-height: 20px;
+}
+   
+.paged-list-picker .paging-buttons li a {
+    display: inline-block;
+    padding: 0 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+}
+
+.paged-list-picker .paging-buttons li a:hover,
+.paged-list-picker .paging-buttons li a:focus {
+    text-decoration:none;
+}
+
+.paged-list-picker .paging-buttons li a:hover,
+.paged-list-picker .paging-buttons li.active a {
+     background-color:#f5f5f5;
 }

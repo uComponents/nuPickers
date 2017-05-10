@@ -11,7 +11,7 @@
         <div class="selectable-and-pager">
             <ng-include src="'/App_Plugins/nuPickers/Shared/ListPicker/ListPickerSelectablePartial.html'" />
 
-            <ul class="pager">
+            <ul class="paging-buttons">
                 <li ng-repeat="page in pages" ng-class="{active:page == currentPage}">
                     <a prevent-default href="#" ng-click="changePage(page)">{{page}}</a>
                 </li>
