@@ -1,19 +1,4 @@
-﻿
-.paged-list-picker {
-    display: flex;
-}
-
-/* pull styling up from the .selectable ul in to this new wrapper*/
-.paged-list-picker .selectable-container {
-    display: block;
-}
-
-.list-picker.split .paged-list-picker .selectable-container,
-.list-picker.split .paged-list-picker .selected-container {
-    width: 50%;
-}
-
-.paged-list-picker .paging-buttons {
+﻿.paged-list-picker .paging-buttons {
     margin: 20px 0;
     text-align: center;
     list-style: none;

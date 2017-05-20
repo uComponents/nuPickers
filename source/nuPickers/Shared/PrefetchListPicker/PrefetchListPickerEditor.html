@@ -5,20 +5,23 @@
         <span val-msg-for="validation" val-toggle-msg="validationMessage"></span>
     </ng-form>
 
-    <div ng-controller="nuPickers.Shared.PrefetchListPicker.PrefetchListPickerEditorController" ng-class="{'has-text-input-bar': model.config.prefetchListPicker.enableFiltering}">
+    <div ng-controller="nuPickers.Shared.PrefetchListPicker.PrefetchListPickerEditorController">
+
+        <!-- filter -->
+        <div class="text-input-bar"
+             ng-show="model.config.prefetchListPicker.enableFiltering">
+            <input type="text"
+                   placeholder="filter"
+                   ng-model="filter"
+                   ng-trim="false"
+                   nu-cursor-up="cursorUp()"
+                   nu-cursor-down="cursorDown()"
+                   nu-enter-key="enterKey()" />
+        </div>
+
+        <div class="flex">
 
             <div class="selectable-container">
-                <!-- filter -->
-                <div class="text-input-bar"
-                     ng-show="model.config.prefetchListPicker.enableFiltering">
-                    <input type="text"
-                           placeholder="filter"
-                           ng-model="filter"
-                           ng-trim="false"
-                           nu-cursor-up="cursorUp()"
-                           nu-cursor-down="cursorDown()"
-                           nu-enter-key="enterKey()" />
-                </div>
                 <ng-include src="'/App_Plugins/nuPickers/Shared/ListPicker/ListPickerSelectablePartial.html'" />
             </div>
 
@@ -27,4 +30,5 @@
             </div>
 
         </div>
+    </div>
 </div>

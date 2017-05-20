@@ -8,6 +8,24 @@
     user-select: none;
 }
 
+.selectable-container {
+    width: 100%;
+}
+
+.list-picker.split .selectable-container,
+.list-picker.split .selected-container {
+    width: 50%;
+}
+
+.flex {
+    display: flex;
+}
+
+/* pull styling up from the .selectable ul in to this new wrapper*/
+.paged-list-picker .selectable-container {
+    display: block;
+}
+
 /* text-input-bar could be the filtering textbox or the typeahead textbox */
 
 .list-picker .text-input-bar {
@@ -50,7 +68,7 @@
     width: 100%;
     margin: 0.25em;
     box-sizing: border-box;
-    word-break: break-all;
+    overflow: hidden;
 }
 
 .list-picker .lit { /* li */
@@ -112,12 +130,16 @@
     </ul>
 */
 
-.list-picker ul.selectable, .list-picker ul.placeholders {
+.list-picker ul.bars {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: flex-start;
     align-content: flex-start;
+}
+
+.list-picker ul.selected {
+    flex-direction: column;
 }
 
 .list-picker .selectable.fixed-height {
@@ -163,9 +185,6 @@
         </ul>
     </div>
 */
-.list-picker .selected-container {
-    display: block;
-}
 
 .list-picker .selected  li:last-child {
     margin-bottom:0px; /* to ensure that the placeholder list beneath lines up */

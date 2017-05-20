@@ -5,28 +5,31 @@
         <span val-msg-for="validation" val-toggle-msg="validationMessage"></span>
     </ng-form>
 
-    <div ng-controller="nuPickers.Shared.TypeaheadListPicker.TypeaheadListPickerEditorController" class="has-text-input-bar">
+    <div ng-controller="nuPickers.Shared.TypeaheadListPicker.TypeaheadListPickerEditorController">
 
-        <div class="selectable-container">
-            <!-- typeahead -->
-            <div class="text-input-bar">
-                <input type="text"
-                       placeholder="typeahead"
-                       autocomplete="off"
-                       ng-model="typeahead"
-                       ng-class="{'no-match': noMatch}"
-                       nu-cursor-up="cursorUp()"
-                       nu-cursor-down="cursorDown()"
-                       nu-enter-key="enterKey()" />
-                <!--nu-blur="clear()" />-->
+        <!-- typeahead -->
+        <div class="text-input-bar">
+            <input type="text"
+                   placeholder="typeahead"
+                   autocomplete="off"
+                   ng-model="typeahead"
+                   ng-class="{'no-match': noMatch}"
+                   nu-cursor-up="cursorUp()"
+                   nu-cursor-down="cursorDown()"
+                   nu-enter-key="enterKey()" />
+            <!--nu-blur="clear()" />-->
+        </div>
+
+        <div class="flex">
+            <div class="selectable-container">
+                <ng-include src="'/App_Plugins/nuPickers/Shared/ListPicker/ListPickerSelectablePartial.html'" />
             </div>
 
-            <ng-include src="'/App_Plugins/nuPickers/Shared/ListPicker/ListPickerSelectablePartial.html'" />
+            <div class="selected-container">
+                <ng-include src="'/App_Plugins/nuPickers/Shared/ListPicker/ListPickerSelectedPartial.html'" />
+            </div>
         </div>
 
-        <div class="selected-container">
-            <ng-include src="'/App_Plugins/nuPickers/Shared/ListPicker/ListPickerSelectedPartial.html'" />
-        </div>
 
     </div>
 </div>
