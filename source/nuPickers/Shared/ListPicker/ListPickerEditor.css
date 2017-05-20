@@ -39,15 +39,15 @@
 }
 
 .list-picker .bars li {
-    overflow: hidden;
     background-color: white;
+    display: block;
     margin-bottom: 3px;
-    font-family: Arial,Lucida Grande;
     position: relative;
     border: 1px solid #ccc;
-    cursor:default;
-    min-height:30px;
-    line-height:30px;
+    min-height:2em;
+    line-height:2em;
+    width: 100%;
+    margin: 0.25em;
 }
 
 .list-picker .lit { /* li */
@@ -55,6 +55,7 @@
 }
 
 .list-picker .disabled { /* li and .button */
+    border-color: #35c786;
     opacity: 0.7;
     filter: alpha(opacity=70); /* msie */
 }
@@ -64,12 +65,11 @@
 }
 
 .list-picker .option-label {
-    width:90%;
     padding-left:4px; /* TODO: move to a child element to avoid conflict with 90% / 10% widths */
 }
 
 .list-picker .button {
-    width: 10%;
+    width: 1.4em; /* 21px */
     height: 100%;
     position: absolute;
     /*font-size:20px;*/
@@ -108,9 +108,12 @@
     </ul>
 */
 
-.list-picker .selectable {
-    width:48%;
-    float: left;
+.list-picker ul.selectable, .list-picker ul.placeholders {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
 }
 
 .list-picker .selectable.fixed-height {
@@ -137,7 +140,7 @@
 }
 
 /*
-    <div class="selected-and-placeholders">
+    <div class="selected-container">
         <ul class="bars selected">
             <li class="(lit)">
 
@@ -156,15 +159,11 @@
         </ul>
     </div>
 */
-.list-picker .selected-and-placeholders {
-    clear: right;
-    float: right;
-    width:48%;
-    position:relative;
-    /* padding-left: TODO: calculate from scrollbar width (want to ensure markup area is same with both sides) */
+.list-picker .selected-container {
+    display: block;
 }
 
-.list-picker .has-text-input-bar .selected-and-placeholders {
+.list-picker .has-text-input-bar .selected-container {
     margin-top:-35px;
 }
 
@@ -173,7 +172,7 @@
 }
 
 .list-picker .selected .option-label {
-    margin-left:10%; /* make space for the button */
+    margin-left: 1.4em; /* make space for the button */
 }
 
 .list-picker .selected .sort {

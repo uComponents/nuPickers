@@ -1,4 +1,4 @@
-﻿<div ng-controller="nuPickers.Shared.ListPicker.ListPickerEditorController" class="list-picker">
+﻿<div ng-controller="nuPickers.Shared.ListPicker.ListPickerEditorController" class="list-picker" ng-class="{split:isSplit}">
 
     <ng-form name="listPickerForm">
         <input type="hidden" name="validation" ng-model="model.value" />
@@ -8,7 +8,8 @@
     <div ng-controller="nuPickers.Shared.PagedListPicker.PagedListPickerEditorController" class="paged-list-picker">
 
 
-        <div class="selectable-and-pager">
+        <div class="selectable-container">
+            <!-- ul -->
             <ng-include src="'/App_Plugins/nuPickers/Shared/ListPicker/ListPickerSelectablePartial.html'" />
 
             <ul class="paging-buttons">
@@ -18,7 +19,9 @@
             </ul>
         </div>
 
-        <ng-include src="'/App_Plugins/nuPickers/Shared/ListPicker/ListPickerSelectedPartial.html'" />
+        <div class="selected-container">
+            <ng-include src="'/App_Plugins/nuPickers/Shared/ListPicker/ListPickerSelectedPartial.html'" />
+        </div>
 
     </div>
 </div>

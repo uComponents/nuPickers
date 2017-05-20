@@ -1,4 +1,4 @@
-﻿<div ng-controller="nuPickers.Shared.ListPicker.ListPickerEditorController" class="list-picker">
+﻿<div ng-controller="nuPickers.Shared.ListPicker.ListPickerEditorController" class="list-picker" ng-class="{split:isSplit}">
 
     <ng-form name="listPickerForm">
         <input type="hidden" name="validation" ng-model="model.value" />
@@ -7,20 +7,24 @@
 
     <div ng-controller="nuPickers.Shared.PrefetchListPicker.PrefetchListPickerEditorController" ng-class="{'has-text-input-bar': model.config.prefetchListPicker.enableFiltering}">
 
-        <!-- filter -->
-        <div class="text-input-bar" 
-             ng-show="model.config.prefetchListPicker.enableFiltering">
-            <input type="text"
-                   placeholder="filter"
-                   ng-model="filter"
-                   ng-trim="false"
-                   nu-cursor-up="cursorUp()"
-                   nu-cursor-down="cursorDown()"
-                   nu-enter-key="enterKey()" />
+            <div class="selectable-container">
+                <!-- filter -->
+                <div class="text-input-bar"
+                     ng-show="model.config.prefetchListPicker.enableFiltering">
+                    <input type="text"
+                           placeholder="filter"
+                           ng-model="filter"
+                           ng-trim="false"
+                           nu-cursor-up="cursorUp()"
+                           nu-cursor-down="cursorDown()"
+                           nu-enter-key="enterKey()" />
+                </div>
+                <ng-include src="'/App_Plugins/nuPickers/Shared/ListPicker/ListPickerSelectablePartial.html'" />
+            </div>
+
+            <div class="selected-container">
+                <ng-include src="'/App_Plugins/nuPickers/Shared/ListPicker/ListPickerSelectedPartial.html'" />
+            </div>
+
         </div>
-
-        <ng-include src="'/App_Plugins/nuPickers/Shared/ListPicker/ListPickerSelectablePartial.html'" />
-        <ng-include src="'/App_Plugins/nuPickers/Shared/ListPicker/ListPickerSelectedPartial.html'" />
-
-    </div>
 </div>

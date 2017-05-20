@@ -15,7 +15,8 @@ angular
             // optional width and height values for the list items
             $scope.itemWidth = $scope.model.config.listPicker.itemWidth > 0 ? $scope.model.config.listPicker.itemWidth : '';
             $scope.itemHeight = $scope.model.config.listPicker.itemHeight > 0 ? $scope.model.config.listPicker.itemHeight : '';
-
+            $scope.isSplit = !($scope.model.config.listPicker.itemWidth > 0);
+     
             
             // http://api.jqueryui.com/sortable/
             $scope.sortableConfiguration = { axis: 'y' };

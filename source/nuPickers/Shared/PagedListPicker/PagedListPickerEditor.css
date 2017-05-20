@@ -1,15 +1,17 @@
 ﻿
+.paged-list-picker {
+    display: flex;
+}
+
 /* pull styling up from the .selectable ul in to this new wrapper*/
-.paged-list-picker .selectable-and-pager {
-    width:48%;
-    float: left;
+.paged-list-picker .selectable-container {
+    display: block;
 }
 
-/* reset .selectable to fill wrapper */
-.paged-list-picker .selectable {
-    width:100%;
+.list-picker.split .paged-list-picker .selectable-container,
+.list-picker.split .paged-list-picker .selected-container {
+    width: 50%;
 }
-
 
 .paged-list-picker .paging-buttons {
     margin: 20px 0;
