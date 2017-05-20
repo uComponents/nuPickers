@@ -6,19 +6,16 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    clear: both;
 }
 
 .selectable-container {
-    width: 100%;
+    width: 75%; /* <.< IE10 yay! */
 }
 
 .list-picker.split .selectable-container,
 .list-picker.split .selected-container {
     width: 50%;
-}
-
-.flex {
-    display: flex;
 }
 
 /* pull styling up from the .selectable ul in to this new wrapper*/
@@ -69,6 +66,8 @@
     margin: 0.25em;
     box-sizing: border-box;
     overflow: hidden;
+    -ms-flex: 0 1 auto;
+    flex: 0 1 auto;
 }
 
 .list-picker .lit { /* li */
@@ -131,7 +130,9 @@
 */
 
 .list-picker ul.bars {
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: flex-start;
