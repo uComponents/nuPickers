@@ -20,9 +20,9 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     width:48%;
-
-    min-height:30px;
-    line-height:30px;
+    margin: 0.25em;
+    min-height:2em;
+    line-height:2em;
 }
 
 .list-picker .text-input-bar input.no-match {
@@ -45,9 +45,12 @@
     position: relative;
     border: 1px solid #ccc;
     min-height:2em;
-    line-height:2em;
+    line-height: 1.2;
+    padding: 0.3em 1.4em 0.3em 0.25em; /* Top Right Bottom Left, right is equal to .button width */
     width: 100%;
     margin: 0.25em;
+    box-sizing: border-box;
+    word-break: break-all;
 }
 
 .list-picker .lit { /* li */
@@ -72,6 +75,7 @@
     width: 1.4em; /* 21px */
     height: 100%;
     position: absolute;
+    top: 0;
     /*font-size:20px;*/
     text-align:center;
 }
@@ -161,10 +165,6 @@
 */
 .list-picker .selected-container {
     display: block;
-}
-
-.list-picker .has-text-input-bar .selected-container {
-    margin-top:-35px;
 }
 
 .list-picker .selected  li:last-child {
