@@ -146,7 +146,6 @@
     overflow-y: scroll;
     border-color: #f0f0f0; /* show the border when using scrolling */
     background-color: #fdfdfd;
-    direction:rtl; /* force scrollbars left */
 }
 
 .list-picker .selectable .option-label {
