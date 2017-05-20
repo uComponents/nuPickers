@@ -5,7 +5,8 @@
         ng-hide="selectedOptions.length == 0"
         ng-model="selectedOptions">
         <li ng-class="{lit:lit}"
-            ng-repeat="option in selectedOptions track by $index">
+            ng-repeat="option in selectedOptions track by $index"
+            ng-style="{ 'width' : itemWidth, 'height': itemHeight}">
 
             <a href=""
                class="button icon icon-delete red"
@@ -23,11 +24,15 @@
     </ul>
 
     <ul class="bars placeholders">
-        <li class="required" ng-repeat="placeholder in getRequiredPlaceholderCount() track by $index">
+        <li class="required" 
+            ng-repeat="placeholder in getRequiredPlaceholderCount() track by $index"
+            ng-style="{ 'width' : itemWidth, 'height': itemHeight}">
             Required
         </li>
 
-        <li class="select" ng-show="showSelectPlaceholder()">
+        <li class="select" 
+            ng-show="showSelectPlaceholder()"
+            ng-style="{ 'width' : itemWidth, 'height': itemHeight}">
             Select
         </li>
 

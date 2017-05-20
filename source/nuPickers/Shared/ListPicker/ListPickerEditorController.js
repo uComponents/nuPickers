@@ -12,6 +12,11 @@ angular
             // array of option objects, for the selected list
             $scope.selectedOptions = []; // [{"key":"","label":""}...]
 
+            // optional width and height values for the list items
+            $scope.itemWidth = $scope.model.config.listPicker.itemWidth > 0 ? $scope.model.config.listPicker.itemWidth : '';
+            $scope.itemHeight = $scope.model.config.listPicker.itemHeight > 0 ? $scope.model.config.listPicker.itemHeight : '';
+
+            
             // http://api.jqueryui.com/sortable/
             $scope.sortableConfiguration = { axis: 'y' };
 

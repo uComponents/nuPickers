@@ -6,7 +6,8 @@
 
     <li ng-repeat="option in selectableOptions"
         ng-hide="model.config.listPicker.hideUsed && !isSelectable(option)"
-        ng-class="{lit:lit, disabled:!isValidSelection(option), used:isUsed(option)}">
+        ng-class="{lit:lit, disabled:!isValidSelection(option), used:isUsed(option)}"
+        ng-style="{ 'width' : itemWidth, 'height': itemHeight}">
         <div class="option-label" ng-bind-html-unsafe="option.label">
         </div>
 
