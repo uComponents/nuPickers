@@ -2,6 +2,32 @@
 
     <div>
         <label class="control-label" for="">
+            Item Width
+            <small>Width in px of each list item - 0 means default</small>
+        </label>
+
+        <div class="controls controls-row">
+            <input type="number" 
+                   ng-model="model.value.itemWidth"
+                   ng-init="model.value.itemWidth = model.value.itemWidth || 0" />
+        </div>
+    </div>
+
+    <div>
+        <label class="control-label" for="">
+            Item Height
+            <small>Height in px of each list item - 0 means default</small>
+        </label>
+
+        <div class="controls controls-row">
+            <input type="number" 
+                   ng-model="model.value.itemHeight"
+                   ng-init="model.value.itemHeight = model.value.itemHeight || 0" />
+        </div>
+    </div>
+
+    <div>
+        <label class="control-label" for="">
             Min Items
             <small>Number of items that must be selected</small>
         </label>
