@@ -6,6 +6,7 @@
     using System.Linq;
     using System.Net;
     using System.Reflection;
+    using System.Text;
     using System.Web;
     using System.Web.Hosting;
     using Umbraco.Web;
@@ -129,6 +130,7 @@
 
                 using (WebClient client = new WebClient())
                 {
+                    client.Encoding = Encoding.UTF8;
                     data = client.DownloadString(url);
                 }
             }
