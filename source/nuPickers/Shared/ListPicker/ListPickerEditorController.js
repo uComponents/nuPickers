@@ -12,6 +12,13 @@ angular
             // array of option objects, for the selected list
             $scope.selectedOptions = []; // [{"key":"","label":""}...]
 
+            var ids = $scope.model.value.split(',');
+
+            // loop over ids and create object, add to final
+            $scope.selectedOptions = ids.map(function (id) {
+                return { 'key': id, 'label': 'loading ...' }
+            });
+
             // http://api.jqueryui.com/sortable/
             $scope.sortableConfiguration = { axis: 'y' };
 
