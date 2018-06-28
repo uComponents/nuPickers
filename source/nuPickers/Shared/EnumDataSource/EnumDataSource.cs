@@ -45,7 +45,8 @@
             {
                 FieldInfo fieldInfo = enumType.GetField(enumItemName);
                 string key = enumItemName;
-                string label = enumItemName;                
+                string label = enumItemName;
+	            bool enabled = true;
 
                 foreach(CustomAttributeData customAttributeData in CustomAttributeData.GetCustomAttributes(fieldInfo))
                 {
@@ -66,14 +67,15 @@
                                     break;
 
                                 case "Enabled":
-                                    //enabled = (bool)customAttributeNamedArguement.TypedValue.Value;
+                                    enabled = (bool)customAttributeNamedArguement.TypedValue.Value;
                                     break;
                             }
                         }
                     }
                 }
 
-                editorDataItems.Add(new EditorDataItem() { Key = key, Label = label });
+				if(enabled)
+					editorDataItems.Add(new EditorDataItem() { Key = key, Label = label });
             }
 
             return editorDataItems;
