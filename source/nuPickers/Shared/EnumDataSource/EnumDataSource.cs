@@ -74,8 +74,10 @@
                     }
                 }
 
-				if(enabled)
-					editorDataItems.Add(new EditorDataItem() { Key = key, Label = label });
+                if (enabled)
+                {
+                    editorDataItems.Add(new EditorDataItem() { Key = key, Label = label });
+                }
             }
 
             return editorDataItems;
