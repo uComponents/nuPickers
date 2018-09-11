@@ -50,11 +50,12 @@
         {
             List<EditorDataItem> editorDataItems = new List<EditorDataItem>(); // prepare return value
 
+            this.Url = this.Url.Replace("@contextId", contextId.ToString());
+
             JToken jToken = null; // object representation of all json source data
 
             try
-            {
-                this.Url = this.Url.Replace("@contextId", contextId.ToString());
+            {                
                 jToken = JToken.Parse(Helper.GetDataFromUrl(this.Url));
             }
             catch (JsonException jsonException)
