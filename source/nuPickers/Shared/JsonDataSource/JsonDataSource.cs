@@ -5,7 +5,6 @@
     using Newtonsoft.Json.Linq;
     using nuPickers.Shared.Editor;
     using Paging;
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using Umbraco.Core.Logging;
@@ -50,17 +49,17 @@
         {
             List<EditorDataItem> editorDataItems = new List<EditorDataItem>(); // prepare return value
 
-            this.Url = this.Url.Replace("@contextId", contextId.ToString());
+            var url = this.Url.Replace("@contextId", contextId.ToString());
 
             JToken jToken = null; // object representation of all json source data
 
             try
             {                
-                jToken = JToken.Parse(Helper.GetDataFromUrl(this.Url));
+                jToken = JToken.Parse(Helper.GetDataFromUrl(url));
             }
             catch (JsonException jsonException)
             {
-                LogHelper.Warn(typeof(JsonDataSource), jsonException.Message + " (Check JSON at Url: " + this.Url + ")");
+                LogHelper.Warn(typeof(JsonDataSource), jsonException.Message + " (Check JSON at Url: " + url + ")");
             }
 
             if (jToken != null)
