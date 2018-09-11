@@ -72,7 +72,10 @@
 
                 case "url":
                     xmlDocument = new XmlDocument();
-                    xmlDocument.LoadXml(Helper.GetDataFromUrl(this.Url));
+
+                    var url = this.Url.Replace("@contextId", currentId.ToString());
+
+                    xmlDocument.LoadXml(Helper.GetDataFromUrl(url));
                     break;
 
                 default:
