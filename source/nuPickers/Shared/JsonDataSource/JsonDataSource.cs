@@ -54,6 +54,7 @@
 
             try
             {
+                this.Url = this.Url.Replace("@contextId", contextId.ToString());
                 jToken = JToken.Parse(Helper.GetDataFromUrl(this.Url));
             }
             catch (JsonException jsonException)
