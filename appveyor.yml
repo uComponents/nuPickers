@@ -21,7 +21,7 @@ deploy:
     # MyGet Deployment for builds
   - provider: NuGet
     server: https://www.myget.org/F/nupickers/
-    symbol_server: https://nuget.symbolsource.org/MyGet/nupickers
+    symbol_server: https://www.myget.org/F/nupickers/symbols/api/v2/package
     api_key:
       secure: SASQGWG/4zNns7bwSSsJ5RPvKcKfJsBeEPuw69wsVPA3PO739QmzVtc5VwQwgvbr
     artifact: /.*\.nupkg/
@@ -31,7 +31,7 @@ deploy:
     # MyGet Deployment for releases
   - provider: NuGet
     server: https://www.myget.org/F/nupickers/
-    symbol_server: https://nuget.symbolsource.org/MyGet/nupickers
+    symbol_server: https://www.myget.org/F/nupickers/symbols/api/v2/package
     api_key:
       secure: SASQGWG/4zNns7bwSSsJ5RPvKcKfJsBeEPuw69wsVPA3PO739QmzVtc5VwQwgvbr
     artifact: /.*\.nupkg/
