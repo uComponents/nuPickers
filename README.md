@@ -10,7 +10,7 @@ __Latest Build:__
 
 [![Build status](https://img.shields.io/appveyor/ci/crumpleddog/nupickers/master.svg)](https://ci.appveyor.com/project/crumpleddog/nupickers/branch/master)
 [![MyGet build](https://img.shields.io/myget/nupickers/vpre/nuPickers.svg)](https://www.myget.org/gallery/nupickers)
-[![AppVeyor Artifacts](https://img.shields.io/badge/nupickers-.umbrao--bleeding--edge-red.svg)](https://ci.appveyor.com/project/crumpleddog/nupickers/build/artifacts) 
+[![AppVeyor Artifacts](https://img.shields.io/badge/nupickers-umbrao--bleeding--edge-red.svg)](https://ci.appveyor.com/project/crumpleddog/nupickers/build/artifacts) 
 
 __Support:__
 
