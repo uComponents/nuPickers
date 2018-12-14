@@ -9,6 +9,8 @@
 # Visual Studio 2015 cache/options directory
 .vs/
 
+package/tools/
+
 # Build results
 
 [Dd]ebug/
