@@ -54,7 +54,7 @@
     border:1px solid #9e9e9e;
 }
 
-.list-picker .disabled { /* li and .button */
+.list-picker .disabled { /* li and .picker-button */
     opacity: 0.7;
     filter: alpha(opacity=70); /* msie */
 }
@@ -68,7 +68,7 @@
     padding-left:4px; /* TODO: move to a child element to avoid conflict with 90% / 10% widths */
 }
 
-.list-picker .button {
+.list-picker .picker-button {
     width: 10%;
     height: 100%;
     position: absolute;
@@ -76,17 +76,17 @@
     text-align:center;
 }
 
-.list-picker .button.disabled {
+.list-picker .picker-button.disabled {
     cursor:default; /* disable the hand */
 }
 
-.list-picker .button:hover,
+.list-picker .picker-button:hover,
 .list-picker .sort:hover
 {
     background-color: #ddd;
 }
 
-.list-picker .button.disabled:hover {
+.list-picker .picker-button.disabled:hover {
     background-color:transparent;
 }
 
@@ -102,7 +102,7 @@
                 {{ custom markup }}
             </div>
 
-            <a class="button (disabled)"></a>
+            <a class="picker-button (disabled)"></a>
 
         </li>
     </ul>
@@ -127,13 +127,13 @@
     text-align:left;
 }
 
-.list-picker .selectable .button {
+.list-picker .selectable .picker-button {
     right: 0;
     border-left: 1px solid #ccc;
 }
 
-.list-picker .disabled .button {
-    border-left:none; /* no icon, so remove the line indicating a button */
+.list-picker .disabled .picker-button {
+    border-left:none; /* no icon, so remove the line indicating a picker-button */
 }
 
 /*
@@ -141,7 +141,7 @@
         <ul class="bars selected">
             <li class="(lit)">
 
-                <a class="button"></a>
+                <a class="picker-button"></a>
 
                 <div class="option-label (sort)">
                     {{ custom markup }}
@@ -173,14 +173,14 @@
 }
 
 .list-picker .selected .option-label {
-    margin-left:10%; /* make space for the button */
+    margin-left:10%; /* make space for the picker-button */
 }
 
 .list-picker .selected .sort {
     cursor: move;
 }
 
-.list-picker .selected .button {
+.list-picker .selected .picker-button {
     left: 0;
     border-right: 1px solid #ccc;
 }
