@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nuPickers", "nuPickers\nuPickers.csproj", "{FB665B93-6D85-4040-AB20-003B728E3ACA}"
 EndProject
@@ -12,18 +12,20 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{531937
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "package", "package", "{A7633875-BD4A-4C38-87BC-E908109DBDD2}"
-	ProjectSection(SolutionItems) = preProject
-		..\appveyor.yml = ..\appveyor.yml
-		..\package\Build.bat = ..\package\Build.bat
-		..\package\LocalBuild.bat = ..\package\LocalBuild.bat
-		..\package\package.nuspec = ..\package\package.nuspec
-		..\package\package.proj = ..\package\package.proj
-		..\package\package.xml = ..\package\package.xml
-		..\README.md = ..\README.md
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nuPickers.Tests", "nuPickers.Tests\nuPickers.Tests.csproj", "{1E675C32-7BCC-42FF-BC95-DC480E67D3F0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{F1369B6C-5B95-41FC-813B-36F65E6FDACF}"
+	ProjectSection(SolutionItems) = preProject
+		..\build\appveyor-semver.ps1 = ..\build\appveyor-semver.ps1
+		..\appveyor.yml = ..\appveyor.yml
+		..\build-appveyor.cmd = ..\build-appveyor.cmd
+		..\build.cmd = ..\build.cmd
+		..\build\check-release-version.ps1 = ..\build\check-release-version.ps1
+		..\build\icon.png = ..\build\icon.png
+		..\build\nuPickers.proj = ..\build\nuPickers.proj
+		..\build\package.nuspec = ..\build\package.nuspec
+		..\build\package.xml = ..\build\package.xml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,5 +44,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A0A1243B-2892-4562-A373-278C0C93094B}
 	EndGlobalSection
 EndGlobal

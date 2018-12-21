@@ -3,24 +3,40 @@ version: 1.7.2.{build}
 
 os: Visual Studio 2017
 
-# Do not build on tags
-skip_tags: true
+cache:
+  - packages -> src\**\packages.config              # preserve "packages" directory in the root of build folder but will reset it if packages.config is modified
+  
+branches:
+  only:
+    - develop
+    - master
 
-# UMBRACO_PACKAGE_PRERELEASE_SUFFIX if a rtm release build this should be blank, otherwise if empty will default to alpha
-# example UMBRACO_PACKAGE_PRERELEASE_SUFFIX=beta
-init:
-- set UMBRACO_PACKAGE_PRERELEASE_SUFFIX=
+environment:
+  # Version Suffix
+  version_suffix: alpha
 
 install:
-  - cmd: nuget update -Self
+  - ps: .\build\appveyor-semver.ps1
+  - ps: .\build\check-release-version.ps1
+  - ps: Update-AppveyorBuild -Version $Env:appveyor_version
+
+assembly_info:
+  patch: true
+  file: 'source\nuPickers**\AssemblyInfo.*'
+  assembly_version: '$(appveyor_file_version)'
+  assembly_file_version: '$(appveyor_file_version)'
+  assembly_informational_version: '$(mssemver)'
 
 build_script:
-- cd package
-- Build.bat
+- cmd: >-
+    build-appveyor.cmd
+
+    cd..
 
 artifacts:
-  - path: package\artifacts\*.nupkg
-  - path: package\artifacts\*.zip
+  - path: artifacts\*.nupkg
+  - path: artifacts\*.zip
+
 
 deploy:
     # MyGet Deployment for builds

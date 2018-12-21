@@ -10,13 +10,13 @@
 .vs/
 
 package/tools/
+build/tools/vswhere*
 
 # Build results
 
 [Dd]ebug/
 [Rr]elease/
 x64/
-build/
 [Bb]in/
 [Oo]bj/
 
@@ -164,7 +164,7 @@ $RECYCLE.BIN/
 # nuPickers
 # =========================
 
-package/artifacts/*
+artifacts/*
 
 # Exclude built packages
 package/nuPickers*.nupkg
