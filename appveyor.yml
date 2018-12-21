@@ -49,7 +49,7 @@ deploy:
       secure: SASQGWG/4zNns7bwSSsJ5RPvKcKfJsBeEPuw69wsVPA3PO739QmzVtc5VwQwgvbr
     artifact: /.*\.nupkg/
     on:
-      branch: master
+      branch: develop
 
     # MyGet Deployment for releases
   - provider: NuGet
@@ -59,7 +59,7 @@ deploy:
       secure: SASQGWG/4zNns7bwSSsJ5RPvKcKfJsBeEPuw69wsVPA3PO739QmzVtc5VwQwgvbr
     artifact: /.*\.nupkg/
     on:
-      branch: release
+      branch: master
 
      # NuGet Deployment for releases
   - provider: NuGet
@@ -68,7 +68,8 @@ deploy:
       secure: adk3pI9HCByZg2VRxplX9UR6qHf97bA3as6dusxLswCKI8BQQE8DO5a0frLrI+EO
     artifact: /.*\.nupkg/
     on:
-      branch: release
+      branch: master
+      appveyor_repo_tag: true        # deploy on tag push only
 
      # GitHub Deployment for releases
   - provider: GitHub
@@ -78,4 +79,5 @@ deploy:
     draft: false
     prerelease: false
     on:
-      branch: release
+      branch: master
+      appveyor_repo_tag: true        # deploy on tag push only
