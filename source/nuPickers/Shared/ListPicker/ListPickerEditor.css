@@ -13,6 +13,7 @@
 .list-picker .text-input-bar {
     border: 1px solid transparent;
     padding-bottom:1px;
+  position: relative;
 }
 
 .list-picker .text-input-bar input {
@@ -90,9 +91,22 @@
     background-color:transparent;
 }
 
-.list-picker .placeholders li {
-    border:1px dashed #ccc;
-}
+  .list-picker .button-add-multiple {
+    border-left: 1px solid #ccc;
+    left: 43%;
+    width: 48px;
+    height: 30px;
+    top: 1px;
+    line-height: 30px;
+  }
+  .list-picker button-add-multiple-positioner {
+    width: 48%;
+    min-height: 30px;
+    line-height: 30px;
+  }
+  .list-picker .placeholders li {
+    border: 1px dashed #ccc;
+  }
 
 /*
     <ul class="bars selectable">
