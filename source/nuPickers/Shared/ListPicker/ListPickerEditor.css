@@ -93,13 +93,13 @@
 
   .list-picker .button-add-multiple {
     border-left: 1px solid #ccc;
-    left: 43%;
+    left: 43.2%;
     width: 48px;
     height: 30px;
     top: 1px;
     line-height: 30px;
   }
-  .list-picker button-add-multiple-positioner {
+  .list-picker .button-add-multiple-positioner {
     width: 48%;
     min-height: 30px;
     line-height: 30px;
