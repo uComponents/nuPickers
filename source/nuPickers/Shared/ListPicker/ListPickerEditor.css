@@ -94,7 +94,7 @@
   .list-picker .button-add-multiple {
     border-left: 1px solid #ccc;
     left: 43.2%;
-    width: 48px;
+    width: 41px;
     height: 30px;
     top: 1px;
     line-height: 30px;
@@ -103,6 +103,7 @@
     width: 48%;
     min-height: 30px;
     line-height: 30px;
+    display: inline;
   }
   .list-picker .placeholders li {
     border: 1px dashed #ccc;
