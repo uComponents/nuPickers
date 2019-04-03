@@ -1,26 +1,35 @@
 ﻿<div ng-controller="nuPickers.Shared.ListPicker.ListPickerEditorController" class="list-picker">
 
-    <ng-form name="listPickerForm">
-        <input type="hidden" name="validation" ng-model="model.value" />
-        <span val-msg-for="validation" val-toggle-msg="validationMessage"></span>
-    </ng-form>
+  <ng-form name="listPickerForm">
+    <input type="hidden" name="validation" ng-model="model.value" />
+    <span val-msg-for="validation" val-toggle-msg="validationMessage"></span>
+  </ng-form>
 
-    <div ng-controller="nuPickers.Shared.PrefetchListPicker.PrefetchListPickerEditorController" ng-class="{'has-text-input-bar': model.config.prefetchListPicker.enableFiltering}">
+  <div ng-controller="nuPickers.Shared.PrefetchListPicker.PrefetchListPickerEditorController" ng-class="{'has-text-input-bar': model.config.prefetchListPicker.enableFiltering}">
 
-        <!-- filter -->
-        <div class="text-input-bar" 
-             ng-show="model.config.prefetchListPicker.enableFiltering">
-            <input type="text"
-                   placeholder="filter"
-                   ng-model="filter"
-                   ng-trim="false"
-                   nu-cursor-up="cursorUp()"
-                   nu-cursor-down="cursorDown()"
-                   nu-enter-key="enterKey()" />
+    <!-- filter -->
+    <div class="text-input-bar"
+         ng-show="model.config.prefetchListPicker.enableFiltering">
+      <input type="text"
+             placeholder="filter"
+             ng-model="filter"
+             ng-trim="false"
+             nu-cursor-up="cursorUp()"
+             nu-cursor-down="cursorDown()"
+             nu-enter-key="enterKey()" />
+      <div class="button-add-multiple-positioner">
+        
+        <a href=""
+           class="button icon color-orange active icon-add button-add-multiple"
+           ng-mouseleave="lit = false" ng-click="lit = false; selectAllOptions(selectableOptions)"
+        >
+        </a>
         </div>
-
-        <ng-include src="'/App_Plugins/nuPickers/Shared/ListPicker/ListPickerSelectablePartial.html'"></ng-include>
-        <ng-include src="'/App_Plugins/nuPickers/Shared/ListPicker/ListPickerSelectedPartial.html'"></ng-include>
-
+      
     </div>
+
+    <ng-include src="'/App_Plugins/nuPickers/Shared/ListPicker/ListPickerSelectablePartial.html'"></ng-include>
+    <ng-include src="'/App_Plugins/nuPickers/Shared/ListPicker/ListPickerSelectedPartial.html'"></ng-include>
+
+  </div>
 </div>
