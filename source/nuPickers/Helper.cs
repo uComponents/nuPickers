@@ -9,6 +9,7 @@
     using System.Web;
     using System.Web.Hosting;
     using Umbraco.Web;
+    using Umbraco.Core.Logging;
 
     internal static class Helper
     {
@@ -104,33 +105,43 @@
         {
             string data = string.Empty;
 
-            if (!string.IsNullOrEmpty(url))
+            try
             {
-                if (VirtualPathUtility.IsAppRelative(url)) // starts with ~/
+
+                if (!string.IsNullOrEmpty(url))
                 {
-                    bool fileExists = false;
-
-                    if (!url.Contains("?"))
+                    if (VirtualPathUtility.IsAppRelative(url)) // starts with ~/
                     {
-                        string filePath = HttpContext.Current.Server.MapPath(url);
+                        bool fileExists = false;
 
-                        if (File.Exists(filePath))
+                        if (!url.Contains("?"))
                         {
-                            url = filePath;
-                            fileExists = true;
+                            string filePath = HttpContext.Current.Server.MapPath(url);
+
+                            if (File.Exists(filePath))
+                            {
+                                url = filePath;
+                                fileExists = true;
+                            }
+                        }
+
+                        if (!fileExists)
+                        {
+                            url = url.Replace("~/",
+                                (HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "/"));
                         }
                     }
 
-                    if (!fileExists)
+                    using (WebClient client = new WebClient())
                     {
-                        url = url.Replace("~/", (HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "/"));
+                        data = client.DownloadString(url);
+
                     }
                 }
-
-                using (WebClient client = new WebClient())
-                {
-                    data = client.DownloadString(url);
-                }
+            }
+            catch (Exception e)
+            {
+                LogHelper.Warn<string>("Error getting data from Url (url: " + url + " ): " + e.Message + " :: " + e.StackTrace);
             }
 
             return data;
