@@ -28,7 +28,7 @@ namespace nuPickers.Shared.CustomLabel
         private string PropertyAlias { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="macroAlias">alias of Macro to execute</param>
         /// <param name="contextId">node, media or member id</param>
@@ -82,7 +82,7 @@ namespace nuPickers.Shared.CustomLabel
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="key">passed by parameter into the macro</param>
         /// <param name="label">value to return if macro fails</param>

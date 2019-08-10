@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\projects\nuPickers\appveyor.yml" t="Include" />
+    <e p="C:\projects\nuPickers\Build\appveyor-semver.ps1" t="Include" />
+    <e p="C:\projects\nuPickers\Build\check-release-version.ps1" t="Include" />
+    <e p="C:\projects\nuPickers\Build\icon.png" t="Include" />
+    <e p="C:\projects\nuPickers\Build\nuPickers.proj" t="Include" />
+    <e p="C:\projects\nuPickers\Build\package.nuspec" t="Include" />
+    <e p="C:\projects\nuPickers\Build\package.xml" t="Include" />
+    <e p="C:\projects\nuPickers\build-appveyor.cmd" t="Include" />
+    <e p="C:\projects\nuPickers\build.cmd" t="Include" />
+    <e p="C:\projects\nuPickers\source" t="IncludeFlat">
+      <e p=".nuget" t="Include">
+        <e p="NuGet.Config" t="Include" />
+        <e p="NuGet.exe" t="Include" />
+        <e p="NuGet.targets" t="Include" />
+      </e>
+      <e p="Build" t="Include" />
+      <e p="nuPickers" t="IncludeRecursive">
+        <e p="amd64" t="Include">
+          <e p="Microsoft.VC90.CRT" t="Include" />
+        </e>
+        <e p="app.config" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Caching" t="Include">
+          <e p="Cache.cs" t="Include" />
+          <e p="CacheConstants.cs" t="Include" />
+        </e>
+        <e p="Compontents" t="Include">
+          <e p="CacheInvalidationCompontent.cs" t="Include" />
+          <e p="EmbeddedResourceCompontent.cs" t="Include" />
+          <e p="nuPickerCompontent.cs" t="Include" />
+        </e>
+        <e p="EmbeddedResource" t="Include">
+          <e p="EmbeddedResource.cs" t="Include" />
+          <e p="EmbeddedResourceController.cs" t="Include" />
+          <e p="EmbeddedResourceHelper.cs" t="Include" />
+          <e p="EmbeddedResourceVirtualFile.cs" t="Include" />
+          <e p="EmbeddedResourceVirtualFileProvider.cs" t="Include" />
+          <e p="EmbeddedResourceVirtualFileWriter.cs" t="Include" />
+        </e>
+        <e p="Extensions" t="Include">
+          <e p="IEnumerableStringExtensions.cs" t="Include" />
+          <e p="IPublishedContentExtensions.cs" t="Include" />
+          <e p="UmbracoHelperExtensions.cs" t="Include" />
+        </e>
+        <e p="Helper.cs" t="Include" />
+        <e p="nuPickerComposer.cs" t="Include" />
+        <e p="nuPickers.csproj" t="IncludeRecursive" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="packages.config" t="Include" />
+        <e p="Picker.cs" t="Include" />
+        <e p="PickerPropertyValueConverter.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="PropertyEditors" t="Include">
+          <e p="BasePropertyEditor.cs" t="Include" />
+          <e p="DotNetCheckBoxPicker" t="Include">
+            <e p="DotNetCheckBoxPickerPreValueEditor.cs" t="Include" />
+            <e p="DotNetCheckBoxPickerPropertyEditor.cs" t="Include" />
+          </e>
+          <e p="DotNetDropDownPicker" t="Include">
+            <e p="DotNetDropDownPickerPreValueEditor.cs" t="Include" />
+            <e p="DotNetDropDownPickerPropertyEditor.cs" t="Include" />
+          </e>
+          <e p="DotNetLabels" t="Include">
+            <e p="DotLabelsPropertyEditor.cs" t="Include" />
+            <e p="DotNetLabelsPreValueEditor.cs" t="Include" />
+          </e>
+          <e p="DotNetPagedListPicker" t="Include">
+            <e p="DotNetPagedListPickerPreValueEditor.cs" t="Include" />
+            <e p="DotNetPagedListPickerPropertyEditor.cs" t="Include" />
+          </e>
+          <e p="DotNetPrefetchListPicker" t="Include">
+            <e p="DotNetPrefetchListPickerPreValueEditor.cs" t="Include" />
+            <e p="DotNetPrefetchListPickerPropertyEditor.cs" t="Include" />
+          </e>
+          <e p="DotNetRadioButtonPicker" t="Include">
+            <e p="DotNetRadioButtonPickerPreValueEditor.cs" t="Include" />
+            <e p="DotNetRadioButtonPickerPropertyEditor.cs" t="Include" />
+          </e>
+          <e p="DotNetTypeaheadListPicker" t="Include">
+            <e p="DotNetTypeaheadListPickerPreValueEditor.cs" t="Include" />
+            <e p="DotNetTypeaheadListPickerPropertyEditor.cs" t="Include" />
+          </e>
+          <e p="EnumCheckBoxPicker" t="Include">
+            <e p="EnumCheckBoxPickerPreValueEditor.cs" t="Include" />
+            <e p="EnumCheckBoxPickerPropertyEditor.cs" t="Include" />
+          </e>
+          <e p="EnumDropDownPicker" t="Include">
+            <e p="EnumDropDownPickerPreValueEditor.cs" t="Include" />
+            <e p="EnumDropDownPickerPropertyEditor.cs" t="Include" />
+          </e>
+          <e p="EnumLabels" t="Include">
+            <e p="EnumLabelsPreValueEditor.cs" t="Include" />
+            <e p="EnumLabelsPropertyEditor.cs" t="Include" />
+          </e>
+          <e p="EnumPrefetchListPicker" t="Include">
+            <e p="EnumPrefetchListPickerPreValueEditor.cs" t="Include" />
+            <e p="EnumPrefetchListPropertyEditor.cs" t="Include" />
+          </e>
+          <e p="EnumRadioButtonPicker" t="Include">
+            <e p="EnumRadioButtonPickerPreValueEditor.cs" t="Include" />
+            <e p="EnumRadioButtonPickerPropertyEditor.cs" t="Include" />
+          </e>
+          <e p="JsonCheckBoxPicker" t="Include">
+            <e p="JsonCheckBoxPickerPreValueEditor.cs" t="Include" />
+            <e p="JsonCheckBoxPickerPropertyEditor.cs" t="Include" />
+          </e>
+          <e p="JsonDropDownPicker" t="Include">
+            <e p="JsonDropDownPickerPreValueEditor.cs" t="Include" />
+            <e p="JsonDropDownPickerPropertyEditor.cs" t="Include" />
+          </e>
+          <e p="JsonLabels" t="Include">
+            <e p="JsonLabelsPreValueEditor.cs" t="Include" />
+            <e p="JsonLabelsPropertyEditor.cs" t="Include" />
+          </e>
+          <e p="JsonPagedListPicker" t="Include">
+            <e p="JsonPagedListPickerPreValueEditor.cs" t="Include" />
+            <e p="JsonPagedListPickerPropertyEditor.cs" t="Include" />
+          </e>
+          <e p="JsonPrefetchListPicker" t="Include">
+            <e p="JsonPrefetchListPickerPreValueEditor.cs" t="Include" />
+            <e p="JsonPrefetchListPickerPropertyEditor.cs" t="Include" />
+          </e>
+          <e p="JsonRadioButtonPicker" t="Include">
+            <e p="JsonRadioButtonPickerPreValueEditor.cs" t="Include" />
+            <e p="JsonRadioButtonPickerPropertyEditor.cs" t="Include" />
+          </e>
+          <e p="JsonTypeaheadListPicker" t="Include">
+            <e p="JsonTypeaheadListPickerPreValueEditor.cs" t="Include" />
+            <e p="JsonTypeaheadPickerPropertyEditor.cs" t="Include" />
+          </e>
+          <e p="LuceneCheckBoxPicker" t="Include">
+            <e p="LuceneCheckBoxPickerPreValueEditor.cs" t="Include" />
+            <e p="LuceneCheckBoxPickerPropertyEditor.cs" t="Include" />
+          </e>
+          <e p="LuceneDropDownPicker" t="Include">
+            <e p="LuceneDropDownPickerPreValueEditor.cs" t="Include" />
+            <e p="LuceneDropDownPickerPropertyEditor.cs" t="Include" />
+          </e>
+          <e p="LuceneLabels" t="Include">
+            <e p="LuceneLabelsPreValueEditor.cs" t="Include" />
+            <e p="LuceneLabelsPropertyEditor.cs" t="Include" />
+          </e>
+          <e p="LucenePagedListPicker" t="Include">
+            <e p="LucenePagedListPickerPreValueEditor.cs" t="Include" />
+            <e p="LucenePagedListPickerPropertyEditor.cs" t="Include" />
+          </e>
+          <e p="LucenePrefetchListPicker" t="Include">
+            <e p="LucenePrefetchListPickerPreValueEditor.cs" t="Include" />
+            <e p="LucenePrefetchListPickerPropertyEditor.cs" t="Include" />
+          </e>
+          <e p="LuceneRadioButtonPicker" t="Include">
+            <e p="LuceneRadioButtonPickerPreValueEditor.cs" t="Include" />
+            <e p="LuceneRadioButtonPickerPropertyEditor.cs" t="Include" />
+          </e>
+          <e p="LuceneTypeaheadPicker" t="Include">
+            <e p="LuceneTypeaheadListPickerPreValueEditor.cs" t="Include" />
+            <e p="LuceneTypeaheadPickerPropertyEditor.cs" t="Include" />
+          </e>
+          <e p="PropertyEditorConstants.cs" t="Include" />
+          <e p="RelationLabels" t="Include">
+            <e p="RelationLabelsPreValueEditor.cs" t="Include" />
+            <e p="RelationLabelsPropertyEditor.cs" t="Include" />
+          </e>
+          <e p="SqlCheckBoxPicker" t="Include">
+            <e p="SqlCheckBoxPickerPreValueEditor.cs" t="Include" />
+            <e p="SqlCheckBoxPickerPropertyEditor.cs" t="Include" />
+          </e>
+          <e p="SqlDropDownPicker" t="Include">
+            <e p="SqlDropDownPickerPreValueEditor.cs" t="Include" />
+            <e p="SqlDropDownPickerPropertyEditor.cs" t="Include" />
+          </e>
+          <e p="SqlLabels" t="Include">
+            <e p="SqlLabelsPreValueEditor.cs" t="Include" />
+            <e p="SqlLabelsPropertyEditor.cs" t="Include" />
+          </e>
+          <e p="SqlPagedListPicker" t="Include">
+            <e p="SqlPagedListPickerPreValueEditor.cs" t="Include" />
+            <e p="SqlPagedListPickerPropertyEditor.cs" t="Include" />
+          </e>
+          <e p="SqlPrefetchListPicker" t="Include">
+            <e p="SqlPrefetchListPickerPreValueEditor.cs" t="Include" />
+            <e p="SqlPrefetchListPickerPropertyEditor.cs" t="Include" />
+          </e>
+          <e p="SqlRadioButtonPicker" t="Include">
+            <e p="SqlRadioButtonPickerPreValueEditor.cs" t="Include" />
+            <e p="SqlRadioButtonPickerPropertyEditor.cs" t="Include" />
+          </e>
+          <e p="SqlTypeaheadListPicker" t="Include">
+            <e p="SqlTypeaheadListPickerPreValueEditor.cs" t="Include" />
+            <e p="SqlTypeaheadListPickerPropertyEditor.cs" t="Include" />
+          </e>
+          <e p="XmlCheckBoxPicker" t="Include">
+            <e p="XmlCheckBoxPickerPreValueEditor.cs" t="Include" />
+            <e p="XmlCheckBoxPickerPropertyEditor.cs" t="Include" />
+          </e>
+          <e p="XmlDropDownPicker" t="Include">
+            <e p="XmlDropDownPickerPreValueEditor.cs" t="Include" />
+            <e p="XmlDropDownPickerPropertyEditor.cs" t="Include" />
+          </e>
+          <e p="XmlLabels" t="Include">
+            <e p="XmlLabelsPreValueEditor.cs" t="Include" />
+            <e p="XmlLabelsPropertyEditor.cs" t="Include" />
+          </e>
+          <e p="XmlPagedListPicker" t="Include">
+            <e p="XmlPagedListPickerPreValueEditor.cs" t="Include" />
+            <e p="XmlPagedListPickerPropertyEditor.cs" t="Include" />
+          </e>
+          <e p="XmlPrefetchListPicker" t="Include">
+            <e p="XmlPrefetchListPickerPreValueEditor.cs" t="Include" />
+            <e p="XmlPrefetchListPickerPropertyEditor.cs" t="Include" />
+          </e>
+          <e p="XmlRadioButtonPicker" t="Include">
+            <e p="XmlRadioButtonPickerPreValueEditor.cs" t="Include" />
+            <e p="XmlRadioButtonPickerPropertyEditor.cs" t="Include" />
+          </e>
+          <e p="XmlTypeaheadListPicker" t="Include">
+            <e p="XmlTypeaheadListPickerPreValueEditor.cs" t="Include" />
+            <e p="XmlTypeaheadListPickerPropertyEditor.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Shared" t="Include">
+          <e p="CheckBoxPicker" t="Include">
+            <e p="CheckBoxPickerConfig.html" t="Include" />
+            <e p="CheckBoxPickerEditor.css" t="Include" />
+            <e p="CheckBoxPickerEditor.html" t="Include" />
+            <e p="CheckBoxPickerEditorController.js" t="Include" />
+          </e>
+          <e p="CustomLabel" t="Include">
+            <e p="CustomLabel.cs" t="Include" />
+            <e p="CustomLabelApiController.cs" t="Include" />
+            <e p="CustomLabelConfig.html" t="Include" />
+            <e p="CustomLabelConfigController.js" t="Include" />
+          </e>
+          <e p="DataSource" t="Include">
+            <e p="DataSource.cs" t="Include" />
+            <e p="DataSourceApiController.cs" t="Include" />
+            <e p="DataSourceApiResponse.cs" t="Include" />
+            <e p="DataSourceResource.js" t="Include" />
+            <e p="IDataSource.cs" t="Include" />
+          </e>
+          <e p="DotNetDataSource" t="Include">
+            <e p="DotNetDataSource.cs" t="Include" />
+            <e p="DotNetDataSourceApiController.cs" t="Include" />
+            <e p="DotNetDataSourceAttribute.cs" t="Include" />
+            <e p="DotNetDataSourceConfig.html" t="Include" />
+            <e p="DotNetDataSourceConfigController.js" t="Include" />
+            <e p="DotNetDataSourceProperty.cs" t="Include" />
+            <e p="IDotNetDataSource.cs" t="Include" />
+            <e p="IDotNetDataSourceKeyed.cs" t="Include" />
+            <e p="IDotNetDataSourcePaged.cs" t="Include" />
+            <e p="IDotNetDataSourceTypeahead.cs" t="Include" />
+          </e>
+          <e p="DropDownPicker" t="Include">
+            <e p="DropDownPickerEditor.html" t="Include" />
+            <e p="DropDownPickerEditorController.js" t="Include" />
+          </e>
+          <e p="Editor" t="Include">
+            <e p="Editor.cs" t="Include" />
+            <e p="EditorDataItem.cs" t="Include" />
+            <e p="EditorResource.js" t="Include" />
+          </e>
+          <e p="EnumDataSource" t="Include">
+            <e p="EnumDataSource.cs" t="Include" />
+            <e p="EnumDataSourceApiController.cs" t="Include" />
+            <e p="EnumDataSourceAttribute.cs" t="Include" />
+            <e p="EnumDataSourceConfig.html" t="Include" />
+            <e p="EnumDataSourceConfigController.js" t="Include" />
+            <e p="EnumExtensions.cs" t="Include" />
+          </e>
+          <e p="HiddenConstant" t="Include">
+            <e p="HiddenConstantConfig.html" t="Include" />
+          </e>
+          <e p="JsonDataSource" t="Include">
+            <e p="JsonDataSource.cs" t="Include" />
+            <e p="JsonDataSourceConfig.html" t="Include" />
+            <e p="JsonDataSourceConfigController.js" t="Include" />
+          </e>
+          <e p="Labels" t="Include">
+            <e p="LabelsConfig.html" t="Include" />
+            <e p="LabelsConfigController.js" t="Include" />
+            <e p="LabelsEditor.html" t="Include" />
+            <e p="LabelsEditorController.js" t="Include" />
+          </e>
+          <e p="LayoutDirection" t="Include">
+            <e p="LayoutDirection.css" t="Include" />
+            <e p="LayoutDirectionConfig.html" t="Include" />
+          </e>
+          <e p="ListPicker" t="Include">
+            <e p="ListPickerConfig.html" t="Include" />
+            <e p="ListPickerEditor.css" t="Include" />
+            <e p="ListPickerEditorController.js" t="Include" />
+            <e p="ListPickerEditorDirectives.js" t="Include" />
+            <e p="ListPickerSelectablePartial.html" t="Include" />
+            <e p="ListPickerSelectedPartial.html" t="Include" />
+          </e>
+          <e p="LuceneDataSource" t="Include">
+            <e p="LuceneDataSource.cs" t="Include" />
+            <e p="LuceneDataSourceApiController.cs" t="Include" />
+            <e p="LuceneDataSourceConfig.html" t="Include" />
+            <e p="LuceneDataSourceConfigController.js" t="Include" />
+          </e>
+          <e p="PagedListPicker" t="Include">
+            <e p="PagedListPickerConfig.html" t="Include" />
+            <e p="PagedListPickerEditor.css" t="Include" />
+            <e p="PagedListPickerEditor.html" t="Include" />
+            <e p="PagedListPickerEditorController.js" t="Include" />
+          </e>
+          <e p="Paging" t="Include">
+            <e p="PageMarker.cs" t="Include" />
+          </e>
+          <e p="PrefetchListPicker" t="Include">
+            <e p="PrefetchListPickerConfig.html" t="Include" />
+            <e p="PrefetchListPickerEditor.html" t="Include" />
+            <e p="PrefetchListPickerEditorController.js" t="Include" />
+          </e>
+          <e p="PropertyEditor" t="Include">
+            <e p="PropertyEditorConfig.css" t="Include" />
+          </e>
+          <e p="RadioButtonPicker" t="Include">
+            <e p="RadioButtonPickerEditor.html" t="Include" />
+            <e p="RadioButtonPickerEditorController.js" t="Include" />
+          </e>
+          <e p="RelationDataSource" t="Include">
+            <e p="RelationDataSource.cs" t="Include" />
+            <e p="RelationDataSourceApiController.cs" t="Include" />
+            <e p="RelationDataSourceConfig.html" t="Include" />
+            <e p="RelationDataSourceConfigController.js" t="Include" />
+          </e>
+          <e p="RelationMapping" t="Include">
+            <e p="RelationMapping.cs" t="Include" />
+            <e p="RelationMappingApiController.cs" t="Include" />
+            <e p="RelationMappingComment.cs" t="Include" />
+            <e p="RelationMappingConfig.html" t="Include" />
+            <e p="RelationMappingConfigController.js" t="Include" />
+            <e p="RelationMappingEvent.cs" t="Include" />
+            <e p="RelationMappingResource.js" t="Include" />
+          </e>
+          <e p="SaveFormat" t="Include">
+            <e p="SaveFormat.cs" t="Include" />
+            <e p="SaveFormatConfig.html" t="Include" />
+            <e p="SaveFormatConfigController.js" t="Include" />
+            <e p="SaveFormatPropertyValueEditor.cs" t="Include" />
+            <e p="SaveFormatResource.js" t="Include" />
+          </e>
+          <e p="SqlDataSource" t="Include">
+            <e p="SqlDataSource.cs" t="Include" />
+            <e p="SqlDataSourceApiController.cs" t="Include" />
+            <e p="SqlDataSourceConfig.html" t="Include" />
+            <e p="SqlDataSourceConfigController.js" t="Include" />
+          </e>
+          <e p="TypeaheadListPicker" t="Include">
+            <e p="TypeaheadListPicker.cs" t="Include" />
+            <e p="TypeaheadListPickerConfig.html" t="Include" />
+            <e p="TypeaheadListPickerEditor.html" t="Include" />
+            <e p="TypeaheadListPickerEditorController.js" t="Include" />
+            <e p="TypeaheadListPickerEditorDirectives.js" t="Include" />
+          </e>
+          <e p="XmlDataSource" t="Include">
+            <e p="XmlDataSource.cs" t="Include" />
+            <e p="XmlDataSourceConfig.html" t="Include" />
+            <e p="XmlDataSourceConfigController.js" t="Include" />
+          </e>
+        </e>
+        <e p="x86" t="Include">
+          <e p="Microsoft.VC90.CRT" t="Include" />
+        </e>
+      </e>
+      <e p="nuPickers.sln" t="IncludeFlat" />
+      <e p="nuPickers.Tests" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="EmbeddedResource" t="Include">
+          <e p="EmbeddedResourceHelperTests.cs" t="Include" />
+        </e>
+        <e p="nuPickers.Tests.csproj" t="IncludeRecursive" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+      </e>
+      <e p="packages" t="ExcludeRecursive">
+        <e p="Umbraco.SqlServerCE.4.0.0.1\runtimes\win-x64\native\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" t="Include" />
+        <e p="Umbraco.SqlServerCE.4.0.0.1\runtimes\win-x64\native\Microsoft.VC90.CRT\msvcr90.dll" t="Include" />
+        <e p="Umbraco.SqlServerCE.4.0.0.1\runtimes\win-x64\native\sqlceca40.dll" t="Include" />
+        <e p="Umbraco.SqlServerCE.4.0.0.1\runtimes\win-x64\native\sqlcecompact40.dll" t="Include" />
+        <e p="Umbraco.SqlServerCE.4.0.0.1\runtimes\win-x64\native\sqlceer40EN.dll" t="Include" />
+        <e p="Umbraco.SqlServerCE.4.0.0.1\runtimes\win-x64\native\sqlceme40.dll" t="Include" />
+        <e p="Umbraco.SqlServerCE.4.0.0.1\runtimes\win-x64\native\sqlceqp40.dll" t="Include" />
+        <e p="Umbraco.SqlServerCE.4.0.0.1\runtimes\win-x64\native\sqlcese40.dll" t="Include" />
+        <e p="Umbraco.SqlServerCE.4.0.0.1\runtimes\win-x86\native\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" t="Include" />
+        <e p="Umbraco.SqlServerCE.4.0.0.1\runtimes\win-x86\native\Microsoft.VC90.CRT\msvcr90.dll" t="Include" />
+        <e p="Umbraco.SqlServerCE.4.0.0.1\runtimes\win-x86\native\sqlceca40.dll" t="Include" />
+        <e p="Umbraco.SqlServerCE.4.0.0.1\runtimes\win-x86\native\sqlcecompact40.dll" t="Include" />
+        <e p="Umbraco.SqlServerCE.4.0.0.1\runtimes\win-x86\native\sqlceer40EN.dll" t="Include" />
+        <e p="Umbraco.SqlServerCE.4.0.0.1\runtimes\win-x86\native\sqlceme40.dll" t="Include" />
+        <e p="Umbraco.SqlServerCE.4.0.0.1\runtimes\win-x86\native\sqlceqp40.dll" t="Include" />
+        <e p="Umbraco.SqlServerCE.4.0.0.1\runtimes\win-x86\native\sqlcese40.dll" t="Include" />
+      </e>
+    </e>
+    <e p="C:\Users\abi\.Rider2019.1\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\abi\.Rider2019.1\system\resharper-host\local\Transient\ReSharperHost\v191\SolutionCaches\_nuPickers.-334270542.00" t="ExcludeRecursive" />
+  </component>
+</project>

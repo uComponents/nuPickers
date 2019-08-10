@@ -1,15 +1,23 @@
-﻿namespace nuPickers.EmbeddedResource
-{
-    using ClientDependency.Core;
-    using System.Web.Mvc;
-    using System.Web.Routing;
-    using Umbraco.Core;
+using System;
+using System.ComponentModel;
+using System.Web.Mvc;
+using System.Web.Routing;
+using ClientDependency.Core;
+using nuPickers.EmbeddedResource;
 
-    public class EmbeddedResourceStartup : ApplicationEventHandler
+namespace nuPickers.Compontents
+{
+    public class EmbeddedResourceCompontent : IComponent, Umbraco.Core.Composing.IComponent
     {
-        protected override void ApplicationStarted(UmbracoApplicationBase umbracoApplication, ApplicationContext applicationContext)
+        public void Dispose()
         {
-            base.ApplicationStarted(umbracoApplication, applicationContext);
+            throw new NotImplementedException();
+        }
+
+        public ISite Site { get; set; }
+        public event EventHandler Disposed;
+        public void Initialize()
+        {
 
             RouteTable
                 .Routes
@@ -26,9 +34,9 @@
             FileWriters.AddWriterForExtension(EmbeddedResource.FILE_EXTENSION, new EmbeddedResourceVirtualFileWriter());
         }
 
-        protected override bool ExecuteWhenApplicationNotConfigured
+        public void Terminate()
         {
-            get { return true; }
+            throw new NotImplementedException();
         }
     }
 }

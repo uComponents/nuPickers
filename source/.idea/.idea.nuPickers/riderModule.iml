@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="RIDER_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$/../../../appveyor.yml" />
+    <content url="file://$MODULE_DIR$/../../../build-appveyor.cmd" />
+    <content url="file://$MODULE_DIR$/../../../build.cmd" />
+    <content url="file://$MODULE_DIR$/../../../build/appveyor-semver.ps1" />
+    <content url="file://$MODULE_DIR$/../../../build/check-release-version.ps1" />
+    <content url="file://$MODULE_DIR$/../../../build/icon.png" />
+    <content url="file://$MODULE_DIR$/../../../build/nuPickers.proj" />
+    <content url="file://$MODULE_DIR$/../../../build/package.nuspec" />
+    <content url="file://$MODULE_DIR$/../../../build/package.xml" />
+    <content url="file://$MODULE_DIR$/../.." />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

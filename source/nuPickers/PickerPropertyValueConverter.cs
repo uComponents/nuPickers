@@ -1,4 +1,7 @@
-﻿namespace nuPickers
+﻿using System;
+using System.Web;
+
+namespace nuPickers
 {
     using nuPickers.PropertyEditors;
     using System.Linq;
@@ -7,8 +10,8 @@
     using Umbraco.Core.PropertyEditors;
     using Umbraco.Web;
 
-    [PropertyValueType(typeof(Picker))]
-    [PropertyValueCache(PropertyCacheValue.All, PropertyCacheLevel.Content)]
+    [PropertyType(typeof(Picker))]
+    [PropertyCache(PropertyCacheValue.All, PropertyCacheLevel.Element)]
     public class PickerPropertyValueConverter : PropertyValueConverterBase
     {
         /// <summary>
@@ -16,10 +19,12 @@
         /// </summary>
         /// <param name="publishedPropertyType"></param>
         /// <returns></returns>
-        public override bool IsConverter(PublishedPropertyType publishedPropertyType)
+        public override bool IsConverter(IPublishedPropertyType propertyType)
         {
-            return PickerPropertyValueConverter.IsPicker(publishedPropertyType.PropertyEditorAlias);
+            return IsPicker(propertyType.EditorAlias);
         }
+
+
 
         /// <summary>
         /// Helper to check to see if the supplied propertyEditorAlias corresponds with a nuPicker Picker
@@ -28,7 +33,7 @@
         /// <returns></returns>
         public static bool IsPicker(string propertyEditorAlias)
         {
-            return new string[] { 
+            return new string[] {
                         PropertyEditorConstants.DotNetCheckBoxPickerAlias,
                         PropertyEditorConstants.DotNetDropDownPickerAlias,
                         PropertyEditorConstants.DotNetPagedListPickerAlias,
@@ -75,7 +80,8 @@
         /// <param name="source">expected as a string</param>
         /// <param name="preview"></param>
         /// <returns></returns>
-        public override object ConvertSourceToObject(PublishedPropertyType publishedPropertyType, object source, bool preview)
+        public override object ConvertIntermediateToObject(IPublishedElement owner, IPublishedPropertyType propertyType,
+            PropertyCacheLevel referenceCacheLevel, object inter, bool preview)
         {
             int contextId = -1;
             int parentId = -1;
@@ -101,12 +107,12 @@
             }
 
             return new Picker(
-                        contextId, 
+                        contextId,
                         parentId,
-                        publishedPropertyType.PropertyTypeAlias, 
-                        publishedPropertyType.DataTypeId, 
-                        publishedPropertyType.PropertyEditorAlias, 
-                        source);
+                        propertyType.EditorAlias,
+                        propertyType.DataType.Id,
+                        propertyType.Alias,
+                        inter);
         }
 
         /// <summary>
@@ -117,9 +123,14 @@
         /// <param name="source">expected as a string</param>
         /// <param name="preview">flag to indicate if in preview mode</param>
         /// <returns>source as a string, or null</returns>
-        public override object ConvertDataToSource(PublishedPropertyType propertyType, object source, bool preview)
+        public override object ConvertSourceToIntermediate(IPublishedElement owner, IPublishedPropertyType propertyType, object source,
+            bool preview)
         {
             return source as string;
         }
+
+
+
+
     }
 }

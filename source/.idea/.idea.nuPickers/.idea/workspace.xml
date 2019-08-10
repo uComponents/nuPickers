@@ -1,0 +1,926 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ab600b7e-aec1-4714-98f5-46aa5af89500" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/nuPickers/Compontents/CacheInvalidationCompontent.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nuPickers/Compontents/EmbeddedResourceCompontent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nuPickers.Tests/nuPickers.Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/nuPickers.Tests/nuPickers.Tests.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nuPickers/Caching/CacheInvalidation.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nuPickers/EmbeddedResource/EmbeddedResource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nuPickers/EmbeddedResource/EmbeddedResource.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nuPickers/EmbeddedResource/EmbeddedResourceStartup.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nuPickers/Extensions/IEnumerableStringExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nuPickers/Extensions/IEnumerableStringExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nuPickers/Extensions/IPublishedContentExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nuPickers/Extensions/IPublishedContentExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nuPickers/Extensions/UmbracoHelperExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nuPickers/Extensions/UmbracoHelperExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nuPickers/Picker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nuPickers/Picker.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nuPickers/PickerPropertyValueConverter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nuPickers/PickerPropertyValueConverter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nuPickers/Shared/CustomLabel/CustomLabel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nuPickers/Shared/CustomLabel/CustomLabel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nuPickers/nuPickers.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/nuPickers/nuPickers.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nuPickers/packages.config" beforeDir="false" afterPath="$PROJECT_DIR$/nuPickers/packages.config" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nuPickers/Compontents/nuPickerCompontent.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+              <folding>
+                <marker date="1565430588374" expanded="true" signature="31:92" ph="{...}" />
+                <marker date="1565430588374" expanded="true" signature="69:90" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/nuPickers/PickerPropertyValueConverter.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="47" lean-forward="true" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
+              <folding>
+                <marker date="1565433338777" expanded="true" signature="6:31" ph="..." />
+                <marker date="1565433338777" expanded="true" signature="52:6108" ph="{...}" />
+                <marker date="1565433338777" expanded="true" signature="65:256" ph="..." />
+                <marker date="1565433338777" expanded="true" signature="439:6106" ph="{...}" />
+                <marker date="1565433338777" expanded="true" signature="454:659" ph="/// This is a generic converter for all nuPicker Picker PropertyEditors ... " />
+                <marker date="1565433338777" expanded="true" signature="737:812" ph="{...}" />
+                <marker date="1565433338777" expanded="true" signature="824:1053" ph="/// Helper to check to see if the supplied propertyEditorAlias corresponds with a nuPicker Picker ... " />
+                <marker date="1565433338777" expanded="true" signature="1117:3807" ph="{...}" />
+                <marker date="1565433338777" expanded="true" signature="1160:3748" ph="{...}" />
+                <marker date="1565433338777" expanded="true" signature="3817:4287" ph="/// WARNING: currently PropertyValueConverters are unaware of their context, as such this should only be used by  ... " />
+                <marker date="1565433338777" expanded="true" signature="4488:5416" ph="{...}" />
+                <marker date="1565433338777" expanded="true" signature="4629:4758" ph="{...}" />
+                <marker date="1565433338777" expanded="true" signature="4789:4848" ph="{...}" />
+                <marker date="1565433338777" expanded="true" signature="4894:5129" ph="{...}" />
+                <marker date="1565433338777" expanded="true" signature="5017:5115" ph="{...}" />
+                <marker date="1565433338777" expanded="true" signature="5426:5877" ph="/// Override the default behavour which duck types (converting a string that looks like a number into a number) ... " />
+                <marker date="1565433338777" expanded="true" signature="6039:6096" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nuPickers/Picker.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="5763">
+              <caret line="371" column="21" lean-forward="true" selection-start-line="371" selection-start-column="21" selection-end-line="371" selection-end-column="21" />
+              <folding>
+                <marker date="1565433338946" expanded="true" signature="6:73" ph="..." />
+                <marker date="1565433338946" expanded="true" signature="94:15860" ph="{...}" />
+                <marker date="1565433338946" expanded="false" signature="107:553" ph="..." />
+                <marker date="1565433338946" expanded="true" signature="559:735" ph="/// This class is the main consumer interface ... " />
+                <marker date="1565433338946" expanded="true" signature="759:15858" ph="{...}" />
+                <marker date="1565433338946" expanded="true" signature="774:896" ph="/// cache var, stores value after querying relations or parsing a save format ... " />
+                <marker date="1565433338946" expanded="true" signature="950:4873" ph="Constructors" />
+                <marker date="1565433338946" expanded="true" signature="980:1485" ph="/// public constructor - picker value is calculated from lookup, either the published value from cache, or the la ... " />
+                <marker date="1565433338946" expanded="true" signature="1575:3756" ph="{...}" />
+                <marker date="1565433338946" expanded="true" signature="1793:2547" ph="{...}" />
+                <marker date="1565433338946" expanded="true" signature="1922:2533" ph="{...}" />
+                <marker date="1565433338946" expanded="true" signature="2588:3529" ph="{...}" />
+                <marker date="1565433338946" expanded="true" signature="2722:3515" ph="{...}" />
+                <marker date="1565433338946" expanded="true" signature="2885:3497" ph="{...}" />
+                <marker date="1565433338946" expanded="true" signature="3556:3746" ph="{...}" />
+                <marker date="1565433338946" expanded="true" signature="3766:4425" ph="/// internal constructor - picker value is supplied (used by PropertyValueConverter &amp; RelationMappingEvent) ... " />
+                <marker date="1565433338946" expanded="true" signature="4563:4853" ph="{...}" />
+                <marker date="1565433338946" expanded="true" signature="4883:9583" ph="Properties" />
+                <marker date="1565433338946" expanded="true" signature="4911:4984" ph="/// the value of this picker ... " />
+                <marker date="1565433338946" expanded="true" signature="5167:5305" ph="/// returns a collection of all picked keys (regardless as to how / where they are persisted) ... " />
+                <marker date="1565433338946" expanded="true" signature="5351:6740" ph="{...}" />
+                <marker date="1565433338946" expanded="true" signature="5377:6497" ph="{...}" />
+                <marker date="1565433338946" expanded="true" signature="5436:6442" ph="{...}" />
+                <marker date="1565433338946" expanded="true" signature="5543:6212" ph="{...}" />
+                <marker date="1565433338946" expanded="true" signature="5822:6188" ph="{...}" />
+                <marker date="1565433338946" expanded="true" signature="6237:6424" ph="{...}" />
+                <marker date="1565433338946" expanded="true" signature="6651:6730" ph="{...}" />
+                <marker date="1565433338946" expanded="true" signature="6750:6877" ph="/// returns a collection of all picked keys that can be converted into integer ids ... " />
+                <marker date="1565433338946" expanded="true" signature="6921:7157" ph="{...}" />
+                <marker date="1565433338946" expanded="true" signature="6947:7147" ph="{...}" />
+                <marker date="1565433338946" expanded="true" signature="7167:7275" ph="/// the relation type alias if relation mapping active, or null ... " />
+                <marker date="1565433338946" expanded="true" signature="7317:7928" ph="{...}" />
+                <marker date="1565433338946" expanded="true" signature="7343:7918" ph="{...}" />
+                <marker date="1565433338946" expanded="true" signature="7651:7874" ph="{...}" />
+                <marker date="1565433338946" expanded="true" signature="7938:8030" ph="/// the id of the content, media or member item ... " />
+                <marker date="1565433338946" expanded="true" signature="8085:8133" ph="/// ... " />
+                <marker date="1565433338946" expanded="true" signature="8186:8296" ph="/// the alias of this picker on the content, media or member item ... " />
+                <marker date="1565433338946" expanded="true" signature="8358:8484" ph="/// the data-type this picker is using (no association with a specific SaveValue) ... " />
+                <marker date="1565433338946" expanded="true" signature="8539:8740" ph="/// The alias used to identify a picker type (could be calculated from the dataType id, but this avoids additiona ... " />
+                <marker date="1565433338946" expanded="true" signature="8807:8970" ph="/// Property accessor to ensure the query to populate the data-type configruation options is only done once per s ... " />
+                <marker date="1565433338946" expanded="true" signature="9032:9563" ph="{...}" />
+                <marker date="1565433338946" expanded="true" signature="9058:9553" ph="{...}" />
+                <marker date="1565433338946" expanded="true" signature="9198:9537" ph="{...}" />
+                <marker date="1565433338946" expanded="true" signature="9593:15852" ph="Methods" />
+                <marker date="1565433338946" expanded="true" signature="9618:9794" ph="/// Get all the prevalues for this picker ... " />
+                <marker date="1565433338946" expanded="true" signature="9860:9923" ph="{...}" />
+                <marker date="1565433338946" expanded="true" signature="9933:10137" ph="/// Find a specific prevalue for this picker ... " />
+                <marker date="1565433338946" expanded="true" signature="10191:10353" ph="{...}" />
+                <marker date="1565433338946" expanded="true" signature="10363:10833" ph="/// Get a collection of all (key/label) items for this picker ... " />
+                <marker date="1565433338946" expanded="true" signature="10920:11372" ph="{...}" />
+                <marker date="1565433338946" expanded="true" signature="11382:11623" ph="/// Get a collection of the picked (key/label) items ... " />
+                <marker date="1565433338946" expanded="true" signature="11693:12485" ph="{...}" />
+                <marker date="1565433338946" expanded="true" signature="11861:12400" ph="{...}" />
+                <marker date="1565433338946" expanded="true" signature="12495:12740" ph="/// Get all picked items, objects may be typed Content, Media or Member (but all returned as IPublishedContent) ... " />
+                <marker date="1565433338946" expanded="true" signature="12891:12968" ph="{...}" />
+                <marker date="1565433338946" expanded="true" signature="12978:13156" ph="/// Get all picked items, objects may be typed Content, Media or Member (but all returned as dynamic) ... " />
+                <marker date="1565433338946" expanded="true" signature="13253:13346" ph="{...}" />
+                <marker date="1565433338946" expanded="true" signature="13356:13613" ph="/// get all picked items and attempt to convert them to the supplied enum type T ... " />
+                <marker date="1565433338946" expanded="true" signature="13687:14423" ph="{...}" />
+                <marker date="1565433338946" expanded="true" signature="13732:13826" ph="{...}" />
+                <marker date="1565433338946" expanded="true" signature="13929:14386" ph="{...}" />
+                <marker date="1565433338946" expanded="true" signature="14011:14372" ph="{...}" />
+                <marker date="1565433338946" expanded="true" signature="14085:14354" ph="{...}" />
+                <marker date="1565433338946" expanded="true" signature="14225:14332" ph="{...}" />
+                <marker date="1565433338946" expanded="true" signature="14433:14600" ph="/// get all picked items as a collection of Enum ... " />
+                <marker date="1565433338946" expanded="true" signature="14643:15488" ph="{...}" />
+                <marker date="1565433338946" expanded="true" signature="14819:15451" ph="{...}" />
+                <marker date="1565433338946" expanded="true" signature="15129:15437" ph="{...}" />
+                <marker date="1565433338946" expanded="true" signature="15218:15419" ph="{...}" />
+                <marker date="1565433338946" expanded="true" signature="15299:15397" ph="{...}" />
+                <marker date="1565433338946" expanded="true" signature="15498:15679" ph="/// Returns the string value for this picker ... " />
+                <marker date="1565433338946" expanded="true" signature="15721:15832" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/B6D68F36-8D66-45AF-BF0E-07217963C67F/3a/4e882835/KeyValuePair`2.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="591">
+              <caret line="44" column="18" selection-start-line="44" selection-start-column="18" selection-end-line="44" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nuPickers/Shared/CustomLabel/CustomLabel.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="25" column="43" lean-forward="true" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="43" />
+              <folding>
+                <marker date="1565431622375" expanded="true" signature="39:5058" ph="{...}" />
+                <marker date="1565431622375" expanded="true" signature="52:360" ph="..." />
+                <marker date="1565431622375" expanded="true" signature="392:5056" ph="{...}" />
+                <marker date="1565431622375" expanded="true" signature="456:568" ph="/// return true when there is a published page anywhere on the site ... " />
+                <marker date="1565431622375" expanded="true" signature="756:1007" ph="/// ... " />
+                <marker date="1565431622375" expanded="true" signature="1092:2088" ph="{...}" />
+                <marker date="1565431622375" expanded="true" signature="1392:1608" ph="{...}" />
+                <marker date="1565431622375" expanded="true" signature="1625:2077" ph="{...}" />
+                <marker date="1565431622375" expanded="true" signature="1900:2063" ph="{...}" />
+                <marker date="1565431622375" expanded="true" signature="2098:2421" ph="/// parses the collection of options, potentially transforming the content of the label ... " />
+                <marker date="1565431622375" expanded="true" signature="2534:3104" ph="{...}" />
+                <marker date="1565431622375" expanded="true" signature="2794:2971" ph="{...}" />
+                <marker date="1565431622375" expanded="true" signature="3114:3547" ph="/// ... " />
+                <marker date="1565431622375" expanded="true" signature="3646:4398" ph="{...}" />
+                <marker date="1565431622375" expanded="true" signature="3741:4361" ph="{...}" />
+                <marker date="1565431622375" expanded="true" signature="4408:4624" ph="/// Method added here to remove the need for the more generic ControlExtensions (as unlikely to need this functio ... " />
+                <marker date="1565431622375" expanded="true" signature="4675:5050" ph="{...}" />
+                <marker date="1565431622375" expanded="true" signature="4926:4994" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nuPickers/Compontents/EmbeddedResourceCompontent.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="19" column="9" lean-forward="true" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
+              <folding>
+                <marker date="1565431206303" expanded="true" signature="6:153" ph="..." />
+                <marker date="1565431206303" expanded="true" signature="186:1226" ph="{...}" />
+                <marker date="1565431206303" expanded="true" signature="280:1224" ph="{...}" />
+                <marker date="1565431206303" expanded="true" signature="316:385" ph="{...}" />
+                <marker date="1565431206303" expanded="true" signature="503:1116" ph="{...}" />
+                <marker date="1565431206303" expanded="true" signature="777:910" ph="{...}" />
+                <marker date="1565431206303" expanded="true" signature="1149:1218" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nuPickers/EmbeddedResource/EmbeddedResourceVirtualFileWriter.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-112">
+              <caret line="13" column="24" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
+              <folding>
+                <marker date="1565428945844" expanded="true" signature="36:1450" ph="{...}" />
+                <marker date="1565428945844" expanded="false" signature="49:270" ph="..." />
+                <marker date="1565428945844" expanded="true" signature="276:346" ph="/// The embedded resource writer. ... " />
+                <marker date="1565428945844" expanded="true" signature="425:1448" ph="{...}" />
+                <marker date="1565428945844" expanded="true" signature="610:1221" ph="{...}" />
+                <marker date="1565428945844" expanded="true" signature="636:1018" ph="{...}" />
+                <marker date="1565428945844" expanded="true" signature="790:1004" ph="{...}" />
+                <marker date="1565428945844" expanded="true" signature="1058:1211" ph="{...}" />
+                <marker date="1565428945844" expanded="true" signature="1231:1303" ph="/// Gets the file provider. ... " />
+                <marker date="1565428945844" expanded="true" signature="1352:1442" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nuPickers/Extensions/IEnumerableStringExtensions.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="27" column="13" lean-forward="true" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+              <folding>
+                <marker date="1565431949211" expanded="true" signature="75:1003" ph="{...}" />
+                <marker date="1565431949211" expanded="false" signature="88:192" ph="..." />
+                <marker date="1565431949211" expanded="true" signature="247:1001" ph="{...}" />
+                <marker date="1565431949211" expanded="true" signature="263:548" ph="/// TODO: migrate out of Picker obj ... " />
+                <marker date="1565431949211" expanded="true" signature="692:995" ph="{...}" />
+                <marker date="1565431949211" expanded="true" signature="783:985" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nuPickers/Extensions/UmbracoHelperExtensions.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="741">
+              <caret line="43" column="53" selection-start-line="43" selection-start-column="53" selection-end-line="43" selection-end-column="53" />
+              <folding>
+                <marker date="1565431363231" expanded="true" signature="75:2094" ph="{...}" />
+                <marker date="1565431363231" expanded="false" signature="88:131" ph="..." />
+                <marker date="1565431363231" expanded="true" signature="182:2092" ph="{...}" />
+                <marker date="1565431363231" expanded="true" signature="197:662" ph="/// for a given umbraco Id, attempt to get the appropriate IPublishedContent (be that a typed content / media or  ... " />
+                <marker date="1565431363231" expanded="true" signature="766:855" ph="{...}" />
+                <marker date="1565431363231" expanded="true" signature="865:1269" ph="/// for a given umbraco Id, attempt to get the appropriate IPublishedContent (be that a typed content / media or  ... " />
+                <marker date="1565431363231" expanded="true" signature="1370:2086" ph="{...}" />
+                <marker date="1565431363231" expanded="true" signature="1537:1680" ph="{...}" />
+                <marker date="1565431363231" expanded="true" signature="1723:2038" ph="{...}" />
+                <marker date="1565431363231" expanded="true" signature="1813:1914" ph="{...}" />
+                <marker date="1565431363231" expanded="true" signature="1936:2024" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nuPickers/Extensions/IPublishedContentExtensions.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="262">
+              <caret line="19" column="13" lean-forward="true" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+              <folding>
+                <marker date="1565431333219" expanded="true" signature="75:1142" ph="{...}" />
+                <marker date="1565431333219" expanded="false" signature="88:131" ph="..." />
+                <marker date="1565431333219" expanded="true" signature="184:1140" ph="{...}" />
+                <marker date="1565431333219" expanded="true" signature="199:596" ph="/// Get a Picker model for the supplied propertyAlias on this &lt;see cref=&quot;IPublishedContent&quot;/&gt; ... " />
+                <marker date="1565431333219" expanded="true" signature="698:1134" ph="{...}" />
+                <marker date="1565431333219" expanded="true" signature="874:1098" ph="{...}" />
+                <marker date="1565431333219" expanded="true" signature="973:1084" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>AsPublishedContent</find>
+      <find>PickerPropertyValueConverter</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/nuPickers/Compontents/nuPickerCompontent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/nuPickers/PickerPropertyValueConverter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/nuPickers/Compontents/EmbeddedResourceCompontent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/nuPickers/Helper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/nuPickers/Shared/CustomLabel/CustomLabelApiController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/nuPickers/nuPickerComposer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/nuPickers/Picker.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/nuPickers/EmbeddedResource/EmbeddedResource.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/nuPickers/Extensions/UmbracoHelperExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/nuPickers/Shared/CustomLabel/CustomLabel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/nuPickers/EmbeddedResource/EmbeddedResourceVirtualFileWriter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/B6D68F36-8D66-45AF-BF0E-07217963C67F/3a/4e882835/KeyValuePair`2.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/nuPickers/Extensions/IPublishedContentExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/nuPickers/Extensions/IEnumerableStringExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/nuPickers/Caching/Cache.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/nuPickers/Compontents/CacheInvalidationCompontent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/nuPickers/Caching/CacheConstants.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/nuPickers.Tests/EmbeddedResource/EmbeddedResourceHelperTests.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/nuPickers/Shared/CustomLabel/CustomLabelApiController.cs" />
+        <option value="$PROJECT_DIR$/nuPickers/Compontents/nuPickerCompontent.cs" />
+        <option value="$PROJECT_DIR$/nuPickers/nuPickerComposer.cs" />
+        <option value="$PROJECT_DIR$/nuPickers/Caching/CacheInvalidation.cs" />
+        <option value="$PROJECT_DIR$/nuPickers/Compontents/CacheInvalidationCompontent.cs" />
+        <option value="$PROJECT_DIR$/nuPickers/EmbeddedResource/EmbeddedResourceStartup.cs" />
+        <option value="$PROJECT_DIR$/nuPickers/Compontents/EmbeddedResourceCompontent.cs" />
+        <option value="$PROJECT_DIR$/nuPickers/EmbeddedResource/EmbeddedResource.cs" />
+        <option value="$PROJECT_DIR$/nuPickers/Extensions/IPublishedContentExtensions.cs" />
+        <option value="$PROJECT_DIR$/nuPickers/Extensions/UmbracoHelperExtensions.cs" />
+        <option value="$PROJECT_DIR$/nuPickers/Shared/CustomLabel/CustomLabel.cs" />
+        <option value="$PROJECT_DIR$/nuPickers/Extensions/IEnumerableStringExtensions.cs" />
+        <option value="$PROJECT_DIR$/nuPickers/Picker.cs" />
+        <option value="$PROJECT_DIR$/nuPickers/PickerPropertyValueConverter.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/.idea.nuPickers/.idea/vcs.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-7" />
+    <option name="y" value="2" />
+    <option name="width" value="1932" />
+    <option name="height" value="1045" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="SolutionExplorer" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="FileSystemExplorer" />
+      <pane id="AssemblyExplorer" />
+      <pane id="SolutionExplorer">
+        <subPane>
+          <expand>
+            <path>
+              <item name="" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="nuPickers" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="nuPickers" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="nuPickers" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="nuPickers" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="nuPickers" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Caching" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="nuPickers" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="nuPickers" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Compontents" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="nuPickers" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="nuPickers" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="EmbeddedResource" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="nuPickers" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="nuPickers" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Extensions" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="nuPickers" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="nuPickers.Tests" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="nuPickers" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="nuPickers.Tests" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="EmbeddedResource" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <option name="show-all-files" value="false" />
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
+    <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="editor.config.ad.shown" value="true" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ab600b7e-aec1-4714-98f5-46aa5af89500" name="Default Changelist" comment="" />
+      <created>1565429039837</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1565429039837</updated>
+      <workItem from="1565429042534" duration="4245000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="4245000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="2" width="1932" height="1045" extended-state="0" />
+    <layout>
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="NuGet" weight="0.32976446" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Unit Tests" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Performance Profiler" />
+      <window_info anchor="bottom" id="Build" visible="true" weight="0.32976446" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Errors In Solution" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Unit Tests Coverage" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/nuPickers/Caching/CacheConstants.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
+          <folding>
+            <marker date="1565428945830" expanded="true" signature="27:540" ph="{...}" />
+            <marker date="1565428945830" expanded="true" signature="70:538" ph="{...}" />
+            <marker date="1565428945830" expanded="true" signature="85:205" ph="/// key appended with a dataType id - stores all the prevalues for a picker ... " />
+            <marker date="1565428945830" expanded="true" signature="291:470" ph="/// key appended with a context id and property alias - stores picked keys (only applies when picker is in relati ... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nuPickers/Caching/Cache.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
+          <folding>
+            <marker date="1565428945829" expanded="true" signature="27:5908" ph="{...}" />
+            <marker date="1565428945829" expanded="false" signature="40:145" ph="..." />
+            <marker date="1565428945829" expanded="true" signature="178:5906" ph="{...}" />
+            <marker date="1565428945829" expanded="true" signature="193:293" ph="/// Singleton instance of the &lt;see cref=&quot;Cache&quot;/&gt; class ... " />
+            <marker date="1565428945829" expanded="true" signature="362:467" ph="/// Internal instance of the &lt;see cref=&quot;MemoryCache&quot;/&gt; class ... " />
+            <marker date="1565428945829" expanded="true" signature="518:722" ph="/// Locker collection of all cache keys currently having their 'expensive functions' evaluated ... " />
+            <marker date="1565428945829" expanded="true" signature="822:842" ph="{...}" />
+            <marker date="1565428945829" expanded="true" signature="852:920" ph="/// Private constructor ... " />
+            <marker date="1565428945829" expanded="true" signature="944:1111" ph="{...}" />
+            <marker date="1565428945829" expanded="true" signature="1121:1200" ph="/// Get the instance of this cache ... " />
+            <marker date="1565428945829" expanded="true" signature="1239:1333" ph="{...}" />
+            <marker date="1565428945829" expanded="true" signature="1265:1323" ph="{...}" />
+            <marker date="1565428945829" expanded="true" signature="1343:1652" ph="/// Queries key in cache for object of type T ... " />
+            <marker date="1565428945829" expanded="true" signature="1695:1793" ph="{...}" />
+            <marker date="1565428945829" expanded="true" signature="1803:2228" ph="/// Queries key in cache for object of type T ... " />
+            <marker date="1565428945829" expanded="true" signature="2287:2535" ph="{...}" />
+            <marker date="1565428945829" expanded="true" signature="2377:2466" ph="{...}" />
+            <marker date="1565428945829" expanded="true" signature="2545:3178" ph="/// Queries key in cache for object of type T, otherwise executes expensiveFunc and ensures cache is set ... " />
+            <marker date="1565428945829" expanded="true" signature="3264:4115" ph="{...}" />
+            <marker date="1565428945829" expanded="true" signature="3386:4071" ph="{...}" />
+            <marker date="1565428945829" expanded="true" signature="3769:3937" ph="{...}" />
+            <marker date="1565428945829" expanded="true" signature="4125:4506" ph="/// Populate the cache key with the supplied object ... " />
+            <marker date="1565428945829" expanded="true" signature="4588:5086" ph="{...}" />
+            <marker date="1565428945829" expanded="true" signature="4637:5076" ph="{...}" />
+            <marker date="1565428945829" expanded="true" signature="4684:4941" ph="{...}" />
+            <marker date="1565428945829" expanded="true" signature="4962:5062" ph="{...}" />
+            <marker date="1565428945829" expanded="true" signature="5096:5243" ph="/// Remove an item from cache ... " />
+            <marker date="1565428945829" expanded="true" signature="5289:5356" ph="{...}" />
+            <marker date="1565428945829" expanded="true" signature="5366:5605" ph="/// Remove all items from cache for which the lambda returns true ... " />
+            <marker date="1565428945829" expanded="true" signature="5661:5900" ph="{...}" />
+            <marker date="1565428945829" expanded="true" signature="5743:5890" ph="{...}" />
+            <marker date="1565428945829" expanded="true" signature="5790:5876" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nuPickers.Tests/EmbeddedResource/EmbeddedResourceHelperTests.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="87">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+          <folding>
+            <marker date="1565428945812" expanded="true" signature="42:4134" ph="{...}" />
+            <marker date="1565428945812" expanded="true" signature="55:138" ph="..." />
+            <marker date="1565428945812" expanded="true" signature="206:4132" ph="{...}" />
+            <marker date="1565428945812" expanded="true" signature="636:1209" ph="{...}" />
+            <marker date="1565428945812" expanded="true" signature="1276:1641" ph="{...}" />
+            <marker date="1565428945812" expanded="true" signature="1712:2269" ph="{...}" />
+            <marker date="1565428945812" expanded="true" signature="2335:2700" ph="{...}" />
+            <marker date="1565428945812" expanded="true" signature="2773:3446" ph="{...}" />
+            <marker date="1565428945812" expanded="true" signature="3521:4126" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nuPickers/Helper.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+          <folding>
+            <marker date="1565428945849" expanded="true" signature="19:4425" ph="{...}" />
+            <marker date="1565428945849" expanded="true" signature="32:247" ph="..." />
+            <marker date="1565428945849" expanded="true" signature="281:4423" ph="{...}" />
+            <marker date="1565428945849" expanded="true" signature="350:1213" ph="{...}" />
+            <marker date="1565428945849" expanded="true" signature="579:849" ph="{...}" />
+            <marker date="1565428945849" expanded="true" signature="746:835" ph="{...}" />
+            <marker date="1565428945849" expanded="true" signature="1012:1168" ph="{...}" />
+            <marker date="1565428945849" expanded="true" signature="1223:1411" ph="/// attempts to get an assembly by it's name ... " />
+            <marker date="1565428945849" expanded="true" signature="1477:2314" ph="{...}" />
+            <marker date="1565428945849" expanded="true" signature="1589:1742" ph="{...}" />
+            <marker date="1565428945849" expanded="true" signature="1611:1664" ph="{...}" />
+            <marker date="1565428945849" expanded="true" signature="1698:1728" ph="{...}" />
+            <marker date="1565428945849" expanded="true" signature="1905:2278" ph="{...}" />
+            <marker date="1565428945849" expanded="true" signature="1939:2173" ph="{...}" />
+            <marker date="1565428945849" expanded="true" signature="2212:2264" ph="{...}" />
+            <marker date="1565428945849" expanded="true" signature="2324:2574" ph="/// extension method on Assembly to handle reflection loading exceptions ... " />
+            <marker date="1565428945849" expanded="true" signature="2657:2992" ph="{...}" />
+            <marker date="1565428945849" expanded="true" signature="2683:2755" ph="{...}" />
+            <marker date="1565428945849" expanded="true" signature="2805:2887" ph="{...}" />
+            <marker date="1565428945849" expanded="true" signature="2918:2982" ph="{...}" />
+            <marker date="1565428945849" expanded="true" signature="3002:3318" ph="/// uses supplied url to check the file system (if prefixed with ~/) else makes an http query ... " />
+            <marker date="1565428945849" expanded="true" signature="3376:4417" ph="{...}" />
+            <marker date="1565428945849" expanded="true" signature="3471:4381" ph="{...}" />
+            <marker date="1565428945849" expanded="true" signature="3562:4216" ph="{...}" />
+            <marker date="1565428945849" expanded="true" signature="3670:3992" ph="{...}" />
+            <marker date="1565428945849" expanded="true" signature="3827:3970" ph="{...}" />
+            <marker date="1565428945849" expanded="true" signature="4030:4198" ph="{...}" />
+            <marker date="1565428945849" expanded="true" signature="4293:4367" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nuPickers/nuPickerComposer.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+          <folding>
+            <marker date="1565430596576" expanded="true" signature="6:78" ph="..." />
+            <marker date="1565430596576" expanded="true" signature="99:254" ph="{...}" />
+            <marker date="1565430596576" expanded="true" signature="239:252" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nuPickers/Shared/CustomLabel/CustomLabelApiController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="21" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
+          <folding>
+            <marker date="1565428946110" expanded="true" signature="26:700" ph="{...}" />
+            <marker date="1565428946110" expanded="true" signature="39:190" ph="..." />
+            <marker date="1565428946110" expanded="true" signature="303:698" ph="{...}" />
+            <marker date="1565428946110" expanded="true" signature="356:692" ph="{...}" />
+            <marker date="1565428946110" expanded="true" signature="566:680" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nuPickers/Caching/CacheInvalidation.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nuPickers/Compontents/CacheInvalidationCompontent.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="92" lean-forward="true" selection-start-line="11" selection-start-column="45" selection-end-line="11" selection-end-column="92" />
+          <folding>
+            <marker date="1565430979212" expanded="true" signature="6:208" ph="..." />
+            <marker date="1565430979212" expanded="true" signature="241:2367" ph="{...}" />
+            <marker date="1565430979212" expanded="true" signature="336:2365" ph="{...}" />
+            <marker date="1565430979212" expanded="true" signature="548:662" ph="{...}" />
+            <marker date="1565430979212" expanded="true" signature="693:762" ph="{...}" />
+            <marker date="1565430979212" expanded="true" signature="881:1166" ph="{...}" />
+            <marker date="1565430979212" expanded="true" signature="1199:1268" ph="{...}" />
+            <marker date="1565430979212" expanded="true" signature="1362:1542" ph="{...}" />
+            <marker date="1565430979212" expanded="true" signature="1640:1822" ph="{...}" />
+            <marker date="1565430979212" expanded="true" signature="1919:2088" ph="{...}" />
+            <marker date="1565430979212" expanded="true" signature="2189:2359" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nuPickers/EmbeddedResource/EmbeddedResourceStartup.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="23" lean-forward="true" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nuPickers/EmbeddedResource/EmbeddedResource.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="12" />
+          <folding>
+            <marker date="1565431253964" expanded="true" signature="36:659" ph="{...}" />
+            <marker date="1565431253964" expanded="true" signature="81:657" ph="{...}" />
+            <marker date="1565431253964" expanded="true" signature="96:180" ph="/// Root url for all embedded resources ... " />
+            <marker date="1565431253964" expanded="true" signature="266:358" ph="/// namespace prefix for all embedded resources ... " />
+            <marker date="1565431253964" expanded="true" signature="437:597" ph="/// Custom extension so ClientDependency framework can delegate handling back to nuPickers for the embedded conte ... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nuPickers/EmbeddedResource/EmbeddedResourceVirtualFileWriter.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-112">
+          <caret line="13" column="24" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
+          <folding>
+            <marker date="1565428945844" expanded="true" signature="36:1450" ph="{...}" />
+            <marker date="1565428945844" expanded="false" signature="49:270" ph="..." />
+            <marker date="1565428945844" expanded="true" signature="276:346" ph="/// The embedded resource writer. ... " />
+            <marker date="1565428945844" expanded="true" signature="425:1448" ph="{...}" />
+            <marker date="1565428945844" expanded="true" signature="610:1221" ph="{...}" />
+            <marker date="1565428945844" expanded="true" signature="636:1018" ph="{...}" />
+            <marker date="1565428945844" expanded="true" signature="790:1004" ph="{...}" />
+            <marker date="1565428945844" expanded="true" signature="1058:1211" ph="{...}" />
+            <marker date="1565428945844" expanded="true" signature="1231:1303" ph="/// Gets the file provider. ... " />
+            <marker date="1565428945844" expanded="true" signature="1352:1442" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nuPickers/Extensions/IPublishedContentExtensions.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="19" column="13" lean-forward="true" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <folding>
+            <marker date="1565431333219" expanded="true" signature="75:1142" ph="{...}" />
+            <marker date="1565431333219" expanded="false" signature="88:131" ph="..." />
+            <marker date="1565431333219" expanded="true" signature="184:1140" ph="{...}" />
+            <marker date="1565431333219" expanded="true" signature="199:596" ph="/// Get a Picker model for the supplied propertyAlias on this &lt;see cref=&quot;IPublishedContent&quot;/&gt; ... " />
+            <marker date="1565431333219" expanded="true" signature="698:1134" ph="{...}" />
+            <marker date="1565431333219" expanded="true" signature="874:1098" ph="{...}" />
+            <marker date="1565431333219" expanded="true" signature="973:1084" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nuPickers/Extensions/UmbracoHelperExtensions.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="741">
+          <caret line="43" column="53" selection-start-line="43" selection-start-column="53" selection-end-line="43" selection-end-column="53" />
+          <folding>
+            <marker date="1565431363231" expanded="true" signature="75:2094" ph="{...}" />
+            <marker date="1565431363231" expanded="false" signature="88:131" ph="..." />
+            <marker date="1565431363231" expanded="true" signature="182:2092" ph="{...}" />
+            <marker date="1565431363231" expanded="true" signature="197:662" ph="/// for a given umbraco Id, attempt to get the appropriate IPublishedContent (be that a typed content / media or  ... " />
+            <marker date="1565431363231" expanded="true" signature="766:855" ph="{...}" />
+            <marker date="1565431363231" expanded="true" signature="865:1269" ph="/// for a given umbraco Id, attempt to get the appropriate IPublishedContent (be that a typed content / media or  ... " />
+            <marker date="1565431363231" expanded="true" signature="1370:2086" ph="{...}" />
+            <marker date="1565431363231" expanded="true" signature="1537:1680" ph="{...}" />
+            <marker date="1565431363231" expanded="true" signature="1723:2038" ph="{...}" />
+            <marker date="1565431363231" expanded="true" signature="1813:1914" ph="{...}" />
+            <marker date="1565431363231" expanded="true" signature="1936:2024" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nuPickers/Compontents/nuPickerCompontent.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+          <folding>
+            <marker date="1565430588374" expanded="true" signature="31:92" ph="{...}" />
+            <marker date="1565430588374" expanded="true" signature="69:90" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nuPickers/Compontents/EmbeddedResourceCompontent.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="9" lean-forward="true" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
+          <folding>
+            <marker date="1565431206303" expanded="true" signature="6:153" ph="..." />
+            <marker date="1565431206303" expanded="true" signature="186:1226" ph="{...}" />
+            <marker date="1565431206303" expanded="true" signature="280:1224" ph="{...}" />
+            <marker date="1565431206303" expanded="true" signature="316:385" ph="{...}" />
+            <marker date="1565431206303" expanded="true" signature="503:1116" ph="{...}" />
+            <marker date="1565431206303" expanded="true" signature="777:910" ph="{...}" />
+            <marker date="1565431206303" expanded="true" signature="1149:1218" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nuPickers/Shared/CustomLabel/CustomLabel.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="43" lean-forward="true" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="43" />
+          <folding>
+            <marker date="1565431622375" expanded="true" signature="39:5058" ph="{...}" />
+            <marker date="1565431622375" expanded="true" signature="52:360" ph="..." />
+            <marker date="1565431622375" expanded="true" signature="392:5056" ph="{...}" />
+            <marker date="1565431622375" expanded="true" signature="456:568" ph="/// return true when there is a published page anywhere on the site ... " />
+            <marker date="1565431622375" expanded="true" signature="756:1007" ph="/// ... " />
+            <marker date="1565431622375" expanded="true" signature="1092:2088" ph="{...}" />
+            <marker date="1565431622375" expanded="true" signature="1392:1608" ph="{...}" />
+            <marker date="1565431622375" expanded="true" signature="1625:2077" ph="{...}" />
+            <marker date="1565431622375" expanded="true" signature="1900:2063" ph="{...}" />
+            <marker date="1565431622375" expanded="true" signature="2098:2421" ph="/// parses the collection of options, potentially transforming the content of the label ... " />
+            <marker date="1565431622375" expanded="true" signature="2534:3104" ph="{...}" />
+            <marker date="1565431622375" expanded="true" signature="2794:2971" ph="{...}" />
+            <marker date="1565431622375" expanded="true" signature="3114:3547" ph="/// ... " />
+            <marker date="1565431622375" expanded="true" signature="3646:4398" ph="{...}" />
+            <marker date="1565431622375" expanded="true" signature="3741:4361" ph="{...}" />
+            <marker date="1565431622375" expanded="true" signature="4408:4624" ph="/// Method added here to remove the need for the more generic ControlExtensions (as unlikely to need this functio ... " />
+            <marker date="1565431622375" expanded="true" signature="4675:5050" ph="{...}" />
+            <marker date="1565431622375" expanded="true" signature="4926:4994" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nuPickers/Extensions/IEnumerableStringExtensions.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="27" column="13" lean-forward="true" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+          <folding>
+            <marker date="1565431949211" expanded="true" signature="75:1003" ph="{...}" />
+            <marker date="1565431949211" expanded="false" signature="88:192" ph="..." />
+            <marker date="1565431949211" expanded="true" signature="247:1001" ph="{...}" />
+            <marker date="1565431949211" expanded="true" signature="263:548" ph="/// TODO: migrate out of Picker obj ... " />
+            <marker date="1565431949211" expanded="true" signature="692:995" ph="{...}" />
+            <marker date="1565431949211" expanded="true" signature="783:985" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/B6D68F36-8D66-45AF-BF0E-07217963C67F/3a/4e882835/KeyValuePair`2.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="591">
+          <caret line="44" column="18" selection-start-line="44" selection-start-column="18" selection-end-line="44" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nuPickers/Picker.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5763">
+          <caret line="371" column="21" lean-forward="true" selection-start-line="371" selection-start-column="21" selection-end-line="371" selection-end-column="21" />
+          <folding>
+            <marker date="1565433338946" expanded="true" signature="6:73" ph="..." />
+            <marker date="1565433338946" expanded="true" signature="94:15860" ph="{...}" />
+            <marker date="1565433338946" expanded="false" signature="107:553" ph="..." />
+            <marker date="1565433338946" expanded="true" signature="559:735" ph="/// This class is the main consumer interface ... " />
+            <marker date="1565433338946" expanded="true" signature="759:15858" ph="{...}" />
+            <marker date="1565433338946" expanded="true" signature="774:896" ph="/// cache var, stores value after querying relations or parsing a save format ... " />
+            <marker date="1565433338946" expanded="true" signature="950:4873" ph="Constructors" />
+            <marker date="1565433338946" expanded="true" signature="980:1485" ph="/// public constructor - picker value is calculated from lookup, either the published value from cache, or the la ... " />
+            <marker date="1565433338946" expanded="true" signature="1575:3756" ph="{...}" />
+            <marker date="1565433338946" expanded="true" signature="1793:2547" ph="{...}" />
+            <marker date="1565433338946" expanded="true" signature="1922:2533" ph="{...}" />
+            <marker date="1565433338946" expanded="true" signature="2588:3529" ph="{...}" />
+            <marker date="1565433338946" expanded="true" signature="2722:3515" ph="{...}" />
+            <marker date="1565433338946" expanded="true" signature="2885:3497" ph="{...}" />
+            <marker date="1565433338946" expanded="true" signature="3556:3746" ph="{...}" />
+            <marker date="1565433338946" expanded="true" signature="3766:4425" ph="/// internal constructor - picker value is supplied (used by PropertyValueConverter &amp; RelationMappingEvent) ... " />
+            <marker date="1565433338946" expanded="true" signature="4563:4853" ph="{...}" />
+            <marker date="1565433338946" expanded="true" signature="4883:9583" ph="Properties" />
+            <marker date="1565433338946" expanded="true" signature="4911:4984" ph="/// the value of this picker ... " />
+            <marker date="1565433338946" expanded="true" signature="5167:5305" ph="/// returns a collection of all picked keys (regardless as to how / where they are persisted) ... " />
+            <marker date="1565433338946" expanded="true" signature="5351:6740" ph="{...}" />
+            <marker date="1565433338946" expanded="true" signature="5377:6497" ph="{...}" />
+            <marker date="1565433338946" expanded="true" signature="5436:6442" ph="{...}" />
+            <marker date="1565433338946" expanded="true" signature="5543:6212" ph="{...}" />
+            <marker date="1565433338946" expanded="true" signature="5822:6188" ph="{...}" />
+            <marker date="1565433338946" expanded="true" signature="6237:6424" ph="{...}" />
+            <marker date="1565433338946" expanded="true" signature="6651:6730" ph="{...}" />
+            <marker date="1565433338946" expanded="true" signature="6750:6877" ph="/// returns a collection of all picked keys that can be converted into integer ids ... " />
+            <marker date="1565433338946" expanded="true" signature="6921:7157" ph="{...}" />
+            <marker date="1565433338946" expanded="true" signature="6947:7147" ph="{...}" />
+            <marker date="1565433338946" expanded="true" signature="7167:7275" ph="/// the relation type alias if relation mapping active, or null ... " />
+            <marker date="1565433338946" expanded="true" signature="7317:7928" ph="{...}" />
+            <marker date="1565433338946" expanded="true" signature="7343:7918" ph="{...}" />
+            <marker date="1565433338946" expanded="true" signature="7651:7874" ph="{...}" />
+            <marker date="1565433338946" expanded="true" signature="7938:8030" ph="/// the id of the content, media or member item ... " />
+            <marker date="1565433338946" expanded="true" signature="8085:8133" ph="/// ... " />
+            <marker date="1565433338946" expanded="true" signature="8186:8296" ph="/// the alias of this picker on the content, media or member item ... " />
+            <marker date="1565433338946" expanded="true" signature="8358:8484" ph="/// the data-type this picker is using (no association with a specific SaveValue) ... " />
+            <marker date="1565433338946" expanded="true" signature="8539:8740" ph="/// The alias used to identify a picker type (could be calculated from the dataType id, but this avoids additiona ... " />
+            <marker date="1565433338946" expanded="true" signature="8807:8970" ph="/// Property accessor to ensure the query to populate the data-type configruation options is only done once per s ... " />
+            <marker date="1565433338946" expanded="true" signature="9032:9563" ph="{...}" />
+            <marker date="1565433338946" expanded="true" signature="9058:9553" ph="{...}" />
+            <marker date="1565433338946" expanded="true" signature="9198:9537" ph="{...}" />
+            <marker date="1565433338946" expanded="true" signature="9593:15852" ph="Methods" />
+            <marker date="1565433338946" expanded="true" signature="9618:9794" ph="/// Get all the prevalues for this picker ... " />
+            <marker date="1565433338946" expanded="true" signature="9860:9923" ph="{...}" />
+            <marker date="1565433338946" expanded="true" signature="9933:10137" ph="/// Find a specific prevalue for this picker ... " />
+            <marker date="1565433338946" expanded="true" signature="10191:10353" ph="{...}" />
+            <marker date="1565433338946" expanded="true" signature="10363:10833" ph="/// Get a collection of all (key/label) items for this picker ... " />
+            <marker date="1565433338946" expanded="true" signature="10920:11372" ph="{...}" />
+            <marker date="1565433338946" expanded="true" signature="11382:11623" ph="/// Get a collection of the picked (key/label) items ... " />
+            <marker date="1565433338946" expanded="true" signature="11693:12485" ph="{...}" />
+            <marker date="1565433338946" expanded="true" signature="11861:12400" ph="{...}" />
+            <marker date="1565433338946" expanded="true" signature="12495:12740" ph="/// Get all picked items, objects may be typed Content, Media or Member (but all returned as IPublishedContent) ... " />
+            <marker date="1565433338946" expanded="true" signature="12891:12968" ph="{...}" />
+            <marker date="1565433338946" expanded="true" signature="12978:13156" ph="/// Get all picked items, objects may be typed Content, Media or Member (but all returned as dynamic) ... " />
+            <marker date="1565433338946" expanded="true" signature="13253:13346" ph="{...}" />
+            <marker date="1565433338946" expanded="true" signature="13356:13613" ph="/// get all picked items and attempt to convert them to the supplied enum type T ... " />
+            <marker date="1565433338946" expanded="true" signature="13687:14423" ph="{...}" />
+            <marker date="1565433338946" expanded="true" signature="13732:13826" ph="{...}" />
+            <marker date="1565433338946" expanded="true" signature="13929:14386" ph="{...}" />
+            <marker date="1565433338946" expanded="true" signature="14011:14372" ph="{...}" />
+            <marker date="1565433338946" expanded="true" signature="14085:14354" ph="{...}" />
+            <marker date="1565433338946" expanded="true" signature="14225:14332" ph="{...}" />
+            <marker date="1565433338946" expanded="true" signature="14433:14600" ph="/// get all picked items as a collection of Enum ... " />
+            <marker date="1565433338946" expanded="true" signature="14643:15488" ph="{...}" />
+            <marker date="1565433338946" expanded="true" signature="14819:15451" ph="{...}" />
+            <marker date="1565433338946" expanded="true" signature="15129:15437" ph="{...}" />
+            <marker date="1565433338946" expanded="true" signature="15218:15419" ph="{...}" />
+            <marker date="1565433338946" expanded="true" signature="15299:15397" ph="{...}" />
+            <marker date="1565433338946" expanded="true" signature="15498:15679" ph="/// Returns the string value for this picker ... " />
+            <marker date="1565433338946" expanded="true" signature="15721:15832" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nuPickers/PickerPropertyValueConverter.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="47" lean-forward="true" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
+          <folding>
+            <marker date="1565433338777" expanded="true" signature="6:31" ph="..." />
+            <marker date="1565433338777" expanded="true" signature="52:6108" ph="{...}" />
+            <marker date="1565433338777" expanded="true" signature="65:256" ph="..." />
+            <marker date="1565433338777" expanded="true" signature="439:6106" ph="{...}" />
+            <marker date="1565433338777" expanded="true" signature="454:659" ph="/// This is a generic converter for all nuPicker Picker PropertyEditors ... " />
+            <marker date="1565433338777" expanded="true" signature="737:812" ph="{...}" />
+            <marker date="1565433338777" expanded="true" signature="824:1053" ph="/// Helper to check to see if the supplied propertyEditorAlias corresponds with a nuPicker Picker ... " />
+            <marker date="1565433338777" expanded="true" signature="1117:3807" ph="{...}" />
+            <marker date="1565433338777" expanded="true" signature="1160:3748" ph="{...}" />
+            <marker date="1565433338777" expanded="true" signature="3817:4287" ph="/// WARNING: currently PropertyValueConverters are unaware of their context, as such this should only be used by  ... " />
+            <marker date="1565433338777" expanded="true" signature="4488:5416" ph="{...}" />
+            <marker date="1565433338777" expanded="true" signature="4629:4758" ph="{...}" />
+            <marker date="1565433338777" expanded="true" signature="4789:4848" ph="{...}" />
+            <marker date="1565433338777" expanded="true" signature="4894:5129" ph="{...}" />
+            <marker date="1565433338777" expanded="true" signature="5017:5115" ph="{...}" />
+            <marker date="1565433338777" expanded="true" signature="5426:5877" ph="/// Override the default behavour which duck types (converting a string that looks like a number into a number) ... " />
+            <marker date="1565433338777" expanded="true" signature="6039:6096" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
