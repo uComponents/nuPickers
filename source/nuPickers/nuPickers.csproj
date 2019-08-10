@@ -327,132 +327,32 @@
     <Compile Include="nuPickerComposer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyEditors\BasePropertyEditor.cs" />
-    <Compile Include="PropertyEditors\DotNetCheckBoxPicker\DotNetCheckBoxPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\DotNetCheckBoxPicker\DotNetCheckBoxPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\DotNetDropDownPicker\DotNetDropDownPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\DotNetDropDownPicker\DotNetDropDownPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\DotNetLabels\DotNetLabelsPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\DotNetLabels\DotLabelsPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\DotNetPagedListPicker\DotNetPagedListPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\DotNetPagedListPicker\DotNetPagedListPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\DotNetPrefetchListPicker\DotNetPrefetchListPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\DotNetPrefetchListPicker\DotNetPrefetchListPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\DotNetRadioButtonPicker\DotNetRadioButtonPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\DotNetRadioButtonPicker\DotNetRadioButtonPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\DotNetTypeaheadListPicker\DotNetTypeaheadListPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\DotNetTypeaheadListPicker\DotNetTypeaheadListPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\EnumLabels\EnumLabelsPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\EnumLabels\EnumLabelsPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\JsonLabels\JsonLabelsPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\JsonLabels\JsonLabelsPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\JsonPagedListPicker\JsonPagedListPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\JsonPagedListPicker\JsonPagedListPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\JsonTypeaheadListPicker\JsonTypeaheadListPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\JsonTypeaheadListPicker\JsonTypeaheadPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\JsonRadioButtonPicker\JsonRadioButtonPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\JsonRadioButtonPicker\JsonRadioButtonPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\JsonPrefetchListPicker\JsonPrefetchListPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\JsonPrefetchListPicker\JsonPrefetchListPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\JsonDropDownPicker\JsonDropDownPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\JsonDropDownPicker\JsonDropDownPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\JsonCheckBoxPicker\JsonCheckBoxPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\JsonCheckBoxPicker\JsonCheckBoxPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\EnumCheckBoxPicker\EnumCheckBoxPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\EnumCheckBoxPicker\EnumCheckBoxPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\EnumDropDownPicker\EnumDropDownPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\EnumDropDownPicker\EnumDropDownPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\EnumPrefetchListPicker\EnumPrefetchListPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\EnumPrefetchListPicker\EnumPrefetchListPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\EnumRadioButtonPicker\EnumRadioButtonPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\EnumRadioButtonPicker\EnumRadioButtonPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\LuceneCheckBoxPicker\LuceneCheckBoxPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\LuceneCheckBoxPicker\LuceneCheckBoxPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\LuceneDropDownPicker\LuceneDropDownPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\LuceneDropDownPicker\LuceneDropDownPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\LuceneLabels\LuceneLabelsPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\LuceneLabels\LuceneLabelsPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\LucenePagedListPicker\LucenePagedListPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\LucenePagedListPicker\LucenePagedListPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\LucenePrefetchListPicker\LucenePrefetchListPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\LucenePrefetchListPicker\LucenePrefetchListPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\LuceneRadioButtonPicker\LuceneRadioButtonPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\LuceneRadioButtonPicker\LuceneRadioButtonPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\LuceneTypeaheadPicker\LuceneTypeaheadListPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\LuceneTypeaheadPicker\LuceneTypeaheadPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\PropertyEditorConstants.cs" />
-    <Compile Include="PropertyEditors\SqlLabels\SqlLabelsPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\SqlLabels\SqlLabelsPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\SqlPagedListPicker\SqlPagedListPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\SqlPagedListPicker\SqlPagedListPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\SqlTypeaheadListPicker\SqlTypeaheadListPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\SqlTypeaheadListPicker\SqlTypeaheadListPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\XmlLabels\XmlLabelsPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\XmlLabels\XmlLabelsPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\XmlPagedListPicker\XmlPagedListPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\XmlPagedListPicker\XmlPagedListPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\XmlTypeaheadListPicker\XmlTypeaheadListPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\XmlTypeaheadListPicker\XmlTypeaheadListPickerPropertyEditor.cs" />
     <Compile Include="Picker.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="PickerPropertyValueConverter.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Shared\DataSource\DataSource.cs" />
-    <Compile Include="Shared\DataSource\DataSourceApiResponse.cs" />
-    <Compile Include="Shared\DataSource\IDataSource.cs" />
-    <Compile Include="Shared\DataSource\DataSourceApiController.cs" />
-    <Compile Include="Shared\DotNetDataSource\DotNetDataSource.cs" />
-    <Compile Include="Shared\DotNetDataSource\DotNetDataSourceApiController.cs" />
-    <Compile Include="Shared\DotNetDataSource\DotNetDataSourceAttribute.cs" />
-    <Compile Include="Shared\DotNetDataSource\DotNetDataSourceProperty.cs" />
-    <Compile Include="Shared\DotNetDataSource\IDotNetDataSource.cs" />
-    <Compile Include="Shared\DotNetDataSource\IDotNetDataSourceKeyed.cs" />
-    <Compile Include="Shared\DotNetDataSource\IDotNetDataSourcePaged.cs" />
-    <Compile Include="Shared\DotNetDataSource\IDotNetDataSourceTypeahead.cs" />
     <Compile Include="Shared\Editor\Editor.cs" />
+    <Compile Include="Shared\Editor\EditorDataItem.cs" />
     <Compile Include="Shared\EnumDataSource\EnumExtensions.cs" />
-    <Compile Include="Shared\JsonDataSource\JsonDataSource.cs" />
-    <Compile Include="Shared\LuceneDataSource\LuceneDataSource.cs" />
     <Compile Include="Shared\LuceneDataSource\LuceneDataSourceApiController.cs" />
     <Compile Include="Shared\Paging\PageMarker.cs" />
-    <Compile Include="Shared\RelationDataSource\RelationDataSource.cs" />
-    <Compile Include="Shared\RelationDataSource\RelationDataSourceApiController.cs" />
     <Compile Include="Shared\RelationMapping\RelationMapping.cs" />
     <Compile Include="Shared\RelationMapping\RelationMappingComment.cs" />
     <Compile Include="Shared\SaveFormat\SaveFormatPropertyValueEditor.cs" />
-    <Compile Include="PropertyEditors\RelationLabels\RelationLabelsPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\RelationLabels\RelationLabelsPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\SqlCheckBoxPicker\SqlCheckBoxPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\SqlCheckBoxPicker\SqlCheckBoxPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\SqlDropDownPicker\SqlDropDownPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\SqlDropDownPicker\SqlDropDownPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\SqlPrefetchListPicker\SqlPrefetchListPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\SqlPrefetchListPicker\SqlPrefetchListPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\SqlRadioButtonPicker\SqlRadioButtonPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\SqlRadioButtonPicker\SqlRadioButtonPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\XmlCheckBoxPicker\XmlCheckBoxPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\XmlCheckBoxPicker\XmlCheckBoxPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\XmlDropDownPicker\XmlDropDownPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\XmlDropDownPicker\XmlDropDownPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\XmlPrefetchListPicker\XmlPrefetchListPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\XmlPrefetchListPicker\XmlPrefetchListPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\XmlRadioButtonPicker\XmlRadioButtonPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\XmlRadioButtonPicker\XmlRadioButtonPickerPropertyEditor.cs" />
     <Compile Include="Shared\EnumDataSource\EnumDataSource.cs" />
     <Compile Include="Shared\EnumDataSource\EnumDataSourceApiController.cs" />
     <Compile Include="Shared\EnumDataSource\EnumDataSourceAttribute.cs" />
-    <Compile Include="Shared\Editor\EditorDataItem.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Shared\CustomLabel\CustomLabel.cs" />
-    <Compile Include="Shared\CustomLabel\CustomLabelApiController.cs" />
     <Compile Include="Shared\RelationMapping\RelationMappingApiController.cs" />
     <Compile Include="Shared\SaveFormat\SaveFormat.cs" />
     <Compile Include="Shared\SqlDataSource\SqlDataSource.cs" />
     <Compile Include="Shared\SqlDataSource\SqlDataSourceApiController.cs" />
-    <Compile Include="Shared\TypeaheadListPicker\TypeaheadListPicker.cs" />
-    <Compile Include="Shared\XmlDataSource\XmlDataSource.cs" />
+    <Compile Include="Validators\RegexValidator.cs" />
+    <Compile Include="Validators\RequiredValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -462,13 +362,10 @@
     <EmbeddedResource Include="Shared\SaveFormat\SaveFormatConfigController.js" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Shared\CheckBoxPicker\CheckBoxPickerEditor.html" />
     <EmbeddedResource Include="Shared\PrefetchListPicker\PrefetchListPickerConfig.html" />
     <EmbeddedResource Include="Shared\ListPicker\ListPickerEditor.css" />
     <EmbeddedResource Include="Shared\PrefetchListPicker\PrefetchListPickerEditor.html" />
     <EmbeddedResource Include="Shared\PrefetchListPicker\PrefetchListPickerEditorController.js" />
-    <EmbeddedResource Include="Shared\XmlDataSource\XmlDataSourceConfig.html" />
-    <EmbeddedResource Include="Shared\XmlDataSource\XmlDataSourceConfigController.js" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Shared\HiddenConstant\HiddenConstantConfig.html" />
@@ -476,13 +373,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Shared\DropDownPicker\DropDownPickerEditor.html" />
     <EmbeddedResource Include="Shared\DropDownPicker\DropDownPickerEditorController.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Shared\CustomLabel\CustomLabelConfig.html" />
-    <EmbeddedResource Include="Shared\CustomLabel\CustomLabelConfigController.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Shared\CheckBoxPicker\CheckBoxPickerEditorController.js" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Shared\SqlDataSource\SqlDataSourceConfig.html" />
@@ -522,24 +412,6 @@
     <EmbeddedResource Include="Shared\PropertyEditor\PropertyEditorConfig.css" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Shared\RelationDataSource\RelationDataSourceConfig.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Shared\RelationDataSource\RelationDataSourceConfigController.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Shared\DataSource\DataSourceResource.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Shared\TypeaheadListPicker\TypeaheadListPickerEditor.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Shared\TypeaheadListPicker\TypeaheadListPickerEditorController.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Shared\TypeaheadListPicker\TypeaheadListPickerEditorDirectives.js" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Shared\ListPicker\ListPickerEditorDirectives.js" />
   </ItemGroup>
   <ItemGroup>
@@ -552,13 +424,7 @@
     <EmbeddedResource Include="Shared\ListPicker\ListPickerSelectedPartial.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Shared\TypeaheadListPicker\TypeaheadListPickerConfig.html" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Shared\RelationMapping\RelationMappingResource.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Shared\Editor\EditorResource.js" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Shared\JsonDataSource\JsonDataSourceConfig.html" />
@@ -569,16 +435,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Shared\LuceneDataSource\LuceneDataSourceConfig.html" />
     <EmbeddedResource Include="Shared\LuceneDataSource\LuceneDataSourceConfigController.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Shared\DotNetDataSource\DotNetDataSourceConfig.html" />
-    <EmbeddedResource Include="Shared\DotNetDataSource\DotNetDataSourceConfigController.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Shared\CheckBoxPicker\CheckBoxPickerConfig.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Shared\CheckBoxPicker\CheckBoxPickerEditor.css" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Shared\Labels\LabelsConfigController.js" />
@@ -596,6 +452,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Shared\PagedListPicker\PagedListPickerEditor.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Shared\Editor\EditorResource.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

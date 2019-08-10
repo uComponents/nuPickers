@@ -1,4 +1,8 @@
 ﻿
+using Umbraco.Core.Models;
+using Umbraco.Core.Models.PublishedContent;
+using Umbraco.Web.Composing;
+
 namespace nuPickers.Shared.CustomLabel
 {
     using nuPickers.Shared.Editor;
@@ -40,7 +44,7 @@ namespace nuPickers.Shared.CustomLabel
             this.PropertyAlias = propertyAlias;
 
             // the macro requires a published context to run in
-            Node currentNode = uQuery.GetNode(contextId);
+            IPublishedContent currentNode = Current.UmbracoContext.ContentCache.GetById(contextId);
             if (currentNode != null)
             {
                 // current page is published so use this as the macro context
@@ -50,7 +54,7 @@ namespace nuPickers.Shared.CustomLabel
             else
             {
                  // fallback nd find first published page to use as host
-                 Node contextNode = uQuery.GetNodesByXPath(string.Concat("descendant::*[@parentID = ", uQuery.RootNodeId, "]")).FirstOrDefault();
+                 IPublishedContent contextNode = Current.UmbracoContext.ContentCache.GetSingleByXPath(string.Concat("descendant::*[@parentID = ", Current.Services.ContentService.GetRootContent().FirstOrDefault(), "]"));
                  if (contextNode != null)
                  {
                      HttpContext.Current.Items["pageID"] = contextNode.Id;
@@ -96,15 +100,15 @@ namespace nuPickers.Shared.CustomLabel
             {
                 Macro macro = new Macro() { Alias = this.MacroAlias };
 
-                macro.MacroAttributes.Add("contextId".ToLower(), this.ContextId);
-                macro.MacroAttributes.Add("propertyAlias".ToLower(), this.PropertyAlias);
+                macro.Properties.Add(new MacroProperty("contextId".ToLower(), this.ContextId.ToString()));
+                macro.Properties.Add(new MacroProperty("propertyAlias".ToLower(), this.PropertyAlias));
 
-                macro.MacroAttributes.Add("key", key);
-                macro.MacroAttributes.Add("label", label);
+                macro.Properties.Add("key", key);
+                macro.Properties.Add("label", label);
 
-                macro.MacroAttributes.Add("keys", keys);
-                macro.MacroAttributes.Add("counter", counter);
-                macro.MacroAttributes.Add("total", total);
+                macro.Properties.Add("keys", keys);
+                macro.Properties.Add("counter", counter);
+                macro.Properties.Add("total", total);
 
                 label = this.RenderToString(macro);
             }

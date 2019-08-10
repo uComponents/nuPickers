@@ -1,4 +1,8 @@
-﻿namespace nuPickers.Shared.EnumDataSource
+﻿using System.Collections;
+using System.Web.UI;
+using Umbraco.Core.PropertyEditors;
+
+namespace nuPickers.Shared.EnumDataSource
 {
     using DataSource;
     using nuPickers.Shared.Editor;
@@ -16,28 +20,28 @@
 
         bool IDataSource.HandledTypeahead { get { return false; } }
 
-        IEnumerable<EditorDataItem> IDataSource.GetEditorDataItems(int currentId, int parentId, string typeahead)
+        IEnumerable<DataEditor> IDataSource.GetEditorDataItems(int currentId, int parentId, string typeahead)
         {
             return this.GetEditorDataItems();
         }
 
-        IEnumerable<EditorDataItem> IDataSource.GetEditorDataItems(int currentId, int parentId, string[] keys)
+        IEnumerable<DataEditor> IDataSource.GetEditorDataItems(int currentId, int parentId, string[] keys)
         {
             return this.GetEditorDataItems().Where(x => keys.Contains(x.Key));
         }
 
-        IEnumerable<EditorDataItem> IDataSource.GetEditorDataItems(int currentId, int parentId, PageMarker pageMarker, out int total)
+        IEnumerable<DataEditor> IDataSource.GetEditorDataItems(int currentId, int parentId, PageMarker pageMarker, out int total)
         {
             var editorDataItems = this.GetEditorDataItems();
 
             total = editorDataItems.Count();
-            
+
             return editorDataItems.Skip(pageMarker.Skip).Take(pageMarker.Take);
         }
 
-        private IEnumerable<EditorDataItem> GetEditorDataItems()
+        private IEnumerable<DataEditor> GetEditorDataItems()
         {
-            List<EditorDataItem> editorDataItems = new List<EditorDataItem>();
+            List<DataEditor> editorDataItems = new List<DataEditor>();
 
             Type enumType = Helper.GetAssembly(this.AssemblyName).GetType(this.EnumName);
 
@@ -50,7 +54,7 @@
 
                 foreach(CustomAttributeData customAttributeData in CustomAttributeData.GetCustomAttributes(fieldInfo))
                 {
-                    if (customAttributeData.Constructor.DeclaringType != null 
+                    if (customAttributeData.Constructor.DeclaringType != null
                         && customAttributeData.Constructor.DeclaringType.Name == "EnumDataSourceAttribute"
                         && customAttributeData.NamedArguments != null)
                     {
@@ -76,11 +80,23 @@
 
                 if (enabled)
                 {
-                    editorDataItems.Add(new EditorDataItem() { Key = key, Label = label });
+                    editorDataItems.Add(new DataEditor( { Key = key, Label = label });
                 }
             }
 
             return editorDataItems;
         }
+
+        public DataSourceView GetView(string viewName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ICollection GetViewNames()
+        {
+            throw new NotImplementedException();
+        }
+
+        public event EventHandler DataSourceChanged;
     }
 }
