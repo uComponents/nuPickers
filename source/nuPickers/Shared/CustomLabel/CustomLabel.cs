@@ -13,9 +13,6 @@ namespace nuPickers.Shared.CustomLabel
     using System.Text;
     using System.Web;
     using System.Web.UI;
-    using umbraco;
-    using umbraco.NodeFactory;
-    using umbraco.presentation.templateControls;
 
     internal class CustomLabel
     {
@@ -99,7 +96,7 @@ namespace nuPickers.Shared.CustomLabel
             if (!string.IsNullOrWhiteSpace(this.MacroAlias) && this.HasMacroContext)
             {
                 Macro macro = new Macro() { Alias = this.MacroAlias };
-
+/*
                 macro.Properties.Add(new MacroProperty("contextId".ToLower(), this.ContextId.ToString()));
                 macro.Properties.Add(new MacroProperty("propertyAlias".ToLower(), this.PropertyAlias));
 
@@ -109,7 +106,7 @@ namespace nuPickers.Shared.CustomLabel
                 macro.Properties.Add("keys", keys);
                 macro.Properties.Add("counter", counter);
                 macro.Properties.Add("total", total);
-
+*/
                 label = this.RenderToString(macro);
             }
 
@@ -126,7 +123,7 @@ namespace nuPickers.Shared.CustomLabel
             using (StringWriter stringWriter = new StringWriter(stringBuilder))
             using (HtmlTextWriter htmlTextWriter = new HtmlTextWriter(stringWriter))
             {
-                macro.RenderControl(htmlTextWriter);
+             //   macro.RenderControl(htmlTextWriter);
             }
 
             return stringBuilder.ToString();

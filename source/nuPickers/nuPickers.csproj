@@ -327,7 +327,8 @@
     <Compile Include="nuPickerComposer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyEditors\BasePropertyEditor.cs" />
-    <Compile Include="PropertyEditors\EnumDropDownPicker\EnumDropDownPickerPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\EnumDropDownPicker\EnumDropDownPickerConfigurationEditor.cs" />
+    <Compile Include="PropertyEditors\EnumDropDownPicker\EnumDropDownPickerConfiguration.cs" />
     <Compile Include="PropertyEditors\EnumDropDownPicker\EnumDropDownPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\PropertyEditorConstants.cs" />
     <Compile Include="Picker.cs">
@@ -336,11 +337,29 @@
     <Compile Include="PickerPropertyValueConverter.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Shared\CustomLabel\CustomLabel.cs" />
+    <Compile Include="Shared\CustomLabel\CustomLabelApiController.cs" />
+    <Compile Include="Shared\DataSource\DataSource.cs" />
+    <Compile Include="Shared\DataSource\DataSourceApiController.cs" />
+    <Compile Include="Shared\DataSource\DataSourceApiResponse.cs" />
+    <Compile Include="Shared\DataSource\IDataSource.cs" />
+    <Compile Include="Shared\DotNetDataSource\DotNetDataSource.cs" />
+    <Compile Include="Shared\DotNetDataSource\DotNetDataSourceApiController.cs" />
+    <Compile Include="Shared\DotNetDataSource\DotNetDataSourceAttribute.cs" />
+    <Compile Include="Shared\DotNetDataSource\DotNetDataSourceProperty.cs" />
+    <Compile Include="Shared\DotNetDataSource\IDotNetDataSource.cs" />
+    <Compile Include="Shared\DotNetDataSource\IDotNetDataSourceKeyed.cs" />
+    <Compile Include="Shared\DotNetDataSource\IDotNetDataSourcePaged.cs" />
+    <Compile Include="Shared\DotNetDataSource\IDotNetDataSourceTypeahead.cs" />
     <Compile Include="Shared\Editor\Editor.cs" />
     <Compile Include="Shared\Editor\EditorDataItem.cs" />
     <Compile Include="Shared\EnumDataSource\EnumExtensions.cs" />
+    <Compile Include="Shared\JsonDataSource\JsonDataSource.cs" />
+    <Compile Include="Shared\LuceneDataSource\LuceneDataSource.cs" />
     <Compile Include="Shared\LuceneDataSource\LuceneDataSourceApiController.cs" />
     <Compile Include="Shared\Paging\PageMarker.cs" />
+    <Compile Include="Shared\RelationDataSource\RelationDataSource.cs" />
+    <Compile Include="Shared\RelationDataSource\RelationDataSourceApiController.cs" />
     <Compile Include="Shared\RelationMapping\RelationMapping.cs" />
     <Compile Include="Shared\RelationMapping\RelationMappingComment.cs" />
     <Compile Include="Shared\SaveFormat\SaveFormatPropertyValueEditor.cs" />
@@ -351,6 +370,8 @@
     <Compile Include="Shared\SaveFormat\SaveFormat.cs" />
     <Compile Include="Shared\SqlDataSource\SqlDataSource.cs" />
     <Compile Include="Shared\SqlDataSource\SqlDataSourceApiController.cs" />
+    <Compile Include="Shared\TypeaheadListPicker\TypeaheadListPicker.cs" />
+    <Compile Include="Shared\XmlDataSource\XmlDataSource.cs" />
     <Compile Include="Validators\RegexValidator.cs" />
     <Compile Include="Validators\RequiredValidator.cs" />
   </ItemGroup>
@@ -454,7 +475,20 @@
     <EmbeddedResource Include="Shared\PagedListPicker\PagedListPickerEditor.css" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Shared\CustomLabel\CustomLabelConfig.html" />
+    <Content Include="Shared\CustomLabel\CustomLabelConfigController.js" />
+    <Content Include="Shared\DataSource\DataSourceResource.js" />
+    <Content Include="Shared\DotNetDataSource\DotNetDataSourceConfig.html" />
+    <Content Include="Shared\DotNetDataSource\DotNetDataSourceConfigController.js" />
     <Content Include="Shared\Editor\EditorResource.js" />
+    <Content Include="Shared\RelationDataSource\RelationDataSourceConfig.html" />
+    <Content Include="Shared\RelationDataSource\RelationDataSourceConfigController.js" />
+    <Content Include="Shared\TypeaheadListPicker\TypeaheadListPickerConfig.html" />
+    <Content Include="Shared\TypeaheadListPicker\TypeaheadListPickerEditor.html" />
+    <Content Include="Shared\TypeaheadListPicker\TypeaheadListPickerEditorController.js" />
+    <Content Include="Shared\TypeaheadListPicker\TypeaheadListPickerEditorDirectives.js" />
+    <Content Include="Shared\XmlDataSource\XmlDataSourceConfig.html" />
+    <Content Include="Shared\XmlDataSource\XmlDataSourceConfigController.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

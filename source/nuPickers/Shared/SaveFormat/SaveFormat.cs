@@ -1,4 +1,5 @@
 ﻿using ClientDependency.Core.Logging;
+using nuPickers.Shared.Editor;
 using Umbraco.Core.PropertyEditors;
 using Umbraco.Web.Composing;
 
@@ -31,11 +32,15 @@ namespace nuPickers.Shared.SaveFormat
         /// <param name="value">the saved value as a string</param>
         /// <param name="editorDataItems"></param>
         /// <returns>bool flag to indicate whether the items could be created from the savedValue supplied</returns>
-        internal static bool TryGetDataEditorItems(string value, out IEnumerable<IDataEditor> editorDataItems)
+        internal static bool TryGetDataEditorItems(string value, out IEnumerable<EditorDataItem> editorDataItems)
         {
             editorDataItems = SaveFormat.GetKeyValuePairs(value)
                                         .Where(x => x.Value != null)
-                                        .Select(x => new DataEditor(Current.Logger,new EditorType()));
+                                        .Select(x => new EditorDataItem()
+                                        {
+                                            Key=x.Key,
+                                            Label = x.Value
+                                        });
 
             return editorDataItems.Count() > 0;
         }

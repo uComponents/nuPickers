@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Web.UI;
-using Umbraco.Core.PropertyEditors;
-
-namespace nuPickers.Shared.EnumDataSource
+﻿namespace nuPickers.Shared.EnumDataSource
 {
     using DataSource;
     using nuPickers.Shared.Editor;
@@ -20,17 +16,17 @@ namespace nuPickers.Shared.EnumDataSource
 
         bool IDataSource.HandledTypeahead { get { return false; } }
 
-        IEnumerable<DataEditor> IDataSource.GetEditorDataItems(int currentId, int parentId, string typeahead)
+        IEnumerable<EditorDataItem> IDataSource.GetEditorDataItems(int currentId, int parentId, string typeahead)
         {
             return this.GetEditorDataItems();
         }
 
-        IEnumerable<DataEditor> IDataSource.GetEditorDataItems(int currentId, int parentId, string[] keys)
+        IEnumerable<EditorDataItem> IDataSource.GetEditorDataItems(int currentId, int parentId, string[] keys)
         {
             return this.GetEditorDataItems().Where(x => keys.Contains(x.Key));
         }
 
-        IEnumerable<DataEditor> IDataSource.GetEditorDataItems(int currentId, int parentId, PageMarker pageMarker, out int total)
+        IEnumerable<EditorDataItem> IDataSource.GetEditorDataItems(int currentId, int parentId, PageMarker pageMarker, out int total)
         {
             var editorDataItems = this.GetEditorDataItems();
 
@@ -39,9 +35,9 @@ namespace nuPickers.Shared.EnumDataSource
             return editorDataItems.Skip(pageMarker.Skip).Take(pageMarker.Take);
         }
 
-        private IEnumerable<DataEditor> GetEditorDataItems()
+        private IEnumerable<EditorDataItem> GetEditorDataItems()
         {
-            List<DataEditor> editorDataItems = new List<DataEditor>();
+            List<EditorDataItem> editorDataItems = new List<EditorDataItem>();
 
             Type enumType = Helper.GetAssembly(this.AssemblyName).GetType(this.EnumName);
 
@@ -80,23 +76,11 @@ namespace nuPickers.Shared.EnumDataSource
 
                 if (enabled)
                 {
-                    editorDataItems.Add(new DataEditor( { Key = key, Label = label });
+                    editorDataItems.Add(new EditorDataItem() { Key = key, Label = label });
                 }
             }
 
             return editorDataItems;
         }
-
-        public DataSourceView GetView(string viewName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public ICollection GetViewNames()
-        {
-            throw new NotImplementedException();
-        }
-
-        public event EventHandler DataSourceChanged;
     }
 }

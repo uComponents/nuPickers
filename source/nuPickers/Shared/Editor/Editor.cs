@@ -1,4 +1,5 @@
 ﻿using System.Web.UI;
+using Umbraco.Core.PropertyEditors;
 
 namespace nuPickers.Shared.Editor
 {
@@ -22,11 +23,11 @@ namespace nuPickers.Shared.Editor
         /// <param name="customLabelMacro">an optional macro to use for custom labels</param>
         /// <param name="typeahead">optional typeahead text to filter down on items returned</param>
         /// <returns>a collection of <see cref="EditorDataItem"/></returns>
-        internal static IEnumerable<EditorDataItem> GetEditorDataItems(                                                        
+        internal static IEnumerable<EditorDataItem> GetEditorDataItems(
                                                         int currentId,
                                                         int parentId,
                                                         string propertyAlias,
-                                                        IDataSource dataSource, 
+                                                        IDataSource dataSource,
                                                         string customLabelMacro,
                                                         string typeahead = null)
         {
@@ -114,9 +115,9 @@ namespace nuPickers.Shared.Editor
             if (dataSource != null)
             {
                 editorDataItems = dataSource.GetEditorDataItems(
-                                                currentId, 
-                                                parentId, 
-                                                new PageMarker(itemsPerPage, page), 
+                                                currentId,
+                                                parentId,
+                                                new PageMarker(itemsPerPage, page),
                                                 out total);
 
                 if (!string.IsNullOrWhiteSpace(customLabelMacro))

@@ -9,7 +9,6 @@ namespace nuPickers.Shared.XmlDataSource
     using System.Linq;
     using System.Xml;
     using System.Xml.XPath;
-    using umbraco;
     using Umbraco.Core;
 
     public class XmlDataSource : IDataSource
@@ -59,6 +58,7 @@ namespace nuPickers.Shared.XmlDataSource
 
             switch (this.XmlData)
             {
+                /*
                 case "content":
                     xmlDocument = uQuery.GetPublishedXml(uQuery.UmbracoObjectType.Document);
                     break;
@@ -70,7 +70,7 @@ namespace nuPickers.Shared.XmlDataSource
                 case "members":
                     xmlDocument = uQuery.GetPublishedXml(uQuery.UmbracoObjectType.Member);
                     break;
-
+*/
                 case "url":
                     xmlDocument = new XmlDocument();
 
