@@ -1,9 +1,11 @@
-﻿namespace nuPickers.Shared.LuceneDataSource
+﻿using Examine.Search;
+using Umbraco.Examine;
+
+namespace nuPickers.Shared.LuceneDataSource
 {
     using DataSource;
     using Examine;
     using Examine.Providers;
-    using Examine.SearchCriteria;
     using nuPickers.Shared.Editor;
     using Paging;
     using System;
@@ -12,12 +14,20 @@
 
     public class LuceneDataSource : IDataSource
     {
+
+        private readonly IExamineManager _examineManager;
+
+        public LuceneDataSource(IExamineManager examineManager)
+        {
+            _examineManager = examineManager;
+        }
+
         public string ExamineSearcher { get; set; }
 
         public string RawQuery { get; set; }
-        
+
         public string KeyField { get; set; }
-        
+
         public string LabelField { get; set; }
 
         bool IDataSource.HandledTypeahead { get { return false; } } // TODO: Implement token replacement for Lucene queries
@@ -45,20 +55,21 @@
         {
             List<EditorDataItem> editorDataItems = new List<EditorDataItem>();
 
-            BaseSearchProvider searchProvider = ExamineManager.Instance.SearchProviderCollection[this.ExamineSearcher];
+            ISearcher searchProvider = _examineManager.TryGetIndex(ExamineSearcher, out var externalIndex) ? externalIndex.GetSearcher() : null;
 
             if (searchProvider != null)
             {
-                ISearchCriteria searchCriteria = searchProvider.CreateSearchCriteria().RawQuery(this.RawQuery);
-                ISearchResults searchResults = searchProvider.Search(searchCriteria);
+                IQuery searchCriteria = searchProvider.CreateQuery();
+                var query = searchCriteria.NativeQuery(this.RawQuery);
+                ISearchResults searchResults = query.Execute();
 
                 foreach (SearchResult searchResult in searchResults)
                 {
                     editorDataItems.Add(
-                        new EditorDataItem() 
-                            { 
-                                Key = searchResult.Fields.ContainsKey(this.KeyField) ? searchResult.Fields[this.KeyField] : null,
-                                Label = searchResult.Fields.ContainsKey(this.LabelField) ? searchResult.Fields[this.LabelField] : null
+                        new EditorDataItem()
+                            {
+                                Key = searchResult.AllValues.ContainsKey(this.KeyField) ? searchResult.AllValues[this.KeyField][0] : null,
+                                Label = searchResult.AllValues.ContainsKey(this.LabelField) ? searchResult.AllValues[this.LabelField][0] : null
                             });
                 }
             }

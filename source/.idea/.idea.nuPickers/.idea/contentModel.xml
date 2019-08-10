@@ -27,10 +27,11 @@
           <e p="Cache.cs" t="Include" />
           <e p="CacheConstants.cs" t="Include" />
         </e>
-        <e p="Compontents" t="Include">
-          <e p="CacheInvalidationCompontent.cs" t="Include" />
+        <e p="Components" t="Include">
+          <e p="CacheInvalidationComponent.cs" t="Include" />
           <e p="EmbeddedResourceCompontent.cs" t="Include" />
           <e p="nuPickerCompontent.cs" t="Include" />
+          <e p="RelationMappingComponent.cs" t="Include" />
         </e>
         <e p="EmbeddedResource" t="Include">
           <e p="EmbeddedResource.cs" t="Include" />
@@ -337,7 +338,6 @@
             <e p="RelationMappingComment.cs" t="Include" />
             <e p="RelationMappingConfig.html" t="Include" />
             <e p="RelationMappingConfigController.js" t="Include" />
-            <e p="RelationMappingEvent.cs" t="Include" />
             <e p="RelationMappingResource.js" t="Include" />
           </e>
           <e p="SaveFormat" t="Include">
@@ -372,15 +372,7 @@
       </e>
       <e p="nuPickers.sln" t="IncludeFlat" />
       <e p="nuPickers.Tests" t="IncludeRecursive">
-        <e p="bin" t="ExcludeRecursive" />
-        <e p="EmbeddedResource" t="Include">
-          <e p="EmbeddedResourceHelperTests.cs" t="Include" />
-        </e>
         <e p="nuPickers.Tests.csproj" t="IncludeRecursive" />
-        <e p="obj" t="ExcludeRecursive" />
-        <e p="Properties" t="Include">
-          <e p="AssemblyInfo.cs" t="Include" />
-        </e>
       </e>
       <e p="packages" t="ExcludeRecursive">
         <e p="Umbraco.SqlServerCE.4.0.0.1\runtimes\win-x64\native\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" t="Include" />

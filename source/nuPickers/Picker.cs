@@ -1,4 +1,4 @@
-﻿using Umbraco.Core.Composing;
+﻿using Umbraco.Web.Composing;
 using Umbraco.Core.Models.PublishedContent;
 
 namespace nuPickers
@@ -42,7 +42,7 @@ namespace nuPickers
         {
             bool success = false;
 
-            var publishedContent = new UmbracoHelper(UmbracoContext.Current).GetPublishedContent(contextId);
+            var publishedContent = Current.UmbracoHelper.Content(contextId);
 
             if (usePublishedValue && publishedContent != null)
             {
@@ -53,7 +53,7 @@ namespace nuPickers
                     var propertyType = publishedContent.ContentType.PropertyTypes.Single(x => x.Alias == property.Alias);
 
                     this.ContextId = publishedContent.Id;
-                    this.ParentId = (publishedContent.Parent != null) ? publishedContent.Parent.Id : -1;
+                    this.ParentId = publishedContent.Parent?.Id ?? -1;
                     this.PropertyAlias = propertyAlias;
                     this.DataTypeId = propertyType.DataType.Id;
                     this.PropertyEditorAlias = propertyType.EditorAlias;
@@ -130,7 +130,7 @@ namespace nuPickers
             {
                 if (this.pickedKeys == null)
                 {
-                    if (this.GetDataTypePreValue("saveFormat").Value == "relationsOnly")
+                    if (this.GetDataTypePreValue("saveFormat").ToString() == "relationsOnly")
                     {
                         // attempt to find relations data in memory cache
                         this.pickedKeys = Cache.Instance.GetSet(CacheConstants.PickedKeysPrefix + this.ContextId.ToString() + "_" + this.PropertyAlias, () =>
@@ -179,11 +179,11 @@ namespace nuPickers
             get
             {
                 // not all pickers support relation mapping, so null check required
-                PreValue relationMappingPreValue = this.GetDataTypePreValue("relationMapping");
-                if (relationMappingPreValue != null && !string.IsNullOrWhiteSpace(relationMappingPreValue.Value))
+                object relationMappingPreValue = this.GetDataTypePreValue("relationMapping");
+                if (relationMappingPreValue != null && !string.IsNullOrWhiteSpace(relationMappingPreValue.ToString()))
                 {
                     // parse the json config to get a relationType alias
-                    return JObject.Parse(relationMappingPreValue.Value).GetValue("relationTypeAlias").ToString();
+                    return JObject.Parse(relationMappingPreValue.ToString()).GetValue("relationTypeAlias").ToString();
                 }
 
                 return null;
@@ -223,15 +223,10 @@ namespace nuPickers
         {
             get
             {
-                return Cache.Instance.GetSet(CacheConstants.DataTypePreValuesPrefix + this.DataTypeId, () =>
-                {
-                    return  ApplicationContext
-                                .Current
-                                .Services
-                                .DataTypeService
-                                .GetPreValuesCollectionByDataTypeId(this.DataTypeId)
-                                .PreValuesAsDictionary;
-                });
+                return Cache.Instance.GetSet(CacheConstants.DataTypePreValuesPrefix + DataTypeId, () =>
+                    {
+                        return Current.Services.DataTypeService.GetDataType(DataTypeId).Editor.DefaultConfiguration;
+                    });
             }
         }
 
@@ -316,7 +311,7 @@ namespace nuPickers
         //[Obsolete("[v2.0.0]")]
         public IEnumerable<dynamic> AsDynamicPublishedContent()
         {
-            return this.AsPublishedContent().Select(x => x.AsDynamic());
+            return this.AsPublishedContent();
         }
 
         /// <summary>

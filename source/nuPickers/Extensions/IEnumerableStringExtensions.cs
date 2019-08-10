@@ -1,4 +1,5 @@
-﻿using Umbraco.Core.Models.PublishedContent;
+﻿using Umbraco.Web.Composing;
+using Umbraco.Core.Models.PublishedContent;
 
 namespace nuPickers.Extensions
 {
@@ -16,16 +17,15 @@ namespace nuPickers.Extensions
         /// </summary>
         /// <param name="keys"></param>
         /// <returns>a collection (populated, or empty)</returns>
-        internal static IEnumerable<IPublishedContent> AsPublishedContent(this IEnumerable<string> keys, IUmbracoContextFactory contextFactory)
+        internal static IEnumerable<IPublishedContent> AsPublishedContent(this IEnumerable<string> keys)
         {
 
-            using (var cf = contextFactory.EnsureUmbracoContext())
-            {
-                var cache = cf.UmbracoContext.ContentCache;
+
+
                 return keys
-                    .Select(x =>  cache.GetByRoute(x))
+                    .Select(x =>  Current.UmbracoHelper.Content(x))
                     .Where(x => x != null);
-            }
+
         }
     }
 }

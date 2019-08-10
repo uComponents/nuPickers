@@ -3,7 +3,7 @@
     using nuPickers.EmbeddedResource;
     using Umbraco.Core.PropertyEditors;
 
-    internal class DotNetCheckBoxPickerPreValueEditor : PreValueEditor
+    internal class DotNetCheckBoxPickerPreValueEditor : IConfigurationEditor
     {
         [PreValueField("dataSource", "", EmbeddedResource.ROOT_URL + "DotNetDataSource/DotNetDataSourceConfig.html", HideLabel = true)]
         public string DataSource { get; set; }

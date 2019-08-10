@@ -1,13 +1,15 @@
-﻿namespace nuPickers.PropertyEditors.DotNetCheckBoxPicker
+﻿using Umbraco.Core.Models;
+
+namespace nuPickers.PropertyEditors.DotNetCheckBoxPicker
 {
     using ClientDependency.Core;
     using nuPickers.EmbeddedResource;
     using nuPickers.PropertyEditors;
     using Umbraco.Core.PropertyEditors;
     using Umbraco.Web.PropertyEditors;
-    
+
     // EDITOR UI
-    [PropertyEditor(PropertyEditorConstants.DotNetCheckBoxPickerAlias, "nuPickers: DotNet CheckBox Picker", EmbeddedResource.ROOT_URL + "CheckBoxPicker/CheckBoxPickerEditor.html", ValueType = "TEXT")]
+    [PropertyType(PropertyEditorConstants.DotNetCheckBoxPickerAlias, "nuPickers: DotNet CheckBox Picker", EmbeddedResource.ROOT_URL + "CheckBoxPicker/CheckBoxPickerEditor.html", ValueType = "TEXT")]
     [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.ROOT_URL + "CheckBoxPicker/CheckBoxPickerEditor.css" + EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.ROOT_URL + "LayoutDirection/LayoutDirection.css" + EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "CheckBoxPicker/CheckBoxPickerEditorController.js" + EmbeddedResource.FILE_EXTENSION)]

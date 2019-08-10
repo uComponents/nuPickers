@@ -310,9 +310,10 @@
   <ItemGroup>
     <Compile Include="Caching\Cache.cs" />
     <Compile Include="Caching\CacheConstants.cs" />
-    <Compile Include="Compontents\CacheInvalidationCompontent.cs" />
-    <Compile Include="Compontents\EmbeddedResourceCompontent.cs" />
-    <Compile Include="Compontents\nuPickerCompontent.cs" />
+    <Compile Include="Components\CacheInvalidationComponent.cs" />
+    <Compile Include="Components\EmbeddedResourceCompontent.cs" />
+    <Compile Include="Components\nuPickerCompontent.cs" />
+    <Compile Include="Components\RelationMappingComponent.cs" />
     <Compile Include="EmbeddedResource\EmbeddedResource.cs" />
     <Compile Include="EmbeddedResource\EmbeddedResourceController.cs" />
     <Compile Include="EmbeddedResource\EmbeddedResourceHelper.cs" />
@@ -419,7 +420,6 @@
     <Compile Include="Shared\RelationDataSource\RelationDataSourceApiController.cs" />
     <Compile Include="Shared\RelationMapping\RelationMapping.cs" />
     <Compile Include="Shared\RelationMapping\RelationMappingComment.cs" />
-    <Compile Include="Shared\RelationMapping\RelationMappingEvent.cs" />
     <Compile Include="Shared\SaveFormat\SaveFormatPropertyValueEditor.cs" />
     <Compile Include="PropertyEditors\RelationLabels\RelationLabelsPreValueEditor.cs" />
     <Compile Include="PropertyEditors\RelationLabels\RelationLabelsPropertyEditor.cs" />

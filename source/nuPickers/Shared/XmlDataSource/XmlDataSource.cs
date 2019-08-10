@@ -1,4 +1,6 @@
-﻿namespace nuPickers.Shared.XmlDataSource
+﻿using Umbraco.Core.Composing;
+
+namespace nuPickers.Shared.XmlDataSource
 {
     using DataSource;
     using nuPickers.Shared.Editor;
@@ -25,7 +27,7 @@
         bool IDataSource.HandledTypeahead { get { return false; } }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="currentId"></param>
         /// <param name="parentId"></param>
@@ -95,7 +97,7 @@
                     if (this.XmlData == "content" && ancestorOrSelfId > 0 && xmlDocument.SelectSingleNode("/descendant::*[@id='" + ancestorOrSelfId + "']") == null)
                     {
                         // use Umbraco API to get path of all ids above ancestorOrSelfId to root
-                        Queue<int> path = new Queue<int>(ApplicationContext.Current.Services.ContentService.GetById(ancestorOrSelfId).Path.Split(',').Select(x => int.Parse(x)).Reverse().Skip(1));
+                        Queue<int> path = new Queue<int>(Current.Services.ContentService.GetById(ancestorOrSelfId).Path.Split(',').Select(x => int.Parse(x)).Reverse().Skip(1));
 
                         // find the nearest id in the xml
                         do { ancestorOrSelfId = path.Dequeue(); }

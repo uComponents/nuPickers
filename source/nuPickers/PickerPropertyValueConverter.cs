@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web;
+using Umbraco.Web.Composing;
 
 namespace nuPickers
 {
@@ -10,10 +11,12 @@ namespace nuPickers
     using Umbraco.Core.PropertyEditors;
     using Umbraco.Web;
 
-    [PropertyType(typeof(Picker))]
-    [PropertyCache(PropertyCacheValue.All, PropertyCacheLevel.Element)]
     public class PickerPropertyValueConverter : PropertyValueConverterBase
     {
+        public PickerPropertyValueConverter()
+        {
+        }
+
         /// <summary>
         /// This is a generic converter for all nuPicker Picker PropertyEditors
         /// </summary>
@@ -89,7 +92,7 @@ namespace nuPickers
 
             try
             {
-                assignedContentItem = new UmbracoHelper(UmbracoContext.Current).AssignedContentItem;
+                assignedContentItem = Current.UmbracoHelper.AssignedContentItem;
             }
             catch
             {

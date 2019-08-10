@@ -1,4 +1,6 @@
-﻿namespace nuPickers.Shared.RelationMapping
+﻿using Umbraco.Core.Composing;
+
+namespace nuPickers.Shared.RelationMapping
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -22,12 +24,12 @@
         {
             if (contextId != 0) // new content / media / members don't have an id (so can't have any relations)
             {
-                IRelationType relationType = ApplicationContext.Current.Services.RelationService.GetRelationTypeByAlias(relationTypeAlias);
+                IRelationType relationType = Current.Services.RelationService.GetRelationTypeByAlias(relationTypeAlias);
 
                 if (relationType != null)
                 {
                     // get all relations of this type
-                    IEnumerable<IRelation> relations = ApplicationContext.Current.Services.RelationService.GetAllRelationsByRelationType(relationType.Id);
+                    IEnumerable<IRelation> relations = Current.Services.RelationService.GetAllRelationsByRelationType(relationType.Id);
 
                     // construct object used to identify a relation (this is serialized into the relation comment field)
                     RelationMappingComment relationMappingComment = new RelationMappingComment(contextId, propertyAlias);
@@ -57,7 +59,7 @@
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="contextId">the id of the content, media or member item</param>
         /// <param name="propertyAlias">the property alias of the picker using relation mapping</param>
@@ -66,12 +68,12 @@
         /// <param name="pickedIds">the ids of all picked items that are to be related to the contextId</param>
         internal static void UpdateRelationMapping(int contextId, string propertyAlias, string relationTypeAlias, bool relationsOnly, int[] pickedIds)
         {
-            IRelationType relationType = ApplicationContext.Current.Services.RelationService.GetRelationTypeByAlias(relationTypeAlias);
+            IRelationType relationType = Current.Services.RelationService.GetRelationTypeByAlias(relationTypeAlias);
 
             if (relationType != null)
             {
                 // get all relations of this type
-                List<IRelation> relations = ApplicationContext.Current.Services.RelationService.GetAllRelationsByRelationType(relationType.Id).ToList();
+                List<IRelation> relations = Current.Services.RelationService.GetAllRelationsByRelationType(relationType.Id).ToList();
 
                 // construct object used to identify a relation (this is serialized into the relation comment field)
                 RelationMappingComment relationMappingComment = new RelationMappingComment(contextId, propertyAlias);
@@ -94,13 +96,13 @@
                 }
 
                 // check current context is of the correct object type (as according to the relation type)
-                if (ApplicationContext.Current.Services.EntityService.GetObjectType(contextId) == UmbracoObjectTypesExtensions.GetUmbracoObjectType(relationType.ChildObjectType))
+                if (Current.Services.EntityService.GetObjectType(contextId) ==  ObjectTypes.GetUmbracoObjectType(relationType.ChildObjectType))
                 {
-                    // for each picked item 
+                    // for each picked item
                     foreach (int pickedId in pickedIds)
                     {
                         // check picked item context if of the correct object type (as according to the relation type)
-                        if (ApplicationContext.Current.Services.EntityService.GetObjectType(pickedId) == UmbracoObjectTypesExtensions.GetUmbracoObjectType(relationType.ParentObjectType))
+                        if (Current.Services.EntityService.GetObjectType(pickedId) ==  ObjectTypes.GetUmbracoObjectType(relationType.ParentObjectType))
                         {
                             // if relation doesn't already exist (new picked item)
                             if (!relations.Exists(x => x.ParentId == pickedId))
@@ -108,7 +110,7 @@
                                 // create relation
                                 Relation relation = new Relation(pickedId, contextId, relationType);
                                 relation.Comment = relationMappingComment.GetComment();
-                                ApplicationContext.Current.Services.RelationService.Save(relation);
+                                Current.Services.RelationService.Save(relation);
                             }
 
                             // housekeeping - remove 'the' relation from the list being processed (there should be only one)
@@ -122,7 +124,7 @@
                 {
                     foreach (IRelation relation in relations)
                     {
-                        ApplicationContext.Current.Services.RelationService.Delete(relation);
+                        Current.Services.RelationService.Delete(relation);
                     }
                 }
             }

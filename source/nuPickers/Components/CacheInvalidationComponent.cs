@@ -7,14 +7,14 @@ using Umbraco.Core.Models;
 using Umbraco.Core.Services;
 using Umbraco.Core.Services.Implement;
 
-namespace nuPickers.Compontents
+namespace nuPickers.Components
 {
-    public class CacheInvalidationCompontent : IComponent, Umbraco.Core.Composing.IComponent
+    public class CacheInvalidationComponent : IComponent, Umbraco.Core.Composing.IComponent
     {
         private ContentService _contentService;
         private DataTypeService _dataTypeService;
 
-        public CacheInvalidationCompontent(ContentService contentService, DataTypeService dataTypeService)
+        public CacheInvalidationComponent(ContentService contentService, DataTypeService dataTypeService)
         {
             _contentService = contentService;
             _dataTypeService = dataTypeService;

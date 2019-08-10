@@ -1,28 +1,50 @@
-﻿namespace nuPickers.Shared.RelationMapping
-{
-    using nuPickers.Shared.SaveFormat;
-    using System.Collections.Generic;
-    using System.Linq;
-    using Umbraco.Core;
-    using Umbraco.Core.Events;
-    using Umbraco.Core.Models;
-    using Umbraco.Core.Services;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using nuPickers.Caching;
+using nuPickers.Shared.RelationMapping;
+using nuPickers.Shared.SaveFormat;
+using Umbraco.Core.Events;
+using Umbraco.Core.Models;
+using Umbraco.Core.Models.PublishedContent;
+using Umbraco.Core.Services;
+using Umbraco.Core.Services.Implement;
 
-    /// <summary>
-    /// server side event to update relations on change of any content / media / member using a nuPicker with relation mapping
-    /// </summary>
-    public class RelationMappingEvent : ApplicationEventHandler
+namespace nuPickers.Components
+{
+    public class RelationMappingComponent
     {
-        protected override void ApplicationStarted(UmbracoApplicationBase umbracoApplication, ApplicationContext applicationContext)
+          private ContentService _contentService;
+        private DataTypeService _dataTypeService;
+
+        public RelationMappingComponent(ContentService contentService, DataTypeService dataTypeService)
+        {
+            _contentService = contentService;
+            _dataTypeService = dataTypeService;
+        }
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
+
+        public ISite Site { get; set; }
+        public event EventHandler Disposed;
+
+        public void Initialize()
         {
             ContentService.Saved += this.ContentService_Saved;
             MediaService.Saved += this.MediaService_Saved;
             MemberService.Saved += this.MemberService_Saved;
-            
-            // NOTE: all relations to an id are automatically deleted when emptying the recycle bin
         }
 
-        private void ContentService_Saved(IContentService sender, SaveEventArgs<IContent> e)
+        public void Terminate()
+        {
+            throw new NotImplementedException();
+        }
+
+       private void ContentService_Saved(IContentService sender, SaveEventArgs<IContent> e)
         {
             this.Saved((IService)sender, e.SavedEntities);
         }
@@ -38,7 +60,7 @@
         }
 
         /// <summary>
-        /// combined event for content / media / member 
+        /// combined event for content / media / member
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="savedEntities"></param>
@@ -47,22 +69,22 @@
             foreach (IContentBase savedEntity in savedEntities)
             {
                 // for each property
-                foreach (PropertyType propertyType in savedEntity.PropertyTypes.Where(x => PickerPropertyValueConverter.IsPicker(x.PropertyEditorAlias)))
+                foreach (IPublishedProperty propertyType in savedEntity.Properties.Where(x => PickerPropertyValueConverter.IsPicker(x.PropertyType.PropertyEditorAlias)))
                 {
                     // create picker supplying all values
                     Picker picker = new Picker(
-                                            savedEntity.Id, 
+                                            savedEntity.Id,
                                             savedEntity.ParentId,
-                                            propertyType.Alias, 
-                                            propertyType.DataTypeDefinitionId, 
-                                            propertyType.PropertyEditorAlias,
+                                            propertyType.PropertyType.Alias,
+                                            propertyType.PropertyType.DataType.Id,
+                                            propertyType.PropertyType.EditorAlias,
                                             savedEntity.GetValue(propertyType.Alias));
 
                     if (!string.IsNullOrWhiteSpace(picker.RelationTypeAlias))
                     {
-                        bool isRelationsOnly = picker.GetDataTypePreValue("saveFormat").Value == "relationsOnly";
+                        bool isRelationsOnly = picker.GetDataTypePreValue("saveFormat").ToString() == "relationsOnly";
 
-                        if (isRelationsOnly) 
+                        if (isRelationsOnly)
                         {
                             if (picker.SavedValue == null)
                             {
@@ -90,7 +112,7 @@
                                 }
                             }
                         }
-                       
+
                         // update database
                         RelationMapping.UpdateRelationMapping(
                                                 picker.ContextId,           // savedEntity.Id

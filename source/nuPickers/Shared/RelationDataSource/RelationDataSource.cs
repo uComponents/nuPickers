@@ -1,4 +1,6 @@
-﻿namespace nuPickers.Shared.RelationDataSource
+﻿using Umbraco.Core.Composing;
+
+namespace nuPickers.Shared.RelationDataSource
 {
     using DataSource;
     using Editor;
@@ -34,7 +36,7 @@
 
         private IEnumerable<EditorDataItem> GetEditorDataItems(int currentId, int parentId)
         {
-            var relationService = ApplicationContext.Current.Services.RelationService;
+            var relationService = Current.Services.RelationService;
 
             return relationService.GetEntitiesFromRelations(
                                                 relationService.GetByRelationTypeAlias(this.RelationType)
