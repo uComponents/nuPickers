@@ -1,4 +1,6 @@
-﻿namespace nuPickers.PropertyEditors.EnumRadioButtonPicker
+﻿using Umbraco.Core.Logging;
+
+namespace nuPickers.PropertyEditors.EnumRadioButtonPicker
 {
     using ClientDependency.Core;
     using nuPickers.EmbeddedResource;
@@ -7,7 +9,7 @@
     using Umbraco.Web.PropertyEditors;
 
     // EDITOR UI
-    [PropertyEditor(PropertyEditorConstants.EnumRadioButtonPickerAlias, "nuPickers: Enum RadioButton Picker", EmbeddedResource.ROOT_URL + "RadioButtonPicker/RadioButtonPickerEditor.html", ValueType = "TEXT")]
+    [DataEditor(PropertyEditorConstants.EnumRadioButtonPickerAlias, "nuPickers: Enum RadioButton Picker", EmbeddedResource.ROOT_URL + "RadioButtonPicker/RadioButtonPickerEditor.html", ValueType = "TEXT")]
     [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.ROOT_URL + "LayoutDirection/LayoutDirection.css" + EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "RadioButtonPicker/RadioButtonPickerEditorController.js" + EmbeddedResource.FILE_EXTENSION)]
 
@@ -22,11 +24,14 @@
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "EnumDataSource/EnumDataSourceConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "CustomLabel/CustomLabelConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "SaveFormat/SaveFormatConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
-    public class EnumRadioButtonPickerPropertyEditor : BasePropertyEditor
+    public class EnumRadioButtonPickerPropertyEditor : DataEditor
     {
-        protected override PreValueEditor CreatePreValueEditor()
+        protected override IConfigurationEditor CreateConfigurationEditor() =>
+            new EnumRadioButtonPickerConfigurationEditor();
+
+
+        public EnumRadioButtonPickerPropertyEditor(ILogger logger) : base(logger)
         {
-            return new EnumRadioButtonPickerPreValueEditor();
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace nuPickers.PropertyEditors.JsonPagedListPicker
+﻿using Umbraco.Core.Logging;
+
+namespace nuPickers.PropertyEditors.JsonPagedListPicker
 {
     using ClientDependency.Core;
     using nuPickers.EmbeddedResource;
@@ -7,7 +9,7 @@
     using Umbraco.Web.PropertyEditors;
 
     // EDITOR UI
-    [PropertyEditor(PropertyEditorConstants.JsonPagedListPickerAlias, "nuPickers: Json PagedList Picker", EmbeddedResource.ROOT_URL + "PagedListPicker/PagedListPickerEditor.html", ValueType = "TEXT")]
+    [DataEditor(PropertyEditorConstants.JsonPagedListPickerAlias, "nuPickers: Json PagedList Picker", EmbeddedResource.ROOT_URL + "PagedListPicker/PagedListPickerEditor.html", ValueType = "TEXT")]
     [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.ROOT_URL + "ListPicker/ListPickerEditor.css" + EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.ROOT_URL + "PagedListPicker/PagedListPickerEditor.css" + EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "ListPicker/ListPickerEditorController.js" + EmbeddedResource.FILE_EXTENSION)]
@@ -26,11 +28,12 @@
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "CustomLabel/CustomLabelConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "RelationMapping/RelationMappingConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "SaveFormat/SaveFormatConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
-    public class JsonPagedListPickerPropertyEditor : BasePropertyEditor
+    public class JsonPagedListPickerPropertyEditor : DataEditor
     {
-        protected override PreValueEditor CreatePreValueEditor()
+        protected override IConfigurationEditor CreateConfigurationEditor() => new JsonPagedListPickerConfigurationEditor();
+
+        public JsonPagedListPickerPropertyEditor(ILogger logger) : base(logger)
         {
-            return new JsonPagedListPickerPreValueEditor();
         }
     }
 }

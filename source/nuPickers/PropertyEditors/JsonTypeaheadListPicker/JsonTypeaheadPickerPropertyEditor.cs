@@ -7,7 +7,7 @@
     using Umbraco.Web.PropertyEditors;
 
     // EDITOR UI
-    [PropertyEditor(PropertyEditorConstants.JsonTypeaheadListPickerAlias, "nuPickers: Json TypeaheadList Picker", EmbeddedResource.ROOT_URL + "TypeaheadListPicker/TypeaheadListPickerEditor.html", ValueType = "TEXT")]
+    [DataEditor(PropertyEditorConstants.JsonTypeaheadListPickerAlias, "nuPickers: Json TypeaheadList Picker", EmbeddedResource.ROOT_URL + "TypeaheadListPicker/TypeaheadListPickerEditor.html", ValueType = "TEXT")]
     [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.ROOT_URL + "ListPicker/ListPickerEditor.css" + EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "ListPicker/ListPickerEditorController.js" + EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "ListPicker/ListPickerEditorDirectives.js" + EmbeddedResource.FILE_EXTENSION)]
@@ -26,7 +26,7 @@
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "CustomLabel/CustomLabelConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "RelationMapping/RelationMappingConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "SaveFormat/SaveFormatConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
-    public class JsonTypeaheadPickerPropertyEditor : BasePropertyEditor
+    public class JsonTypeaheadPickerPropertyEditor : DataEditor
     {
         protected override PreValueEditor CreatePreValueEditor()
         {

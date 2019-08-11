@@ -40,7 +40,7 @@
         EmbeddedResource.ROOT_URL + "CustomLabel/CustomLabelConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript,
         EmbeddedResource.ROOT_URL + "SaveFormat/SaveFormatConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
-    public class EnumPrefetchListPropertyEditor : BasePropertyEditor
+    public class EnumPrefetchListPropertyEditor : DataEditor
     {
         protected override IConfigurationEditor CreateConfigurationEditor() =>
             new EnumPrefetchListPickerConfigurationEditor();

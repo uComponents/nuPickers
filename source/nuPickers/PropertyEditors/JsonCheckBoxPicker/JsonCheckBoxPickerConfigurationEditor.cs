@@ -1,15 +1,16 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using Umbraco.Core;
-using Umbraco.Core.PropertyEditors;
-
-namespace nuPickers.PropertyEditors.EnumCheckBoxPicker
+﻿namespace nuPickers.PropertyEditors.JsonCheckBoxPicker
 {
-    internal class EnumCheckBoxPickerConfigurationEditor : ConfigurationEditor<EnumCheckBoxPickerConfiguration>
+    using System.Collections.Generic;
+    using System.Linq;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+    using nuPickers.PropertyEditors.JsonDropDownPicker;
+    using Umbraco.Core;
+    using Umbraco.Core.PropertyEditors;
+
+    internal class JsonCheckBoxPickerConfigurationEditor : ConfigurationEditor<JsonCheckBoxPickerConfiguration>
     {
-        public override Dictionary<string, object> ToConfigurationEditor(EnumCheckBoxPickerConfiguration configuration)
+        public override Dictionary<string, object> ToConfigurationEditor(JsonCheckBoxPickerConfiguration configuration)
         {
             var configuredItems = configuration?.Items; // ordered
             object editorItems;
@@ -87,10 +88,11 @@ namespace nuPickers.PropertyEditors.EnumCheckBoxPicker
             [JsonProperty("sortOrder")] public int SortOrder { get; set; }
         }
 
-        public override EnumCheckBoxPickerConfiguration FromConfigurationEditor(
-            IDictionary<string, object> editorValues, EnumCheckBoxPickerConfiguration configuration)
+        public override JsonCheckBoxPickerConfiguration FromConfigurationEditor(
+            IDictionary<string, object> editorValues,
+            JsonCheckBoxPickerConfiguration configuration)
         {
-            var output = new EnumCheckBoxPickerConfiguration();
+            var output = new JsonCheckBoxPickerConfiguration();
 
             if (!editorValues.TryGetValue("items", out var jjj) || !(jjj is JArray jItems))
                 return output; // oops
@@ -105,14 +107,15 @@ namespace nuPickers.PropertyEditors.EnumCheckBoxPicker
 
             if (editorValues.TryGetValue("dataSource", out var dataSourceObj))
             {
-                output.DataSource = dataSourceObj;
+                var convertString = dataSourceObj.TryConvertTo<object>();
+                if (convertString.Success)
+                    output.DataSource = convertString.Result;
             }
 
             if (editorValues.TryGetValue("saveFormat", out var saveFormatObj))
             {
-                output.SaveFormat = saveFormatObj;
+                    output.SaveFormat = saveFormatObj;
             }
-
             if (editorValues.TryGetValue("customLabel", out var customlabelObj))
             {
                 var convertString = customlabelObj.TryConvertTo<string>();
@@ -130,6 +133,12 @@ namespace nuPickers.PropertyEditors.EnumCheckBoxPicker
                 var convertString = layoutDirectionObj.TryConvertTo<string>();
                 if (convertString.Success)
                     output.LayoutDirection = convertString.Result;
+            }
+            if (editorValues.TryGetValue("relationMapping", out var relationMappingObj))
+            {
+                var convertString = relationMappingObj.TryConvertTo<object>();
+                if (convertString.Success)
+                    output.RelationMapping = convertString.Result;
             }
 
             // auto-assigning our ids, get next id from existing values
