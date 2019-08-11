@@ -333,6 +333,9 @@
     <Compile Include="PropertyEditors\EnumDropDownPicker\EnumDropDownPickerConfigurationEditor.cs" />
     <Compile Include="PropertyEditors\EnumDropDownPicker\EnumDropDownPickerConfiguration.cs" />
     <Compile Include="PropertyEditors\EnumDropDownPicker\EnumDropDownPickerPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\EnumLabels\EnumLabelsConfigurationEditor.cs" />
+    <Compile Include="PropertyEditors\EnumLabels\EnumLabelsConfiguration.cs" />
+    <Compile Include="PropertyEditors\EnumLabels\EnumLabelsPropertyEditor.cs" />
     <Compile Include="PropertyEditors\PropertyEditorConstants.cs" />
     <Compile Include="Picker.cs">
       <SubType>Code</SubType>
@@ -478,6 +481,10 @@
     <EmbeddedResource Include="Shared\PagedListPicker\PagedListPickerEditor.css" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Shared\CheckBoxPicker\CheckBoxPickerConfig.html" />
+    <Content Include="Shared\CheckBoxPicker\CheckBoxPickerEditor.css" />
+    <Content Include="Shared\CheckBoxPicker\CheckBoxPickerEditor.html" />
+    <Content Include="Shared\CheckBoxPicker\CheckBoxPickerEditorController.js" />
     <Content Include="Shared\CustomLabel\CustomLabelConfig.html" />
     <Content Include="Shared\CustomLabel\CustomLabelConfigController.js" />
     <Content Include="Shared\DataSource\DataSourceResource.js" />
