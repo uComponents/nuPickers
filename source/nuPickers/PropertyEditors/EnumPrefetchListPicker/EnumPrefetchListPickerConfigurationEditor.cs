@@ -2,15 +2,15 @@
 using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using nuPickers.PropertyEditors.EnumDropDownPicker;
+using nuPickers.PropertyEditors.EnumLabels;
 using Umbraco.Core;
 using Umbraco.Core.PropertyEditors;
 
-namespace nuPickers.PropertyEditors.EnumLabels
+namespace nuPickers.PropertyEditors.EnumPrefetchListPicker
 {
-    internal class EnumLabelsConfigurationEditor : ConfigurationEditor<EnumLabelsConfiguration>
+    internal class EnumPrefetchListPickerConfigurationEditor : ConfigurationEditor<EnumPrefetchListPickerConfiguration>
     {
-        public override Dictionary<string, object> ToConfigurationEditor(EnumLabelsConfiguration configuration)
+        public override Dictionary<string, object> ToConfigurationEditor(EnumPrefetchListPickerConfiguration configuration)
         {
             var configuredItems = configuration?.Items; // ordered
             object editorItems;
@@ -29,17 +29,23 @@ namespace nuPickers.PropertyEditors.EnumLabels
             }
 
             var dataSource = configuration?.DataSource;
-            var labels = configuration?.Labels;
+            var saveFormat = configuration?.SaveFormat;
+            var customLabel = configuration?.CustomLabel;
+
+            var listPicker = configuration?.ListPicker;
             var useLabel = configuration?.UseLabel ?? false;
-            var layoutDirection = configuration?.LayoutDirection;
+            var prefetchListPicker = configuration?.PrefetchListPicker;
 
             return new Dictionary<string, object>
             {
                 { "items", editorItems },
                 { "useLabel", useLabel },
+                {"saveFormat",saveFormat},
+                {"customLabel", customLabel},
+
                 { "dataSource", dataSource },
-                { "labels", labels },
-                {"layoutDirection",layoutDirection}
+                { "listPicker", listPicker },
+                {"prefetchListPicker",prefetchListPicker},
 
             };
         }
@@ -85,9 +91,9 @@ namespace nuPickers.PropertyEditors.EnumLabels
             [JsonProperty("sortOrder")]
             public int SortOrder { get; set; }
         }
-          public override EnumLabelsConfiguration FromConfigurationEditor(IDictionary<string, object> editorValues, EnumLabelsConfiguration configuration)
+          public override EnumPrefetchListPickerConfiguration FromConfigurationEditor(IDictionary<string, object> editorValues, EnumPrefetchListPickerConfiguration configuration)
         {
-            var output = new EnumLabelsConfiguration();
+            var output = new EnumPrefetchListPickerConfiguration();
 
             if (!editorValues.TryGetValue("items", out var jjj) || !(jjj is JArray jItems))
                 return output; // oops
@@ -105,24 +111,25 @@ namespace nuPickers.PropertyEditors.EnumLabels
                 if (convertString.Success)
                     output.DataSource = convertString.Result;
             }
-            if (editorValues.TryGetValue("labels", out var labelsObj))
-            {
-                var convertString = labelsObj.TryConvertTo<string>();
-                if (convertString.Success)
-                    output.Labels = convertString.Result;
-            }
             if (editorValues.TryGetValue("customLabel", out var customlabelObj))
             {
                 var convertString = customlabelObj.TryConvertTo<string>();
                 if (convertString.Success)
                     output.CustomLabel = convertString.Result;
             }
-            if (editorValues.TryGetValue("layoutDirection", out var layoutDirectionObj))
+            if (editorValues.TryGetValue("prefetchListPicker", out var prefetchListPickerObj))
             {
-                var convertString = layoutDirectionObj.TryConvertTo<string>();
+                var convertString = prefetchListPickerObj.TryConvertTo<string>();
                 if (convertString.Success)
-                    output.LayoutDirection = convertString.Result;
+                    output.PrefetchListPicker = convertString.Result;
             }
+            if (editorValues.TryGetValue("listPicker", out var listPickerObj))
+            {
+                var convertString = listPickerObj.TryConvertTo<string>();
+                if (convertString.Success)
+                    output.ListPicker = convertString.Result;
+            }
+
             // auto-assigning our ids, get next id from existing values
             var nextId = 1;
             if (configuration?.Items != null && configuration.Items.Count > 0)

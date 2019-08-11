@@ -1,5 +1,4 @@
-﻿using Umbraco.Core.Logging;
-using Umbraco.Core.Models;
+﻿
 
 namespace nuPickers.PropertyEditors.EnumDropDownPicker
 {
@@ -8,6 +7,7 @@ namespace nuPickers.PropertyEditors.EnumDropDownPicker
     using nuPickers.PropertyEditors;
     using Umbraco.Core.PropertyEditors;
     using Umbraco.Web.PropertyEditors;
+    using Umbraco.Core.Logging;
 
     // EDITOR UI
     [DataEditor(PropertyEditorConstants.EnumDropDownPickerAlias, "nuPickers: Enum DropDown Picker", EmbeddedResource.ROOT_URL + "DropDownPicker/DropDownPickerEditor.html", ValueType = "TEXT")]

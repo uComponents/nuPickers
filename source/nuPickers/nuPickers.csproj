@@ -336,6 +336,9 @@
     <Compile Include="PropertyEditors\EnumLabels\EnumLabelsConfigurationEditor.cs" />
     <Compile Include="PropertyEditors\EnumLabels\EnumLabelsConfiguration.cs" />
     <Compile Include="PropertyEditors\EnumLabels\EnumLabelsPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\EnumPrefetchListPicker\EnumPrefetchListPickerConfigurationEditor.cs" />
+    <Compile Include="PropertyEditors\EnumPrefetchListPicker\EnumPrefetchListPickerConfiguration.cs" />
+    <Compile Include="PropertyEditors\EnumPrefetchListPicker\EnumPrefetchListPropertyEditor.cs" />
     <Compile Include="PropertyEditors\PropertyEditorConstants.cs" />
     <Compile Include="Picker.cs">
       <SubType>Code</SubType>
