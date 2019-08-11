@@ -342,6 +342,12 @@
     <Compile Include="PropertyEditors\EnumPrefetchListPicker\EnumPrefetchListPickerConfigurationEditor.cs" />
     <Compile Include="PropertyEditors\EnumPrefetchListPicker\EnumPrefetchListPickerConfiguration.cs" />
     <Compile Include="PropertyEditors\EnumPrefetchListPicker\EnumPrefetchListPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\JsonDropDownPicker\JsonDropDownPickerConfigurationEditor.cs" />
+    <Compile Include="PropertyEditors\JsonDropDownPicker\JsonDropDownPickerConfiguration.cs" />
+    <Compile Include="PropertyEditors\JsonDropDownPicker\JsonDropDownPickerPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\JsonLabels\JsonLabelsConfigurationEditor.cs" />
+    <Compile Include="PropertyEditors\JsonLabels\JsonLabelsConfiguration.cs" />
+    <Compile Include="PropertyEditors\JsonLabels\JsonLabelsPropertyEditor.cs" />
     <Compile Include="PropertyEditors\PropertyEditorConstants.cs" />
     <Compile Include="Picker.cs">
       <SubType>Code</SubType>

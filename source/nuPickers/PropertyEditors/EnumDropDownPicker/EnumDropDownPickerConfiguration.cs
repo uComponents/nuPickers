@@ -11,6 +11,7 @@ namespace nuPickers.PropertyEditors.EnumDropDownPicker
 
         [ConfigurationField("saveFormat", "Save Format", EmbeddedResource.ROOT_URL + "SaveFormat/SaveFormatConfig.html")]
         public object SaveFormat { get; set; }
+
         [ConfigurationField("useLabel", "Include labels?", "boolean", Description = "")]
         public bool UseLabel { get; set; }
     }

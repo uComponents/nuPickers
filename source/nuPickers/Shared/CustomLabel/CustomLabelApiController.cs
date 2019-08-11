@@ -14,7 +14,7 @@ namespace nuPickers.Shared
     {
         public IEnumerable<object> GetMacros()
         {
-            //using legacy api as no method on Umbraco.Core.Services.MacroSerivce to get all macros
+
             return Current.Services.MacroService.GetAll()
                         .Select(x => new
                         {
