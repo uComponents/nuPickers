@@ -1,18 +1,13 @@
-﻿
-using Umbraco.Core.Models;
-using Umbraco.Core.Models.PublishedContent;
-using Umbraco.Web.Composing;
-
-namespace nuPickers.Shared.CustomLabel
+﻿namespace nuPickers.Shared.CustomLabel
 {
-    using nuPickers.Shared.Editor;
+    using Editor;
     using System.Collections.Generic;
     using System.ComponentModel;
-    using System.IO;
     using System.Linq;
-    using System.Text;
     using System.Web;
-    using System.Web.UI;
+    using Umbraco.Core.Models;
+    using Umbraco.Core.Models.PublishedContent;
+    using Umbraco.Web.Composing;
 
     internal class CustomLabel
     {
@@ -50,15 +45,16 @@ namespace nuPickers.Shared.CustomLabel
             }
             else
             {
-                 // fallback nd find first published page to use as host
-                 IPublishedContent contextNode = Current.UmbracoContext.ContentCache.GetSingleByXPath(string.Concat("descendant::*[@parentID = ", Current.Services.ContentService.GetRootContent().FirstOrDefault(), "]"));
-                 if (contextNode != null)
-                 {
-                     HttpContext.Current.Items["pageID"] = contextNode.Id;
-                     this.HasMacroContext = true;
-                 }
+                // fallback nd find first published page to use as host
+                IPublishedContent contextNode = Current.UmbracoContext.ContentCache.GetSingleByXPath(
+                    string.Concat("descendant::*[@parentID = ",
+                        Current.Services.ContentService.GetRootContent().FirstOrDefault(), "]"));
+                if (contextNode != null)
+                {
+                    HttpContext.Current.Items["pageID"] = contextNode.Id;
+                    this.HasMacroContext = true;
+                }
             }
-
         }
 
         /// <summary>
@@ -69,17 +65,19 @@ namespace nuPickers.Shared.CustomLabel
         /// <returns></returns>
         internal IEnumerable<EditorDataItem> ProcessEditorDataItems(IEnumerable<EditorDataItem> editorDataItems)
         {
-            string keys = string.Join(", ", editorDataItems.Select(x => x.Key)); // csv of all keys
+            var dataItems = editorDataItems.ToList();
+            string keys = string.Join(", ", dataItems.Select(x => x.Key)); // csv of all keys
             int counter = 0;
-            int total = editorDataItems.Count();
+            int total = dataItems.Count();
 
-            foreach (EditorDataItem editorDataItem in editorDataItems)
+            foreach (EditorDataItem editorDataItem in dataItems)
             {
                 counter++;
-                editorDataItem.Label = this.ProcessMacro(editorDataItem.Key, editorDataItem.Label, keys, counter, total);
+                editorDataItem.Label =
+                    this.ProcessMacro(editorDataItem.Key, editorDataItem.Label, keys, counter, total);
             }
 
-            return editorDataItems.Where(x => !string.IsNullOrWhiteSpace(x.Label)); // remove any options without a label
+            return dataItems.Where(x => !string.IsNullOrWhiteSpace(x.Label)); // remove any options without a label
         }
 
         /// <summary>
@@ -95,19 +93,20 @@ namespace nuPickers.Shared.CustomLabel
         {
             if (!string.IsNullOrWhiteSpace(this.MacroAlias) && this.HasMacroContext)
             {
-                Macro macro = new Macro() { Alias = this.MacroAlias };
-/*
-                macro.Properties.Add(new MacroProperty("contextId".ToLower(), this.ContextId.ToString()));
-                macro.Properties.Add(new MacroProperty("propertyAlias".ToLower(), this.PropertyAlias));
+                Macro macro = new Macro() {Alias = this.MacroAlias};
+                Dictionary<string, object> properties = new Dictionary<string, object>();
 
-                macro.Properties.Add("key", key);
-                macro.Properties.Add("label", label);
+                properties.Add("contextId".ToLower(), this.ContextId.ToString());
+                properties.Add("propertyAlias".ToLower(), this.PropertyAlias);
 
-                macro.Properties.Add("keys", keys);
-                macro.Properties.Add("counter", counter);
-                macro.Properties.Add("total", total);
-*/
-                label = this.RenderToString(macro);
+                properties.Add("key", key);
+                properties.Add("label", label);
+
+                properties.Add("keys", keys);
+                properties.Add("counter", counter);
+                properties.Add("total", total);
+
+                label = this.RenderToString(macro, properties);
             }
 
             return label;
@@ -117,16 +116,10 @@ namespace nuPickers.Shared.CustomLabel
         /// Method added here to remove the need for the more generic ControlExtensions (as unlikely to need this functionality elsewhere)
         /// </summary>
         /// <param name="macro"></param>
-        private string RenderToString(Macro macro)
+        /// <param name="properties"></param>
+        private string RenderToString(Macro macro, Dictionary<string, object> properties)
         {
-            StringBuilder stringBuilder = new StringBuilder();
-            using (StringWriter stringWriter = new StringWriter(stringBuilder))
-            using (HtmlTextWriter htmlTextWriter = new HtmlTextWriter(stringWriter))
-            {
-             //   macro.RenderControl(htmlTextWriter);
-            }
-
-            return stringBuilder.ToString();
+            return Current.UmbracoHelper.RenderMacro(macro.Alias, properties).ToHtmlString();
         }
     }
 }

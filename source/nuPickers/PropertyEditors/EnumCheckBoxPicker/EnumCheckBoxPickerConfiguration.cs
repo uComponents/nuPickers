@@ -14,7 +14,7 @@
         public string CustomLabel { get; set; }
 
         [ConfigurationField("checkBoxPicker", "Checkbox Picker", EmbeddedResource.ROOT_URL + "CheckBoxPicker/CheckBoxPickerConfig.html", HideLabel = true)]
-        public string CheckBoxPicker { get; set; }
+        public object CheckBoxPicker { get; set; }
 
         [ConfigurationField("layoutDirection", "Layout Direction", EmbeddedResource.ROOT_URL + "LayoutDirection/LayoutDirectionConfig.html")]
         public string LayoutDirection { get; set; }

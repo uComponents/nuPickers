@@ -2,15 +2,15 @@
 using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using nuPickers.PropertyEditors.EnumLabels;
+using nuPickers.PropertyEditors.EnumPrefetchListPicker;
 using Umbraco.Core;
 using Umbraco.Core.PropertyEditors;
 
-namespace nuPickers.PropertyEditors.EnumPrefetchListPicker
+namespace nuPickers.PropertyEditors.DotNetPagedListPicker
 {
-    internal class EnumPrefetchListPickerConfigurationEditor : ConfigurationEditor<EnumPrefetchListPickerConfiguration>
+    internal class DotNetPagedListPickerConfigurationEditor : ConfigurationEditor<DotNetPagedListPickerConfiguration>
     {
-        public override Dictionary<string, object> ToConfigurationEditor(EnumPrefetchListPickerConfiguration configuration)
+        public override Dictionary<string, object> ToConfigurationEditor(DotNetPagedListPickerConfiguration configuration)
         {
             var configuredItems = configuration?.Items; // ordered
             object editorItems;
@@ -34,7 +34,8 @@ namespace nuPickers.PropertyEditors.EnumPrefetchListPicker
 
             var listPicker = configuration?.ListPicker;
             var useLabel = configuration?.UseLabel ?? false;
-            var prefetchListPicker = configuration?.PrefetchListPicker;
+            var pagedListPicker = configuration?.PagedListPicker;
+            var relationMapping = configuration?.RelationMapping;
 
             return new Dictionary<string, object>
             {
@@ -45,7 +46,8 @@ namespace nuPickers.PropertyEditors.EnumPrefetchListPicker
 
                 { "dataSource", dataSource },
                 { "listPicker", listPicker },
-                {"prefetchListPicker",prefetchListPicker},
+                {"pagedListPicker",pagedListPicker},
+                {"relationMapping",relationMapping}
 
             };
         }
@@ -91,9 +93,9 @@ namespace nuPickers.PropertyEditors.EnumPrefetchListPicker
             [JsonProperty("sortOrder")]
             public int SortOrder { get; set; }
         }
-          public override EnumPrefetchListPickerConfiguration FromConfigurationEditor(IDictionary<string, object> editorValues, EnumPrefetchListPickerConfiguration configuration)
+          public override DotNetPagedListPickerConfiguration FromConfigurationEditor(IDictionary<string, object> editorValues, DotNetPagedListPickerConfiguration configuration)
         {
-            var output = new EnumPrefetchListPickerConfiguration();
+            var output = new DotNetPagedListPickerConfiguration();
 
             if (!editorValues.TryGetValue("items", out var jjj) || !(jjj is JArray jItems))
                 return output; // oops
@@ -117,17 +119,23 @@ namespace nuPickers.PropertyEditors.EnumPrefetchListPicker
                 if (convertString.Success)
                     output.CustomLabel = convertString.Result;
             }
-            if (editorValues.TryGetValue("prefetchListPicker", out var prefetchListPickerObj))
+            if (editorValues.TryGetValue("pagedListPicker", out var pagedListPickerObj))
             {
-                var convertString = prefetchListPickerObj.TryConvertTo<object>();
+                var convertString = pagedListPickerObj.TryConvertTo<object>();
                 if (convertString.Success)
-                    output.PrefetchListPicker = convertString.Result;
+                    output.PagedListPicker = convertString.Result;
             }
             if (editorValues.TryGetValue("listPicker", out var listPickerObj))
             {
                 var convertString = listPickerObj.TryConvertTo<object>();
                 if (convertString.Success)
                     output.ListPicker = convertString.Result;
+            }
+            if (editorValues.TryGetValue("relationMapping", out var relationMappingObj))
+            {
+                var convertString = relationMappingObj.TryConvertTo<object>();
+                if (convertString.Success)
+                    output.RelationMapping = convertString.Result;
             }
 
             // auto-assigning our ids, get next id from existing values

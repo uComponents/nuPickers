@@ -18,11 +18,11 @@
 
         [ConfigurationField("prefetchListPicker", "Prefetch List Picker",
             EmbeddedResource.ROOT_URL + "PrefetchListPicker/PrefetchListPickerConfig.html", HideLabel = true)]
-        public string PrefetchListPicker { get; set; }
+        public object PrefetchListPicker { get; set; }
 
         [ConfigurationField("listPicker", "List Picker", EmbeddedResource.ROOT_URL + "ListPicker/ListPickerConfig.html",
             HideLabel = true)]
-        public string ListPicker { get; set; }
+        public object ListPicker { get; set; }
 
         [ConfigurationField("saveFormat", "Save Format",
             EmbeddedResource.ROOT_URL + "SaveFormat/SaveFormatConfig.html")]

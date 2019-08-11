@@ -126,7 +126,7 @@ namespace nuPickers.PropertyEditors.EnumCheckBoxPicker
 
             if (editorValues.TryGetValue("checkBoxPicker", out var checkBoxPickerObj))
             {
-                var convertString = checkBoxPickerObj.TryConvertTo<string>();
+                var convertString = checkBoxPickerObj.TryConvertTo<object>();
                 if (convertString.Success)
                     output.CheckBoxPicker = convertString.Result;
             }

@@ -9,7 +9,7 @@
 
     // EDITOR UI
     [DataEditor(PropertyEditorConstants.EnumPrefetchListPickerAlias, "nuPickers: Enum PrefetchList Picker",
-        EmbeddedResource.ROOT_URL + "PrefetchListPicker/PrefetchListPickerEditor.html", ValueType = "TEXT")]
+        EmbeddedResource.ROOT_URL + "PrefetchListPicker/PrefetchListPickerEditor.html", ValueType = "TEXT" )]
     [PropertyEditorAsset(ClientDependencyType.Css,
         EmbeddedResource.ROOT_URL + "ListPicker/ListPickerEditor.css" + EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript,

@@ -1,4 +1,6 @@
 ﻿
+using nuPickers.EmbeddedResource;
+
 namespace nuPickers
 {
     using System;

@@ -1,9 +1,7 @@
 ﻿namespace nuPickers.Tests.EmbeddedResource
 {
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using NUnit.Framework;
     using nuPickers.EmbeddedResource;
-
-    [TestClass]
     public class HelperEmbeddedResourceHelperTests
     {
         // reference to known embedded resources (picked first folder in shared)
@@ -11,7 +9,7 @@
         private const string CSS_RESOURCE = "CheckBoxPicker.CheckBoxPickerEditor.css";
         private const string JS_RESOURCE = "CheckBoxPicker.CheckBoxPickerEditorController.js";
 
-        [TestMethod]
+        [Test]
         public void ResourceNamesThatDoNotExist()
         {
             Assert.IsFalse(EmbeddedResourceHelper.ResourceExists(null));
@@ -21,7 +19,7 @@
             Assert.IsFalse(EmbeddedResourceHelper.ResourceExists(EmbeddedResource.RESOURCE_PREFIX + JS_RESOURCE + EmbeddedResource.FILE_EXTENSION));
         }
 
-        [TestMethod]
+        [Test]
         public void ResourceNamesThatExist()
         {
             Assert.IsTrue(EmbeddedResourceHelper.ResourceExists(EmbeddedResource.RESOURCE_PREFIX + HTML_RESOURCE));
@@ -29,7 +27,7 @@
             Assert.IsTrue(EmbeddedResourceHelper.ResourceExists(EmbeddedResource.RESOURCE_PREFIX + JS_RESOURCE));
         }
 
-        [TestMethod]
+        [Test]
         public void GetResourcesThatDoNotExist()
         {
             Assert.IsNull(EmbeddedResourceHelper.GetResource(null));
@@ -39,7 +37,7 @@
             Assert.IsNull(EmbeddedResourceHelper.GetResource(EmbeddedResource.RESOURCE_PREFIX + JS_RESOURCE + EmbeddedResource.FILE_EXTENSION));
         }
 
-        [TestMethod]
+        [Test]
         public void GetResourcesThatExist()
         {
             Assert.IsNotNull(EmbeddedResourceHelper.GetResource(EmbeddedResource.RESOURCE_PREFIX + HTML_RESOURCE));
@@ -47,7 +45,7 @@
             Assert.IsNotNull(EmbeddedResourceHelper.GetResource(EmbeddedResource.RESOURCE_PREFIX + JS_RESOURCE));
         }
 
-        [TestMethod]
+        [Test]
         public void GetResourceNameFromValidPath()
         {
             Assert.AreEqual(
@@ -63,7 +61,7 @@
                     EmbeddedResourceHelper.GetResourceNameFromPath(EmbeddedResource.ROOT_URL + "folder/file.ext" + EmbeddedResource.FILE_EXTENSION));
         }
 
-        [TestMethod]
+        [Test]
         public void GetResourceNameFromInvalidPath()
         {
             Assert.IsNull(EmbeddedResourceHelper.GetResourceNameFromPath(null));
