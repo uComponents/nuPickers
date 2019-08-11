@@ -1,4 +1,5 @@
 ﻿using Examine.Search;
+using Umbraco.Web.Composing;
 using Umbraco.Examine;
 
 namespace nuPickers.Shared.LuceneDataSource
@@ -54,8 +55,8 @@ namespace nuPickers.Shared.LuceneDataSource
         private IEnumerable<EditorDataItem> GetEditorDataItems(int contextId)
         {
             List<EditorDataItem> editorDataItems = new List<EditorDataItem>();
-
-            ISearcher searchProvider = _examineManager.TryGetIndex(ExamineSearcher, out var externalIndex) ? externalIndex.GetSearcher() : null;
+            var examineManager =  ExamineManager.Instance;
+            var getSearcher = examineManager.TryGetSearcher(ExamineSearcher, out var searchProvider);
 
             if (searchProvider != null)
             {

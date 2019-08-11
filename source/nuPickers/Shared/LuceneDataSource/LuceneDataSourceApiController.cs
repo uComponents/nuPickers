@@ -12,7 +12,7 @@ namespace nuPickers.Shared.LuceneDataSource
     {
         public IEnumerable<object> GetExamineSearchers()
         {
-            return Examine.ExamineManager.Instance.RegisteredSearchers.OfType<UmbracoExamineIndex>().Select(x => x.Name);
+            return Examine.ExamineManager.Instance.RegisteredSearchers.Select(x => x.Name);
         }
     }
 }

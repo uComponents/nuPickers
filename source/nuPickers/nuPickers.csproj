@@ -348,6 +348,9 @@
     <Compile Include="PropertyEditors\JsonLabels\JsonLabelsConfigurationEditor.cs" />
     <Compile Include="PropertyEditors\JsonLabels\JsonLabelsConfiguration.cs" />
     <Compile Include="PropertyEditors\JsonLabels\JsonLabelsPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\LuceneDropDownPicker\LuceneDropDownPickerConfigurationEditor.cs" />
+    <Compile Include="PropertyEditors\LuceneDropDownPicker\LuceneDropDownPickerConfiguration.cs" />
+    <Compile Include="PropertyEditors\LuceneDropDownPicker\LuceneDropDownPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\PropertyEditorConstants.cs" />
     <Compile Include="Picker.cs">
       <SubType>Code</SubType>
