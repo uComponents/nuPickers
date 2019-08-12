@@ -376,6 +376,9 @@
     <Compile Include="PickerPropertyValueConverter.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="PropertyEditors\SqlDropDownPicker\SqlDropDownPickerConfigurationEditor.cs" />
+    <Compile Include="PropertyEditors\SqlDropDownPicker\SqlDropDownPickerConfiguration.cs" />
+    <Compile Include="PropertyEditors\SqlDropDownPicker\SqlDropDownPickerPropertyEditor.cs" />
     <Compile Include="Shared\CustomLabel\CustomLabel.cs" />
     <Compile Include="Shared\CustomLabel\CustomLabelApiController.cs" />
     <Compile Include="Shared\DataSource\DataSource.cs" />
