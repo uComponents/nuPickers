@@ -7,9 +7,9 @@ using Umbraco.Core.PropertyEditors;
 
 namespace nuPickers.DataEditors.DotNetTypeaheadListPicker
 {
-    internal class DotNetTypeaheadListPickerPreConfigurationEditor : ConfigurationEditor<DotNetTypeaheadListPickerPreConfiguration>
+    internal class DotNetTypeaheadListPickerConfigurationEditor : ConfigurationEditor<DotNetTypeaheadListPickerConfiguration>
     {
-        public override Dictionary<string, object> ToConfigurationEditor(DotNetTypeaheadListPickerPreConfiguration configuration)
+        public override Dictionary<string, object> ToConfigurationEditor(DotNetTypeaheadListPickerConfiguration configuration)
         {
             var configuredItems = configuration?.Items; // ordered
             object editorItems;
@@ -90,9 +90,9 @@ namespace nuPickers.DataEditors.DotNetTypeaheadListPicker
             [JsonProperty("sortOrder")]
             public int SortOrder { get; set; }
         }
-          public override DotNetTypeaheadListPickerPreConfiguration FromConfigurationEditor(IDictionary<string, object> editorValues, DotNetTypeaheadListPickerPreConfiguration configuration)
+          public override DotNetTypeaheadListPickerConfiguration FromConfigurationEditor(IDictionary<string, object> editorValues, DotNetTypeaheadListPickerConfiguration configuration)
         {
-            var output = new DotNetTypeaheadListPickerPreConfiguration();
+            var output = new DotNetTypeaheadListPickerConfiguration();
 
             if (!editorValues.TryGetValue("items", out var jjj) || !(jjj is JArray jItems))
                 return output; // oops

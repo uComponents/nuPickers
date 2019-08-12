@@ -2,7 +2,7 @@
 
 namespace nuPickers.DataEditors.DotNetTypeaheadListPicker
 {
-    internal class DotNetTypeaheadListPickerPreConfiguration : ValueListConfiguration
+    internal class DotNetTypeaheadListPickerConfiguration : ValueListConfiguration
     {
         [ConfigurationField("useLabel", "Include labels?", "boolean", Description = "")]
         public bool UseLabel { get; set; }

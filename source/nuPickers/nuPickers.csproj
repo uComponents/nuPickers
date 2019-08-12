@@ -317,12 +317,15 @@
     <Compile Include="DataEditors\DotNetRadioButtonPicker\DotNetRadioButtonPickerConfiguration.cs" />
     <Compile Include="DataEditors\DotNetRadioButtonPicker\DotnetRadioButtonPickerDataEditor.cs" />
     <Compile Include="DataEditors\DotNetRadioButtonPicker\DotNetRadioButtonPickerConfigurationEditor.cs" />
-    <Compile Include="DataEditors\DotNetTypeaheadListPicker\DotNetTypeaheadListPickerPreConfigurationEditor.cs" />
-    <Compile Include="DataEditors\DotNetTypeaheadListPicker\DotNetTypeaheadListPickerPreConfiguration.cs" />
+    <Compile Include="DataEditors\DotNetTypeaheadListPicker\DotNetTypeaheadListPickerConfigurationEditor.cs" />
+    <Compile Include="DataEditors\DotNetTypeaheadListPicker\DotNetTypeaheadListPickerConfiguration.cs" />
     <Compile Include="DataEditors\DotNetTypeaheadListPicker\DotNetTypeaheadPickerDataEditor.cs" />
     <Compile Include="DataEditors\JsonRadioButtonPicker\JsonRadioButtonPickerConfigurationEditor.cs" />
     <Compile Include="DataEditors\JsonRadioButtonPicker\JsonRadioButtonPickerConfiguration.cs" />
     <Compile Include="DataEditors\JsonRadioButtonPicker\JsonRadioButtonPickerDataEditor.cs" />
+    <Compile Include="DataEditors\JsonTypeaheadListPicker\JsonTypeaheadListPickerConfigurationEditor.cs" />
+    <Compile Include="DataEditors\JsonTypeaheadListPicker\JsonTypeaheadListPickerConfiguration.cs" />
+    <Compile Include="DataEditors\JsonTypeaheadListPicker\JsonTypeaheadPickerDataEditor.cs" />
     <Compile Include="EmbeddedResource\EmbeddedResource.cs" />
     <Compile Include="EmbeddedResource\EmbeddedResourceController.cs" />
     <Compile Include="EmbeddedResource\EmbeddedResourceHelper.cs" />

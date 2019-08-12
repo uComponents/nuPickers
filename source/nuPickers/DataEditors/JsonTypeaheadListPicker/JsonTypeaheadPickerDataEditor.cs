@@ -3,10 +3,10 @@ using Umbraco.Core.Logging;
 using Umbraco.Core.PropertyEditors;
 using Umbraco.Web.PropertyEditors;
 
-namespace nuPickers.DataEditors.DotNetTypeaheadListPicker
+namespace nuPickers.DataEditors.JsonTypeaheadListPicker
 {
     // EDITOR UI
-    [DataEditor(DataEditorConstants.DotNetTypeaheadListPickerAlias, "nuPickers: DotNet TypeaheadList Picker", EmbeddedResource.EmbeddedResource.ROOT_URL + "TypeaheadListPicker/TypeaheadListPickerEditor.html", ValueType = "TEXT")]
+    [DataEditor(DataEditorConstants.JsonTypeaheadListPickerAlias, "nuPickers: Json TypeaheadList Picker", EmbeddedResource.EmbeddedResource.ROOT_URL + "TypeaheadListPicker/TypeaheadListPickerEditor.html", ValueType = "TEXT")]
     [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.EmbeddedResource.ROOT_URL + "ListPicker/ListPickerEditor.css" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "ListPicker/ListPickerEditorController.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "ListPicker/ListPickerEditorDirectives.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
@@ -21,17 +21,17 @@ namespace nuPickers.DataEditors.DotNetTypeaheadListPicker
 
     // CONFIG
     [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.EmbeddedResource.ROOT_URL + "PropertyEditor/PropertyEditorConfig.css" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
-    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "DotNetDataSource/DotNetDataSourceConfigController.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
+    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "JsonDataSource/JsonDataSourceConfigController.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "CustomLabel/CustomLabelConfigController.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "RelationMapping/RelationMappingConfigController.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "SaveFormat/SaveFormatConfigController.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
-    public class DotNetTypeaheadPickerDataEditor : DataEditor
+    public class JsonTypeaheadPickerDataEditor : DataEditor
     {
         protected override IConfigurationEditor CreateConfigurationEditor() =>
-            new DotNetTypeaheadListPickerConfigurationEditor();
+            new JsonTypeaheadListPickerConfigurationEditor();
 
 
-        public DotNetTypeaheadPickerDataEditor(ILogger logger) : base(logger)
+        public JsonTypeaheadPickerDataEditor(ILogger logger) : base(logger)
         {
         }
     }
