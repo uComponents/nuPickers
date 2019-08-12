@@ -324,7 +324,6 @@
     <Compile Include="Extensions\IPublishedContentExtensions.cs" />
     <Compile Include="Extensions\UmbracoHelperExtensions.cs" />
     <Compile Include="Helper.cs" />
-    <Compile Include="NuHandler.cs" />
     <Compile Include="nuPickerComposer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyEditors\BasePropertyEditor.cs" />
@@ -515,24 +514,24 @@
     <EmbeddedResource Include="Shared\PagedListPicker\PagedListPickerEditor.css" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Shared\CheckBoxPicker\CheckBoxPickerConfig.html" />
-    <Content Include="Shared\CheckBoxPicker\CheckBoxPickerEditor.css" />
-    <Content Include="Shared\CheckBoxPicker\CheckBoxPickerEditor.html" />
-    <Content Include="Shared\CheckBoxPicker\CheckBoxPickerEditorController.js" />
-    <Content Include="Shared\CustomLabel\CustomLabelConfig.html" />
-    <Content Include="Shared\CustomLabel\CustomLabelConfigController.js" />
-    <Content Include="Shared\DataSource\DataSourceResource.js" />
-    <Content Include="Shared\DotNetDataSource\DotNetDataSourceConfig.html" />
-    <Content Include="Shared\DotNetDataSource\DotNetDataSourceConfigController.js" />
-    <Content Include="Shared\Editor\EditorResource.js" />
-    <Content Include="Shared\RelationDataSource\RelationDataSourceConfig.html" />
-    <Content Include="Shared\RelationDataSource\RelationDataSourceConfigController.js" />
-    <Content Include="Shared\TypeaheadListPicker\TypeaheadListPickerConfig.html" />
-    <Content Include="Shared\TypeaheadListPicker\TypeaheadListPickerEditor.html" />
-    <Content Include="Shared\TypeaheadListPicker\TypeaheadListPickerEditorController.js" />
-    <Content Include="Shared\TypeaheadListPicker\TypeaheadListPickerEditorDirectives.js" />
-    <Content Include="Shared\XmlDataSource\XmlDataSourceConfig.html" />
-    <Content Include="Shared\XmlDataSource\XmlDataSourceConfigController.js" />
+    <EmbeddedResource Include="Shared\CheckBoxPicker\CheckBoxPickerConfig.html" />
+    <EmbeddedResource Include="Shared\CheckBoxPicker\CheckBoxPickerEditor.css" />
+    <EmbeddedResource Include="Shared\CheckBoxPicker\CheckBoxPickerEditor.html" />
+    <EmbeddedResource Include="Shared\CheckBoxPicker\CheckBoxPickerEditorController.js" />
+    <EmbeddedResource Include="Shared\CustomLabel\CustomLabelConfig.html" />
+    <EmbeddedResource Include="Shared\CustomLabel\CustomLabelConfigController.js" />
+    <EmbeddedResource Include="Shared\DataSource\DataSourceResource.js" />
+    <EmbeddedResource Include="Shared\DotNetDataSource\DotNetDataSourceConfig.html" />
+    <EmbeddedResource Include="Shared\DotNetDataSource\DotNetDataSourceConfigController.js" />
+    <EmbeddedResource Include="Shared\Editor\EditorResource.js" />
+    <EmbeddedResource Include="Shared\RelationDataSource\RelationDataSourceConfig.html" />
+    <EmbeddedResource Include="Shared\RelationDataSource\RelationDataSourceConfigController.js" />
+    <EmbeddedResource Include="Shared\TypeaheadListPicker\TypeaheadListPickerConfig.html" />
+    <EmbeddedResource Include="Shared\TypeaheadListPicker\TypeaheadListPickerEditor.html" />
+    <EmbeddedResource Include="Shared\TypeaheadListPicker\TypeaheadListPickerEditorController.js" />
+    <EmbeddedResource Include="Shared\TypeaheadListPicker\TypeaheadListPickerEditorDirectives.js" />
+    <EmbeddedResource Include="Shared\XmlDataSource\XmlDataSourceConfig.html" />
+    <EmbeddedResource Include="Shared\XmlDataSource\XmlDataSourceConfigController.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
