@@ -21,11 +21,11 @@ namespace nuPickers.DataEditors.EnumDropDownPicker
     [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.EmbeddedResource.ROOT_URL + "PropertyEditor/PropertyEditorConfig.css" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "EnumDataSource/EnumDataSourceConfigController.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "SaveFormat/SaveFormatConfigController.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
-    public class EnumDropDownPickerPropertyEditor  : DataEditor
+    public class EnumDropDownPickerDataEditor  : DataEditor
     {
         protected override IConfigurationEditor CreateConfigurationEditor() => new EnumDropDownPickerConfigurationEditor();
 
-        public EnumDropDownPickerPropertyEditor(ILogger logger) : base(logger)
+        public EnumDropDownPickerDataEditor(ILogger logger) : base(logger)
         {
         }
     }

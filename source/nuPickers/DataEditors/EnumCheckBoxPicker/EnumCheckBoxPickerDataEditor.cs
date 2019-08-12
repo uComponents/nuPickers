@@ -3,19 +3,17 @@ using Umbraco.Core.Logging;
 using Umbraco.Core.PropertyEditors;
 using Umbraco.Web.PropertyEditors;
 
-namespace nuPickers.DataEditors.EnumPrefetchListPicker
+namespace nuPickers.DataEditors.EnumCheckBoxPicker
 {
     // EDITOR UI
-    [DataEditor(DataEditorConstants.EnumPrefetchListPickerAlias, "nuPickers: Enum PrefetchList Picker",
-        EmbeddedResource.EmbeddedResource.ROOT_URL + "PrefetchListPicker/PrefetchListPickerEditor.html", ValueType = "TEXT" )]
+    [DataEditor(DataEditorConstants.EnumCheckBoxPickerAlias, "nuPickers: Enum CheckBox Picker",
+        EmbeddedResource.EmbeddedResource.ROOT_URL + "CheckBoxPicker/CheckBoxPickerEditor.html", ValueType = "TEXT")]
     [PropertyEditorAsset(ClientDependencyType.Css,
-        EmbeddedResource.EmbeddedResource.ROOT_URL + "ListPicker/ListPickerEditor.css" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
+        EmbeddedResource.EmbeddedResource.ROOT_URL + "CheckBoxPicker/CheckBoxPickerEditor.css" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
+    [PropertyEditorAsset(ClientDependencyType.Css,
+        EmbeddedResource.EmbeddedResource.ROOT_URL + "LayoutDirection/LayoutDirection.css" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript,
-        EmbeddedResource.EmbeddedResource.ROOT_URL + "ListPicker/ListPickerEditorController.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
-    [PropertyEditorAsset(ClientDependencyType.Javascript,
-        EmbeddedResource.EmbeddedResource.ROOT_URL + "ListPicker/ListPickerEditorDirectives.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
-    [PropertyEditorAsset(ClientDependencyType.Javascript,
-        EmbeddedResource.EmbeddedResource.ROOT_URL + "PrefetchListPicker/PrefetchListPickerEditorController.js" +
+        EmbeddedResource.EmbeddedResource.ROOT_URL + "CheckBoxPicker/CheckBoxPickerEditorController.js" +
         EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
 
     // RESOURCES (all are referenced as EditorResource consumes the others)
@@ -38,13 +36,12 @@ namespace nuPickers.DataEditors.EnumPrefetchListPicker
         EmbeddedResource.EmbeddedResource.ROOT_URL + "CustomLabel/CustomLabelConfigController.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript,
         EmbeddedResource.EmbeddedResource.ROOT_URL + "SaveFormat/SaveFormatConfigController.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
-    public class EnumPrefetchListPropertyEditor : DataEditor
+    public class EnumCheckBoxPickerDataEditor : DataEditor
     {
         protected override IConfigurationEditor CreateConfigurationEditor() =>
-            new EnumPrefetchListPickerConfigurationEditor();
+            new EnumCheckBoxPickerConfigurationEditor();
 
-
-        public EnumPrefetchListPropertyEditor(ILogger logger) : base(logger)
+        public EnumCheckBoxPickerDataEditor(ILogger logger) : base(logger)
         {
         }
     }

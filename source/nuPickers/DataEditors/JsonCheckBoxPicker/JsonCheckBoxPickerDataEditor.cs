@@ -23,11 +23,11 @@ namespace nuPickers.DataEditors.JsonCheckBoxPicker
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "CustomLabel/CustomLabelConfigController.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "RelationMapping/RelationMappingConfigController.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "SaveFormat/SaveFormatConfigController.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
-    public class JsonCheckBoxPickerPropertyEditor : DataEditor
+    public class JsonCheckBoxPickerDataEditor : DataEditor
     {
         protected override IConfigurationEditor CreateConfigurationEditor() => new JsonCheckBoxPickerConfigurationEditor();
 
-        public JsonCheckBoxPickerPropertyEditor(ILogger logger) : base(logger)
+        public JsonCheckBoxPickerDataEditor(ILogger logger) : base(logger)
         {
         }
     }

@@ -3,14 +3,12 @@ using Umbraco.Core.Logging;
 using Umbraco.Core.PropertyEditors;
 using Umbraco.Web.PropertyEditors;
 
-namespace nuPickers.DataEditors.JsonPrefetchListPicker
+namespace nuPickers.DataEditors.JsonRadioButtonPicker
 {
     // EDITOR UI
-    [DataEditor(DataEditorConstants.JsonPrefetchListPickerAlias, "nuPickers: Json PrefetchList Picker", EmbeddedResource.EmbeddedResource.ROOT_URL + "PrefetchListPicker/PrefetchListPickerEditor.html", ValueType = "TEXT")]
-    [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.EmbeddedResource.ROOT_URL + "ListPicker/ListPickerEditor.css" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
-    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "ListPicker/ListPickerEditorController.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
-    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "ListPicker/ListPickerEditorDirectives.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
-    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "PrefetchListPicker/PrefetchListPickerEditorController.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
+    [DataEditor(DataEditorConstants.JsonRadioButtonPickerAlias, "nuPickers: Json RadioButton Picker", EmbeddedResource.EmbeddedResource.ROOT_URL + "RadioButtonPicker/RadioButtonPickerEditor.html", ValueType = "TEXT")]
+    [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.EmbeddedResource.ROOT_URL + "LayoutDirection/LayoutDirection.css" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
+    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "RadioButtonPicker/RadioButtonPickerEditorController.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
 
     // RESOURCES (all are referenced as EditorResource consumes the others)
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "Editor/EditorResource.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
@@ -24,13 +22,13 @@ namespace nuPickers.DataEditors.JsonPrefetchListPicker
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "CustomLabel/CustomLabelConfigController.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "RelationMapping/RelationMappingConfigController.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "SaveFormat/SaveFormatConfigController.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
-    public class JsonPrefetchListPickerPropertyEditor : DataEditor
+    public class JsonRadioButtonPickerDataEditor : DataEditor
     {
         protected override IConfigurationEditor CreateConfigurationEditor() =>
-            new JsonPrefetchListPickerConfigurationEditor();
+            new JsonRadioButtonPickerConfigurationEditor();
 
 
-        public JsonPrefetchListPickerPropertyEditor(ILogger logger) : base(logger)
+        public JsonRadioButtonPickerDataEditor(ILogger logger) : base(logger)
         {
         }
     }

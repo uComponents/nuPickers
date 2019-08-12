@@ -33,11 +33,11 @@ namespace nuPickers.DataEditors.EnumLabels
         EmbeddedResource.EmbeddedResource.ROOT_URL + "Labels/LabelsConfigController.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript,
         EmbeddedResource.EmbeddedResource.ROOT_URL + "CustomLabel/CustomLabelConfigController.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
-    public class EnumLabelsPropertyEditor : DataEditor
+    public class EnumLabelsDataEditor : DataEditor
     {
         protected override IConfigurationEditor CreateConfigurationEditor() => new EnumLabelsConfigurationEditor();
 
-        public EnumLabelsPropertyEditor(ILogger logger) : base(logger)
+        public EnumLabelsDataEditor(ILogger logger) : base(logger)
         {
         }
     }

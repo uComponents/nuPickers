@@ -21,11 +21,11 @@ namespace nuPickers.DataEditors.JsonLabels
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "JsonDataSource/JsonDataSourceConfigController.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "Labels/LabelsConfigController.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "CustomLabel/CustomLabelConfigController.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
-    public class JsonLabelsPropertyEditor : DataEditor
+    public class JsonLabelsDataEditor : DataEditor
     {
         protected override IConfigurationEditor CreateConfigurationEditor() => new JsonLabelsConfigurationEditor();
 
-        public JsonLabelsPropertyEditor(ILogger logger) : base(logger)
+        public JsonLabelsDataEditor(ILogger logger) : base(logger)
         {
         }
     }
