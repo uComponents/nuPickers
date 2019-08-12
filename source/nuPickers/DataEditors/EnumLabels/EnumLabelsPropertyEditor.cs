@@ -6,7 +6,7 @@ using Umbraco.Web.PropertyEditors;
 namespace nuPickers.DataEditors.EnumLabels
 {
     // EDITOR UI
-    [DataEditor(PropertyEditorConstants.EnumLabelsAlias, "nuPickers: Enum Labels",
+    [DataEditor(DataEditorConstants.EnumLabelsAlias, "nuPickers: Enum Labels",
         EmbeddedResource.EmbeddedResource.ROOT_URL + "Labels/LabelsEditor.html", ValueType = "TEXT")]
     [PropertyEditorAsset(ClientDependencyType.Css,
         EmbeddedResource.EmbeddedResource.ROOT_URL + "LayoutDirection/LayoutDirection.css" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]

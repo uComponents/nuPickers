@@ -6,7 +6,7 @@ using Umbraco.Web.PropertyEditors;
 namespace nuPickers.DataEditors.JsonPagedListPicker
 {
     // EDITOR UI
-    [DataEditor(PropertyEditorConstants.JsonPagedListPickerAlias, "nuPickers: Json PagedList Picker", EmbeddedResource.EmbeddedResource.ROOT_URL + "PagedListPicker/PagedListPickerEditor.html", ValueType = "TEXT")]
+    [DataEditor(DataEditorConstants.JsonPagedListPickerAlias, "nuPickers: Json PagedList Picker", EmbeddedResource.EmbeddedResource.ROOT_URL + "PagedListPicker/PagedListPickerEditor.html", ValueType = "TEXT")]
     [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.EmbeddedResource.ROOT_URL + "ListPicker/ListPickerEditor.css" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.EmbeddedResource.ROOT_URL + "PagedListPicker/PagedListPickerEditor.css" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "ListPicker/ListPickerEditorController.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]

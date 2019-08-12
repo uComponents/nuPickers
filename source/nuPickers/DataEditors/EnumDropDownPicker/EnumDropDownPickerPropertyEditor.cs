@@ -8,7 +8,7 @@ using Umbraco.Web.PropertyEditors;
 namespace nuPickers.DataEditors.EnumDropDownPicker
 {
     // EDITOR UI
-    [DataEditor(PropertyEditorConstants.EnumDropDownPickerAlias, "nuPickers: Enum DropDown Picker", EmbeddedResource.EmbeddedResource.ROOT_URL + "DropDownPicker/DropDownPickerEditor.html", ValueType = "TEXT")]
+    [DataEditor(DataEditorConstants.EnumDropDownPickerAlias, "nuPickers: Enum DropDown Picker", EmbeddedResource.EmbeddedResource.ROOT_URL + "DropDownPicker/DropDownPickerEditor.html", ValueType = "TEXT")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "DropDownPicker/DropDownPickerEditorController.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
 
     // RESOURCES (all are referenced as EditorResource consumes the others)

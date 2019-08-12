@@ -6,7 +6,7 @@ using Umbraco.Web.PropertyEditors;
 namespace nuPickers.DataEditors.EnumPrefetchListPicker
 {
     // EDITOR UI
-    [DataEditor(PropertyEditorConstants.EnumPrefetchListPickerAlias, "nuPickers: Enum PrefetchList Picker",
+    [DataEditor(DataEditorConstants.EnumPrefetchListPickerAlias, "nuPickers: Enum PrefetchList Picker",
         EmbeddedResource.EmbeddedResource.ROOT_URL + "PrefetchListPicker/PrefetchListPickerEditor.html", ValueType = "TEXT" )]
     [PropertyEditorAsset(ClientDependencyType.Css,
         EmbeddedResource.EmbeddedResource.ROOT_URL + "ListPicker/ListPickerEditor.css" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]

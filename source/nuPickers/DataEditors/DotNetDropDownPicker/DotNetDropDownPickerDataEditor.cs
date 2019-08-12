@@ -6,7 +6,7 @@ using Umbraco.Web.PropertyEditors;
 namespace nuPickers.DataEditors.DotNetDropDownPicker
 {
     // EDITOR UI
-    [DataEditor(PropertyEditorConstants.DotNetDropDownPickerAlias, "nuPickers: DotNet DropDown Picker", EmbeddedResource.EmbeddedResource.ROOT_URL + "DropDownPicker/DropDownPickerEditor.html", ValueType = "TEXT")]
+    [DataEditor(DataEditorConstants.DotNetDropDownPickerAlias, "nuPickers: DotNet DropDown Picker", EmbeddedResource.EmbeddedResource.ROOT_URL + "DropDownPicker/DropDownPickerEditor.html", ValueType = "TEXT")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "DropDownPicker/DropDownPickerEditorController.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
 
     // RESOURCES (all are referenced as EditorResource consumes the others)

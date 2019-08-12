@@ -6,7 +6,7 @@ using Umbraco.Web.PropertyEditors;
 namespace nuPickers.DataEditors.JsonCheckBoxPicker
 {
     // EDITOR UI
-    [DataEditor(PropertyEditorConstants.JsonCheckBoxPickerAlias, "nuPickers: Json CheckBox Picker", EmbeddedResource.EmbeddedResource.ROOT_URL + "CheckBoxPicker/CheckBoxPickerEditor.html", ValueType = "TEXT")]
+    [DataEditor(DataEditorConstants.JsonCheckBoxPickerAlias, "nuPickers: Json CheckBox Picker", EmbeddedResource.EmbeddedResource.ROOT_URL + "CheckBoxPicker/CheckBoxPickerEditor.html", ValueType = "TEXT")]
     [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.EmbeddedResource.ROOT_URL + "CheckBoxPicker/CheckBoxPickerEditor.css" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.EmbeddedResource.ROOT_URL + "LayoutDirection/LayoutDirection.css" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "CheckBoxPicker/CheckBoxPickerEditorController.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]

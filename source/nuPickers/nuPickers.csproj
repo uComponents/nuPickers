@@ -314,6 +314,12 @@
     <Compile Include="Components\EmbeddedResourceCompontent.cs" />
     <Compile Include="Components\nuPickerCompontent.cs" />
     <Compile Include="Components\RelationMappingComponent.cs" />
+    <Compile Include="DataEditors\DotNetRadioButtonPicker\DotNetRadioButtonPickerConfiguration.cs" />
+    <Compile Include="DataEditors\DotNetRadioButtonPicker\DotnetRadioButtonPickerDataEditor.cs" />
+    <Compile Include="DataEditors\DotNetRadioButtonPicker\DotNetRadioButtonPickerConfigurationEditor.cs" />
+    <Compile Include="DataEditors\DotNetTypeaheadListPicker\DotNetTypeaheadListPickerPreConfigurationEditor.cs" />
+    <Compile Include="DataEditors\DotNetTypeaheadListPicker\DotNetTypeaheadListPickerPreConfiguration.cs" />
+    <Compile Include="DataEditors\DotNetTypeaheadListPicker\DotNetTypeaheadListPickerPropertyEditor.cs" />
     <Compile Include="EmbeddedResource\EmbeddedResource.cs" />
     <Compile Include="EmbeddedResource\EmbeddedResourceController.cs" />
     <Compile Include="EmbeddedResource\EmbeddedResourceHelper.cs" />
@@ -337,10 +343,10 @@
     <Compile Include="DataEditors\DotNetLabels\DotNetLabelsConfiguration.cs" />
     <Compile Include="DataEditors\DotNetLabels\DotNetLabelsConfigurationEditor.cs" />
     <Compile Include="DataEditors\DotNetPagedListPicker\DotNetPagedListPickerConfiguration.cs" />
-    <Compile Include="DataEditors\DotNetPagedListPicker\DotNetPagedListPickerPropertyEditor.cs" />
+    <Compile Include="DataEditors\DotNetPagedListPicker\DotNetPagedListPickerDataEditor.cs" />
     <Compile Include="DataEditors\DotNetPagedListPicker\DotNetPagedListPickerConfigurationEditor.cs" />
     <Compile Include="DataEditors\DotNetPrefetchListPicker\DotNetPrefetchListPickerConfiguration.cs" />
-    <Compile Include="DataEditors\DotNetPrefetchListPicker\DotNetPrefetchListPickerPropertyEditor.cs" />
+    <Compile Include="DataEditors\DotNetPrefetchListPicker\DotNetPrefetchListPickerDataEditor.cs" />
     <Compile Include="DataEditors\DotNetPrefetchListPicker\DotNetPrefetchListPickerConfigurationEditor.cs" />
     <Compile Include="DataEditors\EnumCheckBoxPicker\EnumCheckBoxPickerConfiguration.cs" />
     <Compile Include="DataEditors\EnumCheckBoxPicker\EnumCheckBoxPickerPropertyEditor.cs" />
@@ -381,7 +387,7 @@
     <Compile Include="DataEditors\LucenePagedListPicker\LucenePagedListPickerConfigurationEditor.cs" />
     <Compile Include="DataEditors\LucenePagedListPicker\LucenePagedListPickerConfiguration.cs" />
     <Compile Include="DataEditors\LucenePagedListPicker\LucenePagedListPickerPropertyEditor.cs" />
-    <Compile Include="DataEditors\PropertyEditorConstants.cs" />
+    <Compile Include="DataEditors\DataEditorConstants.cs" />
     <Compile Include="Picker.cs">
       <SubType>Code</SubType>
     </Compile>

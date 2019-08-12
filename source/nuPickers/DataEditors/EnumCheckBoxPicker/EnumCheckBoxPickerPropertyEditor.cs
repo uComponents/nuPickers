@@ -6,7 +6,7 @@ using Umbraco.Web.PropertyEditors;
 namespace nuPickers.DataEditors.EnumCheckBoxPicker
 {
     // EDITOR UI
-    [DataEditor(PropertyEditorConstants.EnumCheckBoxPickerAlias, "nuPickers: Enum CheckBox Picker",
+    [DataEditor(DataEditorConstants.EnumCheckBoxPickerAlias, "nuPickers: Enum CheckBox Picker",
         EmbeddedResource.EmbeddedResource.ROOT_URL + "CheckBoxPicker/CheckBoxPickerEditor.html", ValueType = "TEXT")]
     [PropertyEditorAsset(ClientDependencyType.Css,
         EmbeddedResource.EmbeddedResource.ROOT_URL + "CheckBoxPicker/CheckBoxPickerEditor.css" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]

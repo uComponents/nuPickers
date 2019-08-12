@@ -3,7 +3,7 @@
     /// <summary>
     /// Class used to define constants (avoided more generic Contants class as conflicts with the use of ClientDependency)
     /// </summary>
-    public static class PropertyEditorConstants
+    public static class DataEditorConstants
     {
         public const string DotNetCheckBoxPickerAlias = "nuPickers.DotNetCheckBoxPicker";
         public const string DotNetDropDownPickerAlias = "nuPickers.DotNetDropDownPicker";
@@ -51,6 +51,6 @@
         public const string XmlPagedListPickerAlias = "nuPickers.XmlPagedListPicker";
         public const string XmlPrefetchListPickerAlias = "nuPickers.XmlPrefetchListPicker";
         public const string XmlRadioButtonPickerAlias = "nuPickers.XmlRadioButtonPicker";
-        public const string XmlTypeaheadListPickerAlias = "nuPickers.XmlTypeaheadListPicker";        
+        public const string XmlTypeaheadListPickerAlias = "nuPickers.XmlTypeaheadListPicker";
     }
 }

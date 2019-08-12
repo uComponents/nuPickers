@@ -9,47 +9,47 @@ namespace nuPickers.Shared.DataSource
         {
             switch (propertyEditorAlias)
             {
-                case PropertyEditorConstants.DotNetCheckBoxPickerAlias:
-                case PropertyEditorConstants.DotNetDropDownPickerAlias:
-                case PropertyEditorConstants.DotNetLabelsAlias:
-                case PropertyEditorConstants.DotNetPagedListPickerAlias:
-                case PropertyEditorConstants.DotNetPrefetchListPickerAlias:
-                case PropertyEditorConstants.DotNetRadioButtonPickerAlias:
-                case PropertyEditorConstants.DotNetTypeaheadListPickerAlias:
+                case DataEditorConstants.DotNetCheckBoxPickerAlias:
+                case DataEditorConstants.DotNetDropDownPickerAlias:
+                case DataEditorConstants.DotNetLabelsAlias:
+                case DataEditorConstants.DotNetPagedListPickerAlias:
+                case DataEditorConstants.DotNetPrefetchListPickerAlias:
+                case DataEditorConstants.DotNetRadioButtonPickerAlias:
+                case DataEditorConstants.DotNetTypeaheadListPickerAlias:
                     return JsonConvert.DeserializeObject<DotNetDataSource.DotNetDataSource>(dataSourceConfig);
 
-                case PropertyEditorConstants.EnumCheckBoxPickerAlias:
-                case PropertyEditorConstants.EnumDropDownPickerAlias:
-                case PropertyEditorConstants.EnumLabelsAlias:
-                case PropertyEditorConstants.EnumPrefetchListPickerAlias:
-                case PropertyEditorConstants.EnumRadioButtonPickerAlias:
+                case DataEditorConstants.EnumCheckBoxPickerAlias:
+                case DataEditorConstants.EnumDropDownPickerAlias:
+                case DataEditorConstants.EnumLabelsAlias:
+                case DataEditorConstants.EnumPrefetchListPickerAlias:
+                case DataEditorConstants.EnumRadioButtonPickerAlias:
                     return JsonConvert.DeserializeObject<EnumDataSource.EnumDataSource>(dataSourceConfig);
 
-                case PropertyEditorConstants.JsonCheckBoxPickerAlias:
-                case PropertyEditorConstants.JsonDropDownPickerAlias:
-                case PropertyEditorConstants.JsonLabelsAlias:
-                case PropertyEditorConstants.JsonPrefetchListPickerAlias:
-                case PropertyEditorConstants.JsonRadioButtonPickerAlias:
-                case PropertyEditorConstants.JsonTypeaheadListPickerAlias:
+                case DataEditorConstants.JsonCheckBoxPickerAlias:
+                case DataEditorConstants.JsonDropDownPickerAlias:
+                case DataEditorConstants.JsonLabelsAlias:
+                case DataEditorConstants.JsonPrefetchListPickerAlias:
+                case DataEditorConstants.JsonRadioButtonPickerAlias:
+                case DataEditorConstants.JsonTypeaheadListPickerAlias:
                     return JsonConvert.DeserializeObject<JsonDataSource.JsonDataSource>(dataSourceConfig);
 
-                case PropertyEditorConstants.LuceneCheckBoxPickerAlias:
-                case PropertyEditorConstants.LuceneDropDownPickerAlias:
-                case PropertyEditorConstants.LuceneLabelsAlias:
-                case PropertyEditorConstants.LucenePrefetchListPickerAlias:
-                case PropertyEditorConstants.LuceneRadioButtonPickerAlias:
-                case PropertyEditorConstants.LuceneTypeaheadListPickerAlias:
+                case DataEditorConstants.LuceneCheckBoxPickerAlias:
+                case DataEditorConstants.LuceneDropDownPickerAlias:
+                case DataEditorConstants.LuceneLabelsAlias:
+                case DataEditorConstants.LucenePrefetchListPickerAlias:
+                case DataEditorConstants.LuceneRadioButtonPickerAlias:
+                case DataEditorConstants.LuceneTypeaheadListPickerAlias:
                     return JsonConvert.DeserializeObject<LuceneDataSource.LuceneDataSource>(dataSourceConfig);
 
-                case PropertyEditorConstants.RelationLabelsAlias:
+                case DataEditorConstants.RelationLabelsAlias:
                     return JsonConvert.DeserializeObject<RelationDataSource.RelationDataSource>(dataSourceConfig);
 
-                case PropertyEditorConstants.SqlCheckBoxPickerAlias:
-                case PropertyEditorConstants.SqlDropDownPickerAlias:
-                case PropertyEditorConstants.SqlLabelsAlias:
-                case PropertyEditorConstants.SqlPrefetchListPickerAlias:
-                case PropertyEditorConstants.SqlRadioButtonPickerAlias:
-                case PropertyEditorConstants.SqlTypeaheadListPickerAlias:
+                case DataEditorConstants.SqlCheckBoxPickerAlias:
+                case DataEditorConstants.SqlDropDownPickerAlias:
+                case DataEditorConstants.SqlLabelsAlias:
+                case DataEditorConstants.SqlPrefetchListPickerAlias:
+                case DataEditorConstants.SqlRadioButtonPickerAlias:
+                case DataEditorConstants.SqlTypeaheadListPickerAlias:
                     return JsonConvert.DeserializeObject<SqlDataSource.SqlDataSource>(dataSourceConfig);
 
               /*  case PropertyEditorConstants.XmlCheckBoxPickerAlias:

@@ -6,7 +6,7 @@ using Umbraco.Web.PropertyEditors;
 namespace nuPickers.DataEditors.LuceneLabels
 {
     // EDITOR UI
-    [DataEditor(PropertyEditorConstants.LuceneLabelsAlias, "nuPickers: Lucene Labels", EmbeddedResource.EmbeddedResource.ROOT_URL + "Labels/LabelsEditor.html", ValueType = "TEXT")]
+    [DataEditor(DataEditorConstants.LuceneLabelsAlias, "nuPickers: Lucene Labels", EmbeddedResource.EmbeddedResource.ROOT_URL + "Labels/LabelsEditor.html", ValueType = "TEXT")]
     [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.EmbeddedResource.ROOT_URL + "LayoutDirection/LayoutDirection.css" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "Labels/LabelsEditorController.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
 
