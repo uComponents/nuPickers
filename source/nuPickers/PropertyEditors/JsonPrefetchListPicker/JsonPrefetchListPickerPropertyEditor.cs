@@ -1,4 +1,6 @@
-﻿namespace nuPickers.PropertyEditors.JsonPrefetchListPicker
+﻿using Umbraco.Core.Logging;
+
+namespace nuPickers.PropertyEditors.JsonPrefetchListPicker
 {
     using ClientDependency.Core;
     using nuPickers.EmbeddedResource;
@@ -27,9 +29,12 @@
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "SaveFormat/SaveFormatConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
     public class JsonPrefetchListPickerPropertyEditor : DataEditor
     {
-        protected override PreValueEditor CreatePreValueEditor()
+        protected override IConfigurationEditor CreateConfigurationEditor() =>
+            new JsonPrefetchListPickerConfigurationEditor();
+
+
+        public JsonPrefetchListPickerPropertyEditor(ILogger logger) : base(logger)
         {
-            return new JsonPrefetchListPickerPreValueEditor();
         }
     }
 }

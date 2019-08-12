@@ -357,7 +357,8 @@
     <Compile Include="PropertyEditors\JsonPagedListPicker\JsonPagedListPickerConfigurationEditor.cs" />
     <Compile Include="PropertyEditors\JsonPagedListPicker\JsonPagedListPickerConfiguration.cs" />
     <Compile Include="PropertyEditors\JsonPagedListPicker\JsonPagedListPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\JsonPrefetchListPicker\JsonPrefetchListPickerPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\JsonPrefetchListPicker\JsonPrefetchListPickerConfigurationEditor.cs" />
+    <Compile Include="PropertyEditors\JsonPrefetchListPicker\JsonPrefetchListPickerConfiguration.cs" />
     <Compile Include="PropertyEditors\JsonPrefetchListPicker\JsonPrefetchListPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\JsonRadioButtonPicker\JsonRadioButtonPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\JsonRadioButtonPicker\JsonRadioButtonPickerPropertyEditor.cs" />
@@ -371,7 +372,8 @@
     <Compile Include="PropertyEditors\LuceneLabels\LuceneLabelsConfigurationEditor.cs" />
     <Compile Include="PropertyEditors\LuceneLabels\LuceneLabelsConfiguration.cs" />
     <Compile Include="PropertyEditors\LuceneLabels\LuceneLabelsPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\LucenePagedListPicker\LucenePagedListPickerPreValueEditor.cs" />
+    <Compile Include="PropertyEditors\LucenePagedListPicker\LucenePagedListPickerConfigurationEditor.cs" />
+    <Compile Include="PropertyEditors\LucenePagedListPicker\LucenePagedListPickerConfiguration.cs" />
     <Compile Include="PropertyEditors\LucenePagedListPicker\LucenePagedListPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\LucenePrefetchListPicker\LucenePrefetchListPickerPreValueEditor.cs" />
     <Compile Include="PropertyEditors\LucenePrefetchListPicker\LucenePrefetchListPickerPropertyEditor.cs" />

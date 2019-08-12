@@ -1,4 +1,6 @@
-﻿namespace nuPickers.PropertyEditors.LucenePagedListPicker
+﻿using Umbraco.Core.Logging;
+
+namespace nuPickers.PropertyEditors.LucenePagedListPicker
 {
     using ClientDependency.Core;
     using nuPickers.EmbeddedResource;
@@ -28,9 +30,10 @@
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "SaveFormat/SaveFormatConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
     public class LucenePagedListPickerPropertyEditor : DataEditor
     {
-        protected override PreValueEditor CreatePreValueEditor()
+        protected override IConfigurationEditor CreateConfigurationEditor() => new LucenePagedListPickerConfigurationEditor();
+
+        public LucenePagedListPickerPropertyEditor(ILogger logger) : base(logger)
         {
-            return new LucenePagedListPickerPreValueEditor();
         }
     }
 }

@@ -56,8 +56,11 @@ namespace nuPickers.Shared.LuceneDataSource
         {
             List<EditorDataItem> editorDataItems = new List<EditorDataItem>();
             var examineManager =  ExamineManager.Instance;
-            var getSearcher = examineManager.TryGetSearcher(ExamineSearcher, out var searchProvider);
-
+            if(!examineManager.TryGetSearcher(ExamineSearcher, out var searchProvider));
+            {
+                examineManager.TryGetIndex(ExamineSearcher.Replace("Searcher", "Index"), out var internalsearch);
+                searchProvider = (ISearcher)internalsearch;
+            }
             if (searchProvider != null)
             {
                 IQuery searchCriteria = searchProvider.CreateQuery();
