@@ -1,19 +1,12 @@
-﻿namespace nuPickers.Shared.DataSource
-{
-    using Newtonsoft.Json;
-    using nuPickers.PropertyEditors;
-    using nuPickers.Shared.DotNetDataSource;
-    using nuPickers.Shared.EnumDataSource;
-    using nuPickers.Shared.JsonDataSource;
-    using nuPickers.Shared.LuceneDataSource;
-    using nuPickers.Shared.RelationDataSource;
-    using nuPickers.Shared.SqlDataSource;
-    using nuPickers.Shared.XmlDataSource;
+﻿using Newtonsoft.Json;
+using nuPickers.PropertyEditors;
 
+namespace nuPickers.Shared.DataSource
+{
     internal static class DataSource
     {
         internal static IDataSource GetDataSource(string propertyEditorAlias, string dataSourceConfig)
-        {            
+        {
             switch (propertyEditorAlias)
             {
                 case PropertyEditorConstants.DotNetCheckBoxPickerAlias:
@@ -23,14 +16,14 @@
                 case PropertyEditorConstants.DotNetPrefetchListPickerAlias:
                 case PropertyEditorConstants.DotNetRadioButtonPickerAlias:
                 case PropertyEditorConstants.DotNetTypeaheadListPickerAlias:
-                    return JsonConvert.DeserializeObject<DotNetDataSource>(dataSourceConfig);
+                    return JsonConvert.DeserializeObject<DotNetDataSource.DotNetDataSource>(dataSourceConfig);
 
                 case PropertyEditorConstants.EnumCheckBoxPickerAlias:
                 case PropertyEditorConstants.EnumDropDownPickerAlias:
                 case PropertyEditorConstants.EnumLabelsAlias:
                 case PropertyEditorConstants.EnumPrefetchListPickerAlias:
                 case PropertyEditorConstants.EnumRadioButtonPickerAlias:
-                    return JsonConvert.DeserializeObject<EnumDataSource>(dataSourceConfig);
+                    return JsonConvert.DeserializeObject<EnumDataSource.EnumDataSource>(dataSourceConfig);
 
                 case PropertyEditorConstants.JsonCheckBoxPickerAlias:
                 case PropertyEditorConstants.JsonDropDownPickerAlias:
@@ -38,7 +31,7 @@
                 case PropertyEditorConstants.JsonPrefetchListPickerAlias:
                 case PropertyEditorConstants.JsonRadioButtonPickerAlias:
                 case PropertyEditorConstants.JsonTypeaheadListPickerAlias:
-                    return JsonConvert.DeserializeObject<JsonDataSource>(dataSourceConfig);
+                    return JsonConvert.DeserializeObject<JsonDataSource.JsonDataSource>(dataSourceConfig);
 
                 case PropertyEditorConstants.LuceneCheckBoxPickerAlias:
                 case PropertyEditorConstants.LuceneDropDownPickerAlias:
@@ -46,10 +39,10 @@
                 case PropertyEditorConstants.LucenePrefetchListPickerAlias:
                 case PropertyEditorConstants.LuceneRadioButtonPickerAlias:
                 case PropertyEditorConstants.LuceneTypeaheadListPickerAlias:
-                    return JsonConvert.DeserializeObject<LuceneDataSource>(dataSourceConfig);
+                    return JsonConvert.DeserializeObject<LuceneDataSource.LuceneDataSource>(dataSourceConfig);
 
                 case PropertyEditorConstants.RelationLabelsAlias:
-                    return JsonConvert.DeserializeObject<RelationDataSource>(dataSourceConfig);                   
+                    return JsonConvert.DeserializeObject<RelationDataSource.RelationDataSource>(dataSourceConfig);
 
                 case PropertyEditorConstants.SqlCheckBoxPickerAlias:
                 case PropertyEditorConstants.SqlDropDownPickerAlias:
@@ -57,7 +50,7 @@
                 case PropertyEditorConstants.SqlPrefetchListPickerAlias:
                 case PropertyEditorConstants.SqlRadioButtonPickerAlias:
                 case PropertyEditorConstants.SqlTypeaheadListPickerAlias:
-                    return JsonConvert.DeserializeObject<SqlDataSource>(dataSourceConfig);
+                    return JsonConvert.DeserializeObject<SqlDataSource.SqlDataSource>(dataSourceConfig);
 
                 case PropertyEditorConstants.XmlCheckBoxPickerAlias:
                 case PropertyEditorConstants.XmlDropDownPickerAlias:
@@ -65,7 +58,7 @@
                 case PropertyEditorConstants.XmlPrefetchListPickerAlias:
                 case PropertyEditorConstants.XmlRadioButtonPickerAlias:
                 case PropertyEditorConstants.XmlTypeaheadListPickerAlias:
-                    return JsonConvert.DeserializeObject<XmlDataSource>(dataSourceConfig);
+                    return JsonConvert.DeserializeObject<XmlDataSource.XmlDataSource>(dataSourceConfig);
             }
 
             return null;

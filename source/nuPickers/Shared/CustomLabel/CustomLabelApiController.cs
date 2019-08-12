@@ -1,14 +1,11 @@
-﻿using System.Linq;
-using Umbraco.Core.Models;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Umbraco.Web.Composing;
+using Umbraco.Web.Editors;
+using Umbraco.Web.Mvc;
 
-namespace nuPickers.Shared
+namespace nuPickers.Shared.CustomLabel
 {
-    using System.Collections.Generic;
-
-    using Umbraco.Web.Editors;
-    using Umbraco.Web.Mvc;
-
     [PluginController("nuPickers")]
     public class CustomLabelApiController : UmbracoAuthorizedJsonController
     {

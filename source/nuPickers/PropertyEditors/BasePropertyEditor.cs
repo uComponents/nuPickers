@@ -1,10 +1,9 @@
 ﻿
 using Umbraco.Core.Logging;
-using Umbraco.Web.Models.ContentEditing;
 
 namespace nuPickers.PropertyEditors
 {
-    using nuPickers.Shared.SaveFormat;
+    using Shared.SaveFormat;
     using Umbraco.Core.PropertyEditors;
 
     public abstract class BasePropertyEditor : DataEditor

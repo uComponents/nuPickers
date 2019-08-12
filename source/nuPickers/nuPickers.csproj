@@ -324,6 +324,7 @@
     <Compile Include="Extensions\IPublishedContentExtensions.cs" />
     <Compile Include="Extensions\UmbracoHelperExtensions.cs" />
     <Compile Include="Helper.cs" />
+    <Compile Include="NuHandler.cs" />
     <Compile Include="nuPickerComposer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyEditors\BasePropertyEditor.cs" />
@@ -360,12 +361,6 @@
     <Compile Include="PropertyEditors\JsonPrefetchListPicker\JsonPrefetchListPickerConfigurationEditor.cs" />
     <Compile Include="PropertyEditors\JsonPrefetchListPicker\JsonPrefetchListPickerConfiguration.cs" />
     <Compile Include="PropertyEditors\JsonPrefetchListPicker\JsonPrefetchListPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\JsonRadioButtonPicker\JsonRadioButtonPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\JsonRadioButtonPicker\JsonRadioButtonPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\JsonTypeaheadListPicker\JsonTypeaheadListPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\JsonTypeaheadListPicker\JsonTypeaheadPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\LuceneCheckBoxPicker\LuceneCheckBoxPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\LuceneCheckBoxPicker\LuceneCheckBoxPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\LuceneDropDownPicker\LuceneDropDownPickerConfigurationEditor.cs" />
     <Compile Include="PropertyEditors\LuceneDropDownPicker\LuceneDropDownPickerConfiguration.cs" />
     <Compile Include="PropertyEditors\LuceneDropDownPicker\LuceneDropDownPickerPropertyEditor.cs" />
@@ -375,12 +370,6 @@
     <Compile Include="PropertyEditors\LucenePagedListPicker\LucenePagedListPickerConfigurationEditor.cs" />
     <Compile Include="PropertyEditors\LucenePagedListPicker\LucenePagedListPickerConfiguration.cs" />
     <Compile Include="PropertyEditors\LucenePagedListPicker\LucenePagedListPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\LucenePrefetchListPicker\LucenePrefetchListPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\LucenePrefetchListPicker\LucenePrefetchListPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\LuceneRadioButtonPicker\LuceneRadioButtonPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\LuceneRadioButtonPicker\LuceneRadioButtonPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\LuceneTypeaheadPicker\LuceneTypeaheadListPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\LuceneTypeaheadPicker\LuceneTypeaheadPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\PropertyEditorConstants.cs" />
     <Compile Include="Picker.cs">
       <SubType>Code</SubType>

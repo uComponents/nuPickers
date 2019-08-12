@@ -1,7 +1,7 @@
 ﻿namespace nuPickers.Shared.DataSource
 {
     using Newtonsoft.Json.Linq;
-    using nuPickers.Shared.Editor;
+    using Editor;
     using System.Linq;
     using System.Web.Http;
     using Umbraco.Web.Editors;
@@ -91,7 +91,7 @@
                                                         dataSource,
                                                         (string)data.config.customLabel,
                                                         (int)data.config.pagedListPicker.itemsPerPage,
-                                                        (int)data.page, 
+                                                        (int)data.page,
                                                         out total);
 
                     response.Total = total;

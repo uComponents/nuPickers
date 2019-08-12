@@ -1,14 +1,14 @@
-﻿namespace nuPickers.Shared.CustomLabel
-{
-    using Editor;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Linq;
-    using System.Web;
-    using Umbraco.Core.Models;
-    using Umbraco.Core.Models.PublishedContent;
-    using Umbraco.Web.Composing;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Web;
+using nuPickers.Shared.Editor;
+using Umbraco.Core.Models;
+using Umbraco.Core.Models.PublishedContent;
+using Umbraco.Web.Composing;
 
+namespace nuPickers.Shared.CustomLabel
+{
     internal class CustomLabel
     {
         private string MacroAlias { get; set; }
@@ -31,28 +31,28 @@
         /// <param name="propertyAlias">property alias</param>
         internal CustomLabel(string macroAlias, int contextId, string propertyAlias)
         {
-            this.MacroAlias = macroAlias;
-            this.ContextId = contextId;
-            this.PropertyAlias = propertyAlias;
+            MacroAlias = macroAlias;
+            ContextId = contextId;
+            PropertyAlias = propertyAlias;
 
             // the macro requires a published context to run in
-            IPublishedContent currentNode = Current.UmbracoContext.ContentCache.GetById(contextId);
+            IPublishedContent currentNode = Current.UmbracoContext.Content.GetById(contextId);
             if (currentNode != null)
             {
                 // current page is published so use this as the macro context
                 HttpContext.Current.Items["pageID"] = contextId;
-                this.HasMacroContext = true;
+                HasMacroContext = true;
             }
             else
             {
                 // fallback nd find first published page to use as host
-                IPublishedContent contextNode = Current.UmbracoContext.ContentCache.GetSingleByXPath(
+                IPublishedContent contextNode = Current.UmbracoContext.Content.GetSingleByXPath(
                     string.Concat("descendant::*[@parentID = ",
                         Current.Services.ContentService.GetRootContent().FirstOrDefault(), "]"));
                 if (contextNode != null)
                 {
                     HttpContext.Current.Items["pageID"] = contextNode.Id;
-                    this.HasMacroContext = true;
+                    HasMacroContext = true;
                 }
             }
         }
@@ -60,7 +60,6 @@
         /// <summary>
         /// parses the collection of options, potentially transforming the content of the label
         /// </summary>
-        /// <param name="contextId">the content / media or member being edited</param>
         /// <param name="editorDataItems">collection of options</param>
         /// <returns></returns>
         internal IEnumerable<EditorDataItem> ProcessEditorDataItems(IEnumerable<EditorDataItem> editorDataItems)
@@ -74,7 +73,7 @@
             {
                 counter++;
                 editorDataItem.Label =
-                    this.ProcessMacro(editorDataItem.Key, editorDataItem.Label, keys, counter, total);
+                    ProcessMacro(editorDataItem.Key, editorDataItem.Label, keys, counter, total);
             }
 
             return dataItems.Where(x => !string.IsNullOrWhiteSpace(x.Label)); // remove any options without a label
@@ -91,13 +90,13 @@
         /// <returns>the output of the macro as a string</returns>
         private string ProcessMacro(string key, string label, string keys, int counter, int total)
         {
-            if (!string.IsNullOrWhiteSpace(this.MacroAlias) && this.HasMacroContext)
+            if (!string.IsNullOrWhiteSpace(MacroAlias) && HasMacroContext)
             {
-                Macro macro = new Macro() {Alias = this.MacroAlias};
+                Macro macro = new Macro {Alias = MacroAlias};
                 Dictionary<string, object> properties = new Dictionary<string, object>();
 
-                properties.Add("contextId".ToLower(), this.ContextId.ToString());
-                properties.Add("propertyAlias".ToLower(), this.PropertyAlias);
+                properties.Add("contextId".ToLower(), ContextId.ToString());
+                properties.Add("propertyAlias".ToLower(), PropertyAlias);
 
                 properties.Add("key", key);
                 properties.Add("label", label);
@@ -106,7 +105,7 @@
                 properties.Add("counter", counter);
                 properties.Add("total", total);
 
-                label = this.RenderToString(macro, properties);
+                label = RenderToString(macro, properties);
             }
 
             return label;

@@ -2,8 +2,8 @@
 {
     using Umbraco.Core.Logging;
     using ClientDependency.Core;
-    using nuPickers.EmbeddedResource;
-    using nuPickers.PropertyEditors;
+    using EmbeddedResource;
+    using PropertyEditors;
     using Umbraco.Core.PropertyEditors;
     using Umbraco.Web.PropertyEditors;
 
