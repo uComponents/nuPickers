@@ -5,7 +5,8 @@ using System.Xml.XPath;
 using nuPickers.Shared.DataSource;
 using nuPickers.Shared.Editor;
 using nuPickers.Shared.Paging;
-using Umbraco.Core.Composing;
+using Umbraco.Core.Models;
+using Umbraco.Web.Composing;
 
 namespace nuPickers.Shared.XmlDataSource
 {
@@ -56,19 +57,19 @@ namespace nuPickers.Shared.XmlDataSource
 
             switch (XmlData)
             {
-                /*
+
                 case "content":
-                    xmlDocument = uQuery.GetPublishedXml(uQuery.UmbracoObjectType.Document);
+                    xmlDocument = Current.UmbracoHelper.ContentAtXPath(UmbracoObjectTypes.Document.GetName());
                     break;
 
                 case "media":
-                    xmlDocument = uQuery.GetPublishedXml(uQuery.UmbracoObjectType.Media);
+                    xmlDocument =Current.UmbracoHelper.ContentAtXPath(uQuery.UmbracoObjectType.Media);
                     break;
 
                 case "members":
-                    xmlDocument = uQuery.GetPublishedXml(uQuery.UmbracoObjectType.Member);
+                    xmlDocument =Current.UmbracoHelper.ContentAtXPath();
                     break;
-*/
+
                 case "url":
                     xmlDocument = new XmlDocument();
 

@@ -327,9 +327,21 @@
     <Compile Include="nuPickerComposer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyEditors\BasePropertyEditor.cs" />
+    <Compile Include="PropertyEditors\DotNetCheckBoxPicker\DotNetCheckBoxPickerConfiguration.cs" />
+    <Compile Include="PropertyEditors\DotNetCheckBoxPicker\DotNetCheckBoxPickerPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\DotNetCheckBoxPicker\DotNetCheckBoxPickerConfigurationEditor.cs" />
+    <Compile Include="PropertyEditors\DotNetDropDownPicker\DotNetDropDownPickerConfiguration.cs" />
+    <Compile Include="PropertyEditors\DotNetDropDownPicker\DotNetDropDownPickerPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\DotNetDropDownPicker\DotNetDropDownPickerConfigurationEditor.cs" />
+    <Compile Include="PropertyEditors\DotNetLabels\DotNetLabelsPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\DotNetLabels\DotNetLabelsConfiguration.cs" />
+    <Compile Include="PropertyEditors\DotNetLabels\DotNetLabelsConfigurationEditor.cs" />
     <Compile Include="PropertyEditors\DotNetPagedListPicker\DotNetPagedListPickerConfiguration.cs" />
     <Compile Include="PropertyEditors\DotNetPagedListPicker\DotNetPagedListPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\DotNetPagedListPicker\DotNetPagedListPickerConfigurationEditor.cs" />
+    <Compile Include="PropertyEditors\DotNetPrefetchListPicker\DotNetPrefetchListPickerConfiguration.cs" />
+    <Compile Include="PropertyEditors\DotNetPrefetchListPicker\DotNetPrefetchListPickerPropertyEditor.cs" />
+    <Compile Include="PropertyEditors\DotNetPrefetchListPicker\DotNetPrefetchListPickerConfigurationEditor.cs" />
     <Compile Include="PropertyEditors\EnumCheckBoxPicker\EnumCheckBoxPickerConfiguration.cs" />
     <Compile Include="PropertyEditors\EnumCheckBoxPicker\EnumCheckBoxPickerPropertyEditor.cs" />
     <Compile Include="PropertyEditors\EnumCheckBoxPicker\EnumCheckBoxPickerConfigurationEditor.cs" />
@@ -413,7 +425,6 @@
     <Compile Include="Shared\SqlDataSource\SqlDataSource.cs" />
     <Compile Include="Shared\SqlDataSource\SqlDataSourceApiController.cs" />
     <Compile Include="Shared\TypeaheadListPicker\TypeaheadListPicker.cs" />
-    <Compile Include="Shared\XmlDataSource\XmlDataSource.cs" />
     <Compile Include="Validators\RegexValidator.cs" />
     <Compile Include="Validators\RequiredValidator.cs" />
   </ItemGroup>
@@ -533,8 +544,6 @@
     <EmbeddedResource Include="Shared\TypeaheadListPicker\TypeaheadListPickerEditor.html" />
     <EmbeddedResource Include="Shared\TypeaheadListPicker\TypeaheadListPickerEditorController.js" />
     <EmbeddedResource Include="Shared\TypeaheadListPicker\TypeaheadListPickerEditorDirectives.js" />
-    <EmbeddedResource Include="Shared\XmlDataSource\XmlDataSourceConfig.html" />
-    <EmbeddedResource Include="Shared\XmlDataSource\XmlDataSourceConfigController.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

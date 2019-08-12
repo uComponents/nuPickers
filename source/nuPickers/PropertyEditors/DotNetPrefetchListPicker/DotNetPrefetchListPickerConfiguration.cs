@@ -1,20 +1,21 @@
-﻿namespace nuPickers.PropertyEditors.JsonPrefetchListPicker
+﻿namespace nuPickers.PropertyEditors.DotNetPrefetchListPicker
 {
-    using nuPickers.EmbeddedResource;
     using Umbraco.Core.PropertyEditors;
+    using nuPickers.EmbeddedResource;
 
-    internal class JsonPrefetchListPickerConfiguration : ValueListConfiguration
+    internal class DotNetPrefetchListPickerConfiguration : ValueListConfiguration
     {
+
         [ConfigurationField("useLabel", "Include labels?", "boolean", Description = "")]
         public bool UseLabel { get; set; }
 
         [ConfigurationField("dataSource", "Data Source",
-            EmbeddedResource.ROOT_URL + "JsonDataSource/JsonDataSourceConfig.html", HideLabel = true)]
+            EmbeddedResource.ROOT_URL + "DotNetDataSource/DotNetDataSourceConfig.html", HideLabel = true)]
         public object DataSource { get; set; }
 
         [ConfigurationField("customLabel", "Custom Label",
             EmbeddedResource.ROOT_URL + "CustomLabel/CustomLabelConfig.html", HideLabel = true)]
-        public object CustomLabel { get; set; }
+        public string CustomLabel { get; set; }
 
         [ConfigurationField("prefetchListPicker", "Prefetch List Picker",
             EmbeddedResource.ROOT_URL + "PrefetchListPicker/PrefetchListPickerConfig.html", HideLabel = true)]
@@ -24,12 +25,8 @@
             HideLabel = true)]
         public object ListPicker { get; set; }
 
-        [ConfigurationField("relationMapping", "Relation Mapping",
-            EmbeddedResource.ROOT_URL + "RelationMapping/RelationMappingConfig.html", HideLabel = true)]
-        public object RelationMapping { get; set; }
-
         [ConfigurationField("saveFormat", "Save Format",
             EmbeddedResource.ROOT_URL + "SaveFormat/SaveFormatConfig.html")]
-        public object SaveFormat { get; set; }
+        public string SaveFormat { get; set; }
     }
 }

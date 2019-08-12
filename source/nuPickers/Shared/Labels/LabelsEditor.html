@@ -1,6 +1,6 @@
 ﻿
 <ul ng-controller="nuPickers.Shared.Labels.LabelsEditorController" class="layout-direction" ng-class="model.config.layoutDirection">
     <li ng-repeat="option in options"
-        ng-bind-html-unsafe="option.label">
+        ng-bind-html="option.label | unsafe">
     </li>
 </ul>

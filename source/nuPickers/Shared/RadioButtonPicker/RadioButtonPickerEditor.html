@@ -11,7 +11,7 @@
                        ng-model="$parent.pickedKey"
                        ng-checked="option.key == $parent.pickedKey" />
 
-                <span ng-bind-html-unsafe="option.label"></span>
+                <span ng-bind-html="option.label | unsafe"></span>
             </label>
 
         </li>

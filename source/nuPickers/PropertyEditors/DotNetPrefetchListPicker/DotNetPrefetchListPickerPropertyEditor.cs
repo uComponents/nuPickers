@@ -1,13 +1,15 @@
-﻿namespace nuPickers.PropertyEditors.DotNetPrefetchListPicker
+﻿using Umbraco.Core.Logging;
+
+namespace nuPickers.PropertyEditors.DotNetPrefetchListPicker
 {
     using ClientDependency.Core;
-    using nuPickers.EmbeddedResource;
-    using nuPickers.PropertyEditors;
+    using EmbeddedResource;
+    using PropertyEditors;
     using Umbraco.Core.PropertyEditors;
     using Umbraco.Web.PropertyEditors;
 
     // EDITOR UI
-    [PropertyEditor(PropertyEditorConstants.DotNetPrefetchListPickerAlias, "nuPickers: DotNet PrefetchList Picker", EmbeddedResource.ROOT_URL + "PrefetchListPicker/PrefetchListPickerEditor.html", ValueType = "TEXT")]
+    [DataEditor(PropertyEditorConstants.DotNetPrefetchListPickerAlias, "nuPickers: DotNet PrefetchList Picker", EmbeddedResource.ROOT_URL + "PrefetchListPicker/PrefetchListPickerEditor.html", ValueType = "TEXT")]
     [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.ROOT_URL + "ListPicker/ListPickerEditor.css" + EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "ListPicker/ListPickerEditorController.js" + EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "ListPicker/ListPickerEditorDirectives.js" + EmbeddedResource.FILE_EXTENSION)]
@@ -25,11 +27,14 @@
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "CustomLabel/CustomLabelConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "RelationMapping/RelationMappingConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "SaveFormat/SaveFormatConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
-    public class DotNetPrefetchListPickerPropertyEditor : BasePropertyEditor
+    public class DotNetPrefetchListPickerPropertyEditor : DataEditor
     {
-        protected override PreValueEditor CreatePreValueEditor()
+        protected override IConfigurationEditor CreateConfigurationEditor() =>
+            new DotNetPrefetchListPickerConfigurationEditor();
+
+
+        public DotNetPrefetchListPickerPropertyEditor(ILogger logger) : base(logger)
         {
-            return new DotNetPrefetchListPickerPreValueEditor();
         }
     }
 }

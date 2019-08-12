@@ -1,35 +1,34 @@
-﻿using Umbraco.Core.Models;
+﻿using ClientDependency.Core;
+using Umbraco.Core.Logging;
+using Umbraco.Core.PropertyEditors;
+using Umbraco.Web.PropertyEditors;
 
 namespace nuPickers.PropertyEditors.DotNetCheckBoxPicker
 {
-    using ClientDependency.Core;
-    using nuPickers.EmbeddedResource;
-    using nuPickers.PropertyEditors;
-    using Umbraco.Core.PropertyEditors;
-    using Umbraco.Web.PropertyEditors;
-
     // EDITOR UI
-    [PropertyType(PropertyEditorConstants.DotNetCheckBoxPickerAlias, "nuPickers: DotNet CheckBox Picker", EmbeddedResource.ROOT_URL + "CheckBoxPicker/CheckBoxPickerEditor.html", ValueType = "TEXT")]
-    [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.ROOT_URL + "CheckBoxPicker/CheckBoxPickerEditor.css" + EmbeddedResource.FILE_EXTENSION)]
-    [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.ROOT_URL + "LayoutDirection/LayoutDirection.css" + EmbeddedResource.FILE_EXTENSION)]
-    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "CheckBoxPicker/CheckBoxPickerEditorController.js" + EmbeddedResource.FILE_EXTENSION)]
+    [DataEditor(PropertyEditorConstants.DotNetCheckBoxPickerAlias, "nuPickers: DotNet CheckBox Picker", EmbeddedResource.EmbeddedResource.ROOT_URL + "CheckBoxPicker/CheckBoxPickerEditor.html", ValueType = "TEXT")]
+    [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.EmbeddedResource.ROOT_URL + "CheckBoxPicker/CheckBoxPickerEditor.css" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
+    [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.EmbeddedResource.ROOT_URL + "LayoutDirection/LayoutDirection.css" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
+    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "CheckBoxPicker/CheckBoxPickerEditorController.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
 
     // RESOURCES (all are referenced as EditorResource consumes the others)
-    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "Editor/EditorResource.js" + EmbeddedResource.FILE_EXTENSION)]
-    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "DataSource/DataSourceResource.js" + EmbeddedResource.FILE_EXTENSION)]
-    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "RelationMapping/RelationMappingResource.js" + EmbeddedResource.FILE_EXTENSION)]
-    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "SaveFormat/SaveFormatResource.js" + EmbeddedResource.FILE_EXTENSION)]
+    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "Editor/EditorResource.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
+    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "DataSource/DataSourceResource.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
+    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "RelationMapping/RelationMappingResource.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
+    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "SaveFormat/SaveFormatResource.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
 
     // CONFIG
-    [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.ROOT_URL + "PropertyEditor/PropertyEditorConfig.css" + EmbeddedResource.FILE_EXTENSION)]
-    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "DotNetDataSource/DotNetDataSourceConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
-    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "CustomLabel/CustomLabelConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
-    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "SaveFormat/SaveFormatConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
-    public class DotNetCheckBoxPickerPropertyEditor : BasePropertyEditor
+    [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.EmbeddedResource.ROOT_URL + "PropertyEditor/PropertyEditorConfig.css" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
+    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "DotNetDataSource/DotNetDataSourceConfigController.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
+    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "CustomLabel/CustomLabelConfigController.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
+    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "SaveFormat/SaveFormatConfigController.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
+    public class DotNetCheckBoxPickerPropertyEditor : DataEditor
     {
-        protected override PreValueEditor CreatePreValueEditor()
+        protected override IConfigurationEditor CreateConfigurationEditor() =>
+            new DotNetCheckBoxPickerConfigurationEditor();
+
+        public DotNetCheckBoxPickerPropertyEditor(ILogger logger) : base(logger)
         {
-            return new DotNetCheckBoxPickerPreValueEditor();
         }
     }
 }

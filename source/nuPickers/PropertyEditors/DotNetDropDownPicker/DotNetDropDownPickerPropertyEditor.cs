@@ -1,4 +1,6 @@
-﻿namespace nuPickers.PropertyEditors.DotNetDropDownPicker
+﻿using Umbraco.Core.Logging;
+
+namespace nuPickers.PropertyEditors.DotNetDropDownPicker
 {
     using ClientDependency.Core;
     using nuPickers.EmbeddedResource;
@@ -7,7 +9,7 @@
     using Umbraco.Web.PropertyEditors;
 
     // EDITOR UI
-    [PropertyEditor(PropertyEditorConstants.DotNetDropDownPickerAlias, "nuPickers: DotNet DropDown Picker", EmbeddedResource.ROOT_URL + "DropDownPicker/DropDownPickerEditor.html", ValueType = "TEXT")]
+    [DataEditor(PropertyEditorConstants.DotNetDropDownPickerAlias, "nuPickers: DotNet DropDown Picker", EmbeddedResource.ROOT_URL + "DropDownPicker/DropDownPickerEditor.html", ValueType = "TEXT")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "DropDownPicker/DropDownPickerEditorController.js" + EmbeddedResource.FILE_EXTENSION)]
 
     // RESOURCES (all are referenced as EditorResource consumes the others)
@@ -21,11 +23,13 @@
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "DotNetDataSource/DotNetDataSourceConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "RelationMapping/RelationMappingConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "SaveFormat/SaveFormatConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
-    public class DotNetDropDownPickerPropertyEditor : BasePropertyEditor
+    public class DotNetDropDownPickerPropertyEditor : DataEditor
     {
-        protected override PreValueEditor CreatePreValueEditor()
+        protected override IConfigurationEditor CreateConfigurationEditor() =>
+            new DotNetDropDownPickerConfigurationEditor();
+
+        public DotNetDropDownPickerPropertyEditor(ILogger logger) : base(logger)
         {
-            return new DotNetDropDownPickerPreValueEditor();
         }
     }
 }

@@ -59,7 +59,8 @@ namespace nuPickers.Shared.LuceneDataSource
             if(!examineManager.TryGetSearcher(ExamineSearcher, out var searchProvider));
             {
                 examineManager.TryGetIndex(ExamineSearcher.Replace("Searcher", "Index"), out var internalsearch);
-                searchProvider = (ISearcher)internalsearch;
+
+                searchProvider =  internalsearch.GetSearcher();
             }
             if (searchProvider != null)
             {

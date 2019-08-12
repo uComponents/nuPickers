@@ -1,0 +1,17 @@
+﻿namespace nuPickers.PropertyEditors.DotNetDropDownPicker
+{
+    using nuPickers.EmbeddedResource;
+    using Umbraco.Core.PropertyEditors;
+
+    internal class DotNetDropDownPickerConfiguration : ValueListConfiguration
+    {
+        [ConfigurationField("dataSource", "Data Source", EmbeddedResource.ROOT_URL + "DotNetDataSource/DotNetDataSourceConfig.html", HideLabel = true)]
+        public object DataSource { get; set; }
+
+        [ConfigurationField("saveFormat", "Save Format", EmbeddedResource.ROOT_URL + "SaveFormat/SaveFormatConfig.html")]
+        public object SaveFormat { get; set; }
+
+        [ConfigurationField("useLabel", "Include labels?", "boolean", Description = "")]
+        public bool UseLabel { get; set; }
+    }
+}

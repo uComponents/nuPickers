@@ -19,11 +19,11 @@
         <li ng-repeat="option in checkBoxPickerOptions">
 
             <label>
-                <input type="checkbox" 
-                       value="{{option.key}}" 
-                       ng-model="option.isChecked" 
+                <input type="checkbox"
+                       value="{{option.key}}"
+                       ng-model="option.isChecked"
                        ng-change="checkBoxChange()" />
-                <span ng-bind-html-unsafe="option.label"></span>
+                <span ng-bind-html="option.label | unsafe"></span>
             </label>
 
         </li>

@@ -52,13 +52,13 @@ namespace nuPickers.Shared.DataSource
                 case PropertyEditorConstants.SqlTypeaheadListPickerAlias:
                     return JsonConvert.DeserializeObject<SqlDataSource.SqlDataSource>(dataSourceConfig);
 
-                case PropertyEditorConstants.XmlCheckBoxPickerAlias:
+              /*  case PropertyEditorConstants.XmlCheckBoxPickerAlias:
                 case PropertyEditorConstants.XmlDropDownPickerAlias:
                 case PropertyEditorConstants.XmlLabelsAlias:
                 case PropertyEditorConstants.XmlPrefetchListPickerAlias:
                 case PropertyEditorConstants.XmlRadioButtonPickerAlias:
                 case PropertyEditorConstants.XmlTypeaheadListPickerAlias:
-                    return JsonConvert.DeserializeObject<XmlDataSource.XmlDataSource>(dataSourceConfig);
+                    return JsonConvert.DeserializeObject<XmlDataSource.XmlDataSource>(dataSourceConfig);*/
             }
 
             return null;
