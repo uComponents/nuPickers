@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Web;
+using nuPickers.DataEditors;
 using Umbraco.Web.Composing;
 
 namespace nuPickers
 {
-    using nuPickers.PropertyEditors;
     using System.Linq;
     using Umbraco.Core.Models;
     using Umbraco.Core.Models.PublishedContent;
