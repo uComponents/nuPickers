@@ -1,4 +1,6 @@
-﻿namespace nuPickers.DataEditors.SqlPagedListPicker
+﻿using Umbraco.Core.Logging;
+
+namespace nuPickers.DataEditors.SqlPagedListPicker
 {
     using ClientDependency.Core;
     using EmbeddedResource;
@@ -26,11 +28,12 @@
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "CustomLabel/CustomLabelConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "RelationMapping/RelationMappingConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "SaveFormat/SaveFormatConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
-    public class SqlPagedListPickerPropertyEditor : DataEditor
+    public class SqlPagedListPickerEditorEditor : DataEditor
     {
-        protected override PreValueEditor CreatePreValueEditor()
+        protected override IConfigurationEditor CreateConfigurationEditor() => new SqlPagedListPickerConfigurationEditor();
+
+        public SqlPagedListPickerEditorEditor(ILogger logger) : base(logger)
         {
-            return new SqlPagedListPickerPreValueEditor();
         }
     }
 }
