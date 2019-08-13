@@ -341,7 +341,8 @@
     <Compile Include="DataEditors\RelationLabels\RelationLabelsConfigurationEditor.cs" />
     <Compile Include="DataEditors\RelationLabels\RelationLabelsConfiguration.cs" />
     <Compile Include="DataEditors\RelationLabels\RelationLabelsPropertyEditor.cs" />
-    <Compile Include="DataEditors\SqlCheckBoxPicker\SqlCheckBoxPickerPreValueEditor.cs" />
+    <Compile Include="DataEditors\SqlCheckBoxPicker\SqlCheckBoxPickerConfigurationEditor.cs" />
+    <Compile Include="DataEditors\SqlCheckBoxPicker\SqlCheckBoxPickerConfiguration.cs" />
     <Compile Include="DataEditors\SqlCheckBoxPicker\SqlCheckBoxPickerPropertyEditor.cs" />
     <Compile Include="DataEditors\SqlLabels\SqlLabelsPreValueEditor.cs" />
     <Compile Include="DataEditors\SqlLabels\SqlLabelsPropertyEditor.cs" />

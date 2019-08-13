@@ -1,4 +1,6 @@
-﻿namespace nuPickers.DataEditors.SqlCheckBoxPicker
+﻿using Umbraco.Core.Logging;
+
+namespace nuPickers.DataEditors.SqlCheckBoxPicker
 {
     using ClientDependency.Core;
     using EmbeddedResource;
@@ -26,9 +28,11 @@
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "SaveFormat/SaveFormatConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
     public class SqlCheckBoxPickerPropertyEditor : DataEditor
     {
-        protected override PreValueEditor CreatePreValueEditor()
+        protected override IConfigurationEditor CreateConfigurationEditor() =>
+            new SqlCheckBoxPickerConfigurationEditor();
+
+        public SqlCheckBoxPickerPropertyEditor(ILogger logger) : base(logger)
         {
-            return new SqlCheckBoxPickerPreValueEditor();
         }
     }
 }
