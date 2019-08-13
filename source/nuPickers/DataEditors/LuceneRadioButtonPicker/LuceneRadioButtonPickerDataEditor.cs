@@ -1,6 +1,6 @@
 ﻿using Umbraco.Core.Logging;
 
-namespace nuPickers.DataEditors.RelationLabels
+namespace nuPickers.DataEditors.LuceneRadioButtonPicker
 {
     using ClientDependency.Core;
     using EmbeddedResource;
@@ -9,9 +9,9 @@ namespace nuPickers.DataEditors.RelationLabels
     using Umbraco.Web.PropertyEditors;
 
     // EDITOR UI
-    [DataEditor(DataEditorConstants.RelationLabelsAlias, "nuPickers: Relation Labels", EmbeddedResource.ROOT_URL + "Labels/LabelsEditor.html", ValueType = "TEXT")]
+    [DataEditor(DataEditorConstants.LuceneRadioButtonPickerAlias, "nuPickers: Lucene RadioButton Picker", EmbeddedResource.ROOT_URL + "RadioButtonPicker/RadioButtonPickerEditor.html", ValueType = "TEXT")]
     [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.ROOT_URL + "LayoutDirection/LayoutDirection.css" + EmbeddedResource.FILE_EXTENSION)]
-    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "Labels/LabelsEditorController.js" + EmbeddedResource.FILE_EXTENSION)]
+    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "RadioButtonPicker/RadioButtonPickerEditorController.js" + EmbeddedResource.FILE_EXTENSION)]
 
     // RESOURCES (all are referenced as EditorResource consumes the others)
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "Editor/EditorResource.js" + EmbeddedResource.FILE_EXTENSION)]
@@ -21,15 +21,15 @@ namespace nuPickers.DataEditors.RelationLabels
 
     // CONFIG
     [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.ROOT_URL + "PropertyEditor/PropertyEditorConfig.css" + EmbeddedResource.FILE_EXTENSION)]
-    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "RelationDataSource/RelationDataSourceConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
+    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "LuceneDataSource/LuceneDataSourceConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "CustomLabel/CustomLabelConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
-    public class RelationLabelsPropertyEditor : DataEditor
+    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "RelationMapping/RelationMappingConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
+    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "SaveFormat/SaveFormatConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
+    public class LuceneRadioButtonPickerDataEditor : DataEditor
     {
-        protected override IConfigurationEditor CreateConfigurationEditor() =>
-            new RelationLabelsConfigurationEditor();
+        protected override IConfigurationEditor CreateConfigurationEditor() => new LuceneRadioButtonPickerConfigurationEditor();
 
-
-        public RelationLabelsPropertyEditor(ILogger logger) : base(logger)
+        public LuceneRadioButtonPickerDataEditor(ILogger logger) : base(logger)
         {
         }
     }

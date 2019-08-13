@@ -26,12 +26,12 @@ namespace nuPickers.DataEditors.SqlCheckBoxPicker
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "CustomLabel/CustomLabelConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "RelationMapping/RelationMappingConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "SaveFormat/SaveFormatConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
-    public class SqlCheckBoxPickerPropertyEditor : DataEditor
+    public class SqlCheckBoxPickerDataEditor : DataEditor
     {
         protected override IConfigurationEditor CreateConfigurationEditor() =>
             new SqlCheckBoxPickerConfigurationEditor();
 
-        public SqlCheckBoxPickerPropertyEditor(ILogger logger) : base(logger)
+        public SqlCheckBoxPickerDataEditor(ILogger logger) : base(logger)
         {
         }
     }
