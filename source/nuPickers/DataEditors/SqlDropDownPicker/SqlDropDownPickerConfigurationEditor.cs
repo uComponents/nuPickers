@@ -30,13 +30,15 @@ namespace nuPickers.DataEditors.SqlDropDownPicker
             var dataSource = configuration?.DataSource;
             var saveFormat = configuration?.SaveFormat;
             var useLabel = configuration?.UseLabel ?? false;
+            var relationMapping = configuration?.RelationMapping;
 
             return new Dictionary<string, object>
             {
                 { "items", editorItems },
                 { "useLabel", useLabel },
                 { "dataSource", dataSource },
-                { "saveFormat", saveFormat }
+                { "saveFormat", saveFormat },
+                {"relationMapping",relationMapping}
 
             };
         }
@@ -107,6 +109,10 @@ namespace nuPickers.DataEditors.SqlDropDownPicker
                 var convertString = saveFormatObj.TryConvertTo<object>();
                 if (convertString.Success)
                     output.SaveFormat = convertString.Result;
+            }
+            if (editorValues.TryGetValue("relationMapping", out var relationMappingObj))
+            {
+                output.RelationMapping = relationMappingObj;
             }
             // auto-assigning our ids, get next id from existing values
             var nextId = 1;

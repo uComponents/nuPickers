@@ -4,7 +4,7 @@ namespace nuPickers.DataEditors.SqlDropDownPicker
 {
     internal class SqlDropDownPickerConfiguration : ValueListConfiguration
     {
-        [ConfigurationField("dataSource", "Data Source", EmbeddedResource.EmbeddedResource.ROOT_URL + "EnumDataSource/EnumDataSourceConfig.html", HideLabel = true)]
+        [ConfigurationField("dataSource", "Data Source", EmbeddedResource.EmbeddedResource.ROOT_URL + "SqlDataSource/SqlDataSourceConfig.html", HideLabel = true)]
         public object DataSource { get; set; }
 
 
@@ -12,7 +12,7 @@ namespace nuPickers.DataEditors.SqlDropDownPicker
         public bool UseLabel { get; set; }
 
         [ConfigurationField("relationMapping", "Relation Mapping", EmbeddedResource.EmbeddedResource.ROOT_URL + "RelationMapping/RelationMappingConfig.html", HideLabel = true)]
-        public string RelationMapping { get; set; }
+        public object RelationMapping { get; set; }
 
         [ConfigurationField("saveFormat", "Save Format", EmbeddedResource.EmbeddedResource.ROOT_URL + "SaveFormat/SaveFormatConfig.html")]
         public object SaveFormat { get; set; }

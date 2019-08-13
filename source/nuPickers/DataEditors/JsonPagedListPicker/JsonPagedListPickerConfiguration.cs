@@ -11,7 +11,7 @@ namespace nuPickers.DataEditors.JsonPagedListPicker
             EmbeddedResource.EmbeddedResource.ROOT_URL + "JsonDataSource/JsonDataSourceConfig.html", HideLabel = true)]
         public object DataSource { get; set; }
 
-        [ConfigurationField("customLabel", "Custom Label",
+        [ConfigurationField("dataSource", "Label Macro",
             EmbeddedResource.EmbeddedResource.ROOT_URL + "CustomLabel/CustomLabelConfig.html", HideLabel = true)]
         public object CustomLabel { get; set; }
 

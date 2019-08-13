@@ -7,10 +7,10 @@
     {
         [ConfigurationField("useLabel", "Include labels?", "boolean", Description = "")]
         public bool UseLabel { get; set; }
-        [ConfigurationField("dataSource", "", EmbeddedResource.ROOT_URL + "RelationDataSource/RelationDataSourceConfig.html", HideLabel = true)]
+        [ConfigurationField("dataSource", "Data Source", EmbeddedResource.ROOT_URL + "RelationDataSource/RelationDataSourceConfig.html", HideLabel = true)]
         public object DataSource { get; set; }
 
-        [ConfigurationField("customLabel", "", EmbeddedResource.ROOT_URL + "CustomLabel/CustomLabelConfig.html", HideLabel = true)]
+        [ConfigurationField("dataSource", "Label Macro", EmbeddedResource.ROOT_URL + "CustomLabel/CustomLabelConfig.html", HideLabel = true)]
         public string CustomLabel { get; set; }
 
         [ConfigurationField("layoutDirection", "Layout Direction", EmbeddedResource.ROOT_URL + "LayoutDirection/LayoutDirectionConfig.html")]
