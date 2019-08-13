@@ -326,6 +326,9 @@
     <Compile Include="DataEditors\JsonTypeaheadListPicker\JsonTypeaheadListPickerConfigurationEditor.cs" />
     <Compile Include="DataEditors\JsonTypeaheadListPicker\JsonTypeaheadListPickerConfiguration.cs" />
     <Compile Include="DataEditors\JsonTypeaheadListPicker\JsonTypeaheadPickerDataEditor.cs" />
+    <Compile Include="DataEditors\LuceneCheckBoxPicker\LuceneCheckBoxPickerConfigurationEditor.cs" />
+    <Compile Include="DataEditors\LuceneCheckBoxPicker\LuceneCheckBoxPickerConfiguration.cs" />
+    <Compile Include="DataEditors\LuceneCheckBoxPicker\LuceneCheckBoxPickerDataEditor.cs" />
     <Compile Include="EmbeddedResource\EmbeddedResource.cs" />
     <Compile Include="EmbeddedResource\EmbeddedResourceController.cs" />
     <Compile Include="EmbeddedResource\EmbeddedResourceHelper.cs" />
@@ -338,7 +341,7 @@
     <Compile Include="Helper.cs" />
     <Compile Include="nuPickerComposer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DataEditors\BasePropertyEditor.cs" />
+    <Compile Include="DataEditors\BaseDataEditor.cs" />
     <Compile Include="DataEditors\DotNetCheckBoxPicker\DotNetCheckBoxPickerConfiguration.cs" />
     <Compile Include="DataEditors\DotNetCheckBoxPicker\DotNetCheckBoxPickerDataEditor.cs" />
     <Compile Include="DataEditors\DotNetCheckBoxPicker\DotNetCheckBoxPickerConfigurationEditor.cs" />
@@ -386,13 +389,13 @@
     <Compile Include="DataEditors\JsonPrefetchListPicker\JsonPrefetchListPickerDataEditor.cs" />
     <Compile Include="DataEditors\LuceneDropDownPicker\LuceneDropDownPickerConfigurationEditor.cs" />
     <Compile Include="DataEditors\LuceneDropDownPicker\LuceneDropDownPickerConfiguration.cs" />
-    <Compile Include="DataEditors\LuceneDropDownPicker\LuceneDropDownPickerPropertyEditor.cs" />
+    <Compile Include="DataEditors\LuceneDropDownPicker\LuceneDropDownPickerDataEditor.cs" />
     <Compile Include="DataEditors\LuceneLabels\LuceneLabelsConfigurationEditor.cs" />
     <Compile Include="DataEditors\LuceneLabels\LuceneLabelsConfiguration.cs" />
-    <Compile Include="DataEditors\LuceneLabels\LuceneLabelsPropertyEditor.cs" />
+    <Compile Include="DataEditors\LuceneLabels\LuceneLabelsDataEditor.cs" />
     <Compile Include="DataEditors\LucenePagedListPicker\LucenePagedListPickerConfigurationEditor.cs" />
     <Compile Include="DataEditors\LucenePagedListPicker\LucenePagedListPickerConfiguration.cs" />
-    <Compile Include="DataEditors\LucenePagedListPicker\LucenePagedListPickerPropertyEditor.cs" />
+    <Compile Include="DataEditors\LucenePagedListPicker\LucenePagedListPickerDataEditor.cs" />
     <Compile Include="DataEditors\DataEditorConstants.cs" />
     <Compile Include="Picker.cs">
       <SubType>Code</SubType>
@@ -402,7 +405,7 @@
     </Compile>
     <Compile Include="DataEditors\SqlDropDownPicker\SqlDropDownPickerConfigurationEditor.cs" />
     <Compile Include="DataEditors\SqlDropDownPicker\SqlDropDownPickerConfiguration.cs" />
-    <Compile Include="DataEditors\SqlDropDownPicker\SqlDropDownPickerPropertyEditor.cs" />
+    <Compile Include="DataEditors\SqlDropDownPicker\SqlDropDownPickerDataEditor.cs" />
     <Compile Include="Shared\CustomLabel\CustomLabel.cs" />
     <Compile Include="Shared\CustomLabel\CustomLabelApiController.cs" />
     <Compile Include="Shared\DataSource\DataSource.cs" />

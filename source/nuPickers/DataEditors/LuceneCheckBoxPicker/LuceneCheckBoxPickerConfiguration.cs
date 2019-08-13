@@ -1,21 +1,20 @@
 ﻿using Umbraco.Core.PropertyEditors;
 
-namespace nuPickers.DataEditors.DotNetCheckBoxPicker
+namespace nuPickers.DataEditors.LuceneCheckBoxPicker
 {
-    internal class DotNetCheckBoxPickerConfiguration : ValueListConfiguration
+    internal class LuceneCheckBoxPickerConfiguration : ValueListConfiguration
     {
         [ConfigurationField("useLabel", "Include labels?", "boolean", Description = "")]
         public bool UseLabel { get; set; }
 
         [ConfigurationField("dataSource", "Data Source",
-            EmbeddedResource.EmbeddedResource.ROOT_URL + "DotNetDataSource/DotNetDataSourceConfig.html", HideLabel =
+            EmbeddedResource.EmbeddedResource.ROOT_URL + "LuceneDataSource/LuceneDataSourceConfig.html", HideLabel =
                 true)]
         public object DataSource { get; set; }
 
-
-        [ConfigurationField("customLabel", "Custom Label",
+        [ConfigurationField("customLabel", "Label Macro",
             EmbeddedResource.EmbeddedResource.ROOT_URL + "CustomLabel/CustomLabelConfig.html", HideLabel = true)]
-        public string CustomLabel { get; set; }
+        public object CustomLabel { get; set; }
 
         [ConfigurationField("checkBoxPicker", "Checkbox Picker",
             EmbeddedResource.EmbeddedResource.ROOT_URL + "CheckBoxPicker/CheckBoxPickerConfig.html", HideLabel = true)]
@@ -23,7 +22,12 @@ namespace nuPickers.DataEditors.DotNetCheckBoxPicker
 
         [ConfigurationField("layoutDirection", "Layout Direction",
             EmbeddedResource.EmbeddedResource.ROOT_URL + "LayoutDirection/LayoutDirectionConfig.html")]
-        public string LayoutDirection { get; set; }
+        public object LayoutDirection { get; set; }
+
+        [ConfigurationField("relationMapping", "Relation Mapping",
+            EmbeddedResource.EmbeddedResource.ROOT_URL + "RelationMapping/RelationMappingConfig.html", HideLabel =
+                true)]
+        public object RelationMapping { get; set; }
 
         [ConfigurationField("saveFormat", "Save Format",
             EmbeddedResource.EmbeddedResource.ROOT_URL + "SaveFormat/SaveFormatConfig.html")]

@@ -20,11 +20,11 @@ namespace nuPickers.DataEditors.SqlDropDownPicker
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "SqlDataSource/SqlDataSourceConfigController.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "RelationMapping/RelationMappingConfigController.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "SaveFormat/SaveFormatConfigController.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
-    public class SqlDropDownPickerPropertyEditor : DataEditor
+    public class SqlDropDownPickerDataEditor : DataEditor
     {
         protected override IConfigurationEditor CreateConfigurationEditor() => new SqlDropDownPickerConfigurationEditor();
 
-        public SqlDropDownPickerPropertyEditor(ILogger logger) : base(logger)
+        public SqlDropDownPickerDataEditor(ILogger logger) : base(logger)
         {
         }
     }

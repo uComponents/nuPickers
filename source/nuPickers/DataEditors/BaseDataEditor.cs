@@ -5,12 +5,12 @@ using Umbraco.Core.PropertyEditors;
 
 namespace nuPickers.DataEditors
 {
-    public abstract class BasePropertyEditor : DataEditor
+    public abstract class BaseDataEditor : DataEditor
     {
         protected override IDataValueEditor CreateValueEditor()  => new SaveFormatPropertyValueEditor(Attribute);
 
 
-        protected BasePropertyEditor(ILogger logger, EditorType type = EditorType.PropertyValue) : base(logger, type)
+        protected BaseDataEditor(ILogger logger) : base(logger)
         {
         }
     }

@@ -3,12 +3,11 @@ using Umbraco.Core.Logging;
 using Umbraco.Core.PropertyEditors;
 using Umbraco.Web.PropertyEditors;
 
-namespace nuPickers.DataEditors.LuceneLabels
+namespace nuPickers.DataEditors.LuceneDropDownPicker
 {
     // EDITOR UI
-    [DataEditor(DataEditorConstants.LuceneLabelsAlias, "nuPickers: Lucene Labels", EmbeddedResource.EmbeddedResource.ROOT_URL + "Labels/LabelsEditor.html", ValueType = "TEXT")]
-    [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.EmbeddedResource.ROOT_URL + "LayoutDirection/LayoutDirection.css" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
-    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "Labels/LabelsEditorController.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
+    [DataEditor(DataEditorConstants.LuceneDropDownPickerAlias, "nuPickers: Lucene DropDown Picker", EmbeddedResource.EmbeddedResource.ROOT_URL + "DropDownPicker/DropDownPickerEditor.html", ValueType = "TEXT")]
+    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "DropDownPicker/DropDownPickerEditorController.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
 
     // RESOURCES (all are referenced as EditorResource consumes the others)
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "Editor/EditorResource.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
@@ -19,14 +18,15 @@ namespace nuPickers.DataEditors.LuceneLabels
     // CONFIG
     [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.EmbeddedResource.ROOT_URL + "PropertyEditor/PropertyEditorConfig.css" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "LuceneDataSource/LuceneDataSourceConfigController.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
-    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "Labels/LabelsConfigController.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
-    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "CustomLabel/CustomLabelConfigController.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
-    public class LuceneLabelsPropertyEditor : DataEditor
+    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "RelationMapping/RelationMappingConfigController.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
+    [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.EmbeddedResource.ROOT_URL + "SaveFormat/SaveFormatConfigController.js" + EmbeddedResource.EmbeddedResource.FILE_EXTENSION)]
+    public class LuceneDropDownPickerDataEditor : DataEditor
     {
-        protected override IConfigurationEditor CreateConfigurationEditor() => new LuceneLabelsConfigurationEditor();
+        protected override IConfigurationEditor CreateConfigurationEditor() => new LuceneDropDownPickerConfigurationEditor();
 
-        public LuceneLabelsPropertyEditor(ILogger logger) : base(logger)
+        public LuceneDropDownPickerDataEditor(ILogger logger) : base(logger)
         {
         }
     }
+
 }
