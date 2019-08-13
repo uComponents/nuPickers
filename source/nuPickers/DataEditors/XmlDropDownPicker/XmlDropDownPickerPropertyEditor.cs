@@ -1,13 +1,13 @@
 ﻿namespace nuPickers.DataEditors.XmlDropDownPicker
 {
     using ClientDependency.Core;
-    using nuPickers.EmbeddedResource;
-    using nuPickers.PropertyEditors;
+    using EmbeddedResource;
+    using DataEditors;
     using Umbraco.Core.PropertyEditors;
     using Umbraco.Web.PropertyEditors;
 
     // EDITOR UI
-    [PropertyEditor(DataEditorConstants.XmlDropDownPickerAlias, "nuPickers: Xml DropDown Picker", EmbeddedResource.ROOT_URL + "DropDownPicker/DropDownPickerEditor.html", ValueType = "TEXT")]
+    [DataEditor(DataEditorConstants.XmlDropDownPickerAlias, "nuPickers: Xml DropDown Picker", EmbeddedResource.ROOT_URL + "DropDownPicker/DropDownPickerEditor.html", ValueType = "TEXT")]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "DropDownPicker/DropDownPickerEditorController.js" + EmbeddedResource.FILE_EXTENSION)]
 
     // RESOURCES (all are referenced as EditorResource consumes the others)
@@ -21,7 +21,7 @@
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "XmlDataSource/XmlDataSourceConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "RelationMapping/RelationMappingConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "SaveFormat/SaveFormatConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
-    public class XmlDropDownPickerPropertyEditor : BasePropertyEditor
+    public class XmlDropDownPickerPropertyEditor : DataEditor
     {
         protected override PreValueEditor CreatePreValueEditor()
         {

@@ -19,7 +19,7 @@ namespace nuComponents.DataTypes.PropertyEditors
     [PropertyEditorAsset(ClientDependencyType.Javascript, "App_Plugins/nuComponents/DataTypes/Shared/RelationTypeMapping/RelationMappingConfigController.js")]
     public abstract class PickerDataEditor : DataEditor
     {
-        protected PickerPropertyEditor(ILogger logger) : base(logger)
+        protected PickerDataEditor(ILogger logger) : base(logger)
         {
         }
     }

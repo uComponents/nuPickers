@@ -1,6 +1,6 @@
 ﻿namespace nuPickers.DataEditors.SqlTypeaheadListPicker
 {
-    using nuPickers.EmbeddedResource;
+    using EmbeddedResource;
     using Umbraco.Core.PropertyEditors;
 
     internal class SqlTypeaheadListPickerPreValueEditor : PreValueEditor

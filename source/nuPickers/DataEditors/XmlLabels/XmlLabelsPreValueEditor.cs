@@ -1,6 +1,6 @@
 ﻿namespace nuPickers.DataEditors.XmlLabels
 {
-    using nuPickers.EmbeddedResource;
+    using EmbeddedResource;
     using Umbraco.Core.PropertyEditors;
 
     internal class XmlLabelsPreValueEditor : PreValueEditor

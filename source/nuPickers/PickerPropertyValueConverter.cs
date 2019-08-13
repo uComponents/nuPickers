@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Web;
-using nuPickers.DataEditors;
+using DataEditors;
 using Umbraco.Web.Composing;
 
 namespace nuPickers

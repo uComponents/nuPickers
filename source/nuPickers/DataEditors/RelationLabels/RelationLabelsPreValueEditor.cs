@@ -1,6 +1,6 @@
 ﻿namespace nuPickers.DataEditors.RelationLabels
 {
-    using nuPickers.EmbeddedResource;
+    using EmbeddedResource;
     using Umbraco.Core.PropertyEditors;
 
     internal class RelationLabelsPreValueEditor : PreValueEditor

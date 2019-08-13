@@ -1,6 +1,6 @@
 ﻿namespace nuPickers.DataEditors.XmlPagedListPicker
 {
-    using nuPickers.EmbeddedResource;
+    using EmbeddedResource;
     using Umbraco.Core.PropertyEditors;
 
     internal class XmlPagedListPickerPreValueEditor : PreValueEditor

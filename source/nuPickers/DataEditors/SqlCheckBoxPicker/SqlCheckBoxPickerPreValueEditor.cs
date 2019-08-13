@@ -1,6 +1,6 @@
 ﻿namespace nuPickers.DataEditors.SqlCheckBoxPicker
 {
-    using nuPickers.EmbeddedResource;
+    using EmbeddedResource;
     using Umbraco.Core.PropertyEditors;
 
     internal class SqlCheckBoxPickerPreValueEditor : PreValueEditor

@@ -1,6 +1,6 @@
 ﻿namespace nuPickers.DataEditors.SqlPrefetchListPicker
 {
-    using nuPickers.EmbeddedResource;
+    using EmbeddedResource;
     using Umbraco.Core.PropertyEditors;
 
     internal class SqlPrefetchListPickerPreValueEditor : PreValueEditor

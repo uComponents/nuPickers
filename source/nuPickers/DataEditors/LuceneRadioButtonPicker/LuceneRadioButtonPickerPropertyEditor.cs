@@ -1,8 +1,10 @@
-﻿namespace nuPickers.DataEditors.LuceneRadioButtonPicker
+﻿using Umbraco.Core.Logging;
+
+namespace nuPickers.DataEditors.LuceneRadioButtonPicker
 {
     using ClientDependency.Core;
-    using nuPickers.EmbeddedResource;
-    using nuPickers.PropertyEditors;
+    using EmbeddedResource;
+    using DataEditors;
     using Umbraco.Core.PropertyEditors;
     using Umbraco.Web.PropertyEditors;
 
@@ -25,9 +27,10 @@
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "SaveFormat/SaveFormatConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
     public class LuceneRadioButtonPickerPropertyEditor : DataEditor
     {
-        protected override PreValueEditor CreatePreValueEditor()
+        protected override IConfigurationEditor CreateConfigurationEditor() => new LuceneRadioButtonPickerConfigurationEditor();
+
+        public LuceneRadioButtonPickerPropertyEditor(ILogger logger) : base(logger)
         {
-            return new LuceneRadioButtonPickerPreValueEditor();
         }
     }
 }

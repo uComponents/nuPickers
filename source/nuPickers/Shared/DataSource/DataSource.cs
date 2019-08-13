@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using nuPickers.DataEditors;
+using DataEditors;
 
 namespace nuPickers.Shared.DataSource
 {

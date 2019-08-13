@@ -1,6 +1,6 @@
 ﻿namespace nuPickers.DataEditors.SqlLabels
 {
-    using nuPickers.EmbeddedResource;
+    using EmbeddedResource;
     using Umbraco.Core.PropertyEditors;
 
     internal class SqlLabelsPreValueEditor : PreValueEditor

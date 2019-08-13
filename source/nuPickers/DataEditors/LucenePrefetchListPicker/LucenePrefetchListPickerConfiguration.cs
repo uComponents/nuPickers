@@ -16,7 +16,7 @@ namespace nuPickers.DataEditors.LucenePrefetchListPicker
             EmbeddedResource.EmbeddedResource.ROOT_URL + "CustomLabel/CustomLabelConfig.html", HideLabel = true)]
         public object CustomLabel { get; set; }
 
-        [ConfigurationField("prefetchListPicker", "",
+        [ConfigurationField("prefetchListPicker", "Prefetch List Picker",
             EmbeddedResource.EmbeddedResource.ROOT_URL + "PrefetchListPicker/PrefetchListPickerConfig.html", HideLabel =
                 true)]
         public object PrefetchListPicker { get; set; }

@@ -1,7 +1,7 @@
 ﻿namespace nuPickers.Tests.EmbeddedResource
 {
     using NUnit.Framework;
-    using nuPickers.EmbeddedResource;
+    using EmbeddedResource;
     public class HelperEmbeddedResourceHelperTests
     {
         // reference to known embedded resources (picked first folder in shared)
