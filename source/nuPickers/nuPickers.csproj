@@ -329,6 +329,9 @@
     <Compile Include="DataEditors\LuceneCheckBoxPicker\LuceneCheckBoxPickerConfigurationEditor.cs" />
     <Compile Include="DataEditors\LuceneCheckBoxPicker\LuceneCheckBoxPickerConfiguration.cs" />
     <Compile Include="DataEditors\LuceneCheckBoxPicker\LuceneCheckBoxPickerDataEditor.cs" />
+    <Compile Include="DataEditors\LucenePrefetchListPicker\LucenePrefetchListPickerConfigurationEditor.cs" />
+    <Compile Include="DataEditors\LucenePrefetchListPicker\LucenePrefetchListPickerConfiguration.cs" />
+    <Compile Include="DataEditors\LucenePrefetchListPicker\LucenePrefetchListPickerDataEditor.cs" />
     <Compile Include="EmbeddedResource\EmbeddedResource.cs" />
     <Compile Include="EmbeddedResource\EmbeddedResourceController.cs" />
     <Compile Include="EmbeddedResource\EmbeddedResourceHelper.cs" />

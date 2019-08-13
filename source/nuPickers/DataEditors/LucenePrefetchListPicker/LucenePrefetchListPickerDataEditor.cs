@@ -1,13 +1,16 @@
-﻿namespace nuPickers.PropertyEditors.LucenePrefetchListPicker
+﻿using nuPickers.DataEditors;
+using nuPickers.DataEditors.LucenePrefetchListPicker;
+using Umbraco.Core.Logging;
+
+namespace nuPickers.PropertyEditors.LucenePrefetchListPicker
 {
     using ClientDependency.Core;
-    using nuPickers.EmbeddedResource;
-    using nuPickers.PropertyEditors;
+    using EmbeddedResource;
     using Umbraco.Core.PropertyEditors;
     using Umbraco.Web.PropertyEditors;
 
     // EDITOR UI
-    [DataEditor(PropertyEditorConstants.LucenePrefetchListPickerAlias, "nuPickers: Lucene PrefetchList Picker", EmbeddedResource.ROOT_URL + "PrefetchListPicker/PrefetchListPickerEditor.html", ValueType = "TEXT")]
+    [DataEditor(DataEditorConstants.LucenePrefetchListPickerAlias, "nuPickers: Lucene PrefetchList Picker", EmbeddedResource.ROOT_URL + "PrefetchListPicker/PrefetchListPickerEditor.html", ValueType = "TEXT")]
     [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.ROOT_URL + "ListPicker/ListPickerEditor.css" + EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "ListPicker/ListPickerEditorController.js" + EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "ListPicker/ListPickerEditorDirectives.js" + EmbeddedResource.FILE_EXTENSION)]
@@ -25,11 +28,12 @@
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "CustomLabel/CustomLabelConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "RelationMapping/RelationMappingConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "SaveFormat/SaveFormatConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
-    public class LucenePrefetchListPickerPropertyEditor : DataEditor
+    public class LucenePrefetchListPickerDataEditor : DataEditor
     {
-        protected override PreValueEditor CreatePreValueEditor()
+        protected override IConfigurationEditor CreateConfigurationEditor() => new LucenePrefetchListPickerConfigurationEditor();
+
+        public LucenePrefetchListPickerDataEditor(ILogger logger) : base(logger)
         {
-            return new LucenePrefetchListPickerPreValueEditor();
         }
     }
 }

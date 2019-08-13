@@ -2,15 +2,14 @@
 using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using nuPickers.DataEditors.DotNetTypeaheadListPicker;
 using Umbraco.Core;
 using Umbraco.Core.PropertyEditors;
 
-namespace nuPickers.DataEditors.JsonTypeaheadListPicker
+namespace nuPickers.DataEditors.LucenePrefetchListPicker
 {
-    internal class JsonTypeaheadListPickerConfigurationEditor : ConfigurationEditor<JsonTypeaheadListPickerConfiguration>
+    internal class LucenePrefetchListPickerConfigurationEditor : ConfigurationEditor<LucenePrefetchListPickerConfiguration>
     {
-        public override Dictionary<string, object> ToConfigurationEditor(JsonTypeaheadListPickerConfiguration configuration)
+        public override Dictionary<string, object> ToConfigurationEditor(LucenePrefetchListPickerConfiguration configuration)
         {
             var configuredItems = configuration?.Items; // ordered
             object editorItems;
@@ -32,9 +31,10 @@ namespace nuPickers.DataEditors.JsonTypeaheadListPicker
             var saveFormat = configuration?.SaveFormat;
             var customLabel = configuration?.CustomLabel;
             var relationMapping = configuration?.RelationMapping;
+
             var listPicker = configuration?.ListPicker;
             var useLabel = configuration?.UseLabel ?? false;
-            var typeaheadListPicker = configuration?.TypeaheadListPicker;
+            var prefetchListPicker = configuration?.PrefetchListPicker;
 
             return new Dictionary<string, object>
             {
@@ -45,8 +45,7 @@ namespace nuPickers.DataEditors.JsonTypeaheadListPicker
 
                 { "dataSource", dataSource },
                 { "listPicker", listPicker },
-                {"typeaheadListPicker",typeaheadListPicker},
-
+                {"prefetchListPicker",prefetchListPicker},
                 {"relationMapping",relationMapping}
 
             };
@@ -93,9 +92,9 @@ namespace nuPickers.DataEditors.JsonTypeaheadListPicker
             [JsonProperty("sortOrder")]
             public int SortOrder { get; set; }
         }
-          public override JsonTypeaheadListPickerConfiguration FromConfigurationEditor(IDictionary<string, object> editorValues, JsonTypeaheadListPickerConfiguration configuration)
+          public override LucenePrefetchListPickerConfiguration FromConfigurationEditor(IDictionary<string, object> editorValues, LucenePrefetchListPickerConfiguration configuration)
         {
-            var output = new JsonTypeaheadListPickerConfiguration();
+            var output = new LucenePrefetchListPickerConfiguration();
 
             if (!editorValues.TryGetValue("items", out var jjj) || !(jjj is JArray jItems))
                 return output; // oops
@@ -119,10 +118,11 @@ namespace nuPickers.DataEditors.JsonTypeaheadListPicker
                 if (convertString.Success)
                     output.CustomLabel = convertString.Result;
             }
-            if (editorValues.TryGetValue("prefetchListPicker", out var typeaheadListPickerObj))
+            if (editorValues.TryGetValue("prefetchListPicker", out var prefetchListPickerObj))
             {
-
-                    output.TypeaheadListPicker = typeaheadListPickerObj;
+                var convertString = prefetchListPickerObj.TryConvertTo<object>();
+                if (convertString.Success)
+                    output.PrefetchListPicker = convertString.Result;
             }
             if (editorValues.TryGetValue("listPicker", out var listPickerObj))
             {

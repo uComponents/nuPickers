@@ -7,7 +7,7 @@
     using Umbraco.Web.PropertyEditors;
 
     // EDITOR UI
-    [PropertyEditor(PropertyEditorConstants.XmlPagedListPickerAlias, "nuPickers: Xml PagedList Picker", EmbeddedResource.ROOT_URL + "PagedListPicker/PagedListPickerEditor.html", ValueType = "TEXT")]
+    [PropertyEditor(DataEditorConstants.XmlPagedListPickerAlias, "nuPickers: Xml PagedList Picker", EmbeddedResource.ROOT_URL + "PagedListPicker/PagedListPickerEditor.html", ValueType = "TEXT")]
     [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.ROOT_URL + "ListPicker/ListPickerEditor.css" + EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Css, EmbeddedResource.ROOT_URL + "PagedListPicker/PagedListPickerEditor.css" + EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "ListPicker/ListPickerEditorController.js" + EmbeddedResource.FILE_EXTENSION)]
