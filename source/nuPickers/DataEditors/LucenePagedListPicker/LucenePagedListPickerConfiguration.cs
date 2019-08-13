@@ -11,7 +11,7 @@ namespace nuPickers.DataEditors.LucenePagedListPicker
             EmbeddedResource.EmbeddedResource.ROOT_URL + "LuceneDataSource/LuceneDataSourceConfig.html", HideLabel = true)]
         public object DataSource { get; set; }
 
-        [ConfigurationField("dataSource", "Label Macro",
+        [ConfigurationField("customLabel", "Label Macro",
             EmbeddedResource.EmbeddedResource.ROOT_URL + "CustomLabel/CustomLabelConfig.html", HideLabel = true)]
         public object CustomLabel { get; set; }
 

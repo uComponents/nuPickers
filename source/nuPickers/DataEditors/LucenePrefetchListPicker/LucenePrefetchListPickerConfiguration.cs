@@ -12,7 +12,7 @@ namespace nuPickers.DataEditors.LucenePrefetchListPicker
                 true)]
         public object DataSource { get; set; }
 
-        [ConfigurationField("dataSource", "Label Macro",
+        [ConfigurationField("customLabel", "Label Macro",
             EmbeddedResource.EmbeddedResource.ROOT_URL + "CustomLabel/CustomLabelConfig.html", HideLabel = true)]
         public object CustomLabel { get; set; }
 

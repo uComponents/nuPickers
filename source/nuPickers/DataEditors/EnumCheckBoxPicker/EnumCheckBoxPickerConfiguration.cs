@@ -4,21 +4,27 @@ namespace nuPickers.DataEditors.EnumCheckBoxPicker
 {
     internal class EnumCheckBoxPickerConfiguration : ValueListConfiguration
     {
-        [ConfigurationField("dataSource", "Data Source", EmbeddedResource.EmbeddedResource.ROOT_URL + "EnumDataSource/EnumDataSourceConfig.html", HideLabel = true)]
-        public object DataSource { get; set; }
         [ConfigurationField("useLabel", "Include labels?", "boolean", Description = "")]
         public bool UseLabel { get; set; }
 
-        [ConfigurationField("dataSource", "Label Macro", EmbeddedResource.EmbeddedResource.ROOT_URL + "CustomLabel/CustomLabelConfig.html", HideLabel = true)]
-        public string CustomLabel { get; set; }
+        [ConfigurationField("dataSource", "Data Source",
+            EmbeddedResource.EmbeddedResource.ROOT_URL + "EnumDataSource/EnumDataSourceConfig.html", HideLabel = true)]
+        public object DataSource { get; set; }
 
-        [ConfigurationField("checkBoxPicker", "Checkbox Picker", EmbeddedResource.EmbeddedResource.ROOT_URL + "CheckBoxPicker/CheckBoxPickerConfig.html", HideLabel = true)]
+        [ConfigurationField("customLabel", "Label Macro",
+            EmbeddedResource.EmbeddedResource.ROOT_URL + "CustomLabel/CustomLabelConfig.html", HideLabel = true)]
+        public object CustomLabel { get; set; }
+
+        [ConfigurationField("checkBoxPicker", "Checkbox Picker",
+            EmbeddedResource.EmbeddedResource.ROOT_URL + "CheckBoxPicker/CheckBoxPickerConfig.html", HideLabel = true)]
         public object CheckBoxPicker { get; set; }
 
-        [ConfigurationField("layoutDirection", "Layout Direction", EmbeddedResource.EmbeddedResource.ROOT_URL + "LayoutDirection/LayoutDirectionConfig.html")]
+        [ConfigurationField("layoutDirection", "Layout Direction",
+            EmbeddedResource.EmbeddedResource.ROOT_URL + "LayoutDirection/LayoutDirectionConfig.html")]
         public string LayoutDirection { get; set; }
 
-        [ConfigurationField("saveFormat", "Save Format", EmbeddedResource.EmbeddedResource.ROOT_URL + "SaveFormat/SaveFormatConfig.html")]
+        [ConfigurationField("saveFormat", "Save Format",
+            EmbeddedResource.EmbeddedResource.ROOT_URL + "SaveFormat/SaveFormatConfig.html")]
         public object SaveFormat { get; set; }
     }
 }

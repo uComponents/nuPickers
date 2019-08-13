@@ -12,10 +12,10 @@ namespace nuPickers.DataEditors.DotNetTypeaheadListPicker
         [ConfigurationField("customLabel", "Label Macro", EmbeddedResource.EmbeddedResource.ROOT_URL + "CustomLabel/CustomLabelConfig.html", HideLabel = true)]
         public object CustomLabel { get; set; }
 
-        [ConfigurationField("typeaheadListPicker", "", EmbeddedResource.EmbeddedResource.ROOT_URL + "TypeaheadListPicker/TypeaheadListPickerConfig.html", HideLabel = true)]
+        [ConfigurationField("typeaheadListPicker", "Type a Head List Picker", EmbeddedResource.EmbeddedResource.ROOT_URL + "TypeaheadListPicker/TypeaheadListPickerConfig.html", HideLabel = true)]
         public object TypeaheadListPicker { get; set; }
 
-        [ConfigurationField("listPicker", "", EmbeddedResource.EmbeddedResource.ROOT_URL + "ListPicker/ListPickerConfig.html", HideLabel = true)]
+        [ConfigurationField("listPicker", "List Picker", EmbeddedResource.EmbeddedResource.ROOT_URL + "ListPicker/ListPickerConfig.html", HideLabel = true)]
         public object ListPicker { get; set; }
 
         [ConfigurationField("relationMapping", "Relation Mapping", EmbeddedResource.EmbeddedResource.ROOT_URL + "RelationMapping/RelationMappingConfig.html", HideLabel = true)]

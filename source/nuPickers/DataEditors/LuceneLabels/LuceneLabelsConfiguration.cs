@@ -7,7 +7,7 @@ namespace nuPickers.DataEditors.LuceneLabels
         [ConfigurationField("dataSource", "Data Source", EmbeddedResource.EmbeddedResource.ROOT_URL + "LuceneDataSource/LuceneDataSourceConfig.html", HideLabel = true)]
         public object DataSource { get; set; }
 
-        [ConfigurationField("dataSource", "Label Macro", EmbeddedResource.EmbeddedResource.ROOT_URL + "CustomLabel/CustomLabelConfig.html", HideLabel = true)]
+        [ConfigurationField("customLabel", "Label Macro",  EmbeddedResource.EmbeddedResource.ROOT_URL + "CustomLabel/CustomLabelConfig.html", HideLabel = true)]
         public object CustomLabel { get; set; }
 
         /// <summary>

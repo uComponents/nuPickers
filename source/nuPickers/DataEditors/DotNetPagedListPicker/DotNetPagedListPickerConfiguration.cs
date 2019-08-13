@@ -9,7 +9,7 @@ namespace nuPickers.DataEditors.DotNetPagedListPicker
         [ConfigurationField("dataSource", "Data Source", EmbeddedResource.EmbeddedResource.ROOT_URL + "DotNetDataSource/DotNetDataSourceConfig.html", HideLabel = true)]
         public object DataSource { get; set; }
 
-        [ConfigurationField("dataSource", "Label Macro", EmbeddedResource.EmbeddedResource.ROOT_URL + "CustomLabel/CustomLabelConfig.html", HideLabel = true)]
+        [ConfigurationField("customLabel", "Label Macro",  EmbeddedResource.EmbeddedResource.ROOT_URL + "CustomLabel/CustomLabelConfig.html", HideLabel = true)]
         public string CustomLabel { get; set; }
 
         [ConfigurationField("pagedListPicker", "Paged List Picker", EmbeddedResource.EmbeddedResource.ROOT_URL + "PagedListPicker/PagedListPickerConfig.html", HideLabel = true)]
