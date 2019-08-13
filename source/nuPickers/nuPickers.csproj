@@ -335,6 +335,12 @@
     <Compile Include="DataEditors\LuceneRadioButtonPicker\LuceneRadioButtonPickerConfigurationEditor.cs" />
     <Compile Include="DataEditors\LuceneRadioButtonPicker\LuceneRadioButtonPickerConfiguration.cs" />
     <Compile Include="DataEditors\LuceneRadioButtonPicker\LuceneRadioButtonPickerPropertyEditor.cs" />
+    <Compile Include="DataEditors\LuceneTypeaheadPicker\LuceneTypeaheadListPickerConfigurationEditor.cs" />
+    <Compile Include="DataEditors\LuceneTypeaheadPicker\LuceneTypeaheadListPickerConfiguration.cs" />
+    <Compile Include="DataEditors\LuceneTypeaheadPicker\LuceneTypeaheadPickerDataEditor.cs" />
+    <Compile Include="DataEditors\RelationLabels\RelationLabelsConfigurationEditor.cs" />
+    <Compile Include="DataEditors\RelationLabels\RelationLabelsConfiguration.cs" />
+    <Compile Include="DataEditors\RelationLabels\RelationLabelsPropertyEditor.cs" />
     <Compile Include="EmbeddedResource\EmbeddedResource.cs" />
     <Compile Include="EmbeddedResource\EmbeddedResourceController.cs" />
     <Compile Include="EmbeddedResource\EmbeddedResourceHelper.cs" />

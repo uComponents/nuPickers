@@ -1,4 +1,6 @@
-﻿namespace nuPickers.DataEditors.LuceneTypeaheadListPicker
+﻿using Umbraco.Core.Logging;
+
+namespace nuPickers.DataEditors.LuceneTypeaheadListPicker
 {
     using ClientDependency.Core;
     using EmbeddedResource;
@@ -26,11 +28,16 @@
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "CustomLabel/CustomLabelConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "RelationMapping/RelationMappingConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "SaveFormat/SaveFormatConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
-    public class LuceneTypeaheadPickerPropertyEditor : DataEditor
+    public class LuceneTypeaheadPickerDataEditor : DataEditor
     {
-        protected override PreValueEditor CreatePreValueEditor()
+        protected override IConfigurationEditor CreateConfigurationEditor() =>
+            new LuceneTypeaheadListPickerConfigurationEditor();
+
+
+        public LuceneTypeaheadPickerDataEditor(ILogger logger) : base(logger)
         {
-            return new LuceneTypeaheadListPickerPreValueEditor();
         }
+
+
     }
 }

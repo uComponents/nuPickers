@@ -1,4 +1,6 @@
-﻿namespace nuPickers.DataEditors.RelationLabels
+﻿using Umbraco.Core.Logging;
+
+namespace nuPickers.DataEditors.RelationLabels
 {
     using ClientDependency.Core;
     using EmbeddedResource;
@@ -23,9 +25,12 @@
     [PropertyEditorAsset(ClientDependencyType.Javascript, EmbeddedResource.ROOT_URL + "CustomLabel/CustomLabelConfigController.js" + EmbeddedResource.FILE_EXTENSION)]
     public class RelationLabelsPropertyEditor : DataEditor
     {
-        protected override PreValueEditor CreatePreValueEditor()
+        protected override IConfigurationEditor CreateConfigurationEditor() =>
+            new RelationLabelsConfigurationEditor();
+
+
+        public RelationLabelsPropertyEditor(ILogger logger) : base(logger)
         {
-            return new RelationLabelsPreValueEditor();
         }
     }
 }

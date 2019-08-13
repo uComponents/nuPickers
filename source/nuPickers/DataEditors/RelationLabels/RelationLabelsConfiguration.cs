@@ -1,12 +1,14 @@
-﻿namespace nuPickers.DataEditors.SqlLabels
+﻿namespace nuPickers.DataEditors.RelationLabels
 {
     using EmbeddedResource;
     using Umbraco.Core.PropertyEditors;
 
-    internal class SqlLabelsPreValueEditor ValueListConfiguration
+    internal class RelationLabelsConfiguration : ValueListConfiguration
     {
-        [ConfigurationField("dataSource", "", EmbeddedResource.ROOT_URL + "SqlDataSource/SqlDataSourceConfig.html", HideLabel = true)]
-        public string DataSource { get; set; }
+        [ConfigurationField("useLabel", "Include labels?", "boolean", Description = "")]
+        public bool UseLabel { get; set; }
+        [ConfigurationField("dataSource", "", EmbeddedResource.ROOT_URL + "RelationDataSource/RelationDataSourceConfig.html", HideLabel = true)]
+        public object DataSource { get; set; }
 
         [ConfigurationField("customLabel", "", EmbeddedResource.ROOT_URL + "CustomLabel/CustomLabelConfig.html", HideLabel = true)]
         public string CustomLabel { get; set; }
