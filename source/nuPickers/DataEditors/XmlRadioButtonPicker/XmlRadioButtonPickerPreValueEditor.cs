@@ -1,4 +1,4 @@
-﻿namespace nuPickers.PropertyEditors.XmlRadioButtonPicker
+﻿namespace nuPickers.DataEditors.XmlRadioButtonPicker
 {
     using nuPickers.EmbeddedResource;
     using Umbraco.Core.PropertyEditors;

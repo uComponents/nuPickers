@@ -1,4 +1,4 @@
-﻿namespace nuPickers.PropertyEditors.XmlRadioButtonPicker
+﻿namespace nuPickers.DataEditors.XmlRadioButtonPicker
 {
     using ClientDependency.Core;
     using nuPickers.EmbeddedResource;

@@ -1,4 +1,4 @@
-﻿namespace nuPickers.PropertyEditors.SqlPagedListPicker
+﻿namespace nuPickers.DataEditors.SqlPagedListPicker
 {
     using nuPickers.EmbeddedResource;
     using Umbraco.Core.PropertyEditors;

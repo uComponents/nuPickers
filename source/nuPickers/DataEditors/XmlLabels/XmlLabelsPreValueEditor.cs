@@ -1,4 +1,4 @@
-﻿namespace nuPickers.PropertyEditors.XmlLabels
+﻿namespace nuPickers.DataEditors.XmlLabels
 {
     using nuPickers.EmbeddedResource;
     using Umbraco.Core.PropertyEditors;

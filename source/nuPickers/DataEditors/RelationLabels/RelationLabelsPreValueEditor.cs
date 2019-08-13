@@ -1,4 +1,4 @@
-﻿namespace nuPickers.PropertyEditors.RelationLabels
+﻿namespace nuPickers.DataEditors.RelationLabels
 {
     using nuPickers.EmbeddedResource;
     using Umbraco.Core.PropertyEditors;

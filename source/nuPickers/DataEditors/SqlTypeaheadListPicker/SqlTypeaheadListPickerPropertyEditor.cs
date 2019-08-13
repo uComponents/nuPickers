@@ -1,4 +1,4 @@
-﻿namespace nuPickers.PropertyEditors.SqlTypeaheadListPicker
+﻿namespace nuPickers.DataEditors.SqlTypeaheadListPicker
 {
     using ClientDependency.Core;
     using nuPickers.EmbeddedResource;

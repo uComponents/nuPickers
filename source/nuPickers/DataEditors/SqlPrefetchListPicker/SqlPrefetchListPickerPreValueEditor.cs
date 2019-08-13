@@ -1,4 +1,4 @@
-﻿namespace nuPickers.PropertyEditors.SqlPrefetchListPicker
+﻿namespace nuPickers.DataEditors.SqlPrefetchListPicker
 {
     using nuPickers.EmbeddedResource;
     using Umbraco.Core.PropertyEditors;

@@ -1,4 +1,4 @@
-﻿namespace nuPickers.PropertyEditors.SqlTypeaheadListPicker
+﻿namespace nuPickers.DataEditors.SqlTypeaheadListPicker
 {
     using nuPickers.EmbeddedResource;
     using Umbraco.Core.PropertyEditors;

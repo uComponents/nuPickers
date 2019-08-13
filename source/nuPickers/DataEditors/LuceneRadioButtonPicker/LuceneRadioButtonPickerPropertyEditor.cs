@@ -1,4 +1,4 @@
-﻿namespace nuPickers.PropertyEditors.LuceneRadioButtonPicker
+﻿namespace nuPickers.DataEditors.LuceneRadioButtonPicker
 {
     using ClientDependency.Core;
     using nuPickers.EmbeddedResource;

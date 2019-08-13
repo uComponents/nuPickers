@@ -1,4 +1,4 @@
-﻿namespace nuPickers.PropertyEditors.XmlTypeaheadListPicker
+﻿namespace nuPickers.DataEditors.XmlTypeaheadListPicker
 {
     using ClientDependency.Core;
     using nuPickers.EmbeddedResource;

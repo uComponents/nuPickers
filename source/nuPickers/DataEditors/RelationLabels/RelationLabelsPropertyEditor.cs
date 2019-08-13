@@ -1,4 +1,4 @@
-﻿namespace nuPickers.PropertyEditors.RelationLabels
+﻿namespace nuPickers.DataEditors.RelationLabels
 {
     using ClientDependency.Core;
     using nuPickers.EmbeddedResource;

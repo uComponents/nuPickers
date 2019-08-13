@@ -1,4 +1,4 @@
-﻿namespace nuPickers.PropertyEditors.XmlCheckBoxPicker
+﻿namespace nuPickers.DataEditors.XmlCheckBoxPicker
 {
     using ClientDependency.Core;
     using nuPickers.EmbeddedResource;

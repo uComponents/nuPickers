@@ -1,4 +1,4 @@
-﻿namespace nuPickers.PropertyEditors.XmlLabels
+﻿namespace nuPickers.DataEditors.XmlLabels
 {
     using ClientDependency.Core;
     using nuPickers.EmbeddedResource;

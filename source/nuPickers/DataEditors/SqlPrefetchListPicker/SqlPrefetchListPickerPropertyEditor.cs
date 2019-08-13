@@ -1,4 +1,4 @@
-﻿namespace nuPickers.PropertyEditors.SqlPrefetchListPicker
+﻿namespace nuPickers.DataEditors.SqlPrefetchListPicker
 {
     using ClientDependency.Core;
     using nuPickers.EmbeddedResource;

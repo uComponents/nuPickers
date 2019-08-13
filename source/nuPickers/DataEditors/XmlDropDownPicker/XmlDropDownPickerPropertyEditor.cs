@@ -1,4 +1,4 @@
-﻿namespace nuPickers.PropertyEditors.XmlDropDownPicker
+﻿namespace nuPickers.DataEditors.XmlDropDownPicker
 {
     using ClientDependency.Core;
     using nuPickers.EmbeddedResource;

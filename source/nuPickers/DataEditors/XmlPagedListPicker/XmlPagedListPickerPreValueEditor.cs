@@ -1,4 +1,4 @@
-﻿namespace nuPickers.PropertyEditors.XmlPagedListPicker
+﻿namespace nuPickers.DataEditors.XmlPagedListPicker
 {
     using nuPickers.EmbeddedResource;
     using Umbraco.Core.PropertyEditors;

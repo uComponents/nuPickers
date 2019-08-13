@@ -1,4 +1,4 @@
-﻿namespace nuPickers.PropertyEditors.LuceneTypeaheadListPicker
+﻿namespace nuPickers.DataEditors.LuceneTypeaheadListPicker
 {
     using nuPickers.EmbeddedResource;
     using Umbraco.Core.PropertyEditors;

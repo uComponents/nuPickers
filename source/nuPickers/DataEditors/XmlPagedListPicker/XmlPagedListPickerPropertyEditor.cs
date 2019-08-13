@@ -1,4 +1,4 @@
-﻿namespace nuPickers.PropertyEditors.XmlPagedListPicker
+﻿namespace nuPickers.DataEditors.XmlPagedListPicker
 {
     using ClientDependency.Core;
     using nuPickers.EmbeddedResource;

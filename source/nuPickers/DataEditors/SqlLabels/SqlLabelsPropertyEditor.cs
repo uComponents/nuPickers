@@ -1,4 +1,4 @@
-﻿namespace nuPickers.PropertyEditors.SqlLabels
+﻿namespace nuPickers.DataEditors.SqlLabels
 {
     using ClientDependency.Core;
     using nuPickers.EmbeddedResource;

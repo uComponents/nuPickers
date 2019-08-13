@@ -1,4 +1,4 @@
-﻿namespace nuPickers.PropertyEditors.SqlRadioButtonPicker
+﻿namespace nuPickers.DataEditors.SqlRadioButtonPicker
 {
     using nuPickers.EmbeddedResource;
     using Umbraco.Core.PropertyEditors;
