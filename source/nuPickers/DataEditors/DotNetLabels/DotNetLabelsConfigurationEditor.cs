@@ -8,9 +8,9 @@ using Umbraco.Core.PropertyEditors;
 
 namespace nuPickers.DataEditors.DotNetLabels
 {
-    internal class DotNetLabelsConfigurationEditor : ConfigurationEditor<EnumLabelsConfiguration>
+    internal class DotNetLabelsConfigurationEditor : ConfigurationEditor<DotNetLabelsConfiguration>
     {
-        public override Dictionary<string, object> ToConfigurationEditor(EnumLabelsConfiguration configuration)
+        public override Dictionary<string, object> ToConfigurationEditor(DotNetLabelsConfiguration configuration)
         {
             var configuredItems = configuration?.Items; // ordered
             object editorItems;
@@ -85,9 +85,9 @@ namespace nuPickers.DataEditors.DotNetLabels
             [JsonProperty("sortOrder")]
             public int SortOrder { get; set; }
         }
-          public override EnumLabelsConfiguration FromConfigurationEditor(IDictionary<string, object> editorValues, EnumLabelsConfiguration configuration)
+          public override DotNetLabelsConfiguration FromConfigurationEditor(IDictionary<string, object> editorValues, DotNetLabelsConfiguration configuration)
         {
-            var output = new EnumLabelsConfiguration();
+            var output = new DotNetLabelsConfiguration();
 
             if (!editorValues.TryGetValue("items", out var jjj) || !(jjj is JArray jItems))
                 return output; // oops
