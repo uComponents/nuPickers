@@ -86,18 +86,9 @@ namespace nuPickers
         {
             int contextId = -1;
             int parentId = -1;
-            IPublishedContent assignedContentItem;
 
-            try
-            {
-                assignedContentItem = Current.UmbracoHelper.AssignedContentItem;
-            }
-            catch
-            {
-                assignedContentItem = null;
-            }
 
-            if (assignedContentItem != null)
+            if (owner is IPublishedContent assignedContentItem)
             {
                 contextId = assignedContentItem.Id;
 
