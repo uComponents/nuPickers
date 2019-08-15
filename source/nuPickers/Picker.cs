@@ -130,7 +130,7 @@ namespace nuPickers
             {
                 if (this.pickedKeys == null)
                 {
-                    if (this.GetDataTypePreValue("saveFormat").ToString() == "relationsOnly")
+                    if (this.DataTypePreValues.GetType().GetProperty("saveFormat")?.ToString() == "relationsOnly")
                     {
                         // attempt to find relations data in memory cache
                         this.pickedKeys = Cache.Instance.GetSet(CacheConstants.PickedKeysPrefix + this.ContextId.ToString() + "_" + this.PropertyAlias, () =>
@@ -179,7 +179,7 @@ namespace nuPickers
             get
             {
                 // not all pickers support relation mapping, so null check required
-                object relationMappingPreValue = this.GetDataTypePreValue("relationMapping");
+                object relationMappingPreValue = this.GetType().GetProperty("relationMapping");
                 if (relationMappingPreValue != null && !string.IsNullOrWhiteSpace(relationMappingPreValue.ToString()))
                 {
                     // parse the json config to get a relationType alias
@@ -219,13 +219,13 @@ namespace nuPickers
         /// <summary>
         /// Property accessor to ensure the query to populate the data-type configruation options is only done once per server
         /// </summary>
-        private IDictionary<string, object> DataTypePreValues
+        private object DataTypePreValues
         {
             get
             {
                 return Cache.Instance.GetSet(CacheConstants.DataTypePreValuesPrefix + DataTypeId, () =>
                     {
-                        return Current.Services.DataTypeService.GetDataType(DataTypeId).Editor.DefaultConfiguration;
+                        return Current.Services.DataTypeService.GetDataType(DataTypeId).Configuration;
                     });
             }
         }
@@ -238,7 +238,7 @@ namespace nuPickers
         /// Get all the prevalues for this picker
         /// </summary>
         /// <returns>collection of all <see cref="PreValue"/> for this datatype</returns>
-        public IDictionary<string, object> GetDataTypePreValues()
+        public object GetDataTypePreValues()
         {
             return this.DataTypePreValues;
         }
@@ -248,10 +248,7 @@ namespace nuPickers
         /// </summary>
         /// <param name="key"></param>
         /// <returns>the <see cref="PreValue"/> if found, or null</returns>
-        public object GetDataTypePreValue(string key)
-        {
-            return this.DataTypePreValues.SingleOrDefault(x => string.Equals(x.Key, key, StringComparison.InvariantCultureIgnoreCase)).Value;
-        }
+
 
         /// <summary>
         /// Get a collection of all (key/label) items for this picker
@@ -266,8 +263,8 @@ namespace nuPickers
                             this.ContextId,
                             this.ParentId,
                             this.PropertyAlias,
-                            DataSource.GetDataSource(this.PropertyEditorAlias, this.GetDataTypePreValue("dataSource").ToString()),
-                            this.GetDataTypePreValue("customLabel").ToString(),
+                            DataSource.GetDataSource(this.PropertyEditorAlias, DataTypePreValues.GetType().GetProperty("dataSource").ToString()),
+                            DataTypePreValues.GetType().GetProperty("customLabel").ToString(),
                             typeahead);
         }
 
@@ -286,8 +283,8 @@ namespace nuPickers
                                     this.ContextId,
                                     this.ParentId,
                                     this.PropertyAlias,
-                                    DataSource.GetDataSource(this.PropertyEditorAlias, this.GetDataTypePreValue("dataSource").ToString()),
-                                    this.GetDataTypePreValue("customLabel").ToString(),
+                                    DataSource.GetDataSource(this.PropertyEditorAlias, DataTypePreValues.GetType().GetProperty("dataSource").ToString()),
+                                    DataTypePreValues.GetType().GetProperty("customLabel").ToString(),
                                     this.PickedKeys.ToArray());
             }
 
@@ -353,7 +350,7 @@ namespace nuPickers
         public IEnumerable<Enum> AsEnums()
         {
             List<Enum> enums = new List<Enum>();
-            Object dataSourceJson = this.GetDataTypePreValue("dataSource");
+            Object dataSourceJson = this.GetType().GetProperty("dataSource");
 
             if (dataSourceJson != null)
             {

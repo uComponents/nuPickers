@@ -82,7 +82,7 @@ namespace nuPickers.Components
 
                     if (!string.IsNullOrWhiteSpace(picker.RelationTypeAlias))
                     {
-                        bool isRelationsOnly = picker.GetDataTypePreValue("saveFormat").ToString() == "relationsOnly";
+                        bool isRelationsOnly = picker.GetEditorDataItems().GetType().GetProperty("saveFormat").ToString() == "relationsOnly";
 
                         if (isRelationsOnly)
                         {
