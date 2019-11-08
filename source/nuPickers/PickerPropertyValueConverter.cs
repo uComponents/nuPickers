@@ -92,7 +92,7 @@ namespace nuPickers
             => PropertyCacheLevel.Element;
 
         public override Type GetPropertyValueType(IPublishedPropertyType propertyType)
-            => typeof(string);
+            => typeof(Picker);
 
         /// <summary>
         /// WARNING: currently PropertyValueConverters are unaware of their context, as such this should only be used by the current page
