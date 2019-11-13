@@ -22,7 +22,7 @@ namespace nuPickers.Components
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+
         }
 
         public ISite Site { get; set; }
@@ -39,7 +39,7 @@ namespace nuPickers.Components
 
         public void Terminate()
         {
-            throw new NotImplementedException();
+
         }
 
         private void ContentService_Saved(IContentService sender, SaveEventArgs<IContent> e)

@@ -41,7 +41,7 @@ namespace nuPickers.Components
 
         public void Terminate()
         {
-            throw new NotImplementedException();
+
         }
 
        private void ContentService_Saved(IContentService sender, SaveEventArgs<IContent> e)
