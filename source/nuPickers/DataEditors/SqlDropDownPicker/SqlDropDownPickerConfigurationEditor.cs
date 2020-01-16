@@ -106,7 +106,7 @@ namespace nuPickers.DataEditors.SqlDropDownPicker
             }
             if (editorValues.TryGetValue("saveFormat", out var saveFormatObj))
             {
-                var convertString = saveFormatObj.TryConvertTo<object>();
+                var convertString = saveFormatObj.TryConvertTo<string>();
                 if (convertString.Success)
                     output.SaveFormat = convertString.Result;
             }

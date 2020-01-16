@@ -21,6 +21,6 @@
         public object RelationMapping { get; set; }
 
         [ConfigurationField("saveFormat", "Save Format", EmbeddedResource.ROOT_URL + "SaveFormat/SaveFormatConfig.html")]
-        public object SaveFormat { get; set; }
+        public string SaveFormat { get; set; }
     }
 }

@@ -113,8 +113,11 @@ namespace nuPickers.DataEditors.JsonCheckBoxPicker
 
             if (editorValues.TryGetValue("saveFormat", out var saveFormatObj))
             {
-                    output.SaveFormat = saveFormatObj;
+                var convertString = saveFormatObj.TryConvertTo<string>();
+                if (convertString.Success)
+                    output.SaveFormat = convertString.Result;
             }
+
             if (editorValues.TryGetValue("customLabel", out var customlabelObj))
             {
                 var convertString = customlabelObj.TryConvertTo<string>();

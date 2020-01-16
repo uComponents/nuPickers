@@ -14,7 +14,7 @@ namespace nuPickers.DataEditors.JsonDropDownPicker
 
         [ConfigurationField("saveFormat", "Save Format",
             EmbeddedResource.EmbeddedResource.ROOT_URL + "SaveFormat/SaveFormatConfig.html")]
-        public object SaveFormat { get; set; }
+        public string SaveFormat { get; set; }
 
         [ConfigurationField("useLabel", "Include labels?", "boolean", Description = "")]
         public bool UseLabel { get; set; }
