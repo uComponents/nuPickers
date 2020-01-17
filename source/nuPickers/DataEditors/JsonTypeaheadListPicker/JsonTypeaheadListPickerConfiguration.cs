@@ -31,6 +31,6 @@ namespace nuPickers.DataEditors.JsonTypeaheadListPicker
 
         [ConfigurationField("saveFormat", "Save Format",
             EmbeddedResource.EmbeddedResource.ROOT_URL + "SaveFormat/SaveFormatConfig.html")]
-        public object SaveFormat { get; set; }
+        public string SaveFormat { get; set; }
     }
 }

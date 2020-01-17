@@ -106,10 +106,11 @@ namespace nuPickers.DataEditors.LuceneDropDownPicker
 
             if (editorValues.TryGetValue("saveFormat", out var saveFormatObj))
             {
-                var convertString = saveFormatObj.TryConvertTo<object>();
+                var convertString = saveFormatObj.TryConvertTo<string>();
                 if (convertString.Success)
                     output.SaveFormat = convertString.Result;
             }
+
             if (editorValues.TryGetValue("relationMapping", out var relationMappingObj))
             {
                 var convertString = relationMappingObj.TryConvertTo<object>();

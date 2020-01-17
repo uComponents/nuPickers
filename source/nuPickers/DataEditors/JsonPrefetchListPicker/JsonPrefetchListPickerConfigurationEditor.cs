@@ -110,6 +110,12 @@ namespace nuPickers.DataEditors.JsonPrefetchListPicker
                 if (convertString.Success)
                     output.DataSource = convertString.Result;
             }
+            if (editorValues.TryGetValue("saveFormat", out var saveFormatObj))
+            {
+                var convertString = saveFormatObj.TryConvertTo<string>();
+                if (convertString.Success)
+                    output.SaveFormat = convertString.Result;
+            }
             if (editorValues.TryGetValue("customLabel", out var customlabelObj))
             {
                 var convertString = customlabelObj.TryConvertTo<string>();
