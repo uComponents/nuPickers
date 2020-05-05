@@ -3,8 +3,10 @@ using System.ComponentModel;
 using System.Linq;
 using System.Web;
 using nuPickers.Shared.Editor;
+using Umbraco.Core.Dictionary;
 using Umbraco.Core.Models;
 using Umbraco.Core.Models.PublishedContent;
+using Umbraco.Web;
 using Umbraco.Web.Composing;
 
 namespace nuPickers.Shared.CustomLabel
@@ -23,14 +25,20 @@ namespace nuPickers.Shared.CustomLabel
 
         private string PropertyAlias { get; set; }
 
+        
+
+        private readonly IUmbracoComponentRenderer _componentRenderer;
+
         /// <summary>
         ///
         /// </summary>
         /// <param name="macroAlias">alias of Macro to execute</param>
         /// <param name="contextId">node, media or member id</param>
         /// <param name="propertyAlias">property alias</param>
-        internal CustomLabel(string macroAlias, int contextId, string propertyAlias)
+        internal CustomLabel(string macroAlias, int contextId, string propertyAlias, IUmbracoComponentRenderer componentRenderer)
         {
+            _componentRenderer = componentRenderer;
+
             MacroAlias = macroAlias;
             ContextId = contextId;
             PropertyAlias = propertyAlias;
@@ -52,6 +60,7 @@ namespace nuPickers.Shared.CustomLabel
                 if (contextNode != null)
                 {
                     HttpContext.Current.Items["pageID"] = contextNode.Id;
+                    ContextId = contextNode.Id;
                     HasMacroContext = true;
                 }
             }
@@ -118,7 +127,7 @@ namespace nuPickers.Shared.CustomLabel
         /// <param name="properties"></param>
         private string RenderToString(Macro macro, Dictionary<string, object> properties)
         {
-            return Current.UmbracoHelper.RenderMacro(macro.Alias, properties).ToHtmlString();
+            return _componentRenderer.RenderMacro(ContextId, macro.Alias, properties).ToHtmlString();
         }
     }
 }

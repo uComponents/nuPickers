@@ -96,13 +96,13 @@ namespace nuPickers.Shared.RelationMapping
                 }
 
                 // check current context is of the correct object type (as according to the relation type)
-                if (Current.Services.EntityService.GetObjectType(contextId) ==  ObjectTypes.GetUmbracoObjectType(relationType.ChildObjectType))
+                if (Current.Services.EntityService.GetObjectType(contextId) ==  ObjectTypes.GetUmbracoObjectType(relationType.ChildObjectType.Value))
                 {
                     // for each picked item
                     foreach (int pickedId in pickedIds)
                     {
                         // check picked item context if of the correct object type (as according to the relation type)
-                        if (Current.Services.EntityService.GetObjectType(pickedId) ==  ObjectTypes.GetUmbracoObjectType(relationType.ParentObjectType))
+                        if (Current.Services.EntityService.GetObjectType(pickedId) ==  ObjectTypes.GetUmbracoObjectType(relationType.ParentObjectType.Value))
                         {
                             // if relation doesn't already exist (new picked item)
                             if (!relations.Exists(x => x.ParentId == pickedId))
