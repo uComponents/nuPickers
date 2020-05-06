@@ -10,9 +10,20 @@ namespace nuPickers.Shared.Editor
     using System.Collections.Generic;
     using System.Linq;
     using Umbraco.Core;
+    using Umbraco.Core.Composing;
+    using Umbraco.Web;
 
     internal static class Editor
     {
+
+        public static IFactory Factory
+        => Umbraco.Core.Composing.Current.Factory;
+
+        public static IUmbracoComponentRenderer UmbracoComponentRenderer
+                 => Factory.GetInstance<IUmbracoComponentRenderer>();
+
+
+
         /// <summary>
         /// Get a collection of all the (key/label) items for a picker (with optional typeahead)
         /// </summary>
@@ -39,7 +50,7 @@ namespace nuPickers.Shared.Editor
 
                 if (!string.IsNullOrWhiteSpace(customLabelMacro))
                 {
-                    editorDataItems = new CustomLabel(customLabelMacro, currentId, propertyAlias).ProcessEditorDataItems(editorDataItems);
+                    editorDataItems = new CustomLabel(customLabelMacro, currentId, propertyAlias, UmbracoComponentRenderer).ProcessEditorDataItems(editorDataItems);
                 }
 
                 // if the datasource didn't handle the typeahead text, then it needs to be done here (post custom label processing ?)
@@ -78,7 +89,7 @@ namespace nuPickers.Shared.Editor
 
                 if (!string.IsNullOrWhiteSpace(customLabelMacro))
                 {
-                    editorDataItems = new CustomLabel(customLabelMacro, currentId, propertyAlias).ProcessEditorDataItems(editorDataItems);
+                    editorDataItems = new CustomLabel(customLabelMacro, currentId, propertyAlias, UmbracoComponentRenderer).ProcessEditorDataItems(editorDataItems);
                 }
 
                 // ensure sort order matches order of keys supplied
@@ -122,7 +133,7 @@ namespace nuPickers.Shared.Editor
 
                 if (!string.IsNullOrWhiteSpace(customLabelMacro))
                 {
-                    editorDataItems = new CustomLabel(customLabelMacro, currentId, propertyAlias).ProcessEditorDataItems(editorDataItems);
+                    editorDataItems = new CustomLabel(customLabelMacro, currentId, propertyAlias, UmbracoComponentRenderer).ProcessEditorDataItems(editorDataItems);
                 }
             }
 
