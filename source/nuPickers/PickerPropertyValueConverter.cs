@@ -113,11 +113,8 @@ namespace nuPickers
             if (assignedContentItem != null)
             {
                 contextId = assignedContentItem.Id;
-
-                if (assignedContentItem.Parent != null)
-                {
-                    parentId = assignedContentItem.Parent.Id;
-                }
+                var pathIds = assignedContentItem.Path?.Split(new char[] { ',' }).Select(id => Convert.ToInt32(id)).ToArray();
+                parentId = pathIds.Count() >= 2 ? pathIds[pathIds.Count() - 2] : parentId;
             }
 
             return new Picker(
