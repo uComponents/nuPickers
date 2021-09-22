@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>nuPickers</RootNamespace>
     <AssemblyName>uComponents.nuPickers</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
@@ -38,187 +38,326 @@
     <Reference Include="AutoMapper.Net4">
       <HintPath>..\packages\AutoMapper.3.0.0\lib\net40\AutoMapper.Net4.dll</HintPath>
     </Reference>
-    <Reference Include="businesslogic, Version=1.0.5556.26331, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UmbracoCms.Core.7.2.3\lib\businesslogic.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="ClientDependency.Core, Version=1.9.9.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ClientDependency.1.9.9\lib\net45\ClientDependency.Core.dll</HintPath>
     </Reference>
-    <Reference Include="ClientDependency.Core, Version=1.8.3.1, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\ClientDependency.1.8.3.1\lib\net45\ClientDependency.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="ClientDependency.Core.Mvc, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ClientDependency-Mvc.1.8.0.0\lib\net45\ClientDependency.Core.Mvc.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="cms, Version=1.0.5556.26331, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UmbracoCms.Core.7.2.3\lib\cms.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="controls, Version=1.0.5556.26333, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UmbracoCms.Core.7.2.3\lib\controls.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="ClientDependency.Core.Mvc, Version=1.9.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ClientDependency-Mvc5.1.9.3\lib\net45\ClientDependency.Core.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="CookComputing.XmlRpcV2">
       <HintPath>..\packages\xmlrpcnet.2.5.0\lib\net20\CookComputing.XmlRpcV2.dll</HintPath>
     </Reference>
-    <Reference Include="Examine, Version=0.1.60.2941, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Examine.0.1.60.2941\lib\Examine.dll</HintPath>
+    <Reference Include="CSharpTest.Net.Collections, Version=14.906.1403.1082, Culture=neutral, PublicKeyToken=06aee00cce822474">
+      <HintPath>..\packages\CSharpTest.Net.Collections.14.906.1403.1082\lib\net40\CSharpTest.Net.Collections.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="HtmlAgilityPack">
-      <HintPath>..\packages\HtmlAgilityPack.1.4.6\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    <Reference Include="Examine, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Examine.1.0.2\lib\net452\Examine.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.8.14.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a">
+      <HintPath>..\packages\HtmlAgilityPack.1.8.14\lib\Net45\HtmlAgilityPack.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
-    <Reference Include="ImageProcessor, Version=1.9.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ImageProcessor.1.9.5.0\lib\ImageProcessor.dll</HintPath>
+    <Reference Include="ImageProcessor, Version=2.7.0.100, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\ImageProcessor.2.7.0.100\lib\net452\ImageProcessor.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="ImageProcessor.Web, Version=3.3.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ImageProcessor.Web.3.3.1.0\lib\net45\ImageProcessor.Web.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="interfaces, Version=1.0.5556.26329, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UmbracoCms.Core.7.2.3\lib\interfaces.dll</HintPath>
+    <Reference Include="LightInject, Version=5.4.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\LightInject.5.4.0\lib\net46\LightInject.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UmbracoCms.Core.7.2.3\lib\log4net.dll</HintPath>
+    <Reference Include="LightInject.Annotation, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\LightInject.Annotation.1.1.0\lib\net46\LightInject.Annotation.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Lucene.Net">
-      <HintPath>..\packages\Lucene.Net.2.9.4.1\lib\net40\Lucene.Net.dll</HintPath>
+    <Reference Include="LightInject.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\LightInject.Mvc.2.0.0\lib\net46\LightInject.Mvc.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.ApplicationBlocks.Data, Version=1.0.1559.20655, Culture=neutral">
-      <HintPath>..\packages\UmbracoCms.Core.7.2.3\lib\Microsoft.ApplicationBlocks.Data.dll</HintPath>
+    <Reference Include="LightInject.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\LightInject.Web.2.0.0\lib\net46\LightInject.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="LightInject.WebApi, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\LightInject.WebApi.2.0.0\lib\net46\LightInject.WebApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Lucene.Net, Version=3.0.3.0, Culture=neutral, PublicKeyToken=85089178b9ac3181">
+      <HintPath>..\packages\Lucene.Net.3.0.3\lib\NET40\Lucene.Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Markdown, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1b320cc08ad5aa89">
+      <HintPath>..\packages\Markdown.2.2.1\lib\net451\Markdown.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.2\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.4.0\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.2.0.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.Owin.4.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.1\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    <Reference Include="MiniProfiler, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b44f9351044011a3">
+      <HintPath>..\packages\MiniProfiler.4.0.138\lib\net461\MiniProfiler.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="MiniProfiler">
-      <HintPath>..\packages\MiniProfiler.2.1.0\lib\net40\MiniProfiler.dll</HintPath>
+    <Reference Include="MiniProfiler.Shared, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b44f9351044011a3">
+      <HintPath>..\packages\MiniProfiler.Shared.4.0.138\lib\net461\MiniProfiler.Shared.dll</HintPath>
+      <Private>True</Private>
     </Reference>
+    <Reference Include="mscorlib" />
     <Reference Include="MySql.Data">
       <HintPath>..\packages\MySql.Data.6.6.5\lib\net40\MySql.Data.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SQLCE4Umbraco, Version=1.0.5556.26332, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UmbracoCms.Core.7.2.3\lib\SQLCE4Umbraco.dll</HintPath>
+    <Reference Include="NPoco, Version=3.9.4.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\NPoco.3.9.4\lib\net45\NPoco.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Semver, Version=2.0.4.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\Semver.2.0.4\lib\net452\Semver.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10">
+      <HintPath>..\packages\Serilog.2.8.0\lib\net46\Serilog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serilog.Enrichers.Process, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10">
+      <HintPath>..\packages\Serilog.Enrichers.Process.2.0.1\lib\net45\Serilog.Enrichers.Process.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serilog.Enrichers.Thread, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10">
+      <HintPath>..\packages\Serilog.Enrichers.Thread.3.0.0\lib\net45\Serilog.Enrichers.Thread.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serilog.Filters.Expressions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10">
+      <HintPath>..\packages\Serilog.Filters.Expressions.2.0.0\lib\net45\Serilog.Filters.Expressions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serilog.Formatting.Compact, Version=1.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10">
+      <HintPath>..\packages\Serilog.Formatting.Compact.1.0.0\lib\net45\Serilog.Formatting.Compact.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serilog.Formatting.Compact.Reader, Version=1.0.3.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10">
+      <HintPath>..\packages\Serilog.Formatting.Compact.Reader.1.0.3\lib\net45\Serilog.Formatting.Compact.Reader.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serilog.Settings.AppSettings, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10">
+      <HintPath>..\packages\Serilog.Settings.AppSettings.2.2.2\lib\net45\Serilog.Settings.AppSettings.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serilog.Sinks.Async, Version=1.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10">
+      <HintPath>..\packages\Serilog.Sinks.Async.1.3.0\lib\net45\Serilog.Sinks.Async.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serilog.Sinks.File, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10">
+      <HintPath>..\packages\Serilog.Sinks.File.4.0.0\lib\net45\Serilog.Sinks.File.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serilog.Sinks.Map, Version=1.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10">
+      <HintPath>..\packages\Serilog.Sinks.Map.1.0.0\lib\netstandard2.0\Serilog.Sinks.Map.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Superpower, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aec39280ded1b3a7">
+      <HintPath>..\packages\Superpower.2.0.0\lib\net45\Superpower.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\UmbracoCms.Core.7.2.3\lib\System.Data.SqlServerCe.dll</HintPath>
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.1, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+      <HintPath>..\packages\Umbraco.SqlServerCE.4.0.0.1\lib\net472\System.Data.SqlServerCe.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Data.SqlServerCe.Entity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\UmbracoCms.Core.7.2.3\lib\System.Data.SqlServerCe.Entity.dll</HintPath>
+    <Reference Include="System.Data.SqlServerCe.Entity, Version=4.0.0.1, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+      <HintPath>..\packages\Umbraco.SqlServerCE.4.0.0.1\lib\net472\System.Data.SqlServerCe.Entity.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.2.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.4.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+      <Private>True</Private>
     </Reference>
+    <Reference Include="System.IO" />
+    <Reference Include="System.Linq.Expressions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime" />
     <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks" />
+    <Reference Include="System.Threading.Tasks.Dataflow, Version=4.6.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\System.Threading.Tasks.Dataflow.4.9.0\lib\netstandard2.0\System.Threading.Tasks.Dataflow.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.30506.0\lib\net40\System.Web.Http.dll</HintPath>
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.30506.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
       <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20710.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Routing" />
-    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
       <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
       <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
       <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="TidyNet, Version=1.0.0.0, Culture=neutral">
-      <HintPath>..\packages\UmbracoCms.Core.7.2.3\lib\TidyNet.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Umbraco.Core, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.8.6.1\lib\net472\Umbraco.Core.dll</HintPath>
     </Reference>
-    <Reference Include="umbraco, Version=1.0.5556.26334, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UmbracoCms.Core.7.2.3\lib\umbraco.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Umbraco.Examine, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Web.8.6.1\lib\net472\Umbraco.Examine.dll</HintPath>
     </Reference>
-    <Reference Include="Umbraco.Core, Version=1.0.5556.26329, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UmbracoCms.Core.7.2.3\lib\Umbraco.Core.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Umbraco.ModelsBuilder.Embedded, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Web.8.6.1\lib\net472\Umbraco.ModelsBuilder.Embedded.dll</HintPath>
     </Reference>
-    <Reference Include="umbraco.DataLayer, Version=1.0.5556.26331, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UmbracoCms.Core.7.2.3\lib\umbraco.DataLayer.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Umbraco.Web, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Web.8.6.1\lib\net472\Umbraco.Web.dll</HintPath>
     </Reference>
-    <Reference Include="umbraco.editorControls, Version=1.0.5556.26335, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UmbracoCms.Core.7.2.3\lib\umbraco.editorControls.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="umbraco.MacroEngines, Version=1.0.5556.26336, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UmbracoCms.Core.7.2.3\lib\umbraco.MacroEngines.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="umbraco.providers, Version=1.0.5556.26333, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UmbracoCms.Core.7.2.3\lib\umbraco.providers.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Umbraco.Web.UI, Version=1.0.5556.26336, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UmbracoCms.Core.7.2.3\lib\Umbraco.Web.UI.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="UmbracoExamine, Version=0.7.0.26332, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UmbracoCms.Core.7.2.3\lib\UmbracoExamine.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="UrlRewritingNet.UrlRewriter, Version=2.0.60829.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UmbracoCms.Core.7.2.3\lib\UrlRewritingNet.UrlRewriter.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Umbraco.Web.UI, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Web.8.6.1\lib\net472\Umbraco.Web.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Caching\Cache.cs" />
     <Compile Include="Caching\CacheConstants.cs" />
-    <Compile Include="Caching\CacheInvalidation.cs" />
+    <Compile Include="Components\CacheInvalidationComponent.cs" />
+    <Compile Include="Components\EmbeddedResourceCompontent.cs" />
+    <Compile Include="Components\nuPickerCompontent.cs" />
+    <Compile Include="Components\RelationMappingComponent.cs" />
+    <Compile Include="DataEditors\DotNetRadioButtonPicker\DotNetRadioButtonPickerConfiguration.cs" />
+    <Compile Include="DataEditors\DotNetRadioButtonPicker\DotnetRadioButtonPickerDataEditor.cs" />
+    <Compile Include="DataEditors\DotNetRadioButtonPicker\DotNetRadioButtonPickerConfigurationEditor.cs" />
+    <Compile Include="DataEditors\DotNetTypeaheadListPicker\DotNetTypeaheadListPickerConfigurationEditor.cs" />
+    <Compile Include="DataEditors\DotNetTypeaheadListPicker\DotNetTypeaheadListPickerConfiguration.cs" />
+    <Compile Include="DataEditors\DotNetTypeaheadListPicker\DotNetTypeaheadPickerDataEditor.cs" />
+    <Compile Include="DataEditors\JsonRadioButtonPicker\JsonRadioButtonPickerConfigurationEditor.cs" />
+    <Compile Include="DataEditors\JsonRadioButtonPicker\JsonRadioButtonPickerConfiguration.cs" />
+    <Compile Include="DataEditors\JsonRadioButtonPicker\JsonRadioButtonPickerDataEditor.cs" />
+    <Compile Include="DataEditors\JsonTypeaheadListPicker\JsonTypeaheadListPickerConfigurationEditor.cs" />
+    <Compile Include="DataEditors\JsonTypeaheadListPicker\JsonTypeaheadListPickerConfiguration.cs" />
+    <Compile Include="DataEditors\JsonTypeaheadListPicker\JsonTypeaheadPickerDataEditor.cs" />
+    <Compile Include="DataEditors\LuceneCheckBoxPicker\LuceneCheckBoxPickerConfigurationEditor.cs" />
+    <Compile Include="DataEditors\LuceneCheckBoxPicker\LuceneCheckBoxPickerConfiguration.cs" />
+    <Compile Include="DataEditors\LuceneCheckBoxPicker\LuceneCheckBoxPickerDataEditor.cs" />
+    <Compile Include="DataEditors\LucenePrefetchListPicker\LucenePrefetchListPickerConfigurationEditor.cs" />
+    <Compile Include="DataEditors\LucenePrefetchListPicker\LucenePrefetchListPickerConfiguration.cs" />
+    <Compile Include="DataEditors\LucenePrefetchListPicker\LucenePrefetchListPickerDataEditor.cs" />
+    <Compile Include="DataEditors\LuceneRadioButtonPicker\LuceneRadioButtonPickerConfigurationEditor.cs" />
+    <Compile Include="DataEditors\LuceneRadioButtonPicker\LuceneRadioButtonPickerConfiguration.cs" />
+    <Compile Include="DataEditors\LuceneRadioButtonPicker\LuceneRadioButtonPickerDataEditor.cs" />
+    <Compile Include="DataEditors\LuceneTypeaheadPicker\LuceneTypeaheadListPickerConfigurationEditor.cs" />
+    <Compile Include="DataEditors\LuceneTypeaheadPicker\LuceneTypeaheadListPickerConfiguration.cs" />
+    <Compile Include="DataEditors\LuceneTypeaheadPicker\LuceneTypeaheadPickerDataEditor.cs" />
+    <Compile Include="DataEditors\RelationLabels\RelationLabelsConfigurationEditor.cs" />
+    <Compile Include="DataEditors\RelationLabels\RelationLabelsConfiguration.cs" />
+    <Compile Include="DataEditors\RelationLabels\RelationLabelsDataEditor.cs" />
+    <Compile Include="DataEditors\SqlCheckBoxPicker\SqlCheckBoxPickerConfigurationEditor.cs" />
+    <Compile Include="DataEditors\SqlCheckBoxPicker\SqlCheckBoxPickerConfiguration.cs" />
+    <Compile Include="DataEditors\SqlCheckBoxPicker\SqlCheckBoxPickerDataEditor.cs" />
+    <Compile Include="DataEditors\SqlLabels\SqlLabelsConfigurationEditor.cs" />
+    <Compile Include="DataEditors\SqlLabels\SqlLabelsConfiguration.cs" />
+    <Compile Include="DataEditors\SqlLabels\SqlLabelsDateEditor.cs" />
+    <Compile Include="DataEditors\SqlPagedListPicker\SqlPagedListPickerConfigurationEditor.cs" />
+    <Compile Include="DataEditors\SqlPagedListPicker\SqlPagedListPickerConfiguration.cs" />
+    <Compile Include="DataEditors\SqlPagedListPicker\SqlPagedListPickerEditorEditor.cs" />
+    <Compile Include="DataEditors\SqlPrefetchListPicker\SqlPrefetchListPickerConfigurationEditor.cs" />
+    <Compile Include="DataEditors\SqlPrefetchListPicker\SqlPrefetchListPickerConfiguration.cs" />
+    <Compile Include="DataEditors\SqlPrefetchListPicker\SqlPrefetchListPickerDataEditor.cs" />
+    <Compile Include="DataEditors\SqlRadioButtonPicker\SqlRadioButtonPickerConfigurationEditor.cs" />
+    <Compile Include="DataEditors\SqlRadioButtonPicker\SqlRadioButtonPickerConfiguration.cs" />
+    <Compile Include="DataEditors\SqlRadioButtonPicker\SqlRadioButtonPickerDataEditor.cs" />
+    <Compile Include="DataEditors\SqlTypeaheadListPicker\SqlTypeaheadListPickerConfigurationEditor.cs" />
+    <Compile Include="DataEditors\SqlTypeaheadListPicker\SqlTypeaheadListPickerConfiguration.cs" />
+    <Compile Include="DataEditors\SqlTypeaheadListPicker\SqlTypeaheadListPickerDataEditor.cs" />
     <Compile Include="EmbeddedResource\EmbeddedResource.cs" />
     <Compile Include="EmbeddedResource\EmbeddedResourceController.cs" />
     <Compile Include="EmbeddedResource\EmbeddedResourceHelper.cs" />
-    <Compile Include="EmbeddedResource\EmbeddedResourceStartup.cs" />
     <Compile Include="EmbeddedResource\EmbeddedResourceVirtualFile.cs" />
     <Compile Include="EmbeddedResource\EmbeddedResourceVirtualFileProvider.cs" />
     <Compile Include="EmbeddedResource\EmbeddedResourceVirtualFileWriter.cs" />
@@ -226,83 +365,79 @@
     <Compile Include="Extensions\IPublishedContentExtensions.cs" />
     <Compile Include="Extensions\UmbracoHelperExtensions.cs" />
     <Compile Include="Helper.cs" />
+    <Compile Include="nuPickerComposer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PropertyEditors\BasePropertyEditor.cs" />
-    <Compile Include="PropertyEditors\DotNetCheckBoxPicker\DotNetCheckBoxPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\DotNetCheckBoxPicker\DotNetCheckBoxPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\DotNetDropDownPicker\DotNetDropDownPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\DotNetDropDownPicker\DotNetDropDownPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\DotNetLabels\DotNetLabelsPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\DotNetLabels\DotLabelsPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\DotNetPagedListPicker\DotNetPagedListPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\DotNetPagedListPicker\DotNetPagedListPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\DotNetPrefetchListPicker\DotNetPrefetchListPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\DotNetPrefetchListPicker\DotNetPrefetchListPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\DotNetRadioButtonPicker\DotNetRadioButtonPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\DotNetRadioButtonPicker\DotNetRadioButtonPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\DotNetTypeaheadListPicker\DotNetTypeaheadListPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\DotNetTypeaheadListPicker\DotNetTypeaheadListPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\EnumLabels\EnumLabelsPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\EnumLabels\EnumLabelsPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\JsonLabels\JsonLabelsPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\JsonLabels\JsonLabelsPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\JsonPagedListPicker\JsonPagedListPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\JsonPagedListPicker\JsonPagedListPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\JsonTypeaheadListPicker\JsonTypeaheadListPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\JsonTypeaheadListPicker\JsonTypeaheadPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\JsonRadioButtonPicker\JsonRadioButtonPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\JsonRadioButtonPicker\JsonRadioButtonPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\JsonPrefetchListPicker\JsonPrefetchListPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\JsonPrefetchListPicker\JsonPrefetchListPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\JsonDropDownPicker\JsonDropDownPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\JsonDropDownPicker\JsonDropDownPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\JsonCheckBoxPicker\JsonCheckBoxPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\JsonCheckBoxPicker\JsonCheckBoxPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\EnumCheckBoxPicker\EnumCheckBoxPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\EnumCheckBoxPicker\EnumCheckBoxPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\EnumDropDownPicker\EnumDropDownPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\EnumDropDownPicker\EnumDropDownPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\EnumPrefetchListPicker\EnumPrefetchListPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\EnumPrefetchListPicker\EnumPrefetchListPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\EnumRadioButtonPicker\EnumRadioButtonPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\EnumRadioButtonPicker\EnumRadioButtonPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\LuceneCheckBoxPicker\LuceneCheckBoxPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\LuceneCheckBoxPicker\LuceneCheckBoxPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\LuceneDropDownPicker\LuceneDropDownPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\LuceneDropDownPicker\LuceneDropDownPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\LuceneLabels\LuceneLabelsPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\LuceneLabels\LuceneLabelsPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\LucenePagedListPicker\LucenePagedListPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\LucenePagedListPicker\LucenePagedListPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\LucenePrefetchListPicker\LucenePrefetchListPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\LucenePrefetchListPicker\LucenePrefetchListPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\LuceneRadioButtonPicker\LuceneRadioButtonPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\LuceneRadioButtonPicker\LuceneRadioButtonPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\LuceneTypeaheadPicker\LuceneTypeaheadListPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\LuceneTypeaheadPicker\LuceneTypeaheadPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\PropertyEditorConstants.cs" />
-    <Compile Include="PropertyEditors\SqlLabels\SqlLabelsPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\SqlLabels\SqlLabelsPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\SqlPagedListPicker\SqlPagedListPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\SqlPagedListPicker\SqlPagedListPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\SqlTypeaheadListPicker\SqlTypeaheadListPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\SqlTypeaheadListPicker\SqlTypeaheadListPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\XmlLabels\XmlLabelsPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\XmlLabels\XmlLabelsPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\XmlPagedListPicker\XmlPagedListPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\XmlPagedListPicker\XmlPagedListPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\XmlTypeaheadListPicker\XmlTypeaheadListPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\XmlTypeaheadListPicker\XmlTypeaheadListPickerPropertyEditor.cs" />
+    <Compile Include="DataEditors\BaseDataEditor.cs" />
+    <Compile Include="DataEditors\DotNetCheckBoxPicker\DotNetCheckBoxPickerConfiguration.cs" />
+    <Compile Include="DataEditors\DotNetCheckBoxPicker\DotNetCheckBoxPickerDataEditor.cs" />
+    <Compile Include="DataEditors\DotNetCheckBoxPicker\DotNetCheckBoxPickerConfigurationEditor.cs" />
+    <Compile Include="DataEditors\DotNetDropDownPicker\DotNetDropDownPickerConfiguration.cs" />
+    <Compile Include="DataEditors\DotNetDropDownPicker\DotNetDropDownPickerDataEditor.cs" />
+    <Compile Include="DataEditors\DotNetDropDownPicker\DotNetDropDownPickerConfigurationEditor.cs" />
+    <Compile Include="DataEditors\DotNetLabels\DotNetLabelsDataEditor.cs" />
+    <Compile Include="DataEditors\DotNetLabels\DotNetLabelsConfiguration.cs" />
+    <Compile Include="DataEditors\DotNetLabels\DotNetLabelsConfigurationEditor.cs" />
+    <Compile Include="DataEditors\DotNetPagedListPicker\DotNetPagedListPickerConfiguration.cs" />
+    <Compile Include="DataEditors\DotNetPagedListPicker\DotNetPagedListPickerDataEditor.cs" />
+    <Compile Include="DataEditors\DotNetPagedListPicker\DotNetPagedListPickerConfigurationEditor.cs" />
+    <Compile Include="DataEditors\DotNetPrefetchListPicker\DotNetPrefetchListPickerConfiguration.cs" />
+    <Compile Include="DataEditors\DotNetPrefetchListPicker\DotNetPrefetchListPickerDataEditor.cs" />
+    <Compile Include="DataEditors\DotNetPrefetchListPicker\DotNetPrefetchListPickerConfigurationEditor.cs" />
+    <Compile Include="DataEditors\EnumCheckBoxPicker\EnumCheckBoxPickerConfiguration.cs" />
+    <Compile Include="DataEditors\EnumCheckBoxPicker\EnumCheckBoxPickerDataEditor.cs" />
+    <Compile Include="DataEditors\EnumCheckBoxPicker\EnumCheckBoxPickerConfigurationEditor.cs" />
+    <Compile Include="DataEditors\EnumDropDownPicker\EnumDropDownPickerConfigurationEditor.cs" />
+    <Compile Include="DataEditors\EnumDropDownPicker\EnumDropDownPickerConfiguration.cs" />
+    <Compile Include="DataEditors\EnumDropDownPicker\EnumDropDownPickerDataEditor.cs" />
+    <Compile Include="DataEditors\EnumLabels\EnumLabelsConfigurationEditor.cs" />
+    <Compile Include="DataEditors\EnumLabels\EnumLabelsConfiguration.cs" />
+    <Compile Include="DataEditors\EnumLabels\EnumLabelsDataEditor.cs" />
+    <Compile Include="DataEditors\EnumPrefetchListPicker\EnumPrefetchListPickerConfigurationEditor.cs" />
+    <Compile Include="DataEditors\EnumPrefetchListPicker\EnumPrefetchListPickerConfiguration.cs" />
+    <Compile Include="DataEditors\EnumPrefetchListPicker\EnumPrefetchListPickerDataEditor.cs" />
+    <Compile Include="DataEditors\EnumRadioButtonPicker\EnumRadioButtonPickerConfigurationEditor.cs" />
+    <Compile Include="DataEditors\EnumRadioButtonPicker\EnumRadioButtonPickerConfiguration.cs" />
+    <Compile Include="DataEditors\EnumRadioButtonPicker\EnumRadioButtonPickerDataEditor.cs" />
+    <Compile Include="DataEditors\JsonCheckBoxPicker\JsonCheckBoxPickerConfiguration.cs" />
+    <Compile Include="DataEditors\JsonCheckBoxPicker\JsonCheckBoxPickerDataEditor.cs" />
+    <Compile Include="DataEditors\JsonCheckBoxPicker\JsonCheckBoxPickerConfigurationEditor.cs" />
+    <Compile Include="DataEditors\JsonDropDownPicker\JsonDropDownPickerConfigurationEditor.cs" />
+    <Compile Include="DataEditors\JsonDropDownPicker\JsonDropDownPickerConfiguration.cs" />
+    <Compile Include="DataEditors\JsonDropDownPicker\JsonDropDownPickerDataEditor.cs" />
+    <Compile Include="DataEditors\JsonLabels\JsonLabelsConfigurationEditor.cs" />
+    <Compile Include="DataEditors\JsonLabels\JsonLabelsConfiguration.cs" />
+    <Compile Include="DataEditors\JsonLabels\JsonLabelsDataEditor.cs" />
+    <Compile Include="DataEditors\JsonPagedListPicker\JsonPagedListPickerConfigurationEditor.cs" />
+    <Compile Include="DataEditors\JsonPagedListPicker\JsonPagedListPickerConfiguration.cs" />
+    <Compile Include="DataEditors\JsonPagedListPicker\JsonPagedListPickerDataEditor.cs" />
+    <Compile Include="DataEditors\JsonPrefetchListPicker\JsonPrefetchListPickerConfigurationEditor.cs" />
+    <Compile Include="DataEditors\JsonPrefetchListPicker\JsonPrefetchListPickerConfiguration.cs" />
+    <Compile Include="DataEditors\JsonPrefetchListPicker\JsonPrefetchListPickerDataEditor.cs" />
+    <Compile Include="DataEditors\LuceneDropDownPicker\LuceneDropDownPickerConfigurationEditor.cs" />
+    <Compile Include="DataEditors\LuceneDropDownPicker\LuceneDropDownPickerConfiguration.cs" />
+    <Compile Include="DataEditors\LuceneDropDownPicker\LuceneDropDownPickerDataEditor.cs" />
+    <Compile Include="DataEditors\LuceneLabels\LuceneLabelsConfigurationEditor.cs" />
+    <Compile Include="DataEditors\LuceneLabels\LuceneLabelsConfiguration.cs" />
+    <Compile Include="DataEditors\LuceneLabels\LuceneLabelsDataEditor.cs" />
+    <Compile Include="DataEditors\LucenePagedListPicker\LucenePagedListPickerConfigurationEditor.cs" />
+    <Compile Include="DataEditors\LucenePagedListPicker\LucenePagedListPickerConfiguration.cs" />
+    <Compile Include="DataEditors\LucenePagedListPicker\LucenePagedListPickerDataEditor.cs" />
+    <Compile Include="DataEditors\DataEditorConstants.cs" />
     <Compile Include="Picker.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="PickerPropertyValueConverter.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DataEditors\SqlDropDownPicker\SqlDropDownPickerConfigurationEditor.cs" />
+    <Compile Include="DataEditors\SqlDropDownPicker\SqlDropDownPickerConfiguration.cs" />
+    <Compile Include="DataEditors\SqlDropDownPicker\SqlDropDownPickerDataEditor.cs" />
+    <Compile Include="Shared\CustomLabel\CustomLabel.cs" />
+    <Compile Include="Shared\CustomLabel\CustomLabelApiController.cs" />
     <Compile Include="Shared\DataSource\DataSource.cs" />
+    <Compile Include="Shared\DataSource\DataSourceApiController.cs" />
     <Compile Include="Shared\DataSource\DataSourceApiResponse.cs" />
     <Compile Include="Shared\DataSource\IDataSource.cs" />
-    <Compile Include="Shared\DataSource\DataSourceApiController.cs" />
     <Compile Include="Shared\DotNetDataSource\DotNetDataSource.cs" />
     <Compile Include="Shared\DotNetDataSource\DotNetDataSourceApiController.cs" />
     <Compile Include="Shared\DotNetDataSource\DotNetDataSourceAttribute.cs" />
@@ -312,6 +447,7 @@
     <Compile Include="Shared\DotNetDataSource\IDotNetDataSourcePaged.cs" />
     <Compile Include="Shared\DotNetDataSource\IDotNetDataSourceTypeahead.cs" />
     <Compile Include="Shared\Editor\Editor.cs" />
+    <Compile Include="Shared\Editor\EditorDataItem.cs" />
     <Compile Include="Shared\EnumDataSource\EnumExtensions.cs" />
     <Compile Include="Shared\JsonDataSource\JsonDataSource.cs" />
     <Compile Include="Shared\LuceneDataSource\LuceneDataSource.cs" />
@@ -321,40 +457,17 @@
     <Compile Include="Shared\RelationDataSource\RelationDataSourceApiController.cs" />
     <Compile Include="Shared\RelationMapping\RelationMapping.cs" />
     <Compile Include="Shared\RelationMapping\RelationMappingComment.cs" />
-    <Compile Include="Shared\RelationMapping\RelationMappingEvent.cs" />
     <Compile Include="Shared\SaveFormat\SaveFormatPropertyValueEditor.cs" />
-    <Compile Include="PropertyEditors\RelationLabels\RelationLabelsPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\RelationLabels\RelationLabelsPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\SqlCheckBoxPicker\SqlCheckBoxPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\SqlCheckBoxPicker\SqlCheckBoxPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\SqlDropDownPicker\SqlDropDownPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\SqlDropDownPicker\SqlDropDownPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\SqlPrefetchListPicker\SqlPrefetchListPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\SqlPrefetchListPicker\SqlPrefetchListPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\SqlRadioButtonPicker\SqlRadioButtonPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\SqlRadioButtonPicker\SqlRadioButtonPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\XmlCheckBoxPicker\XmlCheckBoxPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\XmlCheckBoxPicker\XmlCheckBoxPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\XmlDropDownPicker\XmlDropDownPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\XmlDropDownPicker\XmlDropDownPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\XmlPrefetchListPicker\XmlPrefetchListPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\XmlPrefetchListPicker\XmlPrefetchListPickerPropertyEditor.cs" />
-    <Compile Include="PropertyEditors\XmlRadioButtonPicker\XmlRadioButtonPickerPreValueEditor.cs" />
-    <Compile Include="PropertyEditors\XmlRadioButtonPicker\XmlRadioButtonPickerPropertyEditor.cs" />
     <Compile Include="Shared\EnumDataSource\EnumDataSource.cs" />
     <Compile Include="Shared\EnumDataSource\EnumDataSourceApiController.cs" />
     <Compile Include="Shared\EnumDataSource\EnumDataSourceAttribute.cs" />
-    <Compile Include="Shared\Editor\EditorDataItem.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Shared\CustomLabel\CustomLabel.cs" />
-    <Compile Include="Shared\CustomLabel\CustomLabelApiController.cs" />
     <Compile Include="Shared\RelationMapping\RelationMappingApiController.cs" />
     <Compile Include="Shared\SaveFormat\SaveFormat.cs" />
     <Compile Include="Shared\SqlDataSource\SqlDataSource.cs" />
     <Compile Include="Shared\SqlDataSource\SqlDataSourceApiController.cs" />
     <Compile Include="Shared\TypeaheadListPicker\TypeaheadListPicker.cs" />
-    <Compile Include="Shared\XmlDataSource\XmlDataSource.cs" />
+    <Compile Include="Validators\RegexValidator.cs" />
+    <Compile Include="Validators\RequiredValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -364,13 +477,10 @@
     <EmbeddedResource Include="Shared\SaveFormat\SaveFormatConfigController.js" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Shared\CheckBoxPicker\CheckBoxPickerEditor.html" />
     <EmbeddedResource Include="Shared\PrefetchListPicker\PrefetchListPickerConfig.html" />
     <EmbeddedResource Include="Shared\ListPicker\ListPickerEditor.css" />
     <EmbeddedResource Include="Shared\PrefetchListPicker\PrefetchListPickerEditor.html" />
     <EmbeddedResource Include="Shared\PrefetchListPicker\PrefetchListPickerEditorController.js" />
-    <EmbeddedResource Include="Shared\XmlDataSource\XmlDataSourceConfig.html" />
-    <EmbeddedResource Include="Shared\XmlDataSource\XmlDataSourceConfigController.js" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Shared\HiddenConstant\HiddenConstantConfig.html" />
@@ -378,13 +488,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Shared\DropDownPicker\DropDownPickerEditor.html" />
     <EmbeddedResource Include="Shared\DropDownPicker\DropDownPickerEditorController.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Shared\CustomLabel\CustomLabelConfig.html" />
-    <EmbeddedResource Include="Shared\CustomLabel\CustomLabelConfigController.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Shared\CheckBoxPicker\CheckBoxPickerEditorController.js" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Shared\SqlDataSource\SqlDataSourceConfig.html" />
@@ -424,24 +527,6 @@
     <EmbeddedResource Include="Shared\PropertyEditor\PropertyEditorConfig.css" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Shared\RelationDataSource\RelationDataSourceConfig.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Shared\RelationDataSource\RelationDataSourceConfigController.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Shared\DataSource\DataSourceResource.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Shared\TypeaheadListPicker\TypeaheadListPickerEditor.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Shared\TypeaheadListPicker\TypeaheadListPickerEditorController.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Shared\TypeaheadListPicker\TypeaheadListPickerEditorDirectives.js" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Shared\ListPicker\ListPickerEditorDirectives.js" />
   </ItemGroup>
   <ItemGroup>
@@ -454,13 +539,7 @@
     <EmbeddedResource Include="Shared\ListPicker\ListPickerSelectedPartial.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Shared\TypeaheadListPicker\TypeaheadListPickerConfig.html" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Shared\RelationMapping\RelationMappingResource.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Shared\Editor\EditorResource.js" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Shared\JsonDataSource\JsonDataSourceConfig.html" />
@@ -471,16 +550,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Shared\LuceneDataSource\LuceneDataSourceConfig.html" />
     <EmbeddedResource Include="Shared\LuceneDataSource\LuceneDataSourceConfigController.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Shared\DotNetDataSource\DotNetDataSourceConfig.html" />
-    <EmbeddedResource Include="Shared\DotNetDataSource\DotNetDataSourceConfigController.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Shared\CheckBoxPicker\CheckBoxPickerConfig.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Shared\CheckBoxPicker\CheckBoxPickerEditor.css" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Shared\Labels\LabelsConfigController.js" />
@@ -499,6 +568,24 @@
   <ItemGroup>
     <EmbeddedResource Include="Shared\PagedListPicker\PagedListPickerEditor.css" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\CheckBoxPicker\CheckBoxPickerConfig.html" />
+    <EmbeddedResource Include="Shared\CheckBoxPicker\CheckBoxPickerEditor.css" />
+    <EmbeddedResource Include="Shared\CheckBoxPicker\CheckBoxPickerEditor.html" />
+    <EmbeddedResource Include="Shared\CheckBoxPicker\CheckBoxPickerEditorController.js" />
+    <EmbeddedResource Include="Shared\CustomLabel\CustomLabelConfig.html" />
+    <EmbeddedResource Include="Shared\CustomLabel\CustomLabelConfigController.js" />
+    <EmbeddedResource Include="Shared\DataSource\DataSourceResource.js" />
+    <EmbeddedResource Include="Shared\DotNetDataSource\DotNetDataSourceConfig.html" />
+    <EmbeddedResource Include="Shared\DotNetDataSource\DotNetDataSourceConfigController.js" />
+    <EmbeddedResource Include="Shared\Editor\EditorResource.js" />
+    <EmbeddedResource Include="Shared\RelationDataSource\RelationDataSourceConfig.html" />
+    <EmbeddedResource Include="Shared\RelationDataSource\RelationDataSourceConfigController.js" />
+    <EmbeddedResource Include="Shared\TypeaheadListPicker\TypeaheadListPickerConfig.html" />
+    <EmbeddedResource Include="Shared\TypeaheadListPicker\TypeaheadListPickerEditor.html" />
+    <EmbeddedResource Include="Shared\TypeaheadListPicker\TypeaheadListPickerEditorController.js" />
+    <EmbeddedResource Include="Shared\TypeaheadListPicker\TypeaheadListPickerEditorDirectives.js" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
@@ -510,7 +597,9 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+    <Error Condition="!Exists('..\packages\Umbraco.SqlServerCE.4.0.0.1\build\Umbraco.SqlServerCE.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Umbraco.SqlServerCE.4.0.0.1\build\Umbraco.SqlServerCE.targets'))" />
   </Target>
+  <Import Project="..\packages\Umbraco.SqlServerCE.4.0.0.1\build\Umbraco.SqlServerCE.targets" Condition="Exists('..\packages\Umbraco.SqlServerCE.4.0.0.1\build\Umbraco.SqlServerCE.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -1,4 +1,7 @@
-﻿namespace nuPickers.Shared.Editor
+﻿using System.Web.UI;
+using Umbraco.Core.PropertyEditors;
+
+namespace nuPickers.Shared.Editor
 {
     using DataSource;
     using nuPickers.Shared.CustomLabel;
@@ -7,9 +10,20 @@
     using System.Collections.Generic;
     using System.Linq;
     using Umbraco.Core;
+    using Umbraco.Core.Composing;
+    using Umbraco.Web;
 
     internal static class Editor
     {
+
+        public static IFactory Factory
+        => Umbraco.Core.Composing.Current.Factory;
+
+        public static IUmbracoComponentRenderer UmbracoComponentRenderer
+                 => Factory.GetInstance<IUmbracoComponentRenderer>();
+
+
+
         /// <summary>
         /// Get a collection of all the (key/label) items for a picker (with optional typeahead)
         /// </summary>
@@ -20,11 +34,11 @@
         /// <param name="customLabelMacro">an optional macro to use for custom labels</param>
         /// <param name="typeahead">optional typeahead text to filter down on items returned</param>
         /// <returns>a collection of <see cref="EditorDataItem"/></returns>
-        internal static IEnumerable<EditorDataItem> GetEditorDataItems(                                                        
+        internal static IEnumerable<EditorDataItem> GetEditorDataItems(
                                                         int currentId,
                                                         int parentId,
                                                         string propertyAlias,
-                                                        IDataSource dataSource, 
+                                                        IDataSource dataSource,
                                                         string customLabelMacro,
                                                         string typeahead = null)
         {
@@ -36,7 +50,7 @@
 
                 if (!string.IsNullOrWhiteSpace(customLabelMacro))
                 {
-                    editorDataItems = new CustomLabel(customLabelMacro, currentId, propertyAlias).ProcessEditorDataItems(editorDataItems);
+                    editorDataItems = new CustomLabel(customLabelMacro, currentId, propertyAlias, UmbracoComponentRenderer).ProcessEditorDataItems(editorDataItems);
                 }
 
                 // if the datasource didn't handle the typeahead text, then it needs to be done here (post custom label processing ?)
@@ -75,7 +89,7 @@
 
                 if (!string.IsNullOrWhiteSpace(customLabelMacro))
                 {
-                    editorDataItems = new CustomLabel(customLabelMacro, currentId, propertyAlias).ProcessEditorDataItems(editorDataItems);
+                    editorDataItems = new CustomLabel(customLabelMacro, currentId, propertyAlias, UmbracoComponentRenderer).ProcessEditorDataItems(editorDataItems);
                 }
 
                 // ensure sort order matches order of keys supplied
@@ -112,14 +126,14 @@
             if (dataSource != null)
             {
                 editorDataItems = dataSource.GetEditorDataItems(
-                                                currentId, 
-                                                parentId, 
-                                                new PageMarker(itemsPerPage, page), 
+                                                currentId,
+                                                parentId,
+                                                new PageMarker(itemsPerPage, page),
                                                 out total);
 
                 if (!string.IsNullOrWhiteSpace(customLabelMacro))
                 {
-                    editorDataItems = new CustomLabel(customLabelMacro, currentId, propertyAlias).ProcessEditorDataItems(editorDataItems);
+                    editorDataItems = new CustomLabel(customLabelMacro, currentId, propertyAlias, UmbracoComponentRenderer).ProcessEditorDataItems(editorDataItems);
                 }
             }
 

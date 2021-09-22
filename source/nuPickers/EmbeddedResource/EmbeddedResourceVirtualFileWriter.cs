@@ -13,6 +13,12 @@
     /// </summary>
     public sealed class EmbeddedResourceVirtualFileWriter : IVirtualFileWriter
     {
+        private readonly IProfilingLogger _logger;
+        public EmbeddedResourceVirtualFileWriter(  IProfilingLogger profilingLogger)
+        {
+            _logger = profilingLogger;
+        }
+
         public bool WriteToStream(BaseCompositeFileProcessingProvider provider, StreamWriter sw, IVirtualFile vf, ClientDependencyType type, string origUrl, HttpContextBase http)
         {
             try
@@ -27,7 +33,7 @@
             }
             catch (Exception exception)
             {
-                LogHelper.Warn(typeof(EmbeddedResourceVirtualFileWriter), exception.Message);
+                _logger.Info<EmbeddedResourceVirtualFileWriter>(exception.Message);
 
                 return false;
             }

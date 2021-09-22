@@ -173,3 +173,4 @@ package/nuPickers*.zip
 # Exclude local test sites
 www*/
 source/nuWebTestSite/
+source/.idea/

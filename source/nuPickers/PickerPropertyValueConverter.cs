@@ -1,25 +1,38 @@
-﻿namespace nuPickers
+﻿using System;
+using nuPickers.DataEditors;
+using Umbraco.Core;
+using Umbraco.Web.Composing;
+
+namespace nuPickers
 {
-    using nuPickers.PropertyEditors;
     using System.Linq;
     using Umbraco.Core.Models;
     using Umbraco.Core.Models.PublishedContent;
     using Umbraco.Core.PropertyEditors;
     using Umbraco.Web;
 
-    [PropertyValueType(typeof(Picker))]
-    [PropertyValueCache(PropertyCacheValue.All, PropertyCacheLevel.Content)]
     public class PickerPropertyValueConverter : PropertyValueConverterBase
     {
+        public PickerPropertyValueConverter()
+        {
+        }
+
         /// <summary>
         /// This is a generic converter for all nuPicker Picker PropertyEditors
         /// </summary>
         /// <param name="publishedPropertyType"></param>
         /// <returns></returns>
-        public override bool IsConverter(PublishedPropertyType publishedPropertyType)
+        public override bool IsConverter(IPublishedPropertyType propertyType)
         {
-            return PickerPropertyValueConverter.IsPicker(publishedPropertyType.PropertyEditorAlias);
+            return IsPicker(propertyType.EditorAlias);
         }
+
+        public override bool? IsValue(object value, PropertyValueLevel level)
+        {
+            // otherwise use the old magic null & string comparisons
+            return value != null && (!(value is string) || string.IsNullOrWhiteSpace((string) value) == false);
+        }
+
 
         /// <summary>
         /// Helper to check to see if the supplied propertyEditorAlias corresponds with a nuPicker Picker
@@ -28,44 +41,58 @@
         /// <returns></returns>
         public static bool IsPicker(string propertyEditorAlias)
         {
-            return new string[] { 
-                        PropertyEditorConstants.DotNetCheckBoxPickerAlias,
-                        PropertyEditorConstants.DotNetDropDownPickerAlias,
-                        PropertyEditorConstants.DotNetPagedListPickerAlias,
-                        PropertyEditorConstants.DotNetPrefetchListPickerAlias,
-                        PropertyEditorConstants.DotNetRadioButtonPickerAlias,
-                        PropertyEditorConstants.DotNetTypeaheadListPickerAlias,
-                        PropertyEditorConstants.EnumCheckBoxPickerAlias,
-                        PropertyEditorConstants.EnumDropDownPickerAlias,
-                        PropertyEditorConstants.EnumPrefetchListPickerAlias,
-                        PropertyEditorConstants.EnumRadioButtonPickerAlias,
-                        PropertyEditorConstants.JsonCheckBoxPickerAlias,
-                        PropertyEditorConstants.JsonDropDownPickerAlias,
-                        PropertyEditorConstants.JsonPagedListPickerAlias,
-                        PropertyEditorConstants.JsonPrefetchListPickerAlias,
-                        PropertyEditorConstants.JsonRadioButtonPickerAlias,
-                        PropertyEditorConstants.JsonTypeaheadListPickerAlias,
-                        PropertyEditorConstants.LuceneCheckBoxPickerAlias,
-                        PropertyEditorConstants.LuceneDropDownPickerAlias,
-                        PropertyEditorConstants.LucenePagedListPickerAlias,
-                        PropertyEditorConstants.LucenePrefetchListPickerAlias,
-                        PropertyEditorConstants.LuceneRadioButtonPickerAlias,
-                        PropertyEditorConstants.LuceneTypeaheadListPickerAlias,
-                        PropertyEditorConstants.SqlCheckBoxPickerAlias,
-                        PropertyEditorConstants.SqlDropDownPickerAlias,
-                        PropertyEditorConstants.SqlPagedListPickerAlias,
-                        PropertyEditorConstants.SqlPrefetchListPickerAlias,
-                        PropertyEditorConstants.SqlRadioButtonPickerAlias,
-                        PropertyEditorConstants.SqlTypeaheadListPickerAlias,
-                        PropertyEditorConstants.XmlCheckBoxPickerAlias,
-                        PropertyEditorConstants.XmlDropDownPickerAlias,
-                        PropertyEditorConstants.XmlPagedListPickerAlias,
-                        PropertyEditorConstants.XmlPrefetchListPickerAlias,
-                        PropertyEditorConstants.XmlRadioButtonPickerAlias,
-                        PropertyEditorConstants.XmlTypeaheadListPickerAlias
-                    }
-                 .Contains(propertyEditorAlias);
+            return new string[]
+                {
+                    DataEditorConstants.DotNetCheckBoxPickerAlias,
+                    DataEditorConstants.DotNetDropDownPickerAlias,
+                    DataEditorConstants.DotNetPagedListPickerAlias,
+                    DataEditorConstants.DotNetPrefetchListPickerAlias,
+                    DataEditorConstants.DotNetRadioButtonPickerAlias,
+                    DataEditorConstants.DotNetTypeaheadListPickerAlias,
+                    DataEditorConstants.EnumCheckBoxPickerAlias,
+                    DataEditorConstants.EnumDropDownPickerAlias,
+                    DataEditorConstants.EnumPrefetchListPickerAlias,
+                    DataEditorConstants.EnumRadioButtonPickerAlias,
+                    DataEditorConstants.JsonCheckBoxPickerAlias,
+                    DataEditorConstants.JsonDropDownPickerAlias,
+                    DataEditorConstants.JsonPagedListPickerAlias,
+                    DataEditorConstants.JsonPrefetchListPickerAlias,
+                    DataEditorConstants.JsonRadioButtonPickerAlias,
+                    DataEditorConstants.JsonTypeaheadListPickerAlias,
+                    DataEditorConstants.LuceneCheckBoxPickerAlias,
+                    DataEditorConstants.LuceneDropDownPickerAlias,
+                    DataEditorConstants.LucenePagedListPickerAlias,
+                    DataEditorConstants.LucenePrefetchListPickerAlias,
+                    DataEditorConstants.LuceneRadioButtonPickerAlias,
+                    DataEditorConstants.LuceneTypeaheadListPickerAlias,
+                    DataEditorConstants.SqlCheckBoxPickerAlias,
+                    DataEditorConstants.SqlDropDownPickerAlias,
+                    DataEditorConstants.SqlPagedListPickerAlias,
+                    DataEditorConstants.SqlPrefetchListPickerAlias,
+                    DataEditorConstants.SqlRadioButtonPickerAlias,
+                    DataEditorConstants.SqlTypeaheadListPickerAlias,
+                    DataEditorConstants.XmlCheckBoxPickerAlias,
+                    DataEditorConstants.XmlDropDownPickerAlias,
+                    DataEditorConstants.XmlPagedListPickerAlias,
+                    DataEditorConstants.XmlPrefetchListPickerAlias,
+                    DataEditorConstants.XmlRadioButtonPickerAlias,
+                    DataEditorConstants.XmlTypeaheadListPickerAlias
+                }
+                .Contains(propertyEditorAlias);
         }
+
+        public override object ConvertIntermediateToXPath(IPublishedElement owner, IPublishedPropertyType propertyType,
+            PropertyCacheLevel referenceCacheLevel, object inter, bool preview)
+        {
+            // source should come from ConvertSource and be a string (or null) already
+            return inter;
+        }
+
+        public override PropertyCacheLevel GetPropertyCacheLevel(IPublishedPropertyType propertyType)
+            => PropertyCacheLevel.Element;
+
+        public override Type GetPropertyValueType(IPublishedPropertyType propertyType)
+            => typeof(Picker);
 
         /// <summary>
         /// WARNING: currently PropertyValueConverters are unaware of their context, as such this should only be used by the current page
@@ -75,51 +102,48 @@
         /// <param name="source">expected as a string</param>
         /// <param name="preview"></param>
         /// <returns></returns>
-        public override object ConvertSourceToObject(PublishedPropertyType publishedPropertyType, object source, bool preview)
+        public override object ConvertIntermediateToObject(IPublishedElement owner, IPublishedPropertyType propertyType,
+            PropertyCacheLevel referenceCacheLevel, object inter, bool preview)
         {
             int contextId = -1;
             int parentId = -1;
-            IPublishedContent assignedContentItem;
 
-            try
-            {
-                assignedContentItem = new UmbracoHelper(UmbracoContext.Current).AssignedContentItem;
-            }
-            catch
-            {
-                assignedContentItem = null;
-            }
+            IPublishedContent assignedContentItem = owner as IPublishedContent;
 
             if (assignedContentItem != null)
             {
                 contextId = assignedContentItem.Id;
-
-                if (assignedContentItem.Parent != null)
-                {
-                    parentId = assignedContentItem.Parent.Id;
-                }
+                var pathIds = assignedContentItem.Path?.Split(new char[] { ',' }).Select(id => Convert.ToInt32(id)).ToArray();
+                parentId = pathIds.Count() >= 2 ? pathIds[pathIds.Count() - 2] : parentId;
             }
 
             return new Picker(
-                        contextId, 
-                        parentId,
-                        publishedPropertyType.PropertyTypeAlias, 
-                        publishedPropertyType.DataTypeId, 
-                        publishedPropertyType.PropertyEditorAlias, 
-                        source);
+                contextId,
+                parentId,
+                propertyType.EditorAlias,
+                propertyType.DataType.Id,
+                propertyType.Alias,
+                inter);
         }
 
         /// <summary>
-        /// Override the default behavour which duck types (converting a string that looks like a number into a number)
+        /// Override the default behav our which duck types (converting a string that looks like a number into a number)
         /// to always return a string (or null)
         /// </summary>
         /// <param name="propertyType"></param>
         /// <param name="source">expected as a string</param>
         /// <param name="preview">flag to indicate if in preview mode</param>
         /// <returns>source as a string, or null</returns>
-        public override object ConvertDataToSource(PublishedPropertyType propertyType, object source, bool preview)
+        public override object ConvertSourceToIntermediate(IPublishedElement owner, IPublishedPropertyType propertyType,
+            object source,
+            bool preview)
         {
-            return source as string;
+            var attempt = source.TryConvertTo<string>();
+
+            if (attempt.Success)
+                return attempt.Result;
+
+            return null;
         }
     }
 }

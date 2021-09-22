@@ -15,8 +15,8 @@
   <!-- SHARED PROPERTIES -->
   <PropertyGroup>
     <PackageName>nuPickers</PackageName>
-    <MinUmbracoVersion>7.2.3</MinUmbracoVersion>
-    <Readme>nuPickers is a collection of Umbraco v7 Property Editors</Readme>
+    <MinUmbracoVersion>8.1.1</MinUmbracoVersion>
+    <Readme>nuPickers is a collection of Umbraco v8 Property Editors</Readme>
     <AuthorName>The nuPickers Team</AuthorName>
     <AuthorUrl>https://github.com/uComponents/nuPickers/graphs/contributors</AuthorUrl>
     <PackageLicenseName>MIT license</PackageLicenseName>

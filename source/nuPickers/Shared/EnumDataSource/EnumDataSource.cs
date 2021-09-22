@@ -31,7 +31,7 @@
             var editorDataItems = this.GetEditorDataItems();
 
             total = editorDataItems.Count();
-            
+
             return editorDataItems.Skip(pageMarker.Skip).Take(pageMarker.Take);
         }
 
@@ -50,7 +50,7 @@
 
                 foreach(CustomAttributeData customAttributeData in CustomAttributeData.GetCustomAttributes(fieldInfo))
                 {
-                    if (customAttributeData.Constructor.DeclaringType != null 
+                    if (customAttributeData.Constructor.DeclaringType != null
                         && customAttributeData.Constructor.DeclaringType.Name == "EnumDataSourceAttribute"
                         && customAttributeData.NamedArguments != null)
                     {

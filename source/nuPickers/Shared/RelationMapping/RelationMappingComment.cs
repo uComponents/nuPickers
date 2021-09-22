@@ -1,4 +1,6 @@
-﻿namespace nuPickers.Shared.RelationMapping
+﻿using Umbraco.Core.Composing;
+
+namespace nuPickers.Shared.RelationMapping
 {
     using System;
     using System.Linq;
@@ -36,27 +38,27 @@
             PropertyType propertyType = null;
 
             // is there a better way of getting the property types for an id without having to check content / media / members independently ?
-            var content = ApplicationContext.Current.Services.ContentService.GetById(contextId);
+            var content = Current.Services.ContentService.GetById(contextId);
 
             if (content != null)
             {
-                propertyType = content.PropertyTypes.SingleOrDefault(x => x.Alias == propertyAlias);
+                propertyType = content.Properties.SingleOrDefault(x => x.Alias == propertyAlias).PropertyType;
             }
             else
             {
-                var media = ApplicationContext.Current.Services.MediaService.GetById(contextId);
+                var media = Current.Services.MediaService.GetById(contextId);
 
                 if (media != null)
                 {
-                    propertyType = media.PropertyTypes.SingleOrDefault(x => x.Alias == propertyAlias);
+                    propertyType = media.Properties.SingleOrDefault(x => x.Alias == propertyAlias).PropertyType;
                 }
                 else
                 {
-                    var member = ApplicationContext.Current.Services.MemberService.GetById(contextId);
+                    var member = Current.Services.MemberService.GetById(contextId);
 
                     if (member != null)
                     {
-                        propertyType = member.PropertyTypes.SingleOrDefault(x => x.Alias == propertyAlias);
+                        propertyType = member.Properties.SingleOrDefault(x => x.Alias == propertyAlias).PropertyType;
                     }
                 }
             }
@@ -65,7 +67,7 @@
             {
                 this.PropertyAlias = propertyAlias;
                 this.PropertyTypeId = propertyType.Id;
-                this.DataTypeDefinitionId = propertyType.DataTypeDefinitionId;
+                this.DataTypeDefinitionId = propertyType.DataTypeId;
             }
             else
             {

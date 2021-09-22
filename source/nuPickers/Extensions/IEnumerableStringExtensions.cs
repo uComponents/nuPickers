@@ -1,4 +1,7 @@
-﻿namespace nuPickers.Extensions
+﻿using Umbraco.Web.Composing;
+using Umbraco.Core.Models.PublishedContent;
+
+namespace nuPickers.Extensions
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -7,6 +10,7 @@
 
     internal static class IEnumerableStringExtensions
     {
+
         /// <summary>
         /// TODO: migrate out of Picker obj
         /// parse a collection of strings, and attempt to return a collection of IPublishedContent
@@ -15,11 +19,13 @@
         /// <returns>a collection (populated, or empty)</returns>
         internal static IEnumerable<IPublishedContent> AsPublishedContent(this IEnumerable<string> keys)
         {
-            UmbracoHelper umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
 
-            return keys
-                    .Select(x => umbracoHelper.GetPublishedContent(x))
+
+
+                return keys
+                    .Select(x =>  Current.UmbracoHelper.Content(x))
                     .Where(x => x != null);
+
         }
     }
 }

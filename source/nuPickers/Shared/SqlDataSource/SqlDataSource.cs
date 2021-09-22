@@ -1,4 +1,6 @@
-﻿namespace nuPickers.Shared.SqlDataSource
+﻿using NPoco;
+
+namespace nuPickers.Shared.SqlDataSource
 {
     using DataSource;
     using nuPickers.Shared.Editor;
@@ -54,7 +56,7 @@
                 string sql = Regex.Replace(this.SqlExpression, "\n|\r", " ")
                              .Replace("@contextId", "@0")
                              .Replace("@typeahead", "@1");
-                
+
                 if (this.SqlExpression.Contains("@typeahead")) // WARNING: not a perfect check !
                 {
                     this.handledTypeahead = true;

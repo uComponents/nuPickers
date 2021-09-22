@@ -1,4 +1,6 @@
 ﻿
+using nuPickers.EmbeddedResource;
+
 namespace nuPickers
 {
     using System;
@@ -27,8 +29,8 @@ namespace nuPickers
                 var pos = directoryName.LastIndexOf("\\", StringComparison.Ordinal);
                 var folder = directoryName.Substring(pos + 1);
 
-                string resourceName;
-                var resourceStream = EmbeddedResourceHelper.GetResource("nuPickers.Shared." + folder + "." + fileName, out resourceName);
+                string resourceName = EmbeddedResourceHelper.GetResourceNameFromPath("nuPickers.Shared." + folder + "." + fileName);
+                var resourceStream = EmbeddedResourceHelper.GetResource("nuPickers.Shared." + folder + "." + fileName);
 
                 if (resourceStream != null)
                 {

@@ -1,7 +1,7 @@
 ﻿namespace nuPickers.Shared.DataSource
 {
     using Newtonsoft.Json.Linq;
-    using nuPickers.Shared.Editor;
+    using Editor;
     using System.Linq;
     using System.Web.Http;
     using Umbraco.Web.Editors;
@@ -12,7 +12,7 @@
     using LuceneDataSource = LuceneDataSource.LuceneDataSource;
     using RelationDataSource = RelationDataSource.RelationDataSource;
     using SqlDataSource = SqlDataSource.SqlDataSource;
-    using XmlDataSource = XmlDataSource.XmlDataSource;
+    //using XmlDataSource = XmlDataSource.XmlDataSource;
 
     [PluginController("nuPickers")]
     public class DataSourceApiController : UmbracoAuthorizedJsonController
@@ -48,7 +48,7 @@
                 case "LuceneDataSourceApi": dataSource = ((JObject)data.config.dataSource).ToObject<LuceneDataSource>(); break;
                 case "RelationDataSourceApi": dataSource = ((JObject)data.config.dataSource).ToObject<RelationDataSource>(); break;
                 case "SqlDataSourceApi": dataSource = ((JObject)data.config.dataSource).ToObject<SqlDataSource>(); break;
-                case "XmlDataSourceApi": dataSource = ((JObject)data.config.dataSource).ToObject<XmlDataSource>(); break;
+                //case "XmlDataSourceApi": dataSource = ((JObject)data.config.dataSource).ToObject<XmlDataSource>(); break;
             }
 
             if (dataSource != null)
@@ -91,7 +91,7 @@
                                                         dataSource,
                                                         (string)data.config.customLabel,
                                                         (int)data.config.pagedListPicker.itemsPerPage,
-                                                        (int)data.page, 
+                                                        (int)data.page,
                                                         out total);
 
                     response.Total = total;

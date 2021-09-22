@@ -13,8 +13,8 @@
         internal const string RESOURCE_PREFIX = "nuPickers.Shared.";
 
         /// <summary>
-        /// Custom extension so ClientDependency framework can delegate handling back to nuPickers for the embedded content 
+        /// Custom extension so ClientDependency framework can delegate handling back to nuPickers for the embedded content
         /// </summary>
-        internal const string FILE_EXTENSION = ".nu";      
+        internal const string FILE_EXTENSION = ".nu";
     }
 }

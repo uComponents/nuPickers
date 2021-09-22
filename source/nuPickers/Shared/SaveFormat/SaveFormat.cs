@@ -1,6 +1,10 @@
-﻿namespace nuPickers.Shared.SaveFormat
+﻿using ClientDependency.Core.Logging;
+using nuPickers.Shared.Editor;
+using Umbraco.Core.PropertyEditors;
+using Umbraco.Web.Composing;
+
+namespace nuPickers.Shared.SaveFormat
 {
-    using Editor;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
     using System.Collections.Generic;
@@ -9,6 +13,8 @@
 
     internal static class SaveFormat
     {
+
+
         /// <summary>
         /// Ignore the specified saved format, and try and restore collection directly from the supplied string value
         /// </summary>
@@ -30,7 +36,11 @@
         {
             editorDataItems = SaveFormat.GetKeyValuePairs(value)
                                         .Where(x => x.Value != null)
-                                        .Select(x => new EditorDataItem() { Key = x.Key, Label = x.Value });
+                                        .Select(x => new EditorDataItem()
+                                        {
+                                            Key=x.Key,
+                                            Label = x.Value
+                                        });
 
             return editorDataItems.Count() > 0;
         }

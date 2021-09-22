@@ -1,4 +1,6 @@
-﻿namespace nuPickers.Shared.DataSource
+﻿using Umbraco.Core.PropertyEditors;
+
+namespace nuPickers.Shared.DataSource
 {
     using nuPickers.Shared.Editor;
     using Paging;

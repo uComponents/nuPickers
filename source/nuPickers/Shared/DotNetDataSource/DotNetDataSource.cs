@@ -11,6 +11,11 @@
 
     public class DotNetDataSource : IDataSource
     {
+        private readonly IProfilingLogger _logger;
+        public DotNetDataSource(  IProfilingLogger profilingLogger)
+        {
+            _logger = profilingLogger;
+        }
         private bool handledTypeahead = false;
 
         public string AssemblyName { get; set; }
@@ -136,7 +141,8 @@
                 }
                 else
                 {
-                    LogHelper.Warn(typeof(DotNetDataSource), "Unexpected PropertyType, " + propertyInfo.Name + " is not a string");
+                    _logger.Info<DotNetDataSource>(  "Unexpected PropertyType, {PropertyName} is not a string)",propertyInfo.Name );
+
                 }
             }
         }

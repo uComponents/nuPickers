@@ -12,7 +12,7 @@
         [HttpGet]
         public IEnumerable<object> GetRelationTypes()
         {
-            return ApplicationContext.Services.RelationService.GetAllRelationTypes()
+            return Services.RelationService.GetAllRelationTypes()
                         .OrderBy(x => x.Name)
                         .Select(x => new
                         {

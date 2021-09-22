@@ -16,10 +16,11 @@ IF NOT EXIST "%toolsFolder%" (
 IF NOT EXIST "%toolsFolder%vswhere.exe" (
 	ECHO vswhere not found - fetching now
 	nuget install vswhere -Version 2.3.2 -Source nuget.org -OutputDirectory tools
+	FOR /f "delims=" %%A in ('dir "%toolsFolder%vswhere.*" /b') DO SET "vswhereExePath=%toolsFolder%%%A"
+  MOVE "%vswhereExePath%tools\vswhere.exe" "%toolsFolder%vswhere.exe"
 )
 
-FOR /f "delims=" %%A in ('dir "%toolsFolder%vswhere.*" /b') DO SET "vswhereExePath=%toolsFolder%%%A\"
-MOVE "%vswhereExePath%tools\vswhere.exe" "%toolsFolder%vswhere.exe"
+
 
 for /f "usebackq tokens=1* delims=: " %%i in (`"%CD%\tools\vswhere.exe" -latest -requires Microsoft.Component.MSBuild`) do (
 	if /i "%%i"=="installationPath" set InstallDir=%%j
@@ -31,7 +32,7 @@ ECHO.
 ECHO Visual Studio is installed in: %InstallDir%
 
 CALL "%InstallDir%\MSBuild\15.0\Bin\amd64\MsBuild.exe" nupickers.proj %~1
-
+//CALL "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin\amd64\MsBuild.exe" nupickers.proj %~1
 @IF %ERRORLEVEL% NEQ 0 GOTO err
 @EXIT /B 0
 :err

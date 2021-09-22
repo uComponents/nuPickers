@@ -1,4 +1,6 @@
-﻿namespace nuPickers.Extensions
+﻿using Umbraco.Core.Models.PublishedContent;
+
+namespace nuPickers.Extensions
 {
     using System.Linq;
     using Umbraco.Core.Models;
@@ -13,10 +15,10 @@
         /// <returns>A <see cref="Picker"/> or null</returns>
         public static Picker GetPicker(this IPublishedContent publishedContent, string propertyAlias)
         {
-            var propertyType = publishedContent.ContentType.PropertyTypes.SingleOrDefault(x => x.PropertyTypeAlias == propertyAlias);
+            var propertyType = publishedContent.ContentType.PropertyTypes.SingleOrDefault(x => x.EditorAlias == propertyAlias);
             if (propertyType != null)
             {
-                if (PickerPropertyValueConverter.IsPicker(propertyType.PropertyEditorAlias))
+                if (PickerPropertyValueConverter.IsPicker(propertyType.EditorAlias))
                 {
                     return new Picker(publishedContent.Id, propertyAlias);
                 }

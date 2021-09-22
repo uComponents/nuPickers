@@ -11,6 +11,12 @@
 
     public class JsonDataSource : IDataSource
     {
+        private readonly IProfilingLogger _logger;
+        public JsonDataSource(  IProfilingLogger profilingLogger)
+        {
+            _logger = profilingLogger;
+        }
+
         public string Url { get; set; }
 
         public string JsonPath { get; set; }
@@ -44,7 +50,7 @@
         /// Main method for retrieving nuPicker data items.
         /// </summary>
         /// <param name="contextId">Current context node Id</param>
-        /// <returns>List of items for displaying inside a nuPicker JSON data type.</returns>        
+        /// <returns>List of items for displaying inside a nuPicker JSON data type.</returns>
         private IEnumerable<EditorDataItem> GetEditorDataItems(int contextId)
         {
             List<EditorDataItem> editorDataItems = new List<EditorDataItem>(); // prepare return value
@@ -54,12 +60,13 @@
             JToken jToken = null; // object representation of all json source data
 
             try
-            {                
+            {
                 jToken = JToken.Parse(Helper.GetDataFromUrl(url));
             }
             catch (JsonException jsonException)
             {
-                LogHelper.Warn(typeof(JsonDataSource), jsonException.Message + " (Check JSON at Url: " + url + ")");
+                _logger.Info<JsonDataSource>(  "{Message} (Check JSON at Url: {URL})",jsonException.Message, url  );
+
             }
 
             if (jToken != null)
@@ -85,7 +92,8 @@
                     }
                     catch (JsonException jsonException)
                     {
-                        LogHelper.Warn(typeof(JsonDataSource), jsonException.Message + " (Check JSONPath: " + this.JsonPath + ")");
+                        _logger.Info<JsonDataSource>(  "{Message} (Check JSONPath: {JsonPath})",jsonException.Message, JsonPath  );
+
                     }
 
                     if (jTokens != null)
